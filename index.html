@@ -1,0 +1,1382 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Catálogo Olympikus</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { inter: ["Inter", "ui-sans-serif", "system-ui"] },
+          colors: {
+            oly: {
+              blue: "#2836D4",
+              bg: "#F6F7FB",
+              text: "#111827",
+              muted: "#6B7280",
+              border: "#E5E7EB"
+            }
+          },
+          boxShadow: {
+            card: "0 10px 25px rgba(17,24,39,.06)",
+            lift: "0 16px 35px rgba(17,24,39,.10)",
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- SheetJS -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+  <style>
+    :root{
+      --bg: #F6F7FB;
+      --surface:#FFFFFF;
+      --text:#111827;
+      --muted:#6B7280;
+      --border:#E5E7EB;
+      --primary:#2836D4;
+      --ring: rgba(40,54,212,.35);
+      --radius: 16px;
+    }
+
+    html, body { height: 100%; }
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: var(--bg); color: var(--text); }
+
+    /* No scrollbar */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Focus */
+    .focus-ring:focus { outline: none; box-shadow: 0 0 0 4px var(--ring); }
+
+    /* Safe-area helpers */
+    .safe-bottom { padding-bottom: max(16px, env(safe-area-inset-bottom)); }
+    .safe-top { padding-top: max(0px, env(safe-area-inset-top)); }
+
+    /* Floating WhatsApp pulse */
+    @keyframes softPulse {
+      0% { transform: translateY(0) scale(1); box-shadow: 0 10px 25px rgba(0,0,0,.10); }
+      50% { transform: translateY(-1px) scale(1.02); box-shadow: 0 14px 30px rgba(0,0,0,.13); }
+      100% { transform: translateY(0) scale(1); box-shadow: 0 10px 25px rgba(0,0,0,.10); }
+    }
+    .pulse-soft { animation: softPulse 1.8s ease-in-out infinite; }
+
+    /* Modal backdrops */
+    .backdrop { background: rgba(17, 24, 39, .55); backdrop-filter: blur(6px); }
+    .sheet { border-top-left-radius: 22px; border-top-right-radius: 22px; }
+
+    /* Toggle style */
+    .toggle-track { background: #E8EAF9; }
+    .toggle-track[data-on="true"] { background: rgba(40,54,212,.15); }
+    .toggle-thumb { transition: transform .2s ease; }
+    .toggle-track[data-on="true"] .toggle-thumb { transform: translateX(18px); }
+
+    /* Image fallback shimmer */
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .shimmer {
+      background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.2s ease-in-out infinite;
+    }
+
+    /* Clamp (Tailwind line-clamp not guaranteed on CDN config) */
+    .line-clamp-2{
+      display:-webkit-box;
+      -webkit-line-clamp:2;
+      -webkit-box-orient:vertical;
+      overflow:hidden;
+    }
+  </style>
+</head>
+
+<body class="min-h-full">
+  <div id="app" class="min-h-full">
+    <!-- Header -->
+    <header class="safe-top sticky top-0 z-40 border-b border-oly-border bg-white/90 backdrop-blur">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 py-4">
+        <div class="flex items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-2xl bg-oly-blue/10 flex items-center justify-center">
+              <i class="fa-solid fa-infinity text-oly-blue"></i>
+            </div>
+            <div class="leading-tight">
+              <div class="text-lg sm:text-xl font-extrabold tracking-tight">Catálogo Olympikus</div>
+              <div id="headerStatus" class="text-xs text-oly-muted">Carregando dados…</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button id="btnRefresh" class="focus-ring inline-flex items-center gap-2 rounded-full border border-oly-border bg-white px-4 py-2 text-sm font-semibold hover:bg-oly-bg" title="Recarregar dados do servidor">
+              <i class="fa-solid fa-arrows-rotate text-oly-blue"></i>
+              <span class="hidden sm:inline">Atualizar</span>
+            </button>
+
+            <button id="btnOpenCart" class="focus-ring inline-flex items-center gap-2 rounded-full border border-oly-border bg-white px-4 py-2 text-sm font-semibold hover:bg-oly-bg">
+              <i class="fa-solid fa-bag-shopping text-oly-blue"></i>
+              <span>Minha Sacola</span>
+              <span id="cartCountBadge" class="hidden rounded-full bg-oly-blue px-2 py-0.5 text-xs font-bold text-white">0</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Search -->
+        <div class="mt-4 flex flex-col sm:flex-row gap-2 sm:items-center">
+          <div class="relative flex-1">
+            <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-oly-muted"></i>
+            <input id="searchInput" class="focus-ring w-full rounded-full border border-oly-border bg-white px-11 py-3 text-sm font-medium placeholder:text-oly-muted/80"
+              placeholder="Buscar por produto, código, cor, gênero ou segmento…" />
+          </div>
+
+          <div class="flex gap-2 items-center">
+            <button id="btnClear" class="focus-ring inline-flex items-center gap-2 rounded-full border border-oly-border bg-white px-4 py-3 text-sm font-semibold hover:bg-oly-bg">
+              <i class="fa-solid fa-xmark text-oly-blue"></i>
+              <span>Limpar</span>
+            </button>
+
+            <div class="hidden sm:flex items-center gap-2 rounded-full border border-oly-border bg-white px-4 py-3 text-sm">
+              <i class="fa-solid fa-file-excel text-oly-blue"></i>
+              <span class="text-oly-muted">Fonte: Produtos.xlsx</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="mt-4 -mx-4 sm:mx-0 overflow-x-auto no-scrollbar">
+          <div class="px-4 sm:px-0 min-w-max flex items-center gap-2 pb-2">
+            <div class="inline-flex items-center gap-2 rounded-full bg-white border border-oly-border px-4 py-2">
+              <i class="fa-solid fa-tags text-oly-blue"></i>
+              <select id="filterCategory" class="focus-ring bg-transparent text-sm font-semibold">
+                <option value="">Categoria: Todas</option>
+              </select>
+            </div>
+
+            <div class="inline-flex items-center gap-2 rounded-full bg-white border border-oly-border px-4 py-2">
+              <i class="fa-solid fa-layer-group text-oly-blue"></i>
+              <select id="filterSegment" class="focus-ring bg-transparent text-sm font-semibold">
+                <option value="">Segmento: Todos</option>
+              </select>
+            </div>
+
+            <div class="inline-flex items-center gap-2 rounded-full bg-white border border-oly-border px-4 py-2">
+              <i class="fa-solid fa-people-group text-oly-blue"></i>
+              <select id="filterGender" class="focus-ring bg-transparent text-sm font-semibold">
+                <option value="">Gênero: Todos</option>
+              </select>
+            </div>
+
+            <div class="inline-flex items-center gap-2 rounded-full bg-white border border-oly-border px-4 py-2">
+              <i class="fa-solid fa-arrow-up-wide-short text-oly-blue"></i>
+              <select id="sortBy" class="focus-ring bg-transparent text-sm font-semibold">
+                <option value="default">Ordenar: Padrão</option>
+                <option value="priceAsc">Menor preço</option>
+                <option value="priceDesc">Maior preço</option>
+                <option value="az">A–Z</option>
+                <option value="za">Z–A</option>
+              </select>
+            </div>
+
+            <button id="toggleGroup" class="focus-ring inline-flex items-center gap-3 rounded-full border border-oly-border bg-white px-4 py-2 text-sm font-semibold hover:bg-oly-bg">
+              <span class="inline-flex items-center gap-2">
+                <i class="fa-solid fa-palette text-oly-blue"></i>
+                <span>Agrupar cores</span>
+              </span>
+              <span id="toggleTrack" class="toggle-track relative h-6 w-11 rounded-full border border-oly-border" data-on="false">
+                <span class="toggle-thumb absolute left-1 top-1 h-4 w-4 rounded-full bg-oly-blue"></span>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tiny status bar -->
+        <div class="mt-2 flex flex-wrap gap-2 text-xs text-oly-muted">
+          <span class="inline-flex items-center gap-2 rounded-full border border-oly-border bg-white px-3 py-1">
+            <i class="fa-solid fa-boxes-stacked text-oly-blue"></i>
+            <span><b id="statProducts">0</b> produtos</span>
+          </span>
+          <span class="inline-flex items-center gap-2 rounded-full border border-oly-border bg-white px-3 py-1">
+            <i class="fa-solid fa-image text-oly-blue"></i>
+            <span>Imagens: <span class="font-semibold">./Catalogo/</span></span>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="mx-auto max-w-7xl px-4 sm:px-6 py-6">
+      <!-- Loading / error state -->
+      <section id="loadingState" class="rounded-3xl border border-oly-border bg-white p-6 sm:p-10 shadow-card">
+        <div class="flex flex-col md:flex-row md:items-center gap-6">
+          <div class="flex-1">
+            <div class="inline-flex items-center gap-2 rounded-full bg-oly-blue/10 px-3 py-1 text-xs font-bold text-oly-blue">
+              <i class="fa-solid fa-cloud-arrow-down"></i>
+              <span>Carregando do servidor</span>
+            </div>
+            <h2 class="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight">
+              Lendo <span class="font-mono">Produtos.xlsx</span>…
+            </h2>
+            <p class="mt-2 text-oly-muted leading-relaxed">
+              Este catálogo busca o XLSX e as imagens diretamente da hospedagem.<br/>
+              Garanta que a estrutura esteja assim:
+              <span class="font-mono">/index.html</span> · <span class="font-mono">/Produtos.xlsx</span> · <span class="font-mono">/Catalogo/*.png</span>
+            </p>
+
+            <div id="loadHint" class="mt-4 rounded-2xl border border-oly-border bg-oly-bg p-4 text-sm">
+              <div class="font-bold">Se não carregar:</div>
+              <ul class="mt-1 list-disc pl-5 text-oly-muted">
+                <li>Confirme se o arquivo se chama exatamente <b>Produtos.xlsx</b> (mesmo nome e extensão).</li>
+                <li>Confirme se a pasta é <b>Catalogo</b> (maiúsculas/minúsculas importam no servidor).</li>
+                <li>Em hospedagens com cache, clique em <b>Atualizar</b> no topo.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="w-full md:w-[360px]">
+            <div class="rounded-3xl border border-oly-border bg-oly-bg p-5">
+              <div class="flex items-center justify-between">
+                <div class="font-extrabold">Prévia UI</div>
+                <div class="text-xs text-oly-muted">cards</div>
+              </div>
+              <div class="mt-4 grid grid-cols-2 gap-3">
+                <div class="rounded-2xl bg-white border border-oly-border p-3 shadow-card">
+                  <div class="h-20 rounded-xl shimmer"></div>
+                  <div class="mt-2 h-3 rounded shimmer"></div>
+                  <div class="mt-2 h-3 w-2/3 rounded shimmer"></div>
+                </div>
+                <div class="rounded-2xl bg-white border border-oly-border p-3 shadow-card">
+                  <div class="h-20 rounded-xl shimmer"></div>
+                  <div class="mt-2 h-3 rounded shimmer"></div>
+                  <div class="mt-2 h-3 w-2/3 rounded shimmer"></div>
+                </div>
+              </div>
+              <div class="mt-4 text-xs text-oly-muted">
+                Assim que o XLSX for lido, a lista completa aparece.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Results summary -->
+      <section id="resultsHeader" class="hidden mt-6">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
+          <div>
+            <div class="text-sm text-oly-muted">Resultados</div>
+            <div class="text-xl font-extrabold tracking-tight">
+              <span id="resultsCount">0</span> itens encontrados
+            </div>
+          </div>
+          <div class="text-sm text-oly-muted">
+            Mostrando <span id="shownCount">0</span> de <span id="totalCount">0</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Grid -->
+      <section id="grid" class="hidden mt-4">
+        <div id="cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
+
+        <div id="loadMoreWrap" class="mt-6 flex justify-center">
+          <button id="btnLoadMore" class="focus-ring hidden inline-flex items-center gap-2 rounded-full bg-oly-blue px-6 py-3 text-sm font-extrabold text-white hover:opacity-95">
+            <i class="fa-solid fa-plus"></i>
+            <span>Carregar mais</span>
+          </button>
+        </div>
+
+        <div id="noResults" class="hidden mt-8 rounded-3xl border border-oly-border bg-white p-8 shadow-card text-center">
+          <div class="mx-auto h-12 w-12 rounded-2xl bg-oly-blue/10 flex items-center justify-center">
+            <i class="fa-solid fa-magnifying-glass text-oly-blue"></i>
+          </div>
+          <div class="mt-3 text-xl font-extrabold">Nenhum resultado encontrado</div>
+          <div class="mt-1 text-oly-muted">Tente ajustar a busca ou os filtros.</div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom cart bar -->
+    <div id="cartBar" class="hidden fixed left-0 right-0 bottom-0 z-40 safe-bottom">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <div class="mb-3 rounded-2xl border border-oly-border bg-white/95 backdrop-blur shadow-lift p-3 sm:p-4 flex items-center justify-between gap-3">
+          <div class="min-w-0">
+            <div class="text-xs text-oly-muted">Minha Sacola</div>
+            <div class="truncate font-extrabold">
+              <span id="cartBarItems">0</span> item(ns) · Total <span id="cartBarTotal">R$ 0,00</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <button id="btnCheckout" class="focus-ring inline-flex items-center gap-2 rounded-full bg-oly-blue px-5 py-3 text-sm font-extrabold text-white hover:opacity-95">
+              <i class="fa-solid fa-credit-card"></i>
+              <span>Checkout</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WhatsApp floating -->
+    <button id="btnWhats" class="pulse-soft focus-ring fixed z-50 right-4 bottom-4 safe-bottom inline-flex items-center justify-center h-14 w-14 rounded-full bg-green-500 text-white shadow-lift">
+      <i class="fa-brands fa-whatsapp text-2xl"></i>
+      <span class="sr-only">Abrir WhatsApp</span>
+    </button>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="hidden fixed inset-0 z-50">
+      <div class="backdrop absolute inset-0" data-close="true"></div>
+      <div class="absolute inset-x-0 bottom-0 sm:inset-0 sm:flex sm:items-center sm:justify-center p-0 sm:p-6">
+        <div class="sheet w-full sm:max-w-3xl bg-white shadow-lift sm:rounded-3xl overflow-hidden max-h-[92vh] sm:max-h-[86vh] flex flex-col">
+          <div class="p-4 sm:p-6 border-b border-oly-border flex items-center justify-between">
+            <div class="min-w-0">
+              <div class="text-xs text-oly-muted">Detalhes do produto</div>
+              <div id="pmTitle" class="truncate text-lg sm:text-xl font-extrabold">—</div>
+            </div>
+            <button class="focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" data-close="true" aria-label="Fechar modal">
+              <i class="fa-solid fa-xmark text-oly-blue"></i>
+            </button>
+          </div>
+
+          <div class="p-4 sm:p-6 overflow-y-auto no-scrollbar">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              <div>
+                <div class="aspect-[4/3] rounded-2xl border border-oly-border bg-oly-bg overflow-hidden flex items-center justify-center">
+                  <img id="pmImage" alt="Imagem do produto" class="h-full w-full object-contain bg-white" />
+                  <div id="pmImageFallback" class="hidden p-6 text-center">
+                    <div class="mx-auto h-12 w-12 rounded-2xl bg-oly-blue/10 flex items-center justify-center">
+                      <i class="fa-solid fa-image text-oly-blue"></i>
+                    </div>
+                    <div class="mt-2 font-extrabold">Imagem indisponível</div>
+                    <div class="mt-1 text-sm text-oly-muted">Verifique <span class="font-mono">./Catalogo/</span> e o nome em <span class="font-mono">Imagem</span> no XLSX.</div>
+                  </div>
+                </div>
+
+                <div class="mt-4 grid grid-cols-2 gap-2 text-sm">
+                  <div class="rounded-2xl border border-oly-border bg-white p-3">
+                    <div class="text-xs text-oly-muted">Código</div>
+                    <div id="pmCodigo" class="font-extrabold">—</div>
+                  </div>
+                  <div class="rounded-2xl border border-oly-border bg-white p-3">
+                    <div class="text-xs text-oly-muted">Preço</div>
+                    <div id="pmPreco" class="font-extrabold">—</div>
+                  </div>
+                  <div class="rounded-2xl border border-oly-border bg-white p-3">
+                    <div class="text-xs text-oly-muted">Segmento</div>
+                    <div id="pmSegmento" class="font-bold">—</div>
+                  </div>
+                  <div class="rounded-2xl border border-oly-border bg-white p-3">
+                    <div class="text-xs text-oly-muted">Gênero</div>
+                    <div id="pmGenero" class="font-bold">—</div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div class="rounded-3xl border border-oly-border bg-oly-bg p-4">
+                  <div class="flex flex-wrap items-center gap-2">
+                    <span class="inline-flex items-center gap-2 rounded-full bg-white border border-oly-border px-3 py-1 text-xs font-bold">
+                      <i class="fa-solid fa-tags text-oly-blue"></i>
+                      <span id="pmCategoriaBadge">—</span>
+                    </span>
+                    <span class="inline-flex items-center gap-2 rounded-full bg-white border border-oly-border px-3 py-1 text-xs font-bold">
+                      <i class="fa-solid fa-palette text-oly-blue"></i>
+                      <span id="pmCorBadge">—</span>
+                    </span>
+                    <span class="inline-flex items-center gap-2 rounded-full bg-white border border-oly-border px-3 py-1 text-xs font-bold">
+                      <i class="fa-solid fa-hashtag text-oly-blue"></i>
+                      <span id="pmCorCodigoBadge">—</span>
+                    </span>
+                  </div>
+
+                  <div id="pmColorPickerWrap" class="hidden mt-4">
+                    <div class="text-xs text-oly-muted font-semibold">Outras cores disponíveis</div>
+                    <div id="pmColorChips" class="mt-2 flex flex-wrap gap-2"></div>
+                  </div>
+                </div>
+
+                <div class="mt-4 rounded-3xl border border-oly-border bg-white p-4">
+                  <div class="text-sm font-extrabold">Quantidade</div>
+                  <div class="mt-3 flex items-center gap-3">
+                    <button id="qtyMinus" class="focus-ring h-11 w-11 rounded-full border border-oly-border hover:bg-oly-bg" aria-label="Diminuir">
+                      <i class="fa-solid fa-minus text-oly-blue"></i>
+                    </button>
+                    <div id="qtyValue" class="min-w-[56px] text-center text-lg font-extrabold">1</div>
+                    <button id="qtyPlus" class="focus-ring h-11 w-11 rounded-full border border-oly-border hover:bg-oly-bg" aria-label="Aumentar">
+                      <i class="fa-solid fa-plus text-oly-blue"></i>
+                    </button>
+                  </div>
+
+                  <div class="mt-4">
+                    <label class="text-sm font-extrabold" for="pmObs">Observações</label>
+                    <textarea id="pmObs" rows="3" class="focus-ring mt-2 w-full rounded-2xl border border-oly-border px-4 py-3 text-sm placeholder:text-oly-muted/80"
+                      placeholder="Ex.: Preferência de numeração, cor alternativa, etc."></textarea>
+                  </div>
+
+                  <button id="btnAddToCart" class="focus-ring mt-4 w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-oly-blue px-5 py-4 text-sm font-extrabold text-white hover:opacity-95">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>Adicionar à Sacola</span>
+                    <span class="ml-1 opacity-90" id="btnAddPrice">—</span>
+                  </button>
+
+                  <div class="mt-3 text-xs text-oly-muted">
+                    Dica: exporte o pedido em Excel no checkout ✅
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 sm:p-6 border-t border-oly-border text-xs text-oly-muted">
+            <span class="font-semibold">QA:</span> Esc fecha o modal · foco visível · fallback de imagem · lista otimizada.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart / Checkout Modal -->
+    <div id="cartModal" class="hidden fixed inset-0 z-50">
+      <div class="backdrop absolute inset-0" data-close-cart="true"></div>
+      <div class="absolute inset-x-0 bottom-0 sm:inset-0 sm:flex sm:items-center sm:justify-center p-0 sm:p-6">
+        <div class="sheet w-full sm:max-w-4xl bg-white shadow-lift sm:rounded-3xl overflow-hidden max-h-[92vh] sm:max-h-[86vh] flex flex-col">
+          <div class="p-4 sm:p-6 border-b border-oly-border flex items-center justify-between">
+            <div>
+              <div class="text-xs text-oly-muted">Checkout</div>
+              <div class="text-lg sm:text-xl font-extrabold">Minha Sacola</div>
+            </div>
+            <button class="focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" data-close-cart="true" aria-label="Fechar checkout">
+              <i class="fa-solid fa-xmark text-oly-blue"></i>
+            </button>
+          </div>
+
+          <div class="p-4 sm:p-6 overflow-y-auto no-scrollbar">
+            <div id="cartEmpty" class="hidden rounded-3xl border border-oly-border bg-oly-bg p-8 text-center">
+              <div class="mx-auto h-12 w-12 rounded-2xl bg-oly-blue/10 flex items-center justify-center">
+                <i class="fa-solid fa-bag-shopping text-oly-blue"></i>
+              </div>
+              <div class="mt-3 text-xl font-extrabold">Sua sacola está vazia</div>
+              <div class="mt-1 text-oly-muted">Adicione itens para finalizar.</div>
+            </div>
+
+            <div id="cartContent" class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              <div class="lg:col-span-2">
+                <div class="flex items-center justify-between">
+                  <div class="font-extrabold">Itens</div>
+                  <button id="btnClearCart" class="focus-ring text-sm font-bold text-oly-blue hover:underline">
+                    Limpar sacola
+                  </button>
+                </div>
+
+                <div id="cartItems" class="mt-3 space-y-3"></div>
+              </div>
+
+              <div class="lg:col-span-1">
+                <div class="rounded-3xl border border-oly-border bg-oly-bg p-4">
+                  <div class="font-extrabold">Dados (opcional)</div>
+                  <div class="mt-3 space-y-3">
+                    <div>
+                      <label class="text-xs font-bold text-oly-muted">Nome</label>
+                      <input id="ckName" class="focus-ring mt-1 w-full rounded-2xl border border-oly-border bg-white px-4 py-3 text-sm" placeholder="Seu nome"/>
+                    </div>
+                    <div>
+                      <label class="text-xs font-bold text-oly-muted">Cidade/UF</label>
+                      <input id="ckCity" class="focus-ring mt-1 w-full rounded-2xl border border-oly-border bg-white px-4 py-3 text-sm" placeholder="Ex.: São Luís/MA"/>
+                    </div>
+                    <div>
+                      <label class="text-xs font-bold text-oly-muted">Observações gerais</label>
+                      <textarea id="ckObs" rows="3" class="focus-ring mt-1 w-full rounded-2xl border border-oly-border bg-white px-4 py-3 text-sm" placeholder="Algo importante sobre o pedido…"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="mt-4 rounded-2xl border border-oly-border bg-white p-4">
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="text-oly-muted font-semibold">Subtotal</span>
+                      <span id="ckSubtotal" class="font-extrabold">R$ 0,00</span>
+                    </div>
+                    <div class="mt-2 flex items-center justify-between text-sm">
+                      <span class="text-oly-muted font-semibold">Total</span>
+                      <span id="ckTotal" class="font-extrabold">R$ 0,00</span>
+                    </div>
+                  </div>
+
+                  <div class="mt-4 grid grid-cols-1 gap-2">
+                    <button id="btnWhatsCheckout" class="focus-ring inline-flex items-center justify-center gap-2 rounded-2xl bg-green-500 px-5 py-4 text-sm font-extrabold text-white hover:opacity-95">
+                      <i class="fa-brands fa-whatsapp text-lg"></i>
+                      <span>Finalizar no WhatsApp</span>
+                    </button>
+
+                    <button id="btnExportXlsx" class="focus-ring inline-flex items-center justify-center gap-2 rounded-2xl bg-oly-blue px-5 py-4 text-sm font-extrabold text-white hover:opacity-95">
+                      <i class="fa-solid fa-file-excel"></i>
+                      <span>Baixar pedido em Excel (.xlsx)</span>
+                    </button>
+
+                    <div class="text-xs text-oly-muted">
+                      Export inclui: Código, Produto, Cor, Quantidade (+ preço e subtotal). ✅
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- grid -->
+          </div>
+
+          <div class="p-4 sm:p-6 border-t border-oly-border text-xs text-oly-muted">
+            <span class="font-semibold">QA:</span> dados opcionais · validações leves · encode correto do WhatsApp.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="pointer-events-none fixed top-4 left-1/2 -translate-x-1/2 z-[60] hidden">
+      <div class="pointer-events-auto rounded-full bg-oly-text text-white px-4 py-2 text-sm font-bold shadow-lift flex items-center gap-2">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toastMsg">Ok</span>
+      </div>
+    </div>
+  </div>
+
+<script>
+/** ==========================
+ *  Config de hospedagem
+ *  ========================== */
+const DATA_CONFIG = {
+  xlsxPath: "./Produtos.xlsx",
+  imagesBasePath: "./Catalogo/", // pasta com PNGs
+  // Se a hospedagem cacheia agressivo, a gente adiciona ?v=timestamp no refresh
+  cacheBustOnRefresh: true
+};
+
+const CATEGORY_LABELS = {
+  "FWT": "CALÇADOS",
+  "ACC": "ACESSÓRIOS",
+  "CHI": "CHINELOS",
+  "MEIA": "MEIAS",
+  "V&A": "VESTUÁRIO",
+};
+
+const state = {
+  productsRaw: [],
+  productsView: [],
+  groupColors: false,
+  filters: { category:"", segment:"", gender:"", q:"", sort:"default" },
+  pagination: { pageSize: 24, shown: 0 },
+  productModal: { open:false, item:null, group:null, qty:1 },
+  cart: new Map(), // key -> item
+};
+
+const $ = (id) => document.getElementById(id);
+
+function normalizeName(s){
+  if(!s) return "";
+  return String(s).trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+}
+
+function moneyBR(value){
+  const num = Number(value);
+  if(Number.isFinite(num)){
+    return num.toLocaleString("pt-BR", { style:"currency", currency:"BRL" });
+  }
+  const str = String(value ?? "").trim();
+  const cleaned = str.replace(/\./g,"").replace(",",".").replace(/[^\d.-]/g,"");
+  const n2 = Number(cleaned);
+  if(Number.isFinite(n2)) return n2.toLocaleString("pt-BR", { style:"currency", currency:"BRL" });
+  return "R$ 0,00";
+}
+function toNumberBR(value){
+  const num = Number(value);
+  if(Number.isFinite(num)) return num;
+  const str = String(value ?? "").trim();
+  const cleaned = str.replace(/\./g,"").replace(",",".").replace(/[^\d.-]/g,"");
+  const n2 = Number(cleaned);
+  return Number.isFinite(n2) ? n2 : 0;
+}
+
+function toast(msg){
+  const t = $("toast"), m = $("toastMsg");
+  m.textContent = msg;
+  t.classList.remove("hidden");
+  clearTimeout(toast._t);
+  toast._t = setTimeout(()=>t.classList.add("hidden"), 2200);
+}
+
+function escapeHtml(s){
+  return String(s ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+function setHeaderStatus(msg){
+  $("headerStatus").textContent = msg;
+}
+
+function categoryLabel(cat){
+  return CATEGORY_LABELS[cat] || cat || "—";
+}
+
+/** ==========================
+ *  Carregar XLSX via fetch
+ *  ========================== */
+async function loadCatalog({ cacheBust=false } = {}){
+  try{
+    // UI loading
+    $("loadingState").classList.remove("hidden");
+    $("grid").classList.add("hidden");
+    $("resultsHeader").classList.add("hidden");
+    setHeaderStatus("Carregando dados…");
+
+    const url = cacheBust ? `${DATA_CONFIG.xlsxPath}?v=${Date.now()}` : DATA_CONFIG.xlsxPath;
+    const res = await fetch(url, { cache: "no-store" });
+    if(!res.ok){
+      throw new Error(`HTTP ${res.status} ao buscar ${url}`);
+    }
+    const data = await res.arrayBuffer();
+    const wb = XLSX.read(data, { type:"array" });
+    const sheetName = wb.SheetNames[0];
+    const ws = wb.Sheets[sheetName];
+    const json = XLSX.utils.sheet_to_json(ws, { defval:"" });
+
+    const rows = json.map((r, idx)=>({
+      _row: idx+2,
+      imagem: String(r["Imagem"] ?? r["IMAGEM"] ?? r["imagem"] ?? "").trim(),
+      categoria: String(r["Categoria"] ?? r["CATEGORIA"] ?? "").trim(),
+      segmento: String(r["Segmento"] ?? r["SEGMENTO"] ?? "").trim(),
+      codigo: String(r["Código"] ?? r["Codigo"] ?? r["CODIGO"] ?? "").trim(),
+      produto: String(r["Produto"] ?? r["PRODUTO"] ?? "").trim(),
+      corCodigo: String(r["Cor código"] ?? r["Cor codigo"] ?? r["COR CÓDIGO"] ?? r["COR CODIGO"] ?? "").trim(),
+      cor: String(r["Cor"] ?? r["COR"] ?? "").trim(),
+      genero: String(r["Gênero"] ?? r["Genero"] ?? r["GÊNERO"] ?? r["GENERO"] ?? "").trim(),
+      precoRaw: r["Preço"] ?? r["Preco"] ?? r["PREÇO"] ?? r["PRECO"] ?? 0,
+    }));
+
+    state.productsRaw = rows.filter(x => x.produto || x.codigo || x.categoria || x.imagem);
+    $("statProducts").textContent = state.productsRaw.length.toLocaleString("pt-BR");
+    setHeaderStatus("Catálogo carregado ✅");
+    buildFilterOptions();
+    refreshView(true);
+
+    $("loadingState").classList.add("hidden");
+    $("grid").classList.remove("hidden");
+    $("resultsHeader").classList.remove("hidden");
+    toast("Catálogo carregado ✅");
+  }catch(err){
+    console.error(err);
+    setHeaderStatus("Erro ao carregar ❌");
+    // Keep loading card visible, but swap text to error
+    const hint = $("loadHint");
+    hint.innerHTML = `
+      <div class="font-bold text-red-700">Falha ao carregar Produtos.xlsx</div>
+      <div class="mt-1 text-sm text-oly-muted">
+        <div class="mt-2"><b>Erro:</b> <span class="font-mono">${escapeHtml(err.message)}</span></div>
+        <div class="mt-3 font-bold">Checklist:</div>
+        <ul class="mt-1 list-disc pl-5">
+          <li>O arquivo existe em <span class="font-mono">/Produtos.xlsx</span>?</li>
+          <li>O nome está exatamente igual (case-sensitive em Linux)?</li>
+          <li>Se abriu via <span class="font-mono">file://</span>, não funciona (precisa estar hospedado / em servidor local).</li>
+        </ul>
+        <div class="mt-3">Clique em <b>Atualizar</b> no topo após corrigir.</div>
+      </div>
+    `;
+  }
+}
+
+$("btnRefresh").addEventListener("click", ()=>{
+  loadCatalog({ cacheBust: DATA_CONFIG.cacheBustOnRefresh });
+});
+
+/** ==========================
+ *  Filters
+ *  ========================== */
+function uniqSorted(arr){
+  return Array.from(new Set(arr.filter(Boolean))).sort((a,b)=>String(a).localeCompare(String(b),"pt-BR",{sensitivity:"base"}));
+}
+
+function buildFilterOptions(){
+  const cats = uniqSorted(state.productsRaw.map(p=>p.categoria));
+  const segs = uniqSorted(state.productsRaw.map(p=>p.segmento));
+  const gens = uniqSorted(state.productsRaw.map(p=>p.genero));
+
+  const catSel = $("filterCategory");
+  catSel.innerHTML = `<option value="">Categoria: Todas</option>` + cats.map(c=>{
+    const label = CATEGORY_LABELS[c] || c;
+    return `<option value="${escapeHtml(c)}">${escapeHtml(label)} (${escapeHtml(c)})</option>`;
+  }).join("");
+
+  $("filterSegment").innerHTML = `<option value="">Segmento: Todos</option>` + segs.map(s=>`<option value="${escapeHtml(s)}">${escapeHtml(s)}</option>`).join("");
+  $("filterGender").innerHTML = `<option value="">Gênero: Todos</option>` + gens.map(g=>`<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join("");
+}
+
+$("searchInput").addEventListener("input", (e)=>{
+  state.filters.q = e.target.value.trim();
+  refreshView(true);
+});
+$("btnClear").addEventListener("click", ()=>{
+  $("searchInput").value = "";
+  state.filters.q = "";
+  refreshView(true);
+});
+$("filterCategory").addEventListener("change", (e)=>{
+  state.filters.category = e.target.value;
+  refreshView(true);
+});
+$("filterSegment").addEventListener("change", (e)=>{
+  state.filters.segment = e.target.value;
+  refreshView(true);
+});
+$("filterGender").addEventListener("change", (e)=>{
+  state.filters.gender = e.target.value;
+  refreshView(true);
+});
+$("sortBy").addEventListener("change", (e)=>{
+  state.filters.sort = e.target.value;
+  refreshView(true);
+});
+$("toggleGroup").addEventListener("click", ()=>{
+  state.groupColors = !state.groupColors;
+  $("toggleTrack").dataset.on = String(state.groupColors);
+  refreshView(true);
+});
+
+/** ==========================
+ *  View computation + paging
+ *  ========================== */
+$("btnLoadMore").addEventListener("click", ()=>{
+  state.pagination.shown = Math.min(state.pagination.shown + state.pagination.pageSize, state.productsView.length);
+  renderCards();
+});
+
+function getPriceNum(v){
+  return v._type === "group" ? (v.minPriceNum ?? 0) : (v.priceNum ?? toNumberBR(v.precoRaw));
+}
+function getTitle(v){
+  return v._type === "group" ? v.produto : v.produto;
+}
+
+function refreshView(resetPaging){
+  if(resetPaging){
+    state.pagination.shown = 0;
+  }
+  const q = normalizeName(state.filters.q);
+  let list = state.productsRaw.slice();
+
+  if(state.filters.category) list = list.filter(p => p.categoria === state.filters.category);
+  if(state.filters.segment) list = list.filter(p => p.segmento === state.filters.segment);
+  if(state.filters.gender) list = list.filter(p => p.genero === state.filters.gender);
+
+  if(q){
+    list = list.filter(p=>{
+      const hay = normalizeName([p.produto, p.codigo, p.cor, p.corCodigo, p.genero, p.segmento, p.categoria].join(" "));
+      return hay.includes(q);
+    });
+  }
+
+  if(state.groupColors){
+    const groups = new Map();
+    for(const p of list){
+      // Critério escolhido: Produto + Código + Gênero (evita mistura indevida)
+      const key = normalizeName(`${p.produto}||${p.codigo}||${p.genero}`);
+      if(!groups.has(key)){
+        groups.set(key, { key, produto: p.produto, codigo: p.codigo, genero: p.genero, categoria: p.categoria, segmento: p.segmento, items: [] });
+      }
+      groups.get(key).items.push(p);
+    }
+    state.productsView = Array.from(groups.values()).map(g=>{
+      const prices = g.items.map(x=>toNumberBR(x.precoRaw));
+      const min = prices.length ? Math.min(...prices) : 0;
+      const colors = uniqSorted(g.items.map(x=>x.cor));
+      return { _type:"group", ...g, minPriceNum: min, minPriceFmt: moneyBR(min), colors, colorCount: colors.length };
+    });
+  } else {
+    state.productsView = list.map(p=>({ _type:"item", ...p, priceNum: toNumberBR(p.precoRaw), priceFmt: moneyBR(toNumberBR(p.precoRaw)) }));
+  }
+
+  const sort = state.filters.sort;
+  if(sort === "priceAsc") state.productsView.sort((a,b)=>getPriceNum(a)-getPriceNum(b));
+  else if(sort === "priceDesc") state.productsView.sort((a,b)=>getPriceNum(b)-getPriceNum(a));
+  else if(sort === "az") state.productsView.sort((a,b)=>String(getTitle(a)).localeCompare(String(getTitle(b)),"pt-BR",{sensitivity:"base"}));
+  else if(sort === "za") state.productsView.sort((a,b)=>String(getTitle(b)).localeCompare(String(getTitle(a)),"pt-BR",{sensitivity:"base"}));
+
+  if(resetPaging){
+    state.pagination.shown = Math.min(state.pagination.pageSize, state.productsView.length);
+  }
+
+  renderMain();
+}
+
+function renderMain(){
+  const hasData = state.productsRaw.length > 0;
+  // loadingState already managed by loadCatalog success
+  if(!hasData) return;
+
+  $("resultsCount").textContent = state.productsView.length.toLocaleString("pt-BR");
+  $("totalCount").textContent = state.productsView.length.toLocaleString("pt-BR");
+  $("shownCount").textContent = state.pagination.shown.toLocaleString("pt-BR");
+
+  const noRes = state.productsView.length === 0;
+  $("noResults").classList.toggle("hidden", !noRes);
+
+  renderCards();
+
+  const canLoadMore = state.pagination.shown < state.productsView.length;
+  $("btnLoadMore").classList.toggle("hidden", !canLoadMore || noRes);
+}
+
+function resolveImageSrc(imagemValue){
+  const raw = String(imagemValue || "").trim();
+  if(!raw) return "";
+  // se o XLSX vier sem extensão, tenta .png
+  const hasExt = /\.[a-z0-9]+$/i.test(raw);
+  const filename = hasExt ? raw : `${raw}.png`;
+  return `${DATA_CONFIG.imagesBasePath}${encodeURIComponent(filename)}`;
+}
+
+function renderCards(){
+  const wrap = $("cards");
+  wrap.innerHTML = "";
+  $("shownCount").textContent = state.pagination.shown.toLocaleString("pt-BR");
+
+  const slice = state.productsView.slice(0, state.pagination.shown);
+  for(const v of slice){
+    const card = document.createElement("article");
+    card.className = "rounded-3xl border border-oly-border bg-white shadow-card hover:shadow-lift transition-shadow overflow-hidden";
+    card.tabIndex = 0;
+
+    if(v._type === "group"){
+      const first = v.items[0];
+      const imgSrc = resolveImageSrc(first?.imagem);
+      const code = v.codigo || "—";
+      const seg = v.segmento || "—";
+      const gen = v.genero || "—";
+      const cat = v.categoria || "";
+      const corLabel = v.colorCount ? `${v.colorCount} cores` : "—";
+      const price = v.minPriceFmt || "—";
+
+      card.innerHTML = `
+        <div class="aspect-[4/3] bg-oly-bg border-b border-oly-border flex items-center justify-center overflow-hidden">
+          ${imgSrc ? `<img alt="${escapeHtml(v.produto)}" src="${imgSrc}" class="h-full w-full object-contain bg-white"
+            onerror="this.style.display='none'; this.parentElement.querySelector('.imgFallback').style.display='flex';">`
+            : ""}
+          <div class="imgFallback ${imgSrc ? "hidden" : ""} h-full w-full flex flex-col items-center justify-center gap-2 text-oly-muted" style="${imgSrc ? "display:none" : ""}">
+            <i class="fa-solid fa-image text-3xl text-oly-blue"></i>
+            <div class="text-xs font-bold">sem imagem</div>
+          </div>
+        </div>
+
+        <div class="p-4">
+          <div class="flex items-start justify-between gap-3">
+            <div class="min-w-0">
+              <div class="text-base font-extrabold leading-snug line-clamp-2">${escapeHtml(v.produto || "Produto")}</div>
+              <div class="mt-1 text-xs text-oly-muted">
+                <span class="font-bold">${escapeHtml(categoryLabel(cat))}</span> · ${escapeHtml(seg)} · ${escapeHtml(gen)}
+              </div>
+            </div>
+            <span class="shrink-0 inline-flex items-center gap-2 rounded-full bg-oly-blue/10 px-3 py-1 text-xs font-extrabold text-oly-blue">
+              <i class="fa-solid fa-palette"></i>
+              <span>${escapeHtml(corLabel)}</span>
+            </span>
+          </div>
+
+          <div class="mt-3 grid grid-cols-2 gap-2 text-sm">
+            <div class="rounded-2xl border border-oly-border bg-oly-bg px-3 py-2">
+              <div class="text-[11px] text-oly-muted font-semibold">Código</div>
+              <div class="font-extrabold">${escapeHtml(code)}</div>
+            </div>
+            <div class="rounded-2xl border border-oly-border bg-oly-bg px-3 py-2">
+              <div class="text-[11px] text-oly-muted font-semibold">A partir de</div>
+              <div class="font-extrabold">${escapeHtml(price)}</div>
+            </div>
+          </div>
+
+          <button class="mt-3 w-full focus-ring inline-flex items-center justify-center gap-2 rounded-2xl border border-oly-border bg-white px-4 py-3 text-sm font-extrabold hover:bg-oly-bg">
+            <i class="fa-solid fa-eye text-oly-blue"></i>
+            <span>Ver detalhes</span>
+          </button>
+        </div>
+      `;
+
+      card.querySelector("button").addEventListener("click", ()=> openProductModal({ type:"group", group:v, item:first }));
+      card.addEventListener("keydown", (ev)=>{ if(ev.key==="Enter") openProductModal({ type:"group", group:v, item:first }); });
+    } else {
+      const imgSrc = resolveImageSrc(v.imagem);
+      const price = v.priceFmt || moneyBR(toNumberBR(v.precoRaw));
+      const code = v.codigo || "—";
+      const cat = v.categoria || "";
+      const seg = v.segmento || "—";
+      const gen = v.genero || "—";
+      const cor = v.cor || "—";
+
+      card.innerHTML = `
+        <div class="aspect-[4/3] bg-oly-bg border-b border-oly-border flex items-center justify-center overflow-hidden">
+          ${imgSrc ? `<img alt="${escapeHtml(v.produto)}" src="${imgSrc}" class="h-full w-full object-contain bg-white"
+            onerror="this.style.display='none'; this.parentElement.querySelector('.imgFallback').style.display='flex';">`
+            : ""}
+          <div class="imgFallback ${imgSrc ? "hidden" : ""} h-full w-full flex flex-col items-center justify-center gap-2 text-oly-muted" style="${imgSrc ? "display:none" : ""}">
+            <i class="fa-solid fa-image text-3xl text-oly-blue"></i>
+            <div class="text-xs font-bold">sem imagem</div>
+          </div>
+        </div>
+
+        <div class="p-4">
+          <div class="text-base font-extrabold leading-snug line-clamp-2">${escapeHtml(v.produto || "Produto")}</div>
+          <div class="mt-1 text-xs text-oly-muted">
+            <span class="font-bold">${escapeHtml(categoryLabel(cat))}</span> · ${escapeHtml(seg)} · ${escapeHtml(gen)}
+          </div>
+
+          <div class="mt-3 flex flex-wrap items-center gap-2">
+            <span class="inline-flex items-center gap-2 rounded-full bg-oly-blue/10 px-3 py-1 text-xs font-extrabold text-oly-blue">
+              <i class="fa-solid fa-palette"></i>
+              <span>${escapeHtml(cor)}</span>
+            </span>
+            <span class="inline-flex items-center gap-2 rounded-full bg-white border border-oly-border px-3 py-1 text-xs font-bold">
+              <i class="fa-solid fa-hashtag text-oly-blue"></i>
+              <span>${escapeHtml(code)}</span>
+            </span>
+          </div>
+
+          <div class="mt-3 flex items-end justify-between">
+            <div>
+              <div class="text-[11px] text-oly-muted font-semibold">Preço</div>
+              <div class="text-lg font-extrabold">${escapeHtml(price)}</div>
+            </div>
+            <button class="focus-ring inline-flex items-center gap-2 rounded-2xl bg-oly-blue px-4 py-3 text-sm font-extrabold text-white hover:opacity-95">
+              <i class="fa-solid fa-eye"></i>
+              <span>Detalhes</span>
+            </button>
+          </div>
+        </div>
+      `;
+
+      card.querySelector("button").addEventListener("click", ()=> openProductModal({ type:"item", item:v, group:null }));
+      card.addEventListener("keydown", (ev)=>{ if(ev.key==="Enter") openProductModal({ type:"item", item:v, group:null }); });
+    }
+
+    wrap.appendChild(card);
+  }
+}
+
+/** ==========================
+ *  Product modal
+ *  ========================== */
+function openProductModal({ type, item, group }){
+  state.productModal.open = true;
+  state.productModal.item = item;
+  state.productModal.group = group;
+  state.productModal.qty = 1;
+  $("qtyValue").textContent = "1";
+  $("pmObs").value = "";
+
+  const produto = item.produto || group?.produto || "Produto";
+  const codigo = item.codigo || group?.codigo || "—";
+  const segmento = item.segmento || group?.segmento || "—";
+  const genero = item.genero || group?.genero || "—";
+  const categoria = item.categoria || group?.categoria || "";
+  const cor = item.cor || "—";
+  const corCodigo = item.corCodigo || "—";
+
+  const priceNum = toNumberBR(item.precoRaw ?? item.priceNum ?? 0);
+  const priceFmt = moneyBR(priceNum);
+
+  $("pmTitle").textContent = produto;
+  $("pmCodigo").textContent = codigo;
+  $("pmSegmento").textContent = segmento;
+  $("pmGenero").textContent = genero;
+  $("pmPreco").textContent = priceFmt;
+  $("btnAddPrice").textContent = `· ${priceFmt}`;
+  $("pmCategoriaBadge").textContent = `${categoryLabel(categoria)} (${categoria || "—"})`;
+  $("pmCorBadge").textContent = cor;
+  $("pmCorCodigoBadge").textContent = corCodigo;
+
+  const img = $("pmImage");
+  const fallback = $("pmImageFallback");
+  const imgSrc = resolveImageSrc(item.imagem);
+  if(imgSrc){
+    img.src = imgSrc;
+    img.classList.remove("hidden");
+    fallback.classList.add("hidden");
+    img.onerror = ()=>{
+      img.classList.add("hidden");
+      fallback.classList.remove("hidden");
+    };
+  } else {
+    img.removeAttribute("src");
+    img.classList.add("hidden");
+    fallback.classList.remove("hidden");
+  }
+
+  const wrap = $("pmColorPickerWrap");
+  const chips = $("pmColorChips");
+  chips.innerHTML = "";
+  const showPicker = state.groupColors && group && group.items && group.items.length > 1;
+  wrap.classList.toggle("hidden", !showPicker);
+
+  if(showPicker){
+    const items = group.items.slice().sort((a,b)=>String(a.cor).localeCompare(String(b.cor),"pt-BR",{sensitivity:"base"}));
+    for(const it of items){
+      const active = normalizeName(it.cor) === normalizeName(item.cor) && normalizeName(it.corCodigo) === normalizeName(item.corCodigo);
+      const btn = document.createElement("button");
+      btn.className = "focus-ring inline-flex items-center gap-2 rounded-full border px-3 py-2 text-xs font-extrabold " + (active
+        ? "border-oly-blue bg-oly-blue/10 text-oly-blue"
+        : "border-oly-border bg-white hover:bg-oly-bg");
+      btn.innerHTML = `<span>${escapeHtml(it.cor || "Cor")}</span><span class="text-oly-muted font-bold">${escapeHtml(it.corCodigo || "")}</span>`;
+      btn.addEventListener("click", ()=> openProductModal({ type:"group", item: it, group }));
+      chips.appendChild(btn);
+    }
+  }
+
+  $("productModal").classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+  trapFocus("productModal");
+}
+function closeProductModal(){
+  state.productModal.open = false;
+  $("productModal").classList.add("hidden");
+  document.body.style.overflow = "";
+  releaseFocusTrap();
+}
+$("productModal").addEventListener("click", (e)=>{
+  const el = e.target;
+  if(el?.dataset?.close === "true") closeProductModal();
+});
+document.addEventListener("keydown", (e)=>{
+  if(e.key === "Escape"){
+    if(state.productModal.open) closeProductModal();
+    if(isCartOpen()) closeCartModal();
+  }
+});
+$("qtyMinus").addEventListener("click", ()=>{
+  state.productModal.qty = Math.max(1, state.productModal.qty - 1);
+  $("qtyValue").textContent = String(state.productModal.qty);
+});
+$("qtyPlus").addEventListener("click", ()=>{
+  state.productModal.qty = Math.min(999, state.productModal.qty + 1);
+  $("qtyValue").textContent = String(state.productModal.qty);
+});
+$("btnAddToCart").addEventListener("click", ()=>{
+  const item = state.productModal.item;
+  if(!item) return;
+
+  const codigo = item.codigo || "";
+  const produto = item.produto || "";
+  const cor = item.cor || "";
+  const corCodigo = item.corCodigo || "";
+  const genero = item.genero || "";
+  const segmento = item.segmento || "";
+  const categoria = item.categoria || "";
+  const precoNum = toNumberBR(item.precoRaw ?? item.priceNum ?? 0);
+  const precoFmt = moneyBR(precoNum);
+  const qty = state.productModal.qty;
+  const obs = $("pmObs").value.trim();
+  const imgSrc = resolveImageSrc(item.imagem);
+
+  const key = normalizeName([codigo, corCodigo || cor, genero].join("||"));
+  const existing = state.cart.get(key);
+  if(existing){
+    existing.qty = Math.min(9999, existing.qty + qty);
+    if(obs) existing.obs = obs;
+    state.cart.set(key, existing);
+  } else {
+    state.cart.set(key, { key, codigo, produto, cor, corCodigo, genero, segmento, categoria, precoNum, precoFmt, qty, obs, imgSrc });
+  }
+  renderCartUI();
+  toast("Adicionado à sacola ✅");
+  closeProductModal();
+});
+
+/** ==========================
+ *  Cart + checkout
+ *  ========================== */
+function isCartOpen(){ return !$("cartModal").classList.contains("hidden"); }
+function openCartModal(){
+  $("cartModal").classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+  trapFocus("cartModal");
+  renderCartUI();
+}
+function closeCartModal(){
+  $("cartModal").classList.add("hidden");
+  document.body.style.overflow = "";
+  releaseFocusTrap();
+}
+$("btnOpenCart").addEventListener("click", openCartModal);
+$("btnCheckout").addEventListener("click", openCartModal);
+$("cartModal").addEventListener("click", (e)=>{
+  const el = e.target;
+  if(el?.dataset?.closeCart === "true") closeCartModal();
+});
+$("btnClearCart").addEventListener("click", ()=>{
+  state.cart.clear();
+  renderCartUI();
+  toast("Sacola limpa ✅");
+});
+
+function cartTotals(){
+  let items = 0, total = 0;
+  for(const it of state.cart.values()){
+    items += it.qty;
+    total += it.precoNum * it.qty;
+  }
+  return { items, total, totalFmt: moneyBR(total) };
+}
+
+function renderCartUI(){
+  const { items, totalFmt } = cartTotals();
+  const badge = $("cartCountBadge");
+  badge.textContent = String(items);
+  badge.classList.toggle("hidden", items === 0);
+
+  $("cartBar").classList.toggle("hidden", items === 0);
+  $("cartBarItems").textContent = String(items);
+  $("cartBarTotal").textContent = totalFmt;
+
+  const btn = $("btnWhats");
+  btn.style.bottom = (items === 0) ? "1rem" : "5.5rem";
+
+  const empty = $("cartEmpty");
+  const content = $("cartContent");
+  empty.classList.toggle("hidden", items !== 0);
+  content.classList.toggle("hidden", items === 0);
+
+  $("ckSubtotal").textContent = totalFmt;
+  $("ckTotal").textContent = totalFmt;
+
+  const list = $("cartItems");
+  list.innerHTML = "";
+  if(items === 0) return;
+
+  for(const it of state.cart.values()){
+    const row = document.createElement("div");
+    row.className = "rounded-3xl border border-oly-border bg-white p-4";
+    row.innerHTML = `
+      <div class="flex gap-3">
+        <div class="h-20 w-20 rounded-2xl border border-oly-border bg-oly-bg overflow-hidden flex items-center justify-center">
+          ${it.imgSrc ? `<img src="${it.imgSrc}" alt="${escapeHtml(it.produto)}" class="h-full w-full object-contain bg-white"
+            onerror="this.style.display='none';">`
+            : `<i class="fa-solid fa-image text-oly-blue text-xl"></i>`}
+          ${it.imgSrc ? `<i class="fa-solid fa-image text-oly-blue text-xl hidden"></i>` : ""}
+        </div>
+        <div class="min-w-0 flex-1">
+          <div class="flex items-start justify-between gap-3">
+            <div class="min-w-0">
+              <div class="font-extrabold leading-snug line-clamp-2">${escapeHtml(it.produto || "Produto")}</div>
+              <div class="mt-1 text-xs text-oly-muted">
+                <span class="font-bold">${escapeHtml(categoryLabel(it.categoria))}</span> · ${escapeHtml(it.segmento || "—")} · ${escapeHtml(it.genero || "—")}
+              </div>
+              <div class="mt-2 flex flex-wrap gap-2">
+                <span class="inline-flex items-center gap-2 rounded-full bg-oly-blue/10 px-3 py-1 text-xs font-extrabold text-oly-blue">
+                  <i class="fa-solid fa-palette"></i>
+                  <span>${escapeHtml(it.cor || "—")}</span>
+                  <span class="text-oly-muted font-bold">${escapeHtml(it.corCodigo || "")}</span>
+                </span>
+                <span class="inline-flex items-center gap-2 rounded-full bg-white border border-oly-border px-3 py-1 text-xs font-bold">
+                  <i class="fa-solid fa-hashtag text-oly-blue"></i>
+                  <span>${escapeHtml(it.codigo || "—")}</span>
+                </span>
+              </div>
+            </div>
+            <button class="focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" aria-label="Remover item">
+              <i class="fa-solid fa-trash text-oly-blue"></i>
+            </button>
+          </div>
+
+          <div class="mt-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div class="flex items-center gap-2">
+              <button class="focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" aria-label="Diminuir quantidade">
+                <i class="fa-solid fa-minus text-oly-blue"></i>
+              </button>
+              <div class="min-w-[52px] text-center font-extrabold">${it.qty}</div>
+              <button class="focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" aria-label="Aumentar quantidade">
+                <i class="fa-solid fa-plus text-oly-blue"></i>
+              </button>
+            </div>
+
+            <div class="text-sm">
+              <div class="text-xs text-oly-muted font-semibold">Preço unitário</div>
+              <div class="font-extrabold">${escapeHtml(it.precoFmt)}</div>
+            </div>
+
+            <div class="text-sm">
+              <div class="text-xs text-oly-muted font-semibold">Subtotal</div>
+              <div class="font-extrabold">${moneyBR(it.precoNum * it.qty)}</div>
+            </div>
+          </div>
+
+          ${it.obs ? `<div class="mt-3 rounded-2xl border border-oly-border bg-oly-bg px-3 py-2 text-xs">
+            <div class="text-oly-muted font-bold">Obs.</div>
+            <div class="font-semibold">${escapeHtml(it.obs)}</div>
+          </div>` : ""}
+        </div>
+      </div>
+    `;
+
+    const [btnRemove, btnMinus, btnPlus] = row.querySelectorAll("button");
+    btnRemove.addEventListener("click", ()=>{
+      state.cart.delete(it.key);
+      renderCartUI();
+      toast("Item removido ✅");
+    });
+    btnMinus.addEventListener("click", ()=>{
+      it.qty = Math.max(1, it.qty - 1);
+      state.cart.set(it.key, it);
+      renderCartUI();
+    });
+    btnPlus.addEventListener("click", ()=>{
+      it.qty = Math.min(9999, it.qty + 1);
+      state.cart.set(it.key, it);
+      renderCartUI();
+    });
+
+    list.appendChild(row);
+  }
+}
+
+/** ==========================
+ *  WhatsApp
+ *  ========================== */
+function buildWhatsMessage(){
+  const { totalFmt } = cartTotals();
+  const name = $("ckName").value.trim();
+  const city = $("ckCity").value.trim();
+  const obs = $("ckObs").value.trim();
+
+  const lines = [];
+  lines.push("*🛍️ Pedido — Catálogo Olympikus*");
+  if(name) lines.push(`*Cliente:* ${name}`);
+  if(city) lines.push(`*Cidade/UF:* ${city}`);
+  lines.push("");
+  lines.push("*Itens:*");
+
+  let i = 1;
+  for(const it of state.cart.values()){
+    lines.push(`${i}. *${it.produto}*`);
+    lines.push(`   Código: ${it.codigo}`);
+    lines.push(`   Cor: ${it.cor}${it.corCodigo ? " ("+it.corCodigo+")" : ""}`);
+    lines.push(`   Qtd: ${it.qty}`);
+    lines.push(`   Unit: ${it.precoFmt}`);
+    lines.push(`   Subtotal: ${moneyBR(it.precoNum * it.qty)}`);
+    if(it.obs) lines.push(`   Obs: ${it.obs}`);
+    lines.push("");
+    i++;
+  }
+
+  if(obs){
+    lines.push("*Observações gerais:*");
+    lines.push(obs);
+    lines.push("");
+  }
+
+  lines.push(`*Total:* ${totalFmt}`);
+  return lines.join("\n");
+}
+function openWhatsApp(){
+  if(state.cart.size === 0){
+    toast("Adicione itens antes ✅");
+    return;
+  }
+  const msg = buildWhatsMessage();
+  const url = `https://wa.me/?text=${encodeURIComponent(msg)}`;
+  window.open(url, "_blank", "noopener,noreferrer");
+}
+$("btnWhats").addEventListener("click", openWhatsApp);
+$("btnWhatsCheckout").addEventListener("click", openWhatsApp);
+
+/** ==========================
+ *  Export XLSX
+ *  ========================== */
+function exportOrderXlsx(){
+  if(state.cart.size === 0){
+    toast("Sacola vazia ✅");
+    return;
+  }
+  const rows = [];
+  for(const it of state.cart.values()){
+    rows.push({
+      "Código": it.codigo,
+      "Produto": it.produto,
+      "Cor": it.cor,
+      "Cor código": it.corCodigo,
+      "Quantidade": it.qty,
+      "Preço Unitário": it.precoNum,
+      "Subtotal": it.precoNum * it.qty,
+    });
+  }
+  const ws = XLSX.utils.json_to_sheet(rows);
+  ws["!cols"] = [
+    { wch: 14 }, { wch: 38 }, { wch: 18 }, { wch: 12 },
+    { wch: 12 }, { wch: 14 }, { wch: 12 }
+  ];
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, "Pedido");
+
+  const now = new Date();
+  const pad = (n)=>String(n).padStart(2,"0");
+  const name = `pedido_olympikus_${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}_${pad(now.getHours())}${pad(now.getMinutes())}.xlsx`;
+
+  XLSX.writeFile(wb, name);
+  toast("Pedido exportado ✅");
+}
+$("btnExportXlsx").addEventListener("click", exportOrderXlsx);
+
+/** ==========================
+ *  Focus trap (simple)
+ *  ========================== */
+let trap = { root:null, prevActive:null };
+function trapFocus(rootId){
+  const root = $(rootId);
+  if(!root) return;
+  trap.root = root;
+  trap.prevActive = document.activeElement;
+
+  const focusables = root.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])');
+  const first = focusables[0];
+  if(first) first.focus();
+
+  root.addEventListener("keydown", handleTrapKeydown);
+}
+function releaseFocusTrap(){
+  if(trap.root){
+    trap.root.removeEventListener("keydown", handleTrapKeydown);
+  }
+  const prev = trap.prevActive;
+  trap = { root:null, prevActive:null };
+  if(prev && prev.focus) prev.focus();
+}
+function handleTrapKeydown(e){
+  if(e.key !== "Tab") return;
+  const root = trap.root;
+  if(!root) return;
+  const focusables = Array.from(root.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])'))
+    .filter(el => !el.hasAttribute("disabled") && !el.getAttribute("aria-hidden"));
+  if(!focusables.length) return;
+
+  const first = focusables[0];
+  const last = focusables[focusables.length-1];
+  if(e.shiftKey && document.activeElement === first){
+    e.preventDefault(); last.focus();
+  } else if(!e.shiftKey && document.activeElement === last){
+    e.preventDefault(); first.focus();
+  }
+}
+
+/** ==========================
+ *  Init
+ *  ========================== */
+renderCartUI();
+setHeaderStatus("Carregando dados…");
+loadCatalog({ cacheBust: false });
+</script>
+</body>
+</html>
