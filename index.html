@@ -599,6 +599,7 @@ const state = {
   productModal: { open:false, item:null, group:null, qty:1 },
   cart: new Map(),
   cardQty: new Map(), // key -> qty manual for card
+  cardAddStatus: new Map(), // key -> 'idle' | 'pending' | 'added'
   cardAdded: new Set(), // key -> already added (green) for cart only
   favorites: new Set(), // variant keys
 };
@@ -981,11 +982,11 @@ function getVariantsFor(item){
 /** Gender icon mapping */
 function genderIcon(gen){
   const g = normalizeName(gen);
-  if(g.includes("masc")) return { icon:"fa-mars", label:"Masculino" };
-  if(g.includes("fem")) return { icon:"fa-venus", label:"Feminino" };
-  if(g.includes("uni")) return { icon:"fa-venus-mars", label:"Unissex" };
-  if(g.includes("inf") || g.includes("kids") || g.includes("cri")) return { icon:"fa-child", label:"Infantil" };
-  return { icon:"fa-user", label:"Gênero" };
+  if(g.includes("masc")) return { icon:"fa-mars", label:"Masculino", isFemale:false };
+  if(g.includes("fem")) return { icon:"fa-venus", label:"Feminino", isFemale:true };
+  if(g.includes("uni")) return { icon:"fa-venus-mars", label:"Unissex", isFemale:false };
+  if(g.includes("inf") || g.includes("kids") || g.includes("cri")) return { icon:"fa-child", label:"Infantil", isFemale:false };
+  return { icon:"fa-user", label:"Gênero", isFemale:false };
 }
 
 /** Card qty state */
@@ -1004,6 +1005,39 @@ function applyPackCard(key, n){
   if(cur <= 1) setCardQty(key, n);
   else setCardQty(key, cur + n);
 }
+
+function updateCardAddButton(btn, status){
+  if(!btn) return;
+  // reset
+  btn.classList.remove("bg-oly-blue","bg-green-500","bg-orange-500","pulse-soft");
+  btn.classList.add("text-white");
+  let label = "Adicionar";
+  if(status === "pending"){
+    btn.classList.add("bg-orange-500","pulse-soft");
+    label = "Pendente";
+  } else if(status === "added"){
+    btn.classList.add("bg-green-500");
+    label = "Adicionado";
+  } else {
+    btn.classList.add("bg-oly-blue");
+    label = "Adicionar";
+  }
+  const span = btn.querySelector("span");
+  if(span) span.textContent = label;
+}
+/** Card add button status */
+function getCardAddStatus(key){
+  return state.cardAddStatus.has(key) ? state.cardAddStatus.get(key) : "idle";
+}
+function setCardAddStatus(key, status){
+  state.cardAddStatus.set(key, status);
+}
+function setCardPending(key){
+  // Any qty interaction makes it pending (unless qty is invalid which we don't allow)
+  const current = getCardAddStatus(key);
+  if(current !== "pending") setCardAddStatus(key, "pending");
+}
+
 
 /** Add to cart helper (accumulates) */
 function addToCart(item, qty, { obs="" } = {}){
@@ -1121,7 +1155,7 @@ function renderCards(){
 
           <!-- Gender icon -->
           <div class="absolute left-3 top-3 h-9 w-9 rounded-full bg-white/95 border border-oly-border flex items-center justify-center" title="${escapeHtml(g.label)}">
-            <i class="fa-solid ${g.icon} text-oly-blue"></i>
+            <i class="fa-solid ${g.icon} ${g.isFemale ? "text-pink-500" : "text-oly-blue"}"></i>
           </div>
         </div>
 
@@ -1176,6 +1210,8 @@ function renderCards(){
       const btnAdd = card.querySelector(".btnAdd");
       const btnPack6 = card.querySelector(".btnPack6");
       const btnPack12 = card.querySelector(".btnPack12");
+      // Init add button state
+      updateCardAddButton(btnAdd, getCardAddStatus(key));
 
       // ✅ imagem abre detalhes
       imgHit.addEventListener("click", ()=> openProductModal({ item:v, group:null }));
@@ -1195,6 +1231,8 @@ function renderCards(){
         const next = Math.max(1, cur - 1);
         setCardQty(key, next);
         qtyDisplay.textContent = String(next);
+        setCardPending(key);
+        updateCardAddButton(btnAdd, getCardAddStatus(key));
         updateAddButtonUI(btnAdd, key);
       });
       btnPlus.addEventListener("click", ()=>{
@@ -1202,17 +1240,23 @@ function renderCards(){
         const next = Math.min(999, cur + 1);
         setCardQty(key, next);
         qtyDisplay.textContent = String(next);
+        setCardPending(key);
+        updateCardAddButton(btnAdd, getCardAddStatus(key));
         updateAddButtonUI(btnAdd, key);
       });
 
       btnPack6.addEventListener("click", ()=>{
         applyPackCard(key, 6);
         qtyDisplay.textContent = String(getCardQty(key));
+        setCardPending(key);
+        updateCardAddButton(btnAdd, getCardAddStatus(key));
         updateAddButtonUI(btnAdd, key);
       });
       btnPack12.addEventListener("click", ()=>{
         applyPackCard(key, 12);
         qtyDisplay.textContent = String(getCardQty(key));
+        setCardPending(key);
+        updateCardAddButton(btnAdd, getCardAddStatus(key));
         updateAddButtonUI(btnAdd, key);
       });
 
