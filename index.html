@@ -580,6 +580,11 @@
     </div>
   </div>
 
+  <!-- TAILWIND_SAFE_CLASSES (não remover): garante classes dinâmicas geradas pelo Tailwind CDN -->
+  <div class="hidden" id="TW_SAFE">
+    <span class="bg-orange-500 text-pink-500 bg-green-500 bg-oly-blue"></span>
+  </div>
+
 <script>
 const DATA_CONFIG = { xlsxPath: "./Produtos.xlsx", imagesBasePath: "./Catalogo/", cacheBustOnRefresh: true };
 const STORAGE_KEYS = {
@@ -1025,6 +1030,29 @@ function updateCardAddButton(btn, status){
   const span = btn.querySelector("span");
   if(span) span.textContent = label;
 }
+
+
+function refreshVisibleCardAddButtons(){
+  // Update only visible card buttons to reflect current status map
+  document.querySelectorAll("[data-card-key]").forEach(cardEl=>{
+    const key = cardEl.getAttribute("data-card-key");
+    const btn = cardEl.querySelector(".btnAdd");
+    if(key && btn) updateCardAddButton(btn, getCardAddStatus(key));
+  });
+}
+function syncCardAddStatusFromCart(){
+  // Reconcile card status with current cart contents:
+  // if variant is in cart => 'added'; otherwise => back to 'idle' (normal).
+  for(const [k, st] of state.cardAddStatus.entries()){
+    const inCart = state.cart.has(k);
+    if(inCart){
+      if(st !== "added") state.cardAddStatus.set(k, "added");
+    } else {
+      // reset to normal when removed from cart
+      if(st === "added") state.cardAddStatus.set(k, "idle");
+    }
+  }
+}
 /** Card add button status */
 function getCardAddStatus(key){
   return state.cardAddStatus.has(key) ? state.cardAddStatus.get(key) : "idle";
@@ -1140,6 +1168,7 @@ function renderCards(){
     } else {
       const imgSrc = resolveImageSrc(v.imagem);
       const key = cartKeyFor(v);
+      card.setAttribute("data-card-key", key);
       const qty = getCardQty(key);
       const g = genderIcon(v.genero);
       const fav = isFavoriteKey(key);
@@ -1438,6 +1467,7 @@ function cartTotals(){
   return { items };
 }
 function renderCartUI(){
+  syncCardAddStatusFromCart();
   const { items } = cartTotals();
 
   const badge = $("cartCountBadge");
@@ -1454,7 +1484,10 @@ function renderCartUI(){
 
   const list = $("cartItems");
   list.innerHTML = "";
-  if(items === 0) return;
+  if(items === 0){
+    refreshVisibleCardAddButtons();
+    return;
+  }
 
   for(const it of state.cart.values()){
     const row = document.createElement("div");
@@ -1529,6 +1562,8 @@ function renderCartUI(){
 
     list.appendChild(row);
   }
+  // Atualiza botões 'Adicionar' visíveis na tela principal
+  refreshVisibleCardAddButtons();
 }
 
 /** WhatsApp */
