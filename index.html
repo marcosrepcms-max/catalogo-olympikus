@@ -56,7 +56,7 @@
       --ready: rgba(40,54,212,.12);
     }
     html, body { height: 100%; }
-    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: var(--bg); color: var(--text); }
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
 
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -71,15 +71,9 @@
     }
     .pulse-soft { animation: softPulse 1.8s ease-in-out infinite; }
 
-    .backdrop { background: rgba(17, 24, 39, .55); backdrop-filter: blur(6px); }
+    .backdrop { background: rgba(17, 24, 39, .55); backdrop-filter: blur(6px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.35); }
     .sheet { border-top-left-radius: 22px; border-top-right-radius: 22px; }
-
-    @keyframes swipeHintAnim {
-      0%{ transform: translateX(-18px); opacity:0; }
-      15%{ opacity:1; }
-      85%{ opacity:1; }
-      100%{ transform: translateX(18px); opacity:0; }
-    }
 
     @keyframes shimmer {
       0% { background-position: -200% 0; }
@@ -123,19 +117,50 @@
     .btn-added { background: var(--success) !important; }
   
     /* Card Add button status (robusto: não depende do Tailwind gerar classes dinâmicas) */
-    .btn-add-status.is-idle { background: var(--primary) !important; }
-    .btn-add-status.is-pending { background: #f97316 !important; } /* laranja */
-    .btn-add-status.is-added { background: #22c55e !important; }   /* verde */
+    .btn-add-status.is-idle { background: var(--primary); }
+    .btn-add-status.is-pending { background: #f97316; } /* laranja */
+    .btn-add-status.is-added { background: #22c55e; }   /* verde */
 
   /* Product modal thumbnails (cores) */
 .pm-thumbs { display:flex; gap:10px; overflow-x:auto; padding:10px 2px; }
 .pm-thumbs::-webkit-scrollbar{ display:none; }
 .pm-thumbs{ -ms-overflow-style:none; scrollbar-width:none; }
-#swipeHint > div{ animation: swipeHintAnim 1.4s ease-in-out 2; }
 .pm-thumb{ width:64px; height:64px; border-radius:14px; border:1px solid var(--border); background:#fff; overflow:hidden; flex:0 0 auto; display:flex; align-items:center; justify-content:center; }
 .pm-thumb.active{ border-color: var(--primary); box-shadow: 0 0 0 3px rgba(40,54,212,.12); }
 .pm-thumb img{ width:100%; height:100%; object-fit:contain; background:#fff; }
 .pm-thumb .pm-thumb-fallback{ font-size:11px; font-weight:800; color: var(--muted); padding:6px; text-align:center; }
+  
+    @keyframes swipeHint {
+      0% { transform: translateX(0); opacity: 0; }
+      15% { opacity: 1; }
+      55% { transform: translateX(-42px); opacity: 1; }
+      100% { transform: translateX(-42px); opacity: 0; }
+    }
+    .swipe-hint {
+      position:absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.78);
+      border: 1px solid rgba(255,255,255,.32);
+      color: rgba(255,255,255,.92);
+      font-weight: 800;
+      font-size: 13px;
+      z-index: 40;
+      pointer-events:none;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    .swipe-hint i {
+      animation: swipeHint 1.4s ease-in-out 1;
+      font-size: 18px;
+    }
+
   </style>
 </head>
 
@@ -157,7 +182,7 @@
             <div id="headerStatusMobile" class="text-xs text-oly-muted sm:hidden">Carregando…</div>
           </div>
 
-          <div class="flex items-center gap-2">
+          <div class="flex flex-wrap items-center justify-end gap-2">
             <!-- Search: icon-only -> expands -->
             <div id="searchWrap" class="search-collapsed bg-white border border-oly-border shadow-sm flex items-center gap-2 px-2 py-2">
               <button id="btnSearchToggle" class="focus-ring h-9 w-9 rounded-full hover:bg-oly-bg" title="Buscar">
@@ -403,14 +428,12 @@
                   </div>
                 </div>
 
-                <!-- Miniaturas de cores (abaixo da foto) -->
-                <div id="pmThumbsWrap" class="hidden mt-3">
-                  <div id="pmThumbs" class="pm-thumbs"></div>
-                </div>
-
-                </div>
-              </div>
-<div class="rounded-2xl border border-oly-border bg-white p-3">
+                <div class="mt-4 grid grid-cols-2 gap-2 text-sm">
+                  <div class="rounded-2xl border border-oly-border bg-white p-3">
+                    <div class="text-xs text-oly-muted">Código</div>
+                    <div id="pmCodigo" class="font-extrabold">—</div>
+                  </div>
+                  <div class="rounded-2xl border border-oly-border bg-white p-3">
                     <div class="text-xs text-oly-muted">Preço</div>
                     <div id="pmPreco" class="font-extrabold">—</div>
                   </div>
@@ -426,33 +449,17 @@
               </div>
 
               <div>
-                
                 <div class="rounded-3xl border border-oly-border bg-oly-bg p-4">
-                  <div class="flex items-center justify-between gap-3">
-                    <div class="inline-flex items-center gap-2 min-w-0">
-                      <span id="pmGenderPill" class="h-9 w-9 shrink-0 rounded-full bg-white/95 border border-oly-border flex items-center justify-center" title="Gênero">
-                        <i id="pmGenderIcon" class="fa-solid fa-user text-oly-blue"></i>
-                      </span>
-                      <div class="min-w-0">
-                        <div class="text-xs text-oly-muted font-bold">Código / Segmento</div>
-                        <div id="pmMetaLine" class="text-sm font-extrabold truncate">—</div>
-                      </div>
-                    </div>
-
-                    <button id="pmFavBtn" class="focus-ring h-10 w-10 rounded-full border border-oly-border bg-white hover:bg-oly-bg" title="Favoritar">
-                      <i class="fa-regular fa-heart text-oly-blue"></i>
-                    </button>
-                  </div>
-
-                  <div class="mt-3 flex flex-wrap items-center gap-2">
-                    <span class="inline-flex items-center gap-2 rounded-full bg-white border border-oly-border px-3 py-1 text-xs font-extrabold">
-                      <i class="fa-solid fa-money-bill text-oly-blue"></i>
-                      <span id="pmPrecoMain">—</span>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <span class="inline-flex items-center gap-2 rounded-full bg-white border border-oly-border px-3 py-1 text-xs font-bold">
+                      <i class="fa-solid fa-tags text-oly-blue"></i>
+                      <span id="pmCategoriaBadge">—</span>
                     </span>
-                    <span class="inline-flex items-center gap-2 rounded-full bg-white border border-oly-border px-3 py-1 text-xs font-extrabold">
+                    <span class="inline-flex items-center gap-2 rounded-full bg-white border border-oly-border px-3 py-1 text-xs font-bold">
                       <i class="fa-solid fa-palette text-oly-blue"></i>
-                      <span id="pmCorMain">—</span>
+                      <span id="pmCorBadge">—</span>
                     </span>
+                    <span class="hidden"><span id="pmCorCodigoBadge">—</span></span>
                   </div>
 
                   <div id="pmColorPickerWrap" class="hidden mt-4">
@@ -461,7 +468,6 @@
                 </div>
 
                 <div class="mt-4 rounded-3xl border border-oly-border bg-white p-4">
-
                   <div class="text-sm font-extrabold">Quantidade</div>
 
                   <div class="mt-3 flex items-center gap-3">
@@ -517,7 +523,7 @@
             </button>
           </div>
 
-          <div id="pmScroll" class="p-4 sm:p-6 overflow-y-auto no-scrollbar">
+          <div class="p-4 sm:p-6 overflow-y-auto no-scrollbar">
             <div id="cartEmpty" class="hidden rounded-3xl border border-oly-border bg-oly-bg p-8 text-center">
               <div class="mx-auto h-12 w-12 rounded-2xl bg-oly-blue/10 flex items-center justify-center">
                 <i class="fa-solid fa-bag-shopping text-oly-blue"></i>
@@ -603,13 +609,9 @@
             </div>
           </div>
 
-          <div id="swipeHint" class="pointer-events-none absolute inset-0 flex items-center justify-center hidden">
-  <div class="rounded-full bg-white/10 border border-white/20 px-5 py-3 text-white/90 text-sm font-extrabold flex items-center gap-3">
-    <i class="fa-regular fa-hand-pointer text-lg"></i>
-    <span>Arraste para trocar →</span>
-  </div>
-</div>
-<img id="viewerImg" alt="Imagem do produto em tela cheia" class="max-h-full max-w-full object-contain" />
+          <div id="swipeHint" class="swipe-hint hidden"><i class="fa-solid fa-hand-pointer"></i><span>Arraste para trocar a cor</span></div>
+
+          <img id="viewerImg" alt="Imagem do produto em tela cheia" class="max-h-full max-w-full object-contain" />
         </div>
       </div>
     </div>
@@ -654,6 +656,23 @@ const state = {
 };
 
 const $ = (id)=>document.getElementById(id);
+
+/** One-time DOM relocation: thumbnails below main photo */
+(function moveColorThumbsBelowPhoto(){
+  try{
+    const wrap = $("pmColorPickerWrap");
+    if(!wrap) return;
+    const leftCol = document.querySelector("#productModal .p-4.sm\\:p-6 .grid.grid-cols-1.sm\\:grid-cols-2 > div");
+    if(!leftCol) return;
+    const imgBox = leftCol.querySelector(".relative.aspect-\\[4\\/3\\]");
+    if(imgBox && imgBox.parentElement){
+      imgBox.parentElement.insertAdjacentElement("afterend", wrap);
+    } else {
+      leftCol.appendChild(wrap);
+    }
+  }catch(e){}
+})();
+
 
 function normalizeName(s){
   if(!s) return "";
@@ -708,6 +727,32 @@ function setHeaderStatus(msg){
   if(desktop) desktop.textContent = msg;
   if(mobile) mobile.textContent = msg;
 }
+
+
+/** Favorites button UI (Voltar when in favorites) */
+function setFavoritesBtnMode(isFavView){
+  const b = $("btnFavorites");
+  if(!b) return;
+  if(isFavView){
+    b.classList.add("pulse-soft");
+    b.classList.remove("bg-white","border-oly-border");
+    b.classList.add("bg-amber-500","border-amber-500","text-white");
+    b.innerHTML = `
+      <i class="fa-solid fa-house"></i>
+      <span class="hidden sm:inline">Voltar</span>
+    `;
+    b.title = "Voltar";
+  } else {
+    b.classList.remove("pulse-soft","bg-amber-500","border-amber-500","text-white");
+    b.classList.add("bg-white","border-oly-border");
+    b.innerHTML = `
+      <i class="fa-regular fa-heart text-oly-blue"></i>
+      <span class="hidden sm:inline">Favoritos</span>
+    `;
+    b.title = "Favoritos";
+  }
+}
+
 
 /** LocalStorage */
 function saveCartToStorage(){
@@ -766,21 +811,31 @@ function updateFavHeaderUI(){
   const icon = $("btnFavsIcon");
   const txt = $("btnFavsText");
 
-  // reset styles
-  btn.classList.remove("pulse-soft","bg-oly-blue","text-white");
-  icon.classList.remove("text-white");
-  icon.classList.add("text-oly-blue");
+  // base classes (ensure we can toggle reliably)
+  const ORANGE = ["bg-orange-500","text-white","border-orange-500","hover:bg-orange-600"];
+  const BASE   = ["bg-white","border-oly-border","hover:bg-oly-bg"];
+  const PULSE  = "pulse-soft";
+
+  function applyClasses(addList, removeList){
+    if(!btn) return;
+    for(const c of removeList) btn.classList.remove(c);
+    for(const c of addList) btn.classList.add(c);
+  }
 
   if(state.viewMode === "favs"){
-    // Visual cue to return
-    btn.classList.add("pulse-soft","bg-oly-blue","text-white");
-    icon.className = "fa-solid fa-house text-white"; // home icon
-    txt.textContent = "Voltar";
-    btn.title = "Voltar para a lista";
+    // 🔥 destaque para "Voltar"
+    if(icon) icon.className = "fa-solid fa-arrow-left text-white";
+    if(txt)  txt.textContent = "Voltar";
+    if(btn)  btn.title = "Voltar para a lista";
+
+    applyClasses([...ORANGE, PULSE], BASE);
   } else {
-    icon.className = (n > 0 ? "fa-solid fa-heart text-oly-blue" : "fa-regular fa-heart text-oly-blue");
-    txt.textContent = "Favoritos";
-    btn.title = "Favoritos";
+    if(icon) icon.className = (n>0 ? "fa-solid fa-heart text-oly-blue" : "fa-regular fa-heart text-oly-blue");
+    if(txt)  txt.textContent = "Favoritos";
+    if(btn)  btn.title = "Favoritos";
+
+    applyClasses(BASE, ORANGE);
+    if(btn) btn.classList.remove(PULSE);
   }
 }
 function toggleFavoriteByItem(item){
@@ -960,7 +1015,7 @@ $("btnFavs").addEventListener("click", ()=>{
   const goingToFavs = state.viewMode !== "favs";
   if(goingToFavs){
     // Save current scroll before swapping list
-    state.ui.lastScrollY = window.scrollY || document.documentElement.scrollTop || 0;
+    state.lastScrollY = window.scrollY || document.documentElement.scrollTop || 0;
     state.viewMode = "favs";
   } else {
     state.viewMode = "all";
@@ -969,7 +1024,7 @@ $("btnFavs").addEventListener("click", ()=>{
   refreshView(true);
   // Restore scroll when returning to list
   if(!goingToFavs){
-    requestAnimationFrame(()=> window.scrollTo(0, Number(state.ui.lastScrollY||0)));
+    requestAnimationFrame(()=> window.scrollTo(0, Number(state.lastScrollY||0)));
   }
 
 });
@@ -1054,44 +1109,40 @@ function resolveImageSrc(imagemValue){
 function cartKeyFor(item){
   return normalizeName([item.codigo || "", item.corCodigo || item.cor || "", item.genero || ""].join("||"));
 }
-function getVariantsFor(item){
-  // ✅ inclui todos os gêneros do mesmo produto/código (para thumbs/zoom)
-  const key = normalizeName(`${item.produto}||${item.codigo}`);
-  const variants = state.productsRaw
-    .filter(p => normalizeName(`${p.produto}||${p.codigo}`) === key)
+function getVariantsFor(item, opts={}){
+  const ignoreGender = !!opts.ignoreGender;
+  const dedupeColors = opts.dedupeColors !== false; // default true
+  const baseKey = ignoreGender
+    ? normalizeName(`${item.produto}||${item.codigo}`)
+    : normalizeName(`${item.produto}||${item.codigo}||${item.genero}`);
+
+  let variants = state.productsRaw
+    .filter(p => {
+      const k = ignoreGender
+        ? normalizeName(`${p.produto}||${p.codigo}`)
+        : normalizeName(`${p.produto}||${p.codigo}||${p.genero}`);
+      return k === baseKey;
+    })
     .slice()
-    .sort((a,b)=>{
-      const ca = String(a.cor).localeCompare(String(b.cor),"pt-BR",{sensitivity:"base"});
-      if(ca !== 0) return ca;
-      return String(a.genero).localeCompare(String(b.genero),"pt-BR",{sensitivity:"base"});
-    });
-  return variants.length ? variants : [item];
-}
+    .sort((a,b)=>String(a.cor).localeCompare(String(b.cor),"pt-BR",{sensitivity:"base"}));
 
-// Agrupa variantes por cor (une gêneros) para montar miniaturas e navegação por cor
-function getColorOptionsFor(item){
-  const vars = getVariantsFor(item);
-  const map = new Map();
-  for(const v of vars){
-    const k = normalizeName(`${v.cor||""}||${v.corCodigo||""}`);
-    if(!map.has(k)){
-      map.set(k, { key:k, cor:v.cor||"", corCodigo:v.corCodigo||"", items:[] });
+  if(!variants.length) variants = [item];
+  if(!dedupeColors) return variants;
+
+  const seen = new Map(); // colorKey -> representative
+  for(const v of variants){
+    const colorKey = normalizeName(`${v.cor||""}||${v.corCodigo||""}`);
+    if(!seen.has(colorKey)){
+      seen.set(colorKey, v);
+    } else {
+      const cur = seen.get(colorKey);
+      if(normalizeName(v.genero) === normalizeName(item.genero) && normalizeName(cur.genero) !== normalizeName(item.genero)){
+        seen.set(colorKey, v);
+      }
     }
-    map.get(k).items.push(v);
   }
-  const opts = Array.from(map.values()).sort((a,b)=>String(a.cor).localeCompare(String(b.cor),"pt-BR",{sensitivity:"base"}));
-  return opts;
+  return Array.from(seen.values());
 }
-
-function pickVariantFromColorOption(opt, preferGenero){
-  if(!opt || !opt.items || !opt.items.length) return null;
-  if(preferGenero){
-    const found = opt.items.find(x => normalizeName(x.genero) === normalizeName(preferGenero));
-    if(found) return found;
-  }
-  return opt.items[0];
-}
-
 /** Gender icon mapping */
 function genderIcon(gen){
   const g = normalizeName(gen);
@@ -1321,13 +1372,20 @@ function renderCards(){
       if(btnCardZoom){
         btnCardZoom.addEventListener("click", (e)=>{
           e.stopPropagation();
-          const zoomOpts = getColorOptionsFor(first);
-          const variants = zoomOpts.map(opt => pickVariantFromColorOption(opt, (first.genero||"")) || opt.items[0]).filter(Boolean);
+          const variants = getVariantsFor(first, { ignoreGender:true });
           openImageViewer(variants, 0, { returnToProductModal:false });
         });
       }
       card.querySelector(".btnDetails").addEventListener("click", ()=> openProductModal({ item:first, group:v }));
       
+      const btnCardZoom = card.querySelector(".btnCardZoom");
+      if(btnCardZoom){
+        btnCardZoom.addEventListener("click", (e)=>{
+          e.stopPropagation();
+          const variants = getVariantsFor(first, { ignoreGender:true });
+          openImageViewer(variants, 0, { returnToProductModal:false });
+        });
+      }
 card.querySelector(".imgHit").addEventListener("click", ()=> openProductModal({ item:first, group:v }));
       card.addEventListener("keydown", (ev)=>{ if(ev.key==="Enter") openProductModal({ item:first, group:v }); });
     } else {
@@ -1418,7 +1476,7 @@ card.querySelector(".imgHit").addEventListener("click", ()=> openProductModal({ 
       if(btnCardZoom){
         btnCardZoom.addEventListener("click", (e)=>{
           e.stopPropagation();
-          const variants = getVariantsFor(v);
+          const variants = getVariantsFor(v, { ignoreGender:true });
           const currentIndex = Math.max(0, variants.findIndex(x => cartKeyFor(x) === cartKeyFor(v)));
           openImageViewer(variants, currentIndex, { returnToProductModal:false });
         });
@@ -1555,51 +1613,49 @@ function updateModalFavUI(){
 /** Product modal open/close */
 function openProductModal({ item, group, fromCart=false, editing=false, editKey=null }){
   state.productModal.open = true;
+  state.editing.active = !!editKey;
+  state.editing.oldKey = editKey;
+  state.editing.keepCartOpen = !!keepCartOpen;
   state.productModal.item = item;
   state.productModal.group = group;
   state.productModal.fromCart = !!fromCart;
   state.productModal.editing = !!editing;
-  state.productModal.editKey = editKey;
+  state.productModal.editKey = editKey || null;
 
-  // qty: se edição, começa com qty do item da sacola; senão 1
-  let startQty = 1;
-  if(editing && editKey && state.cart.has(editKey)){
-    startQty = Math.max(1, Number(state.cart.get(editKey).qty) || 1);
-    $("pmObs").value = state.cart.get(editKey).obs || "";
-  } else {
-    $("pmObs").value = "";
+  // Se abriu a partir da sacola, pré-preenche qtd/obs com o item existente (se houver)
+  let presetQty = 1;
+  let presetObs = "";
+  if(state.productModal.fromCart){
+    const k = state.productModal.editKey || cartKeyFor(item);
+    const inCart = state.cart.get(k);
+    if(inCart){
+      presetQty = Math.max(1, Math.min(999, Number(inCart.qty)||1));
+      presetObs = inCart.obs || "";
+      state.productModal.editKey = inCart.key; // garante chave correta
+    }
   }
-  setQty(startQty);
+
+  setQty(presetQty);
+  $("pmObs").value = presetObs;
+  setProductModalActionMode();
 
   const categoria = item.categoria || "";
   const cor = item.cor || "—";
+  const corCodigo = item.corCodigo || "—";
 
   $("pmTitle").textContent = item.produto || "Produto";
+  $("pmCodigo").textContent = item.codigo || "—";
+  $("pmSegmento").textContent = item.segmento || "—";
+  $("pmGenero").textContent = item.genero || "—";
+  $("pmPreco").textContent = moneyBR(toNumberBR(item.precoRaw ?? 0));
 
-  // Compact meta + highlights (focus: preço e cor)
-  $("pmMetaLine").textContent = `${item.codigo || "—"} · ${item.segmento || "—"}`;
-  $("pmPrecoMain").textContent = moneyBR(toNumberBR(item.precoRaw ?? 0));
-  $("pmCorMain").textContent = (item.cor || "—");
-
-  // Gender icon like card (female pink)
-  try{
-    const g = genderIcon(item.genero);
-    const ic = $("pmGenderIcon");
-    const pill = $("pmGenderPill");
-    if(ic){
-      ic.className = `fa-solid ${g.icon} ` + (g.icon==="fa-venus" ? "text-pink-500" : "text-oly-blue");
-    }
-    if(pill) pill.title = g.label;
-  }catch(e){}
-
-        
   $("pmCategoriaBadge").textContent = `${categoryLabel(categoria)} (${categoria || "—"})`;
   $("pmCorBadge").textContent = cor;
+  $("pmCorCodigoBadge").textContent = corCodigo;
 
   const cat = String(categoria).trim().toUpperCase();
   $("packQuickWrap").classList.toggle("hidden", !(cat === "FTW" || cat === "CHI" || cat === "MEIA"));
 
-  // imagem principal
   const img = $("pmImage");
   const fallback = $("pmImageFallback");
   const imgSrc = resolveImageSrc(item.imagem);
@@ -1617,125 +1673,80 @@ function openProductModal({ item, group, fromCart=false, editing=false, editKey=
     fallback.classList.remove("hidden");
   }
 
-  // ✅ Miniaturas por COR (une gêneros)
-  const thumbsWrap = $("pmThumbsWrap");
-  const thumbs = $("pmThumbs");
-  if(thumbs) thumbs.innerHTML = "";
+  // Colors picker (sempre que houver variantes)
+const wrap = $("pmColorPickerWrap");
+const chips = $("pmColorChips");
+chips.innerHTML = "";
 
-  const options = getColorOptionsFor(item); // agrupa por cor/corCodigo
-  const showThumbs = options.length > 1;
-  if(thumbsWrap) thumbsWrap.classList.toggle("hidden", !showThumbs);
+const variantsAll = getVariantsFor(item, { ignoreGender:true });
+const showPicker = variantsAll.length > 1;
 
-  if(showThumbs && thumbs){
-    const preferGenero = item.genero || "";
-    for(const opt of options){
-      const rep = pickVariantFromColorOption(opt, preferGenero) || opt.items[0];
-      const active = (normalizeName(opt.cor) === normalizeName(item.cor)) && (normalizeName(opt.corCodigo) === normalizeName(item.corCodigo));
+wrap.classList.toggle("hidden", !showPicker);
 
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "pm-thumb focus-ring " + (active ? "active" : "");
+if(showPicker){
+  // Ordena por nome de cor (mantém previsível)
+  const items = variantsAll.slice().sort((a,b)=>String(a.cor).localeCompare(String(b.cor),"pt-BR",{sensitivity:"base"}));
 
-      const srcImg = resolveImageSrc(rep.imagem);
-      btn.innerHTML = srcImg
-        ? `<img src="${srcImg}" alt="${escapeHtml(opt.cor||"Cor")}" onerror="this.style.display='none'; this.parentElement.querySelector('.pm-thumb-fallback').style.display='block';">`
-          + `<div class="pm-thumb-fallback" style="display:none">${escapeHtml(opt.cor||"Cor")}</div>`
-        : `<div class="pm-thumb-fallback" style="display:block">${escapeHtml(opt.cor||"Cor")}</div>`;
+  for(const it of items){
+    const active = cartKeyFor(it) === cartKeyFor(item);
 
-      btn.title = `${opt.cor || "Cor"}`;
-      btn.addEventListener("click", ()=>{
-        const nextItem = pickVariantFromColorOption(opt, item.genero) || rep;
-        openProductModal({ item: nextItem, group, fromCart: state.productModal.fromCart, editing: state.productModal.editing, editKey: state.productModal.editKey });
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "pm-thumb focus-ring " + (active ? "active" : "");
+    const srcImg = resolveImageSrc(it.imagem);
+
+    btn.innerHTML = srcImg
+      ? `<img src="${srcImg}" alt="${escapeHtml(it.cor||"Cor")}" onerror="this.style.display='none'; this.parentElement.querySelector('.pm-thumb-fallback').style.display='block';">`
+        + `<div class="pm-thumb-fallback" style="display:none">${escapeHtml(it.cor||"Cor")}</div>`
+      : `<div class="pm-thumb-fallback" style="display:block">${escapeHtml(it.cor||"Cor")}</div>`;
+
+    btn.title = `${it.cor || "Cor"}`;
+    btn.addEventListener("click", ()=>{
+      // mantém o modo (se veio da sacola/edição) ao trocar de cor
+      openProductModal({
+        item: it,
+        group,
+        fromCart: state.productModal.fromCart,
+        editing: state.productModal.editing,
+        editKey: state.productModal.editKey || cartKeyFor(it)
       });
+    });
 
-      thumbs.appendChild(btn);
-    }
+    chips.appendChild(btn);
   }
 
-  // Esconde o antigo picker por chips (mantido por compatibilidade)
-  const legacyWrap = $("pmColorPickerWrap");
-  if(legacyWrap) legacyWrap.classList.add("hidden");
+  // aplica layout tipo strip
+  chips.className = "pm-thumbs";
+} else {
+  chips.className = "";
+}
 
   // ✅ Favoritar no modal (variante atual)
   updateModalFavUI();
   $("pmFavBtn").onclick = ()=>{ toggleFavoriteByItem(state.productModal.item); updateModalFavUI(); };
 
-  // Zoom viewer (navega por COR, unindo gêneros)
-  const zoomOpts = getColorOptionsFor(item);
-  const zoomVariants = zoomOpts.map(opt => pickVariantFromColorOption(opt, item.genero) || opt.items[0]).filter(Boolean);
-  const currentIndex = Math.max(0, zoomVariants.findIndex(v => cartKeyFor(v) === cartKeyFor(item)));
-  $("btnZoomImage").onclick = () => openImageViewer(zoomVariants, currentIndex, { returnToProductModal:true });
+  // Zoom viewer
+  const variants = getVariantsFor(item, { ignoreGender:true });
+  const currentIndex = Math.max(0, variants.findIndex(v => normalizeName(v.cor) === normalizeName(item.cor) && normalizeName(v.corCodigo) === normalizeName(item.corCodigo)));
+  $("btnZoomImage").onclick = () => openImageViewer(variants, currentIndex, { returnToProductModal:true });
 
-  // Botão principal: adicionar x salvar
-  const btn = $("btnAddToCart");
-  const icon = btn.querySelector("i");
-  const label = btn.querySelector("span");
-  if(editing){
-    if(icon) icon.className = "fa-solid fa-floppy-disk";
-    if(label) label.textContent = "Salvar";
-  } else {
-    if(icon) icon.className = "fa-solid fa-bag-shopping";
-    if(label) label.textContent = "Adicionar à Sacola";
-  }
-
-  // Sempre abrir com scroll no topo (imagem)
-  const sc = $("pmScroll");
-  if(sc) sc.scrollTop = 0;
-
-    forceProductModalTop();
-  try{ updateModalFavIcon(); }catch(e){}
-$("productModal").classList.remove("hidden");
+    // Always open at top (image)
+  $("productModal").classList.remove("hidden");
+  requestAnimationFrame(()=>{
+    try{
+      const sc = $("pmScroll");
+      if(sc){
+        sc.scrollTop = 0;
+        if(typeof sc.scrollTo === "function") sc.scrollTo({ top: 0, left: 0, behavior: "instant" });
+      }
+    }catch(e){}
+  });
   document.body.style.overflow = "hidden";
   trapFocus("productModal");
 }
 
-
-
-function ensureThumbsBelowPhoto(){
-  try{
-    const wrap = $("pmColorPickerWrap");
-    const below = $("pmThumbBelow");
-    if(wrap && below && wrap.parentElement !== below){
-      below.appendChild(wrap);
-    }
-  }catch(e){}
-}
-
-function forceProductModalTop(){
-  try{
-    const sc = $("pmScroll");
-    if(!sc) return;
-    sc.scrollTop = 0;
-    requestAnimationFrame(()=>{ sc.scrollTop = 0; });
-    setTimeout(()=>{ sc.scrollTop = 0; }, 0);
-  }catch(e){}
-}
-
-
-// Favorite toggle inside product modal
-document.addEventListener("click", (e)=>{
-  const b = e.target?.closest?.("#pmFavBtn");
-  if(!b) return;
-  const item = state.productModal.item;
-  if(!item) return;
-  if(typeof toggleFavorite === "function"){
-    toggleFavorite(item);
-    try{ updateModalFavIcon(); }catch(err){}
-  }
-});
-function updateModalFavIcon(){
-  const b = $("pmFavBtn");
-  if(!b) return;
-  const item = state.productModal.item;
-  if(!item) return;
-  if(typeof isFavorite === "function"){
-    const fav = isFavorite(item);
-    b.innerHTML = fav ? '<i class="fa-solid fa-heart text-oly-blue"></i>' : '<i class="fa-regular fa-heart text-oly-blue"></i>';
-    b.title = fav ? "Remover dos favoritos" : "Favoritar";
-  }
-}
-
 function closeProductModal(){
+  state.editing.active = false; state.editing.oldKey = null; state.editing.keepCartOpen = false;
   const shouldReturnCart = !!state.productModal.fromCart;
 
   state.productModal.open = false;
@@ -1769,55 +1780,75 @@ $("btnAddToCart").addEventListener("click", ()=>{
   const qty = state.productModal.qty;
   const obs = $("pmObs").value.trim();
 
-  // Edição vinda da sacola: salva mudanças (inclui troca de cor) e mantém a sacola aberta
-  if(state.productModal.editing && state.productModal.editKey){
-    const oldKey = state.productModal.editKey;
-    const old = state.cart.get(oldKey);
-    if(!old) return;
-
+  if(state.editing.active && state.editing.oldKey){
+    const oldKey = state.editing.oldKey;
     const newKey = cartKeyFor(item);
 
-    // remove o antigo (se mudou chave) e aplica alterações
-    if(newKey !== oldKey) state.cart.delete(oldKey);
+    const precoNum = toNumberBR(item.precoRaw ?? 0);
+    const precoFmt = moneyBR(precoNum);
+    const updated = {
+      key: newKey,
+      codigo: item.codigo || "",
+      produto: item.produto || "",
+      cor: item.cor || "",
+      corCodigo: item.corCodigo || "",
+      genero: item.genero || "",
+      segmento: item.segmento || "",
+      categoria: item.categoria || "",
+      precoNum,
+      precoFmt,
+      qty: qty,
+      obs: obs || "",
+      imgSrc: resolveImageSrc(item.imagem),
+    };
 
-    const merged = state.cart.get(newKey) || { ...old, key:newKey };
-    merged.key = newKey;
-    merged.codigo = item.codigo || merged.codigo || "";
-    merged.produto = item.produto || merged.produto || "";
-    merged.cor = item.cor || "";
-    merged.corCodigo = item.corCodigo || "";
-    merged.genero = item.genero || "";
-    merged.segmento = item.segmento || "";
-    merged.categoria = item.categoria || "";
-    merged.imgSrc = resolveImageSrc(item.imagem);
-
-    merged.qty = Math.max(1, Math.min(9999, Number(qty)||1));
-    merged.obs = obs || "";
-
-    state.cart.set(newKey, merged);
+    if(newKey !== oldKey){
+      const existing = state.cart.get(newKey);
+      if(existing){
+        existing.qty = Math.min(9999, existing.qty + qty);
+        if(obs) existing.obs = obs;
+        existing.imgSrc = updated.imgSrc || existing.imgSrc;
+        state.cart.set(newKey, existing);
+      } else {
+        state.cart.set(newKey, updated);
+      }
+      state.cart.delete(oldKey);
+    } else {
+      state.cart.set(oldKey, updated);
+    }
 
     saveCartToStorage();
     renderCartUI();
     toast("Salvo ✅");
-    closeProductModal(); // reabre a sacola automaticamente
+
+    closeProductModal();
+    if(state.editing.keepCartOpen) openCartModal();
     return;
   }
 
-  // Adição normal: NÃO fecha o modal (cliente pode escolher outra cor)
+  // Normal add: keep modal open to allow adding other colors
   addToCart(item, qty, { obs });
-
-  // feedback + reseta controles para permitir novas escolhas
   toast("Adicionado ✅");
+
+  try{ setQty(1); $("pmObs").value = ""; }catch(e){}
+});
+
+      toast("Adicionado ✅");
+    }
+    closeProductModal(); // volta para a sacola automaticamente
+    return;
+  }
+
+  // Fluxo padrão: adiciona (acumula) e mantém o modal aberto para o cliente escolher outra cor
+  addToCart(item, qty, { obs });
+  toast("Adicionado ✅");
+
+  // reset leve para próxima adição
   setQty(1);
   $("pmObs").value = "";
+  // Button label: Add vs Save (editing)
+  try{ const b=$("btnAddToCart"); const s=b?b.querySelector("span"):null; if(s) s.textContent = state.editing.active ? "Salvar" : "Adicionar à Sacola"; }catch(e){}
 
-  // atualiza status do card (verde) e reseta qty do card também
-  try{
-    const k = cartKeyFor(item);
-    setCardAddStatus(k, "added");
-    setCardQty(k, 1);
-    refreshView(false);
-  }catch(e){}
 });
 
 
@@ -1827,6 +1858,19 @@ function findProductVariantFromCartItem(cartItem){
   const found = state.productsRaw.find(p => cartKeyFor(p) === key);
   return found || null;
 }
+
+function openProductFromCart(cartItem, { edit=false } = {}){
+  try{
+    const match = state.productsRaw.find(p => cartKeyFor(p) === normalizeName([cartItem.codigo||"", cartItem.corCodigo||cartItem.cor||"", cartItem.genero||""].join("||")))
+      || state.productsRaw.find(p => normalizeName(p.codigo)===normalizeName(cartItem.codigo) && normalizeName(p.corCodigo||p.cor)===normalizeName(cartItem.corCodigo||cartItem.cor))
+      || state.productsRaw.find(p => normalizeName(p.codigo)===normalizeName(cartItem.codigo))
+      || null;
+    if(!match) return;
+    closeCartModal();
+    openProductModal({ item: match, group: null, editKey: edit ? cartItem.key : null, keepCartOpen: true });
+  }catch(e){}
+}
+
 /** Cart */
 function isCartOpen(){ return !$("cartModal").classList.contains("hidden"); }
 function openCartModal(){
@@ -1898,12 +1942,11 @@ function renderCartUI(){
         <div class="min-w-0 flex-1">
           <div class="flex items-start justify-between gap-3">
             <div class="min-w-0" data-open="true" role="button" tabindex="0" title="Ver/editar item">
-              <div class="font-extrabold leading-snug line-clamp-2">${escapeHtml(it.produto || "Produto")}</div>
+              <div class="font-extrabold leading-snug line-clamp-2 cursor-pointer" data-open-details="true">${escapeHtml(it.produto || "Produto")}</div>
               <div class="mt-2 flex flex-wrap gap-2">
                 <span class="inline-flex items-center gap-2 rounded-full bg-oly-blue/10 px-3 py-1 text-xs font-extrabold text-oly-blue">
                   <i class="fa-solid fa-palette"></i>
                   <span>${escapeHtml(it.cor || "—")}</span>
-                  <span class="text-oly-muted font-bold">${escapeHtml(it.corCodigo || "")}</span>
                 </span>
                 <span class="inline-flex items-center gap-2 rounded-full bg-white border border-oly-border px-3 py-1 text-xs font-bold">
                   <i class="fa-solid fa-hashtag text-oly-blue"></i>
@@ -1938,10 +1981,21 @@ function renderCartUI(){
     `;
 
     row.addEventListener("click", (e)=>{
+      const openDet = e.target?.closest?.("[data-open-details='true']");
+      const editBtn = e.target?.closest?.("[data-edit='true']");
       const rm = e.target?.closest?.("[data-remove='true']");
       const mn = e.target?.closest?.("[data-minus='true']");
       const pl = e.target?.closest?.("[data-plus='true']");
       const ed = e.target?.closest?.("[data-edit='true']");
+
+      if(editBtn){
+        openProductFromCart(it, { edit:true });
+        return;
+      }
+      if(openDet){
+        openProductFromCart(it, { edit:false });
+        return;
+      }
 
       if(rm){
         state.cart.delete(it.key);
@@ -2190,25 +2244,34 @@ function openImageViewer(variants, currentIndex, opts={}){
   viewerState.returnToProductModal = !!opts.returnToProductModal;
 
   renderImageViewer();
-  // hint de swipe (apenas uma vez)
+  $("imageViewer").classList.remove("hidden");
+  // Swipe hint (mobile) — mostra 1x a cada abertura do zoom
   try{
-    const k="olympikus_swipe_hint_v1";
-    if(!localStorage.getItem(k)){
-      const h=$("swipeHint");
-      if(h){
-        h.classList.remove("hidden");
-        setTimeout(()=>{ h.classList.add("hidden"); localStorage.setItem(k,"1"); }, 1600);
-      } else {
-        localStorage.setItem(k,"1");
+    const hint = $("swipeHint");
+    const isTouch = ("ontouchstart" in window) || (navigator.maxTouchPoints > 0);
+    const isSmall = window.matchMedia && window.matchMedia("(max-width: 640px)").matches;
+    if(hint){
+      hint.classList.add("hidden");
+      if(viewerState.variants.length > 1 && (isTouch || isSmall)){
+        // força reflow pra reiniciar animação
+        hint.classList.remove("hidden");
+        // reinicia animação do ícone
+        const ico = hint.querySelector("i");
+        if(ico){
+          ico.style.animation = "none";
+          // eslint-disable-next-line no-unused-expressions
+          ico.offsetHeight;
+          ico.style.animation = "";
+        }
+        setTimeout(()=> hint.classList.add("hidden"), 2200);
       }
     }
   }catch(e){}
-  $("imageViewer").classList.remove("hidden");
+
   document.body.style.overflow = "hidden";
   trapFocus("imageViewer");
 }
 function closeImageViewer(){
-  viewerState._hintShown = false;
   viewerState.open = false;
   $("imageViewer").classList.add("hidden");
 
@@ -2249,30 +2312,29 @@ $("imageViewer").addEventListener("click", (e)=>{
 $("viewerPrev").addEventListener("click", (e)=>{ e.stopPropagation(); viewerPrev(); });
 $("viewerNext").addEventListener("click", (e)=>{ e.stopPropagation(); viewerNext(); });
 
-// ✅ Swipe (mobile): arraste esquerda/direita para trocar cor
-(function initViewerSwipe(){
-  const root = $("imageViewer");
-  let startX = 0, startY = 0, active = false;
-
-  root.addEventListener("touchstart", (e)=>{
+/** Swipe to change color in viewer (mobile) */
+let viewerTouch = { x0:0, y0:0 };
+const viewerRoot = document.querySelector("#imageViewer .w-full.max-w-5xl");
+if(viewerRoot){
+  viewerRoot.addEventListener("touchstart", (e)=>{
     if(!viewerState.open) return;
     const t = e.touches && e.touches[0];
     if(!t) return;
-    active = true;
-    startX = t.clientX; startY = t.clientY;
+    viewerTouch = { x0:t.clientX, y0:t.clientY };
   }, { passive:true });
 
-  root.addEventListener("touchend", (e)=>{
-    if(!viewerState.open || !active) return;
-    active = false;
+  viewerRoot.addEventListener("touchend", (e)=>{
+    if(!viewerState.open) return;
     const t = e.changedTouches && e.changedTouches[0];
     if(!t) return;
-    const dx = t.clientX - startX;
-    const dy = t.clientY - startY;
-    if(Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
-    if(dx < 0) viewerNext(); else viewerPrev();
+    const dx = t.clientX - viewerTouch.x0;
+    const dy = t.clientY - viewerTouch.y0;
+    if(Math.abs(dx) < 42 || Math.abs(dx) < Math.abs(dy)*1.2) return;
+    if(dx < 0) viewerNext();
+    else viewerPrev();
   }, { passive:true });
-})();
+}
+
 
 /** Keyboard */
 document.addEventListener("keydown", (e)=>{
