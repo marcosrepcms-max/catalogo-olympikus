@@ -1579,9 +1579,9 @@ function openProductModal({ item, group, fromCart=false, editing=false, editKey=
   const cor = item.cor || "—";
 
   $("pmTitle").textContent = item.produto || "Produto";
-  $("pmCodigo").textContent = item.codigo || "—";
-  $("pmSegmento").textContent = item.segmento || "—";
-  $("pmGenero").textContent = item.genero || "—";
+  if($("pmCodigo")) $("pmCodigo").textContent = item.codigo || "—";
+  if($("pmSegmento")) $("pmSegmento").textContent = item.segmento || "—";
+  if($("pmGenero")) $("pmGenero").textContent = item.genero || "—";
   // Linha compacta: Código · Segmento
   if($("pmCodeSeg")){
     const code = item.codigo || "—";
@@ -1594,10 +1594,10 @@ function openProductModal({ item, group, fromCart=false, editing=false, editKey=
     const ginfo = genderIcon(item.genero || "");
     $("pmGenderIcon").className = `fa-solid ${ginfo.icon} ` + (normalizeName(item.genero).includes("fem") ? "text-pink-500" : "text-oly-blue");
   }
-  $("pmPreco").textContent = moneyBR(toNumberBR(item.precoRaw ?? 0));
+  if($("pmPreco")) $("pmPreco").textContent = moneyBR(toNumberBR(item.precoRaw ?? 0));
   if($("pmPrecoMain")) $("pmPrecoMain").textContent = moneyBR(toNumberBR(item.precoRaw ?? 0));
 
-    $("pmCorBadge").textContent = cor;
+  if($("pmCorBadge")) $("pmCorBadge").textContent = cor;
   if($("pmCorMain")) $("pmCorMain").textContent = cor;
 
   const cat = String(categoria).trim().toUpperCase();
