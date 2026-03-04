@@ -155,7 +155,13 @@
       padding: 12px 12px;
     }
 
-  </style>
+  
+    /* ✅ Ajustes de legibilidade no modal em telas muito pequenas */
+    @media (max-width: 380px){
+      .pm-meta-row{ padding: 10px 10px; gap: 8px; }
+      #pmCodeSeg{ font-size: 12px; }
+    }
+</style>
 </head>
 
 <body class="min-h-full">
@@ -210,6 +216,19 @@
               <span id="btnFavsText" class="hidden sm:inline">Favoritos</span>
               <span id="favCountBadge" class="hidden rounded-full bg-oly-blue px-2 py-0.5 text-xs font-bold text-white">0</span>
             </button>
+                <!-- ✅ Ações de Favoritos (aparecem somente no modo favoritos) -->
+                <div id="favsActions" class="hidden items-center gap-2">
+                  <button id="btnFavsSelect" class="h-10 px-3 rounded-full border border-oly-border bg-white hover:bg-oly-bg text-sm font-extrabold" title="Selecionar para remover">
+                    <i class="fa-regular fa-square-check mr-2 text-oly-blue"></i>Selecionar
+                  </button>
+                  <button id="btnFavsRemoveSelected" class="hidden h-10 px-3 rounded-full border border-oly-border bg-white hover:bg-oly-bg text-sm font-extrabold" title="Remover selecionados">
+                    <i class="fa-solid fa-trash-can mr-2 text-oly-blue"></i>Remover
+                  </button>
+                  <button id="btnFavsClear" class="h-10 px-3 rounded-full border border-oly-border bg-white hover:bg-oly-bg text-sm font-extrabold" title="Limpar todos os favoritos">
+                    <i class="fa-solid fa-broom mr-2 text-oly-blue"></i>Limpar
+                  </button>
+                </div>
+
 
             <button id="btnOpenCart" class="focus-ring inline-flex items-center justify-center gap-2 rounded-full border border-oly-border bg-white px-4 py-2 text-sm font-semibold hover:bg-oly-bg" title="Sacola">
               <i class="fa-solid fa-bag-shopping text-oly-blue"></i>
@@ -438,18 +457,18 @@
 
                   <div class="mt-3 pm-meta-row">
                     <!-- Gender icon -->
-                    <div class="h-12 w-12 rounded-full bg-white border border-oly-border flex items-center justify-center" title="Gênero">
+                    <div class="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-white border border-oly-border flex items-center justify-center" title="Gênero">
                       <i id="pmGenderIcon" class="fa-solid fa-user text-oly-blue"></i>
                     </div>
 
                     <div class="flex-1 min-w-0">
                       <div class="text-xs text-oly-muted font-bold">Preço</div>
-                      <div id="pmPrecoMain" class="truncate text-2xl font-extrabold tracking-tight">—</div>
+                      <div id="pmPrecoMain" class="whitespace-normal break-words text-xl sm:text-2xl font-extrabold tracking-tight leading-tight">—</div>
                     </div>
 
                     <div class="min-w-0">
                       <div class="text-xs text-oly-muted font-bold">Cor</div>
-                      <div class="mt-1 inline-flex items-center gap-2 rounded-full bg-white border border-oly-border px-3 py-2 text-sm font-extrabold">
+                      <div class="mt-1 inline-flex items-center gap-2 rounded-full bg-white border border-oly-border px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-extrabold max-w-full flex-wrap">
                         <i class="fa-solid fa-palette text-oly-blue"></i>
                         <span id="pmCorMain">—</span>
                       </div>
@@ -670,7 +689,9 @@ const state = {
   cardQty: new Map(), // key -> qty manual for card
   cardAddStatus: new Map(), // key -> 'idle' | 'pending' | 'added'
   cardAdded: new Set(), // key -> already added (green) for cart only
-  favorites: new Set(), // variant keys
+  favorites: new Set(),
+  favsSelectMode: false,
+  favsSelected: new Set(), // variant keys
 };
 
 const $ = (id)=>document.getElementById(id);
@@ -804,6 +825,20 @@ function loadFavsFromStorage(){
 }
 function isFavoriteKey(key){ return state.favorites.has(key); }
 function updateFavHeaderUI(){
+  // ✅ mostra ações extras somente no modo favoritos
+  if($("favsActions")){
+    $("favsActions").classList.toggle("hidden", state.viewMode !== "favs");
+    $("favsActions").classList.toggle("flex", state.viewMode === "favs");
+  }
+  if($("btnFavsRemoveSelected")){
+    $("btnFavsRemoveSelected").classList.toggle("hidden", !(state.viewMode==="favs" && state.favsSelectMode));
+  }
+  if($("btnFavsSelect")){
+    $("btnFavsSelect").innerHTML = state.favsSelectMode
+      ? `<i class="fa-solid fa-xmark mr-2 text-oly-blue"></i>Cancelar`
+      : `<i class="fa-regular fa-square-check mr-2 text-oly-blue"></i>Selecionar`;
+  }
+
   const n = state.favorites.size;
   const badge = $("favCountBadge");
   badge.textContent = String(n);
@@ -1347,7 +1382,97 @@ function renderCards(){
 
   for(const v of slice){
     const card = document.createElement("article");
-    card.className = "rounded-3xl border border-oly-border bg-white shadow-card hover:shadow-lift transition-shadow overflow-hidden";
+
+    // ✅ Favoritos: lista compacta (como print) + seleção para remover
+    if(state.viewMode === "favs"){
+      card.className = "rounded-3xl border border-oly-border bg-white shadow-card overflow-hidden";
+      card.tabIndex = 0;
+
+      // Decide conteúdo baseado em group/item
+      const isGroup = (v._type === "group");
+      const base = isGroup ? (v.items?.[0] || {}) : v;
+      const imgSrc = resolveImageSrc(base?.imagem);
+
+      const keyForSelect = (isGroup ? null : cartKeyFor(base));
+      const colorLabel = isGroup
+        ? (v.colorCount > 1 ? `${v.colorCount} cores` : (v.colors?.[0] || base.cor || "—"))
+        : (base.cor || "—");
+
+      const colorCode = isGroup ? (base.corCodigo || "") : (base.corCodigo || "");
+      const code = String(base.codigo || v.codigo || "—");
+
+      const checked = keyForSelect && state.favsSelected.has(keyForSelect);
+
+      card.innerHTML = `
+        <div class="flex items-center gap-3 p-3 sm:p-4">
+          <div class="h-16 w-20 rounded-2xl border border-oly-border bg-oly-bg flex items-center justify-center overflow-hidden shrink-0">
+            ${imgSrc ? `<img loading="lazy" decoding="async" src="${imgSrc}" alt="${escapeHtml(base.produto||v.produto||"Produto")}" class="h-full w-full object-contain bg-white" onerror="this.style.display='none';">` : `<div class="text-xs text-oly-muted font-bold">SEM IMG</div>`}
+          </div>
+
+          <div class="min-w-0 flex-1">
+            <div class="flex items-start justify-between gap-2">
+              <div class="min-w-0">
+                <div class="font-extrabold leading-tight truncate">${escapeHtml(v.produto || base.produto || "—")}</div>
+                <div class="mt-1 flex flex-wrap items-center gap-2">
+                  <span class="inline-flex items-center gap-2 rounded-full bg-oly-bg border border-oly-border px-3 py-1 text-xs font-extrabold">
+                    <i class="fa-solid fa-palette text-oly-blue"></i>${escapeHtml(colorLabel)}${colorCode ? ` <span class="opacity-70">(${escapeHtml(colorCode)})</span>` : ""}
+                  </span>
+                  <span class="inline-flex items-center gap-2 rounded-full bg-oly-bg border border-oly-border px-3 py-1 text-xs font-extrabold">
+                    <i class="fa-solid fa-hashtag text-oly-blue"></i>${escapeHtml(code)}
+                  </span>
+                </div>
+              </div>
+
+              ${state.favsSelectMode && !isGroup ? `
+                <label class="inline-flex items-center justify-center h-10 w-10 rounded-full border border-oly-border bg-white hover:bg-oly-bg cursor-pointer" title="Selecionar">
+                  <input type="checkbox" class="hidden" ${checked ? "checked" : ""} data-favkey="${escapeHtml(keyForSelect)}">
+                  <i class="${checked ? "fa-solid" : "fa-regular"} fa-square-check text-oly-blue"></i>
+                </label>
+              ` : ``}
+            </div>
+
+            <div class="mt-3 flex items-center justify-between gap-2">
+              <button class="btnDetails h-10 px-4 rounded-full bg-oly-blue text-white font-extrabold hover:opacity-95 focus-ring">
+                Detalhes
+              </button>
+              <button class="btnUnfav h-10 px-4 rounded-full border border-oly-border bg-white hover:bg-oly-bg font-extrabold focus-ring">
+                <i class="fa-solid fa-heart-crack mr-2 text-oly-blue"></i>Remover
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // eventos
+      card.querySelector(".btnDetails")?.addEventListener("click", ()=> openProductModal(base));
+      card.querySelector(".btnUnfav")?.addEventListener("click", ()=>{
+        if(isGroup){
+          // remove todos os favoritos das variantes desse grupo
+          for(const it of (v.items || [])){
+            state.favorites.delete(cartKeyFor(it));
+          }
+        }else{
+          state.favorites.delete(cartKeyFor(base));
+        }
+        saveFavsToStorage();
+        updateFavHeaderUI();
+        refreshView(true);
+        toast("Removido");
+      });
+
+      // seleção
+      card.querySelector("input[type='checkbox']")?.addEventListener("change", (e)=>{
+        const k = e.target?.dataset?.favkey;
+        if(!k) return;
+        if(e.target.checked) state.favsSelected.add(k); else state.favsSelected.delete(k);
+        updateFavHeaderUI();
+      });
+
+      wrap.appendChild(card);
+      continue;
+    }
+
+    card.className = "$1";
     card.tabIndex = 0;
 
     if(v._type === "group"){
