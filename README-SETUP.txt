@@ -1,22 +1,19 @@
-ESTRUTURA SUGERIDA NO GITHUB PAGES
+ESTA VERSÃO DO INDEX FOI AJUSTADA PARA:
 
-/
-  index.html
-  /admin/index.html
-  Produtos.xlsx
-  /Catalogo/...
-  /data/disponibilidade.json
-  /data/pedidos/
-  logo-olympikus.png
+1. Exibir somente produtos presentes na planilha DISPO.xlsx
+2. Ler a grade diretamente da aba DISPO
+3. Trabalhar a sacola em caixas
+4. Reduzir o saldo visualmente à medida que o cliente adiciona caixas
+5. Salvar pedidos localmente no navegador para consulta em "Meus pedidos"
 
-COMO USAR
-1. Publique o index na raiz.
-2. Publique a mesma versão em /admin/index.html para ter a URL /admin.
-3. No modo admin, preencha owner, repo, branch, token, caminho do JSON de disponibilidade e pasta dos pedidos.
-4. Clique em “Salvar config”.
-5. Edite a disponibilidade por produto e clique em “Salvar disponibilidade.json”.
-6. Os pedidos serão gravados em data/pedidos/*.json.
+Estrutura esperada na raiz do repositório:
+- index.html
+- Produtos.xlsx
+- DISPO.xlsx
+- /Catalogo
+- /admin
+- /data
 
-OBSERVAÇÃO IMPORTANTE
-- Como o site roda 100% no front-end, o salvamento direto no GitHub exige token no navegador.
-- Para uso público externo, o ideal é intermediar esse salvamento por um backend/worker.
+Observação:
+Nesta etapa, o histórico de pedidos fica salvo no navegador do usuário.
+Na próxima etapa, isso pode ser conectado ao fluxo administrativo e gravação em JSON no GitHub.

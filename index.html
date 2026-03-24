@@ -12,123 +12,112 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
     :root{
-      --bg:#f5f7fb;
+      --bg:#f6f7fb;
       --card:#ffffff;
       --text:#0f172a;
       --muted:#64748b;
       --line:#e2e8f0;
-      --brand:#2836D4;
+      --brand:#2836d4;
       --brand-soft:rgba(40,54,212,.10);
       --success:#16a34a;
-      --warning:#f59e0b;
       --danger:#dc2626;
-      --dark:#0f172a;
+      --shadow:0 18px 42px rgba(15,23,42,.08);
+      --shadow-soft:0 10px 24px rgba(15,23,42,.05);
     }
     *{box-sizing:border-box}
     html,body{height:100%;overflow-x:hidden}
     body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
-    .focus-ring:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(40,54,212,.18)}
-    .no-scrollbar::-webkit-scrollbar{display:none}
-    .no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
-    .glass{backdrop-filter:blur(10px);background:rgba(255,255,255,.88)}
-    .shadow-soft{box-shadow:0 12px 30px rgba(15,23,42,.08)}
-    .shadow-lift{box-shadow:0 20px 40px rgba(15,23,42,.12)}
-    .status-dot{width:10px;height:10px;border-radius:999px;display:inline-block}
-    .status-disponivel{background:var(--success)}
-    .status-reservado{background:var(--warning)}
-    .status-indisponivel{background:var(--danger)}
-    .safe-bottom{padding-bottom:max(14px, env(safe-area-inset-bottom))}
+    .focus-ring:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(40,54,212,.15)}
     .safe-top{padding-top:max(0px, env(safe-area-inset-top))}
-    .drawer{transform:translateX(105%);transition:transform .22s ease}
+    .safe-bottom{padding-bottom:max(14px, env(safe-area-inset-bottom))}
+    .shadow-soft{box-shadow:var(--shadow-soft)}
+    .shadow-card{box-shadow:var(--shadow)}
+    .glass{backdrop-filter:blur(12px);background:rgba(255,255,255,.88)}
+    .drawer{transform:translateX(105%);transition:transform .24s ease}
     .drawer.open{transform:translateX(0)}
-    .modal-backdrop{background:rgba(15,23,42,.54);backdrop-filter:blur(6px)}
-    .admin-shell{display:grid;grid-template-columns:340px minmax(0,1fr);gap:16px}
+    .backdrop{background:rgba(15,23,42,.54);backdrop-filter:blur(6px)}
+    .grade-pill{min-width:50px;border:1px solid var(--line);border-radius:14px;padding:8px 6px;background:#fff;text-align:center}
+    .grade-size{display:block;font-size:12px;line-height:1;color:#64748b;font-weight:700}
+    .grade-qty{display:block;font-size:22px;line-height:1.1;color:var(--brand);font-weight:800}
+    .chip{display:inline-flex;align-items:center;gap:.4rem;border-radius:999px;padding:.42rem .78rem;font-size:12px;font-weight:800}
+    .chip-blue{background:var(--brand-soft);color:var(--brand)}
+    .chip-gray{background:#eef2f7;color:#334155}
+    .qty-btn{height:42px;width:42px;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:800}
+    .filters-collapsed #filtersPanel{display:none}
+    .filters-collapsed #catalogShell{grid-template-columns:minmax(0,1fr)}
+    #catalogShell{display:grid;grid-template-columns:290px minmax(0,1fr);gap:16px}
     @media (max-width: 1023px){
-      .admin-shell{grid-template-columns:1fr}
+      #catalogShell{grid-template-columns:minmax(0,1fr)}
+      #filtersPanel{display:none}
+      body.filters-open #filtersPanel{
+        display:block;position:fixed;inset:auto 12px 12px 12px;top:82px;z-index:60;max-height:calc(100dvh - 96px);overflow:auto
+      }
     }
   </style>
 </head>
-<body>
-  <div id="app" class="min-h-full">
-    <header class="safe-top sticky top-0 z-40 border-b border-slate-200 glass">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 py-4">
-        <div class="flex items-center justify-between gap-3">
-          <div class="flex items-center gap-3 min-w-0">
-            <div class="h-11 w-11 rounded-2xl overflow-hidden border border-slate-200 bg-white flex items-center justify-center">
-              <img id="brandLogo" alt="Olympikus" class="h-full w-full object-contain" />
-            </div>
-            <div class="min-w-0">
-              <div class="text-lg sm:text-xl font-extrabold truncate" id="appTitle">Disponibilidade de Repasse</div>
-              <div id="headerStatus" class="text-xs text-slate-500">Carregando catálogo…</div>
-            </div>
-          </div>
+<body class="safe-top">
+  <div id="toast" class="hidden fixed left-1/2 top-6 z-[90] -translate-x-1/2 rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-card"></div>
 
-          <div class="flex items-center gap-2">
-            <div class="hidden md:flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 shadow-soft">
-              <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
-              <input id="searchInput" class="focus-ring w-[260px] bg-transparent text-sm outline-none placeholder:text-slate-400" placeholder="Buscar por produto, código, cor, gênero ou segmento" />
-            </div>
-            <button id="btnSearchMobile" class="md:hidden focus-ring h-11 w-11 rounded-full border border-slate-200 bg-white"><i class="fa-solid fa-magnifying-glass text-slate-700"></i></button>
-            <button id="btnToggleAdmin" class="hidden focus-ring rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700">Painel admin</button>
-            <button id="btnOpenCart" class="focus-ring inline-flex items-center gap-2 rounded-full bg-[var(--brand)] px-4 py-2 text-sm font-extrabold text-white shadow-soft">
-              <i class="fa-solid fa-cart-shopping"></i>
-              <span>Pedido</span>
-              <span id="cartCountBadge" class="hidden rounded-full bg-white/18 px-2 py-0.5 text-xs">0</span>
-            </button>
+  <header class="sticky top-0 z-40 border-b border-slate-200 glass">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 py-4">
+      <div class="flex items-center justify-between gap-3">
+        <div class="flex min-w-0 items-center gap-3">
+          <div class="h-11 w-11 overflow-hidden rounded-2xl border border-slate-200 bg-white flex items-center justify-center">
+            <img id="brandLogo" alt="Logo" class="h-full w-full object-contain" />
+          </div>
+          <div class="min-w-0">
+            <div class="truncate text-lg sm:text-xl font-extrabold">Repasse com disponibilidade</div>
+            <div id="headerStatus" class="text-xs text-slate-500">Carregando produtos…</div>
           </div>
         </div>
-        <div class="mt-3 md:hidden hidden items-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-2 shadow-soft" id="mobileSearchWrap">
-          <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
-          <input id="searchInputMobile" class="focus-ring w-full bg-transparent text-sm outline-none placeholder:text-slate-400" placeholder="Buscar produto" />
-          <button id="btnCloseMobileSearch" class="focus-ring h-9 w-9 rounded-full hover:bg-slate-50"><i class="fa-solid fa-xmark"></i></button>
+
+        <div class="flex items-center gap-2">
+          <button id="btnToggleFilters" class="focus-ring inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700">
+            <i class="fa-solid fa-sliders"></i>
+            <span class="hidden sm:inline">Filtros</span>
+          </button>
+          <button id="btnOrders" class="focus-ring inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700">
+            <i class="fa-regular fa-rectangle-list"></i>
+            <span class="hidden sm:inline">Meus pedidos</span>
+          </button>
+          <button id="btnOpenCart" class="focus-ring inline-flex items-center gap-2 rounded-full bg-[var(--brand)] px-4 py-2 text-sm font-extrabold text-white shadow-soft">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>Sacola</span>
+            <span id="cartCountBadge" class="hidden rounded-full bg-white/18 px-2 py-0.5 text-xs">0</span>
+          </button>
         </div>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <main class="mx-auto max-w-7xl px-4 sm:px-6 py-5 sm:py-6">
-      <section id="heroBlock" class="rounded-3xl border border-slate-200 bg-white p-5 sm:p-6 shadow-soft">
-        <div class="flex flex-col lg:flex-row lg:items-center gap-4 justify-between">
-          <div>
-            <div class="inline-flex items-center gap-2 rounded-full bg-[var(--brand-soft)] px-3 py-1 text-xs font-bold text-[var(--brand)]">
-              <i class="fa-solid fa-arrows-rotate"></i>
-              <span>Uma linha por produto da planilha</span>
-            </div>
-            <h1 class="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight">Catálogo de repasse com disponibilidade e pedidos em JSON</h1>
-            <p class="mt-2 text-sm sm:text-base text-slate-600 max-w-3xl">
-              Leitura direta do <b>Produtos.xlsx</b>, controle de disponibilidade separado em <b>disponibilidade.json</b> e pedidos gravados em <b>data/pedidos/*.json</b> no GitHub.
-            </p>
-          </div>
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 min-w-full lg:min-w-[520px]">
-            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-              <div class="text-xs font-bold text-slate-500">Produtos</div>
-              <div id="kpiProdutos" class="mt-1 text-2xl font-extrabold">0</div>
-            </div>
-            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-              <div class="text-xs font-bold text-slate-500">Disponíveis</div>
-              <div id="kpiDisponiveis" class="mt-1 text-2xl font-extrabold">0</div>
-            </div>
-            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-              <div class="text-xs font-bold text-slate-500">Reservados</div>
-              <div id="kpiReservados" class="mt-1 text-2xl font-extrabold">0</div>
-            </div>
-            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-              <div class="text-xs font-bold text-slate-500">Indisponíveis</div>
-              <div id="kpiIndisponiveis" class="mt-1 text-2xl font-extrabold">0</div>
-            </div>
-          </div>
-        </div>
-      </section>
+  <main class="mx-auto max-w-7xl px-4 sm:px-6 py-5 sm:py-6">
+    <div id="loadingBlock" class="rounded-[28px] border border-slate-200 bg-white p-10 text-center shadow-soft">
+      <div class="mx-auto h-14 w-14 rounded-2xl bg-[var(--brand-soft)] text-[var(--brand)] flex items-center justify-center text-2xl">
+        <i class="fa-solid fa-spinner fa-spin"></i>
+      </div>
+      <div class="mt-4 text-xl font-extrabold">Carregando Produtos.xlsx e DISPO.xlsx</div>
+      <div class="mt-1 text-slate-500">A vitrine exibirá somente os itens que estiverem na planilha DISPO.</div>
+    </div>
 
-      <section class="mt-4 grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-4">
-        <aside class="rounded-3xl border border-slate-200 bg-white p-4 shadow-soft h-fit">
-          <div class="flex items-center justify-between">
+    <div id="catalogWrap" class="hidden">
+      <div id="catalogShell">
+        <aside id="filtersPanel" class="rounded-[28px] border border-slate-200 bg-white p-4 shadow-soft h-fit">
+          <div class="flex items-center justify-between gap-3">
             <div>
               <div class="text-xs font-bold text-slate-500">Busca refinada</div>
               <div class="text-lg font-extrabold">Filtros</div>
             </div>
-            <button id="btnClearFilters" class="focus-ring text-sm font-bold text-[var(--brand)]">Limpar</button>
+            <button id="btnCloseFilters" class="focus-ring h-10 w-10 rounded-full border border-slate-200 lg:hidden"><i class="fa-solid fa-xmark"></i></button>
           </div>
+
           <div class="mt-4 space-y-3">
+            <div class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+              <label class="text-xs font-bold text-slate-500">Buscar produto, código ou cor</label>
+              <div class="mt-2 flex items-center gap-2">
+                <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+                <input id="searchInput" class="focus-ring w-full bg-transparent text-sm outline-none placeholder:text-slate-400" placeholder="Ex.: passo, CHB/PT, 43242437" />
+              </div>
+            </div>
             <div>
               <label class="text-xs font-bold text-slate-500">Categoria</label>
               <select id="filterCategoria" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold"></select>
@@ -142,232 +131,139 @@
               <select id="filterGenero" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold"></select>
             </div>
             <div>
-              <label class="text-xs font-bold text-slate-500">Status</label>
-              <select id="filterStatus" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold">
-                <option value="">Todos</option>
-                <option value="disponivel">Disponível</option>
-                <option value="reservado">Reservado</option>
-                <option value="indisponivel">Indisponível</option>
-              </select>
-            </div>
-            <div>
               <label class="text-xs font-bold text-slate-500">Ordenação</label>
               <select id="sortBy" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold">
                 <option value="produto">Produto A-Z</option>
-                <option value="precoAsc">Menor preço</option>
-                <option value="precoDesc">Maior preço</option>
-                <option value="status">Status</option>
+                <option value="saldoDesc">Maior saldo</option>
+                <option value="saldoAsc">Menor saldo</option>
+                <option value="entregaAsc">Entrega mais próxima</option>
               </select>
             </div>
+            <button id="btnClearFilters" class="focus-ring w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-extrabold text-[var(--brand)]">Limpar filtros</button>
           </div>
         </aside>
 
         <section>
-          <div id="loadingBlock" class="rounded-3xl border border-slate-200 bg-white p-10 shadow-soft text-center">
-            <div class="mx-auto h-14 w-14 rounded-2xl bg-[var(--brand-soft)] text-[var(--brand)] flex items-center justify-center text-2xl">
-              <i class="fa-solid fa-spinner fa-spin"></i>
+          <div class="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-[28px] border border-slate-200 bg-white px-4 py-4 shadow-soft">
+            <div>
+              <div class="text-xs font-bold text-slate-500">Disponibilidade carregada</div>
+              <div class="text-lg font-extrabold"><span id="visibleCount">0</span> itens na vitrine</div>
             </div>
-            <div class="mt-4 text-xl font-extrabold">Carregando Produtos.xlsx</div>
-            <div class="mt-1 text-slate-500">Estrutura esperada: /index.html, /Produtos.xlsx, /Catalogo/* e /data/disponibilidade.json.</div>
+            <div class="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-bold">
+              <span class="chip chip-gray"><i class="fa-solid fa-boxes-stacked"></i> <span id="kpiBoxes">0</span> caixas livres</span>
+              <span class="chip chip-blue"><i class="fa-solid fa-shoe-prints"></i> <span id="kpiPairs">0</span> pares livres</span>
+            </div>
           </div>
 
-          <div id="catalogWrap" class="hidden">
-            <div id="cardsWrap" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4"></div>
-            <div id="emptyState" class="hidden rounded-3xl border border-slate-200 bg-white p-10 text-center shadow-soft mt-4">
-              <div class="mx-auto h-14 w-14 rounded-2xl bg-slate-100 text-slate-500 flex items-center justify-center text-2xl"><i class="fa-solid fa-box-open"></i></div>
-              <div class="mt-4 text-xl font-extrabold">Nenhum produto encontrado</div>
-              <div class="mt-1 text-slate-500">Revise a busca ou os filtros.</div>
-            </div>
+          <div id="cardsWrap" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4"></div>
+          <div id="emptyState" class="hidden rounded-[28px] border border-slate-200 bg-white p-10 text-center shadow-soft">
+            <div class="mx-auto h-14 w-14 rounded-2xl bg-slate-100 text-slate-500 flex items-center justify-center text-2xl"><i class="fa-solid fa-box-open"></i></div>
+            <div class="mt-4 text-xl font-extrabold">Nenhum item disponível</div>
+            <div class="mt-1 text-slate-500">Revise os filtros aplicados.</div>
           </div>
         </section>
-      </section>
-
-      <section id="adminSection" class="hidden mt-5 rounded-3xl border border-slate-200 bg-white p-4 sm:p-5 shadow-soft">
-        <div class="flex items-center justify-between gap-3 flex-wrap">
-          <div>
-            <div class="text-xs font-bold text-slate-500">Modo administrativo</div>
-            <div class="text-xl font-extrabold">Painel do GitHub</div>
-          </div>
-          <div class="inline-flex items-center gap-2 rounded-full bg-amber-50 border border-amber-200 px-4 py-2 text-sm font-semibold text-amber-700">
-            <i class="fa-solid fa-triangle-exclamation"></i>
-            <span>Para gravar no GitHub Pages, este modelo usa token armazenado localmente no navegador.</span>
-          </div>
-        </div>
-
-        <div class="admin-shell mt-4">
-          <aside class="rounded-3xl border border-slate-200 bg-slate-50 p-4">
-            <div class="text-sm font-extrabold">Configuração</div>
-            <div class="mt-3 space-y-3">
-              <div>
-                <label class="text-xs font-bold text-slate-500">Owner</label>
-                <input id="ghOwner" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm" placeholder="seu-usuario" />
-              </div>
-              <div>
-                <label class="text-xs font-bold text-slate-500">Repositório</label>
-                <input id="ghRepo" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm" placeholder="nome-do-repo" />
-              </div>
-              <div>
-                <label class="text-xs font-bold text-slate-500">Branch</label>
-                <input id="ghBranch" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm" placeholder="main" />
-              </div>
-              <div>
-                <label class="text-xs font-bold text-slate-500">Pasta do JSON de disponibilidade</label>
-                <input id="ghAvailabilityPath" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm" placeholder="data/disponibilidade.json" />
-              </div>
-              <div>
-                <label class="text-xs font-bold text-slate-500">Pasta dos pedidos</label>
-                <input id="ghOrdersPath" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm" placeholder="data/pedidos" />
-              </div>
-              <div>
-                <label class="text-xs font-bold text-slate-500">Token GitHub (PAT)</label>
-                <input id="ghToken" type="password" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm" placeholder="ghp_..." />
-              </div>
-              <div class="grid grid-cols-2 gap-2">
-                <button id="btnSaveGithubConfig" class="focus-ring rounded-2xl bg-[var(--brand)] px-4 py-3 text-sm font-extrabold text-white">Salvar config</button>
-                <button id="btnTestGithub" class="focus-ring rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-extrabold">Testar acesso</button>
-              </div>
-            </div>
-          </aside>
-
-          <div class="space-y-4 min-w-0">
-            <div class="rounded-3xl border border-slate-200 bg-slate-50 p-4">
-              <div class="flex items-center justify-between gap-3 flex-wrap">
-                <div>
-                  <div class="text-sm font-extrabold">Disponibilidade</div>
-                  <div class="text-xs text-slate-500">Uma linha por produto da planilha. Edite quantidade, status e observação.</div>
-                </div>
-                <div class="flex items-center gap-2">
-                  <input id="adminSearch" class="focus-ring rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm" placeholder="Buscar no admin" />
-                  <button id="btnSaveAvailability" class="focus-ring rounded-2xl bg-[var(--brand)] px-4 py-3 text-sm font-extrabold text-white">Salvar disponibilidade.json</button>
-                </div>
-              </div>
-              <div class="mt-4 overflow-auto rounded-2xl border border-slate-200 bg-white">
-                <table class="min-w-full text-sm">
-                  <thead class="bg-slate-50 text-slate-500 text-xs uppercase tracking-wide">
-                    <tr>
-                      <th class="px-3 py-3 text-left">Código</th>
-                      <th class="px-3 py-3 text-left">Produto</th>
-                      <th class="px-3 py-3 text-left">Cor</th>
-                      <th class="px-3 py-3 text-left">Gênero</th>
-                      <th class="px-3 py-3 text-left">Disponível</th>
-                      <th class="px-3 py-3 text-left">Status</th>
-                      <th class="px-3 py-3 text-left">Obs.</th>
-                    </tr>
-                  </thead>
-                  <tbody id="adminTableBody"></tbody>
-                </table>
-              </div>
-            </div>
-
-            <div class="rounded-3xl border border-slate-200 bg-slate-50 p-4">
-              <div class="flex items-center justify-between gap-3 flex-wrap">
-                <div>
-                  <div class="text-sm font-extrabold">Pedidos gravados</div>
-                  <div class="text-xs text-slate-500">Leitura dos JSON já salvos no repositório.</div>
-                </div>
-                <button id="btnReloadOrders" class="focus-ring rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-extrabold">Atualizar lista</button>
-              </div>
-              <div id="ordersList" class="mt-4 space-y-3"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <button id="miniCartFab" class="hidden safe-bottom focus-ring fixed bottom-4 right-4 z-30 rounded-full bg-[var(--brand)] px-5 py-3 text-sm font-extrabold text-white shadow-lift">
-      <i class="fa-solid fa-cart-shopping mr-2"></i>
-      <span id="miniCartCount">0</span>
-    </button>
-
-    <div id="cartDrawerWrap" class="hidden fixed inset-0 z-50">
-      <div class="modal-backdrop absolute inset-0" data-close-cart="true"></div>
-      <aside id="cartDrawer" class="drawer absolute right-0 top-0 bottom-0 w-full max-w-xl bg-white shadow-lift flex flex-col">
-        <div class="border-b border-slate-200 p-4 flex items-center justify-between">
-          <div>
-            <div class="text-xs text-slate-500">Solicitação</div>
-            <div class="text-xl font-extrabold">Pedido de repasse</div>
-          </div>
-          <button class="focus-ring h-11 w-11 rounded-full border border-slate-200" data-close-cart="true"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        <div class="flex-1 overflow-y-auto no-scrollbar p-4 space-y-4">
-          <div>
-            <label class="text-xs font-bold text-slate-500">Solicitante</label>
-            <input id="orderCustomer" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm" placeholder="Nome do cliente ou loja" />
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label class="text-xs font-bold text-slate-500">Cidade/UF</label>
-              <input id="orderCity" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm" placeholder="Cidade/UF" />
-            </div>
-            <div>
-              <label class="text-xs font-bold text-slate-500">Responsável</label>
-              <input id="orderSeller" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm" placeholder="Representante" />
-            </div>
-          </div>
-          <div>
-            <label class="text-xs font-bold text-slate-500">Observação geral</label>
-            <textarea id="orderNotes" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm" rows="3" placeholder="Observações gerais do pedido"></textarea>
-          </div>
-
-          <div id="cartEmptyState" class="hidden rounded-3xl border border-slate-200 bg-slate-50 p-8 text-center">
-            <div class="mx-auto h-12 w-12 rounded-2xl bg-white text-slate-400 flex items-center justify-center text-xl"><i class="fa-solid fa-box-open"></i></div>
-            <div class="mt-3 text-xl font-extrabold">Nenhum item no pedido</div>
-            <div class="mt-1 text-slate-500">Adicione produtos antes de enviar.</div>
-          </div>
-
-          <div id="cartItems" class="space-y-3"></div>
-        </div>
-        <div class="border-t border-slate-200 p-4 space-y-3">
-          <div class="flex items-center justify-between text-sm">
-            <span class="font-bold text-slate-500">Itens no pedido</span>
-            <span id="cartTotalItems" class="font-extrabold">0</span>
-          </div>
-          <div class="grid grid-cols-2 gap-2">
-            <button id="btnClearCart" class="focus-ring rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-extrabold">Limpar</button>
-            <button id="btnSubmitOrder" class="focus-ring rounded-2xl bg-[var(--brand)] px-4 py-3 text-sm font-extrabold text-white">Salvar pedido no GitHub</button>
-          </div>
-        </div>
-      </aside>
+      </div>
     </div>
+  </main>
 
-    <div id="toast" class="hidden fixed top-4 left-1/2 -translate-x-1/2 z-[70] rounded-full bg-slate-900 px-4 py-2 text-sm font-bold text-white shadow-lift"></div>
+  <div id="cartDrawerWrap" class="hidden fixed inset-0 z-50">
+    <div class="backdrop absolute inset-0" data-close-cart="true"></div>
+    <aside id="cartDrawer" class="drawer absolute right-0 top-0 bottom-0 w-full max-w-xl bg-[#f8f9fc] shadow-card flex flex-col">
+      <div class="border-b border-slate-200 bg-white px-5 py-4">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <div class="text-sm text-slate-500">Checkout</div>
+            <div class="text-[30px] leading-none font-extrabold">Minha Sacola</div>
+          </div>
+          <button class="focus-ring h-11 w-11 rounded-full border border-slate-200 bg-white" data-close-cart="true"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+
+      <div class="flex-1 overflow-y-auto px-4 py-4">
+        <div class="mb-4 flex items-center justify-between">
+          <div class="text-2xl font-extrabold hidden"></div>
+          <button id="btnClearCart" class="focus-ring text-sm font-extrabold text-[var(--brand)]">Limpar sacola</button>
+        </div>
+
+        <div id="cartEmptyState" class="hidden rounded-[28px] border border-slate-200 bg-white p-8 text-center">
+          <div class="mx-auto h-14 w-14 rounded-2xl bg-slate-100 text-slate-500 flex items-center justify-center text-2xl"><i class="fa-solid fa-bag-shopping"></i></div>
+          <div class="mt-4 text-xl font-extrabold">Sua sacola está vazia</div>
+          <div class="mt-1 text-slate-500">Adicione caixas dos produtos disponíveis.</div>
+        </div>
+
+        <div id="cartItems" class="space-y-3"></div>
+      </div>
+
+      <div class="safe-bottom border-t border-slate-200 bg-white px-5 py-4">
+        <div class="grid grid-cols-2 gap-3 text-sm">
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+            <div class="text-xs font-bold text-slate-500">Caixas no pedido</div>
+            <div id="cartTotalBoxes" class="mt-1 text-2xl font-extrabold">0</div>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+            <div class="text-xs font-bold text-slate-500">Pares no pedido</div>
+            <div id="cartTotalPairs" class="mt-1 text-2xl font-extrabold">0</div>
+          </div>
+        </div>
+
+        <div class="mt-3 grid gap-3">
+          <button id="btnSaveOrderLocal" class="focus-ring rounded-2xl bg-[var(--brand)] px-4 py-3 text-sm font-extrabold text-white">Salvar pedido para consulta</button>
+          <div class="text-xs text-slate-500">Neste passo, o pedido fica salvo localmente neste navegador para o cliente consultar depois. Na próxima etapa, ligamos isso ao fluxo administrativo.</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <div id="ordersDrawerWrap" class="hidden fixed inset-0 z-50">
+    <div class="backdrop absolute inset-0" data-close-orders="true"></div>
+    <aside id="ordersDrawer" class="drawer absolute right-0 top-0 bottom-0 w-full max-w-2xl bg-[#f8f9fc] shadow-card flex flex-col">
+      <div class="border-b border-slate-200 bg-white px-5 py-4">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <div class="text-sm text-slate-500">Histórico local</div>
+            <div class="text-[30px] leading-none font-extrabold">Meus pedidos</div>
+          </div>
+          <button class="focus-ring h-11 w-11 rounded-full border border-slate-200 bg-white" data-close-orders="true"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+      <div class="flex-1 overflow-y-auto px-4 py-4">
+        <div id="ordersEmptyState" class="hidden rounded-[28px] border border-slate-200 bg-white p-8 text-center">
+          <div class="mx-auto h-14 w-14 rounded-2xl bg-slate-100 text-slate-500 flex items-center justify-center text-2xl"><i class="fa-regular fa-rectangle-list"></i></div>
+          <div class="mt-4 text-xl font-extrabold">Nenhum pedido salvo</div>
+          <div class="mt-1 text-slate-500">Quando você salvar um pedido, ele ficará disponível aqui para consulta.</div>
+        </div>
+        <div id="ordersList" class="space-y-3"></div>
+      </div>
+    </aside>
   </div>
 
 <script>
-const PAGE_MODE = {
-  admin: location.pathname.endsWith('/admin') || location.pathname.endsWith('/admin/') || new URLSearchParams(location.search).has('admin') || location.hash === '#admin'
-};
 const BASE_PREFIX = (location.pathname.includes('/admin')) ? '..' : '.';
-const CONFIG_KEYS = {
-  owner: 'repasse_github_owner',
-  repo: 'repasse_github_repo',
-  branch: 'repasse_github_branch',
-  token: 'repasse_github_token',
-  availabilityPath: 'repasse_github_availability_path',
-  ordersPath: 'repasse_github_orders_path'
-};
 const DEFAULTS = {
-  xlsxPath: `${BASE_PREFIX}/Produtos.xlsx`,
+  produtosPath: `${BASE_PREFIX}/Produtos.xlsx`,
+  dispoPath: `${BASE_PREFIX}/DISPO.xlsx`,
   imagesBasePath: `${BASE_PREFIX}/Catalogo/`,
-  logoPath: `${BASE_PREFIX}/logo-olympikus.png`,
-  availabilityPath: 'data/disponibilidade.json',
-  ordersPath: 'data/pedidos',
-  branch: 'main'
+  logoPath: `${BASE_PREFIX}/logo-olympikus.png`
 };
+const STORAGE_KEYS = {
+  cart: 'repasse_cart_v2',
+  orders: 'repasse_orders_v2'
+};
+const CATEGORY_LABELS = { FTW:'Tênis', ACC:'Acessórios', CHI:'Chinelos', MEIA:'Meias', 'V&A':'Vestuário' };
+const DISPO_COLUMNS = ['28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','33/34','35/36','37/38','39/40','41/42','43/44','45/46'];
+
 const STATE = {
   raw: [],
   view: [],
   search: '',
-  filters: { categoria:'', segmento:'', genero:'', status:'', sort:'produto' },
-  availability: {},
+  filters: { categoria:'', segmento:'', genero:'', sort:'produto' },
   cart: new Map(),
-  orderFiles: [],
-  adminSearch: ''
+  orders: []
 };
-const $ = (id)=>document.getElementById(id);
-const CATEGORY_LABELS = { FTW:'Tênis', ACC:'Acessórios', CHI:'Chinelos', MEIA:'Meias', 'V&A':'Vestuário' };
 
-function toast(msg, ms=1800){
+const $ = (id)=>document.getElementById(id);
+
+function toast(msg, ms=2000){
   const el = $('toast');
   el.textContent = msg;
   el.classList.remove('hidden');
@@ -377,21 +273,16 @@ function toast(msg, ms=1800){
 function normalizeText(v){
   return String(v ?? '').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 }
-function money(v){
-  const n = Number(v || 0);
-  return n.toLocaleString('pt-BR', { style:'currency', currency:'BRL' });
+function safeHtml(v){
+  return String(v ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
 }
 function toNumber(v){
   const n = Number(v);
   if(Number.isFinite(n)) return n;
   return Number(String(v||'').replace(/\./g,'').replace(',', '.').replace(/[^\d.-]/g,'')) || 0;
 }
-function safeHtml(v){
-  return String(v ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
-}
-function productKey(item){
-  return normalizeText([item.codigo, item.corCodigo || item.cor, item.genero, item.produto, item._row].join('||'));
-}
+function setHeader(msg){ $('headerStatus').textContent = msg; }
+function productKey(item){ return normalizeText([item.codigo, item.cor, item.gci, item.ebm, item._row].join('||')); }
 function productImage(item){
   const raw = String(item.imagem || '').trim();
   if(!raw) return '';
@@ -399,209 +290,144 @@ function productImage(item){
   const name = hasExt ? raw : `${raw}.png`;
   return `${DEFAULTS.imagesBasePath}${encodeURIComponent(name)}`;
 }
-function statusInfo(item){
-  const key = productKey(item);
-  const meta = STATE.availability[key] || {};
-  const status = String(meta.status || 'disponivel').toLowerCase();
-  const disponivel = Number.isFinite(Number(meta.disponivel)) ? Number(meta.disponivel) : '';
-  const label = status === 'reservado' ? 'Reservado' : status === 'indisponivel' ? 'Indisponível' : 'Disponível';
-  return { status, label, disponivel, obs: meta.obs || '' };
+function formatDate(value){
+  if(!value) return '—';
+  const d = new Date(value);
+  return Number.isNaN(d.getTime()) ? String(value) : d.toLocaleDateString('pt-BR');
 }
-function setHeader(msg){ $('headerStatus').textContent = msg; }
-
-function githubConfig(){
-  return {
-    owner: localStorage.getItem(CONFIG_KEYS.owner) || '',
-    repo: localStorage.getItem(CONFIG_KEYS.repo) || '',
-    branch: localStorage.getItem(CONFIG_KEYS.branch) || DEFAULTS.branch,
-    token: localStorage.getItem(CONFIG_KEYS.token) || '',
-    availabilityPath: localStorage.getItem(CONFIG_KEYS.availabilityPath) || DEFAULTS.availabilityPath,
-    ordersPath: localStorage.getItem(CONFIG_KEYS.ordersPath) || DEFAULTS.ordersPath
-  };
-}
-function fillGithubForm(){
-  const cfg = githubConfig();
-  if($('ghOwner')) $('ghOwner').value = cfg.owner;
-  if($('ghRepo')) $('ghRepo').value = cfg.repo;
-  if($('ghBranch')) $('ghBranch').value = cfg.branch;
-  if($('ghToken')) $('ghToken').value = cfg.token;
-  if($('ghAvailabilityPath')) $('ghAvailabilityPath').value = cfg.availabilityPath;
-  if($('ghOrdersPath')) $('ghOrdersPath').value = cfg.ordersPath;
-}
-function saveGithubConfig(){
-  localStorage.setItem(CONFIG_KEYS.owner, $('ghOwner').value.trim());
-  localStorage.setItem(CONFIG_KEYS.repo, $('ghRepo').value.trim());
-  localStorage.setItem(CONFIG_KEYS.branch, $('ghBranch').value.trim() || DEFAULTS.branch);
-  localStorage.setItem(CONFIG_KEYS.token, $('ghToken').value.trim());
-  localStorage.setItem(CONFIG_KEYS.availabilityPath, $('ghAvailabilityPath').value.trim() || DEFAULTS.availabilityPath);
-  localStorage.setItem(CONFIG_KEYS.ordersPath, $('ghOrdersPath').value.trim() || DEFAULTS.ordersPath);
-  toast('Configuração do GitHub salva');
-}
-async function ghFetch(path, options={}){
-  const cfg = githubConfig();
-  if(!cfg.owner || !cfg.repo) throw new Error('Owner e repositório não configurados.');
-  const headers = { 'Accept':'application/vnd.github+json' };
-  if(cfg.token) headers['Authorization'] = `Bearer ${cfg.token}`;
-  const res = await fetch(`https://api.github.com/repos/${cfg.owner}/${cfg.repo}${path}`, { ...options, headers: { ...headers, ...(options.headers || {}) } });
-  if(!res.ok){
-    const txt = await res.text();
-    throw new Error(`GitHub ${res.status}: ${txt || 'falha na requisição'}`);
-  }
-  if(res.status === 204) return null;
-  const ct = res.headers.get('content-type') || '';
-  if(ct.includes('application/json')) return res.json();
-  return res.text();
-}
-async function ghGetContent(filePath){
-  const cfg = githubConfig();
+function readJsonSafe(key, fallback){
   try{
-    return await ghFetch(`/contents/${filePath}?ref=${encodeURIComponent(cfg.branch)}`);
-  }catch(err){
-    if(String(err.message).includes('404')) return null;
-    throw err;
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  }catch(e){ return fallback; }
+}
+function saveCartStorage(){
+  localStorage.setItem(STORAGE_KEYS.cart, JSON.stringify(Array.from(STATE.cart.values())));
+}
+function saveOrdersStorage(){
+  localStorage.setItem(STORAGE_KEYS.orders, JSON.stringify(STATE.orders));
+}
+function loadLocalState(){
+  const savedCart = readJsonSafe(STORAGE_KEYS.cart, []);
+  STATE.cart = new Map(savedCart.map(item => [item.key, item]));
+  STATE.orders = readJsonSafe(STORAGE_KEYS.orders, []);
+}
+function gradeEntriesFromRow(row){
+  return DISPO_COLUMNS
+    .map(col=>{
+      const raw = row[col] ?? row[Number(col)] ?? '';
+      const qty = toNumber(raw);
+      return qty > 0 ? { size: String(col), qty } : null;
+    })
+    .filter(Boolean);
+}
+function sumPairs(grade){
+  return grade.reduce((sum, x)=>sum + Number(x.qty || 0), 0);
+}
+function mergeData(prodRows, dispoRows){
+  const byKey = new Map();
+  for(const r of prodRows){
+    const key = `${String(r['Código'] ?? r['Codigo'] ?? r['CODIGO'] ?? '').trim()}|${String(r['Cor'] ?? r['COR'] ?? '').trim().toUpperCase()}`;
+    byKey.set(key, r);
   }
-}
-async function ghPutJson(filePath, payload, message){
-  const existing = await ghGetContent(filePath);
-  const body = {
-    message,
-    branch: githubConfig().branch,
-    content: btoa(unescape(encodeURIComponent(JSON.stringify(payload, null, 2))))
-  };
-  if(existing?.sha) body.sha = existing.sha;
-  return ghFetch(`/contents/${filePath}`, { method:'PUT', body: JSON.stringify(body) });
-}
-async function ghListDir(dirPath){
-  return ghFetch(`/contents/${dirPath}?ref=${encodeURIComponent(githubConfig().branch)}`);
-}
 
-async function loadCatalog(){
-  try{
-    setHeader('Carregando catálogo…');
-    $('brandLogo').src = DEFAULTS.logoPath;
-    const res = await fetch(`${DEFAULTS.xlsxPath}?v=${Date.now()}`, { cache:'no-store' });
-    if(!res.ok) throw new Error(`HTTP ${res.status}`);
-    const buff = await res.arrayBuffer();
-    const wb = XLSX.read(buff, { type:'array' });
-    const ws = wb.Sheets[wb.SheetNames[0]];
-    const rows = XLSX.utils.sheet_to_json(ws, { defval:'' });
-    STATE.raw = rows
-      .map((r, idx)=>({
-        _row: idx + 2,
-        imagem: String(r['Imagem'] ?? r['IMAGEM'] ?? '').trim(),
-        categoria: String(r['Categoria'] ?? r['CATEGORIA'] ?? '').trim(),
-        segmento: String(r['Segmento'] ?? r['SEGMENTO'] ?? '').trim(),
-        codigo: String(r['Código'] ?? r['Codigo'] ?? r['CODIGO'] ?? '').trim(),
-        produto: String(r['Produto'] ?? r['PRODUTO'] ?? '').trim(),
-        corCodigo: String(r['Cor código'] ?? r['Cor codigo'] ?? r['COR CODIGO'] ?? r['COR CÓDIGO'] ?? '').trim(),
-        cor: String(r['Cor'] ?? r['COR'] ?? '').trim(),
-        genero: String(r['Gênero'] ?? r['Genero'] ?? r['GENERO'] ?? r['GÊNERO'] ?? '').trim(),
-        preco: toNumber(r['Preço'] ?? r['Preco'] ?? r['PREÇO'] ?? r['PRECO'] ?? 0),
-        custo: toNumber(r['Custo'] ?? r['CUSTO'] ?? 0)
-      }))
-      .filter(r => r.produto || r.codigo || r.cor || r.imagem);
-
-    buildFilters();
-    await loadAvailability();
-    applyFilters();
-    renderAdminTable();
-    $('loadingBlock').classList.add('hidden');
-    $('catalogWrap').classList.remove('hidden');
-    setHeader(`${STATE.raw.length} produtos carregados`);
-  }catch(err){
-    console.error(err);
-    setHeader('Falha ao carregar');
-    $('loadingBlock').innerHTML = `
-      <div class="mx-auto h-14 w-14 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center text-2xl"><i class="fa-solid fa-triangle-exclamation"></i></div>
-      <div class="mt-4 text-xl font-extrabold">Não foi possível ler o Produtos.xlsx</div>
-      <div class="mt-1 text-slate-500">Confira nome do arquivo e estrutura das pastas. Detalhe: ${safeHtml(err.message)}</div>
-    `;
-  }
+  return dispoRows.map((r, idx)=>{
+    const codigo = String(r['Código'] ?? r['Codigo'] ?? r['CODIGO'] ?? '').trim();
+    const cor = String(r['COR'] ?? r['Cor'] ?? '').trim().toUpperCase();
+    const ref = byKey.get(`${codigo}|${cor}`) || {};
+    const grade = gradeEntriesFromRow(r);
+    const pairsPerBox = sumPairs(grade) || 12;
+    const saldoPairs = toNumber(r['SALDO'] ?? 0);
+    return {
+      _row: idx + 2,
+      keyBase: `${codigo}|${cor}|${idx+2}`,
+      ebm: String(r['EBM'] ?? '').trim(),
+      gci: String(r['GCI'] ?? '').trim(),
+      codigo,
+      produto: String(r['Produto'] ?? r['PRODUTO'] ?? ref['Produto'] ?? '').trim(),
+      cor,
+      dataEntrega: r['DATA ENTREGA'] || '',
+      saldoPairs,
+      grade,
+      pairsPerBox,
+      boxesBase: Math.floor(saldoPairs / (pairsPerBox || 1)),
+      imagem: String(ref['Imagem'] ?? ref['IMAGEM'] ?? '').trim(),
+      categoria: String(ref['Categoria'] ?? ref['CATEGORIA'] ?? '').trim(),
+      segmento: String(ref['Segmento'] ?? ref['SEGMENTO'] ?? '').trim(),
+      genero: String(ref['Gênero'] ?? ref['Genero'] ?? ref['GENERO'] ?? '').trim(),
+      preco: toNumber(ref['Preço'] ?? ref['Preco'] ?? ref['PREÇO'] ?? ref['PRECO'] ?? 0)
+    };
+  }).filter(item => item.codigo && item.produto && item.saldoPairs > 0);
 }
-
-async function loadAvailability(){
-  try{
-    const cfg = githubConfig();
-    const online = cfg.owner && cfg.repo ? await ghGetContent(cfg.availabilityPath) : null;
-    if(online?.content){
-      const json = JSON.parse(decodeURIComponent(escape(atob(online.content.replace(/\n/g,'')))));
-      STATE.availability = json.items || {};
-      return;
-    }
-  }catch(err){
-    console.warn('Falha ao carregar disponibilidade do GitHub:', err.message);
-  }
-  try{
-    const local = await fetch(`${BASE_PREFIX}/data/disponibilidade.json?v=${Date.now()}`, { cache:'no-store' });
-    if(local.ok){
-      const json = await local.json();
-      STATE.availability = json.items || {};
-      return;
-    }
-  }catch(err){ console.warn(err); }
-  STATE.availability = {};
+function reservedBoxes(key){
+  return Number(STATE.cart.get(key)?.boxes || 0);
 }
-
+function remainingPairs(item){
+  return Math.max(0, Number(item.saldoPairs || 0) - (reservedBoxes(item.key) * Number(item.pairsPerBox || 0)));
+}
+function remainingBoxes(item){
+  return Math.floor(remainingPairs(item) / (Number(item.pairsPerBox || 1)));
+}
 function buildFilters(){
+  const uniq = (arr)=>Array.from(new Set(arr.filter(Boolean))).sort((a,b)=>String(a).localeCompare(String(b), 'pt-BR', { sensitivity:'base' }));
   const fill = (id, values, label)=>{
-    const el = $(id);
-    el.innerHTML = `<option value="">${label}</option>` + values.map(v=>`<option value="${safeHtml(v)}">${safeHtml(v)}</option>`).join('');
+    $(id).innerHTML = `<option value="">${label}</option>` + values.map(v=>`<option value="${safeHtml(v)}">${safeHtml(v)}</option>`).join('');
   };
-  const uniq = (arr)=>Array.from(new Set(arr.filter(Boolean))).sort((a,b)=>String(a).localeCompare(String(b),'pt-BR',{sensitivity:'base'}));
   fill('filterCategoria', uniq(STATE.raw.map(x=>CATEGORY_LABELS[x.categoria] || x.categoria)), 'Todas as categorias');
   fill('filterSegmento', uniq(STATE.raw.map(x=>x.segmento)), 'Todos os segmentos');
   fill('filterGenero', uniq(STATE.raw.map(x=>x.genero)), 'Todos os gêneros');
 }
-
+function sortView(items){
+  const arr = [...items];
+  switch(STATE.filters.sort){
+    case 'saldoDesc': arr.sort((a,b)=>remainingPairs(b)-remainingPairs(a)); break;
+    case 'saldoAsc': arr.sort((a,b)=>remainingPairs(a)-remainingPairs(b)); break;
+    case 'entregaAsc': arr.sort((a,b)=>new Date(a.dataEntrega||'2999-12-31') - new Date(b.dataEntrega||'2999-12-31')); break;
+    default: arr.sort((a,b)=>String(a.produto).localeCompare(String(b.produto), 'pt-BR', { sensitivity:'base' })); break;
+  }
+  return arr;
+}
 function applyFilters(){
   const q = normalizeText(STATE.search);
-  STATE.view = STATE.raw.filter(item=>{
-    const st = statusInfo(item);
+  STATE.view = sortView(STATE.raw.filter(item=>{
+    if(remainingPairs(item) <= 0) return false;
     const categoryLabel = CATEGORY_LABELS[item.categoria] || item.categoria;
-    const hay = normalizeText([item.codigo, item.produto, item.cor, item.corCodigo, item.genero, item.segmento, categoryLabel].join(' '));
+    const hay = normalizeText([item.codigo, item.produto, item.cor, item.segmento, item.genero, categoryLabel].join(' '));
     const hitQ = !q || hay.includes(q);
     const hitCat = !STATE.filters.categoria || categoryLabel === STATE.filters.categoria;
     const hitSeg = !STATE.filters.segmento || item.segmento === STATE.filters.segmento;
     const hitGen = !STATE.filters.genero || item.genero === STATE.filters.genero;
-    const hitStatus = !STATE.filters.status || st.status === STATE.filters.status;
-    return hitQ && hitCat && hitSeg && hitGen && hitStatus;
-  });
-
-  if(STATE.filters.sort === 'precoAsc') STATE.view.sort((a,b)=>a.preco - b.preco);
-  else if(STATE.filters.sort === 'precoDesc') STATE.view.sort((a,b)=>b.preco - a.preco);
-  else if(STATE.filters.sort === 'status') STATE.view.sort((a,b)=>statusInfo(a).status.localeCompare(statusInfo(b).status));
-  else STATE.view.sort((a,b)=>String(a.produto).localeCompare(String(b.produto),'pt-BR',{sensitivity:'base'}));
-
+    return hitQ && hitCat && hitSeg && hitGen;
+  }));
   renderCatalog();
-  updateKpis();
+  renderKpis();
 }
-
-function updateKpis(){
-  $('kpiProdutos').textContent = STATE.raw.length;
-  let disponiveis = 0, reservados = 0, indisponiveis = 0;
-  for(const item of STATE.raw){
-    const st = statusInfo(item).status;
-    if(st === 'reservado') reservados++;
-    else if(st === 'indisponivel') indisponiveis++;
-    else disponiveis++;
-  }
-  $('kpiDisponiveis').textContent = disponiveis;
-  $('kpiReservados').textContent = reservados;
-  $('kpiIndisponiveis').textContent = indisponiveis;
+function renderKpis(){
+  $('visibleCount').textContent = STATE.view.length;
+  $('kpiBoxes').textContent = STATE.view.reduce((sum, item)=>sum + remainingBoxes(item), 0);
+  $('kpiPairs').textContent = STATE.view.reduce((sum, item)=>sum + remainingPairs(item), 0);
 }
-
+function gradeHtml(grade){
+  return grade.map(g=>`
+    <div class="grade-pill">
+      <span class="grade-size">${safeHtml(g.size)}</span>
+      <span class="grade-qty">${safeHtml(g.qty)}</span>
+    </div>
+  `).join('');
+}
 function renderCatalog(){
   const wrap = $('cardsWrap');
   wrap.innerHTML = '';
   $('emptyState').classList.toggle('hidden', STATE.view.length !== 0);
 
   for(const item of STATE.view){
-    const st = statusInfo(item);
-    const key = productKey(item);
+    const key = item.key;
     const img = productImage(item);
-    const qtyInCart = STATE.cart.get(key)?.qty || 0;
+    const boxesFree = remainingBoxes(item);
+    const pairsFree = remainingPairs(item);
+
     const card = document.createElement('article');
-    card.className = 'rounded-3xl border border-slate-200 bg-white shadow-soft overflow-hidden';
+    card.className = 'rounded-[28px] border border-slate-200 bg-white shadow-soft overflow-hidden';
     card.innerHTML = `
       <div class="aspect-[4/3] bg-slate-50 border-b border-slate-200 flex items-center justify-center overflow-hidden">
         ${img ? `<img src="${img}" alt="${safeHtml(item.produto)}" class="h-full w-full object-contain bg-white" onerror="this.style.display='none';this.parentElement.querySelector('.img-fallback').classList.remove('hidden')">` : ''}
@@ -610,115 +436,193 @@ function renderCatalog(){
           <div class="mt-2 text-xs font-bold">Sem imagem</div>
         </div>
       </div>
+
       <div class="p-4">
         <div class="flex items-start justify-between gap-3">
           <div class="min-w-0">
-            <div class="text-base font-extrabold leading-snug">${safeHtml(item.produto || 'Produto')}</div>
-            <div class="mt-1 text-xs text-slate-500">${safeHtml(item.codigo)} · ${safeHtml(item.segmento || 'Sem segmento')}</div>
+            <div class="text-xl font-extrabold leading-tight">${safeHtml(item.produto)}</div>
+            <div class="mt-1 text-sm text-slate-500">${safeHtml(item.codigo)} · Entrega ${safeHtml(formatDate(item.dataEntrega))}</div>
           </div>
-          <span class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-bold ${st.status === 'disponivel' ? 'bg-green-50 text-green-700' : st.status === 'reservado' ? 'bg-amber-50 text-amber-700' : 'bg-red-50 text-red-700'}">
-            <span class="status-dot status-${st.status}"></span>
-            ${st.label}
-          </span>
-        </div>
-        <div class="mt-3 flex flex-wrap gap-2 text-xs font-bold">
-          <span class="rounded-full bg-slate-100 px-3 py-1">${safeHtml(CATEGORY_LABELS[item.categoria] || item.categoria || '—')}</span>
-          <span class="rounded-full bg-slate-100 px-3 py-1">${safeHtml(item.genero || '—')}</span>
-          <span class="rounded-full bg-slate-100 px-3 py-1">${safeHtml(item.cor || item.corCodigo || '—')}</span>
-        </div>
-        <div class="mt-4 grid grid-cols-2 gap-3 text-sm">
-          <div class="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3">
-            <div class="text-xs font-bold text-slate-500">Preço</div>
-            <div class="mt-1 font-extrabold">${money(item.preco)}</div>
-          </div>
-          <div class="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3">
-            <div class="text-xs font-bold text-slate-500">Disponível</div>
-            <div class="mt-1 font-extrabold">${st.disponivel === '' ? '—' : st.disponivel}</div>
+          <div class="text-right">
+            <div class="chip chip-blue"><i class="fa-solid fa-shoe-prints"></i> ${pairsFree} pares</div>
+            <div class="mt-2 chip chip-gray"><i class="fa-solid fa-box-open"></i> ${boxesFree} caixas</div>
           </div>
         </div>
-        ${st.obs ? `<div class="mt-3 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3 text-xs"><div class="font-bold text-slate-500">Obs.</div><div class="mt-1 font-semibold text-slate-700">${safeHtml(st.obs)}</div></div>` : ''}
-        <div class="mt-4 flex items-center gap-2">
-          <button class="btnMinus focus-ring h-11 w-11 rounded-full border border-slate-200 bg-white"><i class="fa-solid fa-minus"></i></button>
-          <div class="qty min-w-[42px] text-center text-sm font-extrabold">1</div>
-          <button class="btnPlus focus-ring h-11 w-11 rounded-full border border-slate-200 bg-white"><i class="fa-solid fa-plus"></i></button>
-          <button class="btnAdd focus-ring flex-1 rounded-2xl ${st.status === 'indisponivel' ? 'bg-slate-200 text-slate-500 cursor-not-allowed' : 'bg-[var(--brand)] text-white'} px-4 py-3 text-sm font-extrabold">${st.status === 'indisponivel' ? 'Indisponível' : 'Adicionar ao pedido'}</button>
+
+        <div class="mt-3 flex flex-wrap gap-2">
+          <span class="chip chip-blue"><i class="fa-solid fa-palette"></i> ${safeHtml(item.cor)}</span>
+          ${item.pairsPerBox ? `<span class="chip chip-gray"><i class="fa-solid fa-boxes-stacked"></i> ${item.pairsPerBox} pares por caixa</span>` : ''}
         </div>
-        ${qtyInCart ? `<div class="mt-3 text-xs font-bold text-[var(--brand)]">Já no pedido: ${qtyInCart}</div>` : ''}
+
+        <div class="mt-4">
+          <div class="text-sm font-extrabold">Grade disponível</div>
+          <div class="mt-2 flex flex-wrap gap-2">${gradeHtml(item.grade)}</div>
+        </div>
+
+        <div class="mt-4 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+          <div class="flex items-center justify-between gap-3">
+            <div>
+              <div class="text-xs font-bold text-slate-500">Quantidade em caixas</div>
+              <div class="mt-1 text-sm font-semibold text-slate-600">Cada caixa segue a grade acima.</div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="btnMinus qty-btn focus-ring"><i class="fa-solid fa-minus"></i></button>
+              <div class="qty min-w-[28px] text-center text-lg font-extrabold">1</div>
+              <button class="btnPlus qty-btn focus-ring"><i class="fa-solid fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <button class="btnAdd focus-ring mt-4 w-full rounded-2xl bg-[var(--brand)] px-4 py-3 text-sm font-extrabold text-white ${boxesFree <= 0 ? 'opacity-50 cursor-not-allowed' : ''}" ${boxesFree <= 0 ? 'disabled' : ''}>Adicionar ${item.pairsPerBox} pares à sacola</button>
       </div>
     `;
 
-    let qty = 1;
+    let boxes = 1;
     const qtyEl = card.querySelector('.qty');
-    card.querySelector('.btnMinus').addEventListener('click', ()=>{ qty = Math.max(1, qty - 1); qtyEl.textContent = qty; });
-    card.querySelector('.btnPlus').addEventListener('click', ()=>{ qty = Math.min(999, qty + 1); qtyEl.textContent = qty; });
+    card.querySelector('.btnMinus').addEventListener('click', ()=>{
+      boxes = Math.max(1, boxes - 1);
+      qtyEl.textContent = boxes;
+    });
+    card.querySelector('.btnPlus').addEventListener('click', ()=>{
+      boxes = Math.min(999, boxes + 1);
+      qtyEl.textContent = boxes;
+    });
     card.querySelector('.btnAdd').addEventListener('click', ()=>{
-      if(st.status === 'indisponivel') return;
-      if(st.disponivel !== '' && qty > st.disponivel){ toast('Quantidade acima da disponibilidade'); return; }
+      const freeNow = remainingBoxes(item);
+      if(boxes > freeNow){ toast('Quantidade de caixas acima do saldo disponível'); return; }
       const existing = STATE.cart.get(key);
-      const nextQty = (existing?.qty || 0) + qty;
-      if(st.disponivel !== '' && nextQty > st.disponivel){ toast('Pedido acima da disponibilidade'); return; }
-      STATE.cart.set(key, { ...item, key, qty: nextQty });
+      const nextBoxes = Number(existing?.boxes || 0) + boxes;
+      if(nextBoxes > (Math.floor(Number(item.saldoPairs || 0) / Number(item.pairsPerBox || 1)))){ toast('Saldo excedido'); return; }
+      STATE.cart.set(key, {
+        ...item,
+        key,
+        boxes: nextBoxes,
+        totalPairs: nextBoxes * Number(item.pairsPerBox || 0)
+      });
+      saveCartStorage();
       renderCart();
       applyFilters();
-      toast('Produto adicionado');
+      toast('Caixa adicionada à sacola');
     });
+
     wrap.appendChild(card);
   }
 }
-
 function renderCart(){
-  const items = Array.from(STATE.cart.values());
+  const items = Array.from(STATE.cart.values()).sort((a,b)=>String(a.produto).localeCompare(String(b.produto), 'pt-BR', { sensitivity:'base' }));
   $('cartCountBadge').classList.toggle('hidden', items.length === 0);
   $('cartCountBadge').textContent = items.length;
-  $('miniCartFab').classList.toggle('hidden', items.length === 0);
-  $('miniCartCount').textContent = items.length;
-  $('cartTotalItems').textContent = items.reduce((sum, x)=>sum + Number(x.qty || 0), 0);
   $('cartEmptyState').classList.toggle('hidden', items.length !== 0);
+  $('cartTotalBoxes').textContent = items.reduce((sum, item)=>sum + Number(item.boxes || 0), 0);
+  $('cartTotalPairs').textContent = items.reduce((sum, item)=>sum + Number(item.boxes || 0) * Number(item.pairsPerBox || 0), 0);
+
   const wrap = $('cartItems');
   wrap.innerHTML = '';
+
   for(const item of items){
-    const st = statusInfo(item);
+    const img = productImage(item);
     const row = document.createElement('div');
-    row.className = 'rounded-3xl border border-slate-200 bg-white p-4';
+    row.className = 'rounded-[28px] border border-slate-200 bg-white p-4';
     row.innerHTML = `
       <div class="flex gap-3">
         <div class="h-20 w-20 shrink-0 rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden flex items-center justify-center">
-          ${productImage(item) ? `<img src="${productImage(item)}" class="h-full w-full object-contain bg-white">` : `<i class="fa-solid fa-image text-slate-400"></i>`}
+          ${img ? `<img src="${img}" class="h-full w-full object-contain bg-white">` : `<i class="fa-solid fa-image text-slate-400"></i>`}
         </div>
+
         <div class="min-w-0 flex-1">
           <div class="flex items-start justify-between gap-2">
             <div>
-              <div class="font-extrabold leading-snug">${safeHtml(item.produto)}</div>
-              <div class="mt-1 text-xs text-slate-500">${safeHtml(item.codigo)} · ${safeHtml(item.cor || item.corCodigo || '—')}</div>
+              <div class="text-2xl leading-none font-extrabold">${safeHtml(item.produto)}</div>
+              <div class="mt-2 flex flex-wrap gap-2">
+                <span class="chip chip-blue"><i class="fa-solid fa-palette"></i> ${safeHtml(item.cor)}</span>
+                <span class="chip chip-gray"><i class="fa-solid fa-box"></i> ${item.boxes} caixa${item.boxes > 1 ? 's' : ''}</span>
+              </div>
             </div>
-            <button class="btnRemove focus-ring h-10 w-10 rounded-full border border-slate-200"><i class="fa-solid fa-trash"></i></button>
+            <button class="btnRemove focus-ring h-10 w-10 rounded-full border border-slate-200 bg-white text-[var(--brand)]"><i class="fa-solid fa-trash"></i></button>
           </div>
-          <div class="mt-3 flex items-center gap-2">
-            <button class="btnMinus focus-ring h-10 w-10 rounded-full border border-slate-200 bg-white"><i class="fa-solid fa-minus"></i></button>
-            <div class="min-w-[42px] text-center font-extrabold">${item.qty}</div>
-            <button class="btnPlus focus-ring h-10 w-10 rounded-full border border-slate-200 bg-white"><i class="fa-solid fa-plus"></i></button>
-            <span class="ml-auto rounded-full px-3 py-1 text-xs font-bold ${st.status === 'disponivel' ? 'bg-green-50 text-green-700' : st.status === 'reservado' ? 'bg-amber-50 text-amber-700' : 'bg-red-50 text-red-700'}">${st.label}</span>
+
+          <div class="mt-3">
+            <div class="text-sm font-extrabold text-slate-600">Grade</div>
+            <div class="mt-2 flex flex-wrap gap-2">${gradeHtml(item.grade)}</div>
+          </div>
+
+          <div class="mt-3 flex items-center justify-between gap-3">
+            <div class="text-sm font-semibold text-slate-600">${item.boxes * item.pairsPerBox} pares no total</div>
+            <div class="flex items-center gap-2">
+              <button class="btnMinus qty-btn focus-ring"><i class="fa-solid fa-minus"></i></button>
+              <div class="min-w-[28px] text-center text-lg font-extrabold">${item.boxes}</div>
+              <button class="btnPlus qty-btn focus-ring"><i class="fa-solid fa-plus"></i></button>
+            </div>
           </div>
         </div>
       </div>
     `;
-    row.querySelector('.btnRemove').addEventListener('click', ()=>{ STATE.cart.delete(item.key); renderCart(); applyFilters(); });
-    row.querySelector('.btnMinus').addEventListener('click', ()=>{
-      item.qty = Math.max(1, item.qty - 1);
-      STATE.cart.set(item.key, item);
+
+    row.querySelector('.btnRemove').addEventListener('click', ()=>{
+      STATE.cart.delete(item.key);
+      saveCartStorage();
       renderCart();
+      applyFilters();
+    });
+    row.querySelector('.btnMinus').addEventListener('click', ()=>{
+      const next = Math.max(1, Number(item.boxes || 1) - 1);
+      STATE.cart.set(item.key, { ...item, boxes: next, totalPairs: next * Number(item.pairsPerBox || 0) });
+      saveCartStorage();
+      renderCart();
+      applyFilters();
     });
     row.querySelector('.btnPlus').addEventListener('click', ()=>{
-      const st2 = statusInfo(item);
-      if(st2.disponivel !== '' && item.qty + 1 > st2.disponivel){ toast('Limite da disponibilidade atingido'); return; }
-      item.qty += 1;
-      STATE.cart.set(item.key, item);
+      const original = STATE.raw.find(x=>x.key === item.key);
+      const maxBoxes = Math.floor(Number(original?.saldoPairs || 0) / Number(original?.pairsPerBox || 1));
+      if(Number(item.boxes || 0) + 1 > maxBoxes){ toast('Limite do saldo atingido'); return; }
+      const next = Number(item.boxes || 0) + 1;
+      STATE.cart.set(item.key, { ...item, boxes: next, totalPairs: next * Number(item.pairsPerBox || 0) });
+      saveCartStorage();
       renderCart();
+      applyFilters();
     });
     wrap.appendChild(row);
   }
 }
+function renderOrders(){
+  const orders = [...STATE.orders].sort((a,b)=>new Date(b.createdAt) - new Date(a.createdAt));
+  $('ordersEmptyState').classList.toggle('hidden', orders.length !== 0);
+  const list = $('ordersList');
+  list.innerHTML = '';
 
+  for(const order of orders){
+    const card = document.createElement('div');
+    card.className = 'rounded-[28px] border border-slate-200 bg-white p-4';
+    const created = new Date(order.createdAt);
+    card.innerHTML = `
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <div class="text-lg font-extrabold">${safeHtml(order.id)}</div>
+          <div class="mt-1 text-sm text-slate-500">${created.toLocaleDateString('pt-BR')} às ${created.toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'})}</div>
+        </div>
+        <div class="text-right">
+          <div class="chip chip-gray">${order.totals.boxes} caixas</div>
+          <div class="mt-2 chip chip-blue">${order.totals.pairs} pares</div>
+        </div>
+      </div>
+      <div class="mt-4 space-y-3">
+        ${order.items.map(item=>`
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <div class="font-extrabold">${safeHtml(item.produto)}</div>
+                <div class="mt-1 text-xs text-slate-500">${safeHtml(item.codigo)} · ${safeHtml(item.cor)}</div>
+              </div>
+              <div class="text-right text-sm font-extrabold">${item.boxes} caixa${item.boxes > 1 ? 's' : ''}</div>
+            </div>
+            <div class="mt-2 flex flex-wrap gap-2">${gradeHtml(item.grade)}</div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    list.appendChild(card);
+  }
+}
 function openCart(){
   $('cartDrawerWrap').classList.remove('hidden');
   requestAnimationFrame(()=> $('cartDrawer').classList.add('open'));
@@ -729,256 +633,135 @@ function closeCart(){
   setTimeout(()=>{
     $('cartDrawerWrap').classList.add('hidden');
     document.body.style.overflow = '';
-  }, 220);
+  }, 240);
 }
-
-async function submitOrder(){
-  if(STATE.cart.size === 0){ toast('Adicione itens antes de salvar'); return; }
-  const cfg = githubConfig();
-  if(!cfg.owner || !cfg.repo || !cfg.token){ toast('Configure owner, repo e token no painel admin'); return; }
-
+function openOrders(){
+  renderOrders();
+  $('ordersDrawerWrap').classList.remove('hidden');
+  requestAnimationFrame(()=> $('ordersDrawer').classList.add('open'));
+  document.body.style.overflow = 'hidden';
+}
+function closeOrders(){
+  $('ordersDrawer').classList.remove('open');
+  setTimeout(()=>{
+    $('ordersDrawerWrap').classList.add('hidden');
+    document.body.style.overflow = '';
+  }, 240);
+}
+function saveLocalOrder(){
+  if(STATE.cart.size === 0){ toast('Adicione itens à sacola antes de salvar'); return; }
   const now = new Date();
-  const pad = (n)=>String(n).padStart(2,'0');
-  const stamp = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}_${pad(now.getHours())}-${pad(now.getMinutes())}-${pad(now.getSeconds())}`;
-  const filePath = `${cfg.ordersPath.replace(/\/$/,'')}/pedido_${stamp}.json`;
-  const payload = {
-    id: `pedido_${stamp}`,
+  const stamp = now.toLocaleDateString('pt-BR').replaceAll('/','') + '_' + now.toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'}).replace(':','');
+  const items = Array.from(STATE.cart.values()).map(item=>({
+    codigo: item.codigo,
+    produto: item.produto,
+    cor: item.cor,
+    boxes: item.boxes,
+    pairsPerBox: item.pairsPerBox,
+    grade: item.grade
+  }));
+  STATE.orders.unshift({
+    id: `PED-${stamp}`,
     createdAt: now.toISOString(),
-    requester: {
-      nome: $('orderCustomer').value.trim(),
-      cidadeUf: $('orderCity').value.trim(),
-      representante: $('orderSeller').value.trim(),
-      observacao: $('orderNotes').value.trim()
-    },
     totals: {
-      itens: STATE.cart.size,
-      pares: Array.from(STATE.cart.values()).reduce((s,x)=>s + Number(x.qty || 0), 0)
+      boxes: items.reduce((sum, item)=>sum + Number(item.boxes || 0), 0),
+      pairs: items.reduce((sum, item)=>sum + Number(item.boxes || 0) * Number(item.pairsPerBox || 0), 0)
     },
-    items: Array.from(STATE.cart.values()).map(item=>({
-      codigo: item.codigo,
-      produto: item.produto,
-      cor: item.cor,
-      corCodigo: item.corCodigo,
-      genero: item.genero,
-      segmento: item.segmento,
-      categoria: item.categoria,
-      preco: item.preco,
-      quantidade: item.qty,
-      disponibilidadeAtual: statusInfo(item).disponivel,
-      statusAtual: statusInfo(item).status
-    }))
-  };
-
-  try{
-    $('btnSubmitOrder').disabled = true;
-    $('btnSubmitOrder').textContent = 'Salvando...';
-    await ghPutJson(filePath, payload, `Novo pedido ${payload.id}`);
-    toast('Pedido salvo no GitHub');
-    STATE.cart.clear();
-    renderCart();
-    closeCart();
-    await loadOrders();
-  }catch(err){
-    console.error(err);
-    toast(`Falha ao salvar pedido: ${err.message}`, 3200);
-  }finally{
-    $('btnSubmitOrder').disabled = false;
-    $('btnSubmitOrder').textContent = 'Salvar pedido no GitHub';
-  }
-}
-
-function buildAvailabilityPayload(){
-  const payload = {};
-  for(const item of STATE.raw){
-    const key = productKey(item);
-    const current = STATE.availability[key] || {};
-    payload[key] = {
-      codigo: item.codigo,
-      produto: item.produto,
-      cor: item.cor,
-      corCodigo: item.corCodigo,
-      genero: item.genero,
-      segmento: item.segmento,
-      categoria: item.categoria,
-      disponivel: current.disponivel ?? '',
-      status: current.status || 'disponivel',
-      obs: current.obs || ''
-    };
-  }
-  return { updatedAt: new Date().toISOString(), items: payload };
-}
-
-async function saveAvailability(){
-  const cfg = githubConfig();
-  if(!cfg.owner || !cfg.repo || !cfg.token){ toast('Configure owner, repo e token antes de salvar'); return; }
-  try{
-    $('btnSaveAvailability').disabled = true;
-    $('btnSaveAvailability').textContent = 'Salvando...';
-    const payload = buildAvailabilityPayload();
-    await ghPutJson(cfg.availabilityPath, payload, 'Atualiza disponibilidade de repasse');
-    toast('disponibilidade.json salvo no GitHub');
-    await loadAvailability();
-    applyFilters();
-    renderAdminTable();
-  }catch(err){
-    console.error(err);
-    toast(`Falha ao salvar disponibilidade: ${err.message}`, 3200);
-  }finally{
-    $('btnSaveAvailability').disabled = false;
-    $('btnSaveAvailability').textContent = 'Salvar disponibilidade.json';
-  }
-}
-
-function renderAdminTable(){
-  const wrap = $('adminTableBody');
-  if(!wrap) return;
-  wrap.innerHTML = '';
-  const q = normalizeText(STATE.adminSearch);
-  const rows = STATE.raw.filter(item=>{
-    if(!q) return true;
-    const hay = normalizeText([item.codigo, item.produto, item.cor, item.genero, item.segmento].join(' '));
-    return hay.includes(q);
+    items
   });
-
-  for(const item of rows){
-    const key = productKey(item);
-    if(!STATE.availability[key]) STATE.availability[key] = { disponivel:'', status:'disponivel', obs:'' };
-    const meta = STATE.availability[key];
-    const tr = document.createElement('tr');
-    tr.className = 'border-t border-slate-200';
-    tr.innerHTML = `
-      <td class="px-3 py-3 align-top font-semibold">${safeHtml(item.codigo)}</td>
-      <td class="px-3 py-3 align-top">
-        <div class="font-bold">${safeHtml(item.produto)}</div>
-        <div class="text-xs text-slate-500">${safeHtml(item.segmento || '')}</div>
-      </td>
-      <td class="px-3 py-3 align-top">${safeHtml(item.cor || item.corCodigo || '—')}</td>
-      <td class="px-3 py-3 align-top">${safeHtml(item.genero || '—')}</td>
-      <td class="px-3 py-3 align-top"><input data-role="disp" class="focus-ring w-24 rounded-xl border border-slate-200 px-3 py-2 text-sm" value="${safeHtml(meta.disponivel ?? '')}" /></td>
-      <td class="px-3 py-3 align-top">
-        <select data-role="status" class="focus-ring rounded-xl border border-slate-200 px-3 py-2 text-sm">
-          <option value="disponivel" ${meta.status === 'disponivel' ? 'selected' : ''}>Disponível</option>
-          <option value="reservado" ${meta.status === 'reservado' ? 'selected' : ''}>Reservado</option>
-          <option value="indisponivel" ${meta.status === 'indisponivel' ? 'selected' : ''}>Indisponível</option>
-        </select>
-      </td>
-      <td class="px-3 py-3 align-top"><input data-role="obs" class="focus-ring w-full rounded-xl border border-slate-200 px-3 py-2 text-sm" value="${safeHtml(meta.obs || '')}" placeholder="Obs." /></td>
-    `;
-    tr.querySelector('[data-role="disp"]').addEventListener('input', (e)=>{
-      const value = e.target.value.trim();
-      STATE.availability[key].disponivel = value === '' ? '' : Math.max(0, Number(value) || 0);
-      applyFilters();
-    });
-    tr.querySelector('[data-role="status"]').addEventListener('change', (e)=>{
-      STATE.availability[key].status = e.target.value;
-      applyFilters();
-    });
-    tr.querySelector('[data-role="obs"]').addEventListener('input', (e)=>{
-      STATE.availability[key].obs = e.target.value;
-      applyFilters();
-    });
-    wrap.appendChild(tr);
-  }
+  saveOrdersStorage();
+  STATE.cart.clear();
+  saveCartStorage();
+  renderCart();
+  applyFilters();
+  closeCart();
+  renderOrders();
+  toast('Pedido salvo para consulta');
 }
-
-async function loadOrders(){
-  const wrap = $('ordersList');
-  if(!wrap) return;
-  wrap.innerHTML = '<div class="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-500">Carregando pedidos…</div>';
+async function loadCatalog(){
   try{
-    const cfg = githubConfig();
-    if(!cfg.owner || !cfg.repo){ wrap.innerHTML = '<div class="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-500">Configure owner e repositório para listar pedidos.</div>'; return; }
-    const files = await ghListDir(cfg.ordersPath);
-    const jsonFiles = (Array.isArray(files) ? files : []).filter(f => f.type === 'file' && /\.json$/i.test(f.name)).sort((a,b)=>b.name.localeCompare(a.name));
-    if(!jsonFiles.length){ wrap.innerHTML = '<div class="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-500">Nenhum pedido JSON encontrado.</div>'; return; }
+    setHeader('Lendo planilhas…');
+    $('brandLogo').src = DEFAULTS.logoPath;
 
-    wrap.innerHTML = '';
-    for(const file of jsonFiles.slice(0, 20)){
-      const card = document.createElement('div');
-      card.className = 'rounded-2xl border border-slate-200 bg-white p-4';
-      card.innerHTML = `
-        <div class="flex items-start justify-between gap-3">
-          <div>
-            <div class="font-extrabold">${safeHtml(file.name)}</div>
-            <div class="mt-1 text-xs text-slate-500">${safeHtml(file.path)}</div>
-          </div>
-          <button class="btnRead focus-ring rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-extrabold">Abrir JSON</button>
-        </div>
-        <div class="jsonPreview mt-3 hidden rounded-2xl border border-slate-200 bg-slate-50 p-3 text-xs whitespace-pre-wrap"></div>
-      `;
-      card.querySelector('.btnRead').addEventListener('click', async ()=>{
-        const preview = card.querySelector('.jsonPreview');
-        if(!preview.classList.contains('hidden')){ preview.classList.add('hidden'); return; }
-        const content = await ghGetContent(file.path);
-        const json = content?.content ? JSON.parse(decodeURIComponent(escape(atob(content.content.replace(/\n/g,''))))) : null;
-        preview.textContent = json ? JSON.stringify(json, null, 2) : 'Sem conteúdo';
-        preview.classList.remove('hidden');
-      });
-      wrap.appendChild(card);
-    }
+    const [prodRes, dispoRes] = await Promise.all([
+      fetch(`${DEFAULTS.produtosPath}?v=${Date.now()}`, { cache:'no-store' }),
+      fetch(`${DEFAULTS.dispoPath}?v=${Date.now()}`, { cache:'no-store' })
+    ]);
+    if(!prodRes.ok) throw new Error(`Produtos.xlsx não encontrado (${prodRes.status})`);
+    if(!dispoRes.ok) throw new Error(`DISPO.xlsx não encontrado (${dispoRes.status})`);
+
+    const [prodBuff, dispoBuff] = await Promise.all([prodRes.arrayBuffer(), dispoRes.arrayBuffer()]);
+    const prodWb = XLSX.read(prodBuff, { type:'array' });
+    const dispoWb = XLSX.read(dispoBuff, { type:'array' });
+
+    const prodRows = XLSX.utils.sheet_to_json(prodWb.Sheets[prodWb.SheetNames[0]], { defval:'' });
+    const dispoSheetName = dispoWb.SheetNames.find(n=>normalizeText(n)==='dispo') || dispoWb.SheetNames[0];
+    const dispoRows = XLSX.utils.sheet_to_json(dispoWb.Sheets[dispoSheetName], { defval:'' });
+
+    STATE.raw = mergeData(prodRows, dispoRows).map(item=>({ ...item, key: productKey(item) }));
+    buildFilters();
+    renderCart();
+    applyFilters();
+
+    $('loadingBlock').classList.add('hidden');
+    $('catalogWrap').classList.remove('hidden');
+    setHeader(`${STATE.raw.length} itens com dispo carregados`);
   }catch(err){
     console.error(err);
-    wrap.innerHTML = `<div class="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">Falha ao listar pedidos: ${safeHtml(err.message)}</div>`;
+    setHeader('Falha ao carregar');
+    $('loadingBlock').innerHTML = `
+      <div class="mx-auto h-14 w-14 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center text-2xl"><i class="fa-solid fa-triangle-exclamation"></i></div>
+      <div class="mt-4 text-xl font-extrabold">Não foi possível carregar a vitrine</div>
+      <div class="mt-1 text-slate-500">Confira a estrutura do projeto. Detalhe: ${safeHtml(err.message)}</div>
+    `;
   }
 }
-
 function bindEvents(){
   $('btnOpenCart').addEventListener('click', openCart);
-  $('miniCartFab').addEventListener('click', openCart);
-  $('cartDrawerWrap').addEventListener('click', (e)=>{ if(e.target.closest('[data-close-cart="true"]')) closeCart(); });
-  $('btnClearCart').addEventListener('click', ()=>{ STATE.cart.clear(); renderCart(); applyFilters(); });
-  $('btnSubmitOrder').addEventListener('click', submitOrder);
+  $('btnOrders').addEventListener('click', openOrders);
+  $('btnSaveOrderLocal').addEventListener('click', saveLocalOrder);
+  $('btnClearCart').addEventListener('click', ()=>{
+    if(STATE.cart.size === 0) return;
+    STATE.cart.clear();
+    saveCartStorage();
+    renderCart();
+    applyFilters();
+    toast('Sacola limpa');
+  });
 
-  $('btnSearchMobile').addEventListener('click', ()=> $('mobileSearchWrap').classList.remove('hidden'));
-  $('btnCloseMobileSearch').addEventListener('click', ()=> $('mobileSearchWrap').classList.add('hidden'));
-  $('searchInput').addEventListener('input', (e)=>{ STATE.search = e.target.value; applyFilters(); });
-  $('searchInputMobile').addEventListener('input', (e)=>{ STATE.search = e.target.value; $('searchInput').value = e.target.value; applyFilters(); });
+  $('searchInput').addEventListener('input', e=>{ STATE.search = e.target.value; applyFilters(); });
+  $('filterCategoria').addEventListener('change', e=>{ STATE.filters.categoria = e.target.value; applyFilters(); });
+  $('filterSegmento').addEventListener('change', e=>{ STATE.filters.segmento = e.target.value; applyFilters(); });
+  $('filterGenero').addEventListener('change', e=>{ STATE.filters.genero = e.target.value; applyFilters(); });
+  $('sortBy').addEventListener('change', e=>{ STATE.filters.sort = e.target.value; applyFilters(); });
 
-  $('filterCategoria').addEventListener('change', (e)=>{ STATE.filters.categoria = e.target.value; applyFilters(); });
-  $('filterSegmento').addEventListener('change', (e)=>{ STATE.filters.segmento = e.target.value; applyFilters(); });
-  $('filterGenero').addEventListener('change', (e)=>{ STATE.filters.genero = e.target.value; applyFilters(); });
-  $('filterStatus').addEventListener('change', (e)=>{ STATE.filters.status = e.target.value; applyFilters(); });
-  $('sortBy').addEventListener('change', (e)=>{ STATE.filters.sort = e.target.value; applyFilters(); });
   $('btnClearFilters').addEventListener('click', ()=>{
     STATE.search = '';
-    STATE.filters = { categoria:'', segmento:'', genero:'', status:'', sort:'produto' };
+    STATE.filters = { categoria:'', segmento:'', genero:'', sort:'produto' };
     $('searchInput').value = '';
-    $('searchInputMobile').value = '';
     $('filterCategoria').value = '';
     $('filterSegmento').value = '';
     $('filterGenero').value = '';
-    $('filterStatus').value = '';
     $('sortBy').value = 'produto';
     applyFilters();
   });
 
-  if(PAGE_MODE.admin){
-    $('btnToggleAdmin').classList.remove('hidden');
-    $('adminSection').classList.remove('hidden');
-    $('btnToggleAdmin').addEventListener('click', ()=> $('adminSection').scrollIntoView({ behavior:'smooth', block:'start' }));
-    fillGithubForm();
-    $('btnSaveGithubConfig').addEventListener('click', saveGithubConfig);
-    $('btnTestGithub').addEventListener('click', async ()=>{
-      try{
-        saveGithubConfig();
-        await ghFetch('');
-        toast('Acesso ao repositório validado');
-      }catch(err){
-        toast(`Falha no acesso: ${err.message}`, 3200);
-      }
-    });
-    $('btnSaveAvailability').addEventListener('click', saveAvailability);
-    $('adminSearch').addEventListener('input', (e)=>{ STATE.adminSearch = e.target.value; renderAdminTable(); });
-    $('btnReloadOrders').addEventListener('click', loadOrders);
-  }
-}
+  $('btnToggleFilters').addEventListener('click', ()=>{
+    if(window.innerWidth <= 1023){
+      document.body.classList.toggle('filters-open');
+    }else{
+      document.body.classList.toggle('filters-collapsed');
+    }
+  });
+  $('btnCloseFilters').addEventListener('click', ()=>document.body.classList.remove('filters-open'));
 
-bindEvents();
-renderCart();
-if(PAGE_MODE.admin){
-  $('appTitle').textContent = 'Disponibilidade de Repasse · Admin';
+  $('cartDrawerWrap').addEventListener('click', (e)=>{ if(e.target.closest('[data-close-cart="true"]')) closeCart(); });
+  $('ordersDrawerWrap').addEventListener('click', (e)=>{ if(e.target.closest('[data-close-orders="true"]')) closeOrders(); });
 }
-loadCatalog().then(()=>{ if(PAGE_MODE.admin) loadOrders(); });
+loadLocalState();
+bindEvents();
+renderOrders();
+loadCatalog();
 </script>
 </body>
 </html>
