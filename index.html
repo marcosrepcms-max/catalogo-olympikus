@@ -42,6 +42,17 @@
     .filters-collapsed #filtersPanel{display:none}
     .filters-collapsed #catalogShell{grid-template-columns:minmax(0,1fr)}
     #catalogShell{display:grid;grid-template-columns:290px minmax(0,1fr);gap:16px}
+
+    .view-list #cardsWrap{display:flex;flex-direction:column;gap:12px}
+    .product-list-row{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:24px;background:#fff;padding:12px 14px;box-shadow:var(--shadow-soft)}
+    .product-list-thumb{height:56px;width:56px;overflow:hidden;border-radius:16px;border:1px solid var(--line);background:#f8fafc;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .product-list-meta{min-width:0;flex:1}
+    .product-list-actions{display:flex;align-items:center;gap:8px}
+    .icon-btn{height:40px;width:40px;border-radius:999px;border:1px solid var(--line);background:#fff}
+    .mini-badge{display:inline-flex;align-items:center;gap:.35rem;border-radius:999px;padding:.32rem .65rem;font-size:11px;font-weight:800}
+    .mini-badge-blue{background:var(--brand-soft);color:var(--brand)}
+    .mini-badge-gray{background:#eef2f7;color:#334155}
+
     @media (max-width: 1023px){
       #catalogShell{grid-template-columns:minmax(0,1fr)}
       #filtersPanel{display:none}
@@ -56,22 +67,36 @@
 
   <header class="sticky top-0 z-40 border-b border-slate-200 glass">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 py-4">
-      <div class="flex items-center justify-between gap-3">
+      <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
         <div class="flex min-w-0 items-center gap-3">
           <div class="h-11 w-11 overflow-hidden rounded-2xl border border-slate-200 bg-white flex items-center justify-center">
             <img id="brandLogo" alt="Logo" class="h-full w-full object-contain" />
           </div>
           <div class="min-w-0">
-            <div class="truncate text-lg sm:text-xl font-extrabold">Repasse com disponibilidade</div>
-            <div id="headerStatus" class="text-xs text-slate-500">Carregando produtos…</div>
+            <div class="truncate text-lg sm:text-xl font-extrabold">Repasse Olympikus</div>
           </div>
         </div>
 
-        <div class="flex items-center gap-2">
+        <div class="flex flex-wrap items-center gap-2">
           <button id="btnToggleFilters" class="focus-ring inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700">
             <i class="fa-solid fa-sliders"></i>
             <span class="hidden sm:inline">Filtros</span>
           </button>
+
+          <div class="flex min-w-[220px] flex-1 items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 lg:max-w-md">
+            <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+            <input id="searchInput" class="focus-ring w-full bg-transparent text-sm outline-none placeholder:text-slate-400" placeholder="Buscar produto, código ou cor" />
+          </div>
+
+          <div class="inline-flex items-center rounded-full border border-slate-200 bg-white p-1">
+            <button id="btnViewCards" class="focus-ring rounded-full px-3 py-2 text-sm font-bold text-slate-700 bg-slate-100">
+              <i class="fa-solid fa-grip"></i>
+            </button>
+            <button id="btnViewList" class="focus-ring rounded-full px-3 py-2 text-sm font-bold text-slate-500">
+              <i class="fa-solid fa-list"></i>
+            </button>
+          </div>
+
           <button id="btnOrders" class="focus-ring inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700">
             <i class="fa-regular fa-rectangle-list"></i>
             <span class="hidden sm:inline">Meus pedidos</span>
@@ -107,13 +132,6 @@
           </div>
 
           <div class="mt-4 space-y-3">
-            <div class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
-              <label class="text-xs font-bold text-slate-500">Buscar produto, código ou cor</label>
-              <div class="mt-2 flex items-center gap-2">
-                <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
-                <input id="searchInput" class="focus-ring w-full bg-transparent text-sm outline-none placeholder:text-slate-400" placeholder="Ex.: passo, CHB/PT, 43242437" />
-              </div>
-            </div>
             <div>
               <label class="text-xs font-bold text-slate-500">Categoria</label>
               <select id="filterCategoria" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold"></select>
@@ -140,14 +158,10 @@
         </aside>
 
         <section>
-          <div class="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-[28px] border border-slate-200 bg-white px-4 py-4 shadow-soft">
-            <div>
-              <div class="text-xs font-bold text-slate-500">Disponibilidade carregada</div>
-              <div class="text-lg font-extrabold"><span id="visibleCount">0</span> itens na vitrine</div>
-            </div>
-            <div class="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-bold">
-              <span class="chip chip-gray"><i class="fa-solid fa-boxes-stacked"></i> <span id="kpiPacks">0</span> packs</span>
-              <span class="chip chip-blue"><i class="fa-solid fa-cubes-stacked"></i> <span id="kpiUnits">0</span> itens livres</span>
+          <div class="mb-4 flex flex-wrap items-center justify-between gap-3 px-1">
+            <div class="text-sm font-bold text-slate-500"><span id="visibleCount">0</span> produtos encontrados</div>
+            <div class="hidden sm:flex items-center gap-2 text-xs font-bold text-slate-500">
+              <span id="headerStatus">Carregando produtos…</span>
             </div>
           </div>
 
@@ -240,7 +254,8 @@ const DEFAULTS = {
 };
 const STORAGE_KEYS = {
   cart: 'repasse_cart_v3',
-  orders: 'repasse_orders_v3'
+  orders: 'repasse_orders_v3',
+  viewMode: 'repasse_view_mode_v1'
 };
 const CATEGORY_LABELS = { FTW:'Tênis', ACC:'Acessórios', CHI:'Chinelos', MEIA:'Meias', 'V&A':'Vestuário' };
 const FOOTWEAR_COLUMNS = ['28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','33/34','35/36','37/38','39/40','41/42','43/44','45/46','33/38','39/44'];
@@ -253,7 +268,8 @@ const STATE = {
   search: '',
   filters: { categoria:'', segmento:'', genero:'', sort:'produto' },
   cart: new Map(),
-  orders: []
+  orders: [],
+  viewMode: localStorage.getItem(STORAGE_KEYS.viewMode) || 'cards'
 };
 
 const $ = (id)=>document.getElementById(id);
@@ -276,7 +292,7 @@ function toNumber(v){
   if(Number.isFinite(n)) return n;
   return Number(String(v||'').replace(/\./g,'').replace(',', '.').replace(/[^\d.-]/g,'')) || 0;
 }
-function setHeader(msg){ $('headerStatus').textContent = msg; }
+function setHeader(msg){ const el = $('headerStatus'); if(el) el.textContent = msg; }
 function productKey(item){ return normalizeText([item.codigo, item.cor, item.gci, item.ebm, item._row].join('||')); }
 function productImage(item){
   const raw = String(item.imagem || '').trim();
@@ -327,6 +343,7 @@ function loadLocalState(){
   const savedCart = readJsonSafe(STORAGE_KEYS.cart, []);
   STATE.cart = new Map(savedCart.map(item => [item.key, item]));
   STATE.orders = readJsonSafe(STORAGE_KEYS.orders, []);
+  updateViewModeButtons();
 }
 function gradeEntriesFromRow(row){
   return DISPO_COLUMNS.map(col=>{
@@ -364,7 +381,7 @@ function mergeData(prodRows, dispoRows){
     const mode = inferMode(grade, categoria, produto);
     const gradeTotal = sumGrade(grade);
     const saldoRaw = toNumber(r['SALDO'] ?? 0);
-    const availableUnits = Math.max(saldoRaw, gradeTotal);
+    const availableUnits = saldoRaw > 0 ? saldoRaw : gradeTotal;
     const packSize = mode === 'boxed' ? (gradeTotal === 6 ? 6 : 12) : 1;
     const groupedSizes = mode === 'boxed' ? grade : grade;
     return {
@@ -435,8 +452,22 @@ function applyFilters(){
 }
 function renderKpis(){
   $('visibleCount').textContent = STATE.view.length;
-  $('kpiPacks').textContent = STATE.view.reduce((sum, item)=>sum + remainingPacks(item), 0);
-  $('kpiUnits').textContent = STATE.view.reduce((sum, item)=>sum + remainingUnits(item), 0);
+}
+function updateViewModeButtons(){
+  const isCards = STATE.viewMode === 'cards';
+  $('btnViewCards').classList.toggle('bg-slate-100', isCards);
+  $('btnViewCards').classList.toggle('text-slate-700', isCards);
+  $('btnViewCards').classList.toggle('text-slate-500', !isCards);
+  $('btnViewList').classList.toggle('bg-slate-100', !isCards);
+  $('btnViewList').classList.toggle('text-slate-700', !isCards);
+  $('btnViewList').classList.toggle('text-slate-500', isCards);
+  document.body.classList.toggle('view-list', STATE.viewMode === 'list');
+}
+function setViewMode(mode){
+  STATE.viewMode = mode;
+  localStorage.setItem(STORAGE_KEYS.viewMode, mode);
+  updateViewModeButtons();
+  renderCatalog();
 }
 function gradeHtml(grade){
   return grade.map(g=>`
@@ -469,13 +500,61 @@ function renderCatalog(){
   const wrap = $('cardsWrap');
   wrap.innerHTML = '';
   $('emptyState').classList.toggle('hidden', STATE.view.length !== 0);
+  wrap.className = STATE.viewMode === 'list'
+    ? 'flex flex-col gap-3'
+    : 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4';
 
   for(const item of STATE.view){
     const key = item.key;
     const img = productImage(item);
     const freeAmount = item.mode === 'boxed' ? remainingPacks(item) : remainingUnits(item);
 
+    if(STATE.viewMode === 'list'){
+      const row = document.createElement('article');
+      row.className = 'product-list-row';
+      row.innerHTML = `
+        <div class="product-list-thumb">
+          ${img ? `<img src="${img}" alt="${safeHtml(item.produto)}" class="h-full w-full object-contain bg-white">` : `<i class="fa-solid fa-image text-slate-400"></i>`}
+        </div>
+        <div class="product-list-meta">
+          <div class="text-xl leading-tight font-extrabold">${safeHtml(item.produto)}</div>
+          <div class="mt-1 text-sm text-slate-500">${safeHtml(item.cor)}</div>
+          <div class="mt-1 text-base font-extrabold text-[var(--brand)]">${item.mode === 'boxed' ? `${remainingUnits(item)} pares` : `${remainingUnits(item)} disponíveis`}</div>
+        </div>
+        <div class="product-list-actions">
+          <button class="btnQuickAdd focus-ring icon-btn text-[var(--brand)]" ${freeAmount <= 0 ? 'disabled' : ''} title="Adicionar">
+            <i class="fa-solid fa-cart-plus"></i>
+          </button>
+          <button class="btnExpand focus-ring icon-btn text-slate-500" title="Ver detalhes">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      `;
+      row.querySelector('.btnQuickAdd').addEventListener('click', ()=>{
+        if(freeAmount <= 0){ toast('Sem saldo disponível'); return; }
+        const existing = STATE.cart.get(key);
+        const nextAmount = Number(existing?.amount || 0) + 1;
+        const reservedUnits = item.mode === 'boxed' ? nextAmount * item.packSize : nextAmount;
+        if(reservedUnits > item.availableUnits){ toast('Saldo excedido'); return; }
+        STATE.cart.set(key, { ...item, key, amount: nextAmount, totalUnits: reservedUnits });
+        saveCartStorage();
+        renderCart();
+        applyFilters();
+        toast(item.mode === 'boxed' ? `1 caixa adicionada` : `1 unidade adicionada`);
+      });
+      row.querySelector('.btnExpand').addEventListener('click', ()=>{
+        setViewMode('cards');
+        requestAnimationFrame(()=>{
+          const target = [...$('cardsWrap').children].find(el => el.dataset.key === key);
+          target?.scrollIntoView({behavior:'smooth', block:'center'});
+        });
+      });
+      wrap.appendChild(row);
+      continue;
+    }
+
     const card = document.createElement('article');
+    card.dataset.key = key;
     card.className = 'rounded-[28px] border border-slate-200 bg-white shadow-soft overflow-hidden';
     card.innerHTML = `
       <div class="aspect-[4/3] bg-slate-50 border-b border-slate-200 flex items-center justify-center overflow-hidden">
@@ -513,9 +592,7 @@ function renderCatalog(){
         </div>
 
         <button class="btnAdd focus-ring mt-4 w-full rounded-2xl bg-[var(--brand)] px-4 py-3 text-sm font-extrabold text-white ${freeAmount <= 0 ? 'opacity-50 cursor-not-allowed' : ''}" ${freeAmount <= 0 ? 'disabled' : ''}>
-          ${item.mode === 'boxed'
-            ? `Adicionar ${item.packSize} pares à sacola`
-            : 'Adicionar à sacola'}
+          ${item.mode === 'boxed' ? `Adicionar ${item.packSize} pares à sacola` : 'Adicionar à sacola'}
         </button>
       </div>
     `;
@@ -780,6 +857,8 @@ function bindEvents(){
   $('btnOpenCart').addEventListener('click', openCart);
   $('btnOrders').addEventListener('click', openOrders);
   $('btnSaveOrderLocal').addEventListener('click', saveLocalOrder);
+  $('btnViewCards').addEventListener('click', ()=>setViewMode('cards'));
+  $('btnViewList').addEventListener('click', ()=>setViewMode('list'));
   $('btnClearCart').addEventListener('click', ()=>{
     if(STATE.cart.size === 0) return;
     STATE.cart.clear();
