@@ -1,1 +1,59 @@
-[]
+[
+  {
+    "id": "PED-20260331164947-341",
+    "createdAt": "2026-03-31T19:49:47.506Z",
+    "updatedAt": "2026-03-31T19:49:25.948Z",
+    "status": "Pendente",
+    "archived": false,
+    "preposto": {
+      "codigo": "3616654",
+      "nome": "MARCOS"
+    },
+    "clienteCodigo": "18529",
+    "prazo": "Z31 - 35/63/91 D",
+    "campanha": "CO689 +56DD OLY",
+    "observacoes": "CD Talentus",
+    "totals": {
+      "packs": 2,
+      "units": 24
+    },
+    "items": [
+      {
+        "codigo": "54111405",
+        "produto": "POS CORRE",
+        "cor": "ARENIT",
+        "amount": 2,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 24,
+        "grade": [
+          {
+            "size": "33/34",
+            "qty": 1
+          },
+          {
+            "size": "35/36",
+            "qty": 2
+          },
+          {
+            "size": "37/38",
+            "qty": 3
+          },
+          {
+            "size": "39/40",
+            "qty": 3
+          },
+          {
+            "size": "41/42",
+            "qty": 2
+          },
+          {
+            "size": "43/44",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": 46172
+      }
+    ]
+  }
+]
