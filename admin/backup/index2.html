@@ -1,0 +1,1184 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Admin • Repasse Olympikus</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --text:#0f172a;
+      --line:#e2e8f0;
+      --brand:#2836d4;
+      --brand-soft:rgba(40,54,212,.10);
+      --shadow:0 18px 42px rgba(15,23,42,.08);
+      --success:#15803d;
+      --success-soft:#dcfce7;
+      --warning:#b45309;
+      --warning-soft:#fef3c7;
+      --info:#1d4ed8;
+      --info-soft:#dbeafe;
+      --danger:#b91c1c;
+      --danger-soft:#fee2e2;
+      --muted:#475569;
+      --muted-soft:#e2e8f0;
+      --partial:#c2410c;
+      --partial-soft:#ffedd5;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      border-radius:999px;
+      padding:.42rem .78rem;
+      font-size:12px;
+      font-weight:800;
+      border:1px solid transparent;
+      white-space:nowrap;
+    }
+
+    .chip-blue{ background:var(--brand-soft); color:var(--brand); }
+    .chip-gray{ background:#eef2f7; color:#334155; }
+    .chip-status-pendente{ background:var(--warning-soft); color:var(--warning); border-color:#fde68a; }
+    .chip-status-analise{ background:var(--info-soft); color:var(--info); border-color:#bfdbfe; }
+    .chip-status-aprovado{ background:var(--success-soft); color:var(--success); border-color:#bbf7d0; }
+    .chip-status-rejeitado{ background:var(--danger-soft); color:var(--danger); border-color:#fecaca; }
+    .chip-status-parcial{ background:var(--partial-soft); color:var(--partial); border-color:#fed7aa; }
+    .chip-status-finalizado{ background:var(--muted-soft); color:var(--muted); border-color:#cbd5e1; }
+
+    .shadow-card{ box-shadow:var(--shadow); }
+
+    .focus-ring:focus-visible{
+      outline:none;
+      box-shadow:0 0 0 4px rgba(40,54,212,.15);
+    }
+
+    .grade-pill{
+      min-width:34px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      padding:4px 5px;
+      background:#fff;
+      text-align:center;
+    }
+
+    .grade-size{
+      display:block;
+      font-size:10px;
+      line-height:1;
+      color:#64748b;
+      font-weight:700;
+    }
+
+    .grade-qty{
+      display:block;
+      font-size:11px;
+      line-height:1.15;
+      color:var(--brand);
+      font-weight:800;
+      margin-top:3px;
+    }
+
+    .status-dot{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      display:inline-block;
+      flex:0 0 auto;
+    }
+
+    .dot-pendente{ background:#d97706; }
+    .dot-analise{ background:#2563eb; }
+    .dot-aprovado{ background:#16a34a; }
+    .dot-rejeitado{ background:#dc2626; }
+    .dot-parcial{ background:#ea580c; }
+    .dot-finalizado{ background:#64748b; }
+
+    .soft-panel{
+      border:1px solid var(--line);
+      background:#f8fafc;
+      border-radius:24px;
+    }
+
+    .table-scroll{
+      overflow:auto;
+      border-radius:20px;
+      border:1px solid var(--line);
+      background:white;
+    }
+
+    .table-scroll table{
+      width:100%;
+      min-width:980px;
+      border-collapse:separate;
+      border-spacing:0;
+    }
+
+    .table-scroll thead th{
+      position:sticky;
+      top:0;
+      z-index:1;
+      background:#f8fafc;
+      color:#475569;
+      font-size:12px;
+      font-weight:800;
+      text-align:left;
+      padding:12px 14px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .table-scroll tbody td{
+      padding:12px 14px;
+      font-size:13px;
+      border-bottom:1px solid #edf2f7;
+      vertical-align:top;
+    }
+
+    .table-scroll tbody tr:hover{
+      background:#f8fafc;
+    }
+
+    .kpi-card{
+      border:1px solid var(--line);
+      background:white;
+      border-radius:22px;
+      padding:16px;
+    }
+
+    .toast-wrap{
+      position:fixed;
+      top:18px;
+      right:18px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      z-index:9999;
+      pointer-events:none;
+    }
+
+    .toast{
+      pointer-events:auto;
+      min-width:260px;
+      max-width:360px;
+      border-radius:18px;
+      padding:14px 16px;
+      box-shadow:0 18px 42px rgba(15,23,42,.14);
+      font-size:13px;
+      font-weight:700;
+      border:1px solid transparent;
+    }
+
+    .toast-info{ background:#eff6ff; color:#1d4ed8; border-color:#bfdbfe; }
+    .toast-success{ background:#f0fdf4; color:#166534; border-color:#bbf7d0; }
+    .toast-error{ background:#fef2f2; color:#b91c1c; border-color:#fecaca; }
+    .toast-warning{ background:#fffbeb; color:#b45309; border-color:#fde68a; }
+
+    .btn-danger{
+      background:#fff1f2;
+      color:#be123c;
+      border-color:#fecdd3;
+    }
+
+    .btn-danger:hover{
+      background:#ffe4e6;
+    }
+
+    .saldo-ok{ color:#166534; font-weight:800; }
+    .saldo-warning{ color:#c2410c; font-weight:800; }
+    .saldo-danger{ color:#b91c1c; font-weight:800; }
+
+    .loading-shimmer{
+      position:relative;
+      overflow:hidden;
+    }
+
+    .loading-shimmer::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      transform:translateX(-100%);
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.45), transparent);
+      animation:shimmer 1.2s infinite;
+    }
+
+    @keyframes shimmer {
+      100% { transform:translateX(100%); }
+    }
+  </style>
+</head>
+<body>
+  <div id="toastWrap" class="toast-wrap"></div>
+
+  <main class="min-h-screen p-4 sm:p-6">
+    <section id="loginScreen" class="mx-auto max-w-md pt-16 sm:pt-24">
+      <div class="rounded-[32px] border border-slate-200 bg-white p-6 sm:p-8 shadow-card">
+        <div class="mx-auto h-14 w-14 rounded-2xl bg-[var(--brand-soft)] text-[var(--brand)] flex items-center justify-center text-2xl">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+
+        <h1 class="mt-5 text-2xl font-extrabold">Painel Administrativo</h1>
+        <p class="mt-2 text-sm text-slate-500">Entre com a senha para visualizar pedidos enviados pelos vendedores.</p>
+
+        <div class="mt-5">
+          <label class="text-xs font-bold text-slate-500">Senha</label>
+          <input id="adminPassword" type="password" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm font-semibold" placeholder="Digite a senha" />
+        </div>
+
+        <button id="btnAdminLogin" class="focus-ring mt-5 w-full rounded-2xl bg-[var(--brand)] px-4 py-3 text-sm font-extrabold text-white">Entrar</button>
+        <div class="mt-3 text-xs text-slate-400">Acesso interno. Troque a senha no arquivo quando necessário.</div>
+      </div>
+    </section>
+
+    <section id="adminApp" class="hidden mx-auto max-w-7xl">
+      <header class="rounded-[32px] border border-slate-200 bg-white p-4 sm:p-5 shadow-card">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+          <div>
+            <div class="text-xs font-bold text-slate-500">Gestão</div>
+            <div class="text-2xl sm:text-3xl font-extrabold">Pedidos de repasse</div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <div class="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 min-w-[220px]">
+              <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+              <input id="adminSearch" class="focus-ring w-full bg-transparent text-sm outline-none" placeholder="Buscar pedido, cliente ou preposto" />
+            </div>
+
+            <select id="adminStatusFilter" class="focus-ring rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold">
+              <option value="">Todos os status</option>
+              <option value="Pendente">Pendente</option>
+              <option value="Em análise">Em análise</option>
+              <option value="Aprovado">Aprovado</option>
+              <option value="Rejeitado">Rejeitado</option>
+              <option value="Atendido parcialmente">Atendido parcialmente</option>
+              <option value="Finalizado">Finalizado</option>
+              <option value="Faturado">Faturado</option>
+              <option value="Cancelado">Cancelado</option>
+            </select>
+
+            <button id="btnRefresh" class="focus-ring rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700">
+              Atualizar
+            </button>
+
+            <button id="btnLogout" class="focus-ring rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700">
+              Sair
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <section class="mt-4">
+        <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex flex-wrap items-center gap-2">
+            <div class="inline-flex rounded-full border border-slate-200 bg-white p-1">
+              <button id="btnScopeActive" class="focus-ring rounded-full px-3 py-2 text-sm font-bold text-slate-700">Ativos</button>
+              <button id="btnScopeHistory" class="focus-ring rounded-full px-3 py-2 text-sm font-bold text-slate-700">Histórico</button>
+              <button id="btnScopeAll" class="focus-ring rounded-full px-3 py-2 text-sm font-bold text-slate-700">Todos</button>
+            </div>
+            <div class="text-xs font-bold text-slate-400">Exclusão física liberada apenas para testes</div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 text-xs font-bold">
+            <span class="chip chip-status-pendente"><span class="status-dot dot-pendente"></span>Pendente</span>
+            <span class="chip chip-status-analise"><span class="status-dot dot-analise"></span>Em análise</span>
+            <span class="chip chip-status-aprovado"><span class="status-dot dot-aprovado"></span>Aprovado</span>
+            <span class="chip chip-status-rejeitado"><span class="status-dot dot-rejeitado"></span>Rejeitado</span>
+            <span class="chip chip-status-parcial"><span class="status-dot dot-parcial"></span>Atendido parcialmente</span>
+            <span class="chip chip-status-finalizado"><span class="status-dot dot-finalizado"></span>Finalizado</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-4 grid grid-cols-1 xl:grid-cols-[420px_minmax(0,1fr)] gap-4">
+        <div class="rounded-[28px] border border-slate-200 bg-white p-4 shadow-card">
+          <div class="flex items-center justify-between gap-3">
+            <div class="text-lg font-extrabold">Lista de pedidos</div>
+            <div class="text-xs font-bold text-slate-400" id="ordersCountBadge">0 pedidos</div>
+          </div>
+
+          <div id="ordersEmpty" class="hidden mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center text-slate-500">
+            Nenhum pedido encontrado.
+          </div>
+
+          <div id="adminOrdersList" class="mt-4 space-y-3"></div>
+        </div>
+
+        <div class="rounded-[28px] border border-slate-200 bg-white p-4 shadow-card">
+          <div id="detailEmpty" class="rounded-2xl border border-slate-200 bg-slate-50 p-10 text-center text-slate-500">
+            Selecione um pedido para visualizar os detalhes.
+          </div>
+          <div id="adminOrderDetail" class="hidden"></div>
+        </div>
+      </section>
+
+      <section class="mt-4 rounded-[28px] border border-slate-200 bg-white p-4 shadow-card">
+        <div class="flex flex-col gap-4">
+          <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div>
+              <div class="text-lg font-extrabold">Painel DISPO</div>
+              <div class="mt-1 text-sm text-slate-500">Saldo atual, impacto dos pedidos e saldo projetado.</div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-2 sm:items-center">
+              <div class="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 min-w-[260px]">
+                <i class="fa-solid fa-boxes-stacked text-slate-400"></i>
+                <input id="dispoSearch" class="focus-ring w-full bg-transparent text-sm outline-none" placeholder="Buscar código, produto ou cor" />
+              </div>
+
+              <button id="btnRefreshDispo" class="focus-ring rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700">
+                Atualizar DISPO
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-3">
+            <div class="kpi-card">
+              <div class="text-xs font-bold text-slate-500">Linhas na DISPO</div>
+              <div id="kpiDispoLinhas" class="mt-2 text-2xl font-extrabold">0</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="text-xs font-bold text-slate-500">Itens com pedidos em aberto</div>
+              <div id="kpiDispoComPedido" class="mt-2 text-2xl font-extrabold">0</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="text-xs font-bold text-slate-500">Itens com saldo projetado crítico</div>
+              <div id="kpiDispoCriticos" class="mt-2 text-2xl font-extrabold">0</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="text-xs font-bold text-slate-500">Última leitura</div>
+              <div id="kpiDispoAtualizado" class="mt-2 text-sm font-extrabold text-slate-700">—</div>
+            </div>
+          </div>
+
+          <div id="dispoPanelEmpty" class="hidden rounded-[24px] border border-slate-200 bg-slate-50 p-6 text-center text-slate-500">
+            Não foi possível carregar a DISPO. Verifique se o arquivo <strong>DISPO.xlsx</strong> está na raiz do projeto.
+          </div>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Produto</th>
+                  <th>Cor</th>
+                  <th>Data entrega</th>
+                  <th>Saldo DISPO</th>
+                  <th>Pedidos em aberto</th>
+                  <th>Saldo projetado</th>
+                  <th>Situação</th>
+                </tr>
+              </thead>
+              <tbody id="dispoTableBody">
+                <tr>
+                  <td colspan="8" class="text-center text-slate-500">Carregando DISPO...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+<script>
+const WORKER_URL = 'https://repasse-worker-cms.marcosrep-cms.workers.dev';
+const DISPO_FILE_URL = '../DISPO.xlsx';
+const STORAGE_KEYS = {
+  adminAuth:'repasse_admin_auth_v1',
+  adminScope:'repasse_admin_scope_v1'
+};
+const ADMIN_PASSWORD = 'cmsrepasse';
+const STATUS_OPTIONS = ['Pendente','Em análise','Aprovado','Rejeitado','Atendido parcialmente','Finalizado','Faturado','Cancelado'];
+
+const STATE = {
+  orders: [],
+  filtered: [],
+  selectedId: null,
+  dispoRows: [],
+  dispoFiltered: [],
+  dispoLoadedAt: null
+};
+
+const $ = (id)=>document.getElementById(id);
+
+function safeHtml(v){
+  return String(v ?? '')
+    .replaceAll('&','&amp;')
+    .replaceAll('<','&lt;')
+    .replaceAll('>','&gt;')
+    .replaceAll('"','&quot;')
+    .replaceAll("'",'&#39;');
+}
+
+function normalizeText(v){
+  return String(v ?? '').trim();
+}
+
+function decodeMojibake(value){
+  let str = String(value ?? '');
+  if(!str) return '';
+
+  const suspicious = /Ã|Â|�|â€™|â€œ|â€|ð/g;
+  if(!suspicious.test(str)) return str;
+
+  try{
+    const decoded = decodeURIComponent(escape(str));
+    if(decoded && decoded !== str) return decoded;
+  }catch(_){}
+
+  try{
+    const bytes = Uint8Array.from([...str].map(ch => ch.charCodeAt(0) & 0xff));
+    const decoded = new TextDecoder('utf-8', { fatal:false }).decode(bytes);
+    if(decoded && decoded !== str) return decoded;
+  }catch(_){}
+
+  return str;
+}
+
+function sanitizeDisplayText(value){
+  return decodeMojibake(normalizeText(value));
+}
+
+const PREPOSTO_NAME_BY_CODE = {
+  '114611':'JORGE',
+  '109839':'MARIANA',
+  '1333497':'RAFAEL',
+  '25471':'WILLAME',
+  '25745':'LÉO',
+  '3616654':'MARCOS',
+  '25846':'CMS'
+};
+
+function splitPrepostoParts(value){
+  const raw = sanitizeDisplayText(value);
+  if(!raw) return { codigo:'', nome:'' };
+
+  const match = raw.match(/^(\d{4,})\s*[-–—]?\s*(.*)$/);
+  if(match){
+    return {
+      codigo: normalizeText(match[1]),
+      nome: sanitizeDisplayText(match[2])
+    };
+  }
+
+  return { codigo:'', nome: raw };
+}
+
+function getCanonicalPrepostoName(codigo, nome){
+  const cleanCodigo = normalizeText(codigo);
+  const cleanNome = sanitizeDisplayText(nome);
+  const mapped = PREPOSTO_NAME_BY_CODE[cleanCodigo];
+
+  if(mapped) return mapped;
+  return cleanNome;
+}
+
+function buildPrepostoDisplay(preposto, vendedor){
+  const vendedorParts = splitPrepostoParts(vendedor);
+  const baseCodigo = normalizeText(preposto?.codigo) || vendedorParts.codigo;
+  const baseNome = sanitizeDisplayText(preposto?.nome) || vendedorParts.nome;
+  const nome = getCanonicalPrepostoName(baseCodigo, baseNome);
+
+  return {
+    codigo: baseCodigo,
+    nome
+  };
+}
+
+function showToast(message, type='info'){
+  const wrap = $('toastWrap');
+  if(!wrap) return;
+
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+  toast.textContent = message;
+  wrap.appendChild(toast);
+
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(-4px)';
+    toast.style.transition = 'all .2s ease';
+  }, 3400);
+
+  setTimeout(() => {
+    toast.remove();
+  }, 3700);
+}
+
+function gradeHtml(grade=[]){
+  return grade.map(g=>`
+    <div class="grade-pill">
+      <span class="grade-size">${safeHtml(g.size)}</span>
+      <span class="grade-qty">${safeHtml(g.qty)}</span>
+    </div>
+  `).join('');
+}
+
+function getStatusVisual(status){
+  const current = sanitizeDisplayText(status).toLowerCase();
+
+  if(current === 'pendente'){
+    return { label:'Pendente', chipClass:'chip-status-pendente', dotClass:'dot-pendente' };
+  }
+  if(current === 'em análise' || current === 'em analise'){
+    return { label:'Em análise', chipClass:'chip-status-analise', dotClass:'dot-analise' };
+  }
+  if(current === 'aprovado'){
+    return { label:'Aprovado', chipClass:'chip-status-aprovado', dotClass:'dot-aprovado' };
+  }
+  if(current === 'rejeitado' || current === 'cancelado'){
+    return { label: current === 'cancelado' ? 'Cancelado' : 'Rejeitado', chipClass:'chip-status-rejeitado', dotClass:'dot-rejeitado' };
+  }
+  if(current === 'atendido parcialmente'){
+    return { label:'Atendido parcialmente', chipClass:'chip-status-parcial', dotClass:'dot-parcial' };
+  }
+  if(current === 'finalizado' || current === 'faturado'){
+    return { label: current === 'faturado' ? 'Faturado' : 'Finalizado', chipClass:'chip-status-finalizado', dotClass:'dot-finalizado' };
+  }
+
+  return {
+    label: sanitizeDisplayText(status) || 'Sem status',
+    chipClass:'chip-gray',
+    dotClass:'dot-finalizado'
+  };
+}
+
+function renderStatusChip(status){
+  const meta = getStatusVisual(status);
+  return `<span class="chip ${meta.chipClass}"><span class="status-dot ${meta.dotClass}"></span>${safeHtml(meta.label)}</span>`;
+}
+
+function parseDate(value){
+  if(!value) return null;
+  const d = new Date(value);
+  return Number.isNaN(d.getTime()) ? null : d;
+}
+
+function formatDateTime(value){
+  const d = parseDate(value);
+  if(!d) return '—';
+  return `${d.toLocaleDateString('pt-BR')} • ${d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}`;
+}
+
+function formatDate(value){
+  const d = parseDate(value);
+  if(!d) return '—';
+  return d.toLocaleDateString('pt-BR');
+}
+
+function formatInt(value){
+  const n = Number(value || 0);
+  return n.toLocaleString('pt-BR');
+}
+
+function getAdminScope(){
+  return localStorage.getItem(STORAGE_KEYS.adminScope) || 'active';
+}
+
+function setAdminScope(scope){
+  localStorage.setItem(STORAGE_KEYS.adminScope, scope || 'active');
+}
+
+function isHistoryStatus(status){
+  return ['Aprovado','Rejeitado','Finalizado','Faturado','Cancelado'].includes(sanitizeDisplayText(status));
+}
+
+function isOrderHistory(order){
+  return Boolean(order?.archived) || isHistoryStatus(order?.status);
+}
+
+function orderMatchesScope(order, scope){
+  if(scope === 'history') return isOrderHistory(order);
+  if(scope === 'all') return true;
+  return !isOrderHistory(order);
+}
+
+function shouldReserveDispo(order){
+  const status = sanitizeDisplayText(order?.status);
+  if(order?.archived) return false;
+  return ['Pendente','Em análise','Aprovado','Atendido parcialmente'].includes(status);
+}
+
+function updateScopeButtons(){
+  const scope = getAdminScope();
+
+  [
+    ['active','btnScopeActive'],
+    ['history','btnScopeHistory'],
+    ['all','btnScopeAll']
+  ].forEach(([key,id])=>{
+    const el = $(id);
+    if(!el) return;
+    const active = key === scope;
+    el.classList.toggle('bg-slate-100', active);
+    el.classList.toggle('text-[var(--brand)]', active);
+  });
+}
+
+function normalizeOrder(rawOrder){
+  const order = { ...(rawOrder || {}) };
+
+  order.id = normalizeText(order.id);
+  order.status = sanitizeDisplayText(order.status || 'Pendente');
+  order.clienteCodigo = sanitizeDisplayText(order.clienteCodigo || order.cliente);
+  order.prazo = sanitizeDisplayText(order.prazo);
+  order.campanha = sanitizeDisplayText(order.campanha);
+  order.observacoes = sanitizeDisplayText(order.observacoes);
+
+  if(typeof order.preposto === 'string'){
+    const parsedPreposto = splitPrepostoParts(order.preposto);
+    order.preposto = {
+      codigo: parsedPreposto.codigo,
+      nome: parsedPreposto.nome
+    };
+  }else{
+    order.preposto = {
+      ...(order.preposto || {}),
+      codigo:sanitizeDisplayText(order.preposto?.codigo),
+      nome:sanitizeDisplayText(order.preposto?.nome)
+    };
+  }
+
+  const prepostoDisplay = buildPrepostoDisplay(order.preposto, order.vendedor);
+  order.preposto.codigo = prepostoDisplay.codigo;
+  order.preposto.nome = prepostoDisplay.nome;
+
+  order.items = Array.isArray(order.items)
+    ? order.items
+    : Array.isArray(order.itens)
+      ? order.itens
+      : [];
+
+  order.items = order.items.map(item => ({
+    ...item,
+    produto:sanitizeDisplayText(item?.produto || item?.descricao || item?.nome),
+    codigo:sanitizeDisplayText(item?.codigo || item?.referencia),
+    cor:sanitizeDisplayText(item?.cor),
+    prevFaturamento:sanitizeDisplayText(item?.prevFaturamento || item?.prevFat),
+    mode:sanitizeDisplayText(item?.mode),
+    amount:Number(item?.amount || item?.quantidade || 0),
+    totalUnits:Number(item?.totalUnits || 0),
+    grade:Array.isArray(item?.grade) ? item.grade.map(g => ({
+      size:sanitizeDisplayText(g?.size || g?.tamanho),
+      qty:Number(g?.qty || g?.quantidade || 0)
+    })) : []
+  }));
+
+  return order;
+}
+
+async function workerGetOrders(){
+  const res = await fetch(`${WORKER_URL}?t=${Date.now()}`, { cache:'no-store' });
+
+  if(!res.ok){
+    throw new Error(`Worker GET falhou (${res.status})`);
+  }
+
+  const data = await res.json();
+  return Array.isArray(data) ? data.map(normalizeOrder) : [];
+}
+
+async function workerUpdateOrder(order){
+  const res = await fetch(WORKER_URL, {
+    method:'PUT',
+    headers:{ 'Content-Type':'application/json' },
+    body: JSON.stringify(order)
+  });
+
+  if(!res.ok){
+    const txt = await res.text();
+    throw new Error(`Worker PUT falhou (${res.status}): ${txt.slice(0,180)}`);
+  }
+
+  return res.json();
+}
+
+async function workerDeleteOrder(id){
+  const res = await fetch(WORKER_URL, {
+    method:'DELETE',
+    headers:{ 'Content-Type':'application/json' },
+    body: JSON.stringify({ id })
+  });
+
+  if(!res.ok){
+    const txt = await res.text();
+    throw new Error(`Worker DELETE falhou (${res.status}): ${txt.slice(0,180)}`);
+  }
+
+  return res.json();
+}
+
+async function applyAuthUI(){
+  const ok = localStorage.getItem(STORAGE_KEYS.adminAuth) === 'ok';
+
+  $('loginScreen').classList.toggle('hidden', ok);
+  $('adminApp').classList.toggle('hidden', !ok);
+
+  if(ok){
+    await Promise.all([loadAdmin(), loadDispo()]);
+  }
+}
+
+async function loadAdmin(){
+  try{
+    $('adminOrdersList').classList.add('loading-shimmer');
+
+    const remote = await workerGetOrders();
+    STATE.orders = Array.isArray(remote)
+      ? remote.sort((a,b)=>{
+          const db = parseDate(b.updatedAt || b.createdAt || b.data)?.getTime() || 0;
+          const da = parseDate(a.updatedAt || a.createdAt || a.data)?.getTime() || 0;
+          return db - da;
+        })
+      : [];
+
+    applyFilters();
+    renderDispo();
+  }catch(err){
+    console.error(err);
+    showToast('Não foi possível carregar os pedidos sincronizados pelo Worker.', 'error');
+  }finally{
+    $('adminOrdersList').classList.remove('loading-shimmer');
+  }
+}
+
+function applyFilters(){
+  const q = normalizeText($('adminSearch').value).toLowerCase();
+  const status = $('adminStatusFilter').value;
+  const scope = getAdminScope();
+
+  updateScopeButtons();
+
+  STATE.filtered = STATE.orders.filter(order=>{
+    const hay = [
+      order.id,
+      order.clienteCodigo,
+      order.preposto?.nome,
+      order.preposto?.codigo,
+      order.prazo,
+      order.campanha,
+      ...(order.items || []).flatMap(item => [item.codigo, item.produto, item.cor])
+    ].join(' ').toLowerCase();
+
+    return (!q || hay.includes(q))
+      && (!status || order.status === status)
+      && orderMatchesScope(order, scope);
+  });
+
+  $('ordersCountBadge').textContent = `${STATE.filtered.length} pedido${STATE.filtered.length === 1 ? '' : 's'}`;
+
+  renderList();
+
+  if(!STATE.selectedId && STATE.filtered[0]) STATE.selectedId = STATE.filtered[0].id;
+  if(STATE.selectedId && !STATE.filtered.find(o => o.id === STATE.selectedId)){
+    STATE.selectedId = STATE.filtered[0]?.id || null;
+  }
+
+  renderDetail();
+}
+
+function renderList(){
+  $('ordersEmpty').classList.toggle('hidden', STATE.filtered.length !== 0);
+
+  $('adminOrdersList').innerHTML = STATE.filtered.map(order=>{
+    const active = order.id === STATE.selectedId;
+    const cardStatus = getStatusVisual(order.status);
+
+    return `
+      <button data-order-id="${safeHtml(order.id)}"
+        class="w-full text-left rounded-[24px] border ${active ? 'border-[var(--brand)] bg-[rgba(40,54,212,.05)]' : 'border-slate-200 bg-slate-50'} p-4">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <div class="font-extrabold">${safeHtml(order.id)}</div>
+            <div class="mt-1 text-xs text-slate-500">${safeHtml(formatDateTime(order.createdAt || order.updatedAt || order.data))}</div>
+          </div>
+          <span class="chip ${cardStatus.chipClass}">
+            <span class="status-dot ${cardStatus.dotClass}"></span>
+            ${safeHtml(cardStatus.label)}
+          </span>
+        </div>
+
+        <div class="mt-3 flex flex-wrap gap-2 text-xs font-bold">
+          <span class="chip chip-blue">Cliente ${safeHtml(order.clienteCodigo)}</span>
+          <span class="chip chip-gray">${safeHtml(order.preposto?.nome || '')}</span>
+          <span class="chip chip-gray">${safeHtml(order.prazo)}</span>
+          ${order.archived ? `<span class="chip chip-gray">Arquivado</span>` : ''}
+        </div>
+      </button>
+    `;
+  }).join('');
+
+  $('adminOrdersList').querySelectorAll('[data-order-id]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      STATE.selectedId = btn.dataset.orderId;
+      renderList();
+      renderDetail();
+    });
+  });
+}
+
+function getItemUnits(item){
+  if(Number(item?.totalUnits) > 0) return Number(item.totalUnits);
+
+  if(Array.isArray(item?.grade) && item.grade.length){
+    return item.grade.reduce((sum, g) => sum + Number(g?.qty || 0), 0);
+  }
+
+  const amount = Number(item?.amount || 0);
+  if(!amount) return 0;
+
+  if(item?.mode === 'boxed') return amount * 12;
+  return amount;
+}
+
+function renderDetail(){
+  const order = STATE.filtered.find(o => o.id === STATE.selectedId);
+
+  $('detailEmpty').classList.toggle('hidden', !!order);
+  $('adminOrderDetail').classList.toggle('hidden', !order);
+
+  if(!order){
+    $('adminOrderDetail').innerHTML = '';
+    return;
+  }
+
+  const statusMeta = getStatusVisual(order.status);
+
+  $('adminOrderDetail').innerHTML = `
+    <div class="flex flex-col gap-4">
+      <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+        <div>
+          <div class="text-lg sm:text-xl font-extrabold">${safeHtml(order.id)}</div>
+          <div class="mt-1 text-sm text-slate-500">${safeHtml(formatDate(order.createdAt || order.updatedAt || order.data))} às ${safeHtml(parseDate(order.createdAt || order.updatedAt || order.data)?.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}) || '—')}</div>
+
+          <div class="mt-3 flex flex-wrap gap-2">
+            <span class="chip chip-blue">${safeHtml(order.preposto?.codigo || '')} ${order.preposto?.codigo ? '-' : ''} ${safeHtml(order.preposto?.nome || '')}</span>
+            <span class="chip chip-gray">Cliente ${safeHtml(order.clienteCodigo)}</span>
+            <span class="chip chip-gray">${safeHtml(order.prazo)}</span>
+            ${order.campanha ? `<span class="chip chip-blue">${safeHtml(order.campanha)}</span>` : ''}
+            ${renderStatusChip(order.status)}
+            ${order.archived ? `<span class="chip chip-gray">Arquivado</span>` : ''}
+          </div>
+        </div>
+
+        <div class="rounded-[24px] border border-slate-200 bg-slate-50 p-4 min-w-[260px]">
+          <div class="text-xs font-bold text-slate-500">Status do pedido</div>
+
+          <select id="detailStatus" class="focus-ring mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold">
+            ${STATUS_OPTIONS.map(s=>`<option value="${safeHtml(s)}" ${s===order.status?'selected':''}>${safeHtml(s)}</option>`).join('')}
+          </select>
+
+          <div class="mt-3 flex flex-col gap-2">
+            <button id="btnToggleArchive" class="focus-ring w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-700">
+              ${order.archived ? 'Reativar' : 'Arquivar'}
+            </button>
+
+            <button id="btnDeleteOrder" class="focus-ring w-full rounded-2xl border px-4 py-3 text-sm font-bold btn-danger">
+              Excluir pedido
+            </button>
+          </div>
+
+          <div class="mt-3 rounded-2xl ${statusMeta.chipClass} px-3 py-2 text-xs font-extrabold">
+            Status atual: ${safeHtml(statusMeta.label)}
+          </div>
+        </div>
+      </div>
+
+      ${order.observacoes ? `
+        <div class="rounded-[24px] border border-slate-200 bg-slate-50 p-4">
+          <div class="text-xs font-bold text-slate-500">Observações</div>
+          <div class="mt-2 text-sm font-semibold text-slate-700">${safeHtml(order.observacoes)}</div>
+        </div>
+      ` : ''}
+
+      <div class="rounded-[24px] border border-slate-200 bg-slate-50 p-4">
+        <div class="text-lg font-extrabold">Itens do pedido</div>
+
+        <div class="mt-4 space-y-3">
+          ${(order.items || []).map(item => `
+            <div class="rounded-[22px] border border-slate-200 bg-white p-4">
+              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-3">
+                <div>
+                  <div class="font-extrabold">${safeHtml(item.produto)}</div>
+                  <div class="mt-1 text-xs text-slate-500">
+                    ${safeHtml(item.codigo)} · ${safeHtml(item.cor)} · Prev. Faturamento ${safeHtml(item.prevFaturamento || '—')}
+                  </div>
+                </div>
+
+                <div class="text-right text-sm font-extrabold">
+                  ${item.mode === 'boxed'
+                    ? `${item.amount} caixa${item.amount > 1 ? 's' : ''}`
+                    : `${item.amount} unidade${item.amount > 1 ? 's' : ''}`}
+                  <div class="mt-1 text-xs text-slate-500">${safeHtml(getItemUnits(item))} itens</div>
+                </div>
+              </div>
+
+              ${item.grade?.length ? `<div class="mt-3 flex flex-wrap gap-2">${gradeHtml(item.grade)}</div>` : ''}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+
+  $('detailStatus').addEventListener('change', async (e)=>{
+    await updateStatus(order.id, e.target.value);
+  });
+
+  $('btnToggleArchive').addEventListener('click', async ()=>{
+    await toggleArchive(order.id);
+  });
+
+  $('btnDeleteOrder').addEventListener('click', async ()=>{
+    await deleteOrder(order.id);
+  });
+}
+
+async function updateStatus(id, status){
+  const idx = STATE.orders.findIndex(o => o.id === id);
+  if(idx === -1) return;
+
+  const updatedOrder = {
+    ...STATE.orders[idx],
+    status,
+    updatedAt:new Date().toISOString()
+  };
+
+  try{
+    await workerUpdateOrder(updatedOrder);
+    showToast(`Status alterado para "${status}".`, 'success');
+    await loadAdmin();
+  }catch(err){
+    console.error(err);
+    showToast('Não foi possível salvar o novo status.', 'error');
+  }
+}
+
+async function toggleArchive(id){
+  const idx = STATE.orders.findIndex(o => o.id === id);
+  if(idx === -1) return;
+
+  const updatedOrder = {
+    ...STATE.orders[idx],
+    archived: !STATE.orders[idx].archived,
+    updatedAt:new Date().toISOString()
+  };
+
+  try{
+    await workerUpdateOrder(updatedOrder);
+    showToast(updatedOrder.archived ? 'Pedido arquivado.' : 'Pedido reativado.', 'success');
+    await loadAdmin();
+  }catch(err){
+    console.error(err);
+    showToast('Não foi possível atualizar o arquivamento do pedido.', 'error');
+  }
+}
+
+async function deleteOrder(id){
+  const target = STATE.orders.find(o => o.id === id);
+  if(!target) return;
+
+  const ok = confirm(`Tem certeza que deseja EXCLUIR de verdade o pedido ${id}?\n\nEssa ação remove o pedido do JSON e não pode ser desfeita.`);
+  if(!ok) return;
+
+  try{
+    await workerDeleteOrder(id);
+    STATE.selectedId = null;
+    showToast(`Pedido ${id} excluído com sucesso.`, 'success');
+    await loadAdmin();
+  }catch(err){
+    console.error(err);
+    showToast('Não foi possível excluir o pedido.', 'error');
+  }
+}
+
+async function loadDispo(){
+  try{
+    $('dispoPanelEmpty').classList.add('hidden');
+    $('dispoTableBody').innerHTML = `<tr><td colspan="8" class="text-center text-slate-500">Carregando DISPO...</td></tr>`;
+
+    const res = await fetch(`${DISPO_FILE_URL}?t=${Date.now()}`, { cache:'no-store' });
+
+    if(!res.ok){
+      throw new Error(`Falha ao carregar DISPO.xlsx (${res.status})`);
+    }
+
+    const buffer = await res.arrayBuffer();
+    const workbook = XLSX.read(buffer, { type:'array', cellDates:true });
+    const sheetName = workbook.SheetNames.includes('DISPO') ? 'DISPO' : workbook.SheetNames[0];
+    const ws = workbook.Sheets[sheetName];
+    const rows = XLSX.utils.sheet_to_json(ws, { defval:null, raw:false });
+
+    STATE.dispoRows = rows.map(row => {
+      const saldo = Number(row['SALDO'] || row['Saldo'] || 0);
+      const codigo = sanitizeDisplayText(row['Código'] || row['CODIGO'] || row['Codigo'] || row['REF'] || row['Referência'] || row['Referencia']);
+      const produto = sanitizeDisplayText(row['Produto'] || row['PRODUTO'] || row['Descrição'] || row['Descricao']);
+      const cor = sanitizeDisplayText(row['COR'] || row['Cor'] || row['Cor Descrição'] || row['Cor Descricao']);
+      const dataEntrega = row['DATA ENTREGA'] || row['DATA_ENTREGA'] || row['Data Entrega'] || row['Prev. Faturamento'] || null;
+
+      return { codigo, produto, cor, dataEntrega, saldo, source: row };
+    }).filter(row => row.codigo || row.produto);
+
+    STATE.dispoLoadedAt = new Date();
+    renderDispo();
+    showToast('DISPO carregada com sucesso.', 'success');
+  }catch(err){
+    console.error(err);
+    STATE.dispoRows = [];
+    STATE.dispoLoadedAt = null;
+    renderDispo();
+    $('dispoPanelEmpty').classList.remove('hidden');
+    showToast('Não foi possível carregar a DISPO.', 'error');
+  }
+}
+
+function getDispoImpactMap(){
+  const impactMap = new Map();
+
+  for(const order of STATE.orders){
+    if(!shouldReserveDispo(order)) continue;
+
+    for(const item of (order.items || [])){
+      const codigo = sanitizeDisplayText(item.codigo);
+      if(!codigo) continue;
+
+      const units = getItemUnits(item);
+      impactMap.set(codigo, (impactMap.get(codigo) || 0) + units);
+    }
+  }
+
+  return impactMap;
+}
+
+function getProjectedStatus(saldo, reservado){
+  const projetado = Number(saldo || 0) - Number(reservado || 0);
+
+  if(projetado < 0){
+    return { label:'Ruptura projetada', className:'saldo-danger' };
+  }
+  if(projetado === 0){
+    return { label:'No limite', className:'saldo-warning' };
+  }
+  if(projetado <= 12){
+    return { label:'Baixo', className:'saldo-warning' };
+  }
+  return { label:'Saudável', className:'saldo-ok' };
+}
+
+function renderDispo(){
+  const impactMap = getDispoImpactMap();
+  const q = normalizeText($('dispoSearch')?.value).toLowerCase();
+
+  const rows = STATE.dispoRows.map(row => {
+    const reservado = impactMap.get(row.codigo) || 0;
+    const saldoProjetado = Number(row.saldo || 0) - reservado;
+    return {
+      ...row,
+      reservado,
+      saldoProjetado,
+      situation:getProjectedStatus(row.saldo, reservado)
+    };
+  });
+
+  STATE.dispoFiltered = rows.filter(row => {
+    const hay = `${row.codigo} ${row.produto} ${row.cor}`.toLowerCase();
+    return !q || hay.includes(q);
+  });
+
+  const criticos = rows.filter(row => row.saldoProjetado <= 0).length;
+  const comPedido = rows.filter(row => row.reservado > 0).length;
+
+  $('kpiDispoLinhas').textContent = formatInt(rows.length);
+  $('kpiDispoComPedido').textContent = formatInt(comPedido);
+  $('kpiDispoCriticos').textContent = formatInt(criticos);
+  $('kpiDispoAtualizado').textContent = STATE.dispoLoadedAt
+    ? formatDateTime(STATE.dispoLoadedAt.toISOString())
+    : '—';
+
+  if(!STATE.dispoRows.length){
+    $('dispoTableBody').innerHTML = `<tr><td colspan="8" class="text-center text-slate-500">DISPO não carregada.</td></tr>`;
+    return;
+  }
+
+  if(!STATE.dispoFiltered.length){
+    $('dispoTableBody').innerHTML = `<tr><td colspan="8" class="text-center text-slate-500">Nenhum item da DISPO encontrado para esse filtro.</td></tr>`;
+    return;
+  }
+
+  const ordered = [...STATE.dispoFiltered].sort((a,b) => {
+    if((b.reservado || 0) !== (a.reservado || 0)) return (b.reservado || 0) - (a.reservado || 0);
+    if((a.saldoProjetado || 0) !== (b.saldoProjetado || 0)) return (a.saldoProjetado || 0) - (b.saldoProjetado || 0);
+    return String(a.produto).localeCompare(String(b.produto), 'pt-BR');
+  });
+
+  $('dispoTableBody').innerHTML = ordered.map(row => `
+    <tr>
+      <td class="font-extrabold text-slate-800">${safeHtml(row.codigo)}</td>
+      <td><div class="font-extrabold">${safeHtml(row.produto)}</div></td>
+      <td>${safeHtml(row.cor)}</td>
+      <td>${safeHtml(formatDate(row.dataEntrega))}</td>
+      <td class="font-extrabold">${safeHtml(formatInt(row.saldo))}</td>
+      <td class="${row.reservado > 0 ? 'text-[var(--brand)] font-extrabold' : 'text-slate-500 font-semibold'}">${safeHtml(formatInt(row.reservado))}</td>
+      <td class="${row.situation.className}">${safeHtml(formatInt(row.saldoProjetado))}</td>
+      <td class="${row.situation.className}">${safeHtml(row.situation.label)}</td>
+    </tr>
+  `).join('');
+}
+
+$('btnAdminLogin').addEventListener('click', async ()=>{
+  if($('adminPassword').value !== ADMIN_PASSWORD){
+    showToast('Senha inválida.', 'error');
+    return;
+  }
+
+  localStorage.setItem(STORAGE_KEYS.adminAuth, 'ok');
+  $('adminPassword').value = '';
+  await applyAuthUI();
+});
+
+$('btnLogout').addEventListener('click', ()=>{
+  localStorage.removeItem(STORAGE_KEYS.adminAuth);
+  applyAuthUI();
+});
+
+$('btnRefresh').addEventListener('click', async ()=>{ await loadAdmin(); });
+$('btnRefreshDispo').addEventListener('click', async ()=>{ await loadDispo(); });
+
+$('btnScopeActive').addEventListener('click', ()=>{ setAdminScope('active'); applyFilters(); });
+$('btnScopeHistory').addEventListener('click', ()=>{ setAdminScope('history'); applyFilters(); });
+$('btnScopeAll').addEventListener('click', ()=>{ setAdminScope('all'); applyFilters(); });
+
+$('adminSearch').addEventListener('input', applyFilters);
+$('adminStatusFilter').addEventListener('change', applyFilters);
+
+document.addEventListener('input', (e)=>{
+  if(e.target && e.target.id === 'dispoSearch'){
+    renderDispo();
+  }
+});
+
+applyAuthUI();
+</script>
+</body>
+</html>
