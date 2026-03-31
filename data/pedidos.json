@@ -1,1 +1,59 @@
-[]
+[
+  {
+    "id": "PED-20260331120835-450",
+    "createdAt": "2026-03-31T15:08:35.145Z",
+    "updatedAt": "2026-03-31T15:08:35.145Z",
+    "status": "Pendente",
+    "archived": false,
+    "preposto": {
+      "codigo": "25745",
+      "nome": "LÉO"
+    },
+    "clienteCodigo": "18529",
+    "prazo": "Z09 - 63 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 1,
+      "units": 12
+    },
+    "items": [
+      {
+        "codigo": "43299316",
+        "produto": "ACQUA",
+        "cor": "PRETO",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "35",
+            "qty": 1
+          },
+          {
+            "size": "36",
+            "qty": 3
+          },
+          {
+            "size": "37",
+            "qty": 3
+          },
+          {
+            "size": "38",
+            "qty": 2
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": 46104
+      }
+    ]
+  }
+]
