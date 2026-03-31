@@ -2,12 +2,12 @@
   {
     "id": "PED-20260331120835-450",
     "createdAt": "2026-03-31T15:08:35.145Z",
-    "updatedAt": "2026-03-31T15:08:35.145Z",
+    "updatedAt": "2026-03-31T15:19:41.700Z",
     "status": "Pendente",
-    "archived": false,
+    "archived": true,
     "preposto": {
       "codigo": "25745",
-      "nome": "LÃÂÃÂO"
+      "nome": "LÃÂÃÂÃÂÃÂO"
     },
     "clienteCodigo": "18529",
     "prazo": "Z09 - 63 D",
