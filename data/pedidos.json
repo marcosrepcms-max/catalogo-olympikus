@@ -237,5 +237,206 @@
         "prevFaturamento": 46142
       }
     ]
+  },
+  {
+    "id": "PED-20260409165600-935",
+    "createdAt": "2026-04-09T19:56:00.008Z",
+    "updatedAt": "2026-04-09T19:56:01.748Z",
+    "status": "Pendente",
+    "archived": false,
+    "preposto": {
+      "codigo": "1333497",
+      "nome": "RAFAEL"
+    },
+    "clienteCodigo": "5917",
+    "prazo": "Z31 - 35/63/91 D",
+    "campanha": "CO689 +56DD OLY",
+    "observacoes": "",
+    "totals": {
+      "packs": 7,
+      "units": 84
+    },
+    "items": [
+      {
+        "codigo": "43336749",
+        "produto": "130G ULTRALEVE",
+        "cor": "PTRSCO",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "35",
+            "qty": 1
+          },
+          {
+            "size": "36",
+            "qty": 3
+          },
+          {
+            "size": "37",
+            "qty": 3
+          },
+          {
+            "size": "38",
+            "qty": 2
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": 46132
+      },
+      {
+        "codigo": "43306412",
+        "produto": "ACQUA INFANTIL",
+        "cor": "ARENIT",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "30",
+            "qty": 1
+          },
+          {
+            "size": "31",
+            "qty": 1
+          },
+          {
+            "size": "32",
+            "qty": 2
+          },
+          {
+            "size": "33",
+            "qty": 2
+          },
+          {
+            "size": "34",
+            "qty": 2
+          },
+          {
+            "size": "35",
+            "qty": 2
+          },
+          {
+            "size": "36",
+            "qty": 2
+          }
+        ],
+        "prevFaturamento": 46132
+      },
+      {
+        "codigo": "43286101",
+        "produto": "ATMOS",
+        "cor": "PRETO",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "35",
+            "qty": 2
+          },
+          {
+            "size": "36",
+            "qty": 3
+          },
+          {
+            "size": "37",
+            "qty": 3
+          },
+          {
+            "size": "38",
+            "qty": 3
+          },
+          {
+            "size": "39",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": 46172
+      },
+      {
+        "codigo": "43632407",
+        "produto": "BRUMA",
+        "cor": "LAVAND",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "34",
+            "qty": 1
+          },
+          {
+            "size": "35",
+            "qty": 2
+          },
+          {
+            "size": "36",
+            "qty": 3
+          },
+          {
+            "size": "37",
+            "qty": 3
+          },
+          {
+            "size": "38",
+            "qty": 2
+          },
+          {
+            "size": "39",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": 46103
+      },
+      {
+        "codigo": "43389459",
+        "produto": "FLUTUA 2",
+        "cor": "PTO/PT",
+        "amount": 3,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 36,
+        "grade": [
+          {
+            "size": "35",
+            "qty": 1
+          },
+          {
+            "size": "36",
+            "qty": 2
+          },
+          {
+            "size": "37",
+            "qty": 3
+          },
+          {
+            "size": "38",
+            "qty": 3
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": 46132
+      }
+    ]
   }
 ]
