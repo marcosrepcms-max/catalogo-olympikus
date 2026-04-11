@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
     :root{
@@ -202,6 +203,9 @@
               </select>
             </div>
             <button id="btnClearFilters" class="focus-ring w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-extrabold text-[var(--brand)]">Limpar filtros</button>
+            <button id="btnGenerateCatalogPdf" class="focus-ring w-full rounded-2xl bg-[var(--brand)] px-4 py-3 text-sm font-extrabold text-white shadow-soft">
+              <i class="fa-solid fa-file-pdf mr-2"></i>Gerar catálogo PDF
+            </button>
           </div>
         </aside>
 
@@ -431,6 +435,86 @@
     </div>
   </div>
 
+
+  <div id="catalogPdfModalWrap" class="hidden fixed inset-0 z-[85]">
+    <div class="backdrop absolute inset-0"></div>
+    <div class="absolute inset-0 flex items-center justify-center p-4">
+      <div class="w-full max-w-md rounded-[28px] border border-slate-200 bg-white shadow-card overflow-hidden">
+        <div class="border-b border-slate-200 px-5 py-4">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="text-sm text-slate-500">Catálogo comercial</div>
+              <div class="text-[26px] leading-none font-extrabold">Gerar PDF</div>
+            </div>
+            <button id="btnCloseCatalogPdfModal" class="focus-ring h-11 w-11 rounded-full border border-slate-200 bg-white"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+        </div>
+        <div class="px-5 py-4 space-y-4">
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-600">
+            O PDF usará apenas os itens visíveis com saldo disponível.
+          </div>
+          <div>
+            <div class="text-sm font-extrabold text-slate-700">Produtos por página</div>
+            <div class="mt-3 grid grid-cols-2 gap-3">
+              <label class="cursor-pointer rounded-2xl border border-slate-200 px-4 py-4">
+                <div class="flex items-center gap-3">
+                  <input type="radio" name="catalogPdfPerPage" value="2" class="h-4 w-4" checked />
+                  <div>
+                    <div class="text-sm font-extrabold text-slate-800">2 por página</div>
+                    <div class="text-xs text-slate-500">Mais detalhado</div>
+                  </div>
+                </div>
+              </label>
+              <label class="cursor-pointer rounded-2xl border border-slate-200 px-4 py-4">
+                <div class="flex items-center gap-3">
+                  <input type="radio" name="catalogPdfPerPage" value="3" class="h-4 w-4" />
+                  <div>
+                    <div class="text-sm font-extrabold text-slate-800">3 por página</div>
+                    <div class="text-xs text-slate-500">Mais visual</div>
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-slate-200 bg-slate-50 px-5 py-4">
+          <div class="flex flex-col sm:flex-row gap-3 sm:justify-end">
+            <button id="btnCancelCatalogPdf" class="focus-ring rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-extrabold text-slate-700">Cancelar</button>
+            <button id="btnConfirmCatalogPdf" class="focus-ring rounded-2xl bg-[var(--brand)] px-4 py-3 text-sm font-extrabold text-white">Gerar agora</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="catalogShareModalWrap" class="hidden fixed inset-0 z-[86]">
+    <div class="backdrop absolute inset-0"></div>
+    <div class="absolute inset-0 flex items-center justify-center p-4">
+      <div class="w-full max-w-md rounded-[28px] border border-slate-200 bg-white shadow-card overflow-hidden">
+        <div class="border-b border-slate-200 px-5 py-4">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="text-sm text-slate-500">PDF concluído</div>
+              <div class="text-[26px] leading-none font-extrabold">Compartilhar catálogo?</div>
+            </div>
+            <button id="btnCloseCatalogShareModal" class="focus-ring h-11 w-11 rounded-full border border-slate-200 bg-white"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+        </div>
+        <div class="px-5 py-4 space-y-4">
+          <div class="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-800">
+            O PDF foi gerado com sucesso. Deseja compartilhar via WhatsApp agora?
+          </div>
+        </div>
+        <div class="border-t border-slate-200 bg-slate-50 px-5 py-4">
+          <div class="flex flex-col sm:flex-row gap-3 sm:justify-end">
+            <button id="btnCatalogOnlyDownload" class="focus-ring rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-extrabold text-slate-700">Apenas baixar</button>
+            <button id="btnCatalogShareWhatsapp" class="focus-ring rounded-2xl bg-[#25D366] px-4 py-3 text-sm font-extrabold text-white">Enviar via WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <script>
 const BASE_PREFIX = (location.pathname.includes('/admin')) ? '..' : '.';
 const DEFAULTS = {
@@ -475,7 +559,10 @@ const STATE = {
   cart: new Map(),
   orders: [],
   viewMode: localStorage.getItem(STORAGE_KEYS.view) || 'cards',
-  pendingConflictCheck: null
+  pendingConflictCheck: null,
+  latestCatalogPdfBlob: null,
+  latestCatalogPdfFileName: '',
+  latestCatalogShareText: 'Oportunidades com estoque disponível — confira 👇'
 };
 
 const $ = (id)=>document.getElementById(id);
@@ -1671,10 +1758,264 @@ async function loadCatalog(){
     `;
   }
 }
+
+function openCatalogPdfModal(){
+  $('catalogPdfModalWrap').classList.remove('hidden');
+}
+function closeCatalogPdfModal(){
+  $('catalogPdfModalWrap').classList.add('hidden');
+}
+function openCatalogShareModal(){
+  $('catalogShareModalWrap').classList.remove('hidden');
+}
+function closeCatalogShareModal(){
+  $('catalogShareModalWrap').classList.add('hidden');
+}
+function getCatalogPdfPerPage(){
+  return Number(document.querySelector('input[name="catalogPdfPerPage"]:checked')?.value || 2);
+}
+function getCatalogPdfSourceItems(){
+  return STATE.view.filter(item => remainingUnits(item) > 0);
+}
+function pdfFileName(){
+  const d = new Date();
+  const pad = n => String(n).padStart(2,'0');
+  return `catalogo_disponibilidade_${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}_${pad(d.getHours())}${pad(d.getMinutes())}.pdf`;
+}
+async function imageUrlToDataUrl(url){
+  if(!url) return '';
+  try{
+    const res = await fetch(url, { cache:'no-store' });
+    if(!res.ok) return '';
+    const blob = await res.blob();
+    return await new Promise((resolve, reject)=>{
+      const reader = new FileReader();
+      reader.onload = ()=> resolve(String(reader.result || ''));
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  }catch(_){
+    return '';
+  }
+}
+function gradeCompactText(item){
+  return item.grade.map(g => `${g.size}(${g.qty})`).join('   ');
+}
+function drawCatalogHeader(doc, pageWidth){
+  if(productImage({ imagem:'logo-olympikus.png' })){
+    // noop; keeps helper stable
+  }
+  doc.setTextColor(40,54,212);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(15);
+  doc.text('OLYMPIKUS', pageWidth / 2, 12, { align:'center' });
+  doc.setDrawColor(226,232,240);
+  doc.line(12, 16, pageWidth - 12, 16);
+  doc.setTextColor(100,116,139);
+  doc.setFontSize(8);
+  doc.setFont('helvetica', 'normal');
+  doc.text(`Catálogo de disponibilidades • ${new Date().toLocaleDateString('pt-BR')}`, 12, 12);
+}
+function drawCatalogFooter(doc, pageWidth, pageHeight, pageNumber){
+  doc.setDrawColor(226,232,240);
+  doc.line(12, pageHeight - 8, pageWidth - 12, pageHeight - 8);
+  doc.setFontSize(8);
+  doc.setTextColor(100,116,139);
+  doc.text('Oportunidades com estoque disponível', 12, pageHeight - 4);
+  doc.text(`Página ${pageNumber}`, pageWidth - 12, pageHeight - 4, { align:'right' });
+}
+function drawGradeRow(doc, item, x, y, width){
+  const grade = Array.isArray(item.grade) ? item.grade : [];
+  if(!grade.length) return 0;
+  const cols = Math.min(grade.length, 10);
+  const cellW = width / cols;
+  const cellH = 12;
+  const visible = grade.slice(0, cols);
+  visible.forEach((g, idx)=>{
+    const left = x + (idx * cellW);
+    doc.setDrawColor(226,232,240);
+    doc.setFillColor(255,255,255);
+    doc.roundedRect(left, y, cellW - 1.2, cellH, 1.8, 1.8, 'FD');
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(71,85,105);
+    doc.text(String(g.size), left + (cellW - 1.2)/2, y + 4.3, { align:'center' });
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9);
+    doc.setTextColor(40,54,212);
+    doc.text(String(g.qty), left + (cellW - 1.2)/2, y + 9.2, { align:'center' });
+  });
+  return cellH;
+}
+async function buildCatalogPdfBlob(perPage){
+  const items = getCatalogPdfSourceItems();
+  if(!items.length){
+    toast('Nenhum item com saldo disponível para gerar o catálogo');
+    return null;
+  }
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation:'portrait', unit:'mm', format:'a4', compress:true });
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
+  const slotsPerPage = perPage === 3 ? 3 : 2;
+  const topStart = 20;
+  const contentBottom = pageHeight - 12;
+  const slotGap = 5;
+  const slotHeight = (contentBottom - topStart - ((slotsPerPage - 1) * slotGap)) / slotsPerPage;
+
+  let pageNumber = 1;
+  for(let i=0; i<items.length; i++){
+    const pageIndex = i % slotsPerPage;
+    if(i > 0 && pageIndex === 0){
+      drawCatalogFooter(doc, pageWidth, pageHeight, pageNumber);
+      doc.addPage();
+      pageNumber += 1;
+    }
+    if(pageIndex === 0){
+      drawCatalogHeader(doc, pageWidth);
+    }
+
+    const item = items[i];
+    const y = topStart + pageIndex * (slotHeight + slotGap);
+    const sectionX = 12;
+    const sectionW = pageWidth - 24;
+    const imageAreaW = perPage === 3 ? sectionW * 0.56 : sectionW * 0.58;
+    const infoX = sectionX + imageAreaW + 4;
+    const infoW = sectionW - imageAreaW - 4;
+    const imageBoxH = perPage === 3 ? slotHeight * 0.58 : slotHeight * 0.56;
+    const gradeY = y + imageBoxH + 8;
+
+    doc.setDrawColor(226,232,240);
+    doc.setLineWidth(0.35);
+    if(pageIndex > 0){
+      doc.line(sectionX, y - 2.5, sectionX + sectionW, y - 2.5);
+    }
+
+    const imgUrl = productImage(item);
+    const dataUrl = await imageUrlToDataUrl(imgUrl);
+    if(dataUrl){
+      try{
+        const imageType = dataUrl.includes('image/jpeg') ? 'JPEG' : 'PNG';
+        doc.addImage(dataUrl, imageType, sectionX, y, imageAreaW, imageBoxH, undefined, 'FAST');
+      }catch(_){
+        doc.setFillColor(248,250,252);
+        doc.roundedRect(sectionX, y, imageAreaW, imageBoxH, 3, 3, 'F');
+      }
+    }else{
+      doc.setFillColor(248,250,252);
+      doc.roundedRect(sectionX, y, imageAreaW, imageBoxH, 3, 3, 'F');
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(10);
+      doc.setTextColor(148,163,184);
+      doc.text('Sem imagem', sectionX + imageAreaW/2, y + imageBoxH/2, { align:'center' });
+    }
+
+    doc.setTextColor(15,23,42);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(perPage === 3 ? 9.5 : 11);
+    const productLines = doc.splitTextToSize(String(item.produto || ''), infoW);
+    doc.text(productLines.slice(0,2), infoX, y + 8);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(71,85,105);
+    doc.setFontSize(perPage === 3 ? 7.5 : 8.5);
+    const refCor = `${item.codigo} • Cor: ${item.cor}`;
+    doc.text(doc.splitTextToSize(refCor, infoW), infoX, y + 15.5);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(15,23,42);
+    doc.text(`Prev. Faturamento: `, infoX, y + 24);
+    doc.setFont('helvetica', 'normal');
+    doc.text(String(formatDate(item.prevFaturamento)), infoX + 29, y + 24);
+    doc.setFont('helvetica', 'bold');
+    doc.text(`Caixas: `, infoX, y + 31);
+    doc.setFont('helvetica', 'normal');
+    doc.text(String(remainingPacks(item)), infoX + 13, y + 31);
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(8.5);
+    doc.setTextColor(15,23,42);
+    doc.text('Grade disponível', sectionX, gradeY);
+    drawGradeRow(doc, item, sectionX, gradeY + 3, sectionW);
+  }
+
+  drawCatalogFooter(doc, pageWidth, pageHeight, pageNumber);
+  const blob = doc.output('blob');
+  return blob;
+}
+async function downloadBlob(blob, filename){
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url), 2000);
+}
+async function shareCatalogViaWhatsapp(){
+  const blob = STATE.latestCatalogPdfBlob;
+  const filename = STATE.latestCatalogPdfFileName || pdfFileName();
+  const shareText = STATE.latestCatalogShareText;
+  if(!blob){
+    closeCatalogShareModal();
+    return;
+  }
+  const file = new File([blob], filename, { type:'application/pdf' });
+  const nav = navigator;
+  try{
+    if(nav.share && nav.canShare && nav.canShare({ files:[file] })){
+      await nav.share({
+        files:[file],
+        text: shareText,
+        title: 'Catálogo de disponibilidades'
+      });
+      closeCatalogShareModal();
+      return;
+    }
+  }catch(err){
+    console.warn('Compartilhamento nativo indisponível:', err);
+  }
+  const waUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
+  window.open(waUrl, '_blank', 'noopener,noreferrer');
+  toast('WhatsApp aberto. Anexe o PDF gerado na conversa.');
+  closeCatalogShareModal();
+}
+async function generateCatalogPdf(){
+  const btn = $('btnConfirmCatalogPdf');
+  const prev = btn.innerHTML;
+  btn.disabled = true;
+  btn.classList.add('opacity-70');
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>Gerando...';
+  try{
+    const perPage = getCatalogPdfPerPage();
+    const blob = await buildCatalogPdfBlob(perPage);
+    if(!blob) return;
+    const filename = pdfFileName();
+    STATE.latestCatalogPdfBlob = blob;
+    STATE.latestCatalogPdfFileName = filename;
+    await downloadBlob(blob, filename);
+    closeCatalogPdfModal();
+    openCatalogShareModal();
+  }catch(err){
+    console.error(err);
+    toast('Não foi possível gerar o catálogo agora');
+  }finally{
+    btn.disabled = false;
+    btn.classList.remove('opacity-70');
+    btn.innerHTML = prev;
+  }
+}
 function bindEvents(){
   $('btnOpenCart').addEventListener('click', openCart);
   $('btnOrders').addEventListener('click', openOrders);
   $('btnRefreshStock').addEventListener('click', ()=>refreshStockFromSource({ silent:false, reason:'manual', force:true }));
+  $('btnGenerateCatalogPdf').addEventListener('click', openCatalogPdfModal);
+  $('btnCloseCatalogPdfModal').addEventListener('click', closeCatalogPdfModal);
+  $('btnCancelCatalogPdf').addEventListener('click', closeCatalogPdfModal);
+  $('btnConfirmCatalogPdf').addEventListener('click', generateCatalogPdf);
+  $('btnCloseCatalogShareModal').addEventListener('click', closeCatalogShareModal);
+  $('btnCatalogOnlyDownload').addEventListener('click', closeCatalogShareModal);
+  $('btnCatalogShareWhatsapp').addEventListener('click', shareCatalogViaWhatsapp);
   $('btnConflictReviewCart').addEventListener('click', ()=>{
     closeConflictModal();
     toast('Revise a sacola e tente novamente');
@@ -1743,6 +2084,8 @@ function bindEvents(){
   $('checkoutDrawerWrap').addEventListener('click', (e)=>{ if(e.target.closest('[data-close-checkout="true"]')) closeCheckout(); });
   $('gradeSheetWrap').addEventListener('click', (e)=>{ if(e.target.closest('[data-close-grade="true"]')) closeGradeSheet(); });
   $('conflictModalWrap').addEventListener('click', (e)=>{ if(e.target === $('conflictModalWrap') || e.target.classList.contains('backdrop')) closeConflictModal(); });
+  $('catalogPdfModalWrap').addEventListener('click', (e)=>{ if(e.target === $('catalogPdfModalWrap') || e.target.classList.contains('backdrop')) closeCatalogPdfModal(); });
+  $('catalogShareModalWrap').addEventListener('click', (e)=>{ if(e.target === $('catalogShareModalWrap') || e.target.classList.contains('backdrop')) closeCatalogShareModal(); });
 
   document.addEventListener('visibilitychange', ()=>{
     if(document.visibilityState === 'visible'){
@@ -1764,7 +2107,7 @@ function initMobileHeaderAutoHide(){
   function shouldLockVisible(){
     return !mobileMq.matches
       || body.classList.contains('filters-open')
-      || !($('catalogWrap')?.classList.contains('hidden')) && ($('cartDrawerWrap')?.classList.contains('hidden') === false || $('checkoutDrawerWrap')?.classList.contains('hidden') === false || $('ordersDrawerWrap')?.classList.contains('hidden') === false || $('gradeSheetWrap')?.classList.contains('hidden') === false || $('conflictModalWrap')?.classList.contains('hidden') === false);
+      || !($('catalogWrap')?.classList.contains('hidden')) && ($('cartDrawerWrap')?.classList.contains('hidden') === false || $('checkoutDrawerWrap')?.classList.contains('hidden') === false || $('ordersDrawerWrap')?.classList.contains('hidden') === false || $('gradeSheetWrap')?.classList.contains('hidden') === false || $('conflictModalWrap')?.classList.contains('hidden') === false || $('catalogPdfModalWrap')?.classList.contains('hidden') === false || $('catalogShareModalWrap')?.classList.contains('hidden') === false);
   }
 
   function syncHeader(){
