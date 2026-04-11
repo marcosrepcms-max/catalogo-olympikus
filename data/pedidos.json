@@ -504,7 +504,7 @@
     "archived": false,
     "preposto": {
       "codigo": "25745",
-      "nome": "LÉO"
+      "nome": "LÃO"
     },
     "clienteCodigo": "18529",
     "prazo": "Z34 - 56/84/112 D",
@@ -542,6 +542,67 @@
           }
         ],
         "prevFaturamento": 46142
+      }
+    ]
+  },
+  {
+    "id": "PED-20260411122922-589",
+    "createdAt": "2026-04-11T15:29:22.400Z",
+    "updatedAt": "2026-04-11T15:29:22.716Z",
+    "status": "Pendente",
+    "archived": false,
+    "preposto": {
+      "codigo": "25846",
+      "nome": "CMS"
+    },
+    "clienteCodigo": "18530",
+    "prazo": "Z08 - 56 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 1,
+      "units": 12
+    },
+    "items": [
+      {
+        "codigo": "43306412",
+        "produto": "ACQUA INFANTIL",
+        "cor": "ARENIT",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "30",
+            "qty": 1
+          },
+          {
+            "size": "31",
+            "qty": 1
+          },
+          {
+            "size": "32",
+            "qty": 2
+          },
+          {
+            "size": "33",
+            "qty": 2
+          },
+          {
+            "size": "34",
+            "qty": 2
+          },
+          {
+            "size": "35",
+            "qty": 2
+          },
+          {
+            "size": "36",
+            "qty": 2
+          }
+        ],
+        "prevFaturamento": 46132
       }
     ]
   }
