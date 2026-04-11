@@ -504,7 +504,7 @@
     "archived": false,
     "preposto": {
       "codigo": "25745",
-      "nome": "LÃÂÃÂÃÂÃÂO"
+      "nome": "LÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂO"
     },
     "clienteCodigo": "18529",
     "prazo": "Z34 - 56/84/112 D",
@@ -723,8 +723,8 @@
   {
     "id": "PED-20260411130043-585",
     "createdAt": "2026-04-11T16:00:43.450Z",
-    "updatedAt": "2026-04-11T16:00:43.785Z",
-    "status": "Pendente",
+    "updatedAt": "2026-04-11T16:01:36.510Z",
+    "status": "Em análise",
     "archived": false,
     "preposto": {
       "codigo": "1333497",
@@ -765,7 +765,7 @@
             "qty": 1
           }
         ],
-        "prevFaturamento": 46142
+        "prevFaturamento": "46142"
       }
     ]
   }
