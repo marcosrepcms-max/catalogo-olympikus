@@ -55,5 +55,62 @@
         "prevFaturamento": 46132
       }
     ]
+  },
+  {
+    "id": "PED-20260411193102-569",
+    "createdAt": "2026-04-11T22:31:02.707Z",
+    "updatedAt": "2026-04-11T22:30:25.200Z",
+    "status": "Pendente",
+    "archived": false,
+    "preposto": {
+      "codigo": "3616654",
+      "nome": "MARCOS"
+    },
+    "clienteCodigo": "3834566",
+    "prazo": "Z30 - 28/56/84 D",
+    "campanha": "CO689 +56DD OLY",
+    "observacoes": "",
+    "totals": {
+      "packs": 5,
+      "units": 60
+    },
+    "items": [
+      {
+        "codigo": "54111405",
+        "produto": "POS CORRE",
+        "cor": "ARENIT",
+        "amount": 5,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 60,
+        "grade": [
+          {
+            "size": "33/34",
+            "qty": 1
+          },
+          {
+            "size": "35/36",
+            "qty": 2
+          },
+          {
+            "size": "37/38",
+            "qty": 3
+          },
+          {
+            "size": "39/40",
+            "qty": 3
+          },
+          {
+            "size": "41/42",
+            "qty": 2
+          },
+          {
+            "size": "43/44",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": 46172
+      }
+    ]
   }
 ]
