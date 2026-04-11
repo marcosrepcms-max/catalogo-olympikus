@@ -57,63 +57,6 @@
     ]
   },
   {
-    "id": "PED-20260331173520-939",
-    "createdAt": "2026-03-31T20:35:20.281Z",
-    "updatedAt": "2026-04-11T18:48:03.262Z",
-    "status": "Finalizado",
-    "archived": true,
-    "preposto": {
-      "codigo": "114611",
-      "nome": "JORGE"
-    },
-    "clienteCodigo": "2929",
-    "prazo": "Z35 - 63/91/119 D",
-    "campanha": "CO681 +28DD OLY",
-    "observacoes": "",
-    "totals": {
-      "packs": 2,
-      "units": 24
-    },
-    "items": [
-      {
-        "codigo": "43358451",
-        "produto": "INVERSE 2",
-        "cor": "PRETO",
-        "amount": 2,
-        "mode": "boxed",
-        "packSize": 12,
-        "totalUnits": 24,
-        "grade": [
-          {
-            "size": "39",
-            "qty": 1
-          },
-          {
-            "size": "40",
-            "qty": 2
-          },
-          {
-            "size": "41",
-            "qty": 3
-          },
-          {
-            "size": "42",
-            "qty": 3
-          },
-          {
-            "size": "43",
-            "qty": 2
-          },
-          {
-            "size": "44",
-            "qty": 1
-          }
-        ],
-        "prevFaturamento": "46103"
-      }
-    ]
-  },
-  {
     "id": "PED-20260409165600-935",
     "createdAt": "2026-04-09T19:56:00.008Z",
     "updatedAt": "2026-04-09T19:56:01.748Z",
