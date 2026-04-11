@@ -75,8 +75,8 @@
     .header-segmented{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px}
     .icon-btn-mobile{display:inline-flex;align-items:center;justify-content:center}
     .header-handle{display:none}
-    body.header-hidden #appHeader{transform:translateY(calc(-100% + 18px))}
-    body.header-hidden #appHeader .header-handle{opacity:1}
+    body.header-hidden #appHeader{transform:translateY(-100%)}
+    body.header-hidden #appHeader .header-handle{opacity:0}
     @media (max-width: 1023px){
       #catalogShell{grid-template-columns:minmax(0,1fr)}
       #filtersPanel{display:none}
@@ -2134,16 +2134,20 @@ function initMobileHeaderAutoHide(){
     ticking = false;
     const currentY = Math.max(0, window.scrollY || 0);
     const diff = currentY - lastY;
+    const scrollingDown = diff > 6;
+    const scrollingUp = diff < -6;
 
-    if(shouldLockVisible() || currentY < 24){
+    if(shouldLockVisible() || currentY < 16){
       body.classList.remove('header-hidden');
       lastY = currentY;
       return;
     }
 
-    if(diff > 8){
+    if(currentY < 72){
+      body.classList.remove('header-hidden');
+    }else if(scrollingDown){
       body.classList.add('header-hidden');
-    }else if(diff < -8){
+    }else if(scrollingUp){
       body.classList.remove('header-hidden');
     }
 
