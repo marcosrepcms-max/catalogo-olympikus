@@ -402,6 +402,74 @@ function toast(msg, ms=2200){
 function normalizeText(v){
   return String(v ?? '').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 }
+function cleanText(v){
+  return String(v ?? '').trim();
+}
+function decodeMojibake(value){
+  let str = String(value ?? '');
+  if(!str) return '';
+
+  const suspicious = /Ã|Â|�|â€™|â€œ|â€|ð/g;
+  if(!suspicious.test(str)) return str;
+
+  try{
+    const decoded = decodeURIComponent(escape(str));
+    if(decoded && decoded !== str) return decoded;
+  }catch(_){ }
+
+  try{
+    const bytes = Uint8Array.from([...str].map(ch => ch.charCodeAt(0) & 0xff));
+    const decoded = new TextDecoder('utf-8', { fatal:false }).decode(bytes);
+    if(decoded && decoded !== str) return decoded;
+  }catch(_){ }
+
+  return str;
+}
+function sanitizeDisplayText(value){
+  return decodeMojibake(cleanText(value));
+}
+const PREPOSTO_NAME_BY_CODE = {
+  '114611':'JORGE',
+  '109839':'MARIANA',
+  '1333497':'RAFAEL',
+  '25471':'WILLAME',
+  '25745':'LÉO',
+  '3616654':'MARCOS',
+  '25846':'CMS'
+};
+function splitPrepostoParts(value){
+  const raw = sanitizeDisplayText(value);
+  if(!raw) return { codigo:'', nome:'' };
+
+  const match = raw.match(/^(\d{4,})\s*[-–—]?\s*(.*)$/);
+  if(match){
+    return {
+      codigo: cleanText(match[1]),
+      nome: sanitizeDisplayText(match[2])
+    };
+  }
+
+  return { codigo:'', nome: raw };
+}
+function getCanonicalPrepostoName(codigo, nome){
+  const cleanCodigo = cleanText(codigo);
+  const mapped = PREPOSTO_NAME_BY_CODE[cleanCodigo];
+  if(mapped) return mapped;
+  return sanitizeDisplayText(nome);
+}
+function normalizePreposto(value){
+  const parsed = typeof value === 'string'
+    ? splitPrepostoParts(value)
+    : {
+        codigo: sanitizeDisplayText(value?.codigo),
+        nome: sanitizeDisplayText(value?.nome)
+      };
+
+  return {
+    codigo: cleanText(parsed.codigo),
+    nome: getCanonicalPrepostoName(parsed.codigo, parsed.nome)
+  };
+}
 function safeHtml(v){
   return String(v ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
 }
@@ -479,10 +547,66 @@ async function workerRequest(method='GET', payload=null){
   }
   return res.json();
 }
+function isReservedStatus(status){
+  return ['Pendente','Em análise','Aprovado','Atendido parcialmente'].includes(sanitizeDisplayText(status));
+}
+function shouldReserveDispo(order){
+  if(order?.archived) return false;
+  return isReservedStatus(order?.status);
+}
+function normalizeOrder(rawOrder){
+  const order = { ...(rawOrder || {}) };
+  const normalizedPreposto = normalizePreposto(order.preposto || order.vendedor || '');
+
+  order.id = cleanText(order.id);
+  order.status = sanitizeDisplayText(order.status || 'Pendente');
+  order.archived = Boolean(order.archived);
+  order.createdAt = order.createdAt || '';
+  order.updatedAt = order.updatedAt || order.createdAt || '';
+  order.clienteCodigo = sanitizeDisplayText(order.clienteCodigo || order.cliente);
+  order.prazo = sanitizeDisplayText(order.prazo);
+  order.campanha = sanitizeDisplayText(order.campanha);
+  order.observacoes = sanitizeDisplayText(order.observacoes);
+  order.preposto = normalizedPreposto;
+  order.vendedor = order.vendedor || `${normalizedPreposto.codigo} - ${normalizedPreposto.nome}`.trim();
+
+  const rawItems = Array.isArray(order.items)
+    ? order.items
+    : Array.isArray(order.itens)
+      ? order.itens
+      : [];
+
+  order.items = rawItems.map(item => {
+    const mode = sanitizeDisplayText(item?.mode || '');
+    const packSize = Number(item?.packSize || 0) || 1;
+    const amount = Number(item?.amount || item?.quantidade || 0);
+    const totalUnits = Number(item?.totalUnits || 0) || (mode === 'boxed' ? amount * packSize : amount);
+    return {
+      ...item,
+      codigo: sanitizeDisplayText(item?.codigo || item?.referencia),
+      produto: sanitizeDisplayText(item?.produto || item?.descricao || item?.nome),
+      cor: sanitizeDisplayText(item?.cor),
+      mode,
+      packSize,
+      amount,
+      totalUnits,
+      prevFaturamento: sanitizeDisplayText(item?.prevFaturamento || item?.prevFat),
+      grade: Array.isArray(item?.grade) ? item.grade.map(g => ({
+        size: sanitizeDisplayText(g?.size || g?.tamanho),
+        qty: Number(g?.qty || g?.quantidade || 0)
+      })) : []
+    };
+  });
+
+  return order;
+}
+function normalizeOrdersCollection(orders){
+  return Array.isArray(orders) ? orders.map(normalizeOrder).filter(order => order.id) : [];
+}
 async function refreshOrdersFromRemote(){
   if(!hasWorkerConfig()) return STATE.orders;
   const remote = await workerRequest('GET');
-  STATE.orders = Array.isArray(remote) ? remote : [];
+  STATE.orders = normalizeOrdersCollection(remote);
   saveOrdersStorage();
   return STATE.orders;
 }
@@ -491,7 +615,45 @@ async function createOrderRemote(order){
   await workerRequest('POST', order);
 }
 function prepostoValueFromOrder(order){
-  return `${order?.preposto?.codigo || ''} - ${order?.preposto?.nome || ''}`.trim();
+  const preposto = normalizePreposto(order?.preposto || order?.vendedor || '');
+  return `${preposto.codigo} - ${preposto.nome}`.trim();
+}
+function getItemUnits(item){
+  const totalUnits = Number(item?.totalUnits || 0);
+  if(totalUnits > 0) return totalUnits;
+  const amount = Number(item?.amount || 0);
+  return sanitizeDisplayText(item?.mode) === 'boxed'
+    ? amount * (Number(item?.packSize || 0) || 1)
+    : amount;
+}
+function getDispoImpactMap(){
+  const impactMap = new Map();
+
+  for(const order of STATE.orders){
+    if(!shouldReserveDispo(order)) continue;
+
+    for(const item of (order.items || [])){
+      const codigo = sanitizeDisplayText(item?.codigo);
+      if(!codigo) continue;
+      impactMap.set(codigo, (impactMap.get(codigo) || 0) + getItemUnits(item));
+    }
+  }
+
+  return impactMap;
+}
+function getReservedUnitsFromOrders(item){
+  const impactMap = getDispoImpactMap();
+  return impactMap.get(sanitizeDisplayText(item?.codigo)) || 0;
+}
+function getBaseAvailableUnits(item){
+  return Math.max(0, Number(item?.availableUnits || 0) - getReservedUnitsFromOrders(item));
+}
+function getMaxCartAmount(item){
+  if(!item) return 0;
+  const baseUnits = getBaseAvailableUnits(item);
+  return item.mode === 'boxed'
+    ? Math.floor(baseUnits / item.packSize)
+    : baseUnits;
 }
 function isHistoryStatus(status){
   return ['Rejeitado','Finalizado'].includes(status || '');
@@ -521,7 +683,7 @@ function updateOrdersScopeButtons(){
 function loadLocalState(){
   const savedCart = readJsonSafe(STORAGE_KEYS.cart, []);
   STATE.cart = new Map(savedCart.map(item => [item.key, item]));
-  STATE.orders = readJsonSafe(STORAGE_KEYS.orders, []);
+  STATE.orders = normalizeOrdersCollection(readJsonSafe(STORAGE_KEYS.orders, []));
 }
 function gradeEntriesFromRow(row){
   return DISPO_COLUMNS.map(col=>{
@@ -573,8 +735,7 @@ function mergeData(prodRows, dispoRows){
       mode,
       availableUnits,
       packSize,
-      displayBalance: mode === 'boxed' ? Math.floor(availableUnits / packSize) : availableUnits,
-      imagem: String(ref['Imagem'] ?? ref['IMAGEM'] ?? ref['imagem'] ?? '').trim(),
+            imagem: String(ref['Imagem'] ?? ref['IMAGEM'] ?? ref['imagem'] ?? '').trim(),
       categoria,
       segmento: String(ref['Segmento'] ?? ref['SEGMENTO'] ?? '').trim(),
       genero: String(ref['Gênero'] ?? ref['Genero'] ?? ref['GENERO'] ?? '').trim(),
@@ -583,10 +744,10 @@ function mergeData(prodRows, dispoRows){
 }
 function currentCartAmount(key){ return Number(STATE.cart.get(key)?.amount || 0); }
 function remainingUnits(item){
-  const reserved = item.mode === 'boxed'
+  const reservedLocal = item.mode === 'boxed'
     ? currentCartAmount(item.key) * item.packSize
     : currentCartAmount(item.key);
-  return Math.max(0, item.availableUnits - reserved);
+  return Math.max(0, getBaseAvailableUnits(item) - reservedLocal);
 }
 function remainingPacks(item){
   return item.mode === 'boxed'
@@ -618,7 +779,6 @@ function sortView(items){
 function applyFilters(){
   const q = normalizeText(STATE.search);
   STATE.view = sortView(STATE.raw.filter(item=>{
-    if(remainingUnits(item) <= 0) return false;
     const categoryLabel = CATEGORY_LABELS[item.categoria] || item.categoria;
     const hay = normalizeText([item.codigo, item.produto, item.cor, item.segmento, item.genero, categoryLabel].join(' '));
     const hitQ = !q || hay.includes(q);
@@ -669,8 +829,12 @@ function quickAdd(item){
   const amount = 1;
   const existing = STATE.cart.get(item.key);
   const nextAmount = Number(existing?.amount || 0) + amount;
+  const maxAmount = getMaxCartAmount(item);
   const reservedUnits = item.mode === 'boxed' ? nextAmount * item.packSize : nextAmount;
-  if(reservedUnits > item.availableUnits){ toast('Saldo insuficiente'); return; }
+  if(nextAmount > maxAmount){
+    toast(maxAmount <= 0 ? 'Produto esgotado no momento' : 'Saldo insuficiente');
+    return;
+  }
   STATE.cart.set(item.key, { ...item, amount: nextAmount, totalUnits: reservedUnits });
   saveCartStorage();
   renderCart();
@@ -751,11 +915,12 @@ function renderCatalog(){
     });
     card.querySelector('.btnAdd').addEventListener('click', ()=>{
       const freeNow = item.mode === 'boxed' ? remainingPacks(item) : remainingUnits(item);
-      if(amount > freeNow){ toast('Quantidade acima do saldo disponível'); return; }
+      if(amount > freeNow){ toast(freeNow <= 0 ? 'Produto esgotado no momento' : 'Quantidade acima do saldo disponível'); return; }
       const existing = STATE.cart.get(key);
       const nextAmount = Number(existing?.amount || 0) + amount;
+      const maxAmount = getMaxCartAmount(item);
       const reservedUnits = item.mode === 'boxed' ? nextAmount * item.packSize : nextAmount;
-      if(reservedUnits > item.availableUnits){ toast('Saldo excedido'); return; }
+      if(nextAmount > maxAmount){ toast(maxAmount <= 0 ? 'Produto esgotado no momento' : 'Saldo excedido'); return; }
       STATE.cart.set(key, {
         ...item,
         key,
@@ -888,8 +1053,8 @@ function renderCart(){
     });
     row.querySelector('.btnPlus').addEventListener('click', ()=>{
       const original = STATE.raw.find(x=>x.key === item.key);
-      const max = original?.mode === 'boxed' ? Math.floor(original.availableUnits / original.packSize) : original.availableUnits;
-      if(Number(item.amount || 0) + 1 > max){ toast('Limite do saldo atingido'); return; }
+      const max = getMaxCartAmount(original);
+      if(Number(item.amount || 0) + 1 > max){ toast(max <= 0 ? 'Produto esgotado no momento' : 'Limite do saldo atingido'); return; }
       const next = Number(item.amount || 0) + 1;
       STATE.cart.set(item.key, { ...item, amount: next, totalUnits: item.mode === 'boxed' ? next * item.packSize : next });
       saveCartStorage();
@@ -1028,8 +1193,18 @@ function closeGradeSheet(){
   setTimeout(()=> $('gradeSheetWrap').classList.add('hidden'), 240);
 }
 function parsePreposto(value){
-  const [codigo, ...rest] = String(value).split(' - ');
-  return { codigo: codigo || '', nome: rest.join(' - ') || '' };
+  return normalizePreposto(value);
+}
+function validateCartAgainstAvailability(){
+  for(const cartItem of STATE.cart.values()){
+    const original = STATE.raw.find(x => x.key === cartItem.key);
+    if(!original) continue;
+    const maxAmount = getMaxCartAmount(original);
+    if(Number(cartItem.amount || 0) > maxAmount){
+      return original;
+    }
+  }
+  return null;
 }
 function validateCheckout(){
   const preposto = $('checkoutPreposto').value;
@@ -1049,6 +1224,12 @@ async function submitOrder(){
   try{
     if(hasWorkerConfig()){
       await refreshOrdersFromRemote();
+      const unavailableItem = validateCartAgainstAvailability();
+      if(unavailableItem){
+        throw new Error(`Saldo indisponível para ${unavailableItem.produto}`);
+      }
+      applyFilters();
+      renderCart();
     }
     const now = new Date();
     const prepostoValue = $('checkoutPreposto').value;
@@ -1094,7 +1275,7 @@ async function submitOrder(){
     }else{
       saveOrdersStorage();
     }
-    setLastPreposto(prepostoValue);
+    setLastPreposto(`${preposto.codigo} - ${preposto.nome}`.trim());
     STATE.cart.clear();
     saveCartStorage();
     renderCart();
@@ -1110,7 +1291,12 @@ async function submitOrder(){
     toast(hasWorkerConfig() ? 'Pedido sincronizado com sucesso' : 'Pedido salvo localmente');
   }catch(err){
     console.error(err);
-    toast('Não foi possível sincronizar o pedido');
+    const message = sanitizeDisplayText(err?.message);
+    if(message && normalizeText(message).includes('saldo indisponivel para')){
+      toast(message);
+    }else{
+      toast('Não foi possível sincronizar o pedido');
+    }
   }finally{
     submitBtn.disabled = false;
     submitBtn.classList.remove('opacity-60','cursor-not-allowed');
@@ -1207,7 +1393,11 @@ loadLocalState();
 bindEvents();
 updateOrdersScopeButtons();
 renderOrders();
-refreshOrdersFromRemote().then(renderOrders).catch(()=>{});
+refreshOrdersFromRemote().then(()=>{
+  renderOrders();
+  renderCart();
+  applyFilters();
+}).catch(()=>{});
 loadCatalog();
 </script>
 </body>
