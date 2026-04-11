@@ -1860,7 +1860,7 @@ async function buildCatalogPdfBlob(perPage){
   const slotsPerPage = perPage === 3 ? 3 : 2;
   const topStart = 20;
   const contentBottom = pageHeight - 12;
-  const slotGap = 5;
+  const slotGap = slotsPerPage === 3 ? 4 : 5;
   const slotHeight = (contentBottom - topStart - ((slotsPerPage - 1) * slotGap)) / slotsPerPage;
 
   let pageNumber = 1;
@@ -1879,11 +1879,12 @@ async function buildCatalogPdfBlob(perPage){
     const y = topStart + pageIndex * (slotHeight + slotGap);
     const sectionX = 12;
     const sectionW = pageWidth - 24;
-    const imageAreaW = perPage === 3 ? sectionW * 0.56 : sectionW * 0.58;
-    const infoX = sectionX + imageAreaW + 4;
-    const infoW = sectionW - imageAreaW - 4;
-    const imageBoxH = perPage === 3 ? slotHeight * 0.58 : slotHeight * 0.56;
-    const gradeY = y + imageBoxH + 8;
+
+    const imageBoxH = slotsPerPage === 3 ? slotHeight * 0.60 : slotHeight * 0.64;
+    const infoStartY = y + imageBoxH + 4.2;
+    const gradeLabelY = slotsPerPage === 3 ? infoStartY + 11.8 : infoStartY + 13.2;
+    const gradeTopY = gradeLabelY + 2.8;
+    const gradeAreaH = Math.max(14, (y + slotHeight) - gradeTopY - 1.4);
 
     doc.setDrawColor(226,232,240);
     doc.setLineWidth(0.35);
@@ -1893,17 +1894,20 @@ async function buildCatalogPdfBlob(perPage){
 
     const imgUrl = productImage(item);
     const dataUrl = await imageUrlToDataUrl(imgUrl);
-    doc.setFillColor(248,250,252);
-    doc.roundedRect(sectionX, y, imageAreaW, imageBoxH, 3, 3, 'F');
+
+    doc.setFillColor(255,255,255);
+    doc.roundedRect(sectionX, y, sectionW, imageBoxH, 3, 3, 'F');
+
     if(dataUrl){
       try{
         const imageType = dataUrl.includes('image/jpeg') ? 'JPEG' : 'PNG';
         const props = doc.getImageProperties(dataUrl);
         const sourceW = Number(props.width || 0);
         const sourceH = Number(props.height || 0);
-        const innerPad = perPage === 3 ? 2.2 : 2.8;
-        const maxW = Math.max(1, imageAreaW - (innerPad * 2));
-        const maxH = Math.max(1, imageBoxH - (innerPad * 2));
+        const innerPadX = slotsPerPage === 3 ? 1.8 : 1.5;
+        const innerPadY = slotsPerPage === 3 ? 1.8 : 1.5;
+        const maxW = Math.max(1, sectionW - (innerPadX * 2));
+        const maxH = Math.max(1, imageBoxH - (innerPadY * 2));
         let drawW = maxW;
         let drawH = maxH;
 
@@ -1913,54 +1917,58 @@ async function buildCatalogPdfBlob(perPage){
           drawH = Math.max(1, sourceH * scale);
         }
 
-        const drawX = sectionX + ((imageAreaW - drawW) / 2);
+        const drawX = sectionX + ((sectionW - drawW) / 2);
         const drawY = y + ((imageBoxH - drawH) / 2);
         doc.addImage(dataUrl, imageType, drawX, drawY, drawW, drawH, undefined, 'FAST');
       }catch(_){
+        doc.setFillColor(248,250,252);
+        doc.roundedRect(sectionX, y, sectionW, imageBoxH, 3, 3, 'F');
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(10);
         doc.setTextColor(148,163,184);
-        doc.text('Sem imagem', sectionX + imageAreaW/2, y + imageBoxH/2, { align:'center' });
+        doc.text('Sem imagem', sectionX + sectionW/2, y + imageBoxH/2, { align:'center' });
       }
     }else{
+      doc.setFillColor(248,250,252);
+      doc.roundedRect(sectionX, y, sectionW, imageBoxH, 3, 3, 'F');
       doc.setFont('helvetica', 'bold');
       doc.setFontSize(10);
       doc.setTextColor(148,163,184);
-      doc.text('Sem imagem', sectionX + imageAreaW/2, y + imageBoxH/2, { align:'center' });
+      doc.text('Sem imagem', sectionX + sectionW/2, y + imageBoxH/2, { align:'center' });
     }
 
     doc.setTextColor(15,23,42);
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(perPage === 3 ? 9.5 : 11);
-    const productLines = doc.splitTextToSize(String(item.produto || ''), infoW);
-    doc.text(productLines.slice(0,2), infoX, y + 8);
+    doc.setFontSize(slotsPerPage === 3 ? 9.2 : 10.5);
+    const titleMaxW = sectionW * 0.56;
+    const productLines = doc.splitTextToSize(String(item.produto || ''), titleMaxW).slice(0,2);
+    doc.text(productLines, sectionX, infoStartY);
 
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(71,85,105);
-    doc.setFontSize(perPage === 3 ? 7.5 : 8.5);
-    const refCor = `${item.codigo} • Cor: ${item.cor}`;
-    doc.text(doc.splitTextToSize(refCor, infoW), infoX, y + 15.5);
+    doc.setFontSize(slotsPerPage === 3 ? 7.2 : 8);
+    const metaLine = `${item.codigo} • Cor: ${item.cor}`;
+    doc.text(doc.splitTextToSize(metaLine, sectionW * 0.68).slice(0,1), sectionX, infoStartY + (slotsPerPage === 3 ? 4.4 : 4.8));
+
+    const rightX = sectionX + sectionW;
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(15,23,42);
-    doc.text(`Prev. Faturamento: `, infoX, y + 24);
-    doc.setFont('helvetica', 'normal');
-    doc.text(String(formatDate(item.prevFaturamento)), infoX + 29, y + 24);
-    doc.setFont('helvetica', 'bold');
-    doc.text(`Caixas: `, infoX, y + 31);
-    doc.setFont('helvetica', 'normal');
-    doc.text(String(remainingPacks(item)), infoX + 13, y + 31);
+    doc.setFontSize(slotsPerPage === 3 ? 7.4 : 8.2);
+    doc.text(`Prev. Faturamento: ${formatDate(item.prevFaturamento)}`, rightX, infoStartY, { align:'right' });
+    doc.text(`Caixas: ${remainingPacks(item)}`, rightX, infoStartY + (slotsPerPage === 3 ? 4.4 : 4.8), { align:'right' });
 
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(8.5);
+    doc.setFontSize(slotsPerPage === 3 ? 7.8 : 8.5);
     doc.setTextColor(15,23,42);
-    doc.text('Grade disponível', sectionX, gradeY);
-    drawGradeRow(doc, item, sectionX, gradeY + 3, sectionW);
+    doc.text('Grade disponível', sectionX, gradeLabelY);
+    drawGradeRow(doc, item, sectionX, gradeTopY, sectionW, gradeAreaH);
   }
 
   drawCatalogFooter(doc, pageWidth, pageHeight, pageNumber);
   const blob = doc.output('blob');
   return blob;
 }
+
 async function downloadBlob(blob, filename){
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
