@@ -112,6 +112,10 @@
             <i class="fa-regular fa-rectangle-list"></i>
             <span class="hidden sm:inline">Meus pedidos</span>
           </button>
+          <button id="btnRefreshStock" class="focus-ring inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-bold text-amber-700">
+            <i class="fa-solid fa-rotate"></i>
+            <span class="hidden sm:inline">Atualizar saldo</span>
+          </button>
           <button id="btnOpenCart" class="focus-ring inline-flex items-center gap-2 rounded-full bg-[var(--brand)] px-4 py-2 text-sm font-extrabold text-white shadow-soft">
             <i class="fa-solid fa-cart-shopping"></i>
             <span>Sacola</span>
@@ -618,6 +622,58 @@ async function createOrderRemote(order){
   if(!hasWorkerConfig()) return;
   await workerRequest('POST', order);
 }
+async function refreshStockFromSource(options = {}){
+  const { silent=false, reason='manual', force=false } = options;
+  if(!hasWorkerConfig()){
+    if(!silent) toast('Atualização disponível apenas com Worker configurado');
+    return false;
+  }
+  const now = Date.now();
+  if(STATE.stockRefreshInFlight) return false;
+  if(!force && reason === 'poll' && (now - STATE.lastStockRefreshAt) < 25000) return false;
+
+  STATE.stockRefreshInFlight = true;
+  const btn = $('btnRefreshStock');
+  const prevHtml = btn ? btn.innerHTML : '';
+  if(btn){
+    btn.disabled = true;
+    btn.classList.add('opacity-70');
+    btn.innerHTML = '<i class="fa-solid fa-rotate fa-spin"></i><span class="hidden sm:inline">Atualizando...</span>';
+  }
+  try{
+    await refreshOrdersFromRemote();
+    STATE.lastStockRefreshAt = Date.now();
+    render();
+    if(!silent){
+      const msg = reason === 'manual' ? 'Saldo atualizado' : 'Saldo sincronizado';
+      toast(msg);
+    }
+    return true;
+  }catch(err){
+    console.error(err);
+    if(!silent) toast('Não foi possível atualizar o saldo agora');
+    return false;
+  }finally{
+    STATE.stockRefreshInFlight = false;
+    if(btn){
+      btn.disabled = false;
+      btn.classList.remove('opacity-70');
+      btn.innerHTML = prevHtml || '<i class="fa-solid fa-rotate"></i><span class="hidden sm:inline">Atualizar saldo</span>';
+    }
+  }
+}
+function startStockAutoRefresh(){
+  stopStockAutoRefresh();
+  STATE.stockRefreshTimer = window.setInterval(()=>{
+    refreshStockFromSource({ silent:true, reason:'poll' });
+  }, 45000);
+}
+function stopStockAutoRefresh(){
+  if(STATE.stockRefreshTimer){
+    clearInterval(STATE.stockRefreshTimer);
+    STATE.stockRefreshTimer = null;
+  }
+}
 function prepostoValueFromOrder(order){
   const preposto = normalizePreposto(order?.preposto || order?.vendedor || '');
   return `${preposto.codigo} - ${preposto.nome}`.trim();
@@ -843,7 +899,7 @@ function availabilitySummary(item){
 }
 function availabilityChipClass(item){
   const state = getAvailabilityState(item);
-  if(state === 'soldout') return 'chip chip-danger';
+  if(state === 'soldout') return 'chip chip-danger availability-pulse';
   if(state === 'low') return 'chip chip-warning availability-pulse';
   return 'chip chip-blue';
 }
@@ -1372,6 +1428,7 @@ async function loadCatalog(){
 function bindEvents(){
   $('btnOpenCart').addEventListener('click', openCart);
   $('btnOrders').addEventListener('click', openOrders);
+  $('btnRefreshStock').addEventListener('click', ()=>refreshStockFromSource({ silent:false, reason:'manual', force:true }));
   $('btnProceedOrder').addEventListener('click', openCheckout);
   $('btnSubmitOrder').addEventListener('click', submitOrder);
   $('btnBackToCart').addEventListener('click', closeCheckout);
@@ -1420,17 +1477,29 @@ function bindEvents(){
   $('ordersDrawerWrap').addEventListener('click', (e)=>{ if(e.target.closest('[data-close-orders="true"]')) closeOrders(); });
   $('checkoutDrawerWrap').addEventListener('click', (e)=>{ if(e.target.closest('[data-close-checkout="true"]')) closeCheckout(); });
   $('gradeSheetWrap').addEventListener('click', (e)=>{ if(e.target.closest('[data-close-grade="true"]')) closeGradeSheet(); });
+
+  document.addEventListener('visibilitychange', ()=>{
+    if(document.visibilityState === 'visible'){
+      refreshStockFromSource({ silent:true, reason:'focus', force:true });
+    }
+  });
+  window.addEventListener('focus', ()=>{
+    refreshStockFromSource({ silent:true, reason:'focus', force:true });
+  });
 }
 loadLocalState();
 bindEvents();
 updateOrdersScopeButtons();
 renderOrders();
+startStockAutoRefresh();
 refreshOrdersFromRemote().then(()=>{
   renderOrders();
   renderCart();
   applyFilters();
 }).catch(()=>{});
-loadCatalog();
+loadCatalog().then(()=>{
+  refreshStockFromSource({ silent:true, reason:'load', force:true });
+}).catch(()=>{});
 </script>
 </body>
 </html>
