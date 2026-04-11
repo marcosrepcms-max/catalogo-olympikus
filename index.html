@@ -26,6 +26,7 @@
     *{box-sizing:border-box}
     html,body{height:100%;overflow-x:hidden}
     body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    :root{--mobile-header-offset:0px}
     .focus-ring:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(40,54,212,.15)}
     .glass{backdrop-filter:blur(12px);background:rgba(255,255,255,.88)}
     .shadow-soft{box-shadow:var(--shadow-soft)}
@@ -75,7 +76,7 @@
     .header-segmented{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px}
     .icon-btn-mobile{display:inline-flex;align-items:center;justify-content:center}
     .header-handle{display:none}
-    body.header-hidden #appHeader{transform:translateY(-100%)}
+    body.header-hidden #appHeader{transform:translateY(calc(-1 * var(--mobile-header-offset) - 10px))}
     body.header-hidden #appHeader .header-handle{opacity:0}
     @media (max-width: 1023px){
       #catalogShell{grid-template-columns:minmax(0,1fr)}
@@ -87,7 +88,7 @@
     @media (max-width: 767px){
       .list-row-desktop{display:none}
       .list-row-mobile{display:grid;grid-template-columns:86px minmax(0,1fr) auto;gap:12px;align-items:center}
-      #appHeader{top:0}
+      #appHeader{position:fixed;left:0;right:0;top:0;z-index:70;width:100%}
       .header-shell{padding-top:10px !important;padding-bottom:8px !important}
       .header-row-primary{gap:10px;margin-bottom:8px}
       .header-brand{gap:10px;min-width:0;flex:1}
@@ -103,6 +104,7 @@
       #btnViewCards,#btnViewList{padding:8px 14px;font-size:13px}
       .header-handle{display:block;width:56px;height:5px;border-radius:999px;background:#dbe1ea;margin:8px auto 0;box-shadow:inset 0 1px 0 rgba(255,255,255,.9)}
       .top-actions > *{flex:0 0 auto}
+      body.mobile-header-ready main{padding-top:calc(var(--mobile-header-offset) + 12px) !important}
       body.filters-open #filtersPanel{top:108px;max-height:calc(100dvh - 122px)}
     }
   </style>
@@ -2124,26 +2126,45 @@ function initMobileHeaderAutoHide(){
   let ticking = false;
   const mobileMq = window.matchMedia('(max-width: 767px)');
 
+  function measureHeader(){
+    if(mobileMq.matches){
+      const height = Math.ceil(header.offsetHeight || header.getBoundingClientRect().height || 0);
+      document.documentElement.style.setProperty('--mobile-header-offset', `${height}px`);
+      body.classList.add('mobile-header-ready');
+    }else{
+      document.documentElement.style.setProperty('--mobile-header-offset', '0px');
+      body.classList.remove('mobile-header-ready');
+      body.classList.remove('header-hidden');
+    }
+  }
+
   function shouldLockVisible(){
     return !mobileMq.matches
       || body.classList.contains('filters-open')
-      || !($('catalogWrap')?.classList.contains('hidden')) && ($('cartDrawerWrap')?.classList.contains('hidden') === false || $('checkoutDrawerWrap')?.classList.contains('hidden') === false || $('ordersDrawerWrap')?.classList.contains('hidden') === false || $('gradeSheetWrap')?.classList.contains('hidden') === false || $('conflictModalWrap')?.classList.contains('hidden') === false || $('catalogPdfModalWrap')?.classList.contains('hidden') === false || $('catalogShareModalWrap')?.classList.contains('hidden') === false);
+      || ($('cartDrawerWrap')?.classList.contains('hidden') === false)
+      || ($('checkoutDrawerWrap')?.classList.contains('hidden') === false)
+      || ($('ordersDrawerWrap')?.classList.contains('hidden') === false)
+      || ($('gradeSheetWrap')?.classList.contains('hidden') === false)
+      || ($('conflictModalWrap')?.classList.contains('hidden') === false)
+      || ($('catalogPdfModalWrap')?.classList.contains('hidden') === false)
+      || ($('catalogShareModalWrap')?.classList.contains('hidden') === false);
   }
 
   function syncHeader(){
     ticking = false;
+    measureHeader();
     const currentY = Math.max(0, window.scrollY || 0);
     const diff = currentY - lastY;
-    const scrollingDown = diff > 6;
-    const scrollingUp = diff < -6;
+    const scrollingDown = diff > 8;
+    const scrollingUp = diff < -8;
 
-    if(shouldLockVisible() || currentY < 16){
+    if(shouldLockVisible() || currentY <= 12){
       body.classList.remove('header-hidden');
       lastY = currentY;
       return;
     }
 
-    if(currentY < 72){
+    if(currentY < 80){
       body.classList.remove('header-hidden');
     }else if(scrollingDown){
       body.classList.add('header-hidden');
@@ -2163,16 +2184,22 @@ function initMobileHeaderAutoHide(){
 
   window.addEventListener('scroll', requestSync, { passive:true });
   window.addEventListener('resize', ()=>{
-    if(!mobileMq.matches) body.classList.remove('header-hidden');
+    measureHeader();
     requestSync();
+  });
+  window.addEventListener('orientationchange', ()=>{
+    setTimeout(()=>{ measureHeader(); requestSync(); }, 120);
   });
   header.addEventListener('click', ()=>{
     if(body.classList.contains('header-hidden')) body.classList.remove('header-hidden');
   });
   document.addEventListener('visibilitychange', ()=>{
-    if(document.visibilityState === 'visible') body.classList.remove('header-hidden');
+    if(document.visibilityState === 'visible'){
+      body.classList.remove('header-hidden');
+      setTimeout(()=>{ measureHeader(); requestSync(); }, 80);
+    }
   });
-  requestSync();
+  setTimeout(()=>{ measureHeader(); requestSync(); }, 0);
 }
 
 loadLocalState();
