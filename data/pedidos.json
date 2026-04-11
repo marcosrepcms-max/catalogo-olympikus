@@ -504,7 +504,7 @@
     "archived": false,
     "preposto": {
       "codigo": "25745",
-      "nome": "LÃÂO"
+      "nome": "LÃÂÃÂO"
     },
     "clienteCodigo": "18529",
     "prazo": "Z34 - 56/84/112 D",
@@ -633,6 +633,63 @@
         "mode": "boxed",
         "packSize": 12,
         "totalUnits": 36,
+        "grade": [
+          {
+            "size": "35",
+            "qty": 1
+          },
+          {
+            "size": "36",
+            "qty": 3
+          },
+          {
+            "size": "37",
+            "qty": 3
+          },
+          {
+            "size": "38",
+            "qty": 2
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": 46104
+      }
+    ]
+  },
+  {
+    "id": "PED-20260411124048-883",
+    "createdAt": "2026-04-11T15:40:48.533Z",
+    "updatedAt": "2026-04-11T15:40:48.945Z",
+    "status": "Pendente",
+    "archived": false,
+    "preposto": {
+      "codigo": "109839",
+      "nome": "MARIANA"
+    },
+    "clienteCodigo": "123456",
+    "prazo": "Z14 - 98 D",
+    "campanha": "CO681 +28DD OLY",
+    "observacoes": "",
+    "totals": {
+      "packs": 1,
+      "units": 12
+    },
+    "items": [
+      {
+        "codigo": "43299316",
+        "produto": "ACQUA",
+        "cor": "PRETO",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
         "grade": [
           {
             "size": "35",
