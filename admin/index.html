@@ -1389,6 +1389,45 @@ document.addEventListener('input', (e)=>{
   }
 });
 
+// ── MODAL DE CANCELAMENTO ─────────────────────────────────────────────────────
+// Registrado uma única vez no carregamento. O modal é HTML estático,
+// nunca é recriado, portanto NÃO deve ter seus listeners dentro de renderDetail().
+
+$('btnCloseCancelReason').addEventListener('click', ()=>{
+  closeCancelReasonModal();
+});
+
+$('btnAbortCancelReason').addEventListener('click', ()=>{
+  closeCancelReasonModal();
+});
+
+$('btnConfirmCancelReason').addEventListener('click', async ()=>{
+  await confirmCancelWithReason();
+});
+
+$('cancelReasonInput').addEventListener('input', ()=>{
+  syncCancelReasonButton();
+  $('cancelReasonError')?.classList.add('hidden');
+});
+
+// Fecha ao clicar no overlay (fora do painel branco)
+$('cancelReasonModal').addEventListener('click', (e)=>{
+  if(e.target === $('cancelReasonModal')){
+    closeCancelReasonModal();
+  }
+});
+
+// Fecha com ESC
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'Escape'){
+    const modal = $('cancelReasonModal');
+    if(modal && !modal.classList.contains('hidden')){
+      closeCancelReasonModal();
+    }
+  }
+});
+// ─────────────────────────────────────────────────────────────────────────────
+
 applyAuthUI();
 </script>
 </body>
