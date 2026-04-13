@@ -122,8 +122,8 @@
   {
     "id": "PED-20260413152449-251",
     "createdAt": "2026-04-13T18:24:49.933Z",
-    "updatedAt": "2026-04-13T18:24:49.928Z",
-    "status": "Pendente",
+    "updatedAt": "2026-04-13T18:25:42.545Z",
+    "status": "Aprovado",
     "archived": false,
     "preposto": {
       "codigo": "1333497",
@@ -172,8 +172,49 @@
             "qty": 1
           }
         ],
-        "prevFaturamento": 46104
+        "prevFaturamento": "46104"
       }
-    ]
+    ],
+    "history": [
+      {
+        "eventId": "evt_1776104742536_bxeu1v",
+        "at": "2026-04-13T18:25:42.536Z",
+        "action": "status_changed",
+        "label": "Pedido aprovado",
+        "statusFrom": "Pendente",
+        "statusTo": "Aprovado",
+        "archivedFrom": false,
+        "archivedTo": false,
+        "clientCode": "10435",
+        "prepostoCodigo": "1333497",
+        "prepostoNome": "RAFAEL",
+        "notes": "",
+        "meta": {
+          "itemsCount": 1,
+          "units": 24
+        }
+      },
+      {
+        "eventId": "evt_1776104695192_pegd6t",
+        "at": "2026-04-13T18:24:55.192Z",
+        "action": "created",
+        "label": "Pedido criado",
+        "statusFrom": null,
+        "statusTo": "Pendente",
+        "archivedFrom": null,
+        "archivedTo": false,
+        "clientCode": "10435",
+        "prepostoCodigo": "1333497",
+        "prepostoNome": "RAFAEL",
+        "notes": "",
+        "meta": {
+          "itemsCount": 1,
+          "units": 24
+        }
+      }
+    ],
+    "lastAction": "status_changed",
+    "lastActionLabel": "Pedido aprovado",
+    "lastActionAt": "2026-04-13T18:25:42.536Z"
   }
 ]
