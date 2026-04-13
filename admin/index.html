@@ -10,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
@@ -276,6 +275,12 @@
               Atualizar
             </button>
 
+            <a href="./dispo.html"
+              class="focus-ring rounded-full border border-[var(--brand)] bg-[var(--brand-soft)] px-4 py-2 text-sm font-bold text-[var(--brand)] flex items-center gap-2 hover:bg-[var(--brand)] hover:text-white transition-colors">
+              <i class="fa-solid fa-boxes-stacked"></i>
+              Painel DISPO
+            </a>
+
             <button id="btnLogout" class="focus-ring rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700">
               Sair
             </button>
@@ -324,76 +329,8 @@
         </div>
       </section>
 
-      <section class="mt-4 rounded-[28px] border border-slate-200 bg-white p-4 shadow-card">
-        <div class="flex flex-col gap-4">
-          <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-            <div>
-              <div class="text-lg font-extrabold">Painel DISPO</div>
-              <div class="mt-1 text-sm text-slate-500">Saldo atual, impacto dos pedidos e saldo projetado.</div>
-            </div>
-
-            <div class="flex flex-col sm:flex-row gap-2 sm:items-center">
-              <div class="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 min-w-[260px]">
-                <i class="fa-solid fa-boxes-stacked text-slate-400"></i>
-                <input id="dispoSearch" class="focus-ring w-full bg-transparent text-sm outline-none" placeholder="Buscar código, produto ou cor" />
-              </div>
-
-              <button id="btnRefreshDispo" class="focus-ring rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700">
-                Atualizar DISPO
-              </button>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-3">
-            <div class="kpi-card">
-              <div class="text-xs font-bold text-slate-500">Linhas na DISPO</div>
-              <div id="kpiDispoLinhas" class="mt-2 text-2xl font-extrabold">0</div>
-            </div>
-
-            <div class="kpi-card">
-              <div class="text-xs font-bold text-slate-500">Itens com pedidos em aberto</div>
-              <div id="kpiDispoComPedido" class="mt-2 text-2xl font-extrabold">0</div>
-            </div>
-
-            <div class="kpi-card">
-              <div class="text-xs font-bold text-slate-500">Itens com saldo projetado crítico</div>
-              <div id="kpiDispoCriticos" class="mt-2 text-2xl font-extrabold">0</div>
-            </div>
-
-            <div class="kpi-card">
-              <div class="text-xs font-bold text-slate-500">Última leitura</div>
-              <div id="kpiDispoAtualizado" class="mt-2 text-sm font-extrabold text-slate-700">—</div>
-            </div>
-          </div>
-
-          <div id="dispoPanelEmpty" class="hidden rounded-[24px] border border-slate-200 bg-slate-50 p-6 text-center text-slate-500">
-            Não foi possível carregar a DISPO. Verifique se o arquivo <strong>DISPO.xlsx</strong> está na raiz do projeto.
-          </div>
-
-          <div class="table-scroll">
-            <table>
-              <thead>
-                <tr>
-                  <th>Código</th>
-                  <th>Produto</th>
-                  <th>Cor</th>
-                  <th>Data entrega</th>
-                  <th>Saldo DISPO</th>
-                  <th>Pedidos em aberto</th>
-                  <th>Saldo projetado</th>
-                  <th>Situação</th>
-                </tr>
-              </thead>
-              <tbody id="dispoTableBody">
-                <tr>
-                  <td colspan="8" class="text-center text-slate-500">Carregando DISPO...</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
     </section>
+  </section>
   </main>
 
   <div id="cancelReasonModal" class="hidden fixed inset-0 z-[140] bg-slate-950/45 p-4">
@@ -423,7 +360,6 @@
 
 <script>
 const WORKER_URL = 'https://repasse-worker-cms.marcosrep-cms.workers.dev';
-const DISPO_FILE_URL = '../DISPO.xlsx';
 const STORAGE_KEYS = {
   adminAuth:'repasse_admin_auth_v1',
   adminScope:'repasse_admin_scope_v1'
@@ -435,9 +371,6 @@ const STATE = {
   orders: [],
   filtered: [],
   selectedId: null,
-  dispoRows: [],
-  dispoFiltered: [],
-  dispoLoadedAt: null,
   cancelReasonContext: null
 };
 
@@ -620,12 +553,6 @@ function orderMatchesScope(order, scope){
   if(scope === 'history') return isOrderHistory(order);
   if(scope === 'all') return true;
   return !isOrderHistory(order);
-}
-
-function shouldReserveDispo(order){
-  const status = sanitizeDisplayText(order?.status);
-  if(order?.archived) return false;
-  return ['Pendente','Aprovado'].includes(canonicalStatus(status));
 }
 
 function updateScopeButtons(){
@@ -854,7 +781,7 @@ async function applyAuthUI(){
   $('adminApp').classList.toggle('hidden', !ok);
 
   if(ok){
-    await Promise.all([loadAdmin(), loadDispo()]);
+    await loadAdmin();
   }
 }
 
@@ -872,7 +799,6 @@ async function loadAdmin(){
       : [];
 
     applyFilters();
-    renderDispo();
   }catch(err){
     console.error(err);
     showToast('Não foi possível carregar os pedidos sincronizados pelo Worker.', 'error');
@@ -1224,139 +1150,6 @@ Use isso apenas em testes. O histórico salvo dentro do pedido será perdido ap�
   }
 }
 
-async function loadDispo(){
-  try{
-    $('dispoPanelEmpty').classList.add('hidden');
-    $('dispoTableBody').innerHTML = `<tr><td colspan="8" class="text-center text-slate-500">Carregando DISPO...</td></tr>`;
-
-    const res = await fetch(`${DISPO_FILE_URL}?t=${Date.now()}`, { cache:'no-store' });
-
-    if(!res.ok){
-      throw new Error(`Falha ao carregar DISPO.xlsx (${res.status})`);
-    }
-
-    const buffer = await res.arrayBuffer();
-    const workbook = XLSX.read(buffer, { type:'array', cellDates:true });
-    const sheetName = workbook.SheetNames.includes('DISPO') ? 'DISPO' : workbook.SheetNames[0];
-    const ws = workbook.Sheets[sheetName];
-    const rows = XLSX.utils.sheet_to_json(ws, { defval:null, raw:false });
-
-    STATE.dispoRows = rows.map(row => {
-      const saldo = Number(row['SALDO'] || row['Saldo'] || 0);
-      const codigo = sanitizeDisplayText(row['Código'] || row['CODIGO'] || row['Codigo'] || row['REF'] || row['Referência'] || row['Referencia']);
-      const produto = sanitizeDisplayText(row['Produto'] || row['PRODUTO'] || row['Descrição'] || row['Descricao']);
-      const cor = sanitizeDisplayText(row['COR'] || row['Cor'] || row['Cor Descrição'] || row['Cor Descricao']);
-      const dataEntrega = row['DATA ENTREGA'] || row['DATA_ENTREGA'] || row['Data Entrega'] || row['Prev. Faturamento'] || null;
-
-      return { codigo, produto, cor, dataEntrega, saldo, source: row };
-    }).filter(row => row.codigo || row.produto);
-
-    STATE.dispoLoadedAt = new Date();
-    renderDispo();
-    showToast('DISPO carregada com sucesso.', 'success');
-  }catch(err){
-    console.error(err);
-    STATE.dispoRows = [];
-    STATE.dispoLoadedAt = null;
-    renderDispo();
-    $('dispoPanelEmpty').classList.remove('hidden');
-    showToast('Não foi possível carregar a DISPO.', 'error');
-  }
-}
-
-function getDispoImpactMap(){
-  const impactMap = new Map();
-
-  for(const order of STATE.orders){
-    if(!shouldReserveDispo(order)) continue;
-
-    for(const item of (order.items || [])){
-      const codigo = sanitizeDisplayText(item.codigo);
-      if(!codigo) continue;
-
-      const units = getItemUnits(item);
-      impactMap.set(codigo, (impactMap.get(codigo) || 0) + units);
-    }
-  }
-
-  return impactMap;
-}
-
-function getProjectedStatus(saldo, reservado){
-  const projetado = Number(saldo || 0) - Number(reservado || 0);
-
-  if(projetado < 0){
-    return { label:'Ruptura projetada', className:'saldo-danger' };
-  }
-  if(projetado === 0){
-    return { label:'No limite', className:'saldo-warning' };
-  }
-  if(projetado <= 12){
-    return { label:'Baixo', className:'saldo-warning' };
-  }
-  return { label:'Saudável', className:'saldo-ok' };
-}
-
-function renderDispo(){
-  const impactMap = getDispoImpactMap();
-  const q = normalizeText($('dispoSearch')?.value).toLowerCase();
-
-  const rows = STATE.dispoRows.map(row => {
-    const reservado = impactMap.get(row.codigo) || 0;
-    const saldoProjetado = Number(row.saldo || 0) - reservado;
-    return {
-      ...row,
-      reservado,
-      saldoProjetado,
-      situation:getProjectedStatus(row.saldo, reservado)
-    };
-  });
-
-  STATE.dispoFiltered = rows.filter(row => {
-    const hay = `${row.codigo} ${row.produto} ${row.cor}`.toLowerCase();
-    return !q || hay.includes(q);
-  });
-
-  const criticos = rows.filter(row => row.saldoProjetado <= 0).length;
-  const comPedido = rows.filter(row => row.reservado > 0).length;
-
-  $('kpiDispoLinhas').textContent = formatInt(rows.length);
-  $('kpiDispoComPedido').textContent = formatInt(comPedido);
-  $('kpiDispoCriticos').textContent = formatInt(criticos);
-  $('kpiDispoAtualizado').textContent = STATE.dispoLoadedAt
-    ? formatDateTime(STATE.dispoLoadedAt.toISOString())
-    : '—';
-
-  if(!STATE.dispoRows.length){
-    $('dispoTableBody').innerHTML = `<tr><td colspan="8" class="text-center text-slate-500">DISPO não carregada.</td></tr>`;
-    return;
-  }
-
-  if(!STATE.dispoFiltered.length){
-    $('dispoTableBody').innerHTML = `<tr><td colspan="8" class="text-center text-slate-500">Nenhum item da DISPO encontrado para esse filtro.</td></tr>`;
-    return;
-  }
-
-  const ordered = [...STATE.dispoFiltered].sort((a,b) => {
-    if((b.reservado || 0) !== (a.reservado || 0)) return (b.reservado || 0) - (a.reservado || 0);
-    if((a.saldoProjetado || 0) !== (b.saldoProjetado || 0)) return (a.saldoProjetado || 0) - (b.saldoProjetado || 0);
-    return String(a.produto).localeCompare(String(b.produto), 'pt-BR');
-  });
-
-  $('dispoTableBody').innerHTML = ordered.map(row => `
-    <tr>
-      <td class="font-extrabold text-slate-800">${safeHtml(row.codigo)}</td>
-      <td><div class="font-extrabold">${safeHtml(row.produto)}</div></td>
-      <td>${safeHtml(row.cor)}</td>
-      <td>${safeHtml(formatDate(row.dataEntrega))}</td>
-      <td class="font-extrabold">${safeHtml(formatInt(row.saldo))}</td>
-      <td class="${row.reservado > 0 ? 'text-[var(--brand)] font-extrabold' : 'text-slate-500 font-semibold'}">${safeHtml(formatInt(row.reservado))}</td>
-      <td class="${row.situation.className}">${safeHtml(formatInt(row.saldoProjetado))}</td>
-      <td class="${row.situation.className}">${safeHtml(row.situation.label)}</td>
-    </tr>
-  `).join('');
-}
-
 $('btnAdminLogin').addEventListener('click', async ()=>{
   if($('adminPassword').value !== ADMIN_PASSWORD){
     showToast('Senha inválida.', 'error');
@@ -1374,7 +1167,6 @@ $('btnLogout').addEventListener('click', ()=>{
 });
 
 $('btnRefresh').addEventListener('click', async ()=>{ await loadAdmin(); });
-$('btnRefreshDispo').addEventListener('click', async ()=>{ await loadDispo(); });
 
 $('btnScopeActive').addEventListener('click', ()=>{ setAdminScope('active'); applyFilters(); });
 $('btnScopeHistory').addEventListener('click', ()=>{ setAdminScope('history'); applyFilters(); });
@@ -1382,12 +1174,6 @@ $('btnScopeAll').addEventListener('click', ()=>{ setAdminScope('all'); applyFilt
 
 $('adminSearch').addEventListener('input', applyFilters);
 $('adminStatusFilter').addEventListener('change', applyFilters);
-
-document.addEventListener('input', (e)=>{
-  if(e.target && e.target.id === 'dispoSearch'){
-    renderDispo();
-  }
-});
 
 // ── MODAL DE CANCELAMENTO ─────────────────────────────────────────────────────
 // Registrado uma única vez no carregamento. O modal é HTML estático,
