@@ -104,8 +104,8 @@
   {
     "id": "PED-20260413172851-964",
     "createdAt": "2026-04-13T20:28:51.048Z",
-    "updatedAt": "2026-04-13T20:28:51.079Z",
-    "status": "Pendente",
+    "updatedAt": "2026-04-13T20:29:27.409Z",
+    "status": "Aprovado",
     "archived": false,
     "preposto": {
       "codigo": "109839",
@@ -158,8 +158,49 @@
             "qty": 2
           }
         ],
-        "prevFaturamento": 46132
+        "prevFaturamento": "46132"
       }
-    ]
+    ],
+    "history": [
+      {
+        "eventId": "evt_1776112167274_ro2w88",
+        "at": "2026-04-13T20:29:27.274Z",
+        "action": "status_changed",
+        "label": "Pedido aprovado",
+        "statusFrom": "Pendente",
+        "statusTo": "Aprovado",
+        "archivedFrom": false,
+        "archivedTo": false,
+        "clientCode": "1056748",
+        "prepostoCodigo": "109839",
+        "prepostoNome": "MARIANA",
+        "notes": "",
+        "meta": {
+          "itemsCount": 1,
+          "units": 12
+        }
+      },
+      {
+        "eventId": "evt_1776112158977_hl6qjc",
+        "at": "2026-04-13T20:29:18.977Z",
+        "action": "created",
+        "label": "Pedido criado",
+        "statusFrom": null,
+        "statusTo": "Pendente",
+        "archivedFrom": null,
+        "archivedTo": false,
+        "clientCode": "1056748",
+        "prepostoCodigo": "109839",
+        "prepostoNome": "MARIANA",
+        "notes": "",
+        "meta": {
+          "itemsCount": 1,
+          "units": 12
+        }
+      }
+    ],
+    "lastAction": "status_changed",
+    "lastActionLabel": "Pedido aprovado",
+    "lastActionAt": "2026-04-13T20:29:27.274Z"
   }
 ]
