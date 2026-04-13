@@ -112,5 +112,66 @@
         "prevFaturamento": 46172
       }
     ]
+  },
+  {
+    "id": "PED-20260413101559-873",
+    "createdAt": "2026-04-13T13:15:59.034Z",
+    "updatedAt": "2026-04-13T13:15:59.358Z",
+    "status": "Pendente",
+    "archived": false,
+    "preposto": {
+      "codigo": "25471",
+      "nome": "WILLAME"
+    },
+    "clienteCodigo": "18529",
+    "prazo": "Z34 - 56/84/112 D",
+    "campanha": "CO681 +28DD OLY",
+    "observacoes": "",
+    "totals": {
+      "packs": 2,
+      "units": 24
+    },
+    "items": [
+      {
+        "codigo": "43306412",
+        "produto": "ACQUA INFANTIL",
+        "cor": "ARENIT",
+        "amount": 2,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 24,
+        "grade": [
+          {
+            "size": "30",
+            "qty": 1
+          },
+          {
+            "size": "31",
+            "qty": 1
+          },
+          {
+            "size": "32",
+            "qty": 2
+          },
+          {
+            "size": "33",
+            "qty": 2
+          },
+          {
+            "size": "34",
+            "qty": 2
+          },
+          {
+            "size": "35",
+            "qty": 2
+          },
+          {
+            "size": "36",
+            "qty": 2
+          }
+        ],
+        "prevFaturamento": 46132
+      }
+    ]
   }
 ]
