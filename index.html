@@ -3,392 +3,585 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Admin • Repasse Olympikus</title>
-
+  <title>Repasse Olympikus</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
   <style>
     :root{
       --bg:#f6f7fb;
-      --card:#ffffff;
+      --card:#fff;
       --text:#0f172a;
+      --muted:#64748b;
       --line:#e2e8f0;
       --brand:#2836d4;
       --brand-soft:rgba(40,54,212,.10);
       --shadow:0 18px 42px rgba(15,23,42,.08);
-      --success:#15803d;
-      --success-soft:#dcfce7;
-      --warning:#b45309;
-      --warning-soft:#fef3c7;
-      --info:#1d4ed8;
-      --info-soft:#dbeafe;
-      --danger:#b91c1c;
-      --danger-soft:#fee2e2;
-      --muted:#475569;
-      --muted-soft:#e2e8f0;
-      --partial:#c2410c;
-      --partial-soft:#ffedd5;
+      --shadow-soft:0 10px 24px rgba(15,23,42,.05);
     }
-
-    *{ box-sizing:border-box; }
-
-    body{
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:var(--bg);
-      color:var(--text);
+    *{box-sizing:border-box}
+    html,body{height:100%;overflow-x:hidden}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    :root{--mobile-header-offset:0px}
+    .focus-ring:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(40,54,212,.15)}
+    .glass{backdrop-filter:blur(12px);background:rgba(255,255,255,.88)}
+    .shadow-soft{box-shadow:var(--shadow-soft)}
+    .shadow-card{box-shadow:var(--shadow)}
+    .drawer{transform:translateX(105%);transition:transform .24s ease}
+    .drawer.open{transform:translateX(0)}
+    .sheet{transform:translateY(105%);transition:transform .24s ease}
+    .sheet.open{transform:translateY(0)}
+    .backdrop{background:rgba(15,23,42,.54);backdrop-filter:blur(6px)}
+    .chip{display:inline-flex;align-items:center;gap:.4rem;border-radius:999px;padding:.42rem .78rem;font-size:12px;font-weight:800}
+    .chip-blue{background:var(--brand-soft);color:var(--brand)}
+    .chip-gray{background:#eef2f7;color:#334155}
+    .chip-warning{background:#fff7ed;color:#c2410c;border:2px solid #fb923c;font-weight:900;box-shadow:0 0 0 4px rgba(249,115,22,.14)}
+    .chip-danger{background:#fff7ed;color:#ea580c;border:2px solid #fb923c;font-weight:900;box-shadow:0 0 0 4px rgba(249,115,22,.16)}
+    .availability-pulse{animation:availabilityPulse .95s ease-in-out infinite;transform-origin:center}
+    .qty-btn{height:42px;width:42px;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:800}
+    .grade-pill{min-width:34px;border:1px solid var(--line);border-radius:10px;padding:4px 5px;background:#fff;text-align:center}
+    .grade-size{display:block;font-size:10px;line-height:1;color:#64748b;font-weight:700}
+    .grade-qty{display:block;font-size:11px;line-height:1.15;color:var(--brand);font-weight:800;margin-top:3px}
+    .filters-collapsed #filtersPanel{display:none}
+    .filters-collapsed #catalogShell{grid-template-columns:minmax(0,1fr)}
+    #catalogShell{display:grid;grid-template-columns:280px minmax(0,1fr);gap:16px}
+    .list-grade-strip{display:flex;flex-wrap:wrap;gap:6px}
+    .list-row-desktop{display:grid;grid-template-columns:130px minmax(0,1fr) auto;gap:16px;align-items:center}
+    .list-row-mobile{display:none}
+    .grade-pulse-icon{color:#f97316;animation:gradePulse 1.2s ease-in-out infinite}
+    .btn-grade-mobile{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:800;color:var(--brand);white-space:nowrap}
+    .btn-grade-mobile i{color:#f97316}
+    .mobile-info-rotator{position:relative;height:20px;overflow:hidden}
+    .mobile-info-rotator span{position:absolute;left:0;top:0;right:0;opacity:0;transform:translateY(6px);animation:mobileInfoRotate 5.6s ease-in-out infinite}
+    .mobile-info-rotator span:nth-child(1){animation-delay:0s}
+    .mobile-info-rotator span:nth-child(2){animation-delay:2.8s}
+    .mobile-info-primary{font-size:13px;font-weight:800;color:var(--brand)}
+    .mobile-info-secondary{font-size:12px;font-weight:700;color:#64748b}
+    @keyframes mobileInfoRotate{0%,8%{opacity:0;transform:translateY(6px)}12%,42%{opacity:1;transform:translateY(0)}50%,100%{opacity:0;transform:translateY(-6px)}}
+    @keyframes gradePulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.12);opacity:.82}}
+    @keyframes availabilityPulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(249,115,22,.20)}50%{transform:scale(1.06);box-shadow:0 0 0 8px rgba(249,115,22,0)}}
+    #appHeader{transition:transform .28s ease, box-shadow .2s ease}
+    .header-shell{position:relative}
+    .header-row-primary,.header-row-secondary{display:flex;align-items:center;gap:12px}
+    .header-row-primary{justify-content:space-between}
+    .header-brand{display:flex;align-items:center;gap:12px;min-width:0}
+    .header-brand-logo{height:44px;width:44px;overflow:hidden;border-radius:18px;border:1px solid var(--line);background:#fff;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+    .header-brand-title{min-width:0}
+    .header-secondary-actions{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
+    .search-shell{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;min-width:210px}
+    .header-segmented{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px}
+    .icon-btn-mobile{display:inline-flex;align-items:center;justify-content:center}
+    .header-handle{display:none}
+    #appHeader.header-hidden-mobile{transform:translate3d(0, calc(-100% - 18px), 0) !important;opacity:0 !important;pointer-events:none !important}
+    #appHeader.header-hidden-mobile .header-handle{opacity:0}
+    @media (max-width: 1023px){
+      #catalogShell{grid-template-columns:minmax(0,1fr)}
+      #filtersPanel{display:none}
+      body.filters-open #filtersPanel{
+        display:block;position:fixed;inset:auto 12px 12px 12px;top:82px;z-index:60;max-height:calc(100dvh - 96px);overflow:auto
+      }
     }
-
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap:.4rem;
-      border-radius:999px;
-      padding:.42rem .78rem;
-      font-size:12px;
-      font-weight:800;
-      border:1px solid transparent;
-      white-space:nowrap;
-    }
-
-    .chip-blue{ background:var(--brand-soft); color:var(--brand); }
-    .chip-gray{ background:#eef2f7; color:#334155; }
-    .chip-status-pendente{ background:var(--warning-soft); color:var(--warning); border-color:#fde68a; }
-    .chip-status-aprovado{ background:var(--success-soft); color:var(--success); border-color:#bbf7d0; }
-    .chip-status-cancelado{ background:var(--danger-soft); color:var(--danger); border-color:#fecaca; }
-
-    .shadow-card{ box-shadow:var(--shadow); }
-
-    .focus-ring:focus-visible{
-      outline:none;
-      box-shadow:0 0 0 4px rgba(40,54,212,.15);
-    }
-
-    .grade-pill{
-      min-width:34px;
-      border:1px solid var(--line);
-      border-radius:10px;
-      padding:4px 5px;
-      background:#fff;
-      text-align:center;
-    }
-
-    .grade-size{
-      display:block;
-      font-size:10px;
-      line-height:1;
-      color:#64748b;
-      font-weight:700;
-    }
-
-    .grade-qty{
-      display:block;
-      font-size:11px;
-      line-height:1.15;
-      color:var(--brand);
-      font-weight:800;
-      margin-top:3px;
-    }
-
-    .status-dot{
-      width:8px;
-      height:8px;
-      border-radius:999px;
-      display:inline-block;
-      flex:0 0 auto;
-    }
-
-    .dot-pendente{ background:#d97706; }
-    .dot-aprovado{ background:#16a34a; }
-    .dot-cancelado{ background:#dc2626; }
-
-    .history-timeline{ position:relative; }
-    .history-timeline::before{ content:''; position:absolute; left:11px; top:6px; bottom:6px; width:2px; background:#e2e8f0; border-radius:999px; }
-    .history-item{ position:relative; padding-left:34px; }
-    .history-dot{ position:absolute; left:0; top:4px; width:24px; height:24px; border-radius:999px; display:grid; place-items:center; font-size:11px; font-weight:900; border:1px solid #cbd5e1; background:#fff; color:#0f172a; }
-    .history-dot.pendente{ color:#d97706; border-color:#fde68a; background:#fff7ed; }
-    .history-dot.aprovado{ color:#16a34a; border-color:#bbf7d0; background:#f0fdf4; }
-    .history-dot.cancelado{ color:#dc2626; border-color:#fecaca; background:#fef2f2; }
-    .history-dot.info{ color:#2836d4; border-color:#bfdbfe; background:#eff6ff; }
-
-    .soft-panel{
-      border:1px solid var(--line);
-      background:#f8fafc;
-      border-radius:24px;
-    }
-
-    .table-scroll{
-      overflow:auto;
-      border-radius:20px;
-      border:1px solid var(--line);
-      background:white;
-    }
-
-    .table-scroll table{
-      width:100%;
-      min-width:980px;
-      border-collapse:separate;
-      border-spacing:0;
-    }
-
-    .table-scroll thead th{
-      position:sticky;
-      top:0;
-      z-index:1;
-      background:#f8fafc;
-      color:#475569;
-      font-size:12px;
-      font-weight:800;
-      text-align:left;
-      padding:12px 14px;
-      border-bottom:1px solid var(--line);
-    }
-
-    .table-scroll tbody td{
-      padding:12px 14px;
-      font-size:13px;
-      border-bottom:1px solid #edf2f7;
-      vertical-align:top;
-    }
-
-    .table-scroll tbody tr:hover{
-      background:#f8fafc;
-    }
-
-    .kpi-card{
-      border:1px solid var(--line);
-      background:white;
-      border-radius:22px;
-      padding:16px;
-    }
-
-    .toast-wrap{
-      position:fixed;
-      top:18px;
-      right:18px;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      z-index:9999;
-      pointer-events:none;
-    }
-
-    .toast{
-      pointer-events:auto;
-      min-width:260px;
-      max-width:360px;
-      border-radius:18px;
-      padding:14px 16px;
-      box-shadow:0 18px 42px rgba(15,23,42,.14);
-      font-size:13px;
-      font-weight:700;
-      border:1px solid transparent;
-    }
-
-    .toast-info{ background:#eff6ff; color:#1d4ed8; border-color:#bfdbfe; }
-    .toast-success{ background:#f0fdf4; color:#166534; border-color:#bbf7d0; }
-    .toast-error{ background:#fef2f2; color:#b91c1c; border-color:#fecaca; }
-    .toast-warning{ background:#fffbeb; color:#b45309; border-color:#fde68a; }
-
-    .btn-danger{
-      background:#fff1f2;
-      color:#be123c;
-      border-color:#fecdd3;
-    }
-
-    .btn-danger:hover{
-      background:#ffe4e6;
-    }
-
-    .saldo-ok{ color:#166534; font-weight:800; }
-    .saldo-warning{ color:#c2410c; font-weight:800; }
-    .saldo-danger{ color:#b91c1c; font-weight:800; }
-
-    .loading-shimmer{
-      position:relative;
-      overflow:hidden;
-    }
-
-    .loading-shimmer::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      transform:translateX(-100%);
-      background:linear-gradient(90deg, transparent, rgba(255,255,255,.45), transparent);
-      animation:shimmer 1.2s infinite;
-    }
-
-    @keyframes shimmer {
-      100% { transform:translateX(100%); }
+    @media (max-width: 767px){
+      .list-row-desktop{display:none}
+      .list-row-mobile{display:grid;grid-template-columns:86px minmax(0,1fr) auto;gap:12px;align-items:center}
+      #appHeader{position:fixed;left:0;right:0;top:0;z-index:70;width:100%;transition:transform .26s ease, opacity .18s ease;will-change:transform}
+      .header-shell{padding-top:10px !important;padding-bottom:8px !important}
+      .header-row-primary{gap:10px;margin-bottom:8px}
+      .header-brand{gap:10px;min-width:0;flex:1}
+      .header-brand-logo{height:34px;width:34px;border-radius:14px}
+      .header-brand-title .truncate{font-size:17px;line-height:1.1;white-space:normal}
+      #btnOpenCart{padding:10px 14px;font-size:14px;gap:8px;min-height:42px;white-space:nowrap;flex:0 0 auto}
+      #btnOpenCart #cartCountBadge{display:inline-flex !important;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 6px;font-size:11px}
+      .header-row-secondary{display:grid;grid-template-columns:44px minmax(0,1fr) auto 44px 44px;gap:8px;align-items:center}
+      .search-shell{min-width:0;width:100%;padding:10px 12px;min-height:44px}
+      #searchInputTop{font-size:15px}
+      #btnToggleFilters,#btnOrders,#btnRefreshStock{width:44px;height:44px;padding:0;border-radius:999px}
+      .header-segmented{padding:3px;min-height:44px}
+      #btnViewCards,#btnViewList{padding:8px 14px;font-size:13px}
+      .header-handle{display:block;width:56px;height:5px;border-radius:999px;background:#dbe1ea;margin:8px auto 0;box-shadow:inset 0 1px 0 rgba(255,255,255,.9)}
+      .top-actions > *{flex:0 0 auto}
+      body.mobile-header-ready main{padding-top:calc(var(--mobile-header-offset) + 12px) !important}
+      body.filters-open #filtersPanel{top:108px;max-height:calc(100dvh - 122px)}
     }
   </style>
 </head>
 <body>
-  <div id="toastWrap" class="toast-wrap"></div>
+  <div id="toast" class="hidden fixed left-1/2 top-6 z-[95] -translate-x-1/2 rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-card"></div>
 
-  <main class="min-h-screen p-4 sm:p-6">
-    <section id="loginScreen" class="mx-auto max-w-md pt-16 sm:pt-24">
-      <div class="rounded-[32px] border border-slate-200 bg-white p-6 sm:p-8 shadow-card">
-        <div class="mx-auto h-14 w-14 rounded-2xl bg-[var(--brand-soft)] text-[var(--brand)] flex items-center justify-center text-2xl">
-          <i class="fa-solid fa-shield-halved"></i>
+  <header id="appHeader" class="sticky top-0 z-40 border-b border-slate-200 glass">
+    <div class="header-shell mx-auto max-w-7xl px-4 sm:px-6 py-4">
+      <div class="header-row-primary">
+        <div class="header-brand">
+          <div class="header-brand-logo">
+            <img id="brandLogo" alt="Logo" class="h-full w-full object-contain" />
+          </div>
+          <div class="header-brand-title min-w-0">
+            <div class="truncate text-lg sm:text-xl font-extrabold">Repasse Olympikus</div>
+          </div>
         </div>
 
-        <h1 class="mt-5 text-2xl font-extrabold">Painel Administrativo</h1>
-        <p class="mt-2 text-sm text-slate-500">Entre com a senha para visualizar pedidos enviados pelos vendedores.</p>
-
-        <div class="mt-5">
-          <label class="text-xs font-bold text-slate-500">Senha</label>
-          <input id="adminPassword" type="password" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm font-semibold" placeholder="Digite a senha" />
-        </div>
-
-        <button id="btnAdminLogin" class="focus-ring mt-5 w-full rounded-2xl bg-[var(--brand)] px-4 py-3 text-sm font-extrabold text-white">Entrar</button>
-        <div class="mt-3 text-xs text-slate-400">Acesso interno. Troque a senha no arquivo quando necessário.</div>
+        <button id="btnOpenCart" class="focus-ring inline-flex items-center gap-2 rounded-full bg-[var(--brand)] px-4 py-2 text-sm font-extrabold text-white shadow-soft">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>Sacola</span>
+          <span id="cartCountBadge" class="hidden rounded-full bg-white/18 px-2 py-0.5 text-xs">0</span>
+        </button>
       </div>
-    </section>
 
-    <section id="adminApp" class="hidden mx-auto max-w-7xl">
-      <header class="rounded-[32px] border border-slate-200 bg-white p-4 sm:p-5 shadow-card">
-        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-          <div>
-            <div class="text-xs font-bold text-slate-500">Gestão</div>
-            <div class="text-2xl sm:text-3xl font-extrabold">Pedidos de repasse</div>
-          </div>
+      <div class="header-row-secondary">
+        <button id="btnToggleFilters" class="focus-ring icon-btn-mobile inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700">
+          <i class="fa-solid fa-sliders"></i>
+          <span class="hidden sm:inline">Filtros</span>
+        </button>
 
-          <div class="flex flex-wrap items-center gap-2">
-            <div class="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 min-w-[220px]">
-              <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
-              <input id="adminSearch" class="focus-ring w-full bg-transparent text-sm outline-none" placeholder="Buscar pedido, cliente ou preposto" />
-            </div>
-
-            <select id="adminStatusFilter" class="focus-ring rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold">
-              <option value="">Todos os status</option>
-              <option value="Pendente">Pendente</option>
-              <option value="Aprovado">Aprovado</option>
-              <option value="Cancelado">Cancelado</option>
-            </select>
-
-            <button id="btnRefresh" class="focus-ring rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700">
-              Atualizar
-            </button>
-
-            <a href="./dispo.html"
-              class="focus-ring rounded-full border border-[var(--brand)] bg-[var(--brand-soft)] px-4 py-2 text-sm font-bold text-[var(--brand)] flex items-center gap-2 hover:bg-[var(--brand)] hover:text-white transition-colors">
-              <i class="fa-solid fa-boxes-stacked"></i>
-              Painel DISPO
-            </a>
-
-            <button id="btnLogout" class="focus-ring rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700">
-              Sair
-            </button>
-          </div>
+        <div class="search-shell">
+          <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+          <input id="searchInputTop" class="focus-ring w-full bg-transparent text-sm outline-none placeholder:text-slate-400" placeholder="Buscar produto, código ou cor" />
         </div>
-      </header>
 
-      <section class="mt-4">
-        <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
-          <div class="flex flex-wrap items-center gap-2">
-            <div class="inline-flex rounded-full border border-slate-200 bg-white p-1">
-              <button id="btnScopeActive" class="focus-ring rounded-full px-3 py-2 text-sm font-bold text-slate-700">Ativos</button>
-              <button id="btnScopeHistory" class="focus-ring rounded-full px-3 py-2 text-sm font-bold text-slate-700">Histórico</button>
-              <button id="btnScopeAll" class="focus-ring rounded-full px-3 py-2 text-sm font-bold text-slate-700">Todos</button>
-            </div>
-            <div class="text-xs font-bold text-slate-400">Histórico robusto ativo. Exclusão física: somente testes</div>
-          </div>
-
-          <div class="flex flex-wrap gap-2 text-xs font-bold">
-            <span class="chip chip-status-pendente"><span class="status-dot dot-pendente"></span>Pendente</span>
-            <span class="chip chip-status-aprovado"><span class="status-dot dot-aprovado"></span>Aprovado</span>
-            <span class="chip chip-status-cancelado"><span class="status-dot dot-cancelado"></span>Cancelado</span>
-          </div>
+        <div class="header-segmented">
+          <button id="btnViewCards" class="focus-ring rounded-full px-3 py-2 text-sm font-bold text-slate-700 bg-slate-100">Cards</button>
+          <button id="btnViewList" class="focus-ring rounded-full px-3 py-2 text-sm font-bold text-slate-700">Lista</button>
         </div>
-      </section>
 
-      <section class="mt-4 grid grid-cols-1 xl:grid-cols-[420px_minmax(0,1fr)] gap-4">
-        <div class="rounded-[28px] border border-slate-200 bg-white p-4 shadow-card">
+        <button id="btnOrders" class="focus-ring icon-btn-mobile inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700" aria-label="Meus pedidos" title="Meus pedidos">
+          <i class="fa-regular fa-rectangle-list"></i>
+          <span class="hidden sm:inline">Meus pedidos</span>
+        </button>
+
+        <button id="btnRefreshStock" class="focus-ring icon-btn-mobile inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-bold text-amber-700" aria-label="Atualizar saldo" title="Atualizar saldo">
+          <i class="fa-solid fa-rotate"></i>
+          <span class="hidden sm:inline">Atualizar saldo</span>
+        </button>
+      </div>
+
+      <div class="header-handle" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-7xl px-4 sm:px-6 py-5 sm:py-6">
+    <div id="loadingBlock" class="rounded-[28px] border border-slate-200 bg-white p-10 text-center shadow-soft">
+      <div class="mx-auto h-14 w-14 rounded-2xl bg-[var(--brand-soft)] text-[var(--brand)] flex items-center justify-center text-2xl">
+        <i class="fa-solid fa-spinner fa-spin"></i>
+      </div>
+      <div class="mt-4 text-xl font-extrabold">Carregando Produtos.xlsx e DISPO.xlsx</div>
+      <div class="mt-1 text-slate-500">A vitrine exibirá somente os itens que estiverem na planilha DISPO.</div>
+    </div>
+
+    <div id="catalogWrap" class="hidden">
+      <div id="catalogShell">
+        <aside id="filtersPanel" class="rounded-[28px] border border-slate-200 bg-white p-4 shadow-soft h-fit">
           <div class="flex items-center justify-between gap-3">
-            <div class="text-lg font-extrabold">Lista de pedidos</div>
-            <div class="text-xs font-bold text-slate-400" id="ordersCountBadge">0 pedidos</div>
+            <div>
+              <div class="text-xs font-bold text-slate-500">Busca refinada</div>
+              <div class="text-lg font-extrabold">Filtros</div>
+            </div>
+            <button id="btnCloseFilters" class="focus-ring h-10 w-10 rounded-full border border-slate-200 lg:hidden"><i class="fa-solid fa-xmark"></i></button>
           </div>
 
-          <div id="ordersEmpty" class="hidden mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center text-slate-500">
-            Nenhum pedido encontrado.
+          <div class="mt-4 space-y-3">
+            <div>
+              <label class="text-xs font-bold text-slate-500">Categoria</label>
+              <select id="filterCategoria" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold"></select>
+            </div>
+            <div>
+              <label class="text-xs font-bold text-slate-500">Segmento</label>
+              <select id="filterSegmento" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold"></select>
+            </div>
+            <div>
+              <label class="text-xs font-bold text-slate-500">Gênero</label>
+              <select id="filterGenero" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold"></select>
+            </div>
+            <div>
+              <label class="text-xs font-bold text-slate-500">Ordenação</label>
+              <select id="sortBy" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold">
+                <option value="produto">Produto A-Z</option>
+                <option value="saldoDesc">Maior saldo</option>
+                <option value="saldoAsc">Menor saldo</option>
+                <option value="entregaAsc">Prev. faturamento mais próxima</option>
+              </select>
+            </div>
+            <button id="btnClearFilters" class="focus-ring w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-extrabold text-[var(--brand)]">Limpar filtros</button>
+            <button id="btnGenerateCatalogPdf" class="focus-ring w-full rounded-2xl bg-[var(--brand)] px-4 py-3 text-sm font-extrabold text-white shadow-soft">
+              <i class="fa-solid fa-file-pdf mr-2"></i>Gerar catálogo PDF
+            </button>
+          </div>
+        </aside>
+
+        <section>
+          <div class="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-[28px] border border-slate-200 bg-white px-4 py-4 shadow-soft">
+            <div class="text-sm font-bold text-slate-500"><span id="visibleCount">0</span> itens na vitrine</div>
+            <div class="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-bold">
+              <span class="chip chip-gray"><i class="fa-solid fa-boxes-stacked"></i> <span id="kpiPacks">0</span> caixas</span>
+              <span class="chip chip-blue"><i class="fa-solid fa-cubes-stacked"></i> <span id="kpiUnits">0</span> disponível</span>
+            </div>
           </div>
 
-          <div id="adminOrdersList" class="mt-4 space-y-3"></div>
-        </div>
+          <div id="cardsWrap" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4"></div>
+          <div id="listWrap" class="hidden space-y-3"></div>
 
-        <div class="rounded-[28px] border border-slate-200 bg-white p-4 shadow-card">
-          <div id="detailEmpty" class="rounded-2xl border border-slate-200 bg-slate-50 p-10 text-center text-slate-500">
-            Selecione um pedido para visualizar os detalhes.
+          <div id="emptyState" class="hidden rounded-[28px] border border-slate-200 bg-white p-10 text-center shadow-soft">
+            <div class="mx-auto h-14 w-14 rounded-2xl bg-slate-100 text-slate-500 flex items-center justify-center text-2xl"><i class="fa-solid fa-box-open"></i></div>
+            <div class="mt-4 text-xl font-extrabold">Nenhum item disponível</div>
+            <div class="mt-1 text-slate-500">Revise os filtros aplicados.</div>
           </div>
-          <div id="adminOrderDetail" class="hidden"></div>
-        </div>
-      </section>
-
-    </section>
-  </section>
+        </section>
+      </div>
+    </div>
   </main>
 
-  <div id="cancelReasonModal" class="hidden fixed inset-0 z-[140] bg-slate-950/45 p-4">
-    <div class="flex min-h-full items-center justify-center">
-      <div class="w-full max-w-lg rounded-[28px] border border-slate-200 bg-white p-5 shadow-[0_30px_80px_rgba(15,23,42,.24)]">
+  <div id="cartDrawerWrap" class="hidden fixed inset-0 z-50">
+    <div class="backdrop absolute inset-0" data-close-cart="true"></div>
+    <aside id="cartDrawer" class="drawer absolute right-0 top-0 bottom-0 w-full max-w-xl bg-[#f8f9fc] shadow-card flex flex-col">
+      <div class="border-b border-slate-200 bg-white px-5 py-4">
         <div class="flex items-start justify-between gap-3">
           <div>
-            <div class="text-xl font-extrabold">Motivo do cancelamento</div>
-            <div class="mt-1 text-sm font-semibold text-slate-500">Esse motivo será salvo no histórico do pedido.</div>
+            <div class="text-sm text-slate-500">Conferência</div>
+            <div class="text-[30px] leading-none font-extrabold">Minha Sacola</div>
           </div>
-          <button id="btnCloseCancelReason" type="button" class="focus-ring rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-600">Fechar</button>
+          <button class="focus-ring h-11 w-11 rounded-full border border-slate-200 bg-white" data-close-cart="true"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+
+      <div class="flex-1 overflow-y-auto px-4 py-4">
+        <div class="mb-4 flex items-center justify-end">
+          <button id="btnClearCart" class="focus-ring text-sm font-extrabold text-[var(--brand)]">Limpar sacola</button>
         </div>
 
-        <div class="mt-5">
-          <label class="text-xs font-bold uppercase tracking-[.18em] text-slate-500">Motivo</label>
-          <textarea id="cancelReasonInput" rows="5" class="focus-ring mt-2 w-full resize-none rounded-[20px] border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700" placeholder="Ex.: cliente desistiu, duplicidade, indisponibilidade..."></textarea>
-          <div id="cancelReasonError" class="mt-2 hidden text-xs font-bold text-rose-600">Informe o motivo do cancelamento para continuar.</div>
+        <div id="cartEmptyState" class="hidden rounded-[28px] border border-slate-200 bg-white p-8 text-center">
+          <div class="mx-auto h-14 w-14 rounded-2xl bg-slate-100 text-slate-500 flex items-center justify-center text-2xl"><i class="fa-solid fa-bag-shopping"></i></div>
+          <div class="mt-4 text-xl font-extrabold">Sua sacola está vazia</div>
+          <div class="mt-1 text-slate-500">Adicione itens disponíveis.</div>
         </div>
 
-        <div class="mt-5 flex flex-wrap justify-end gap-2">
-          <button id="btnAbortCancelReason" type="button" class="focus-ring rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-700">Voltar</button>
-          <button id="btnConfirmCancelReason" type="button" class="focus-ring rounded-2xl border border-rose-200 bg-rose-600 px-5 py-3 text-sm font-extrabold text-white disabled:cursor-not-allowed disabled:opacity-50">Confirmar cancelamento</button>
+        <div id="cartItems" class="space-y-3"></div>
+      </div>
+
+      <div class="border-t border-slate-200 bg-white px-5 py-4">
+        <div class="grid grid-cols-2 gap-3 text-sm">
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+            <div class="text-xs font-bold text-slate-500">Caixas / volumes</div>
+            <div id="cartTotalPacks" class="mt-1 text-2xl font-extrabold">0</div>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+            <div class="text-xs font-bold text-slate-500">Itens no pedido</div>
+            <div id="cartTotalUnits" class="mt-1 text-2xl font-extrabold">0</div>
+          </div>
+        </div>
+        <div class="mt-3 grid gap-3">
+          <button id="btnProceedOrder" class="focus-ring rounded-2xl bg-[var(--brand)] px-4 py-3 text-sm font-extrabold text-white">Continuar para pedido</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <div id="checkoutDrawerWrap" class="hidden fixed inset-0 z-[60]">
+    <div class="backdrop absolute inset-0" data-close-checkout="true"></div>
+    <aside id="checkoutDrawer" class="drawer absolute right-0 top-0 bottom-0 w-full max-w-2xl bg-[#f8f9fc] shadow-card flex flex-col">
+      <div class="border-b border-slate-200 bg-white px-5 py-4">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <div class="text-sm text-slate-500">Etapa final</div>
+            <div class="text-[30px] leading-none font-extrabold">Finalizar pedido</div>
+          </div>
+          <button class="focus-ring h-11 w-11 rounded-full border border-slate-200 bg-white" data-close-checkout="true"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+
+      <div class="flex-1 overflow-y-auto px-4 py-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <section class="rounded-[28px] border border-slate-200 bg-white p-4 shadow-soft">
+            <div class="text-lg font-extrabold">Dados do pedido</div>
+            <div class="mt-4 space-y-4">
+              <div>
+                <label class="text-xs font-bold text-slate-500">Preposto *</label>
+                <select id="checkoutPreposto" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold">
+                  <option value="">Selecione</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-xs font-bold text-slate-500">Cliente *</label>
+                <input id="checkoutCliente" inputmode="numeric" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold" placeholder="Digite o código do cliente" />
+              </div>
+              <div>
+                <label class="text-xs font-bold text-slate-500">Prazo *</label>
+                <select id="checkoutPrazo" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold">
+                  <option value="">Selecione</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-xs font-bold text-slate-500">Campanha</label>
+                <select id="checkoutCampanha" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold">
+                  <option value="">Sem campanha</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-xs font-bold text-slate-500">Observações</label>
+                <textarea id="checkoutObs" rows="4" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold resize-none" placeholder="Campo opcional"></textarea>
+              </div>
+            </div>
+          </section>
+
+          <section class="rounded-[28px] border border-slate-200 bg-white p-4 shadow-soft">
+            <div class="flex items-center justify-between gap-2">
+              <div class="text-lg font-extrabold">Resumo do pedido</div>
+              <div class="chip chip-blue"><span id="checkoutSummaryCount">0</span> itens</div>
+            </div>
+            <div id="checkoutItems" class="mt-4 space-y-3"></div>
+          </section>
+        </div>
+      </div>
+
+      <div class="border-t border-slate-200 bg-white px-5 py-4">
+        <div class="flex flex-col sm:flex-row gap-3 sm:justify-end">
+          <button id="btnBackToCart" class="focus-ring rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-extrabold text-slate-700">Voltar</button>
+          <button id="btnSubmitOrder" class="focus-ring rounded-2xl bg-[var(--brand)] px-4 py-3 text-sm font-extrabold text-white">Confirmar pedido</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <div id="ordersDrawerWrap" class="hidden fixed inset-0 z-50">
+    <div class="backdrop absolute inset-0" data-close-orders="true"></div>
+    <aside id="ordersDrawer" class="drawer absolute right-0 top-0 bottom-0 w-full max-w-2xl bg-[#f8f9fc] shadow-card flex flex-col">
+      <div class="border-b border-slate-200 bg-white px-5 py-4">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <div class="text-sm text-slate-500">Pedidos sincronizados</div>
+            <div class="text-[30px] leading-none font-extrabold">Meus pedidos</div>
+          </div>
+          <button class="focus-ring h-11 w-11 rounded-full border border-slate-200 bg-white" data-close-orders="true"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+      <div class="flex-1 overflow-y-auto px-4 py-4">
+        <div id="ordersEmptyState" class="hidden rounded-[28px] border border-slate-200 bg-white p-8 text-center">
+          <div class="mx-auto h-14 w-14 rounded-2xl bg-slate-100 text-slate-500 flex items-center justify-center text-2xl"><i class="fa-regular fa-rectangle-list"></i></div>
+          <div class="mt-4 text-xl font-extrabold">Nenhum pedido salvo</div>
+          <div class="mt-1 text-slate-500">Os pedidos ativos e o histórico do seu preposto aparecerão aqui.</div>
+        </div>
+        <div class="mb-4 flex items-center justify-between gap-3">
+          <div class="inline-flex rounded-full border border-slate-200 bg-white p-1">
+            <button id="btnOrdersScopeActive" class="focus-ring rounded-full px-3 py-2 text-sm font-bold text-slate-700">Ativos</button>
+            <button id="btnOrdersScopeHistory" class="focus-ring rounded-full px-3 py-2 text-sm font-bold text-slate-700">Histórico</button>
+            <button id="btnOrdersScopeAll" class="focus-ring rounded-full px-3 py-2 text-sm font-bold text-slate-700">Todos</button>
+          </div>
+          <div class="text-xs font-bold text-slate-400">Sem exclusão manual</div>
+        </div>
+        <div id="ordersList" class="space-y-3"></div>
+      </div>
+    </aside>
+  </div>
+
+
+  <div id="conflictModalWrap" class="hidden fixed inset-0 z-[80]">
+    <div class="backdrop absolute inset-0"></div>
+    <div class="absolute inset-0 flex items-center justify-center p-4">
+      <div class="w-full max-w-2xl rounded-[28px] border border-slate-200 bg-white shadow-card overflow-hidden">
+        <div class="border-b border-slate-200 px-5 py-4">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="text-sm text-slate-500">Revalidação de saldo</div>
+              <div class="text-[28px] leading-none font-extrabold">Ajustes no pedido</div>
+            </div>
+            <button id="btnCloseConflictModal" class="focus-ring h-11 w-11 rounded-full border border-slate-200 bg-white"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+        </div>
+        <div class="max-h-[70vh] overflow-y-auto px-5 py-4">
+          <div class="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-bold text-amber-800">
+            Alguns itens mudaram de saldo desde a montagem da sacola. Revise abaixo antes de prosseguir.
+          </div>
+
+          <div id="conflictSummaryStats" class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3"></div>
+
+          <div id="conflictSoldoutBlock" class="mt-4 hidden">
+            <div class="text-sm font-extrabold text-slate-700">Itens sem saldo</div>
+            <div id="conflictSoldoutList" class="mt-2 space-y-2"></div>
+          </div>
+
+          <div id="conflictPartialBlock" class="mt-4 hidden">
+            <div class="text-sm font-extrabold text-slate-700">Itens ajustados</div>
+            <div id="conflictPartialList" class="mt-2 space-y-2"></div>
+          </div>
+
+          <div id="conflictAvailableBlock" class="mt-4 hidden">
+            <div class="text-sm font-extrabold text-slate-700">Itens mantidos</div>
+            <div id="conflictAvailableList" class="mt-2 space-y-2"></div>
+          </div>
+        </div>
+        <div class="border-t border-slate-200 bg-slate-50 px-5 py-4">
+          <div class="flex flex-col sm:flex-row gap-3 sm:justify-end">
+            <button id="btnConflictReviewCart" class="focus-ring rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-extrabold text-slate-700">Revisar sacola</button>
+            <button id="btnConflictContinue" class="focus-ring rounded-2xl bg-[var(--brand)] px-4 py-3 text-sm font-extrabold text-white">Continuar com disponíveis</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="gradeSheetWrap" class="hidden fixed inset-0 z-[70] md:hidden">
+    <div class="backdrop absolute inset-0" data-close-grade="true"></div>
+    <div id="gradeSheet" class="sheet absolute inset-x-0 bottom-0 rounded-t-[28px] bg-white p-4 shadow-card">
+      <div class="mx-auto mb-3 h-1.5 w-16 rounded-full bg-slate-200"></div>
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <div class="text-xs font-bold text-slate-500">Grade disponível</div>
+          <div id="gradeSheetTitle" class="text-lg font-extrabold"></div>
+        </div>
+        <button class="focus-ring h-10 w-10 rounded-full border border-slate-200 bg-white" data-close-grade="true"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div id="gradeSheetContent" class="mt-4 flex flex-wrap gap-2"></div>
+      <div id="gradeSheetMeta" class="mt-4 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-extrabold text-slate-700"></div>
+    </div>
+  </div>
+
+
+  <div id="catalogPdfModalWrap" class="hidden fixed inset-0 z-[85]">
+    <div class="backdrop absolute inset-0"></div>
+    <div class="absolute inset-0 flex items-center justify-center p-4">
+      <div class="w-full max-w-md rounded-[28px] border border-slate-200 bg-white shadow-card overflow-hidden">
+        <div class="border-b border-slate-200 px-5 py-4">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="text-sm text-slate-500">Catálogo comercial</div>
+              <div class="text-[26px] leading-none font-extrabold">Gerar PDF</div>
+            </div>
+            <button id="btnCloseCatalogPdfModal" class="focus-ring h-11 w-11 rounded-full border border-slate-200 bg-white"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+        </div>
+        <div class="px-5 py-4 space-y-4">
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-600">
+            O PDF usará apenas os itens visíveis com saldo disponível.
+          </div>
+          <div>
+            <div class="text-sm font-extrabold text-slate-700">Produtos por página</div>
+            <div class="mt-3 grid grid-cols-2 gap-3">
+              <label class="cursor-pointer rounded-2xl border border-slate-200 px-4 py-4">
+                <div class="flex items-center gap-3">
+                  <input type="radio" name="catalogPdfPerPage" value="2" class="h-4 w-4" checked />
+                  <div>
+                    <div class="text-sm font-extrabold text-slate-800">2 por página</div>
+                    <div class="text-xs text-slate-500">Mais detalhado</div>
+                  </div>
+                </div>
+              </label>
+              <label class="cursor-pointer rounded-2xl border border-slate-200 px-4 py-4">
+                <div class="flex items-center gap-3">
+                  <input type="radio" name="catalogPdfPerPage" value="3" class="h-4 w-4" />
+                  <div>
+                    <div class="text-sm font-extrabold text-slate-800">3 por página</div>
+                    <div class="text-xs text-slate-500">Mais visual</div>
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-slate-200 bg-slate-50 px-5 py-4">
+          <div class="flex flex-col sm:flex-row gap-3 sm:justify-end">
+            <button id="btnCancelCatalogPdf" class="focus-ring rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-extrabold text-slate-700">Cancelar</button>
+            <button id="btnConfirmCatalogPdf" class="focus-ring rounded-2xl bg-[var(--brand)] px-4 py-3 text-sm font-extrabold text-white">Gerar agora</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="catalogShareModalWrap" class="hidden fixed inset-0 z-[86]">
+    <div class="backdrop absolute inset-0"></div>
+    <div class="absolute inset-0 flex items-center justify-center p-4">
+      <div class="w-full max-w-md rounded-[28px] border border-slate-200 bg-white shadow-card overflow-hidden">
+        <div class="border-b border-slate-200 px-5 py-4">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="text-sm text-slate-500">PDF concluído</div>
+              <div class="text-[26px] leading-none font-extrabold">Compartilhar catálogo?</div>
+            </div>
+            <button id="btnCloseCatalogShareModal" class="focus-ring h-11 w-11 rounded-full border border-slate-200 bg-white"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+        </div>
+        <div class="px-5 py-4 space-y-4">
+          <div class="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-800">
+            O PDF foi gerado com sucesso. Deseja compartilhar via WhatsApp agora?
+          </div>
+        </div>
+        <div class="border-t border-slate-200 bg-slate-50 px-5 py-4">
+          <div class="flex flex-col sm:flex-row gap-3 sm:justify-end">
+            <button id="btnCatalogOnlyDownload" class="focus-ring rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-extrabold text-slate-700">Apenas baixar</button>
+            <button id="btnCatalogShareWhatsapp" class="focus-ring rounded-2xl bg-[#25D366] px-4 py-3 text-sm font-extrabold text-white">Enviar via WhatsApp</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
 <script>
-const WORKER_URL = 'https://repasse-worker-cms.marcosrep-cms.workers.dev';
-const STORAGE_KEYS = {
-  adminAuth:'repasse_admin_auth_v1',
-  adminScope:'repasse_admin_scope_v1'
+const BASE_PREFIX = (location.pathname.includes('/admin')) ? '..' : '.';
+const DEFAULTS = {
+  produtosPath: `${BASE_PREFIX}/Produtos.xlsx`,
+  dispoPath: `${BASE_PREFIX}/DISPO.xlsx`,
+  imagesBasePath: `${BASE_PREFIX}/Catalogo/`,
+  logoPath: `${BASE_PREFIX}/logo-olympikus.png`
 };
-const ADMIN_PASSWORD = 'cmsrepasse';
-const STATUS_OPTIONS = ['Pendente','Aprovado','Cancelado'];
+const WORKER_CONFIG = {
+  endpoint: 'https://repasse-worker-cms.marcosrep-cms.workers.dev'
+};
+const STORAGE_KEYS = {
+  cart: 'repasse_cart_v4',
+  orders: 'repasse_orders_v4',
+  view: 'repasse_view_mode_v4',
+  lastPreposto: 'repasse_last_preposto_v1',
+  ordersScope: 'repasse_orders_scope_v1'
+};
+const CATEGORY_LABELS = { FTW:'Tênis', ACC:'Acessórios', CHI:'Chinelos', MEIA:'Meias', 'V&A':'Vestuário' };
+const FOOTWEAR_COLUMNS = ['28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','33/34','35/36','37/38','39/40','41/42','43/44','45/46','33/38','39/44'];
+const APPAREL_COLUMNS = ['PP','P','M','G','GG','U'];
+const DISPO_COLUMNS = [...FOOTWEAR_COLUMNS, ...APPAREL_COLUMNS];
+const PREPOSTOS = [
+  '114611 - JORGE',
+  '109839 - MARIANA',
+  '1333497 - RAFAEL',
+  '25471 - WILLAME',
+  '25745 - LÉO',
+  '3616654 - MARCOS',
+  '25846 - CMS'
+];
+const PRAZOS = [
+  'Z01 - A VISTA','Z02 - 14 D','Z03 - 21 D','Z04 - 28 D','Z05 - 35 D','Z06 - 42 D','Z07 - 49 D','Z08 - 56 D','Z09 - 63 D','Z10 - 70 D','Z11 - 77 D','Z12 - 84 D','Z13 - 91 D','Z14 - 98 D','Z15 - 105 D','Z16 - 112 D','Z17 - 119 D','Z18 - 21/49 D','Z19 - 28/56 D','Z20 - 35/63 D','Z21 - 42/70 D','Z22 - 49/77 D','Z23 - 56/84 D','Z24 - 63/91 D','Z25 - 70/98 D','Z26 - 77/105 D','Z27 - 84/112 D','Z28 - 91/119 D','Z29 - 21/49/77 D','Z30 - 28/56/84 D','Z31 - 35/63/91 D','Z32 - 42/70/98 D','Z33 - 49/77/105 D','Z34 - 56/84/112 D','Z35 - 63/91/119 D'
+];
+const CAMPANHAS = ['CO681 +28DD OLY','CO689 +56DD OLY','CO684 +28DD UA','CO690 +56DD UA'];
 
 const STATE = {
+  raw: [],
+  view: [],
+  search: '',
+  filters: { categoria:'', segmento:'', genero:'', sort:'produto' },
+  cart: new Map(),
   orders: [],
-  filtered: [],
-  selectedId: null,
-  cancelReasonContext: null
+  viewMode: localStorage.getItem(STORAGE_KEYS.view) || 'cards',
+  pendingConflictCheck: null,
+  latestCatalogPdfBlob: null,
+  latestCatalogPdfFileName: '',
+  latestCatalogShareText: 'Oportunidades com estoque disponível — confira 👇'
 };
 
 const $ = (id)=>document.getElementById(id);
 
-function safeHtml(v){
-  return String(v ?? '')
-    .replaceAll('&','&amp;')
-    .replaceAll('<','&lt;')
-    .replaceAll('>','&gt;')
-    .replaceAll('"','&quot;')
-    .replaceAll("'",'&#39;');
+function toast(msg, ms=2200){
+  const el = $('toast');
+  el.textContent = msg;
+  el.classList.remove('hidden');
+  clearTimeout(toast._t);
+  toast._t = setTimeout(()=>el.classList.add('hidden'), ms);
 }
-
 function normalizeText(v){
+  return String(v ?? '').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+}
+function cleanText(v){
   return String(v ?? '').trim();
 }
-
 function decodeMojibake(value){
   let str = String(value ?? '');
   if(!str) return '';
@@ -399,21 +592,19 @@ function decodeMojibake(value){
   try{
     const decoded = decodeURIComponent(escape(str));
     if(decoded && decoded !== str) return decoded;
-  }catch(_){}
+  }catch(_){ }
 
   try{
     const bytes = Uint8Array.from([...str].map(ch => ch.charCodeAt(0) & 0xff));
     const decoded = new TextDecoder('utf-8', { fatal:false }).decode(bytes);
     if(decoded && decoded !== str) return decoded;
-  }catch(_){}
+  }catch(_){ }
 
   return str;
 }
-
 function sanitizeDisplayText(value){
-  return decodeMojibake(normalizeText(value));
+  return decodeMojibake(cleanText(value));
 }
-
 const PREPOSTO_NAME_BY_CODE = {
   '114611':'JORGE',
   '109839':'MARIANA',
@@ -423,7 +614,6 @@ const PREPOSTO_NAME_BY_CODE = {
   '3616654':'MARCOS',
   '25846':'CMS'
 };
-
 function splitPrepostoParts(value){
   const raw = sanitizeDisplayText(value);
   if(!raw) return { codigo:'', nome:'' };
@@ -431,56 +621,565 @@ function splitPrepostoParts(value){
   const match = raw.match(/^(\d{4,})\s*[-–—]?\s*(.*)$/);
   if(match){
     return {
-      codigo: normalizeText(match[1]),
+      codigo: cleanText(match[1]),
       nome: sanitizeDisplayText(match[2])
     };
   }
 
   return { codigo:'', nome: raw };
 }
-
 function getCanonicalPrepostoName(codigo, nome){
-  const cleanCodigo = normalizeText(codigo);
-  const cleanNome = sanitizeDisplayText(nome);
+  const cleanCodigo = cleanText(codigo);
   const mapped = PREPOSTO_NAME_BY_CODE[cleanCodigo];
-
   if(mapped) return mapped;
-  return cleanNome;
+  return sanitizeDisplayText(nome);
 }
-
-function buildPrepostoDisplay(preposto, vendedor){
-  const vendedorParts = splitPrepostoParts(vendedor);
-  const baseCodigo = normalizeText(preposto?.codigo) || vendedorParts.codigo;
-  const baseNome = sanitizeDisplayText(preposto?.nome) || vendedorParts.nome;
-  const nome = getCanonicalPrepostoName(baseCodigo, baseNome);
+function normalizePreposto(value){
+  const parsed = typeof value === 'string'
+    ? splitPrepostoParts(value)
+    : {
+        codigo: sanitizeDisplayText(value?.codigo),
+        nome: sanitizeDisplayText(value?.nome)
+      };
 
   return {
-    codigo: baseCodigo,
-    nome
+    codigo: cleanText(parsed.codigo),
+    nome: getCanonicalPrepostoName(parsed.codigo, parsed.nome)
   };
 }
-
-function showToast(message, type='info'){
-  const wrap = $('toastWrap');
-  if(!wrap) return;
-
-  const toast = document.createElement('div');
-  toast.className = `toast toast-${type}`;
-  toast.textContent = message;
-  wrap.appendChild(toast);
-
-  setTimeout(() => {
-    toast.style.opacity = '0';
-    toast.style.transform = 'translateY(-4px)';
-    toast.style.transition = 'all .2s ease';
-  }, 3400);
-
-  setTimeout(() => {
-    toast.remove();
-  }, 3700);
+function safeHtml(v){
+  return String(v ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
 }
+function toNumber(v){
+  const n = Number(v);
+  if(Number.isFinite(n)) return n;
+  return Number(String(v||'').replace(/\./g,'').replace(',', '.').replace(/[^\d.-]/g,'')) || 0;
+}
+function productKey(item){ return normalizeText([item.codigo, item.cor, item.gci, item.ebm, item._row].join('||')); }
+function productImage(item){
+  const raw = String(item.imagem || '').trim();
+  if(!raw) return '';
+  const hasExt = /\.[a-z0-9]+$/i.test(raw);
+  const name = hasExt ? raw : `${raw}.png`;
+  return `${DEFAULTS.imagesBasePath}${encodeURIComponent(name)}`;
+}
+function excelSerialToDate(serial){
+  const utcDays = Math.floor(Number(serial) - 25569);
+  const utcValue = utcDays * 86400;
+  const dateInfo = new Date(utcValue * 1000);
+  const fractionalDay = Number(serial) - Math.floor(Number(serial)) + 0.0000001;
+  let totalSeconds = Math.floor(86400 * fractionalDay);
+  const seconds = totalSeconds % 60;
+  totalSeconds -= seconds;
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor(totalSeconds / 60) % 60;
+  return new Date(dateInfo.getFullYear(), dateInfo.getMonth(), dateInfo.getDate(), hours, minutes, seconds);
+}
+function formatDate(value){
+  if(value === null || value === undefined || value === '') return '—';
+  if(typeof value === 'number' && value > 59){
+    return excelSerialToDate(value).toLocaleDateString('pt-BR');
+  }
+  const str = String(value).trim();
+  if(/^\d+(\.\d+)?$/.test(str) && Number(str) > 59){
+    return excelSerialToDate(Number(str)).toLocaleDateString('pt-BR');
+  }
+  const br = str.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4})$/);
+  if(br){
+    const [_, d, m, y] = br;
+    const year = y.length === 2 ? `20${y}` : y;
+    return `${d.padStart(2,'0')}/${m.padStart(2,'0')}/${year}`;
+  }
+  const d = new Date(str);
+  return Number.isNaN(d.getTime()) ? str : d.toLocaleDateString('pt-BR');
+}
+function readJsonSafe(key, fallback){
+  try{
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  }catch(e){ return fallback; }
+}
+function saveCartStorage(){ localStorage.setItem(STORAGE_KEYS.cart, JSON.stringify(Array.from(STATE.cart.values()))); }
+function saveOrdersStorage(){ localStorage.setItem(STORAGE_KEYS.orders, JSON.stringify(STATE.orders)); }
+function saveViewMode(){ localStorage.setItem(STORAGE_KEYS.view, STATE.viewMode); }
+function getLastPreposto(){ return localStorage.getItem(STORAGE_KEYS.lastPreposto) || ''; }
+function setLastPreposto(value){ localStorage.setItem(STORAGE_KEYS.lastPreposto, value || ''); }
+function getOrdersScope(){ return localStorage.getItem(STORAGE_KEYS.ordersScope) || 'active'; }
+function setOrdersScope(value){ localStorage.setItem(STORAGE_KEYS.ordersScope, value || 'active'); }
+function hasWorkerConfig(){
+  return Boolean(WORKER_CONFIG.endpoint);
+}
+async function workerRequest(method='GET', payload=null){
+  const options = {
+    method,
+    headers: { 'Content-Type':'application/json' }
+  };
+  if(payload !== null){
+    options.body = JSON.stringify(payload);
+  }
+  const res = await fetch(WORKER_CONFIG.endpoint, options);
+  if(!res.ok){
+    const txt = await res.text();
+    throw new Error(`Worker ${method} falhou (${res.status}): ${txt.slice(0, 160)}`);
+  }
+  return res.json();
+}
+function isReservedStatus(status){
+  return ['Pendente','Em análise','Aprovado','Atendido parcialmente'].includes(sanitizeDisplayText(status));
+}
+function shouldReserveDispo(order){
+  if(order?.archived) return false;
+  return isReservedStatus(order?.status);
+}
+function normalizeOrder(rawOrder){
+  const order = { ...(rawOrder || {}) };
+  const normalizedPreposto = normalizePreposto(order.preposto || order.vendedor || '');
 
-function gradeHtml(grade=[]){
+  order.id = cleanText(order.id);
+  order.status = sanitizeDisplayText(order.status || 'Pendente');
+  order.archived = Boolean(order.archived);
+  order.createdAt = order.createdAt || '';
+  order.updatedAt = order.updatedAt || order.createdAt || '';
+  order.clienteCodigo = sanitizeDisplayText(order.clienteCodigo || order.cliente);
+  order.prazo = sanitizeDisplayText(order.prazo);
+  order.campanha = sanitizeDisplayText(order.campanha);
+  order.observacoes = sanitizeDisplayText(order.observacoes);
+  order.preposto = normalizedPreposto;
+  order.vendedor = order.vendedor || `${normalizedPreposto.codigo} - ${normalizedPreposto.nome}`.trim();
+
+  const rawItems = Array.isArray(order.items)
+    ? order.items
+    : Array.isArray(order.itens)
+      ? order.itens
+      : [];
+
+  order.items = rawItems.map(item => {
+    const mode = sanitizeDisplayText(item?.mode || '');
+    const packSize = Number(item?.packSize || 0) || 1;
+    const amount = Number(item?.amount || item?.quantidade || 0);
+    const totalUnits = Number(item?.totalUnits || 0) || (mode === 'boxed' ? amount * packSize : amount);
+    return {
+      ...item,
+      codigo: sanitizeDisplayText(item?.codigo || item?.referencia),
+      produto: sanitizeDisplayText(item?.produto || item?.descricao || item?.nome),
+      cor: sanitizeDisplayText(item?.cor),
+      mode,
+      packSize,
+      amount,
+      totalUnits,
+      prevFaturamento: sanitizeDisplayText(item?.prevFaturamento || item?.prevFat),
+      grade: Array.isArray(item?.grade) ? item.grade.map(g => ({
+        size: sanitizeDisplayText(g?.size || g?.tamanho),
+        qty: Number(g?.qty || g?.quantidade || 0)
+      })) : []
+    };
+  });
+
+  return order;
+}
+function normalizeOrdersCollection(orders){
+  return Array.isArray(orders) ? orders.map(normalizeOrder).filter(order => order.id) : [];
+}
+async function refreshOrdersFromRemote(){
+  if(!hasWorkerConfig()) return STATE.orders;
+  const remote = await workerRequest('GET');
+  STATE.orders = normalizeOrdersCollection(remote);
+  saveOrdersStorage();
+  return STATE.orders;
+}
+async function createOrderRemote(order){
+  if(!hasWorkerConfig()) return;
+  await workerRequest('POST', order);
+}
+async function refreshStockFromSource(options = {}){
+  const { silent=false, reason='manual', force=false } = options;
+  if(!hasWorkerConfig()){
+    if(!silent) toast('Atualização disponível apenas com Worker configurado');
+    return false;
+  }
+  const now = Date.now();
+  if(STATE.stockRefreshInFlight) return false;
+  if(!force && reason === 'poll' && (now - STATE.lastStockRefreshAt) < 25000) return false;
+
+  STATE.stockRefreshInFlight = true;
+  const btn = $('btnRefreshStock');
+  const prevHtml = btn ? btn.innerHTML : '';
+  if(btn){
+    btn.disabled = true;
+    btn.classList.add('opacity-70');
+    btn.innerHTML = '<i class="fa-solid fa-rotate fa-spin"></i><span class="hidden sm:inline">Atualizando...</span>';
+  }
+  try{
+    await refreshOrdersFromRemote();
+    STATE.lastStockRefreshAt = Date.now();
+    render();
+    if(!silent){
+      const msg = reason === 'manual' ? 'Saldo atualizado' : 'Saldo sincronizado';
+      toast(msg);
+    }
+    return true;
+  }catch(err){
+    console.error(err);
+    if(!silent) toast('Não foi possível atualizar o saldo agora');
+    return false;
+  }finally{
+    STATE.stockRefreshInFlight = false;
+    if(btn){
+      btn.disabled = false;
+      btn.classList.remove('opacity-70');
+      btn.innerHTML = prevHtml || '<i class="fa-solid fa-rotate"></i><span class="hidden sm:inline">Atualizar saldo</span>';
+    }
+  }
+}
+function startStockAutoRefresh(){
+  stopStockAutoRefresh();
+  STATE.stockRefreshTimer = window.setInterval(()=>{
+    refreshStockFromSource({ silent:true, reason:'poll' });
+  }, 45000);
+}
+function stopStockAutoRefresh(){
+  if(STATE.stockRefreshTimer){
+    clearInterval(STATE.stockRefreshTimer);
+    STATE.stockRefreshTimer = null;
+  }
+}
+function prepostoValueFromOrder(order){
+  const preposto = normalizePreposto(order?.preposto || order?.vendedor || '');
+  return `${preposto.codigo} - ${preposto.nome}`.trim();
+}
+function getItemUnits(item){
+  const totalUnits = Number(item?.totalUnits || 0);
+  if(totalUnits > 0) return totalUnits;
+  const amount = Number(item?.amount || 0);
+  return sanitizeDisplayText(item?.mode) === 'boxed'
+    ? amount * (Number(item?.packSize || 0) || 1)
+    : amount;
+}
+function getDispoImpactMap(){
+  const impactMap = new Map();
+
+  for(const order of STATE.orders){
+    if(!shouldReserveDispo(order)) continue;
+
+    for(const item of (order.items || [])){
+      const codigo = sanitizeDisplayText(item?.codigo);
+      if(!codigo) continue;
+      impactMap.set(codigo, (impactMap.get(codigo) || 0) + getItemUnits(item));
+    }
+  }
+
+  return impactMap;
+}
+function getReservedUnitsFromOrders(item){
+  const impactMap = getDispoImpactMap();
+  return impactMap.get(sanitizeDisplayText(item?.codigo)) || 0;
+}
+function getBaseAvailableUnits(item){
+  return Math.max(0, Number(item?.availableUnits || 0) - getReservedUnitsFromOrders(item));
+}
+function getMaxCartAmount(item){
+  if(!item) return 0;
+  const baseUnits = getBaseAvailableUnits(item);
+  return item.mode === 'boxed'
+    ? Math.floor(baseUnits / item.packSize)
+    : baseUnits;
+}
+function describeCartRequest(cartItem){
+  if((cartItem?.mode || '') === 'boxed'){
+    const amount = Number(cartItem?.amount || 0);
+    const totalUnits = amount * Number(cartItem?.packSize || 1);
+    return `${amount} caixa${amount !== 1 ? 's' : ''} · ${totalUnits} pares`;
+  }
+  const units = Number(cartItem?.amount || 0);
+  return `${units} unidade${units !== 1 ? 's' : ''}`;
+}
+function describeAllowedAmount(item, allowedAmount){
+  if((item?.mode || '') === 'boxed'){
+    const packs = Number(allowedAmount || 0);
+    const units = packs * Number(item?.packSize || 1);
+    return `${packs} caixa${packs !== 1 ? 's' : ''} · ${units} pares`;
+  }
+  return `${allowedAmount} unidade${allowedAmount !== 1 ? 's' : ''}`;
+}
+function analyzeCartConflicts(){
+  const result = {
+    available: [],
+    partial: [],
+    soldout: [],
+    hasIssues: false
+  };
+
+  for(const cartItem of STATE.cart.values()){
+    const sourceItem = STATE.raw.find(x => x.key === cartItem.key);
+    if(!sourceItem){
+      result.soldout.push({
+        cartItem,
+        sourceItem: null,
+        requestedAmount: Number(cartItem.amount || 0),
+        allowedAmount: 0
+      });
+      continue;
+    }
+
+    const requestedAmount = Number(cartItem.amount || 0);
+    const allowedAmount = getMaxCartAmount(sourceItem);
+
+    if(allowedAmount <= 0){
+      result.soldout.push({ cartItem, sourceItem, requestedAmount, allowedAmount: 0 });
+      continue;
+    }
+
+    if(requestedAmount > allowedAmount){
+      result.partial.push({
+        cartItem,
+        sourceItem,
+        requestedAmount,
+        allowedAmount,
+        requestedUnits: getItemUnits(cartItem),
+        allowedUnits: sourceItem.mode === 'boxed' ? allowedAmount * sourceItem.packSize : allowedAmount
+      });
+      continue;
+    }
+
+    result.available.push({
+      cartItem,
+      sourceItem,
+      requestedAmount,
+      allowedAmount
+    });
+  }
+
+  result.hasIssues = result.partial.length > 0 || result.soldout.length > 0;
+  return result;
+}
+function renderConflictItems(list, type){
+  return list.map(entry => {
+    const item = entry.sourceItem || entry.cartItem;
+    const productLabel = sanitizeDisplayText(item?.produto || 'Item');
+    const codeLabel = sanitizeDisplayText(item?.codigo || '');
+    const colorLabel = sanitizeDisplayText(item?.cor || '');
+    const line1 = `<div class="text-sm font-extrabold text-slate-900">${safeHtml(productLabel)}</div>`;
+    const line2 = `<div class="mt-1 text-xs font-bold text-slate-500">${safeHtml([codeLabel, colorLabel].filter(Boolean).join(' · '))}</div>`;
+    let note = '';
+    if(type === 'soldout'){
+      note = `Solicitado: ${describeCartRequest(entry.cartItem)} · Agora: sem saldo`;
+    }else if(type === 'partial'){
+      note = `Solicitado: ${describeCartRequest(entry.cartItem)} · Ajustado para: ${describeAllowedAmount(item, entry.allowedAmount)}`;
+    }else{
+      note = `Mantido: ${describeCartRequest(entry.cartItem)}`;
+    }
+    return `
+      <div class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+        ${line1}
+        ${line2}
+        <div class="mt-2 text-sm font-bold ${type === 'soldout' ? 'text-rose-700' : type === 'partial' ? 'text-amber-700' : 'text-emerald-700'}">${safeHtml(note)}</div>
+      </div>
+    `;
+  }).join('');
+}
+function renderConflictModal(conflicts){
+  const stats = [
+    { label:'Sem saldo', value:conflicts.soldout.length, className:'border-rose-200 bg-rose-50 text-rose-700' },
+    { label:'Ajustados', value:conflicts.partial.length, className:'border-amber-200 bg-amber-50 text-amber-700' },
+    { label:'Mantidos', value:conflicts.available.length, className:'border-emerald-200 bg-emerald-50 text-emerald-700' }
+  ];
+  $('conflictSummaryStats').innerHTML = stats.map(stat => `
+    <div class="rounded-2xl border px-4 py-3 ${stat.className}">
+      <div class="text-xs font-extrabold uppercase tracking-wide">${stat.label}</div>
+      <div class="mt-1 text-2xl font-extrabold">${stat.value}</div>
+    </div>
+  `).join('');
+
+  const soldoutVisible = conflicts.soldout.length > 0;
+  const partialVisible = conflicts.partial.length > 0;
+  const availableVisible = conflicts.available.length > 0;
+
+  $('conflictSoldoutBlock').classList.toggle('hidden', !soldoutVisible);
+  $('conflictPartialBlock').classList.toggle('hidden', !partialVisible);
+  $('conflictAvailableBlock').classList.toggle('hidden', !availableVisible);
+
+  $('conflictSoldoutList').innerHTML = soldoutVisible ? renderConflictItems(conflicts.soldout, 'soldout') : '';
+  $('conflictPartialList').innerHTML = partialVisible ? renderConflictItems(conflicts.partial, 'partial') : '';
+  $('conflictAvailableList').innerHTML = availableVisible ? renderConflictItems(conflicts.available, 'available') : '';
+
+  $('btnConflictContinue').disabled = (conflicts.available.length + conflicts.partial.length) <= 0;
+  $('btnConflictContinue').classList.toggle('opacity-60', $('btnConflictContinue').disabled);
+  $('btnConflictContinue').classList.toggle('cursor-not-allowed', $('btnConflictContinue').disabled);
+}
+function openConflictModal(conflicts){
+  STATE.pendingConflictCheck = conflicts;
+  renderConflictModal(conflicts);
+  $('conflictModalWrap').classList.remove('hidden');
+}
+function closeConflictModal(){
+  $('conflictModalWrap').classList.add('hidden');
+}
+function applyConflictResolution(conflicts){
+  if(!conflicts) return;
+  for(const entry of conflicts.soldout){
+    STATE.cart.delete(entry.cartItem.key);
+  }
+  for(const entry of conflicts.partial){
+    const sourceItem = entry.sourceItem || entry.cartItem;
+    const adjustedAmount = Number(entry.allowedAmount || 0);
+    if(adjustedAmount <= 0){
+      STATE.cart.delete(entry.cartItem.key);
+      continue;
+    }
+    const adjustedUnits = sourceItem.mode === 'boxed'
+      ? adjustedAmount * sourceItem.packSize
+      : adjustedAmount;
+    STATE.cart.set(sourceItem.key, {
+      ...sourceItem,
+      amount: adjustedAmount,
+      totalUnits: adjustedUnits
+    });
+  }
+  saveCartStorage();
+  renderCart();
+  applyFilters();
+}
+function isHistoryStatus(status){
+  return ['Rejeitado','Finalizado'].includes(status || '');
+}
+function isOrderHistory(order){
+  return Boolean(order?.archived) || isHistoryStatus(order?.status);
+}
+function orderMatchesScope(order, scope){
+  if(scope === 'history') return isOrderHistory(order);
+  if(scope === 'all') return true;
+  return !isOrderHistory(order);
+}
+function updateOrdersScopeButtons(){
+  const scope = getOrdersScope();
+  const map = {
+    active: $('btnOrdersScopeActive'),
+    history: $('btnOrdersScopeHistory'),
+    all: $('btnOrdersScopeAll')
+  };
+  Object.entries(map).forEach(([key, el])=>{
+    if(!el) return;
+    const active = key === scope;
+    el.classList.toggle('bg-slate-100', active);
+    el.classList.toggle('text-[var(--brand)]', active);
+  });
+}
+function loadLocalState(){
+  const savedCart = readJsonSafe(STORAGE_KEYS.cart, []);
+  STATE.cart = new Map(savedCart.map(item => [item.key, item]));
+  STATE.orders = normalizeOrdersCollection(readJsonSafe(STORAGE_KEYS.orders, []));
+}
+function gradeEntriesFromRow(row){
+  return DISPO_COLUMNS.map(col=>{
+    const raw = row[col] ?? row[Number(col)] ?? '';
+    const qty = toNumber(raw);
+    return qty > 0 ? { size:String(col), qty } : null;
+  }).filter(Boolean);
+}
+function sumGrade(grade){ return grade.reduce((sum, x)=>sum + Number(x.qty || 0), 0); }
+function inferMode(grade, categoria, produto){
+  const labels = grade.map(g => g.size);
+  const hasFootwear = labels.some(l => FOOTWEAR_COLUMNS.includes(l));
+  const hasApparel = labels.some(l => APPAREL_COLUMNS.includes(l));
+  const cat = normalizeText(categoria);
+  const name = normalizeText(produto);
+  if(cat.includes('acessor') || cat === 'acc' || name.includes('mochila') || name.includes('bolsa') || name.includes('bone')) return 'unit';
+  if(hasFootwear) return 'boxed';
+  if(hasApparel) return 'unit';
+  return 'unit';
+}
+function mergeData(prodRows, dispoRows){
+  const byKey = new Map();
+  for(const r of prodRows){
+    const key = `${String(r['Código'] ?? r['Codigo'] ?? r['CODIGO'] ?? '').trim()}|${String(r['Cor'] ?? r['COR'] ?? '').trim().toUpperCase()}`;
+    byKey.set(key, r);
+  }
+
+  return dispoRows.map((r, idx)=>{
+    const codigo = String(r['Código'] ?? r['Codigo'] ?? r['CODIGO'] ?? '').trim();
+    const cor = String(r['COR'] ?? r['Cor'] ?? '').trim().toUpperCase();
+    const ref = byKey.get(`${codigo}|${cor}`) || {};
+    const grade = gradeEntriesFromRow(r);
+    const categoria = String(ref['Categoria'] ?? ref['CATEGORIA'] ?? '').trim();
+    const produto = String(r['Produto'] ?? r['PRODUTO'] ?? ref['Produto'] ?? '').trim();
+    const mode = inferMode(grade, categoria, produto);
+    const gradeTotal = sumGrade(grade);
+    const saldoRaw = toNumber(r['SALDO'] ?? 0);
+    const availableUnits = saldoRaw;
+    const packSize = mode === 'boxed' ? (gradeTotal === 6 ? 6 : 12) : 1;
+    return {
+      _row: idx + 2,
+      ebm: String(r['EBM'] ?? '').trim(),
+      gci: String(r['GCI'] ?? '').trim(),
+      codigo,
+      produto,
+      cor,
+      prevFaturamento: r['DATA ENTREGA'] || '',
+      grade,
+      mode,
+      availableUnits,
+      packSize,
+            imagem: String(ref['Imagem'] ?? ref['IMAGEM'] ?? ref['imagem'] ?? '').trim(),
+      categoria,
+      segmento: String(ref['Segmento'] ?? ref['SEGMENTO'] ?? '').trim(),
+      genero: String(ref['Gênero'] ?? ref['Genero'] ?? ref['GENERO'] ?? '').trim(),
+    };
+  }).filter(item => item.codigo && item.produto && item.availableUnits > 0);
+}
+function currentCartAmount(key){ return Number(STATE.cart.get(key)?.amount || 0); }
+function remainingUnits(item){
+  const reservedLocal = item.mode === 'boxed'
+    ? currentCartAmount(item.key) * item.packSize
+    : currentCartAmount(item.key);
+  return Math.max(0, getBaseAvailableUnits(item) - reservedLocal);
+}
+function remainingPacks(item){
+  return item.mode === 'boxed'
+    ? Math.floor(remainingUnits(item) / item.packSize)
+    : remainingUnits(item);
+}
+function buildFilters(){
+  const uniq = (arr)=>Array.from(new Set(arr.filter(Boolean))).sort((a,b)=>String(a).localeCompare(String(b), 'pt-BR', { sensitivity:'base' }));
+  const fill = (id, values, label)=>{
+    $(id).innerHTML = `<option value="">${label}</option>` + values.map(v=>`<option value="${safeHtml(v)}">${safeHtml(v)}</option>`).join('');
+  };
+  fill('filterCategoria', uniq(STATE.raw.map(x=>CATEGORY_LABELS[x.categoria] || x.categoria)), 'Todas as categorias');
+  fill('filterSegmento', uniq(STATE.raw.map(x=>x.segmento)), 'Todos os segmentos');
+  fill('filterGenero', uniq(STATE.raw.map(x=>x.genero)), 'Todos os gêneros');
+  $('checkoutPreposto').innerHTML += PREPOSTOS.map(v=>`<option value="${safeHtml(v)}">${safeHtml(v)}</option>`).join('');
+  $('checkoutPrazo').innerHTML += PRAZOS.map(v=>`<option value="${safeHtml(v)}">${safeHtml(v)}</option>`).join('');
+  $('checkoutCampanha').innerHTML += CAMPANHAS.map(v=>`<option value="${safeHtml(v)}">${safeHtml(v)}</option>`).join('');
+}
+function sortView(items){
+  const arr = [...items];
+  switch(STATE.filters.sort){
+    case 'saldoDesc': arr.sort((a,b)=>remainingUnits(b)-remainingUnits(a)); break;
+    case 'saldoAsc': arr.sort((a,b)=>remainingUnits(a)-remainingUnits(b)); break;
+    case 'entregaAsc': arr.sort((a,b)=>new Date(formatDate(a.prevFaturamento).split('/').reverse().join('-') || '2999-12-31') - new Date(formatDate(b.prevFaturamento).split('/').reverse().join('-') || '2999-12-31')); break;
+    default: arr.sort((a,b)=>String(a.produto).localeCompare(String(b.produto), 'pt-BR', { sensitivity:'base' })); break;
+  }
+  return arr;
+}
+function applyFilters(){
+  const q = normalizeText(STATE.search);
+  STATE.view = sortView(STATE.raw.filter(item=>{
+    const categoryLabel = CATEGORY_LABELS[item.categoria] || item.categoria;
+    const hay = normalizeText([item.codigo, item.produto, item.cor, item.segmento, item.genero, categoryLabel].join(' '));
+    const hitQ = !q || hay.includes(q);
+    const hitCat = !STATE.filters.categoria || categoryLabel === STATE.filters.categoria;
+    const hitSeg = !STATE.filters.segmento || item.segmento === STATE.filters.segmento;
+    const hitGen = !STATE.filters.genero || item.genero === STATE.filters.genero;
+    return hitQ && hitCat && hitSeg && hitGen;
+  }));
+  renderCatalog();
+  renderKpis();
+}
+function renderKpis(){
+  $('visibleCount').textContent = STATE.view.length;
+  $('kpiPacks').textContent = STATE.view.reduce((sum, item)=>sum + remainingPacks(item), 0);
+  $('kpiUnits').textContent = STATE.view.reduce((sum, item)=>sum + remainingUnits(item), 0);
+}
+function gradeHtml(grade){
   return grade.map(g=>`
     <div class="grade-pill">
       <span class="grade-size">${safeHtml(g.size)}</span>
@@ -488,733 +1187,1046 @@ function gradeHtml(grade=[]){
     </div>
   `).join('');
 }
-
-function canonicalStatus(status){
-  const current = sanitizeDisplayText(status).toLowerCase();
-  if(current === 'aprovado' || current === 'finalizado' || current === 'faturado' || current === 'atendido parcialmente') return 'Aprovado';
-  if(current === 'cancelado' || current === 'rejeitado') return 'Cancelado';
-  return 'Pendente';
+function gradeText(grade){
+  return grade.map(g=>`${g.size} ${g.qty}`).join(' · ');
 }
-
-function getStatusVisual(status){
-  const current = canonicalStatus(status).toLowerCase();
-  if(current === 'pendente') return { label:'Pendente', chipClass:'chip-status-pendente', dotClass:'dot-pendente' };
-  if(current === 'aprovado') return { label:'Aprovado', chipClass:'chip-status-aprovado', dotClass:'dot-aprovado' };
-  if(current === 'cancelado') return { label:'Cancelado', chipClass:'chip-status-cancelado', dotClass:'dot-cancelado' };
-  return { label: canonicalStatus(status), chipClass:'chip-gray', dotClass:'dot-pendente' };
-}
-
-function renderStatusChip(status){
-  const meta = getStatusVisual(status);
-  return `<span class="chip ${meta.chipClass}"><span class="status-dot ${meta.dotClass}"></span>${safeHtml(meta.label)}</span>`;
-}
-
-
-function parseDate(value){
-  if(!value) return null;
-  const d = new Date(value);
-  return Number.isNaN(d.getTime()) ? null : d;
-}
-
-function formatDateTime(value){
-  const d = parseDate(value);
-  if(!d) return '—';
-  return `${d.toLocaleDateString('pt-BR')} • ${d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}`;
-}
-
-function formatDate(value){
-  const d = parseDate(value);
-  if(!d) return '—';
-  return d.toLocaleDateString('pt-BR');
-}
-
-function formatInt(value){
-  const n = Number(value || 0);
-  return n.toLocaleString('pt-BR');
-}
-
-function getAdminScope(){
-  return localStorage.getItem(STORAGE_KEYS.adminScope) || 'active';
-}
-
-function setAdminScope(scope){
-  localStorage.setItem(STORAGE_KEYS.adminScope, scope || 'active');
-}
-
-function isHistoryStatus(status){
-  return ['Aprovado','Cancelado'].includes(canonicalStatus(status));
-}
-
-function isOrderHistory(order){
-  return Boolean(order?.archived) || isHistoryStatus(order?.status);
-}
-
-function orderMatchesScope(order, scope){
-  if(scope === 'history') return isOrderHistory(order);
-  if(scope === 'all') return true;
-  return !isOrderHistory(order);
-}
-
-function updateScopeButtons(){
-  const scope = getAdminScope();
-
-  [
-    ['active','btnScopeActive'],
-    ['history','btnScopeHistory'],
-    ['all','btnScopeAll']
-  ].forEach(([key,id])=>{
-    const el = $(id);
-    if(!el) return;
-    const active = key === scope;
-    el.classList.toggle('bg-slate-100', active);
-    el.classList.toggle('text-[var(--brand)]', active);
-  });
-}
-
-
-function buildOrderSnapshotMeta(order){
-  const items = Array.isArray(order?.items) ? order.items : [];
-  return {
-    itemsCount: items.length,
-    units: items.reduce((sum, item) => sum + getItemUnits(item), 0)
-  };
-}
-
-function createHistoryEvent(order, action, label, extra={}){
-  const now = new Date().toISOString();
-  return {
-    eventId: `evt_${Date.now()}_${Math.random().toString(36).slice(2,8)}`,
-    at: now,
-    action,
-    label,
-    statusFrom: extra.statusFrom ?? null,
-    statusTo: extra.statusTo ?? canonicalStatus(order?.status),
-    archivedFrom: extra.archivedFrom ?? null,
-    archivedTo: extra.archivedTo ?? Boolean(order?.archived),
-    clientCode: sanitizeDisplayText(order?.clienteCodigo),
-    prepostoCodigo: sanitizeDisplayText(order?.preposto?.codigo),
-    prepostoNome: sanitizeDisplayText(order?.preposto?.nome),
-    notes: sanitizeDisplayText(extra.notes),
-    meta: {
-      ...buildOrderSnapshotMeta(order),
-      ...(extra.meta || {})
-    }
-  };
-}
-
-function ensureOrderHistory(order){
-  const normalized = Array.isArray(order?.history) ? order.history.map(entry => ({
-    eventId: sanitizeDisplayText(entry?.eventId) || `evt_${Math.random().toString(36).slice(2,10)}`,
-    at: entry?.at || entry?.createdAt || order?.updatedAt || order?.createdAt || new Date().toISOString(),
-    action: sanitizeDisplayText(entry?.action || 'updated'),
-    label: sanitizeDisplayText(entry?.label || 'Pedido atualizado'),
-    statusFrom: entry?.statusFrom ? canonicalStatus(entry.statusFrom) : null,
-    statusTo: canonicalStatus(entry?.statusTo || order?.status),
-    archivedFrom: typeof entry?.archivedFrom === 'boolean' ? entry.archivedFrom : null,
-    archivedTo: typeof entry?.archivedTo === 'boolean' ? entry.archivedTo : Boolean(order?.archived),
-    clientCode: sanitizeDisplayText(entry?.clientCode || order?.clienteCodigo),
-    prepostoCodigo: sanitizeDisplayText(entry?.prepostoCodigo || order?.preposto?.codigo),
-    prepostoNome: sanitizeDisplayText(entry?.prepostoNome || order?.preposto?.nome),
-    notes: sanitizeDisplayText(entry?.notes),
-    meta: typeof entry?.meta === 'object' && entry?.meta ? entry.meta : {}
-  })) : [];
-
-  if(!normalized.length){
-    normalized.push(createHistoryEvent(order, 'created', 'Pedido criado', {
-      statusFrom: null,
-      statusTo: canonicalStatus(order?.status || 'Pendente'),
-      archivedFrom: null,
-      archivedTo: Boolean(order?.archived)
-    }));
-  }
-
-  normalized.sort((a,b)=>(parseDate(b.at)?.getTime()||0) - (parseDate(a.at)?.getTime()||0));
-  return normalized;
-}
-
-function appendOrderHistory(order, event){
-  const history = ensureOrderHistory(order);
-  const nextHistory = [event, ...history].sort((a,b)=>(parseDate(b.at)?.getTime()||0) - (parseDate(a.at)?.getTime()||0));
-  return {
-    ...order,
-    history: nextHistory,
-    lastAction: event.action,
-    lastActionLabel: event.label,
-    lastActionAt: event.at,
-    updatedAt: event.at
-  };
-}
-
-function historyIconClass(entry){
-  const action = sanitizeDisplayText(entry?.action).toLowerCase();
-  const statusTo = canonicalStatus(entry?.statusTo);
-  if(statusTo === 'Aprovado' || action.includes('approved')) return 'aprovado';
-  if(statusTo === 'Cancelado' || action.includes('cancel')) return 'cancelado';
-  if(statusTo === 'Pendente') return 'pendente';
-  return 'info';
-}
-
-function renderOrderHistory(order){
-  const history = ensureOrderHistory(order);
-  return `
-    <div class="rounded-[24px] border border-slate-200 bg-slate-50 p-4">
-      <div class="flex items-center justify-between gap-3">
-        <div>
-          <div class="text-lg font-extrabold">Histórico do pedido</div>
-          <div class="text-xs font-bold text-slate-500">Linha do tempo completa para auditoria do pedido</div>
-        </div>
-        <span class="chip chip-gray">${history.length} evento${history.length === 1 ? '' : 's'}</span>
-      </div>
-      <div class="history-timeline mt-4 space-y-4">
-        ${history.map(entry => `
-          <div class="history-item">
-            <div class="history-dot ${historyIconClass(entry)}">•</div>
-            <div class="rounded-[20px] border border-slate-200 bg-white p-3">
-              <div class="flex flex-wrap items-center justify-between gap-2">
-                <div class="text-sm font-extrabold text-slate-800">${safeHtml(entry.label || 'Evento')}</div>
-                <div class="text-[11px] font-bold text-slate-500">${safeHtml(formatDateTime(entry.at))}</div>
-              </div>
-              <div class="mt-2 flex flex-wrap gap-2 text-[11px] font-bold">
-                ${entry.statusFrom || entry.statusTo ? `<span class="chip chip-gray">${safeHtml(entry.statusFrom || '—')} → ${safeHtml(entry.statusTo || '—')}</span>` : ''}
-                ${entry.archivedTo === true ? `<span class="chip chip-gray">Arquivado</span>` : ''}
-                ${entry.archivedFrom === true && entry.archivedTo === false ? `<span class="chip chip-blue">Reativado</span>` : ''}
-              </div>
-              ${entry.notes ? `<div class="mt-2 text-xs font-semibold text-slate-600">${safeHtml(entry.notes)}</div>` : ''}
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-  `;
-}
-
-function normalizeOrder(rawOrder){
-  const order = { ...(rawOrder || {}) };
-
-  order.id = normalizeText(order.id);
-  order.status = canonicalStatus(order.status || 'Pendente');
-  order.clienteCodigo = sanitizeDisplayText(order.clienteCodigo || order.cliente);
-  order.prazo = sanitizeDisplayText(order.prazo);
-  order.campanha = sanitizeDisplayText(order.campanha);
-  order.observacoes = sanitizeDisplayText(order.observacoes);
-  order.archived = Boolean(order.archived);
-  order.createdAt = order.createdAt || order.updatedAt || new Date().toISOString();
-  order.updatedAt = order.updatedAt || order.createdAt;
-
-  if(typeof order.preposto === 'string'){
-    const parsedPreposto = splitPrepostoParts(order.preposto);
-    order.preposto = { codigo: parsedPreposto.codigo, nome: parsedPreposto.nome };
-  }else{
-    order.preposto = { ...(order.preposto || {}), codigo:sanitizeDisplayText(order.preposto?.codigo), nome:sanitizeDisplayText(order.preposto?.nome) };
-  }
-
-  const prepostoDisplay = buildPrepostoDisplay(order.preposto, order.vendedor);
-  order.preposto.codigo = prepostoDisplay.codigo;
-  order.preposto.nome = prepostoDisplay.nome;
-
-  order.items = Array.isArray(order.items) ? order.items : Array.isArray(order.itens) ? order.itens : [];
-  order.items = order.items.map(item => ({
-    ...item,
-    produto:sanitizeDisplayText(item?.produto || item?.descricao || item?.nome),
-    codigo:sanitizeDisplayText(item?.codigo || item?.referencia),
-    cor:sanitizeDisplayText(item?.cor),
-    prevFaturamento:sanitizeDisplayText(item?.prevFaturamento || item?.prevFat),
-    mode:sanitizeDisplayText(item?.mode),
-    amount:Number(item?.amount || item?.quantidade || 0),
-    totalUnits:Number(item?.totalUnits || 0),
-    grade:Array.isArray(item?.grade) ? item.grade.map(g => ({ size:sanitizeDisplayText(g?.size || g?.tamanho), qty:Number(g?.qty || g?.quantidade || 0) })) : []
-  }));
-
-  order.history = ensureOrderHistory(order);
-  order.lastAction = sanitizeDisplayText(order.lastAction || order.history[0]?.action || 'created');
-  order.lastActionLabel = sanitizeDisplayText(order.lastActionLabel || order.history[0]?.label || 'Pedido criado');
-  order.lastActionAt = order.lastActionAt || order.history[0]?.at || order.updatedAt;
-  return order;
-}
-
-
-async function workerGetOrders(){
-  const res = await fetch(`${WORKER_URL}?t=${Date.now()}`, { cache:'no-store' });
-
-  if(!res.ok){
-    throw new Error(`Worker GET falhou (${res.status})`);
-  }
-
-  const data = await res.json();
-  return Array.isArray(data) ? data.map(normalizeOrder) : [];
-}
-
-async function workerUpdateOrder(order){
-  const res = await fetch(WORKER_URL, {
-    method:'PUT',
-    headers:{ 'Content-Type':'application/json' },
-    body: JSON.stringify(order)
-  });
-
-  if(!res.ok){
-    const txt = await res.text();
-    throw new Error(`Worker PUT falhou (${res.status}): ${txt.slice(0,180)}`);
-  }
-
-  return res.json();
-}
-
-async function workerDeleteOrder(id){
-  const res = await fetch(WORKER_URL, {
-    method:'DELETE',
-    headers:{ 'Content-Type':'application/json' },
-    body: JSON.stringify({ id })
-  });
-
-  if(!res.ok){
-    const txt = await res.text();
-    throw new Error(`Worker DELETE falhou (${res.status}): ${txt.slice(0,180)}`);
-  }
-
-  return res.json();
-}
-
-async function applyAuthUI(){
-  const ok = localStorage.getItem(STORAGE_KEYS.adminAuth) === 'ok';
-
-  $('loginScreen').classList.toggle('hidden', ok);
-  $('adminApp').classList.toggle('hidden', !ok);
-
-  if(ok){
-    await loadAdmin();
-  }
-}
-
-async function loadAdmin(){
-  try{
-    $('adminOrdersList').classList.add('loading-shimmer');
-
-    const remote = await workerGetOrders();
-    STATE.orders = Array.isArray(remote)
-      ? remote.sort((a,b)=>{
-          const db = parseDate(b.updatedAt || b.createdAt || b.data)?.getTime() || 0;
-          const da = parseDate(a.updatedAt || a.createdAt || a.data)?.getTime() || 0;
-          return db - da;
-        })
-      : [];
-
-    applyFilters();
-  }catch(err){
-    console.error(err);
-    showToast('Não foi possível carregar os pedidos sincronizados pelo Worker.', 'error');
-  }finally{
-    $('adminOrdersList').classList.remove('loading-shimmer');
-  }
-}
-
-function applyFilters(){
-  const q = normalizeText($('adminSearch').value).toLowerCase();
-  const status = $('adminStatusFilter').value;
-  const scope = getAdminScope();
-
-  updateScopeButtons();
-
-  STATE.filtered = STATE.orders.filter(order=>{
-    const hay = [
-      order.id,
-      order.clienteCodigo,
-      order.preposto?.nome,
-      order.preposto?.codigo,
-      order.prazo,
-      order.campanha,
-      ...(order.items || []).flatMap(item => [item.codigo, item.produto, item.cor])
-    ].join(' ').toLowerCase();
-
-    return (!q || hay.includes(q))
-      && (!status || order.status === status)
-      && orderMatchesScope(order, scope);
-  });
-
-  $('ordersCountBadge').textContent = `${STATE.filtered.length} pedido${STATE.filtered.length === 1 ? '' : 's'}`;
-
-  renderList();
-
-  if(!STATE.selectedId && STATE.filtered[0]) STATE.selectedId = STATE.filtered[0].id;
-  if(STATE.selectedId && !STATE.filtered.find(o => o.id === STATE.selectedId)){
-    STATE.selectedId = STATE.filtered[0]?.id || null;
-  }
-
-  renderDetail();
-}
-
-function renderList(){
-  $('ordersEmpty').classList.toggle('hidden', STATE.filtered.length !== 0);
-
-  $('adminOrdersList').innerHTML = STATE.filtered.map(order=>{
-    const active = order.id === STATE.selectedId;
-    const cardStatus = getStatusVisual(order.status);
-
+function availabilityChips(item){
+  const units = remainingUnits(item);
+  const packs = remainingPacks(item);
+  const chipClass = availabilityChipClass(item);
+  if(item.mode === 'boxed'){
     return `
-      <button data-order-id="${safeHtml(order.id)}"
-        class="w-full text-left rounded-[24px] border ${active ? 'border-[var(--brand)] bg-[rgba(40,54,212,.05)]' : 'border-slate-200 bg-slate-50'} p-4">
-        <div class="flex items-start justify-between gap-3">
-          <div>
-            <div class="font-extrabold">${safeHtml(order.id)}</div>
-            <div class="mt-1 text-xs text-slate-500">${safeHtml(formatDateTime(order.createdAt || order.updatedAt || order.data))}</div>
-          </div>
-          <span class="chip ${cardStatus.chipClass}">
-            <span class="status-dot ${cardStatus.dotClass}"></span>
-            ${safeHtml(cardStatus.label)}
-          </span>
-        </div>
-
-        <div class="mt-3 flex flex-wrap gap-2 text-xs font-bold">
-          <span class="chip chip-blue">Cliente ${safeHtml(order.clienteCodigo)}</span>
-          <span class="chip chip-gray">${safeHtml(order.preposto?.nome || '')}</span>
-          <span class="chip chip-gray">${safeHtml(order.prazo)}</span>
-          <span class="chip chip-blue">${safeHtml(order.lastActionLabel || 'Sem histórico')}</span>
-          ${order.archived ? `<span class="chip chip-gray">Arquivado</span>` : ''}
-        </div>
-      </button>
+      <div class="${chipClass}"><i class="fa-solid fa-shoe-prints"></i> ${availabilitySummary(item)}</div>
+      <div class="mt-2 chip ${packs <= 0 ? 'chip-danger availability-pulse' : 'chip-gray'}"><i class="fa-solid fa-box-open"></i> ${packs} caixa${packs !== 1 ? 's' : ''}</div>
     `;
-  }).join('');
-
-  $('adminOrdersList').querySelectorAll('[data-order-id]').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      STATE.selectedId = btn.dataset.orderId;
-      renderList();
-      renderDetail();
-    });
-  });
-}
-
-function getItemUnits(item){
-  if(Number(item?.totalUnits) > 0) return Number(item.totalUnits);
-
-  if(Array.isArray(item?.grade) && item.grade.length){
-    return item.grade.reduce((sum, g) => sum + Number(g?.qty || 0), 0);
   }
-
-  const amount = Number(item?.amount || 0);
-  if(!amount) return 0;
-
-  if(item?.mode === 'boxed') return amount * 12;
-  return amount;
+  return `<div class="${chipClass}"><i class="fa-solid fa-cubes-stacked"></i> ${availabilitySummary(item)}</div>`;
+}
+function getAvailabilityState(item){
+  const units = remainingUnits(item);
+  if(units <= 0) return 'soldout';
+  if(units <= 24) return 'low';
+  return 'normal';
+}
+function availabilitySummary(item){
+  const units = remainingUnits(item);
+  const state = getAvailabilityState(item);
+  if(item.mode === 'boxed'){
+    if(state === 'soldout') return 'Esgotado';
+    if(state === 'low') return `${units} pares · Esgotando`;
+    return `${units} pares`;
+  }
+  if(state === 'soldout') return 'Esgotado';
+  if(state === 'low') return `${units} disponível${units !== 1 ? 'is' : ''} · Esgotando`;
+  return `${units} disponível${units !== 1 ? 'is' : ''}`;
+}
+function availabilityChipClass(item){
+  const state = getAvailabilityState(item);
+  if(state === 'soldout') return 'chip chip-danger availability-pulse';
+  if(state === 'low') return 'chip chip-warning availability-pulse';
+  return 'chip chip-blue';
 }
 
-function renderDetail(){
-  const order = STATE.filtered.find(o => o.id === STATE.selectedId);
-
-  $('detailEmpty').classList.toggle('hidden', !!order);
-  $('adminOrderDetail').classList.toggle('hidden', !order);
-
-  if(!order){
-    $('adminOrderDetail').innerHTML = '';
+function secondaryMeta(item){
+  if(item.mode === 'boxed'){
+    return `<span class="chip chip-gray"><i class="fa-solid fa-boxes-stacked"></i> Grade de ${item.packSize} pares</span>`;
+  }
+  if(item.grade.length === 1 && item.grade[0].size === 'U'){
+    return `<span class="chip chip-gray"><i class="fa-solid fa-box"></i> Único</span>`;
+  }
+  const labels = item.grade.map(g=>g.size).join('-');
+  return labels ? `<span class="chip chip-gray"><i class="fa-solid fa-ruler-combined"></i> ${safeHtml(labels)}</span>` : '';
+}
+function quickAdd(item){
+  const amount = 1;
+  const existing = STATE.cart.get(item.key);
+  const nextAmount = Number(existing?.amount || 0) + amount;
+  const maxAmount = getMaxCartAmount(item);
+  const reservedUnits = item.mode === 'boxed' ? nextAmount * item.packSize : nextAmount;
+  if(nextAmount > maxAmount){
+    toast(maxAmount <= 0 ? 'Produto esgotado no momento' : 'Saldo insuficiente');
     return;
   }
+  STATE.cart.set(item.key, { ...item, amount: nextAmount, totalUnits: reservedUnits });
+  saveCartStorage();
+  renderCart();
+  applyFilters();
+  toast('Adicionado à sacola');
+}
+function renderCatalog(){
+  $('cardsWrap').classList.toggle('hidden', STATE.viewMode !== 'cards');
+  $('listWrap').classList.toggle('hidden', STATE.viewMode !== 'list');
+  $('btnViewCards').classList.toggle('bg-slate-100', STATE.viewMode === 'cards');
+  $('btnViewList').classList.toggle('bg-slate-100', STATE.viewMode === 'list');
 
-  const statusMeta = getStatusVisual(order.status);
+  const wrap = $('cardsWrap');
+  const listWrap = $('listWrap');
+  wrap.innerHTML = '';
+  listWrap.innerHTML = '';
+  $('emptyState').classList.toggle('hidden', STATE.view.length !== 0);
 
-  $('adminOrderDetail').innerHTML = `
-    <div class="flex flex-col gap-4">
-      <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+  for(const item of STATE.view){
+    const key = item.key;
+    const img = productImage(item);
+    const freeAmount = item.mode === 'boxed' ? remainingPacks(item) : remainingUnits(item);
+
+    const card = document.createElement('article');
+    card.className = 'rounded-[28px] border border-slate-200 bg-white shadow-soft overflow-hidden';
+    card.innerHTML = `
+      <div class="aspect-[4/3] bg-slate-50 border-b border-slate-200 flex items-center justify-center overflow-hidden">
+        ${img ? `<img src="${img}" alt="${safeHtml(item.produto)}" class="h-full w-full object-contain bg-white" onerror="this.style.display='none';this.parentElement.querySelector('.img-fallback').classList.remove('hidden')">` : ''}
+        <div class="img-fallback ${img ? 'hidden' : ''} flex flex-col items-center justify-center text-slate-400">
+          <i class="fa-solid fa-image text-3xl"></i>
+          <div class="mt-2 text-xs font-bold">Sem imagem</div>
+        </div>
+      </div>
+
+      <div class="p-4">
+        <div class="flex items-start justify-between gap-3">
+          <div class="min-w-0">
+            <div class="text-xl font-extrabold leading-tight">${safeHtml(item.produto)}</div>
+            <div class="mt-1 text-sm text-slate-500">${safeHtml(item.codigo)} · Prev. Faturamento ${safeHtml(formatDate(item.prevFaturamento))}</div>
+          </div>
+          <div class="text-right">${availabilityChips(item)}</div>
+        </div>
+
+        <div class="mt-3 flex flex-wrap gap-2">
+          <span class="chip chip-blue"><i class="fa-solid fa-palette"></i> ${safeHtml(item.cor)}</span>
+          ${secondaryMeta(item)}
+        </div>
+
+        ${item.grade.length ? `
+        <div class="mt-4">
+          <div class="text-sm font-extrabold">Disponível</div>
+          <div class="mt-2 flex flex-wrap gap-2">${gradeHtml(item.grade)}</div>
+        </div>` : ''}
+
+        <div class="mt-4 flex items-center justify-end gap-2">
+          <button class="btnMinus qty-btn focus-ring"><i class="fa-solid fa-minus"></i></button>
+          <div class="qty min-w-[28px] text-center text-lg font-extrabold">1</div>
+          <button class="btnPlus qty-btn focus-ring"><i class="fa-solid fa-plus"></i></button>
+        </div>
+
+        <button class="btnAdd focus-ring mt-4 w-full rounded-2xl bg-[var(--brand)] px-4 py-3 text-sm font-extrabold text-white ${freeAmount <= 0 ? 'opacity-50 cursor-not-allowed' : ''}" ${freeAmount <= 0 ? 'disabled' : ''}>
+          ${freeAmount <= 0 ? 'Esgotado' : (item.mode === 'boxed' ? `Adicionar ${item.packSize} pares à sacola` : 'Adicionar à sacola')}
+        </button>
+      </div>
+    `;
+
+    let amount = 1;
+    const qtyEl = card.querySelector('.qty');
+    card.querySelector('.btnMinus').addEventListener('click', ()=>{
+      amount = Math.max(1, amount - 1);
+      qtyEl.textContent = amount;
+    });
+    card.querySelector('.btnPlus').addEventListener('click', ()=>{
+      amount = Math.min(freeAmount, amount + 1);
+      qtyEl.textContent = amount;
+    });
+    card.querySelector('.btnAdd').addEventListener('click', ()=>{
+      const freeNow = item.mode === 'boxed' ? remainingPacks(item) : remainingUnits(item);
+      if(amount > freeNow){ toast(freeNow <= 0 ? 'Produto esgotado no momento' : 'Quantidade acima do saldo disponível'); return; }
+      const existing = STATE.cart.get(key);
+      const nextAmount = Number(existing?.amount || 0) + amount;
+      const maxAmount = getMaxCartAmount(item);
+      const reservedUnits = item.mode === 'boxed' ? nextAmount * item.packSize : nextAmount;
+      if(nextAmount > maxAmount){ toast(maxAmount <= 0 ? 'Produto esgotado no momento' : 'Saldo excedido'); return; }
+      STATE.cart.set(key, {
+        ...item,
+        key,
+        amount: nextAmount,
+        totalUnits: reservedUnits
+      });
+      saveCartStorage();
+      renderCart();
+      applyFilters();
+      toast('Item adicionado à sacola');
+    });
+    wrap.appendChild(card);
+
+    const row = document.createElement('article');
+    row.className = 'rounded-[28px] border border-slate-200 bg-white p-4 shadow-soft';
+    row.innerHTML = `
+      <div class="list-row-desktop">
+        <div class="h-[116px] w-[116px] rounded-[26px] border border-slate-200 bg-slate-50 overflow-hidden flex items-center justify-center">
+          ${img ? `<img src="${img}" alt="${safeHtml(item.produto)}" class="h-full w-full object-contain bg-white">` : `<i class="fa-solid fa-image text-slate-400"></i>`}
+        </div>
+        <div class="min-w-0">
+          <div class="text-[17px] font-extrabold leading-tight">${safeHtml(item.produto)}</div>
+          <div class="mt-1 text-sm text-slate-500">${safeHtml(item.codigo)} · ${safeHtml(item.cor)}</div>
+          <div class="mt-2 text-sm font-semibold text-slate-500">Prev. Faturamento ${safeHtml(formatDate(item.prevFaturamento))}</div>
+          <div class="mt-2">${availabilityChips(item)}</div>
+          ${item.grade.length ? `<div class="mt-3 list-grade-strip">${gradeHtml(item.grade)}</div>` : ''}
+        </div>
+        <div class="flex items-center gap-2 self-center">
+          <button class="btnQuickAdd focus-ring inline-flex items-center gap-2 rounded-full bg-[var(--brand)] px-4 py-2 text-sm font-extrabold text-white ${freeAmount <= 0 ? 'opacity-50 cursor-not-allowed' : ''}" ${freeAmount <= 0 ? 'disabled' : ''}><i class="fa-solid fa-cart-plus"></i> ${freeAmount <= 0 ? 'Esgotado' : (item.mode === 'boxed' ? '1 caixa' : 'Adicionar')}</button>
+        </div>
+      </div>
+
+      <div class="list-row-mobile">
+        <div class="h-[82px] w-[82px] rounded-[22px] border border-slate-200 bg-slate-50 overflow-hidden flex items-center justify-center">
+          ${img ? `<img src="${img}" alt="${safeHtml(item.produto)}" class="h-full w-full object-contain bg-white">` : `<i class="fa-solid fa-image text-slate-400"></i>`}
+        </div>
+        <div class="min-w-0">
+          <div class="text-[13px] font-extrabold leading-tight line-clamp-2">${safeHtml(item.produto)}</div>
+          <div class="mt-1 text-[11px] text-slate-500 truncate">${safeHtml(item.codigo)} · ${safeHtml(item.cor)}</div>
+          <div class="mt-1 mobile-info-rotator">
+            <span class="mobile-info-primary">${availabilitySummary(item)}</span>
+            <span class="mobile-info-secondary">Prev. Fat. ${safeHtml(formatDate(item.prevFaturamento))}</span>
+          </div>
+          ${item.grade.length ? `<button class="btnShowGrade btn-grade-mobile focus-ring mt-2"><i class="fa-solid fa-ruler grade-pulse-icon"></i><span>Ver grade</span></button>` : ''}
+        </div>
+        <div class="flex flex-col items-end gap-2">
+          <button class="btnQuickAdd focus-ring h-11 w-11 rounded-full bg-[var(--brand)] text-white ${freeAmount <= 0 ? 'opacity-50 cursor-not-allowed' : ''}" ${freeAmount <= 0 ? 'disabled' : ''} aria-label="Adicionar à sacola"><i class="fa-solid fa-cart-plus"></i></button>
+          <button class="btnOpenMobileDetail focus-ring h-11 w-11 rounded-full border border-slate-200 bg-white text-slate-500" aria-label="Ver detalhes"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+      </div>
+    `;
+    row.querySelectorAll('.btnQuickAdd').forEach(btn=>btn.addEventListener('click', ()=> quickAdd(item)));
+    row.querySelector('.btnShowGrade')?.addEventListener('click', ()=> openGradeSheet(item));
+    row.querySelector('.btnOpenMobileDetail')?.addEventListener('click', ()=> openGradeSheet(item));
+    listWrap.appendChild(row);
+  }
+}
+function renderCart(){
+  const items = Array.from(STATE.cart.values()).sort((a,b)=>String(a.produto).localeCompare(String(b.produto), 'pt-BR', { sensitivity:'base' }));
+  $('cartCountBadge').classList.toggle('hidden', items.length === 0);
+  $('cartCountBadge').textContent = items.length;
+  $('cartEmptyState').classList.toggle('hidden', items.length !== 0);
+
+  const totalPacks = items.reduce((sum, item)=>sum + Number(item.amount || 0), 0);
+  const totalUnits = items.reduce((sum, item)=>sum + (item.mode === 'boxed' ? Number(item.amount || 0) * item.packSize : Number(item.amount || 0)), 0);
+  $('cartTotalPacks').textContent = totalPacks;
+  $('cartTotalUnits').textContent = totalUnits;
+
+  const wrap = $('cartItems');
+  wrap.innerHTML = '';
+
+  for(const item of items){
+    const img = productImage(item);
+    const totalUnitsItem = item.mode === 'boxed' ? item.amount * item.packSize : item.amount;
+    const row = document.createElement('div');
+    row.className = 'rounded-[28px] border border-slate-200 bg-white p-4';
+    row.innerHTML = `
+      <div class="flex gap-3">
+        <div class="h-20 w-20 shrink-0 rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden flex items-center justify-center">
+          ${img ? `<img src="${img}" class="h-full w-full object-contain bg-white">` : `<i class="fa-solid fa-image text-slate-400"></i>`}
+        </div>
+
+        <div class="min-w-0 flex-1">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <div class="text-2xl leading-none font-extrabold">${safeHtml(item.produto)}</div>
+              <div class="mt-2 flex flex-wrap gap-2">
+                <span class="chip chip-blue"><i class="fa-solid fa-palette"></i> ${safeHtml(item.cor)}</span>
+                ${item.mode === 'boxed'
+                  ? `<span class="chip chip-gray"><i class="fa-solid fa-box"></i> ${item.amount} caixa${item.amount > 1 ? 's' : ''}</span>`
+                  : `<span class="chip chip-gray"><i class="fa-solid fa-cubes-stacked"></i> ${item.amount} unidade${item.amount > 1 ? 's' : ''}</span>`}
+              </div>
+            </div>
+            <button class="btnRemove focus-ring h-10 w-10 rounded-full border border-slate-200 bg-white text-[var(--brand)]"><i class="fa-solid fa-trash"></i></button>
+          </div>
+
+          ${item.grade.length ? `
+          <div class="mt-3">
+            <div class="text-sm font-extrabold text-slate-600">${item.mode === 'boxed' ? 'Grade' : 'Disponível'}</div>
+            <div class="mt-2 flex flex-wrap gap-2">${gradeHtml(item.grade)}</div>
+          </div>` : ''}
+
+          <div class="mt-3 flex items-center justify-between gap-3">
+            <div class="text-sm font-semibold text-slate-600">
+              ${item.mode === 'boxed'
+                ? `${totalUnitsItem} pares no total`
+                : `${totalUnitsItem} unidade${totalUnitsItem > 1 ? 's' : ''} no total`}
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="btnMinus qty-btn focus-ring"><i class="fa-solid fa-minus"></i></button>
+              <div class="min-w-[28px] text-center text-lg font-extrabold">${item.amount}</div>
+              <button class="btnPlus qty-btn focus-ring"><i class="fa-solid fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    row.querySelector('.btnRemove').addEventListener('click', ()=>{
+      STATE.cart.delete(item.key);
+      saveCartStorage();
+      renderCart();
+      applyFilters();
+    });
+    row.querySelector('.btnMinus').addEventListener('click', ()=>{
+      const next = Math.max(1, Number(item.amount || 1) - 1);
+      STATE.cart.set(item.key, { ...item, amount: next, totalUnits: item.mode === 'boxed' ? next * item.packSize : next });
+      saveCartStorage();
+      renderCart();
+      applyFilters();
+    });
+    row.querySelector('.btnPlus').addEventListener('click', ()=>{
+      const original = STATE.raw.find(x=>x.key === item.key);
+      const max = getMaxCartAmount(original);
+      if(Number(item.amount || 0) + 1 > max){ toast(max <= 0 ? 'Produto esgotado no momento' : 'Limite do saldo atingido'); return; }
+      const next = Number(item.amount || 0) + 1;
+      STATE.cart.set(item.key, { ...item, amount: next, totalUnits: item.mode === 'boxed' ? next * item.packSize : next });
+      saveCartStorage();
+      renderCart();
+      applyFilters();
+    });
+    wrap.appendChild(row);
+  }
+}
+function renderCheckoutSummary(){
+  const items = Array.from(STATE.cart.values());
+  $('checkoutSummaryCount').textContent = items.length;
+  $('checkoutItems').innerHTML = items.map(item=>`
+    <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3">
+      <div class="flex items-start justify-between gap-2">
         <div>
-          <div class="text-lg sm:text-xl font-extrabold">${safeHtml(order.id)}</div>
-          <div class="mt-1 text-sm text-slate-500">${safeHtml(formatDate(order.createdAt || order.updatedAt || order.data))} às ${safeHtml(parseDate(order.createdAt || order.updatedAt || order.data)?.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}) || '—')}</div>
+          <div class="font-extrabold">${safeHtml(item.produto)}</div>
+          <div class="mt-1 text-xs text-slate-500">${safeHtml(item.codigo)} · ${safeHtml(item.cor)}</div>
+        </div>
+        <div class="text-right text-sm font-extrabold">
+          ${item.mode === 'boxed' ? `${item.amount} caixa${item.amount > 1 ? 's' : ''}` : `${item.amount} unidade${item.amount > 1 ? 's' : ''}`}
+        </div>
+      </div>
+      ${item.grade?.length ? `<div class="mt-2 flex flex-wrap gap-2">${gradeHtml(item.grade)}</div>` : ''}
+    </div>
+  `).join('');
+}
+function renderOrders(){
+  const currentPreposto = getLastPreposto();
+  const scope = getOrdersScope();
+  updateOrdersScopeButtons();
+  let orders = [...STATE.orders]
+    .sort((a,b)=>new Date(b.createdAt) - new Date(a.createdAt))
+    .filter(order => orderMatchesScope(order, scope));
+  if(currentPreposto){
+    orders = orders.filter(order => prepostoValueFromOrder(order) === currentPreposto);
+  }
+  $('ordersEmptyState').classList.toggle('hidden', orders.length !== 0);
+  const list = $('ordersList');
+  list.innerHTML = '';
 
-          <div class="mt-3 flex flex-wrap gap-2">
-            <span class="chip chip-blue">${safeHtml(order.preposto?.codigo || '')} ${order.preposto?.codigo ? '-' : ''} ${safeHtml(order.preposto?.nome || '')}</span>
-            <span class="chip chip-gray">Cliente ${safeHtml(order.clienteCodigo)}</span>
-            <span class="chip chip-gray">${safeHtml(order.prazo)}</span>
+  for(const order of orders){
+    const card = document.createElement('div');
+    card.className = 'rounded-[28px] border border-slate-200 bg-white p-4';
+    const created = new Date(order.createdAt);
+    const statusClass = (order.status === 'Aprovado' || order.status === 'Finalizado') ? 'chip-blue' : 'chip-gray';
+    card.innerHTML = `
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <div class="text-base font-extrabold">${safeHtml(order.id)}</div>
+          <div class="mt-1 text-sm text-slate-500">${created.toLocaleDateString('pt-BR')} às ${created.toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'})}</div>
+          <div class="mt-2 flex flex-wrap gap-2 text-xs font-bold">
+            <span class="chip chip-gray">${safeHtml(order.preposto?.nome || '')}</span>
+            <span class="chip chip-blue">Cliente ${safeHtml(order.clienteCodigo || '')}</span>
+            <span class="chip chip-gray">${safeHtml(order.prazo || '')}</span>
             ${order.campanha ? `<span class="chip chip-blue">${safeHtml(order.campanha)}</span>` : ''}
-            ${renderStatusChip(order.status)}
+            <span class="chip ${statusClass}">${safeHtml(order.status || 'Pendente')}</span>
             ${order.archived ? `<span class="chip chip-gray">Arquivado</span>` : ''}
           </div>
         </div>
-
-        <div class="rounded-[24px] border border-slate-200 bg-slate-50 p-4 min-w-[260px]">
-          <div class="text-xs font-bold text-slate-500">Status do pedido</div>
-
-          <select id="detailStatus" class="focus-ring mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold">
-            ${STATUS_OPTIONS.map(s=>`<option value="${safeHtml(s)}" ${s===order.status?'selected':''}>${safeHtml(s)}</option>`).join('')}
-          </select>
-
-          <div class="mt-3 flex flex-col gap-2">
-            <button id="btnToggleArchive" class="focus-ring w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-700">
-              ${order.archived ? 'Reativar' : 'Arquivar'}
-            </button>
-
-            <button id="btnDeleteOrder" class="focus-ring w-full rounded-2xl border px-4 py-3 text-sm font-bold btn-danger">
-              Excluir fisicamente (teste)
-            </button>
-          </div>
-
-          <div class="mt-3 rounded-2xl ${statusMeta.chipClass} px-3 py-2 text-xs font-extrabold">
-            Status atual: ${safeHtml(statusMeta.label)}
-          </div>
-          <div class="mt-3 rounded-2xl border border-slate-200 bg-white px-3 py-3 text-xs font-bold text-slate-600">
-            <div>Última ação: <span class="text-slate-900">${safeHtml(order.lastActionLabel || '—')}</span></div>
-            <div class="mt-1">Em: <span class="text-slate-900">${safeHtml(formatDateTime(order.lastActionAt))}</span></div>
-          </div>
+        <div class="text-right">
+          <div class="chip chip-gray">${order.totals?.packs || 0} volumes</div>
+          <div class="mt-2 chip chip-blue">${order.totals?.units || 0} itens</div>
         </div>
       </div>
-
-      ${order.observacoes ? `
-        <div class="rounded-[24px] border border-slate-200 bg-slate-50 p-4">
-          <div class="text-xs font-bold text-slate-500">Observações</div>
-          <div class="mt-2 text-sm font-semibold text-slate-700">${safeHtml(order.observacoes)}</div>
-        </div>
-      ` : ''}
-
-      ${renderOrderHistory(order)}
-
-      <div class="rounded-[24px] border border-slate-200 bg-slate-50 p-4">
-        <div class="text-lg font-extrabold">Itens do pedido</div>
-
-        <div class="mt-4 space-y-3">
-          ${(order.items || []).map(item => `
-            <div class="rounded-[22px] border border-slate-200 bg-white p-4">
-              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-3">
-                <div>
-                  <div class="font-extrabold">${safeHtml(item.produto)}</div>
-                  <div class="mt-1 text-xs text-slate-500">
-                    ${safeHtml(item.codigo)} · ${safeHtml(item.cor)} · Prev. Faturamento ${safeHtml(item.prevFaturamento || '—')}
-                  </div>
-                </div>
-
-                <div class="text-right text-sm font-extrabold">
-                  ${item.mode === 'boxed'
-                    ? `${item.amount} caixa${item.amount > 1 ? 's' : ''}`
-                    : `${item.amount} unidade${item.amount > 1 ? 's' : ''}`}
-                  <div class="mt-1 text-xs text-slate-500">${safeHtml(getItemUnits(item))} itens</div>
-                </div>
+      <div class="mt-4 space-y-3">
+        ${(order.items || []).map(item=>`
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <div class="font-extrabold">${safeHtml(item.produto)}</div>
+                <div class="mt-1 text-xs text-slate-500">${safeHtml(item.codigo)} · ${safeHtml(item.cor)} · Prev. Faturamento ${safeHtml(formatDate(item.prevFaturamento || ''))}</div>
               </div>
-
-              ${item.grade?.length ? `<div class="mt-3 flex flex-wrap gap-2">${gradeHtml(item.grade)}</div>` : ''}
+              <div class="text-right text-sm font-extrabold">
+                ${item.mode === 'boxed' ? `${item.amount} caixa${item.amount > 1 ? 's' : ''}` : `${item.amount} unidade${item.amount > 1 ? 's' : ''}`}
+              </div>
             </div>
-          `).join('')}
-        </div>
+            ${item.grade?.length ? `<div class="mt-2 flex flex-wrap gap-2">${gradeHtml(item.grade)}</div>` : ''}
+          </div>
+        `).join('')}
       </div>
-    </div>
-  `;
+    `;
+    list.appendChild(card);
+  }
+}
+function openCart(){
+  $('cartDrawerWrap').classList.remove('hidden');
+  requestAnimationFrame(()=> $('cartDrawer').classList.add('open'));
+  document.body.style.overflow = 'hidden';
+}
+function closeCart(){
+  $('cartDrawer').classList.remove('open');
+  setTimeout(()=>{
+    $('cartDrawerWrap').classList.add('hidden');
+    document.body.style.overflow = '';
+  }, 240);
+}
+async function openOrders(){
+  try{
+    await refreshOrdersFromRemote();
+  }catch(err){
+    console.error(err);
+    toast('Não foi possível atualizar os pedidos sincronizados');
+  }
+  renderOrders();
+  $('ordersDrawerWrap').classList.remove('hidden');
+  requestAnimationFrame(()=> $('ordersDrawer').classList.add('open'));
+  document.body.style.overflow = 'hidden';
+}
+function closeOrders(){
+  $('ordersDrawer').classList.remove('open');
+  setTimeout(()=>{
+    $('ordersDrawerWrap').classList.add('hidden');
+    document.body.style.overflow = '';
+  }, 240);
+}
+function openCheckout(){
+  if(STATE.cart.size === 0){ toast('Adicione itens à sacola antes de continuar'); return; }
+  renderCheckoutSummary();
+  $('checkoutDrawerWrap').classList.remove('hidden');
+  requestAnimationFrame(()=> $('checkoutDrawer').classList.add('open'));
+}
+function closeCheckout(){
+  $('checkoutDrawer').classList.remove('open');
+  setTimeout(()=> $('checkoutDrawerWrap').classList.add('hidden'), 240);
+}
+function openGradeSheet(item){
+  $('gradeSheetTitle').textContent = item.produto;
+  $('gradeSheetContent').innerHTML = gradeHtml(item.grade);
+  $('gradeSheetMeta').textContent = `Prev. Faturamento: ${formatDate(item.prevFaturamento)}`;
+  $('gradeSheetWrap').classList.remove('hidden');
+  requestAnimationFrame(()=> $('gradeSheet').classList.add('open'));
+}
+function closeGradeSheet(){
+  $('gradeSheet').classList.remove('open');
+  setTimeout(()=> $('gradeSheetWrap').classList.add('hidden'), 240);
+}
+function parsePreposto(value){
+  return normalizePreposto(value);
+}
+function validateCartAgainstAvailability(){
+  for(const cartItem of STATE.cart.values()){
+    const original = STATE.raw.find(x => x.key === cartItem.key);
+    if(!original) continue;
+    const maxAmount = getMaxCartAmount(original);
+    if(Number(cartItem.amount || 0) > maxAmount){
+      return original;
+    }
+  }
+  return null;
+}
+function validateCheckout(){
+  const preposto = $('checkoutPreposto').value;
+  const cliente = $('checkoutCliente').value.trim();
+  const prazo = $('checkoutPrazo').value;
+  if(!preposto){ toast('Selecione o preposto'); return false; }
+  if(!cliente){ toast('Preencha o cliente'); return false; }
+  if(!/^\d+$/.test(cliente)){ toast('Cliente deve conter apenas números'); return false; }
+  if(!prazo){ toast('Selecione o prazo'); return false; }
+  return true;
+}
+async function submitOrder(options = {}){
+  const { skipConflictPrompt=false } = options;
+  if(!validateCheckout()) return;
+  const submitBtn = $('btnSubmitOrder');
+  submitBtn.disabled = true;
+  submitBtn.classList.add('opacity-60','cursor-not-allowed');
+  try{
+    if(hasWorkerConfig()){
+      await refreshOrdersFromRemote();
+      applyFilters();
+      renderCart();
 
-  $('detailStatus').addEventListener('change', async (e)=>{
-    const nextStatus = canonicalStatus(e.target.value);
-    const currentStatus = canonicalStatus(order.status);
+      const conflicts = analyzeCartConflicts();
+      if(conflicts.hasIssues && !skipConflictPrompt){
+        openConflictModal(conflicts);
+        return;
+      }
+      if(conflicts.hasIssues && skipConflictPrompt){
+        throw new Error('O saldo mudou novamente. Revise a sacola antes de continuar.');
+      }
+    }
 
-    if(nextStatus === 'Cancelado' && currentStatus !== 'Cancelado'){
-      openCancelReasonModal(order.id, currentStatus);
+    const now = new Date();
+    const prepostoValue = $('checkoutPreposto').value;
+    const preposto = parsePreposto(prepostoValue);
+    const clienteCodigo = $('checkoutCliente').value.trim();
+    const prazo = $('checkoutPrazo').value;
+    const campanha = $('checkoutCampanha').value;
+    const observacoes = $('checkoutObs').value.trim();
+    const items = Array.from(STATE.cart.values()).map(item=>({
+      codigo: item.codigo,
+      produto: item.produto,
+      cor: item.cor,
+      amount: item.amount,
+      mode: item.mode,
+      packSize: item.packSize,
+      totalUnits: item.mode === 'boxed' ? item.amount * item.packSize : item.amount,
+      grade: item.grade,
+      prevFaturamento: item.prevFaturamento
+    }));
+    if(items.length === 0){
+      throw new Error('Nenhum item com saldo disponível permaneceu na sacola.');
+    }
+
+    const stamp = `${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}${String(now.getHours()).padStart(2,'0')}${String(now.getMinutes()).padStart(2,'0')}${String(now.getSeconds()).padStart(2,'0')}`;
+    const suffix = String(Math.floor(Math.random()*900)+100);
+    const order = {
+      id: `PED-${stamp}-${suffix}`,
+      createdAt: now.toISOString(),
+      updatedAt: now.toISOString(),
+      status: 'Pendente',
+      archived: false,
+      preposto,
+      clienteCodigo,
+      prazo,
+      campanha,
+      observacoes,
+      totals: {
+        packs: items.reduce((sum, item)=>sum + Number(item.amount || 0), 0),
+        units: items.reduce((sum, item)=>sum + Number(item.totalUnits || 0), 0)
+      },
+      items
+    };
+    STATE.orders.unshift(order);
+    if(hasWorkerConfig()){
+      await createOrderRemote(order);
+      await refreshOrdersFromRemote();
+    }else{
+      saveOrdersStorage();
+    }
+    setLastPreposto(`${preposto.codigo} - ${preposto.nome}`.trim());
+    STATE.cart.clear();
+    saveCartStorage();
+    renderCart();
+    applyFilters();
+    renderOrders();
+    $('checkoutPreposto').value = '';
+    $('checkoutCliente').value = '';
+    $('checkoutPrazo').value = '';
+    $('checkoutCampanha').value = '';
+    $('checkoutObs').value = '';
+    closeConflictModal();
+    closeCheckout();
+    closeCart();
+    toast(hasWorkerConfig() ? 'Pedido sincronizado com sucesso' : 'Pedido salvo localmente');
+  }catch(err){
+    console.error(err);
+    const message = sanitizeDisplayText(err?.message);
+    if(message && (normalizeText(message).includes('saldo') || normalizeText(message).includes('sacola'))){
+      toast(message);
+    }else{
+      toast('Não foi possível sincronizar o pedido');
+    }
+  }finally{
+    submitBtn.disabled = false;
+    submitBtn.classList.remove('opacity-60','cursor-not-allowed');
+  }
+}
+async function loadCatalog(){
+  try{
+    $('brandLogo').src = DEFAULTS.logoPath;
+
+    const [prodRes, dispoRes] = await Promise.all([
+      fetch(`${DEFAULTS.produtosPath}?v=${Date.now()}`, { cache:'no-store' }),
+      fetch(`${DEFAULTS.dispoPath}?v=${Date.now()}`, { cache:'no-store' })
+    ]);
+    if(!prodRes.ok) throw new Error(`Produtos.xlsx não encontrado (${prodRes.status})`);
+    if(!dispoRes.ok) throw new Error(`DISPO.xlsx não encontrado (${dispoRes.status})`);
+
+    const [prodBuff, dispoBuff] = await Promise.all([prodRes.arrayBuffer(), dispoRes.arrayBuffer()]);
+    const prodWb = XLSX.read(prodBuff, { type:'array' });
+    const dispoWb = XLSX.read(dispoBuff, { type:'array' });
+
+    const prodRows = XLSX.utils.sheet_to_json(prodWb.Sheets[prodWb.SheetNames[0]], { defval:'' });
+    const dispoSheetName = dispoWb.SheetNames.find(n=>normalizeText(n)==='dispo') || dispoWb.SheetNames[0];
+    const dispoRows = XLSX.utils.sheet_to_json(dispoWb.Sheets[dispoSheetName], { defval:'' });
+
+    STATE.raw = mergeData(prodRows, dispoRows).map(item=>({ ...item, key: productKey(item) }));
+    buildFilters();
+    renderCart();
+    applyFilters();
+
+    $('loadingBlock').classList.add('hidden');
+    $('catalogWrap').classList.remove('hidden');
+  }catch(err){
+    console.error(err);
+    $('loadingBlock').innerHTML = `
+      <div class="mx-auto h-14 w-14 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center text-2xl"><i class="fa-solid fa-triangle-exclamation"></i></div>
+      <div class="mt-4 text-xl font-extrabold">Não foi possível carregar a vitrine</div>
+      <div class="mt-1 text-slate-500">Confira a estrutura do projeto. Detalhe: ${safeHtml(err.message)}</div>
+    `;
+  }
+}
+
+function openCatalogPdfModal(){
+  $('catalogPdfModalWrap').classList.remove('hidden');
+}
+function closeCatalogPdfModal(){
+  $('catalogPdfModalWrap').classList.add('hidden');
+}
+function openCatalogShareModal(){
+  $('catalogShareModalWrap').classList.remove('hidden');
+}
+function closeCatalogShareModal(){
+  $('catalogShareModalWrap').classList.add('hidden');
+}
+function getCatalogPdfPerPage(){
+  return Number(document.querySelector('input[name="catalogPdfPerPage"]:checked')?.value || 2);
+}
+function getCatalogPdfSourceItems(){
+  return STATE.view.filter(item => remainingUnits(item) > 0);
+}
+function pdfFileName(){
+  const d = new Date();
+  const pad = n => String(n).padStart(2,'0');
+  return `catalogo_disponibilidade_${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}_${pad(d.getHours())}${pad(d.getMinutes())}.pdf`;
+}
+async function imageUrlToDataUrl(url){
+  if(!url) return '';
+  try{
+    const res = await fetch(url, { cache:'no-store' });
+    if(!res.ok) return '';
+    const blob = await res.blob();
+    return await new Promise((resolve, reject)=>{
+      const reader = new FileReader();
+      reader.onload = ()=> resolve(String(reader.result || ''));
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  }catch(_){
+    return '';
+  }
+}
+function gradeCompactText(item){
+  return item.grade.map(g => `${g.size}(${g.qty})`).join('   ');
+}
+function drawCatalogHeader(doc, pageWidth){
+  if(productImage({ imagem:'logo-olympikus.png' })){
+    // noop; keeps helper stable
+  }
+  doc.setTextColor(40,54,212);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(15);
+  doc.text('OLYMPIKUS', pageWidth / 2, 12, { align:'center' });
+  doc.setDrawColor(226,232,240);
+  doc.line(12, 16, pageWidth - 12, 16);
+  doc.setTextColor(100,116,139);
+  doc.setFontSize(8);
+  doc.setFont('helvetica', 'normal');
+  doc.text(`Catálogo de disponibilidades • ${new Date().toLocaleDateString('pt-BR')}`, 12, 12);
+}
+function drawCatalogFooter(doc, pageWidth, pageHeight, pageNumber){
+  doc.setDrawColor(226,232,240);
+  doc.line(12, pageHeight - 8, pageWidth - 12, pageHeight - 8);
+  doc.setFontSize(8);
+  doc.setTextColor(100,116,139);
+  doc.text('Oportunidades com estoque disponível', 12, pageHeight - 4);
+  doc.text(`Página ${pageNumber}`, pageWidth - 12, pageHeight - 4, { align:'right' });
+}
+function drawGradeRow(doc, item, x, y, width){
+  const grade = Array.isArray(item.grade) ? item.grade : [];
+  if(!grade.length) return 0;
+  const cols = Math.min(grade.length, 10);
+  const cellW = width / cols;
+  const cellH = 12;
+  const visible = grade.slice(0, cols);
+  visible.forEach((g, idx)=>{
+    const left = x + (idx * cellW);
+    doc.setDrawColor(226,232,240);
+    doc.setFillColor(255,255,255);
+    doc.roundedRect(left, y, cellW - 1.2, cellH, 1.8, 1.8, 'FD');
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(71,85,105);
+    doc.text(String(g.size), left + (cellW - 1.2)/2, y + 4.3, { align:'center' });
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9);
+    doc.setTextColor(40,54,212);
+    doc.text(String(g.qty), left + (cellW - 1.2)/2, y + 9.2, { align:'center' });
+  });
+  return cellH;
+}
+async function buildCatalogPdfBlob(perPage){
+  const items = getCatalogPdfSourceItems();
+  if(!items.length){
+    toast('Nenhum item com saldo disponível para gerar o catálogo');
+    return null;
+  }
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation:'portrait', unit:'mm', format:'a4', compress:true });
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
+  const slotsPerPage = perPage === 3 ? 3 : 2;
+  const topStart = 20;
+  const contentBottom = pageHeight - 12;
+  const slotGap = slotsPerPage === 3 ? 4 : 5;
+  const slotHeight = (contentBottom - topStart - ((slotsPerPage - 1) * slotGap)) / slotsPerPage;
+
+  let pageNumber = 1;
+  for(let i=0; i<items.length; i++){
+    const pageIndex = i % slotsPerPage;
+    if(i > 0 && pageIndex === 0){
+      drawCatalogFooter(doc, pageWidth, pageHeight, pageNumber);
+      doc.addPage();
+      pageNumber += 1;
+    }
+    if(pageIndex === 0){
+      drawCatalogHeader(doc, pageWidth);
+    }
+
+    const item = items[i];
+    const y = topStart + pageIndex * (slotHeight + slotGap);
+    const sectionX = 12;
+    const sectionW = pageWidth - 24;
+
+    const imageBoxH = slotsPerPage === 3 ? slotHeight * 0.74 : slotHeight * 0.80;
+    const infoStartY = y + imageBoxH + 2.2;
+    const gradeLabelY = slotsPerPage === 3 ? infoStartY + 10.1 : infoStartY + 11.4;
+    const gradeTopY = gradeLabelY + 2.0;
+    const gradeAreaH = Math.max(12, (y + slotHeight) - gradeTopY - 0.8);
+
+    doc.setDrawColor(226,232,240);
+    doc.setLineWidth(0.35);
+    if(pageIndex > 0){
+      doc.line(sectionX, y - 2.5, sectionX + sectionW, y - 2.5);
+    }
+
+    const imgUrl = productImage(item);
+    const dataUrl = await imageUrlToDataUrl(imgUrl);
+
+    doc.setFillColor(255,255,255);
+    doc.roundedRect(sectionX, y, sectionW, imageBoxH, 3, 3, 'F');
+
+    if(dataUrl){
+      try{
+        const imageType = dataUrl.includes('image/jpeg') ? 'JPEG' : 'PNG';
+        const props = doc.getImageProperties(dataUrl);
+        const sourceW = Number(props.width || 0);
+        const sourceH = Number(props.height || 0);
+        const innerPadX = slotsPerPage === 3 ? 0.8 : 0.6;
+        const innerPadY = slotsPerPage === 3 ? 0.8 : 0.6;
+        const maxW = Math.max(1, sectionW - (innerPadX * 2));
+        const maxH = Math.max(1, imageBoxH - (innerPadY * 2));
+        let drawW = maxW;
+        let drawH = maxH;
+
+        if(sourceW > 0 && sourceH > 0){
+          const scale = Math.min(maxW / sourceW, maxH / sourceH);
+          drawW = Math.max(1, sourceW * scale);
+          drawH = Math.max(1, sourceH * scale);
+        }
+
+        const drawX = sectionX + ((sectionW - drawW) / 2);
+        const drawY = y + ((imageBoxH - drawH) / 2);
+        doc.addImage(dataUrl, imageType, drawX, drawY, drawW, drawH, undefined, 'FAST');
+      }catch(_){
+        doc.setFillColor(248,250,252);
+        doc.roundedRect(sectionX, y, sectionW, imageBoxH, 3, 3, 'F');
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(10);
+        doc.setTextColor(148,163,184);
+        doc.text('Sem imagem', sectionX + sectionW/2, y + imageBoxH/2, { align:'center' });
+      }
+    }else{
+      doc.setFillColor(248,250,252);
+      doc.roundedRect(sectionX, y, sectionW, imageBoxH, 3, 3, 'F');
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(10);
+      doc.setTextColor(148,163,184);
+      doc.text('Sem imagem', sectionX + sectionW/2, y + imageBoxH/2, { align:'center' });
+    }
+
+    doc.setTextColor(15,23,42);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(slotsPerPage === 3 ? 8.2 : 9.2);
+    const titleMaxW = sectionW;
+    const productLines = doc.splitTextToSize(String(item.produto || ''), titleMaxW).slice(0,1);
+    doc.text(productLines, sectionX, infoStartY);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(71,85,105);
+    doc.setFontSize(slotsPerPage === 3 ? 6.5 : 7.2);
+    const metaLine = `${item.codigo} • Cor: ${item.cor} • Prev: ${formatDate(item.prevFaturamento)} • Caixas: ${remainingPacks(item)}`;
+    doc.text(doc.splitTextToSize(metaLine, sectionW).slice(0,2), sectionX, infoStartY + (slotsPerPage === 3 ? 3.7 : 4.0));
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(slotsPerPage === 3 ? 7.0 : 7.6);
+    doc.setTextColor(15,23,42);
+    doc.text('Grade disponível', sectionX, gradeLabelY);
+    drawGradeRow(doc, item, sectionX, gradeTopY, sectionW, gradeAreaH);
+  }
+
+  drawCatalogFooter(doc, pageWidth, pageHeight, pageNumber);
+  const blob = doc.output('blob');
+  return blob;
+}
+
+async function downloadBlob(blob, filename){
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url), 2000);
+}
+async function shareCatalogViaWhatsapp(){
+  const blob = STATE.latestCatalogPdfBlob;
+  const filename = STATE.latestCatalogPdfFileName || pdfFileName();
+  const shareText = STATE.latestCatalogShareText;
+  if(!blob){
+    closeCatalogShareModal();
+    return;
+  }
+  const file = new File([blob], filename, { type:'application/pdf' });
+  const nav = navigator;
+  try{
+    if(nav.share && nav.canShare && nav.canShare({ files:[file] })){
+      await nav.share({
+        files:[file],
+        text: shareText,
+        title: 'Catálogo de disponibilidades'
+      });
+      closeCatalogShareModal();
+      return;
+    }
+  }catch(err){
+    console.warn('Compartilhamento nativo indisponível:', err);
+  }
+  const waUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
+  window.open(waUrl, '_blank', 'noopener,noreferrer');
+  toast('WhatsApp aberto. Anexe o PDF gerado na conversa.');
+  closeCatalogShareModal();
+}
+async function generateCatalogPdf(){
+  const btn = $('btnConfirmCatalogPdf');
+  const prev = btn.innerHTML;
+  btn.disabled = true;
+  btn.classList.add('opacity-70');
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>Gerando...';
+  try{
+    const perPage = getCatalogPdfPerPage();
+    const blob = await buildCatalogPdfBlob(perPage);
+    if(!blob) return;
+    const filename = pdfFileName();
+    STATE.latestCatalogPdfBlob = blob;
+    STATE.latestCatalogPdfFileName = filename;
+    await downloadBlob(blob, filename);
+    closeCatalogPdfModal();
+    openCatalogShareModal();
+  }catch(err){
+    console.error(err);
+    toast('Não foi possível gerar o catálogo agora');
+  }finally{
+    btn.disabled = false;
+    btn.classList.remove('opacity-70');
+    btn.innerHTML = prev;
+  }
+}
+function bindEvents(){
+  $('btnOpenCart').addEventListener('click', openCart);
+  $('btnOrders').addEventListener('click', openOrders);
+  $('btnRefreshStock').addEventListener('click', ()=>refreshStockFromSource({ silent:false, reason:'manual', force:true }));
+  $('btnGenerateCatalogPdf').addEventListener('click', openCatalogPdfModal);
+  $('btnCloseCatalogPdfModal').addEventListener('click', closeCatalogPdfModal);
+  $('btnCancelCatalogPdf').addEventListener('click', closeCatalogPdfModal);
+  $('btnConfirmCatalogPdf').addEventListener('click', generateCatalogPdf);
+  $('btnCloseCatalogShareModal').addEventListener('click', closeCatalogShareModal);
+  $('btnCatalogOnlyDownload').addEventListener('click', closeCatalogShareModal);
+  $('btnCatalogShareWhatsapp').addEventListener('click', shareCatalogViaWhatsapp);
+  $('btnConflictReviewCart').addEventListener('click', ()=>{
+    closeConflictModal();
+    toast('Revise a sacola e tente novamente');
+  });
+  $('btnCloseConflictModal').addEventListener('click', closeConflictModal);
+  $('btnConflictContinue').addEventListener('click', async ()=>{
+    const conflicts = STATE.pendingConflictCheck;
+    if(!conflicts) return;
+    applyConflictResolution(conflicts);
+    closeConflictModal();
+    if(STATE.cart.size === 0){
+      closeCheckout();
+      closeCart();
+      toast('Todos os itens ficaram sem saldo no momento');
+      return;
+    }
+    toast('Sacola ajustada conforme o saldo disponível');
+    await submitOrder({ skipConflictPrompt:true });
+  });
+  $('btnProceedOrder').addEventListener('click', openCheckout);
+  $('btnSubmitOrder').addEventListener('click', submitOrder);
+  $('btnBackToCart').addEventListener('click', closeCheckout);
+  $('btnClearCart').addEventListener('click', ()=>{
+    if(STATE.cart.size === 0) return;
+    STATE.cart.clear();
+    saveCartStorage();
+    renderCart();
+    applyFilters();
+    toast('Sacola limpa');
+  });
+
+  $('searchInputTop').addEventListener('input', e=>{ STATE.search = e.target.value; applyFilters(); });
+  $('filterCategoria').addEventListener('change', e=>{ STATE.filters.categoria = e.target.value; applyFilters(); });
+  $('filterSegmento').addEventListener('change', e=>{ STATE.filters.segmento = e.target.value; applyFilters(); });
+  $('filterGenero').addEventListener('change', e=>{ STATE.filters.genero = e.target.value; applyFilters(); });
+  $('sortBy').addEventListener('change', e=>{ STATE.filters.sort = e.target.value; applyFilters(); });
+
+  $('btnClearFilters').addEventListener('click', ()=>{
+    STATE.search = '';
+    STATE.filters = { categoria:'', segmento:'', genero:'', sort:'produto' };
+    $('searchInputTop').value = '';
+    $('filterCategoria').value = '';
+    $('filterSegmento').value = '';
+    $('filterGenero').value = '';
+    $('sortBy').value = 'produto';
+    applyFilters();
+  });
+
+  $('btnToggleFilters').addEventListener('click', ()=>{
+    if(window.innerWidth <= 1023){
+      document.body.classList.toggle('filters-open');
+    }else{
+      document.body.classList.toggle('filters-collapsed');
+    }
+  });
+  $('btnCloseFilters').addEventListener('click', ()=>document.body.classList.remove('filters-open'));
+
+  $('btnViewCards').addEventListener('click', ()=>{ STATE.viewMode = 'cards'; saveViewMode(); renderCatalog(); });
+  $('btnViewList').addEventListener('click', ()=>{ STATE.viewMode = 'list'; saveViewMode(); renderCatalog(); });
+  $('btnOrdersScopeActive').addEventListener('click', ()=>{ setOrdersScope('active'); renderOrders(); });
+  $('btnOrdersScopeHistory').addEventListener('click', ()=>{ setOrdersScope('history'); renderOrders(); });
+  $('btnOrdersScopeAll').addEventListener('click', ()=>{ setOrdersScope('all'); renderOrders(); });
+
+  $('cartDrawerWrap').addEventListener('click', (e)=>{ if(e.target.closest('[data-close-cart="true"]')) closeCart(); });
+  $('ordersDrawerWrap').addEventListener('click', (e)=>{ if(e.target.closest('[data-close-orders="true"]')) closeOrders(); });
+  $('checkoutDrawerWrap').addEventListener('click', (e)=>{ if(e.target.closest('[data-close-checkout="true"]')) closeCheckout(); });
+  $('gradeSheetWrap').addEventListener('click', (e)=>{ if(e.target.closest('[data-close-grade="true"]')) closeGradeSheet(); });
+  $('conflictModalWrap').addEventListener('click', (e)=>{ if(e.target === $('conflictModalWrap') || e.target.classList.contains('backdrop')) closeConflictModal(); });
+  $('catalogPdfModalWrap').addEventListener('click', (e)=>{ if(e.target === $('catalogPdfModalWrap') || e.target.classList.contains('backdrop')) closeCatalogPdfModal(); });
+  $('catalogShareModalWrap').addEventListener('click', (e)=>{ if(e.target === $('catalogShareModalWrap') || e.target.classList.contains('backdrop')) closeCatalogShareModal(); });
+
+  document.addEventListener('visibilitychange', ()=>{
+    if(document.visibilityState === 'visible'){
+      refreshStockFromSource({ silent:true, reason:'focus', force:true });
+    }
+  });
+  window.addEventListener('focus', ()=>{
+    refreshStockFromSource({ silent:true, reason:'focus', force:true });
+  });
+}
+function initMobileHeaderAutoHide(){
+  const header = $('appHeader');
+  if(!header) return;
+  const body = document.body;
+  const mobileMq = window.matchMedia('(max-width: 767px)');
+  let lastY = 0;
+  let ticking = false;
+
+  function getScrollTop(){
+    return Math.max(0, window.pageYOffset || window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0);
+  }
+
+  function shouldLockVisible(){
+    return !mobileMq.matches
+      || body.classList.contains('filters-open')
+      || ($('cartDrawerWrap')?.classList.contains('hidden') === false)
+      || ($('checkoutDrawerWrap')?.classList.contains('hidden') === false)
+      || ($('ordersDrawerWrap')?.classList.contains('hidden') === false)
+      || ($('gradeSheetWrap')?.classList.contains('hidden') === false)
+      || ($('conflictModalWrap')?.classList.contains('hidden') === false)
+      || ($('catalogPdfModalWrap')?.classList.contains('hidden') === false)
+      || ($('catalogShareModalWrap')?.classList.contains('hidden') === false);
+  }
+
+  function showHeader(){
+    header.classList.remove('header-hidden-mobile');
+  }
+
+  function hideHeader(){
+    if(!shouldLockVisible()) header.classList.add('header-hidden-mobile');
+  }
+
+  function measureHeader(){
+    if(mobileMq.matches){
+      const height = Math.ceil(header.getBoundingClientRect().height || header.offsetHeight || 0);
+      document.documentElement.style.setProperty('--mobile-header-offset', `${height}px`);
+      body.classList.add('mobile-header-ready');
+    }else{
+      document.documentElement.style.setProperty('--mobile-header-offset', '0px');
+      body.classList.remove('mobile-header-ready');
+      showHeader();
+    }
+  }
+
+  function syncHeader(){
+    ticking = false;
+    measureHeader();
+    const currentY = getScrollTop();
+    const diff = currentY - lastY;
+
+    if(shouldLockVisible() || currentY <= 4){
+      showHeader();
+      lastY = currentY;
       return;
     }
 
-    await updateStatus(order.id, nextStatus);
-  });
-
-  $('btnToggleArchive').addEventListener('click', async ()=>{
-    await toggleArchive(order.id);
-  });
-
-  $('btnDeleteOrder').addEventListener('click', async ()=>{
-    await deleteOrder(order.id);
-  });
-}
-
-
-function getCancelReasonValue(){
-  return normalizeText($('cancelReasonInput')?.value || '');
-}
-
-function syncCancelReasonButton(){
-  const btn = $('btnConfirmCancelReason');
-  if(!btn) return;
-  btn.disabled = !getCancelReasonValue();
-}
-
-function closeCancelReasonModal(options = {}){
-  const keepSelection = Boolean(options.keepSelection);
-  const modal = $('cancelReasonModal');
-  if(modal) modal.classList.add('hidden');
-  const input = $('cancelReasonInput');
-  if(input) input.value = '';
-  $('cancelReasonError')?.classList.add('hidden');
-
-  const context = STATE.cancelReasonContext;
-  if(context && !keepSelection){
-    const select = $('detailStatus');
-    if(select) select.value = context.previousStatus || 'Pendente';
-  }
-
-  STATE.cancelReasonContext = null;
-  document.body.style.overflow = '';
-  syncCancelReasonButton();
-}
-
-function openCancelReasonModal(orderId, previousStatus){
-  STATE.cancelReasonContext = { orderId, previousStatus: canonicalStatus(previousStatus || 'Pendente') };
-  const modal = $('cancelReasonModal');
-  if(modal) modal.classList.remove('hidden');
-  $('cancelReasonInput').value = '';
-  $('cancelReasonError').classList.add('hidden');
-  document.body.style.overflow = 'hidden';
-  syncCancelReasonButton();
-  setTimeout(() => $('cancelReasonInput')?.focus(), 30);
-}
-
-async function confirmCancelWithReason(){
-  const reason = getCancelReasonValue();
-  if(!reason){
-    $('cancelReasonError')?.classList.remove('hidden');
-    syncCancelReasonButton();
-    $('cancelReasonInput')?.focus();
-    return;
-  }
-
-  const context = STATE.cancelReasonContext;
-  if(!context?.orderId) return;
-
-  await updateStatus(context.orderId, 'Cancelado', { cancelReason: reason });
-}
-
-async function updateStatus(id, status, options = {}){
-  const idx = STATE.orders.findIndex(o => o.id === id);
-  if(idx === -1) return;
-
-  const currentOrder = normalizeOrder(STATE.orders[idx]);
-  const nextStatus = canonicalStatus(status);
-  const prevStatus = canonicalStatus(currentOrder.status);
-  if(nextStatus === prevStatus){
-    showToast('Esse pedido já está nesse status.', 'info');
-    return;
-  }
-
-  const cancelReason = sanitizeDisplayText(options?.cancelReason);
-  const eventLabel = nextStatus === 'Aprovado' ? 'Pedido aprovado' : nextStatus === 'Cancelado' ? 'Pedido cancelado' : 'Pedido voltou para pendente';
-  const event = createHistoryEvent(currentOrder, 'status_changed', eventLabel, {
-    statusFrom: prevStatus,
-    statusTo: nextStatus,
-    archivedFrom: Boolean(currentOrder.archived),
-    archivedTo: Boolean(currentOrder.archived),
-    notes: nextStatus === 'Cancelado' ? cancelReason : ''
-  });
-  const updatedOrder = appendOrderHistory({ ...currentOrder, status: nextStatus }, event);
-
-  try{
-    await workerUpdateOrder(updatedOrder);
-    if(nextStatus === 'Cancelado'){
-      closeCancelReasonModal({ keepSelection:true });
+    if(currentY > 72 && diff > 5){
+      hideHeader();
+    }else if(diff < -4){
+      showHeader();
     }
-    showToast(`Status alterado para "${nextStatus}".`, 'success');
-    await loadAdmin();
-  }catch(err){
-    console.error(err);
-    showToast('Não foi possível salvar o novo status.', 'error');
-  }
-}
 
-async function toggleArchive(id){
-  const idx = STATE.orders.findIndex(o => o.id === id);
-  if(idx === -1) return;
-
-  const currentOrder = normalizeOrder(STATE.orders[idx]);
-  const nextArchived = !currentOrder.archived;
-  const event = createHistoryEvent(currentOrder, nextArchived ? 'archived' : 'restored', nextArchived ? 'Pedido arquivado' : 'Pedido reativado', {
-    statusFrom: canonicalStatus(currentOrder.status),
-    statusTo: canonicalStatus(currentOrder.status),
-    archivedFrom: Boolean(currentOrder.archived),
-    archivedTo: nextArchived
-  });
-  const updatedOrder = appendOrderHistory({ ...currentOrder, archived: nextArchived }, event);
-
-  try{
-    await workerUpdateOrder(updatedOrder);
-    showToast(nextArchived ? 'Pedido arquivado.' : 'Pedido reativado.', 'success');
-    await loadAdmin();
-  }catch(err){
-    console.error(err);
-    showToast('Não foi possível atualizar o arquivamento do pedido.', 'error');
-  }
-}
-
-async function deleteOrder(id){
-  const target = STATE.orders.find(o => o.id === id);
-  if(!target) return;
-
-  const ok = confirm(`Tem certeza que deseja EXCLUIR FISICAMENTE o pedido ${id}?
-
-Use isso apenas em testes. O histórico salvo dentro do pedido será perdido após a exclusão.`);
-  if(!ok) return;
-
-  try{
-    await workerDeleteOrder(id);
-    STATE.selectedId = null;
-    showToast(`Pedido ${id} excluído com sucesso.`, 'success');
-    await loadAdmin();
-  }catch(err){
-    console.error(err);
-    showToast('Não foi possível excluir o pedido.', 'error');
-  }
-}
-
-$('btnAdminLogin').addEventListener('click', async ()=>{
-  if($('adminPassword').value !== ADMIN_PASSWORD){
-    showToast('Senha inválida.', 'error');
-    return;
+    lastY = currentY;
   }
 
-  localStorage.setItem(STORAGE_KEYS.adminAuth, 'ok');
-  $('adminPassword').value = '';
-  await applyAuthUI();
-});
-
-$('btnLogout').addEventListener('click', ()=>{
-  localStorage.removeItem(STORAGE_KEYS.adminAuth);
-  applyAuthUI();
-});
-
-$('btnRefresh').addEventListener('click', async ()=>{ await loadAdmin(); });
-
-$('btnScopeActive').addEventListener('click', ()=>{ setAdminScope('active'); applyFilters(); });
-$('btnScopeHistory').addEventListener('click', ()=>{ setAdminScope('history'); applyFilters(); });
-$('btnScopeAll').addEventListener('click', ()=>{ setAdminScope('all'); applyFilters(); });
-
-$('adminSearch').addEventListener('input', applyFilters);
-$('adminStatusFilter').addEventListener('change', applyFilters);
-
-// ── MODAL DE CANCELAMENTO ─────────────────────────────────────────────────────
-// Registrado uma única vez no carregamento. O modal é HTML estático,
-// nunca é recriado, portanto NÃO deve ter seus listeners dentro de renderDetail().
-
-$('btnCloseCancelReason').addEventListener('click', ()=>{
-  closeCancelReasonModal();
-});
-
-$('btnAbortCancelReason').addEventListener('click', ()=>{
-  closeCancelReasonModal();
-});
-
-$('btnConfirmCancelReason').addEventListener('click', async ()=>{
-  await confirmCancelWithReason();
-});
-
-$('cancelReasonInput').addEventListener('input', ()=>{
-  syncCancelReasonButton();
-  $('cancelReasonError')?.classList.add('hidden');
-});
-
-// Fecha ao clicar no overlay (fora do painel branco)
-$('cancelReasonModal').addEventListener('click', (e)=>{
-  if(e.target === $('cancelReasonModal')){
-    closeCancelReasonModal();
-  }
-});
-
-// Fecha com ESC
-document.addEventListener('keydown', (e)=>{
-  if(e.key === 'Escape'){
-    const modal = $('cancelReasonModal');
-    if(modal && !modal.classList.contains('hidden')){
-      closeCancelReasonModal();
+  function requestSync(){
+    if(!ticking){
+      ticking = true;
+      requestAnimationFrame(syncHeader);
     }
   }
-});
-// ─────────────────────────────────────────────────────────────────────────────
 
-applyAuthUI();
+  lastY = getScrollTop();
+  window.addEventListener('scroll', requestSync, { passive:true });
+  document.addEventListener('scroll', requestSync, { passive:true });
+  window.addEventListener('touchmove', requestSync, { passive:true });
+  window.addEventListener('resize', ()=>{ measureHeader(); requestSync(); });
+  window.addEventListener('orientationchange', ()=>{ setTimeout(()=>{ measureHeader(); requestSync(); }, 120); });
+  document.addEventListener('visibilitychange', ()=>{
+    if(document.visibilityState === 'visible'){
+      showHeader();
+      setTimeout(()=>{ measureHeader(); requestSync(); }, 120);
+    }
+  });
+
+  ['btnToggleFilters','btnOpenCart','btnOrders','btnProceedOrder'].forEach(id=>{
+    const el=$(id);
+    if(el) el.addEventListener('click', showHeader);
+  });
+
+  measureHeader();
+  showHeader();
+  requestSync();
+}
+
+loadLocalState();
+bindEvents();
+initMobileHeaderAutoHide();
+updateOrdersScopeButtons();
+renderOrders();
+startStockAutoRefresh();
+refreshOrdersFromRemote().then(()=>{
+  renderOrders();
+  renderCart();
+  applyFilters();
+}).catch(()=>{});
+loadCatalog().then(()=>{
+  refreshStockFromSource({ silent:true, reason:'load', force:true });
+}).catch(()=>{});
 </script>
 </body>
 </html>
