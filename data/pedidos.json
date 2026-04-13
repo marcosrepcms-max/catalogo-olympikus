@@ -122,8 +122,8 @@
   {
     "id": "PED-20260413152449-251",
     "createdAt": "2026-04-13T18:24:49.933Z",
-    "updatedAt": "2026-04-13T18:25:42.545Z",
-    "status": "Aprovado",
+    "updatedAt": "2026-04-13T19:34:15.620Z",
+    "status": "Cancelado",
     "archived": false,
     "preposto": {
       "codigo": "1333497",
@@ -177,6 +177,24 @@
     ],
     "history": [
       {
+        "eventId": "evt_1776108855474_7ncx0d",
+        "at": "2026-04-13T19:34:15.474Z",
+        "action": "status_changed",
+        "label": "Pedido cancelado",
+        "statusFrom": "Aprovado",
+        "statusTo": "Cancelado",
+        "archivedFrom": false,
+        "archivedTo": false,
+        "clientCode": "10435",
+        "prepostoCodigo": "1333497",
+        "prepostoNome": "RAFAEL",
+        "notes": "cliente desistiu",
+        "meta": {
+          "itemsCount": 1,
+          "units": 24
+        }
+      },
+      {
         "eventId": "evt_1776104742536_bxeu1v",
         "at": "2026-04-13T18:25:42.536Z",
         "action": "status_changed",
@@ -214,7 +232,7 @@
       }
     ],
     "lastAction": "status_changed",
-    "lastActionLabel": "Pedido aprovado",
-    "lastActionAt": "2026-04-13T18:25:42.536Z"
+    "lastActionLabel": "Pedido cancelado",
+    "lastActionAt": "2026-04-13T19:34:15.474Z"
   }
 ]
