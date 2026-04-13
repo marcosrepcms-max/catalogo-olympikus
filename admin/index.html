@@ -329,7 +329,7 @@
           <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             <div>
               <div class="text-lg font-extrabold">Painel DISPO</div>
-              <div class="mt-1 text-sm text-slate-500">Saldo atual, impacto dos pedidos e saldo projetado.</div>
+              <div class="mt-1 text-sm text-slate-500">Saldo atual, impacto dos pedidos pendentes/aprovados e saldo projetado.</div>
             </div>
 
             <div class="flex flex-col sm:flex-row gap-2 sm:items-center">
@@ -344,7 +344,7 @@
             </div>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-3">
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-3">
             <div class="kpi-card">
               <div class="text-xs font-bold text-slate-500">Linhas na DISPO</div>
               <div id="kpiDispoLinhas" class="mt-2 text-2xl font-extrabold">0</div>
@@ -353,6 +353,11 @@
             <div class="kpi-card">
               <div class="text-xs font-bold text-slate-500">Itens com pedidos em aberto</div>
               <div id="kpiDispoComPedido" class="mt-2 text-2xl font-extrabold">0</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="text-xs font-bold text-slate-500">Saldo já aprovado</div>
+              <div id="kpiDispoAprovado" class="mt-2 text-2xl font-extrabold">0</div>
             </div>
 
             <div class="kpi-card">
@@ -380,13 +385,14 @@
                   <th>Data entrega</th>
                   <th>Saldo DISPO</th>
                   <th>Pedidos em aberto</th>
+                  <th>Saldo aprovado</th>
                   <th>Saldo projetado</th>
                   <th>Situação</th>
                 </tr>
               </thead>
               <tbody id="dispoTableBody">
                 <tr>
-                  <td colspan="8" class="text-center text-slate-500">Carregando DISPO...</td>
+                  <td colspan="9" class="text-center text-slate-500">Carregando DISPO...</td>
                 </tr>
               </tbody>
             </table>
@@ -395,6 +401,26 @@
       </section>
     </section>
   </main>
+  <div id="cancelReasonModal" class="hidden fixed inset-0 z-[140] bg-slate-950/45 p-4">
+    <div class="mx-auto mt-10 w-full max-w-lg rounded-[28px] border border-slate-200 bg-white p-5 shadow-[0_30px_80px_rgba(15,23,42,0.22)]">
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <div class="text-lg font-extrabold text-slate-900">Motivo do cancelamento</div>
+          <div class="mt-1 text-sm font-semibold text-slate-500">Esse motivo será salvo no histórico do pedido.</div>
+        </div>
+        <button id="btnCloseCancelReason" class="focus-ring rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm font-bold text-slate-600">Fechar</button>
+      </div>
+      <div class="mt-4">
+        <label class="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Motivo</label>
+        <textarea id="cancelReasonInput" class="focus-ring mt-2 min-h-[132px] w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 outline-none" placeholder="Ex.: cliente desistiu, item sem saldo, duplicidade, erro no pedido..."></textarea>
+        <div id="cancelReasonError" class="mt-2 hidden text-xs font-bold text-red-600">Informe o motivo antes de confirmar.</div>
+      </div>
+      <div class="mt-4 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+        <button id="btnAbortCancelReason" class="focus-ring rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-700">Voltar</button>
+        <button id="btnConfirmCancelReason" class="focus-ring rounded-2xl border border-red-200 bg-red-600 px-4 py-3 text-sm font-bold text-white disabled:cursor-not-allowed disabled:opacity-50" disabled>Confirmar cancelamento</button>
+      </div>
+    </div>
+  </div>
 
 <script>
 const WORKER_URL = 'https://repasse-worker-cms.marcosrep-cms.workers.dev';
@@ -412,7 +438,8 @@ const STATE = {
   selectedId: null,
   dispoRows: [],
   dispoFiltered: [],
-  dispoLoadedAt: null
+  dispoLoadedAt: null,
+  cancelReasonContext: null
 };
 
 const $ = (id)=>document.getElementById(id);
@@ -1042,7 +1069,11 @@ function renderDetail(){
   `;
 
   $('detailStatus').addEventListener('change', async (e)=>{
-    await updateStatus(order.id, e.target.value);
+    const nextValue = e.target.value;
+    const changed = await updateStatus(order.id, nextValue);
+    if(!changed){
+      e.target.value = canonicalStatus(order.status);
+    }
   });
 
   $('btnToggleArchive').addEventListener('click', async ()=>{
@@ -1054,16 +1085,22 @@ function renderDetail(){
   });
 }
 
-async function updateStatus(id, status){
+async function updateStatus(id, status, options = {}){
   const idx = STATE.orders.findIndex(o => o.id === id);
-  if(idx === -1) return;
+  if(idx === -1) return false;
 
   const currentOrder = normalizeOrder(STATE.orders[idx]);
   const nextStatus = canonicalStatus(status);
   const prevStatus = canonicalStatus(currentOrder.status);
   if(nextStatus === prevStatus){
     showToast('Esse pedido já está nesse status.', 'info');
-    return;
+    return false;
+  }
+
+  const cancelReason = sanitizeDisplayText(options.cancelReason);
+  if(nextStatus === 'Cancelado' && !cancelReason){
+    openCancelReasonModal(id, prevStatus);
+    return false;
   }
 
   const eventLabel = nextStatus === 'Aprovado' ? 'Pedido aprovado' : nextStatus === 'Cancelado' ? 'Pedido cancelado' : 'Pedido voltou para pendente';
@@ -1071,17 +1108,22 @@ async function updateStatus(id, status){
     statusFrom: prevStatus,
     statusTo: nextStatus,
     archivedFrom: Boolean(currentOrder.archived),
-    archivedTo: Boolean(currentOrder.archived)
+    archivedTo: Boolean(currentOrder.archived),
+    notes: nextStatus === 'Cancelado' ? `Motivo: ${cancelReason}` : '',
+    meta: nextStatus === 'Cancelado' ? { reason: cancelReason } : {}
   });
   const updatedOrder = appendOrderHistory({ ...currentOrder, status: nextStatus }, event);
 
   try{
     await workerUpdateOrder(updatedOrder);
+    closeCancelReasonModal();
     showToast(`Status alterado para "${nextStatus}".`, 'success');
     await loadAdmin();
+    return true;
   }catch(err){
     console.error(err);
     showToast('Não foi possível salvar o novo status.', 'error');
+    return false;
   }
 }
 
@@ -1129,10 +1171,33 @@ Use isso apenas em testes. O histórico salvo dentro do pedido será perdido ap�
   }
 }
 
+function openCancelReasonModal(orderId, previousStatus){
+  STATE.cancelReasonContext = { orderId, previousStatus };
+  $('cancelReasonInput').value = '';
+  $('cancelReasonError').classList.add('hidden');
+  $('btnConfirmCancelReason').disabled = true;
+  $('cancelReasonModal').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  setTimeout(()=> $('cancelReasonInput').focus(), 30);
+}
+
+function closeCancelReasonModal(){
+  STATE.cancelReasonContext = null;
+  $('cancelReasonModal').classList.add('hidden');
+  $('cancelReasonError').classList.add('hidden');
+  $('cancelReasonInput').value = '';
+  $('btnConfirmCancelReason').disabled = true;
+  document.body.style.overflow = '';
+}
+
+function syncCancelReasonButton(){
+  $('btnConfirmCancelReason').disabled = !normalizeText($('cancelReasonInput').value);
+}
+
 async function loadDispo(){
   try{
     $('dispoPanelEmpty').classList.add('hidden');
-    $('dispoTableBody').innerHTML = `<tr><td colspan="8" class="text-center text-slate-500">Carregando DISPO...</td></tr>`;
+    $('dispoTableBody').innerHTML = `<tr><td colspan="9" class="text-center text-slate-500">Carregando DISPO...</td></tr>`;
 
     const res = await fetch(`${DISPO_FILE_URL}?t=${Date.now()}`, { cache:'no-store' });
 
@@ -1169,22 +1234,27 @@ async function loadDispo(){
   }
 }
 
-function getDispoImpactMap(){
-  const impactMap = new Map();
+function getDispoImpactMaps(){
+  const openMap = new Map();
+  const approvedMap = new Map();
 
   for(const order of STATE.orders){
-    if(!shouldReserveDispo(order)) continue;
+    const status = canonicalStatus(order?.status);
+    if(status !== 'Pendente' && status !== 'Aprovado') continue;
 
     for(const item of (order.items || [])){
       const codigo = sanitizeDisplayText(item.codigo);
       if(!codigo) continue;
-
       const units = getItemUnits(item);
-      impactMap.set(codigo, (impactMap.get(codigo) || 0) + units);
+      if(status === 'Aprovado'){
+        approvedMap.set(codigo, (approvedMap.get(codigo) || 0) + units);
+      }else{
+        openMap.set(codigo, (openMap.get(codigo) || 0) + units);
+      }
     }
   }
 
-  return impactMap;
+  return { openMap, approvedMap };
 }
 
 function getProjectedStatus(saldo, reservado){
@@ -1203,17 +1273,19 @@ function getProjectedStatus(saldo, reservado){
 }
 
 function renderDispo(){
-  const impactMap = getDispoImpactMap();
+  const { openMap, approvedMap } = getDispoImpactMaps();
   const q = normalizeText($('dispoSearch')?.value).toLowerCase();
 
   const rows = STATE.dispoRows.map(row => {
-    const reservado = impactMap.get(row.codigo) || 0;
-    const saldoProjetado = Number(row.saldo || 0) - reservado;
+    const reservado = openMap.get(row.codigo) || 0;
+    const aprovado = approvedMap.get(row.codigo) || 0;
+    const saldoProjetado = Number(row.saldo || 0) - reservado - aprovado;
     return {
       ...row,
       reservado,
+      aprovado,
       saldoProjetado,
-      situation:getProjectedStatus(row.saldo, reservado)
+      situation:getProjectedStatus(row.saldo, reservado + aprovado)
     };
   });
 
@@ -1224,21 +1296,23 @@ function renderDispo(){
 
   const criticos = rows.filter(row => row.saldoProjetado <= 0).length;
   const comPedido = rows.filter(row => row.reservado > 0).length;
+  const totalAprovado = rows.reduce((sum, row) => sum + Number(row.aprovado || 0), 0);
 
   $('kpiDispoLinhas').textContent = formatInt(rows.length);
   $('kpiDispoComPedido').textContent = formatInt(comPedido);
+  $('kpiDispoAprovado').textContent = formatInt(totalAprovado);
   $('kpiDispoCriticos').textContent = formatInt(criticos);
   $('kpiDispoAtualizado').textContent = STATE.dispoLoadedAt
     ? formatDateTime(STATE.dispoLoadedAt.toISOString())
     : '—';
 
   if(!STATE.dispoRows.length){
-    $('dispoTableBody').innerHTML = `<tr><td colspan="8" class="text-center text-slate-500">DISPO não carregada.</td></tr>`;
+    $('dispoTableBody').innerHTML = `<tr><td colspan="9" class="text-center text-slate-500">DISPO não carregada.</td></tr>`;
     return;
   }
 
   if(!STATE.dispoFiltered.length){
-    $('dispoTableBody').innerHTML = `<tr><td colspan="8" class="text-center text-slate-500">Nenhum item da DISPO encontrado para esse filtro.</td></tr>`;
+    $('dispoTableBody').innerHTML = `<tr><td colspan="9" class="text-center text-slate-500">Nenhum item da DISPO encontrado para esse filtro.</td></tr>`;
     return;
   }
 
@@ -1256,6 +1330,7 @@ function renderDispo(){
       <td>${safeHtml(formatDate(row.dataEntrega))}</td>
       <td class="font-extrabold">${safeHtml(formatInt(row.saldo))}</td>
       <td class="${row.reservado > 0 ? 'text-[var(--brand)] font-extrabold' : 'text-slate-500 font-semibold'}">${safeHtml(formatInt(row.reservado))}</td>
+      <td class="${row.aprovado > 0 ? 'text-emerald-700 font-extrabold' : 'text-slate-500 font-semibold'}">${safeHtml(formatInt(row.aprovado))}</td>
       <td class="${row.situation.className}">${safeHtml(formatInt(row.saldoProjetado))}</td>
       <td class="${row.situation.className}">${safeHtml(row.situation.label)}</td>
     </tr>
