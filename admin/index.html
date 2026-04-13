@@ -417,7 +417,7 @@
       </div>
       <div class="mt-4 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
         <button id="btnAbortCancelReason" type="button" class="focus-ring rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-700">Voltar</button>
-        <button id="btnConfirmCancelReason" type="button" class="focus-ring rounded-2xl border border-red-200 bg-red-600 px-4 py-3 text-sm font-bold text-white disabled:cursor-not-allowed disabled:opacity-50" disabled>Confirmar cancelamento</button>
+        <button id="btnConfirmCancelReason" type="button" class="focus-ring rounded-2xl border border-red-200 bg-red-600 px-4 py-3 text-sm font-bold text-white">Confirmar cancelamento</button>
       </div>
     </div>
   </div>
@@ -1175,7 +1175,6 @@ function openCancelReasonModal(orderId, previousStatus){
   STATE.cancelReasonContext = { orderId, previousStatus };
   $('cancelReasonInput').value = '';
   $('cancelReasonError').classList.add('hidden');
-  $('btnConfirmCancelReason').disabled = true;
   $('cancelReasonModal').classList.remove('hidden');
   document.body.style.overflow = 'hidden';
   setTimeout(()=> $('cancelReasonInput').focus(), 30);
@@ -1186,7 +1185,6 @@ function closeCancelReasonModal(){
   $('cancelReasonModal').classList.add('hidden');
   $('cancelReasonError').classList.add('hidden');
   $('cancelReasonInput').value = '';
-  $('btnConfirmCancelReason').disabled = true;
   document.body.style.overflow = '';
 }
 
@@ -1197,7 +1195,8 @@ function getCancelReasonValue(){
 
 function syncCancelReasonButton(){
   const hasReason = Boolean(getCancelReasonValue());
-  $('btnConfirmCancelReason').disabled = !hasReason;
+  $('btnConfirmCancelReason').classList.toggle('opacity-50', !hasReason);
+  $('btnConfirmCancelReason').classList.toggle('cursor-not-allowed', !hasReason);
   return hasReason;
 }
 
