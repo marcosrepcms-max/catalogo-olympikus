@@ -2,8 +2,8 @@
   {
     "id": "PED-20260411161955-368",
     "createdAt": "2026-04-11T19:19:55.081Z",
-    "updatedAt": "2026-04-11T19:19:17.691Z",
-    "status": "Pendente",
+    "updatedAt": "2026-04-13T14:37:38.137Z",
+    "status": "Aprovado",
     "archived": false,
     "preposto": {
       "codigo": "3616654",
@@ -52,15 +52,15 @@
             "qty": 1
           }
         ],
-        "prevFaturamento": 46132
+        "prevFaturamento": "46132"
       }
     ]
   },
   {
     "id": "PED-20260411193102-569",
     "createdAt": "2026-04-11T22:31:02.707Z",
-    "updatedAt": "2026-04-11T22:30:25.200Z",
-    "status": "Pendente",
+    "updatedAt": "2026-04-13T14:37:32.529Z",
+    "status": "Aprovado",
     "archived": false,
     "preposto": {
       "codigo": "3616654",
@@ -109,7 +109,7 @@
             "qty": 1
           }
         ],
-        "prevFaturamento": 46172
+        "prevFaturamento": "46172"
       }
     ]
   },
