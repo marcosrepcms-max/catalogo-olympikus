@@ -709,7 +709,8 @@ async function loadDispo(){
       const cor = sanitizeDisplayText(row['COR'] || row['Cor'] || row['Cor Descrição'] || row['Cor Descricao']);
       const dataEntrega = row['DATA ENTREGA'] || row['DATA_ENTREGA'] || row['Data Entrega'] || row['Prev. Faturamento'] || null;
       const pedidoMae = sanitizeDisplayText(row['PEDIDO MÃE'] || row['PEDIDO MAE'] || row['Pedido Mae'] || '');
-      return { codigo, produto, cor, dataEntrega, saldo, pedidoMae };
+      const gci = sanitizeDisplayText(String(row['GCI'] || row['Gci'] || ''));
+      return { codigo, produto, cor, dataEntrega, saldo, pedidoMae, gci };
     }).filter(row => row.codigo || row.produto);
 
     STATE.dispoLoadedAt = new Date();
@@ -887,29 +888,33 @@ function buildDesmembramentoLinhas(row){
   const key = desmKey(row);
   const saved = STATE.desmembramentos[key] || {};
   const linhas = [];
+  const rowGci = sanitizeDisplayText(String(row.gci || '')).trim();
 
   for(const order of STATE.orders){
     for(const item of (order.items || [])){
-      // Cruza por codigo+cor+prevFat
-      const itemCodigo  = sanitizeDisplayText(item.codigo || '');
-      const itemProduto = sanitizeDisplayText(item.produto || '');
-      const itemCor     = sanitizeDisplayText(item.cor || '').toUpperCase();
-      const rowCodigo   = sanitizeDisplayText(row.codigo || '');
-      const rowProduto  = sanitizeDisplayText(row.produto || '');
-      const rowCor      = sanitizeDisplayText(row.cor || '').toUpperCase();
-      // Cruza por codigo+cor OU produto+cor (fallback para pedidos sem codigo)
-      const codigoMatch = itemCodigo && rowCodigo ? itemCodigo === rowCodigo : itemProduto === rowProduto;
-      const corMatch    = itemCor === rowCor;
-      if(!codigoMatch || !corMatch) continue;
+      const itemGci = sanitizeDisplayText(String(item.gci || '')).trim();
+      // Cruzamento principal por GCI (único por linha DISPO)
+      // Fallback por produto+cor se GCI não disponível
+      let match = false;
+      if(rowGci && itemGci){
+        match = rowGci === itemGci;
+      } else {
+        const itemProduto = sanitizeDisplayText(item.produto || '').toUpperCase();
+        const rowProduto  = sanitizeDisplayText(row.produto  || '').toUpperCase();
+        const itemCor     = sanitizeDisplayText(item.cor     || '').toUpperCase();
+        const rowCor      = sanitizeDisplayText(row.cor      || '').toUpperCase();
+        match = itemProduto === rowProduto && itemCor === rowCor;
+      }
+      if(!match) continue;
 
-      const lineKey = `${order.id}||${item.codigo}||${item.cor}`;
+      const lineKey = `${order.id}||${itemGci||item.codigo}||${item.cor}`;
       const savedStatus = saved[lineKey] || 'Pendente';
       const units = Number(item.totalUnits || 0) || (item.grade||[]).reduce((s,g)=>s+Number(g.qty||0),0);
+      const itemPrevFat = formatDate(item.prevFaturamento);
       linhas.push({
         lineKey,
-        num:   item.ebm || '—',
-        ebm:   item.ebm || '—',
-        gci:   item.gci || '—',
+        ebm:     item.ebm || '—',
+        gci:     item.gci || '—',
         cliente: order.clienteNome ? `${order.clienteCodigo} — ${order.clienteNome}` : order.clienteCodigo,
         prazo:   order.prazo || '—',
         campanha: (order.campanha||'').replace(/\s*\bOLY\b\s*/gi,'').trim() || '—',
