@@ -452,7 +452,6 @@
                 <th class="sortable text-right" data-col="aprovado">Aprovado<i class="fa-solid fa-sort sort-icon"></i></th>
                 <th class="sortable text-right" data-col="saldoReal">Saldo real<i class="fa-solid fa-sort sort-icon"></i></th>
                 <th class="sortable" data-col="pedidoMae">Pedido Mãe<i class="fa-solid fa-sort sort-icon"></i></th>
-                <th>Comprometido</th>
                 <th class="sortable" data-col="situacao">Situação<i class="fa-solid fa-sort sort-icon"></i></th>
                 <th></th>
               </tr>
@@ -862,7 +861,6 @@ function renderDispo(){
         <td class="text-right tabular-nums ${row.aprovado > 0 ? 'text-emerald-600 font-extrabold' : 'text-slate-400 font-semibold'}">${formatInt(row.aprovado)}</td>
         <td class="text-right tabular-nums">${saldoRealDisplay}</td>
         <td class="text-center font-semibold text-[11px] ${row.pedidoMae === 'SIM' ? 'text-emerald-600' : 'text-slate-400'}">${safeHtml(row.pedidoMae || '—')}</td>
-        <td style="min-width:110px">${buildProgressBar(row.saldo, row.pendente, row.aprovado)}</td>
         <td>
           <span class="chip ${sit.chipClass} ${sit.sortVal <= 1 ? 'badge-ruptura' : ''}">
             ${sit.sortVal <= 1 ? '<i class="fa-solid fa-triangle-exclamation"></i>' : ''}
@@ -929,22 +927,23 @@ function buildDesmembramentoLinhas(row){
 
 function openDesmModal(row){
   const linhas = buildDesmembramentoLinhas(row);
-  if(!linhas.length){
-    showToast('Nenhum pedido encontrado para este produto.', 'info');
-    return;
-  }
-
   const key = desmKey(row);
   STATE._desmCurrentKey = key;
   STATE._desmCurrentLinhas = linhas;
 
   $('desmTitle').textContent = `${row.produto} · ${row.cor}`;
-  $('desmSubtitle').textContent = `Código ${row.codigo} · Prev. Fat. ${formatDate(row.dataEntrega)} · ${linhas.length} cliente${linhas.length!==1?'s':''}`;
+  $('desmSubtitle').textContent = `Código ${row.codigo} · Prev. Fat. ${formatDate(row.dataEntrega)}`;
+  $('desmModalWrap').classList.add('open');
+
+  if(!linhas.length){
+    $('desmContent').innerHTML = `<div style="padding:40px;text-align:center;color:#94a3b8"><i class="fa-solid fa-inbox" style="font-size:32px;display:block;margin-bottom:12px"></i><div style="font-size:14px;font-weight:600">Nenhum pedido encontrado para este produto.</div><div style="font-size:12px;margin-top:6px">Cruzamento: código ${safeHtml(row.codigo)} · cor ${safeHtml(row.cor)}</div></div>`;
+    $('desmRodape').textContent = '0 linhas';
+    return;
+  }
 
   renderDesmTable(linhas);
   const total = linhas.reduce((s,l)=>s+l.qtde,0);
   $('desmRodape').textContent = `${linhas.length} linha${linhas.length!==1?'s':''} · ${total} unidades`;
-  $('desmModalWrap').classList.add('open');
 }
 
 function renderDesmTable(linhas){
