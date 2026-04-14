@@ -413,13 +413,16 @@
               <table class="relatorio-table">
                 <thead>
                   <tr>
-                    <th>Pedido</th>
                     <th>Data</th>
+                    <th>GCI</th>
                     <th>Cliente</th>
                     <th>Campanha</th>
-                    <th class="text-right">Itens</th>
-                    <th class="text-right">Unidades</th>
+                    <th>Descrição</th>
+                    <th>Cor</th>
+                    <th class="text-right">Qtde</th>
+                    <th>Prev Fat</th>
                     <th>Status</th>
+                    <th>Grade</th>
                   </tr>
                 </thead>
                 <tbody id="relatorioTableBody"></tbody>
@@ -1474,32 +1477,66 @@ function renderRelatorio(){
   $('relatorioTableWrap').classList.remove('hidden');
   $('relatorioAcoes').classList.remove('hidden');
 
-  $('relatorioTableBody').innerHTML = orders.map(o => {
-    const statusMeta = getStatusVisual(o.status);
-    const clienteDisplay = o.clienteNome
+  // Expande por item — uma linha por produto de cada pedido
+  const linhas = [];
+  for(const o of orders){
+    const data = formatDate(o.createdAt || o.updatedAt);
+    const cliente = o.clienteNome
       ? `<div class="font-extrabold">${safeHtml(o.clienteCodigo)}</div><div class="text-[11px] text-slate-500 font-semibold">${safeHtml(o.clienteNome)}</div>`
       : `<div class="font-extrabold">${safeHtml(o.clienteCodigo)}</div>`;
-    const units = getOrderUnits(o);
-    const itens = (o.items||[]).length;
-    return `
-      <tr>
-        <td class="font-extrabold text-slate-700 text-[12px]">${safeHtml(o.id)}</td>
-        <td class="text-slate-500 font-semibold text-[12px] whitespace-nowrap">${safeHtml(formatDate(o.createdAt||o.updatedAt))}</td>
-        <td>${clienteDisplay}</td>
-        <td class="text-slate-500 font-semibold">${safeHtml(o.campanha || '—')}</td>
-        <td class="text-right font-extrabold">${formatInt(itens)}</td>
-        <td class="text-right font-extrabold">${formatInt(units)}</td>
-        <td>${renderStatusChip(o.status)}</td>
-      </tr>
-    `;
-  }).join('');
+    const status = renderStatusChip(o.status);
+    const campanha = safeHtml(o.campanha || '—');
+
+    const items = o.items || [];
+    if(!items.length){
+      // Pedido sem itens — linha única com dados do pedido
+      linhas.push(`
+        <tr>
+          <td class="text-slate-500 font-semibold whitespace-nowrap">${safeHtml(data)}</td>
+          <td class="text-slate-400">—</td>
+          <td>${cliente}</td>
+          <td class="text-slate-500 font-semibold">${campanha}</td>
+          <td class="text-slate-400">—</td>
+          <td class="text-slate-400">—</td>
+          <td class="text-right font-extrabold">—</td>
+          <td class="text-slate-400">—</td>
+          <td>${status}</td>
+          <td class="text-slate-400">—</td>
+        </tr>
+      `);
+    } else {
+      items.forEach((item, idx) => {
+        const units = getItemUnits(item);
+        const prevFat = safeHtml(formatDate(item.prevFaturamento) || '—');
+        const gradeDisplay = Array.isArray(item.grade) && item.grade.length
+          ? item.grade.map(g => `<span class="grade-pill" style="display:inline-block;margin:1px"><span class="grade-size">${safeHtml(g.size)}</span><span class="grade-qty">${safeHtml(g.qty)}</span></span>`).join('')
+          : '—';
+
+        linhas.push(`
+          <tr class="${idx > 0 ? 'border-t-0' : ''}">
+            ${idx === 0 ? `<td class="text-slate-500 font-semibold whitespace-nowrap" rowspan="${items.length}">${safeHtml(data)}</td>` : ''}
+            <td class="font-extrabold text-[var(--brand)] text-[11px]">${safeHtml(item.gci || item.ebm || '—')}</td>
+            ${idx === 0 ? `<td rowspan="${items.length}">${cliente}</td>` : ''}
+            ${idx === 0 ? `<td class="text-slate-500 font-semibold" rowspan="${items.length}">${campanha}</td>` : ''}
+            <td class="font-extrabold text-slate-800">${safeHtml(item.produto || '—')}</td>
+            <td class="text-slate-500 font-semibold">${safeHtml(item.cor || '—')}</td>
+            <td class="text-right font-extrabold">${formatInt(units)}</td>
+            <td class="text-slate-500 font-semibold whitespace-nowrap">${prevFat}</td>
+            ${idx === 0 ? `<td rowspan="${items.length}">${status}</td>` : ''}
+            <td><div class="flex flex-wrap gap-1">${gradeDisplay}</div></td>
+          </tr>
+        `);
+      });
+    }
+  }
+
+  $('relatorioTableBody').innerHTML = linhas.join('');
 
   $('relatorioTableFoot').innerHTML = `
     <tr>
-      <td colspan="4" class="font-extrabold">Total</td>
-      <td class="text-right font-extrabold">${formatInt(totalItens)}</td>
+      <td colspan="6" class="font-extrabold">Total</td>
       <td class="text-right font-extrabold">${formatInt(totalUnidades)}</td>
-      <td></td>
+      <td colspan="3"></td>
     </tr>
   `;
 
@@ -1520,9 +1557,21 @@ function relatorioWhatsapp(){
   for(const o of orders){
     const status = canonicalStatus(o.status);
     const emoji = status==='Aprovado'?'✅':status==='Cancelado'?'❌':'⏳';
-    txt += `${emoji} ${o.id}\n`;
-    txt += `   Cliente: ${o.clienteCodigo}${o.clienteNome?' — '+o.clienteNome:''}\n`;
-    txt += `   Status: ${status} · ${formatInt(getOrderUnits(o))} unidades\n\n`;
+    const cliente = o.clienteNome ? `${o.clienteCodigo} — ${o.clienteNome}` : o.clienteCodigo;
+    txt += `${emoji} *${o.id}*\n`;
+    txt += `   Cliente: ${cliente}\n`;
+    txt += `   Campanha: ${o.campanha || '—'} · Status: ${status}\n`;
+    for(const item of (o.items || [])){
+      const units = getItemUnits(item);
+      const gci = item.gci || item.ebm || '';
+      const grade = Array.isArray(item.grade) && item.grade.length
+        ? item.grade.map(g=>`${g.size}(${g.qty})`).join(' ')
+        : '';
+      txt += `   • ${item.produto || '—'}${item.cor ? ' / '+item.cor : ''}${gci ? ' ['+gci+']' : ''} — ${formatInt(units)} un.`;
+      if(grade) txt += ` | ${grade}`;
+      txt += `\n`;
+    }
+    txt += `\n`;
   }
   txt += `*Total: ${orders.length} pedidos · ${formatInt(totalUnidades)} unidades*`;
   window.open(`https://wa.me/?text=${encodeURIComponent(txt)}`, '_blank', 'noopener,noreferrer');
@@ -1531,7 +1580,7 @@ function relatorioWhatsapp(){
 async function relatorioExportPdf(){
   const rel = STATE._relatorioAtual;
   if(!rel) return;
-  const { nomeVendedor, orders, totalItens, totalUnidades } = rel;
+  const { nomeVendedor, orders, totalUnidades } = rel;
   const btn = $('btnRelatorioPdf');
   const prev = btn.innerHTML;
   btn.disabled = true;
@@ -1539,124 +1588,157 @@ async function relatorioExportPdf(){
 
   try{
     const { jsPDF } = window.jspdf;
-    const doc = new jsPDF({ orientation:'portrait', unit:'mm', format:'a4' });
+    // Landscape para caber todas as colunas
+    const doc = new jsPDF({ orientation:'landscape', unit:'mm', format:'a4' });
     const pw = doc.internal.pageSize.getWidth();
     const ph = doc.internal.pageSize.getHeight();
     const now = new Date();
 
     // Cabeçalho
     doc.setFillColor(40,54,212);
-    doc.rect(0,0,pw,18,'F');
+    doc.rect(0,0,pw,16,'F');
     doc.setTextColor(255,255,255);
     doc.setFont('helvetica','bold');
-    doc.setFontSize(12);
-    doc.text('REPASSE OLYMPIKUS', 12, 11);
+    doc.setFontSize(11);
+    doc.text('REPASSE OLYMPIKUS', 12, 10);
     doc.setFont('helvetica','normal');
-    doc.setFontSize(8);
-    doc.text(`Relatório por vendedor • ${now.toLocaleDateString('pt-BR')}`, pw-12, 11, {align:'right'});
+    doc.setFontSize(7.5);
+    doc.text(`Relatório por vendedor • ${now.toLocaleDateString('pt-BR')}`, pw-12, 10, {align:'right'});
 
     // Vendedor
     doc.setTextColor(15,23,42);
     doc.setFont('helvetica','bold');
-    doc.setFontSize(14);
-    doc.text(nomeVendedor, 12, 28);
+    doc.setFontSize(13);
+    doc.text(nomeVendedor, 12, 26);
     doc.setFont('helvetica','normal');
-    doc.setFontSize(9);
+    doc.setFontSize(8);
     doc.setTextColor(71,85,105);
-    doc.text(`${orders.length} pedidos · ${formatInt(totalUnidades)} unidades totais`, 12, 34);
-
-    // Linha
+    doc.text(`${orders.length} pedidos · ${formatInt(totalUnidades)} unidades totais`, 12, 32);
     doc.setDrawColor(226,232,240);
-    doc.line(12, 37, pw-12, 37);
+    doc.line(12, 35, pw-12, 35);
 
-    // Tabela
+    // Colunas — landscape A4 = 297mm, usável = 273mm
     const cols = [
-      { label:'Pedido', w:52 },
-      { label:'Data', w:22 },
-      { label:'Cliente', w:38 },
-      { label:'Campanha', w:30 },
-      { label:'Itens', w:14, align:'right' },
-      { label:'Unid.', w:14, align:'right' },
-      { label:'Status', w:20 }
+      { label:'Data',      w:22 },
+      { label:'GCI',       w:18 },
+      { label:'Cliente',   w:30 },
+      { label:'Campanha',  w:28 },
+      { label:'Descrição', w:52 },
+      { label:'Cor',       w:22 },
+      { label:'Qtde',      w:14, align:'right' },
+      { label:'Prev Fat',  w:20 },
+      { label:'Status',    w:20 },
+      { label:'Grade',     w:47 }
     ];
+
     const startX = 12;
-    let y = 42;
-    const rowH = 8;
+    let y = 39;
+    const rowH = 7;
 
-    // Header tabela
-    doc.setFillColor(248,250,252);
-    doc.rect(startX, y, pw-24, rowH, 'F');
-    doc.setFont('helvetica','bold');
-    doc.setFontSize(7.5);
-    doc.setTextColor(71,85,105);
-    let cx = startX + 2;
-    for(const col of cols){
-      const tx = col.align==='right' ? cx+col.w-2 : cx;
-      doc.text(col.label, tx, y+5.5, {align: col.align==='right'?'right':'left'});
-      cx += col.w;
-    }
-    y += rowH;
-
-    // Rows
-    doc.setFont('helvetica','normal');
-    doc.setFontSize(7.5);
-    for(const o of orders){
-      if(y > ph - 20){
-        doc.addPage();
-        y = 15;
-      }
-      doc.setDrawColor(237,242,247);
-      doc.line(startX, y, pw-12, y);
-      const status = canonicalStatus(o.status);
-      const clienteTxt = o.clienteNome ? `${o.clienteCodigo} ${o.clienteNome}` : o.clienteCodigo;
-      const vals = [
-        o.id,
-        formatDate(o.createdAt||o.updatedAt),
-        clienteTxt,
-        o.campanha||'—',
-        String((o.items||[]).length),
-        String(getOrderUnits(o)),
-        status
-      ];
-      cx = startX + 2;
-      doc.setTextColor(15,23,42);
-      for(let i=0;i<cols.length;i++){
-        const col = cols[i];
-        const txt = doc.splitTextToSize(vals[i], col.w-2)[0] || '';
+    function drawTableHeader(){
+      doc.setFillColor(248,250,252);
+      doc.rect(startX, y, pw-24, rowH, 'F');
+      doc.setFont('helvetica','bold');
+      doc.setFontSize(6.5);
+      doc.setTextColor(71,85,105);
+      let cx = startX + 1.5;
+      for(const col of cols){
         const tx = col.align==='right' ? cx+col.w-2 : cx;
-        if(i===6){
-          const color = status==='Aprovado'?[21,128,61]:status==='Cancelado'?[185,28,28]:[180,83,9];
-          doc.setTextColor(...color);
-        }else{
-          doc.setTextColor(15,23,42);
-        }
-        doc.text(txt, tx, y+5.5, {align:col.align==='right'?'right':'left'});
+        doc.text(col.label, tx, y+4.8, {align:col.align==='right'?'right':'left'});
         cx += col.w;
       }
       y += rowH;
     }
 
-    // Total
+    drawTableHeader();
+
+    doc.setFont('helvetica','normal');
+    doc.setFontSize(6.5);
+
+    let totalUnidadesPdf = 0;
+
+    for(const o of orders){
+      const data = formatDate(o.createdAt||o.updatedAt);
+      const cliente = o.clienteNome ? `${o.clienteCodigo} ${o.clienteNome}` : o.clienteCodigo;
+      const status = canonicalStatus(o.status);
+      const campanha = o.campanha || '—';
+      const items = o.items || [];
+
+      const renderItems = items.length ? items : [null];
+
+      for(let idx=0; idx<renderItems.length; idx++){
+        const item = renderItems[idx];
+        const units = item ? getItemUnits(item) : 0;
+        totalUnidadesPdf += units;
+
+        const grade = item && Array.isArray(item.grade) && item.grade.length
+          ? item.grade.map(g=>`${g.size}(${g.qty})`).join('  ')
+          : '—';
+
+        if(y > ph - 14){
+          doc.addPage();
+          y = 10;
+          drawTableHeader();
+        }
+
+        doc.setDrawColor(237,242,247);
+        doc.line(startX, y, pw-12, y);
+
+        const vals = [
+          idx===0 ? data : '',
+          item ? (item.gci || item.ebm || '—') : '—',
+          idx===0 ? cliente : '',
+          idx===0 ? campanha : '',
+          item ? (item.produto || '—') : '—',
+          item ? (item.cor || '—') : '—',
+          item ? String(formatInt(units)) : '—',
+          item ? (formatDate(item.prevFaturamento) || '—') : '—',
+          idx===0 ? status : '',
+          grade
+        ];
+
+        let cx = startX + 1.5;
+        doc.setTextColor(15,23,42);
+        for(let i=0;i<cols.length;i++){
+          const col = cols[i];
+          const tx = col.align==='right' ? cx+col.w-2 : cx;
+          let txt = doc.splitTextToSize(String(vals[i]), col.w-2)[0] || '';
+          if(i===8 && vals[i]){
+            const color = status==='Aprovado'?[21,128,61]:status==='Cancelado'?[185,28,28]:[180,83,9];
+            doc.setTextColor(...color);
+          } else if(i===1 && vals[i] && vals[i]!=='—'){
+            doc.setTextColor(40,54,212);
+          } else {
+            doc.setTextColor(15,23,42);
+          }
+          doc.text(txt, tx, y+4.8, {align:col.align==='right'?'right':'left'});
+          cx += col.w;
+        }
+        y += rowH;
+      }
+    }
+
+    // Linha total
     doc.setDrawColor(40,54,212);
     doc.line(startX, y, pw-12, y);
     doc.setFont('helvetica','bold');
+    doc.setFontSize(7);
     doc.setTextColor(15,23,42);
-    doc.setFontSize(8);
-    cx = startX+2;
-    const totVals = ['Total','','','',String(totalItens),String(totalUnidades),''];
+    let cx = startX + 1.5;
+    const totVals = ['Total','','','','','',formatInt(totalUnidadesPdf),'','',''];
     for(let i=0;i<cols.length;i++){
       const col = cols[i];
       const tx = col.align==='right'?cx+col.w-2:cx;
-      doc.text(totVals[i], tx, y+6, {align:col.align==='right'?'right':'left'});
+      doc.text(String(totVals[i]), tx, y+5, {align:col.align==='right'?'right':'left'});
       cx+=col.w;
     }
 
     // Rodapé
     doc.setFont('helvetica','normal');
-    doc.setFontSize(7);
+    doc.setFontSize(6.5);
     doc.setTextColor(148,163,184);
-    doc.text(`Gerado em ${now.toLocaleDateString('pt-BR')} às ${now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}`, 12, ph-6);
-    doc.text('Repasse Olympikus', pw-12, ph-6, {align:'right'});
+    doc.text(`Gerado em ${now.toLocaleDateString('pt-BR')} às ${now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}`, 12, ph-5);
+    doc.text('Repasse Olympikus', pw-12, ph-5, {align:'right'});
 
     const filename = `relatorio_${nomeVendedor.replace(/\s+/g,'_').toLowerCase()}_${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}.pdf`;
     doc.save(filename);
