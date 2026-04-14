@@ -831,7 +831,19 @@ function handleLogin(){
   };
   setVendedorSession(session);
   setLastPreposto(`${session.codigo} - ${session.nome}`);
+
+  // Limpa pedidos em cache — força busca fresca do Worker ao carregar
+  localStorage.removeItem(STORAGE_KEYS.orders);
+  STATE.orders = [];
+
   applyVendedorSession();
+
+  // Recarrega pedidos frescos do Worker imediatamente após login
+  refreshOrdersFromRemote().then(()=>{
+    renderOrders();
+    renderCart();
+    applyFilters();
+  }).catch(()=>{});
 }
 function handleLogout(){
   clearVendedorSession();
@@ -865,7 +877,10 @@ async function workerRequest(method='GET', payload=null){
   return res.json();
 }
 function isReservedStatus(status){
-  return ['Pendente','Em análise','Aprovado','Atendido parcialmente'].includes(sanitizeDisplayText(status));
+  const s = sanitizeDisplayText(status).toLowerCase();
+  // Exclui explicitamente cancelado e rejeitado
+  if(['cancelado','rejeitado','cancelada'].includes(s)) return false;
+  return ['pendente','em análise','aprovado','atendido parcialmente'].includes(s);
 }
 function shouldReserveDispo(order){
   if(order?.archived) return false;
