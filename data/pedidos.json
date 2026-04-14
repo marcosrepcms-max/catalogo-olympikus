@@ -1,213 +1,9 @@
 [
   {
-    "id": "PED-20260413172308-836",
-    "createdAt": "2026-04-13T20:23:08.302Z",
-    "updatedAt": "2026-04-13T20:28:19.825Z",
-    "status": "Aprovado",
-    "archived": false,
-    "preposto": {
-      "codigo": "114611",
-      "nome": "JORGE"
-    },
-    "clienteCodigo": "18529",
-    "prazo": "Z17 - 119 D",
-    "campanha": "CO681 +28DD OLY",
-    "observacoes": "",
-    "totals": {
-      "packs": 1,
-      "units": 12
-    },
-    "items": [
-      {
-        "codigo": "43306412",
-        "produto": "ACQUA INFANTIL",
-        "cor": "ARENIT",
-        "amount": 1,
-        "mode": "boxed",
-        "packSize": 12,
-        "totalUnits": 12,
-        "grade": [
-          {
-            "size": "30",
-            "qty": 1
-          },
-          {
-            "size": "31",
-            "qty": 1
-          },
-          {
-            "size": "32",
-            "qty": 2
-          },
-          {
-            "size": "33",
-            "qty": 2
-          },
-          {
-            "size": "34",
-            "qty": 2
-          },
-          {
-            "size": "35",
-            "qty": 2
-          },
-          {
-            "size": "36",
-            "qty": 2
-          }
-        ],
-        "prevFaturamento": "46132"
-      }
-    ],
-    "history": [
-      {
-        "eventId": "evt_1776112099726_zy22km",
-        "at": "2026-04-13T20:28:19.726Z",
-        "action": "status_changed",
-        "label": "Pedido aprovado",
-        "statusFrom": "Pendente",
-        "statusTo": "Aprovado",
-        "archivedFrom": false,
-        "archivedTo": false,
-        "clientCode": "18529",
-        "prepostoCodigo": "114611",
-        "prepostoNome": "JORGE",
-        "notes": "",
-        "meta": {
-          "itemsCount": 1,
-          "units": 12
-        }
-      },
-      {
-        "eventId": "evt_1776112095963_2ngqww",
-        "at": "2026-04-13T20:28:15.963Z",
-        "action": "created",
-        "label": "Pedido criado",
-        "statusFrom": null,
-        "statusTo": "Pendente",
-        "archivedFrom": null,
-        "archivedTo": false,
-        "clientCode": "18529",
-        "prepostoCodigo": "114611",
-        "prepostoNome": "JORGE",
-        "notes": "",
-        "meta": {
-          "itemsCount": 1,
-          "units": 12
-        }
-      }
-    ],
-    "lastAction": "status_changed",
-    "lastActionLabel": "Pedido aprovado",
-    "lastActionAt": "2026-04-13T20:28:19.726Z"
-  },
-  {
-    "id": "PED-20260413172851-964",
-    "createdAt": "2026-04-13T20:28:51.048Z",
-    "updatedAt": "2026-04-13T20:29:27.409Z",
-    "status": "Aprovado",
-    "archived": false,
-    "preposto": {
-      "codigo": "109839",
-      "nome": "MARIANA"
-    },
-    "clienteCodigo": "1056748",
-    "prazo": "Z14 - 98 D",
-    "campanha": "",
-    "observacoes": "",
-    "totals": {
-      "packs": 1,
-      "units": 12
-    },
-    "items": [
-      {
-        "codigo": "43306412",
-        "produto": "ACQUA INFANTIL",
-        "cor": "ARENIT",
-        "amount": 1,
-        "mode": "boxed",
-        "packSize": 12,
-        "totalUnits": 12,
-        "grade": [
-          {
-            "size": "30",
-            "qty": 1
-          },
-          {
-            "size": "31",
-            "qty": 1
-          },
-          {
-            "size": "32",
-            "qty": 2
-          },
-          {
-            "size": "33",
-            "qty": 2
-          },
-          {
-            "size": "34",
-            "qty": 2
-          },
-          {
-            "size": "35",
-            "qty": 2
-          },
-          {
-            "size": "36",
-            "qty": 2
-          }
-        ],
-        "prevFaturamento": "46132"
-      }
-    ],
-    "history": [
-      {
-        "eventId": "evt_1776112167274_ro2w88",
-        "at": "2026-04-13T20:29:27.274Z",
-        "action": "status_changed",
-        "label": "Pedido aprovado",
-        "statusFrom": "Pendente",
-        "statusTo": "Aprovado",
-        "archivedFrom": false,
-        "archivedTo": false,
-        "clientCode": "1056748",
-        "prepostoCodigo": "109839",
-        "prepostoNome": "MARIANA",
-        "notes": "",
-        "meta": {
-          "itemsCount": 1,
-          "units": 12
-        }
-      },
-      {
-        "eventId": "evt_1776112158977_hl6qjc",
-        "at": "2026-04-13T20:29:18.977Z",
-        "action": "created",
-        "label": "Pedido criado",
-        "statusFrom": null,
-        "statusTo": "Pendente",
-        "archivedFrom": null,
-        "archivedTo": false,
-        "clientCode": "1056748",
-        "prepostoCodigo": "109839",
-        "prepostoNome": "MARIANA",
-        "notes": "",
-        "meta": {
-          "itemsCount": 1,
-          "units": 12
-        }
-      }
-    ],
-    "lastAction": "status_changed",
-    "lastActionLabel": "Pedido aprovado",
-    "lastActionAt": "2026-04-13T20:29:27.274Z"
-  },
-  {
-    "id": "PED-20260413223709-171",
-    "createdAt": "2026-04-14T01:37:09.511Z",
-    "updatedAt": "2026-04-14T01:37:43.378Z",
-    "status": "Aprovado",
+    "id": "PED-20260414093758-940",
+    "createdAt": "2026-04-14T12:37:58.637Z",
+    "updatedAt": "2026-04-14T12:37:58.706Z",
+    "status": "Pendente",
     "archived": false,
     "preposto": {
       "codigo": "3616654",
@@ -215,155 +11,6 @@
     },
     "clienteCodigo": "18529",
     "clienteNome": "TALENTUS",
-    "prazo": "Z30 - 28/56/84 D",
-    "campanha": "CO681 +28DD OLY",
-    "observacoes": "",
-    "totals": {
-      "packs": 1,
-      "units": 12
-    },
-    "items": [
-      {
-        "codigo": "43336749",
-        "produto": "130G ULTRALEVE",
-        "cor": "PTRSCO",
-        "amount": 1,
-        "mode": "boxed",
-        "packSize": 12,
-        "totalUnits": 12,
-        "grade": [
-          {
-            "size": "35",
-            "qty": 1
-          },
-          {
-            "size": "36",
-            "qty": 3
-          },
-          {
-            "size": "37",
-            "qty": 3
-          },
-          {
-            "size": "38",
-            "qty": 2
-          },
-          {
-            "size": "39",
-            "qty": 2
-          },
-          {
-            "size": "40",
-            "qty": 1
-          }
-        ],
-        "prevFaturamento": "46132"
-      }
-    ],
-    "history": [
-      {
-        "eventId": "evt_1776130663153_1253fa",
-        "at": "2026-04-14T01:37:43.153Z",
-        "action": "status_changed",
-        "label": "Pedido aprovado",
-        "statusFrom": "Pendente",
-        "statusTo": "Aprovado",
-        "archivedFrom": false,
-        "archivedTo": false,
-        "clientCode": "18529",
-        "prepostoCodigo": "3616654",
-        "prepostoNome": "MARCOS",
-        "notes": "",
-        "meta": {
-          "itemsCount": 1,
-          "units": 12
-        }
-      },
-      {
-        "eventId": "evt_1776130634972_b1cvc6",
-        "at": "2026-04-14T01:37:14.972Z",
-        "action": "created",
-        "label": "Pedido criado",
-        "statusFrom": null,
-        "statusTo": "Pendente",
-        "archivedFrom": null,
-        "archivedTo": false,
-        "clientCode": "18529",
-        "prepostoCodigo": "3616654",
-        "prepostoNome": "MARCOS",
-        "notes": "",
-        "meta": {
-          "itemsCount": 1,
-          "units": 12
-        }
-      }
-    ],
-    "lastAction": "status_changed",
-    "lastActionLabel": "Pedido aprovado",
-    "lastActionAt": "2026-04-14T01:37:43.153Z"
-  },
-  {
-    "id": "PED-20260414081711-832",
-    "createdAt": "2026-04-14T11:17:11.969Z",
-    "updatedAt": "2026-04-14T11:17:11.359Z",
-    "status": "Pendente",
-    "archived": false,
-    "preposto": {
-      "codigo": "3616654",
-      "nome": "MARCOS"
-    },
-    "clienteCodigo": "3834566",
-    "clienteNome": "DEGRAUS",
-    "prazo": "Z30 - 28/56/84 D",
-    "campanha": "CO689 +56DD OLY",
-    "observacoes": "",
-    "totals": {
-      "packs": 2,
-      "units": 12
-    },
-    "items": [
-      {
-        "codigo": "43758365",
-        "produto": "CORRE MAX",
-        "cor": "PTO/PT",
-        "amount": 2,
-        "mode": "boxed",
-        "packSize": 6,
-        "totalUnits": 12,
-        "grade": [
-          {
-            "size": "38",
-            "qty": 1
-          },
-          {
-            "size": "39",
-            "qty": 2
-          },
-          {
-            "size": "40",
-            "qty": 2
-          },
-          {
-            "size": "41",
-            "qty": 1
-          }
-        ],
-        "prevFaturamento": 46142
-      }
-    ]
-  },
-  {
-    "id": "PED-20260414082950-747",
-    "createdAt": "2026-04-14T11:29:50.269Z",
-    "updatedAt": "2026-04-14T11:29:50.473Z",
-    "status": "Pendente",
-    "archived": false,
-    "preposto": {
-      "codigo": "114611",
-      "nome": "JORGE"
-    },
-    "clienteCodigo": "2929",
-    "clienteNome": "Ideal sports",
     "prazo": "Z35 - 63/91/119 D",
     "campanha": "CO681 +28DD OLY",
     "observacoes": "",
@@ -373,37 +20,43 @@
     },
     "items": [
       {
-        "codigo": "43389459",
-        "produto": "FLUTUA 2",
-        "cor": "PTO/PT",
+        "codigo": "43306412",
+        "produto": "ACQUA INFANTIL",
+        "cor": "ARENIT",
+        "gci": "7283002",
+        "ebm": "13185987",
         "amount": 1,
         "mode": "boxed",
         "packSize": 12,
         "totalUnits": 12,
         "grade": [
           {
-            "size": "35",
+            "size": "30",
             "qty": 1
+          },
+          {
+            "size": "31",
+            "qty": 1
+          },
+          {
+            "size": "32",
+            "qty": 2
+          },
+          {
+            "size": "33",
+            "qty": 2
+          },
+          {
+            "size": "34",
+            "qty": 2
+          },
+          {
+            "size": "35",
+            "qty": 2
           },
           {
             "size": "36",
             "qty": 2
-          },
-          {
-            "size": "37",
-            "qty": 3
-          },
-          {
-            "size": "38",
-            "qty": 3
-          },
-          {
-            "size": "39",
-            "qty": 2
-          },
-          {
-            "size": "40",
-            "qty": 1
           }
         ],
         "prevFaturamento": 46132
