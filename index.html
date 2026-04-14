@@ -603,6 +603,31 @@
   </div>
   <!-- ────────────────────────────────────────────────────────────────────── -->
 
+  <!-- ── MODAL MULTI-GRADE ──────────────────────────────────────────────── -->
+  <div id="multiGradeModalWrap" class="hidden fixed inset-0 z-[88]">
+    <div class="backdrop absolute inset-0" id="multiGradeBackdrop"></div>
+    <div class="absolute inset-0 flex items-center justify-center p-4">
+      <div class="w-full max-w-lg rounded-[28px] border border-slate-200 bg-white shadow-card overflow-hidden">
+        <div class="border-b border-slate-200 px-5 py-4">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div id="multiGradeTitle" class="text-xl font-extrabold"></div>
+              <div id="multiGradeSubtitle" class="mt-1 text-sm text-slate-500"></div>
+            </div>
+            <button id="btnCloseMultiGrade" class="focus-ring h-10 w-10 rounded-full border border-slate-200 bg-white"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+        </div>
+        <div id="multiGradeList" class="px-5 py-4 space-y-3 max-h-[65vh] overflow-y-auto"></div>
+        <div class="border-t border-slate-200 bg-slate-50 px-5 py-4">
+          <button id="btnMultiGradeConfirm" class="focus-ring w-full rounded-2xl bg-[var(--brand)] px-4 py-3 text-sm font-extrabold text-white disabled:opacity-50 disabled:cursor-not-allowed">
+            Adicionar selecionados à sacola
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ────────────────────────────────────────────────────────────────────── -->
+
 <script>
 const BASE_PREFIX = (location.pathname.includes('/admin')) ? '..' : '.';
 const DEFAULTS = {
@@ -787,16 +812,14 @@ function readJsonSafe(key, fallback){
   }catch(e){ return fallback; }
 }
 function detectDuplicates(clienteCodigo, cartItems){
-  // Verifica em TODOS os pedidos (todos os status)
   const duplicates = [];
-  const cartKeys = new Set(cartItems.map(i => `${normalizeText(i.codigo)}|${normalizeText(i.cor)}`));
+  // Chave inclui prevFaturamento — mesma prevFat = duplicata; datas diferentes = OK
+  const cartKeys = new Set(cartItems.map(i => `${normalizeText(i.codigo)}|${normalizeText(i.cor)}|${normalizeText(formatDate(i.prevFaturamento)||'')}`));
 
   for(const order of STATE.orders){
-    // Mesmo cliente
     if(normalizeText(order.clienteCodigo) !== normalizeText(clienteCodigo)) continue;
-
     for(const item of (order.items || [])){
-      const key = `${normalizeText(item.codigo)}|${normalizeText(item.cor)}`;
+      const key = `${normalizeText(item.codigo)}|${normalizeText(item.cor)}|${normalizeText(formatDate(item.prevFaturamento)||'')}`;
       if(cartKeys.has(key)){
         duplicates.push({
           orderId: order.id,
@@ -804,16 +827,16 @@ function detectDuplicates(clienteCodigo, cartItems){
           orderDate: formatDate(order.createdAt || order.updatedAt),
           produto: item.produto,
           codigo: item.codigo,
-          cor: item.cor
+          cor: item.cor,
+          prevFaturamento: formatDate(item.prevFaturamento)
         });
       }
     }
   }
 
-  // Remove duplicatas da própria lista
   const seen = new Set();
   return duplicates.filter(d => {
-    const k = `${d.orderId}|${d.codigo}|${d.cor}`;
+    const k = `${d.orderId}|${d.codigo}|${d.cor}|${d.prevFaturamento}`;
     if(seen.has(k)) return false;
     seen.add(k);
     return true;
@@ -1314,8 +1337,12 @@ function mergeData(prodRows, dispoRows){
     const saldoRaw = toNumber(r['SALDO'] ?? 0);
     const availableUnits = saldoRaw;
     const packSize = mode === 'boxed' ? (gradeTotal === 6 ? 6 : 12) : 1;
+    const num = r['Nº'] ?? r['N'] ?? r['Num'] ?? null;
+    const pedidoMae = String(r['PEDIDO MÃE'] ?? r['PEDIDO MAE'] ?? '').trim();
     return {
       _row: idx + 2,
+      num: num !== null ? String(num) : String(idx + 1),
+      pedidoMae,
       ebm: String(r['EBM'] ?? '').trim(),
       gci: String(r['GCI'] ?? '').trim(),
       codigo,
@@ -1326,7 +1353,7 @@ function mergeData(prodRows, dispoRows){
       mode,
       availableUnits,
       packSize,
-            imagem: String(ref['Imagem'] ?? ref['IMAGEM'] ?? ref['imagem'] ?? '').trim(),
+      imagem: String(ref['Imagem'] ?? ref['IMAGEM'] ?? ref['imagem'] ?? '').trim(),
       categoria,
       segmento: String(ref['Segmento'] ?? ref['SEGMENTO'] ?? '').trim(),
       genero: String(ref['Gênero'] ?? ref['Genero'] ?? ref['GENERO'] ?? '').trim(),
@@ -1334,6 +1361,13 @@ function mergeData(prodRows, dispoRows){
   }).filter(item => item.codigo && item.produto && item.availableUnits > 0);
 }
 function currentCartAmount(key){ return Number(STATE.cart.get(key)?.amount || 0); }
+
+// Retorna todas as variantes (linhas DISPO) do mesmo produto+cor dentro da view atual
+function getItemSiblings(item){
+  return STATE.view.filter(x => x.codigo === item.codigo && x.cor === item.cor);
+}
+// Retorna a "chave de grupo" usada para agrupar no card
+function groupKey(item){ return `${item.codigo}||${item.cor}`; }
 function remainingUnits(item){
   const reservedLocal = item.mode === 'boxed'
     ? currentCartAmount(item.key) * item.packSize
@@ -1472,10 +1506,27 @@ function renderCatalog(){
   listWrap.innerHTML = '';
   $('emptyState').classList.toggle('hidden', STATE.view.length !== 0);
 
+  // Agrupa itens por codigo+cor — só renderiza o primeiro de cada grupo no loop
+  const renderedGroups = new Set();
+
   for(const item of STATE.view){
     const key = item.key;
     const img = productImage(item);
-    const freeAmount = item.mode === 'boxed' ? remainingPacks(item) : remainingUnits(item);
+    const gKey = groupKey(item);
+    const siblings = getItemSiblings(item);
+    const isMulti = siblings.length > 1;
+
+    // Só renderiza uma vez por grupo
+    if(isMulti && renderedGroups.has(gKey)) continue;
+    if(isMulti) renderedGroups.add(gKey);
+
+    // Para card simples usa o item normal; para multi usa o de maior saldo
+    const displayItem = isMulti
+      ? siblings.reduce((a,b) => remainingPacks(a) >= remainingPacks(b) ? a : b)
+      : item;
+
+    const freeAmount = displayItem.mode === 'boxed' ? remainingPacks(displayItem) : remainingUnits(displayItem);
+    const totalFree = isMulti ? siblings.reduce((s,x)=>s+remainingPacks(x),0) : freeAmount;
 
     const card = document.createElement('article');
     card.className = 'rounded-[28px] border border-slate-200 bg-white shadow-soft overflow-hidden';
@@ -1502,53 +1553,60 @@ function renderCatalog(){
           ${secondaryMeta(item)}
         </div>
 
-        ${item.grade.length ? `
+        ${isMulti ? `
+        <div class="mt-4">
+          <div class="flex items-center justify-between gap-2">
+            <span class="chip chip-blue"><i class="fa-solid fa-layer-group"></i> ${siblings.length} grades disponíveis</span>
+            <span class="text-xs font-bold text-slate-400">${totalFree} cx total</span>
+          </div>
+          <button class="btnOpenMultiGrade focus-ring mt-3 w-full rounded-2xl border border-[var(--brand)] bg-[var(--brand-soft)] px-4 py-2.5 text-sm font-extrabold text-[var(--brand)]">
+            <i class="fa-solid fa-ruler-combined mr-2"></i>Ver grades e adicionar
+          </button>
+        </div>` : `
+        ${displayItem.grade.length ? `
         <div class="mt-4">
           <div class="text-sm font-extrabold">Disponível</div>
-          <div class="mt-2 flex flex-wrap gap-2">${gradeHtml(item.grade)}</div>
+          <div class="mt-2 flex flex-wrap gap-2">${gradeHtml(displayItem.grade)}</div>
         </div>` : ''}
-
         <div class="mt-4 flex items-center justify-end gap-2">
           <button class="btnMinus qty-btn focus-ring"><i class="fa-solid fa-minus"></i></button>
           <div class="qty min-w-[28px] text-center text-lg font-extrabold">1</div>
           <button class="btnPlus qty-btn focus-ring"><i class="fa-solid fa-plus"></i></button>
         </div>
-
         <button class="btnAdd focus-ring mt-4 w-full rounded-2xl bg-[var(--brand)] px-4 py-3 text-sm font-extrabold text-white ${freeAmount <= 0 ? 'opacity-50 cursor-not-allowed' : ''}" ${freeAmount <= 0 ? 'disabled' : ''}>
-          ${freeAmount <= 0 ? 'Esgotado' : (item.mode === 'boxed' ? `Adicionar ${item.packSize} pares à sacola` : 'Adicionar à sacola')}
-        </button>
+          ${freeAmount <= 0 ? 'Esgotado' : (displayItem.mode === 'boxed' ? `Adicionar ${displayItem.packSize} pares à sacola` : 'Adicionar à sacola')}
+        </button>`}
       </div>
     `;
 
-    let amount = 1;
-    const qtyEl = card.querySelector('.qty');
-    card.querySelector('.btnMinus').addEventListener('click', ()=>{
-      amount = Math.max(1, amount - 1);
-      qtyEl.textContent = amount;
-    });
-    card.querySelector('.btnPlus').addEventListener('click', ()=>{
-      amount = Math.min(freeAmount, amount + 1);
-      qtyEl.textContent = amount;
-    });
-    card.querySelector('.btnAdd').addEventListener('click', ()=>{
-      const freeNow = item.mode === 'boxed' ? remainingPacks(item) : remainingUnits(item);
-      if(amount > freeNow){ toast(freeNow <= 0 ? 'Produto esgotado no momento' : 'Quantidade acima do saldo disponível'); return; }
-      const existing = STATE.cart.get(key);
-      const nextAmount = Number(existing?.amount || 0) + amount;
-      const maxAmount = getMaxCartAmount(item);
-      const reservedUnits = item.mode === 'boxed' ? nextAmount * item.packSize : nextAmount;
-      if(nextAmount > maxAmount){ toast(maxAmount <= 0 ? 'Produto esgotado no momento' : 'Saldo excedido'); return; }
-      STATE.cart.set(key, {
-        ...item,
-        key,
-        amount: nextAmount,
-        totalUnits: reservedUnits
+    if(isMulti){
+      card.querySelector('.btnOpenMultiGrade')?.addEventListener('click', ()=> openMultiGradeModal(siblings));
+    } else {
+      let amount = 1;
+      const qtyEl = card.querySelector('.qty');
+      card.querySelector('.btnMinus').addEventListener('click', ()=>{
+        amount = Math.max(1, amount - 1);
+        qtyEl.textContent = amount;
       });
-      saveCartStorage();
-      renderCart();
-      applyFilters();
-      toast('Item adicionado à sacola');
-    });
+      card.querySelector('.btnPlus').addEventListener('click', ()=>{
+        amount = Math.min(freeAmount, amount + 1);
+        qtyEl.textContent = amount;
+      });
+      card.querySelector('.btnAdd').addEventListener('click', ()=>{
+        const freeNow = displayItem.mode === 'boxed' ? remainingPacks(displayItem) : remainingUnits(displayItem);
+        if(amount > freeNow){ toast(freeNow <= 0 ? 'Produto esgotado no momento' : 'Quantidade acima do saldo disponível'); return; }
+        const existing = STATE.cart.get(key);
+        const nextAmount = Number(existing?.amount || 0) + amount;
+        const maxAmount = getMaxCartAmount(displayItem);
+        const reservedUnits = displayItem.mode === 'boxed' ? nextAmount * displayItem.packSize : nextAmount;
+        if(nextAmount > maxAmount){ toast(maxAmount <= 0 ? 'Produto esgotado no momento' : 'Saldo excedido'); return; }
+        STATE.cart.set(key, { ...displayItem, key, amount: nextAmount, totalUnits: reservedUnits });
+        saveCartStorage();
+        renderCart();
+        applyFilters();
+        toast('Item adicionado à sacola');
+      });
+    }
     wrap.appendChild(card);
 
     const row = document.createElement('article');
@@ -1556,42 +1614,58 @@ function renderCatalog(){
     row.innerHTML = `
       <div class="list-row-desktop">
         <div class="h-[116px] w-[116px] rounded-[26px] border border-slate-200 bg-slate-50 overflow-hidden flex items-center justify-center">
-          ${img ? `<img src="${img}" alt="${safeHtml(item.produto)}" class="h-full w-full object-contain bg-white">` : `<i class="fa-solid fa-image text-slate-400"></i>`}
+          ${img ? `<img src="${img}" alt="${safeHtml(displayItem.produto)}" class="h-full w-full object-contain bg-white">` : `<i class="fa-solid fa-image text-slate-400"></i>`}
         </div>
         <div class="min-w-0">
-          <div class="text-[17px] font-extrabold leading-tight">${safeHtml(item.produto)}</div>
-          <div class="mt-1 text-sm text-slate-500">${safeHtml(item.codigo)} · ${safeHtml(item.cor)}</div>
-          <div class="mt-2 text-sm font-semibold text-slate-500">Prev. Faturamento ${safeHtml(formatDate(item.prevFaturamento))}</div>
-          <div class="mt-2">${availabilityChips(item)}</div>
-          ${item.grade.length ? `<div class="mt-3 list-grade-strip">${gradeHtml(item.grade)}</div>` : ''}
+          <div class="text-[17px] font-extrabold leading-tight">${safeHtml(displayItem.produto)}</div>
+          <div class="mt-1 text-sm text-slate-500">${safeHtml(displayItem.codigo)} · ${safeHtml(displayItem.cor)}</div>
+          ${isMulti
+            ? `<div class="mt-2"><span class="chip chip-blue"><i class="fa-solid fa-layer-group"></i> ${siblings.length} grades disponíveis</span></div>`
+            : `<div class="mt-2 text-sm font-semibold text-slate-500">Prev. Faturamento ${safeHtml(formatDate(displayItem.prevFaturamento))}</div>
+               <div class="mt-2">${availabilityChips(displayItem)}</div>
+               ${displayItem.grade.length ? `<div class="mt-3 list-grade-strip">${gradeHtml(displayItem.grade)}</div>` : ''}`
+          }
         </div>
         <div class="flex items-center gap-2 self-center">
-          <button class="btnQuickAdd focus-ring inline-flex items-center gap-2 rounded-full bg-[var(--brand)] px-4 py-2 text-sm font-extrabold text-white ${freeAmount <= 0 ? 'opacity-50 cursor-not-allowed' : ''}" ${freeAmount <= 0 ? 'disabled' : ''}><i class="fa-solid fa-cart-plus"></i> ${freeAmount <= 0 ? 'Esgotado' : (item.mode === 'boxed' ? '1 caixa' : 'Adicionar')}</button>
+          ${isMulti
+            ? `<button class="btnOpenMultiGradeList focus-ring inline-flex items-center gap-2 rounded-full bg-[var(--brand)] px-4 py-2 text-sm font-extrabold text-white"><i class="fa-solid fa-ruler-combined"></i> Ver grades</button>`
+            : `<button class="btnQuickAdd focus-ring inline-flex items-center gap-2 rounded-full bg-[var(--brand)] px-4 py-2 text-sm font-extrabold text-white ${freeAmount <= 0 ? 'opacity-50 cursor-not-allowed' : ''}" ${freeAmount <= 0 ? 'disabled' : ''}><i class="fa-solid fa-cart-plus"></i> ${freeAmount <= 0 ? 'Esgotado' : (displayItem.mode === 'boxed' ? '1 caixa' : 'Adicionar')}</button>`
+          }
         </div>
       </div>
 
       <div class="list-row-mobile">
         <div class="h-[82px] w-[82px] rounded-[22px] border border-slate-200 bg-slate-50 overflow-hidden flex items-center justify-center">
-          ${img ? `<img src="${img}" alt="${safeHtml(item.produto)}" class="h-full w-full object-contain bg-white">` : `<i class="fa-solid fa-image text-slate-400"></i>`}
+          ${img ? `<img src="${img}" alt="${safeHtml(displayItem.produto)}" class="h-full w-full object-contain bg-white">` : `<i class="fa-solid fa-image text-slate-400"></i>`}
         </div>
         <div class="min-w-0">
-          <div class="text-[13px] font-extrabold leading-tight line-clamp-2">${safeHtml(item.produto)}</div>
-          <div class="mt-1 text-[11px] text-slate-500 truncate">${safeHtml(item.codigo)} · ${safeHtml(item.cor)}</div>
-          <div class="mt-1 mobile-info-rotator">
-            <span class="mobile-info-primary">${availabilitySummary(item)}</span>
-            <span class="mobile-info-secondary">Prev. Fat. ${safeHtml(formatDate(item.prevFaturamento))}</span>
-          </div>
-          ${item.grade.length ? `<button class="btnShowGrade btn-grade-mobile focus-ring mt-2"><i class="fa-solid fa-ruler grade-pulse-icon"></i><span>Ver grade</span></button>` : ''}
+          <div class="text-[13px] font-extrabold leading-tight line-clamp-2">${safeHtml(displayItem.produto)}</div>
+          <div class="mt-1 text-[11px] text-slate-500 truncate">${safeHtml(displayItem.codigo)} · ${safeHtml(displayItem.cor)}</div>
+          ${isMulti
+            ? `<div class="mt-1"><span class="chip chip-blue text-[10px]"><i class="fa-solid fa-layer-group"></i> ${siblings.length} grades</span></div>
+               <button class="btnOpenMultiGradeList btn-grade-mobile focus-ring mt-2"><i class="fa-solid fa-ruler-combined grade-pulse-icon"></i><span>Ver grades</span></button>`
+            : `<div class="mt-1 mobile-info-rotator">
+                 <span class="mobile-info-primary">${availabilitySummary(displayItem)}</span>
+                 <span class="mobile-info-secondary">Prev. Fat. ${safeHtml(formatDate(displayItem.prevFaturamento))}</span>
+               </div>
+               ${displayItem.grade.length ? `<button class="btnShowGrade btn-grade-mobile focus-ring mt-2"><i class="fa-solid fa-ruler grade-pulse-icon"></i><span>Ver grade</span></button>` : ''}`
+          }
         </div>
         <div class="flex flex-col items-end gap-2">
-          <button class="btnQuickAdd focus-ring h-11 w-11 rounded-full bg-[var(--brand)] text-white ${freeAmount <= 0 ? 'opacity-50 cursor-not-allowed' : ''}" ${freeAmount <= 0 ? 'disabled' : ''} aria-label="Adicionar à sacola"><i class="fa-solid fa-cart-plus"></i></button>
-          <button class="btnOpenMobileDetail focus-ring h-11 w-11 rounded-full border border-slate-200 bg-white text-slate-500" aria-label="Ver detalhes"><i class="fa-solid fa-chevron-right"></i></button>
+          ${isMulti
+            ? `<button class="btnOpenMultiGradeList focus-ring h-11 w-11 rounded-full bg-[var(--brand)] text-white" aria-label="Ver grades"><i class="fa-solid fa-ruler-combined"></i></button>`
+            : `<button class="btnQuickAdd focus-ring h-11 w-11 rounded-full bg-[var(--brand)] text-white ${freeAmount <= 0 ? 'opacity-50 cursor-not-allowed' : ''}" ${freeAmount <= 0 ? 'disabled' : ''} aria-label="Adicionar à sacola"><i class="fa-solid fa-cart-plus"></i></button>
+               <button class="btnShowGrade focus-ring h-11 w-11 rounded-full border border-slate-200 bg-white text-slate-500" aria-label="Ver detalhes"><i class="fa-solid fa-chevron-right"></i></button>`
+          }
         </div>
       </div>
     `;
-    row.querySelectorAll('.btnQuickAdd').forEach(btn=>btn.addEventListener('click', ()=> quickAdd(item)));
-    row.querySelector('.btnShowGrade')?.addEventListener('click', ()=> openGradeSheet(item));
-    row.querySelector('.btnOpenMobileDetail')?.addEventListener('click', ()=> openGradeSheet(item));
+    if(isMulti){
+      row.querySelectorAll('.btnOpenMultiGradeList').forEach(btn => btn.addEventListener('click', ()=> openMultiGradeModal(siblings)));
+    } else {
+      row.querySelectorAll('.btnQuickAdd').forEach(btn=>btn.addEventListener('click', ()=> quickAdd(displayItem)));
+      row.querySelector('.btnShowGrade')?.addEventListener('click', ()=> openGradeSheet(displayItem));
+    }
     listWrap.appendChild(row);
   }
 }
@@ -1810,6 +1884,73 @@ function closeGradeSheet(){
   $('gradeSheet').classList.remove('open');
   setTimeout(()=> $('gradeSheetWrap').classList.add('hidden'), 240);
 }
+
+// ── MODAL MULTI-GRADE ─────────────────────────────────────────────────────────
+function openMultiGradeModal(siblings){
+  const first = siblings[0];
+  $('multiGradeTitle').textContent = `${first.produto} / ${first.cor}`;
+  $('multiGradeSubtitle').textContent = `${siblings.length} disponibilidade${siblings.length>1?'s':{}} — selecione as que deseja adicionar`;
+
+  $('multiGradeList').innerHTML = siblings.map((item, i) => {
+    const packs = remainingPacks(item);
+    const soldout = packs <= 0;
+    return `
+      <label class="flex items-start gap-3 rounded-[20px] border ${soldout?'border-slate-100 bg-slate-50 opacity-60':'border-slate-200 bg-white'} p-4 cursor-${soldout?'not-allowed':'pointer'} select-none">
+        <input type="checkbox" class="mg-check mt-1 h-4 w-4 rounded accent-[var(--brand)]"
+          data-key="${safeHtml(item.key)}" ${soldout?'disabled':''} />
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center justify-between gap-2">
+            <span class="text-xs font-extrabold text-slate-400">Nº ${safeHtml(item.num)}</span>
+            <span class="text-xs font-bold ${soldout?'text-rose-500':'text-emerald-600'}">${soldout?'Esgotado':`${packs} caixa${packs!==1?'s':''} disponív${packs!==1?'eis':'el'}`}</span>
+          </div>
+          <div class="mt-1 text-xs font-semibold text-slate-500">Prev. Fat. ${safeHtml(formatDate(item.prevFaturamento))}</div>
+          <div class="mt-2 flex flex-wrap gap-1">${gradeHtml(item.grade)}</div>
+        </div>
+      </label>`;
+  }).join('');
+
+  STATE._multiGradeSiblings = siblings;
+  $('multiGradeModalWrap').classList.remove('hidden');
+  syncMultiGradeBtn();
+}
+
+function closeMultiGradeModal(){
+  $('multiGradeModalWrap').classList.add('hidden');
+  STATE._multiGradeSiblings = null;
+}
+
+function syncMultiGradeBtn(){
+  const checked = $('multiGradeList').querySelectorAll('.mg-check:checked').length;
+  $('btnMultiGradeConfirm').disabled = checked === 0;
+}
+
+function confirmMultiGrade(){
+  const siblings = STATE._multiGradeSiblings;
+  if(!siblings) return;
+  const checks = $('multiGradeList').querySelectorAll('.mg-check:checked');
+  let added = 0;
+  checks.forEach(cb => {
+    const key = cb.dataset.key;
+    const item = siblings.find(s => s.key === key);
+    if(!item) return;
+    const packs = remainingPacks(item);
+    if(packs <= 0){ toast(`Nº ${item.num} esgotado`); return; }
+    const existing = STATE.cart.get(key);
+    const nextAmount = Number(existing?.amount || 0) + 1;
+    if(nextAmount > packs){ toast(`Saldo insuficiente para Nº ${item.num}`); return; }
+    const reservedUnits = item.mode === 'boxed' ? nextAmount * item.packSize : nextAmount;
+    STATE.cart.set(key, { ...item, key, amount: nextAmount, totalUnits: reservedUnits });
+    added++;
+  });
+  if(added > 0){
+    saveCartStorage();
+    renderCart();
+    applyFilters();
+    toast(`${added} item${added>1?'s':''} adicionado${added>1?'s':''} à sacola`);
+  }
+  closeMultiGradeModal();
+}
+// ─────────────────────────────────────────────────────────────────────────────
 function parsePreposto(value){
   return normalizePreposto(value);
 }
@@ -2270,6 +2411,7 @@ function bindEvents(){
   document.addEventListener('keydown', (e)=>{
     if(e.key !== 'Escape') return;
     e.preventDefault();
+    if($('multiGradeModalWrap') && !$('multiGradeModalWrap').classList.contains('hidden')){ closeMultiGradeModal(); return; }
     if($('duplicateModalWrap') && !$('duplicateModalWrap').classList.contains('hidden')){ closeDuplicateModal(); return; }
     if($('gradeSheetWrap') && !$('gradeSheetWrap').classList.contains('hidden')){ closeGradeSheet(); return; }
     if($('catalogShareModalWrap') && !$('catalogShareModalWrap').classList.contains('hidden')){ closeCatalogShareModal(); return; }
@@ -2290,6 +2432,11 @@ function bindEvents(){
     closeDuplicateModal();
     if(typeof onConfirm === 'function') onConfirm();
   });
+
+  $('btnCloseMultiGrade').addEventListener('click', closeMultiGradeModal);
+  $('multiGradeBackdrop').addEventListener('click', closeMultiGradeModal);
+  $('multiGradeList').addEventListener('change', syncMultiGradeBtn);
+  $('btnMultiGradeConfirm').addEventListener('click', confirmMultiGrade);
 
   $('btnOpenCart').addEventListener('click', openCart);
   $('btnOrders').addEventListener('click', openOrders);

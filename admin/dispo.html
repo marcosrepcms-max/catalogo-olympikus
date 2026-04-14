@@ -422,6 +422,7 @@
                 <th class="sortable text-right" data-col="pendente">Pendente<i class="fa-solid fa-sort sort-icon"></i></th>
                 <th class="sortable text-right" data-col="aprovado">Aprovado<i class="fa-solid fa-sort sort-icon"></i></th>
                 <th class="sortable text-right" data-col="saldoReal">Saldo real<i class="fa-solid fa-sort sort-icon"></i></th>
+                <th class="sortable" data-col="pedidoMae">Pedido Mãe<i class="fa-solid fa-sort sort-icon"></i></th>
                 <th>Comprometido</th>
                 <th class="sortable" data-col="situacao">Situação<i class="fa-solid fa-sort sort-icon"></i></th>
               </tr>
@@ -643,7 +644,8 @@ async function loadDispo(){
       const produto = sanitizeDisplayText(row['Produto'] || row['PRODUTO'] || row['Descrição'] || row['Descricao']);
       const cor = sanitizeDisplayText(row['COR'] || row['Cor'] || row['Cor Descrição'] || row['Cor Descricao']);
       const dataEntrega = row['DATA ENTREGA'] || row['DATA_ENTREGA'] || row['Data Entrega'] || row['Prev. Faturamento'] || null;
-      return { codigo, produto, cor, dataEntrega, saldo };
+      const pedidoMae = sanitizeDisplayText(row['PEDIDO MÃE'] || row['PEDIDO MAE'] || row['Pedido Mae'] || '');
+      return { codigo, produto, cor, dataEntrega, saldo, pedidoMae };
     }).filter(row => row.codigo || row.produto);
 
     STATE.dispoLoadedAt = new Date();
@@ -701,6 +703,7 @@ function sortRows(rows){
       case 'pendente':va = a.pendente; vb = b.pendente; break;
       case 'aprovado':va = a.aprovado; vb = b.aprovado; break;
       case 'saldoReal':va = a.saldoReal; vb = b.saldoReal; break;
+      case 'pedidoMae': va = a.pedidoMae||''; vb = b.pedidoMae||''; break;
       case 'situacao': va = a.situacao.sortVal; vb = b.situacao.sortVal; break;
       default: va = 0; vb = 0;
     }
@@ -793,6 +796,7 @@ function renderDispo(){
         <td class="text-right tabular-nums ${row.pendente > 0 ? 'text-amber-600 font-extrabold' : 'text-slate-400 font-semibold'}">${formatInt(row.pendente)}</td>
         <td class="text-right tabular-nums ${row.aprovado > 0 ? 'text-emerald-600 font-extrabold' : 'text-slate-400 font-semibold'}">${formatInt(row.aprovado)}</td>
         <td class="text-right tabular-nums">${saldoRealDisplay}</td>
+        <td class="text-center font-semibold text-[11px] ${row.pedidoMae === 'SIM' ? 'text-emerald-600' : 'text-slate-400'}">${safeHtml(row.pedidoMae || '—')}</td>
         <td style="min-width:110px">${buildProgressBar(row.saldo, row.pendente, row.aprovado)}</td>
         <td>
           <span class="chip ${sit.chipClass} ${sit.sortVal <= 1 ? 'badge-ruptura' : ''}">
