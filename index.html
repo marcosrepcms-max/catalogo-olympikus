@@ -1774,6 +1774,8 @@ async function submitOrder(options = {}){
       codigo: item.codigo,
       produto: item.produto,
       cor: item.cor,
+      gci: item.gci || '',
+      ebm: item.ebm || '',
       amount: item.amount,
       mode: item.mode,
       packSize: item.packSize,

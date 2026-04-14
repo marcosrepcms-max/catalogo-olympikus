@@ -375,11 +375,18 @@
         <!-- RANKING + RELATÓRIO -->
         <div class="grid grid-cols-1 xl:grid-cols-[280px_minmax(0,1fr)] gap-4 mb-4">
 
-          <!-- RANKING VENDEDORES -->
-          <div class="rounded-[28px] border border-slate-200 bg-white p-4 shadow-card">
-            <div class="text-sm font-extrabold text-slate-800 mb-3">Ranking de vendedores</div>
-            <div id="rankingVendedores" class="space-y-3">
-              <div class="text-xs text-slate-400 font-semibold">Carregando...</div>
+          <!-- RANKING VENDEDORES — colapsável -->
+          <div class="rounded-[28px] border border-slate-200 bg-white shadow-card overflow-hidden">
+            <button id="btnToggleRanking"
+              class="focus-ring w-full flex items-center justify-between gap-3 px-4 py-3 text-left hover:bg-slate-50 transition-colors"
+              onclick="(()=>{ const b=$('rankingBody'); const ic=$('rankingIcon'); const vis=b.style.display==='none'; b.style.display=vis?'block':'none'; ic.style.transform=vis?'rotate(0deg)':'rotate(-90deg)'; localStorage.setItem('repasse_ranking_open',vis?'1':'0'); })()">
+              <div class="text-sm font-extrabold text-slate-800">Ranking de vendedores</div>
+              <i id="rankingIcon" class="fa-solid fa-chevron-down text-slate-400 text-xs transition-transform" style="transform:rotate(-90deg)"></i>
+            </button>
+            <div id="rankingBody" class="px-4 pb-4 space-y-3" style="display:none">
+              <div id="rankingVendedores" class="space-y-3">
+                <div class="text-xs text-slate-400 font-semibold">Carregando...</div>
+              </div>
             </div>
           </div>
 
@@ -882,6 +889,8 @@ function normalizeOrder(rawOrder){
     produto:sanitizeDisplayText(item?.produto || item?.descricao || item?.nome),
     codigo:sanitizeDisplayText(item?.codigo || item?.referencia),
     cor:sanitizeDisplayText(item?.cor),
+    gci:sanitizeDisplayText(item?.gci || ''),
+    ebm:sanitizeDisplayText(item?.ebm || ''),
     prevFaturamento:sanitizeDisplayText(item?.prevFaturamento || item?.prevFat),
     mode:sanitizeDisplayText(item?.mode),
     amount:Number(item?.amount || item?.quantidade || 0),
@@ -1080,107 +1089,144 @@ function renderDetail(){
   const statusMeta = getStatusVisual(order.status);
 
   $('adminOrderDetail').innerHTML = `
-    <div class="flex flex-col gap-4">
-      <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
-        <div>
-          <div class="text-lg sm:text-xl font-extrabold">${safeHtml(order.id)}</div>
-          <div class="mt-1 text-sm text-slate-500">${safeHtml(formatDate(order.createdAt || order.updatedAt || order.data))} às ${safeHtml(parseDate(order.createdAt || order.updatedAt || order.data)?.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}) || '—')}</div>
+    <div class="flex flex-col xl:flex-row gap-4 h-full">
 
+      <!-- CONTEÚDO PRINCIPAL -->
+      <div class="flex-1 min-w-0">
+
+        <!-- Cabeçalho compacto -->
+        <div class="mb-4">
+          <div class="text-lg font-extrabold">${safeHtml(order.id)}</div>
+          <div class="mt-1 text-xs text-slate-500">${safeHtml(formatDate(order.createdAt || order.updatedAt))} às ${safeHtml(parseDate(order.createdAt || order.updatedAt)?.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}) || '—')}</div>
           <div class="mt-3 flex flex-wrap gap-2">
-            <span class="chip chip-blue">${safeHtml(order.preposto?.codigo || '')} ${order.preposto?.codigo ? '-' : ''} ${safeHtml(order.preposto?.nome || '')}</span>
-            <span class="chip chip-gray">Cliente ${safeHtml(order.clienteCodigo)}</span>
+            <span class="chip chip-blue">${safeHtml(order.preposto?.codigo || '')}${order.preposto?.codigo ? ' — ' : ''}${safeHtml(order.preposto?.nome || '')}</span>
+            <span class="chip chip-gray">Cliente ${safeHtml(order.clienteCodigo)}${order.clienteNome ? ' — ' + safeHtml(order.clienteNome) : ''}</span>
             <span class="chip chip-gray">${safeHtml(order.prazo)}</span>
             ${order.campanha ? `<span class="chip chip-blue">${safeHtml(order.campanha)}</span>` : ''}
             ${renderStatusChip(order.status)}
             ${order.archived ? `<span class="chip chip-gray">Arquivado</span>` : ''}
           </div>
+          ${order.observacoes ? `<div class="mt-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs font-semibold text-slate-600">${safeHtml(order.observacoes)}</div>` : ''}
         </div>
 
-        <div class="rounded-[24px] border border-slate-200 bg-slate-50 p-4 min-w-[260px]">
-          <div class="text-xs font-bold text-slate-500">Status do pedido</div>
+        <!-- Abas -->
+        <div class="flex border-b border-slate-200 mb-4 gap-1">
+          <button id="tabBtnItens"
+            class="focus-ring px-4 py-2 text-sm font-bold border-b-2 border-[var(--brand)] text-[var(--brand)] -mb-px bg-transparent"
+            onclick="switchDetailTab('itens')">
+            Itens <span class="ml-1 chip chip-blue text-[11px] px-2 py-0.5">${(order.items||[]).length}</span>
+          </button>
+          <button id="tabBtnHistorico"
+            class="focus-ring px-4 py-2 text-sm font-bold border-b-2 border-transparent text-slate-500 -mb-px bg-transparent"
+            onclick="switchDetailTab('historico')">
+            Histórico <span class="ml-1 chip chip-gray text-[11px] px-2 py-0.5">${order.history?.length || 0}</span>
+          </button>
+        </div>
 
-          <select id="detailStatus" class="focus-ring mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold">
-            ${STATUS_OPTIONS.map(s=>`<option value="${safeHtml(s)}" ${s===order.status?'selected':''}>${safeHtml(s)}</option>`).join('')}
-          </select>
-
-          <div class="mt-3 flex flex-col gap-2">
-            <button id="btnToggleArchive" class="focus-ring w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-700">
-              ${order.archived ? 'Reativar' : 'Arquivar'}
-            </button>
-
-            <button id="btnDeleteOrder" class="focus-ring w-full rounded-2xl border px-4 py-3 text-sm font-bold btn-danger">
-              Excluir fisicamente (teste)
-            </button>
+        <!-- Tab: Itens -->
+        <div id="tabItens">
+          <div class="space-y-3">
+            ${(order.items || []).map(item => `
+              <div class="rounded-[20px] border border-slate-200 bg-slate-50 p-4">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="min-w-0">
+                    <div class="font-extrabold text-slate-800">${safeHtml(item.produto)}</div>
+                    <div class="mt-1 flex flex-wrap gap-x-3 gap-y-0.5 text-xs text-slate-500 font-semibold">
+                      <span>${safeHtml(item.codigo)}</span>
+                      <span>${safeHtml(item.cor)}</span>
+                      ${item.gci ? `<span class="text-[var(--brand)] font-extrabold">GCI ${safeHtml(item.gci)}</span>` : ''}
+                      <span>Prev Fat ${safeHtml(formatDate(item.prevFaturamento) || '—')}</span>
+                    </div>
+                  </div>
+                  <div class="text-right flex-shrink-0">
+                    <div class="text-sm font-extrabold">
+                      ${item.mode === 'boxed'
+                        ? `${item.amount} cx`
+                        : `${item.amount} un`}
+                    </div>
+                    <div class="text-xs text-slate-500">${safeHtml(getItemUnits(item))} itens</div>
+                  </div>
+                </div>
+                ${item.grade?.length ? `<div class="mt-3 flex flex-wrap gap-1.5">${gradeHtml(item.grade)}</div>` : ''}
+              </div>
+            `).join('')}
           </div>
+        </div>
 
-          <div class="mt-3 rounded-2xl ${statusMeta.chipClass} px-3 py-2 text-xs font-extrabold">
-            Status atual: ${safeHtml(statusMeta.label)}
-          </div>
-          <div class="mt-3 rounded-2xl border border-slate-200 bg-white px-3 py-3 text-xs font-bold text-slate-600">
-            <div>Última ação: <span class="text-slate-900">${safeHtml(order.lastActionLabel || '—')}</span></div>
-            <div class="mt-1">Em: <span class="text-slate-900">${safeHtml(formatDateTime(order.lastActionAt))}</span></div>
-          </div>
+        <!-- Tab: Histórico -->
+        <div id="tabHistorico" class="hidden">
+          ${renderOrderHistory(order)}
         </div>
       </div>
 
-      ${order.observacoes ? `
-        <div class="rounded-[24px] border border-slate-200 bg-slate-50 p-4">
-          <div class="text-xs font-bold text-slate-500">Observações</div>
-          <div class="mt-2 text-sm font-semibold text-slate-700">${safeHtml(order.observacoes)}</div>
+      <!-- COLUNA LATERAL DIREITA: ações -->
+      <div class="flex flex-col gap-3 xl:w-[220px] flex-shrink-0">
+
+        <div class="rounded-[20px] border border-slate-200 bg-slate-50 p-4">
+          <div class="text-xs font-bold text-slate-500 mb-2">Status do pedido</div>
+          <select id="detailStatus" class="focus-ring w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-sm font-bold">
+            ${STATUS_OPTIONS.map(s=>`<option value="${safeHtml(s)}" ${s===order.status?'selected':''}>${safeHtml(s)}</option>`).join('')}
+          </select>
+          <div class="mt-3 rounded-xl ${statusMeta.chipClass} px-3 py-2 text-xs font-extrabold text-center">
+            ${safeHtml(statusMeta.label)}
+          </div>
         </div>
-      ` : ''}
 
-      ${renderOrderHistory(order)}
-
-      <div class="rounded-[24px] border border-slate-200 bg-slate-50 p-4">
-        <div class="text-lg font-extrabold">Itens do pedido</div>
-
-        <div class="mt-4 space-y-3">
-          ${(order.items || []).map(item => `
-            <div class="rounded-[22px] border border-slate-200 bg-white p-4">
-              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-3">
-                <div>
-                  <div class="font-extrabold">${safeHtml(item.produto)}</div>
-                  <div class="mt-1 text-xs text-slate-500">
-                    ${safeHtml(item.codigo)} · ${safeHtml(item.cor)} · Prev. Faturamento ${safeHtml(item.prevFaturamento || '—')}
-                  </div>
-                </div>
-
-                <div class="text-right text-sm font-extrabold">
-                  ${item.mode === 'boxed'
-                    ? `${item.amount} caixa${item.amount > 1 ? 's' : ''}`
-                    : `${item.amount} unidade${item.amount > 1 ? 's' : ''}`}
-                  <div class="mt-1 text-xs text-slate-500">${safeHtml(getItemUnits(item))} itens</div>
-                </div>
-              </div>
-
-              ${item.grade?.length ? `<div class="mt-3 flex flex-wrap gap-2">${gradeHtml(item.grade)}</div>` : ''}
-            </div>
-          `).join('')}
+        <div class="rounded-[20px] border border-slate-200 bg-slate-50 px-4 py-3 text-xs font-bold text-slate-600">
+          <div>Última ação</div>
+          <div class="mt-1 text-slate-900 font-extrabold">${safeHtml(order.lastActionLabel || '—')}</div>
+          <div class="mt-0.5 text-slate-400 font-semibold">${safeHtml(formatDateTime(order.lastActionAt))}</div>
         </div>
+
+        <button id="btnToggleArchive"
+          class="focus-ring w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-bold text-slate-700">
+          ${order.archived ? 'Reativar pedido' : 'Arquivar pedido'}
+        </button>
+
+        <button id="btnDeleteOrder"
+          class="focus-ring w-full rounded-2xl border px-4 py-2.5 text-sm font-bold btn-danger">
+          Excluir fisicamente
+        </button>
       </div>
     </div>
   `;
 
+  // Listeners
   $('detailStatus').addEventListener('change', async (e)=>{
     const nextStatus = canonicalStatus(e.target.value);
     const currentStatus = canonicalStatus(order.status);
-
     if(nextStatus === 'Cancelado' && currentStatus !== 'Cancelado'){
       openCancelReasonModal(order.id, currentStatus);
       return;
     }
-
     await updateStatus(order.id, nextStatus);
   });
 
-  $('btnToggleArchive').addEventListener('click', async ()=>{
-    await toggleArchive(order.id);
-  });
+  $('btnToggleArchive').addEventListener('click', async ()=>{ await toggleArchive(order.id); });
+  $('btnDeleteOrder').addEventListener('click', async ()=>{ await deleteOrder(order.id); });
+}
 
-  $('btnDeleteOrder').addEventListener('click', async ()=>{
-    await deleteOrder(order.id);
-  });
+function switchDetailTab(tab){
+  const itens = $('tabItens');
+  const hist = $('tabHistorico');
+  const btnI = $('tabBtnItens');
+  const btnH = $('tabBtnHistorico');
+  if(!itens || !hist) return;
+
+  const isItens = tab === 'itens';
+  itens.classList.toggle('hidden', !isItens);
+  hist.classList.toggle('hidden', isItens);
+
+  const activeClass = ['border-[var(--brand)]','text-[var(--brand)]'];
+  const inactiveClass = ['border-transparent','text-slate-500'];
+
+  if(isItens){
+    btnI.classList.add(...activeClass); btnI.classList.remove(...inactiveClass);
+    btnH.classList.add(...inactiveClass); btnH.classList.remove(...activeClass);
+  } else {
+    btnH.classList.add(...activeClass); btnH.classList.remove(...inactiveClass);
+    btnI.classList.add(...inactiveClass); btnI.classList.remove(...activeClass);
+  }
 }
 
 
@@ -1868,6 +1914,16 @@ document.addEventListener('keydown', (e)=>{
 // ─────────────────────────────────────────────────────────────────────────────
 
 applyAuthUI();
+
+// ── Inicializa estado do ranking ──────────────────────────────────────────────
+(()=>{
+  const open = localStorage.getItem('repasse_ranking_open') === '1';
+  const body = $('rankingBody');
+  const icon = $('rankingIcon');
+  if(body) body.style.display = open ? 'block' : 'none';
+  if(icon) icon.style.transform = open ? 'rotate(0deg)' : 'rotate(-90deg)';
+})();
+// ─────────────────────────────────────────────────────────────────────────────
 </script>
 </body>
 </html>
