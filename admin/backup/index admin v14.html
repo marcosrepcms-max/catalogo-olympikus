@@ -443,13 +443,12 @@
                 <thead>
                   <tr id="relatorioThead">
                     <th class="text-right">Nº</th>
-                    <th class="relatorio-sortable" data-col="vendedor">Vendedor <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
-                    <th class="relatorio-sortable" data-col="cliente">Cod. Cliente <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
-                    <th class="relatorio-sortable" data-col="clienteNome">Nome <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
-                    <th class="relatorio-sortable" data-col="prazo">Prazo <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
-                    <th class="relatorio-sortable" data-col="campanha">Campanha <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
+                    <th class="relatorio-sortable" data-col="data">Data <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
                     <th class="relatorio-sortable" data-col="ebm">EBM <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
                     <th class="relatorio-sortable" data-col="gci">GCI <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
+                    <th class="relatorio-sortable" data-col="cliente">Cliente <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
+                    <th class="relatorio-sortable" data-col="prazo">Prazo <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
+                    <th class="relatorio-sortable" data-col="campanha">Campanha <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
                     <th class="relatorio-sortable" data-col="produto">Descrição <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
                     <th class="relatorio-sortable" data-col="cor">Cor <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
                     <th class="relatorio-sortable text-right" data-col="qtde">Qtde <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
@@ -1587,30 +1586,26 @@ function buildRelatorioLinhas(orders){
   const linhas = [];
   let lineNum = 0;
   for(const o of orders){
-    const vendedor = safeHtml(o.preposto?.nome || o.preposto?.codigo || '—');
-    const codCliente = safeHtml(o.clienteCodigo || '—');
-    const nomeCliente = safeHtml(o.clienteNome || '—');
+    const data = formatDate(o.createdAt || o.updatedAt);
+    const clienteHtml = o.clienteNome
+      ? `<div class="font-extrabold">${safeHtml(o.clienteCodigo)}</div><div class="text-[11px] text-slate-500 font-semibold">${safeHtml(o.clienteNome)}</div>`
+      : `<div class="font-extrabold">${safeHtml(o.clienteCodigo)}</div>`;
     const statusHtml = renderStatusChip(o.status);
     const campanhaDisplay = safeHtml(stripOly(o.campanha || ''));
     const prazoDisplay = safeHtml(stripPrazo(o.prazo || '—'));
     const items = o.items || [];
-    const rowspan = items.length || 1;
-
     if(!items.length){
       lineNum++;
       linhas.push(`<tr>
         <td class="text-right text-slate-400 font-semibold text-[11px]">${lineNum}</td>
-        <td class="font-semibold" rowspan="1">${vendedor}</td>
-        <td class="font-extrabold" rowspan="1">${codCliente}</td>
-        <td class="text-slate-500 font-semibold" rowspan="1">${nomeCliente}</td>
-        <td class="text-slate-500 font-semibold whitespace-nowrap" rowspan="1">${prazoDisplay}</td>
-        <td class="text-slate-500 font-semibold" rowspan="1">${campanhaDisplay}</td>
+        <td class="text-slate-500 font-semibold whitespace-nowrap">${safeHtml(data)}</td>
         <td class="text-slate-400">—</td>
         <td class="text-slate-400">—</td>
-        <td class="text-slate-400">—</td>
-        <td class="text-slate-400">—</td>
-        <td class="text-right font-extrabold">—</td>
-        <td class="text-slate-400">—</td>
+        <td>${clienteHtml}</td>
+        <td class="text-slate-500 font-semibold whitespace-nowrap">${prazoDisplay}</td>
+        <td class="text-slate-500 font-semibold">${campanhaDisplay}</td>
+        <td class="text-slate-400">—</td><td class="text-slate-400">—</td>
+        <td class="text-right font-extrabold">—</td><td class="text-slate-400">—</td>
         <td>${statusHtml}</td>
         <td class="relatorio-grade-col">—</td>
       </tr>`);
@@ -1621,18 +1616,17 @@ function buildRelatorioLinhas(orders){
         const prevFat = safeHtml(formatDate(item.prevFaturamento) || '—');
         linhas.push(`<tr>
           <td class="text-right text-slate-400 font-semibold text-[11px]">${lineNum}</td>
-          ${idx === 0 ? `<td class="font-semibold" rowspan="${rowspan}">${vendedor}</td>` : ''}
-          ${idx === 0 ? `<td class="font-extrabold" rowspan="${rowspan}">${codCliente}</td>` : ''}
-          ${idx === 0 ? `<td class="text-slate-500 font-semibold" rowspan="${rowspan}">${nomeCliente}</td>` : ''}
-          ${idx === 0 ? `<td class="text-slate-500 font-semibold whitespace-nowrap" rowspan="${rowspan}">${prazoDisplay}</td>` : ''}
-          ${idx === 0 ? `<td class="text-slate-500 font-semibold" rowspan="${rowspan}">${campanhaDisplay}</td>` : ''}
+          ${idx === 0 ? `<td class="text-slate-500 font-semibold whitespace-nowrap" rowspan="${items.length}">${safeHtml(data)}</td>` : ''}
           <td class="text-slate-500 font-semibold text-[11px]">${safeHtml(item.ebm || '—')}</td>
           <td class="font-extrabold text-[var(--brand)] text-[11px]">${safeHtml(item.gci || '—')}</td>
+          ${idx === 0 ? `<td rowspan="${items.length}">${clienteHtml}</td>` : ''}
+          ${idx === 0 ? `<td class="text-slate-500 font-semibold whitespace-nowrap" rowspan="${items.length}">${prazoDisplay}</td>` : ''}
+          ${idx === 0 ? `<td class="text-slate-500 font-semibold" rowspan="${items.length}">${campanhaDisplay}</td>` : ''}
           <td class="font-extrabold text-slate-800">${safeHtml(item.produto || '—')}</td>
           <td class="text-slate-500 font-semibold">${safeHtml(item.cor || '—')}</td>
           <td class="text-right font-extrabold">${formatInt(units)}</td>
           <td class="text-slate-500 font-semibold whitespace-nowrap">${prevFat}</td>
-          ${idx === 0 ? `<td rowspan="${rowspan}">${statusHtml}</td>` : ''}
+          ${idx === 0 ? `<td rowspan="${items.length}">${statusHtml}</td>` : ''}
           <td class="relatorio-grade-col">${gradeInlinePills(item.grade)}</td>
         </tr>`);
       });
@@ -1647,9 +1641,7 @@ function sortRelatorioOrders(orders, col, dir){
     let va, vb;
     switch(col){
       case 'data': return dir*((parseDate(a.createdAt||a.updatedAt)?.getTime()||0)-(parseDate(b.createdAt||b.updatedAt)?.getTime()||0));
-      case 'vendedor': va=a.preposto?.nome||a.preposto?.codigo||''; vb=b.preposto?.nome||b.preposto?.codigo||''; break;
       case 'cliente': va=a.clienteCodigo||''; vb=b.clienteCodigo||''; break;
-      case 'clienteNome': va=a.clienteNome||''; vb=b.clienteNome||''; break;
       case 'prazo': va=a.prazo||''; vb=b.prazo||''; break;
       case 'campanha': va=stripOly(a.campanha||''); vb=stripOly(b.campanha||''); break;
       case 'status': va=canonicalStatus(a.status); vb=canonicalStatus(b.status); break;
@@ -1706,7 +1698,7 @@ function renderRelatorio(){
   $('relatorioTableWrap').classList.remove('hidden');
   $('relatorioAcoes').classList.remove('hidden');
   $('relatorioTableBody').innerHTML=buildRelatorioLinhas(orders).join('');
-  $('relatorioTableFoot').innerHTML=`<tr><td colspan="10" class="font-extrabold">Total</td><td class="text-right font-extrabold">${formatInt(totalUnidades)}</td><td colspan="3"></td></tr>`;
+  $('relatorioTableFoot').innerHTML=`<tr><td colspan="9" class="font-extrabold">Total</td><td class="text-right font-extrabold">${formatInt(totalUnidades)}</td><td colspan="3"></td></tr>`;
   const now=new Date();
   $('relatorioRodape').textContent=`Gerado em ${now.toLocaleDateString('pt-BR')} às ${now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})} · ${orders.length} pedidos · ${formatInt(totalUnidades)} unidades`;
   STATE._relatorioAtual={nomeVendedor,orders,totalItens,totalUnidades};
@@ -1792,20 +1784,18 @@ async function relatorioExportPdf(){
 
     // Colunas — landscape A4 = 297mm, usável = 273mm
     const cols = [
-      { label:'Nº',        w:8,  align:'right' },
-      { label:'Vendedor',  w:20 },
-      { label:'Cod.Cli',   w:16 },
-      { label:'Nome',      w:22 },
-      { label:'Prazo',     w:16 },
-      { label:'Campanha',  w:20 },
-      { label:'EBM',       w:16 },
-      { label:'GCI',       w:14 },
-      { label:'Descrição', w:36 },
-      { label:'Cor',       w:16 },
-      { label:'Qtde',      w:10, align:'right' },
-      { label:'Prev Fat',  w:16 },
-      { label:'Status',    w:16 },
-      { label:'Grade',     w:37 }
+      { label:'Data',      w:20 },
+      { label:'EBM',       w:18 },
+      { label:'GCI',       w:16 },
+      { label:'Cliente',   w:26 },
+      { label:'Prazo',     w:18 },
+      { label:'Campanha',  w:22 },
+      { label:'Descrição', w:44 },
+      { label:'Cor',       w:18 },
+      { label:'Qtde',      w:12, align:'right' },
+      { label:'Prev Fat',  w:18 },
+      { label:'Status',    w:18 },
+      { label:'Grade',     w:43 }
     ];
 
     const startX = 12;
@@ -1861,16 +1851,13 @@ async function relatorioExportPdf(){
         doc.setDrawColor(237,242,247);
         doc.line(startX, y, pw-12, y);
 
-        const lineNum = totalUnidadesPdf > 0 ? '' : String(idx+1);
         const vals = [
-          String(idx===0 ? (renderItems.indexOf(item)+1) : ''),
-          idx===0 ? (o.preposto?.nome || o.preposto?.codigo || '—') : '',
-          idx===0 ? (o.clienteCodigo || '—') : '',
-          idx===0 ? (o.clienteNome || '—') : '',
-          idx===0 ? stripPrazo(o.prazo || '—') : '',
-          idx===0 ? stripOly(o.campanha || '—') : '',
+          idx===0 ? data : '',
           item ? (item.ebm || '—') : '—',
           item ? (item.gci || '—') : '—',
+          idx===0 ? cliente : '',
+          idx===0 ? stripPrazo(o.prazo || '—') : '',
+          idx===0 ? stripOly(o.campanha || '—') : '',
           item ? (item.produto || '—') : '—',
           item ? (item.cor || '—') : '—',
           item ? String(formatInt(units)) : '—',
@@ -1885,10 +1872,10 @@ async function relatorioExportPdf(){
           const col = cols[i];
           const tx = col.align==='right' ? cx+col.w-2 : cx;
           let txt = doc.splitTextToSize(String(vals[i]), col.w-2)[0] || '';
-          if(i===12 && vals[i]){
+          if(i===10 && vals[i]){
             const color = status==='Aprovado'?[21,128,61]:status==='Cancelado'?[185,28,28]:[180,83,9];
             doc.setTextColor(...color);
-          } else if(i===7 && vals[i] && vals[i]!=='—'){
+          } else if(i===2 && vals[i] && vals[i]!=='—'){
             doc.setTextColor(40,54,212);
           } else {
             doc.setTextColor(15,23,42);
@@ -1907,7 +1894,7 @@ async function relatorioExportPdf(){
     doc.setFontSize(7);
     doc.setTextColor(15,23,42);
     let cx = startX + 1.5;
-    const totVals = ['','Total','','','','','','','','',formatInt(totalUnidadesPdf),'','',''];
+    const totVals = ['Total','','','','','','','',formatInt(totalUnidadesPdf),'','',''];
     for(let i=0;i<cols.length;i++){
       const col = cols[i];
       const tx = col.align==='right'?cx+col.w-2:cx;
@@ -2008,19 +1995,18 @@ function relatorioExportXlsx(){
   btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Gerando...';
 
   try{
-    const rows = [['Nº','Vendedor','Cod. Cliente','Nome','Prazo','Campanha','EBM','GCI','Descrição','Cor','Qtde','Prev Fat','Status','Grade']];
+    const rows = [['Nº','Data','EBM','GCI','Cliente','Prazo','Campanha','Descrição','Cor','Qtde','Prev Fat','Status','Grade']];
     let lineNum = 0;
     for(const o of orders){
-      const vendedor = o.preposto?.nome || o.preposto?.codigo || '—';
-      const codCliente = o.clienteCodigo || '—';
-      const nomeCliente = o.clienteNome || '—';
+      const data = formatDate(o.createdAt || o.updatedAt);
+      const cliente = o.clienteNome ? `${o.clienteCodigo} — ${o.clienteNome}` : o.clienteCodigo;
       const prazo = stripPrazo(o.prazo || '—');
       const campanha = stripOly(o.campanha || '—');
       const status = canonicalStatus(o.status);
       const items = o.items || [];
       if(!items.length){
         lineNum++;
-        rows.push([lineNum, vendedor, codCliente, nomeCliente, prazo, campanha,'—','—','—','—','—', status,'—']);
+        rows.push([lineNum, data, '—','—', cliente, prazo, campanha,'—','—','—','—', status,'—']);
       } else {
         for(const item of items){
           lineNum++;
@@ -2030,8 +2016,9 @@ function relatorioExportXlsx(){
             ? item.grade.map(g=>`${g.size}(${g.qty})`).join(' ')
             : '—';
           rows.push([
-            lineNum, vendedor, codCliente, nomeCliente, prazo, campanha,
+            lineNum, data,
             item.ebm || '—', item.gci || '—',
+            cliente, prazo, campanha,
             item.produto || '—', item.cor || '—',
             units, prevFat, status, grade
           ]);
@@ -2040,7 +2027,8 @@ function relatorioExportXlsx(){
     }
 
     const ws = XLSX.utils.aoa_to_sheet(rows);
-    ws['!cols'] = [4,18,12,20,14,16,12,10,24,10,6,12,10,28].map(w=>({wch:w}));
+    // Larguras das colunas
+    ws['!cols'] = [4,12,12,10,24,14,14,22,10,6,12,10,26].map(w=>({wch:w}));
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Relatório');
     const now = new Date();
