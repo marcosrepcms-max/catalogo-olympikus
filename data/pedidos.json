@@ -814,5 +814,74 @@
     "lastAction": "status_changed",
     "lastActionLabel": "Pedido aprovado",
     "lastActionAt": "2026-04-14T21:09:42.680Z"
+  },
+  {
+    "id": "PED-20260415115615-942",
+    "createdAt": "2026-04-15T14:56:15.737Z",
+    "updatedAt": "2026-04-15T14:56:16.395Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "3616654",
+      "nome": "MARCOS"
+    },
+    "clienteCodigo": "104988",
+    "clienteNome": "Degraus",
+    "prazo": "Z30 - 28/56/84 D",
+    "campanha": "CO689 +56DD OLY",
+    "observacoes": "",
+    "totals": {
+      "packs": 3,
+      "units": 36
+    },
+    "items": [
+      {
+        "codigo": "43407464",
+        "produto": "SOMA 2",
+        "cor": "ALGBEG",
+        "gci": "4991589",
+        "ebm": "12754260",
+        "amount": 3,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 36,
+        "grade": [
+          {
+            "size": "37",
+            "qty": 1
+          },
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 2
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 2
+          },
+          {
+            "size": "43",
+            "qty": 1
+          },
+          {
+            "size": "44",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": 46117
+      }
+    ]
   }
 ]
