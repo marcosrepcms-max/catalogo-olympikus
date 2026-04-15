@@ -1051,34 +1051,25 @@ function renderList(){
   $('adminOrdersList').innerHTML = STATE.filtered.map(order=>{
     const active = order.id === STATE.selectedId;
     const cardStatus = getStatusVisual(order.status);
-    // Pega produto+cor do primeiro item
-    const firstItem = (order.items||[])[0];
-    const produtoDisplay = firstItem ? `${safeHtml(firstItem.produto)}` : safeHtml(order.id);
-    const corDisplay = firstItem ? safeHtml(firstItem.cor) : '';
-    const gciDisplay = firstItem?.gci || firstItem?.ebm || '';
-    const clienteDisplay = order.clienteNome
-      ? `Cliente ${safeHtml(order.clienteCodigo)} — ${safeHtml(order.clienteNome)}`
-      : `Cliente ${safeHtml(order.clienteCodigo)}`;
 
     return `
       <button data-order-id="${safeHtml(order.id)}"
         class="w-full text-left rounded-[24px] border ${active ? 'border-[var(--brand)] bg-[rgba(40,54,212,.05)]' : 'border-slate-200 bg-slate-50'} p-4">
         <div class="flex items-start justify-between gap-3">
-          <div class="min-w-0">
-            <div class="font-extrabold truncate">${produtoDisplay}</div>
-            ${corDisplay ? `<div class="text-xs text-slate-500 mt-0.5">${corDisplay}</div>` : ''}
+          <div>
+            <div class="font-extrabold">${safeHtml(order.id)}</div>
             <div class="mt-1 text-xs text-slate-500">${safeHtml(formatDateTime(order.createdAt || order.updatedAt || order.data))}</div>
           </div>
-          <span class="chip ${cardStatus.chipClass} flex-shrink-0">
+          <span class="chip ${cardStatus.chipClass}">
             <span class="status-dot ${cardStatus.dotClass}"></span>
             ${safeHtml(cardStatus.label)}
           </span>
         </div>
 
         <div class="mt-3 flex flex-wrap gap-2 text-xs font-bold">
-          <span class="chip chip-blue">${clienteDisplay}</span>
+          <span class="chip chip-blue">Cliente ${safeHtml(order.clienteCodigo)}</span>
           <span class="chip chip-gray">${safeHtml(order.preposto?.nome || '')}</span>
-          ${gciDisplay ? `<span class="chip" style="background:#EEEDFE;color:#3C3489;border-color:#AFA9EC">GCI ${safeHtml(gciDisplay)}</span>` : ''}
+          <span class="chip chip-gray">${safeHtml(order.prazo)}</span>
           <span class="chip chip-blue">${safeHtml(order.lastActionLabel || 'Sem histórico')}</span>
           ${order.archived ? `<span class="chip chip-gray">Arquivado</span>` : ''}
           ${order.isDuplicate ? `<span class="chip chip-duplicate"><i class="fa-solid fa-triangle-exclamation"></i> Possível duplicata</span>` : ''}
@@ -2035,17 +2026,6 @@ applyAuthUI();
   if(body) body.style.display = open ? 'block' : 'none';
   if(icon) icon.style.transform = open ? 'rotate(0deg)' : 'rotate(-90deg)';
 })();
-// ─────────────────────────────────────────────────────────────────────────────
-
-// ── Auto-copy ao selecionar texto ────────────────────────────────────────────
-document.addEventListener('mouseup', ()=>{
-  const sel = window.getSelection();
-  const text = sel ? sel.toString().trim() : '';
-  if(!text) return;
-  navigator.clipboard.writeText(text).then(()=>{
-    showToast('Copiado!', 'success');
-  }).catch(()=>{});
-});
 // ─────────────────────────────────────────────────────────────────────────────
 </script>
 </body>
