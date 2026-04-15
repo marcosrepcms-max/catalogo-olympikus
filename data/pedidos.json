@@ -924,5 +924,248 @@
     "lastAction": "status_changed",
     "lastActionLabel": "Pedido aprovado",
     "lastActionAt": "2026-04-15T14:57:00.178Z"
+  },
+  {
+    "id": "PED-20260415144443-660",
+    "createdAt": "2026-04-15T17:44:43.021Z",
+    "updatedAt": "2026-04-15T17:44:43.666Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "3616654",
+      "nome": "MARCOS"
+    },
+    "clienteCodigo": "60510",
+    "clienteNome": "Nova",
+    "prazo": "Z08 - 56 D",
+    "campanha": "CO689 +56DD OLY",
+    "observacoes": "",
+    "totals": {
+      "packs": 6,
+      "units": 66
+    },
+    "items": [
+      {
+        "codigo": "43299316",
+        "produto": "ACQUA",
+        "cor": "PRETO",
+        "gci": "7254752",
+        "ebm": "13159168",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "35",
+            "qty": 1
+          },
+          {
+            "size": "36",
+            "qty": 3
+          },
+          {
+            "size": "37",
+            "qty": 3
+          },
+          {
+            "size": "38",
+            "qty": 2
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": 46104
+      },
+      {
+        "codigo": "43286101",
+        "produto": "ATMOS",
+        "cor": "PRETO",
+        "gci": "7021837",
+        "ebm": "12957672",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "35",
+            "qty": 2
+          },
+          {
+            "size": "36",
+            "qty": 3
+          },
+          {
+            "size": "37",
+            "qty": 3
+          },
+          {
+            "size": "38",
+            "qty": 3
+          },
+          {
+            "size": "39",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": 46172
+      },
+      {
+        "codigo": "43632407",
+        "produto": "BRUMA",
+        "cor": "PRETO",
+        "gci": "5009739",
+        "ebm": "12790465",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "34",
+            "qty": 1
+          },
+          {
+            "size": "35",
+            "qty": 2
+          },
+          {
+            "size": "36",
+            "qty": 2
+          },
+          {
+            "size": "37",
+            "qty": 3
+          },
+          {
+            "size": "38",
+            "qty": 2
+          },
+          {
+            "size": "39",
+            "qty": 1
+          },
+          {
+            "size": "40",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": 46142
+      },
+      {
+        "codigo": "43632407",
+        "produto": "BRUMA",
+        "cor": "LAVAND",
+        "gci": "5235628",
+        "ebm": "13167977",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "34",
+            "qty": 1
+          },
+          {
+            "size": "35",
+            "qty": 2
+          },
+          {
+            "size": "36",
+            "qty": 3
+          },
+          {
+            "size": "37",
+            "qty": 3
+          },
+          {
+            "size": "38",
+            "qty": 2
+          },
+          {
+            "size": "39",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": 46103
+      },
+      {
+        "codigo": "43758365",
+        "produto": "CORRE MAX",
+        "cor": "PTO/PT",
+        "gci": "6874170",
+        "ebm": "13167979",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 6,
+        "totalUnits": 6,
+        "grade": [
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 2
+          },
+          {
+            "size": "41",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": 46142
+      },
+      {
+        "codigo": "43409454",
+        "produto": "EROS 2",
+        "cor": "BRANCO",
+        "gci": "4993025",
+        "ebm": "12757419",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "37",
+            "qty": 1
+          },
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 3
+          },
+          {
+            "size": "40",
+            "qty": 3
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 2
+          }
+        ],
+        "prevFaturamento": 46117
+      }
+    ]
   }
 ]
