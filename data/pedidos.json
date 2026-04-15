@@ -708,5 +708,111 @@
     "lastAction": "status_changed",
     "lastActionLabel": "Pedido aprovado",
     "lastActionAt": "2026-04-14T19:50:02.872Z"
+  },
+  {
+    "id": "PED-20260414180922-570",
+    "createdAt": "2026-04-14T21:09:22.987Z",
+    "updatedAt": "2026-04-14T21:09:43.199Z",
+    "status": "Aprovado",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "25471",
+      "nome": "WILLAME"
+    },
+    "clienteCodigo": "12345",
+    "clienteNome": "PARAIBA",
+    "prazo": "Z30 - 28/56/84 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 1,
+      "units": 12
+    },
+    "items": [
+      {
+        "codigo": "43649393",
+        "produto": "MARTE INFANTIL",
+        "cor": "PTRLEO",
+        "gci": "5245129",
+        "ebm": "13185974",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "30",
+            "qty": 1
+          },
+          {
+            "size": "31",
+            "qty": 1
+          },
+          {
+            "size": "32",
+            "qty": 2
+          },
+          {
+            "size": "33",
+            "qty": 2
+          },
+          {
+            "size": "34",
+            "qty": 2
+          },
+          {
+            "size": "35",
+            "qty": 2
+          },
+          {
+            "size": "36",
+            "qty": 2
+          }
+        ],
+        "prevFaturamento": "46132"
+      }
+    ],
+    "history": [
+      {
+        "eventId": "evt_1776200982680_06ohte",
+        "at": "2026-04-14T21:09:42.680Z",
+        "action": "status_changed",
+        "label": "Pedido aprovado",
+        "statusFrom": "Pendente",
+        "statusTo": "Aprovado",
+        "archivedFrom": false,
+        "archivedTo": false,
+        "clientCode": "12345",
+        "prepostoCodigo": "25471",
+        "prepostoNome": "WILLAME",
+        "notes": "",
+        "meta": {
+          "itemsCount": 1,
+          "units": 12
+        }
+      },
+      {
+        "eventId": "evt_1776200970288_t8vnqq",
+        "at": "2026-04-14T21:09:30.287Z",
+        "action": "created",
+        "label": "Pedido criado",
+        "statusFrom": null,
+        "statusTo": "Pendente",
+        "archivedFrom": null,
+        "archivedTo": false,
+        "clientCode": "12345",
+        "prepostoCodigo": "25471",
+        "prepostoNome": "WILLAME",
+        "notes": "",
+        "meta": {
+          "itemsCount": 1,
+          "units": 12
+        }
+      }
+    ],
+    "lastAction": "status_changed",
+    "lastActionLabel": "Pedido aprovado",
+    "lastActionAt": "2026-04-14T21:09:42.680Z"
   }
 ]
