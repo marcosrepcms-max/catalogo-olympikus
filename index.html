@@ -400,20 +400,45 @@
           </div>
           <button class="focus-ring h-11 w-11 rounded-full border border-slate-200 bg-white" data-close-orders="true"><i class="fa-solid fa-xmark"></i></button>
         </div>
+        <!-- Busca -->
+        <div class="relative mt-3">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+          <input id="ordersSearchInput" type="text" placeholder="Buscar por cliente ou produto..."
+            class="focus-ring w-full rounded-full border border-slate-200 bg-slate-50 pl-8 pr-4 py-2.5 text-sm font-semibold"
+            oninput="renderOrders()"/>
+        </div>
       </div>
       <div class="flex-1 overflow-y-auto px-4 py-4">
         <div id="ordersEmptyState" class="hidden rounded-[28px] border border-slate-200 bg-white p-8 text-center">
           <div class="mx-auto h-14 w-14 rounded-2xl bg-slate-100 text-slate-500 flex items-center justify-center text-2xl"><i class="fa-regular fa-rectangle-list"></i></div>
-          <div class="mt-4 text-xl font-extrabold">Nenhum pedido salvo</div>
-          <div class="mt-1 text-slate-500">Os pedidos ativos e o histórico do seu preposto aparecerão aqui.</div>
+          <div class="mt-4 text-xl font-extrabold">Nenhum pedido encontrado</div>
+          <div class="mt-1 text-slate-500">Tente outro filtro ou termo de busca.</div>
         </div>
-        <div class="mb-4 flex items-center justify-between gap-3">
-          <div class="inline-flex rounded-full border border-slate-200 bg-white p-1">
-            <button id="btnOrdersScopeActive" class="focus-ring rounded-full px-3 py-2 text-sm font-bold text-slate-700">Ativos</button>
-            <button id="btnOrdersScopeHistory" class="focus-ring rounded-full px-3 py-2 text-sm font-bold text-slate-700">Histórico</button>
-            <button id="btnOrdersScopeAll" class="focus-ring rounded-full px-3 py-2 text-sm font-bold text-slate-700">Todos</button>
+        <div class="mb-4 flex items-center justify-between gap-3 flex-wrap">
+          <div class="inline-flex rounded-full border border-slate-200 bg-white p-1 gap-1">
+            <button id="btnOrdersScopePendente" data-scope="Pendente"
+              class="focus-ring orders-scope-btn rounded-full px-3 py-2 text-sm font-bold text-slate-700">
+              <span class="inline-block w-2 h-2 rounded-full bg-amber-500 mr-1"></span>Pendente
+            </button>
+            <button id="btnOrdersScopeAprovado" data-scope="Aprovado"
+              class="focus-ring orders-scope-btn rounded-full px-3 py-2 text-sm font-bold text-slate-700">
+              <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 mr-1"></span>Aprovado
+            </button>
+            <button id="btnOrdersScopeCancelado" data-scope="Cancelado"
+              class="focus-ring orders-scope-btn rounded-full px-3 py-2 text-sm font-bold text-slate-700">
+              <span class="inline-block w-2 h-2 rounded-full bg-rose-500 mr-1"></span>Cancelado
+            </button>
           </div>
-          <div class="text-xs font-bold text-slate-400">Sem exclusão manual</div>
+          <div class="flex gap-2">
+            <button id="btnOrdersExportXlsx"
+              class="focus-ring rounded-full border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs font-extrabold text-emerald-700 flex items-center gap-1.5">
+              <i class="fa-solid fa-file-excel text-[11px]"></i> XLSX
+            </button>
+            <button id="btnOrdersExportPdf"
+              class="focus-ring rounded-full bg-[var(--brand)] px-3 py-2 text-xs font-extrabold text-white flex items-center gap-1.5">
+              <i class="fa-solid fa-file-pdf text-[11px]"></i> PDF
+            </button>
+          </div>
         </div>
         <div id="ordersList" class="space-y-3"></div>
       </div>
@@ -875,10 +900,21 @@ function saveOrdersStorage(){ localStorage.setItem(STORAGE_KEYS.orders, JSON.str
 function saveViewMode(){ localStorage.setItem(STORAGE_KEYS.view, STATE.viewMode); }
 function getLastPreposto(){ return localStorage.getItem(STORAGE_KEYS.lastPreposto) || ''; }
 function setLastPreposto(value){ localStorage.setItem(STORAGE_KEYS.lastPreposto, value || ''); }
-function getOrdersScope(){ return localStorage.getItem(STORAGE_KEYS.ordersScope) || 'active'; }
-function setOrdersScope(value){ localStorage.setItem(STORAGE_KEYS.ordersScope, value || 'active'); }
+function getOrdersScope(){ return localStorage.getItem(STORAGE_KEYS.ordersScope) || 'Pendente'; }
+function setOrdersScope(value){ localStorage.setItem(STORAGE_KEYS.ordersScope, value || 'Pendente'); }
 
-// ── SESSÃO DO VENDEDOR ────────────────────────────────────────────────────────
+function orderMatchesScope(order, scope){
+  return (order.status || 'Pendente') === scope;
+}
+
+function updateOrdersScopeButtons(){
+  const scope = getOrdersScope();
+  document.querySelectorAll('.orders-scope-btn').forEach(btn => {
+    const active = btn.dataset.scope === scope;
+    btn.classList.toggle('bg-slate-100', active);
+    btn.classList.toggle('text-[var(--brand)]', active);
+  });
+}
 function getVendedorSession(){ return readJsonSafe(STORAGE_KEYS.vendedorSession, null); }
 function setVendedorSession(s){ localStorage.setItem(STORAGE_KEYS.vendedorSession, JSON.stringify(s)); }
 function clearVendedorSession(){ localStorage.removeItem(STORAGE_KEYS.vendedorSession); }
@@ -1275,25 +1311,7 @@ function isHistoryStatus(status){
 function isOrderHistory(order){
   return Boolean(order?.archived) || isHistoryStatus(order?.status);
 }
-function orderMatchesScope(order, scope){
-  if(scope === 'history') return isOrderHistory(order);
-  if(scope === 'all') return true;
-  return !isOrderHistory(order);
-}
-function updateOrdersScopeButtons(){
-  const scope = getOrdersScope();
-  const map = {
-    active: $('btnOrdersScopeActive'),
-    history: $('btnOrdersScopeHistory'),
-    all: $('btnOrdersScopeAll')
-  };
-  Object.entries(map).forEach(([key, el])=>{
-    if(!el) return;
-    const active = key === scope;
-    el.classList.toggle('bg-slate-100', active);
-    el.classList.toggle('text-[var(--brand)]', active);
-  });
-}
+// ── SESSÃO DO VENDEDOR ────────────────────────────────────────────────────────
 function loadLocalState(){
   const savedCart = readJsonSafe(STORAGE_KEYS.cart, []);
   STATE.cart = new Map(savedCart.map(item => [item.key, item]));
@@ -1364,10 +1382,10 @@ function currentCartAmount(key){ return Number(STATE.cart.get(key)?.amount || 0)
 
 // Retorna todas as variantes (linhas DISPO) do mesmo produto+cor dentro da view atual
 function getItemSiblings(item){
-  return STATE.view.filter(x => x.codigo === item.codigo && x.cor === item.cor);
+  return STATE.view.filter(x => normalizeText(x.produto) === normalizeText(item.produto) && normalizeText(x.cor) === normalizeText(item.cor));
 }
 // Retorna a "chave de grupo" usada para agrupar no card
-function groupKey(item){ return `${item.codigo}||${item.cor}`; }
+function groupKey(item){ return `${normalizeText(item.produto)}||${normalizeText(item.cor)}`; }
 function remainingUnits(item){
   const reservedLocal = item.mode === 'boxed'
     ? currentCartAmount(item.key) * item.packSize
@@ -1778,12 +1796,26 @@ function renderOrders(){
   const currentPreposto = getLastPreposto();
   const scope = getOrdersScope();
   updateOrdersScopeButtons();
+  const searchQ = normalizeText(($('ordersSearchInput')?.value || '').trim());
+
   let orders = [...STATE.orders]
-    .sort((a,b)=>new Date(b.createdAt) - new Date(a.createdAt))
-    .filter(order => orderMatchesScope(order, scope));
+    .sort((a,b)=>new Date(b.createdAt) - new Date(a.createdAt));
   if(currentPreposto){
     orders = orders.filter(order => prepostoValueFromOrder(order) === currentPreposto);
   }
+  // Filtro por status
+  orders = orders.filter(order => orderMatchesScope(order, scope));
+  // Filtro por busca
+  if(searchQ){
+    orders = orders.filter(order => {
+      const haystack = normalizeText([
+        order.clienteCodigo, order.clienteNome,
+        ...(order.items||[]).map(i=>i.produto+' '+i.cor)
+      ].join(' '));
+      return haystack.includes(searchQ);
+    });
+  }
+
   $('ordersEmptyState').classList.toggle('hidden', orders.length !== 0);
   const list = $('ordersList');
   list.innerHTML = '';
@@ -1792,24 +1824,24 @@ function renderOrders(){
     const card = document.createElement('div');
     card.className = 'rounded-[28px] border border-slate-200 bg-white p-4';
     const created = new Date(order.createdAt);
-    const statusClass = (order.status === 'Aprovado' || order.status === 'Finalizado') ? 'chip-blue' : 'chip-gray';
+    const totalUnits = (order.items||[]).reduce((s,i)=>s+Number(i.totalUnits||0),0);
+    const clienteLabel = order.clienteNome
+      ? `${order.clienteCodigo} — ${order.clienteNome}`
+      : order.clienteCodigo || '—';
+    const statusClass = order.status === 'Aprovado' ? 'chip-blue'
+      : order.status === 'Cancelado' ? 'chip-gray' : 'chip-gray';
     card.innerHTML = `
       <div class="flex items-start justify-between gap-3">
-        <div>
-          <div class="text-base font-extrabold">${safeHtml(order.id)}</div>
+        <div class="min-w-0">
+          <div class="text-base font-extrabold truncate">${safeHtml(clienteLabel)}</div>
           <div class="mt-1 text-sm text-slate-500">${created.toLocaleDateString('pt-BR')} às ${created.toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'})}</div>
           <div class="mt-2 flex flex-wrap gap-2 text-xs font-bold">
             <span class="chip chip-gray">${safeHtml(order.preposto?.nome || '')}</span>
-            <span class="chip chip-blue">Cliente ${safeHtml(order.clienteCodigo || '')}</span>
-            <span class="chip chip-gray">${safeHtml(order.prazo || '')}</span>
             ${order.campanha ? `<span class="chip chip-blue">${safeHtml(order.campanha)}</span>` : ''}
+            ${totalUnits > 0 ? `<span class="chip" style="background:#EEEDFE;color:#3C3489;border-color:#AFA9EC">${totalUnits} pares</span>` : ''}
             <span class="chip ${statusClass}">${safeHtml(order.status || 'Pendente')}</span>
             ${order.archived ? `<span class="chip chip-gray">Arquivado</span>` : ''}
           </div>
-        </div>
-        <div class="text-right">
-          <div class="chip chip-gray">${order.totals?.packs || 0} volumes</div>
-          <div class="mt-2 chip chip-blue">${order.totals?.units || 0} itens</div>
         </div>
       </div>
       <div class="mt-4 space-y-3">
@@ -1821,7 +1853,7 @@ function renderOrders(){
                 <div class="mt-1 text-xs text-slate-500">${safeHtml(item.codigo)} · ${safeHtml(item.cor)} · Prev. Faturamento ${safeHtml(formatDate(item.prevFaturamento || ''))}</div>
               </div>
               <div class="text-right text-sm font-extrabold">
-                ${item.mode === 'boxed' ? `${item.amount} caixa${item.amount > 1 ? 's' : ''}` : `${item.amount} unidade${item.amount > 1 ? 's' : ''}`}
+                ${item.mode === 'boxed' ? `${item.amount} cx` : `${item.amount} un`}
               </div>
             </div>
             ${item.grade?.length ? `<div class="mt-2 flex flex-wrap gap-2">${gradeHtml(item.grade)}</div>` : ''}
@@ -1832,6 +1864,7 @@ function renderOrders(){
     list.appendChild(card);
   }
 }
+
 function openCart(){
   $('cartDrawerWrap').classList.remove('hidden');
   requestAnimationFrame(()=> $('cartDrawer').classList.add('open'));
@@ -1844,6 +1877,122 @@ function closeCart(){
     document.body.style.overflow = '';
   }, 240);
 }
+function getOrdersForExport(){
+  const currentPreposto = getLastPreposto();
+  const scope = getOrdersScope();
+  let orders = [...STATE.orders].sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));
+  if(currentPreposto) orders = orders.filter(o => prepostoValueFromOrder(o) === currentPreposto);
+  return orders.filter(o => orderMatchesScope(o, scope));
+}
+
+function buildExportRows(orders){
+  const rows = [['Nº','Vendedor','Cod. Cliente','Nome','Prazo','Campanha','Qtde','EBM','GCI','Descrição','Cor','Prev Fat','Status','Grade']];
+  let n = 0;
+  for(const o of orders){
+    const vendedor = o.preposto?.nome || o.preposto?.codigo || '—';
+    const codCliente = o.clienteCodigo || '—';
+    const nomeCliente = o.clienteNome || '—';
+    const prazo = o.prazo || '—';
+    const campanha = (o.campanha||'').replace(/\s*\bOLY\b\s*/gi,'').trim() || '—';
+    const status = o.status || 'Pendente';
+    const items = o.items || [];
+    if(!items.length){
+      n++;
+      rows.push([n, vendedor, codCliente, nomeCliente, prazo, campanha,'—','—','—','—','—','—', status,'—']);
+    } else {
+      for(const item of items){
+        n++;
+        const units = Number(item.totalUnits||0)||(item.grade||[]).reduce((s,g)=>s+Number(g.qty||0),0);
+        const prevFat = formatDate(item.prevFaturamento) || '—';
+        const grade = Array.isArray(item.grade)&&item.grade.length ? item.grade.map(g=>`${g.size}(${g.qty})`).join(' ') : '—';
+        rows.push([n, vendedor, codCliente, nomeCliente, prazo, campanha, units, item.ebm||'—', item.gci||'—', item.produto||'—', item.cor||'—', prevFat, status, grade]);
+      }
+    }
+  }
+  return rows;
+}
+
+function ordersExportXlsx(){
+  const orders = getOrdersForExport();
+  if(!orders.length){ toast('Nenhum pedido para exportar'); return; }
+  try{
+    const rows = buildExportRows(orders);
+    const ws = XLSX.utils.aoa_to_sheet(rows);
+    ws['!cols'] = [4,18,12,20,20,16,6,12,10,24,10,12,10,28].map(w=>({wch:w}));
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Pedidos');
+    const now = new Date();
+    XLSX.writeFile(wb, `pedidos_${getOrdersScope().toLowerCase()}_${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}.xlsx`);
+    toast('XLSX exportado com sucesso');
+  }catch(err){ console.error(err); toast('Erro ao exportar XLSX'); }
+}
+
+async function ordersExportPdf(){
+  const orders = getOrdersForExport();
+  if(!orders.length){ toast('Nenhum pedido para exportar'); return; }
+  const btn = $('btnOrdersExportPdf');
+  const prev = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+  try{
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ orientation:'landscape', unit:'mm', format:'a4' });
+    const pw = doc.internal.pageSize.getWidth();
+    const ph = doc.internal.pageSize.getHeight();
+    const now = new Date();
+    const session = getVendedorSession();
+    const nomeVendedor = session?.nome || 'Vendedor';
+
+    doc.setFillColor(40,54,212); doc.rect(0,0,pw,16,'F');
+    doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(11);
+    doc.text('REPASSE OLYMPIKUS', 12, 10);
+    doc.setFont('helvetica','normal'); doc.setFontSize(7.5);
+    doc.text(`${nomeVendedor} · ${getOrdersScope()} · ${now.toLocaleDateString('pt-BR')}`, pw-12, 10, {align:'right'});
+
+    const cols = [
+      {label:'Nº',w:8,align:'right'},{label:'Vendedor',w:20},{label:'Cod.Cli',w:14},
+      {label:'Nome',w:22},{label:'Prazo',w:16},{label:'Campanha',w:18},
+      {label:'Qtde',w:10,align:'right'},{label:'EBM',w:15},{label:'GCI',w:13},
+      {label:'Descrição',w:36},{label:'Cor',w:15},{label:'Prev Fat',w:15},
+      {label:'Status',w:15},{label:'Grade',w:36}
+    ];
+    const startX=12; let y=22; const rowH=7;
+
+    function drawHdr(){
+      doc.setFillColor(248,250,252); doc.rect(startX,y,pw-24,rowH,'F');
+      doc.setFont('helvetica','bold'); doc.setFontSize(6.5); doc.setTextColor(71,85,105);
+      let cx=startX+1.5;
+      for(const col of cols){ doc.text(col.label, col.align==='right'?cx+col.w-2:cx, y+4.8, {align:col.align==='right'?'right':'left'}); cx+=col.w; }
+      y+=rowH;
+    }
+    drawHdr();
+    doc.setFont('helvetica','normal'); doc.setFontSize(6.5);
+    const dataRows = buildExportRows(orders).slice(1);
+    for(const row of dataRows){
+      if(y>ph-14){ doc.addPage(); y=10; drawHdr(); }
+      doc.setDrawColor(237,242,247); doc.line(startX,y,pw-12,y);
+      let cx=startX+1.5;
+      for(let i=0;i<cols.length;i++){
+        const col=cols[i];
+        const val=String(row[i]??'');
+        const tx=col.align==='right'?cx+col.w-2:cx;
+        if(i===12){ const s=val; doc.setTextColor(s==='Aprovado'?[21,128,61]:s==='Cancelado'?[185,28,28]:[180,83,9]); }
+        else if(i===8&&val&&val!=='—'){ doc.setTextColor(40,54,212); }
+        else { doc.setTextColor(15,23,42); }
+        doc.text(doc.splitTextToSize(val,col.w-2)[0]||'', tx, y+4.8, {align:col.align==='right'?'right':'left'});
+        cx+=col.w;
+      }
+      y+=rowH;
+    }
+    doc.setDrawColor(40,54,212); doc.line(startX,y,pw-12,y);
+    doc.setFont('helvetica','normal'); doc.setFontSize(6.5); doc.setTextColor(148,163,184);
+    doc.text(`Gerado em ${now.toLocaleDateString('pt-BR')} às ${now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}`, 12, ph-5);
+    doc.text('Repasse Olympikus', pw-12, ph-5, {align:'right'});
+    doc.save(`pedidos_${getOrdersScope().toLowerCase()}_${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}.pdf`);
+    toast('PDF exportado com sucesso');
+  }catch(err){ console.error(err); toast('Erro ao exportar PDF'); }
+  finally{ btn.disabled=false; btn.innerHTML=prev; }
+}
+
 async function openOrders(){
   try{
     await refreshOrdersFromRemote();
@@ -2507,9 +2656,11 @@ function bindEvents(){
 
   $('btnViewCards').addEventListener('click', ()=>{ STATE.viewMode = 'cards'; saveViewMode(); renderCatalog(); });
   $('btnViewList').addEventListener('click', ()=>{ STATE.viewMode = 'list'; saveViewMode(); renderCatalog(); });
-  $('btnOrdersScopeActive').addEventListener('click', ()=>{ setOrdersScope('active'); renderOrders(); });
-  $('btnOrdersScopeHistory').addEventListener('click', ()=>{ setOrdersScope('history'); renderOrders(); });
-  $('btnOrdersScopeAll').addEventListener('click', ()=>{ setOrdersScope('all'); renderOrders(); });
+  $('btnOrdersScopePendente').addEventListener('click', ()=>{ setOrdersScope('Pendente'); renderOrders(); });
+  $('btnOrdersScopeAprovado').addEventListener('click', ()=>{ setOrdersScope('Aprovado'); renderOrders(); });
+  $('btnOrdersScopeCancelado').addEventListener('click', ()=>{ setOrdersScope('Cancelado'); renderOrders(); });
+  $('btnOrdersExportXlsx').addEventListener('click', ordersExportXlsx);
+  $('btnOrdersExportPdf').addEventListener('click', ordersExportPdf);
 
   $('cartDrawerWrap').addEventListener('click', (e)=>{ if(e.target.closest('[data-close-cart="true"]')) closeCart(); });
   $('ordersDrawerWrap').addEventListener('click', (e)=>{ if(e.target.closest('[data-close-orders="true"]')) closeOrders(); });
