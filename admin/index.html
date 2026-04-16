@@ -2087,12 +2087,6 @@ function atualizarBanner(){
   }
 }
 
-async function workerUpdateOrder(order){
-  await fetch('https://repasse-worker-cms.marcosrep-cms.workers.dev', {
-    method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(order)
-  });
-}
-
 async function marcarComoExportado(orders){
   const aprovados = orders.filter(o => canonicalStatus(o.status) === 'Aprovado' && !o.exportedAt);
   if(!aprovados.length) return;
