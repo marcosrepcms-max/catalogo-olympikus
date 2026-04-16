@@ -8,7 +8,7 @@
     "isDuplicate": false,
     "preposto": {
       "codigo": "25745",
-      "nome": "LÃO"
+      "nome": "LÃÂO"
     },
     "clienteCodigo": "80931",
     "clienteNome": "Ban Ban",
@@ -63,8 +63,8 @@
   {
     "id": "PED-20260416122405-972",
     "createdAt": "2026-04-16T15:24:05.379Z",
-    "updatedAt": "2026-04-16T15:24:06.187Z",
-    "status": "Pendente",
+    "updatedAt": "2026-04-16T15:25:14.030Z",
+    "status": "Aprovado",
     "archived": false,
     "isDuplicate": false,
     "preposto": {
@@ -125,7 +125,7 @@
             "qty": 1
           }
         ],
-        "prevFaturamento": 46141
+        "prevFaturamento": "46141"
       },
       {
         "codigo": "43263432",
@@ -163,8 +163,49 @@
             "qty": 1
           }
         ],
-        "prevFaturamento": 46113
+        "prevFaturamento": "46113"
       }
-    ]
+    ],
+    "history": [
+      {
+        "eventId": "evt_1776353113665_1v0p4f",
+        "at": "2026-04-16T15:25:13.665Z",
+        "action": "status_changed",
+        "label": "Pedido aprovado",
+        "statusFrom": "Pendente",
+        "statusTo": "Aprovado",
+        "archivedFrom": false,
+        "archivedTo": false,
+        "clientCode": "61700",
+        "prepostoCodigo": "109839",
+        "prepostoNome": "MARIANA",
+        "notes": "",
+        "meta": {
+          "itemsCount": 2,
+          "units": 24
+        }
+      },
+      {
+        "eventId": "evt_1776353065159_4gq7iu",
+        "at": "2026-04-16T15:24:25.159Z",
+        "action": "created",
+        "label": "Pedido criado",
+        "statusFrom": null,
+        "statusTo": "Pendente",
+        "archivedFrom": null,
+        "archivedTo": false,
+        "clientCode": "61700",
+        "prepostoCodigo": "109839",
+        "prepostoNome": "MARIANA",
+        "notes": "",
+        "meta": {
+          "itemsCount": 2,
+          "units": 24
+        }
+      }
+    ],
+    "lastAction": "status_changed",
+    "lastActionLabel": "Pedido aprovado",
+    "lastActionAt": "2026-04-16T15:25:13.665Z"
   }
 ]
