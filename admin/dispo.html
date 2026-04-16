@@ -824,23 +824,12 @@ async function loadDispo(){
 // ── RENDER ────────────────────────────────────────────────────────────────────
 
 function computeRows(){
-  const { pendMap, aprovMap } = buildImpactMap();
   const q = normalizeText(STATE.searchQuery).toLowerCase();
 
-  return STATE.dispoRows.map(row => {
-    const mapKey = sanitizeDisplayText(String(row.gci||'')) || sanitizeDisplayText(row.codigo||'');
-    const pendente = pendMap.get(mapKey) || 0;
-    const aprovado = aprovMap.get(mapKey) || 0;
-    const saldoReal = Number(row.saldo || 0) - pendente - aprovado;
-    const situacao = getSituacao(saldoReal, Number(row.saldo || 0));
-    return { ...row, pendente, aprovado, saldoReal, situacao };
-  }).filter(row => {
+  return computeAllRows().filter(row => {
     const f = STATE.activeFilter;
-    // filtro ocultos: mostra só ocultos
     if(f === 'ocultos') return isOculto(row);
-    // demais filtros: excluir ocultos
     if(isOculto(row)) return false;
-    // search
     if(q){
       const hay = `${row.codigo} ${row.produto} ${row.cor}`.toLowerCase();
       if(!hay.includes(q)) return false;
