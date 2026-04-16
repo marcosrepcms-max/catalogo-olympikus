@@ -8,7 +8,7 @@
     "isDuplicate": false,
     "preposto": {
       "codigo": "25745",
-      "nome": "LÉO"
+      "nome": "LÃO"
     },
     "clienteCodigo": "80931",
     "clienteNome": "Ban Ban",
@@ -71,7 +71,7 @@
         "archivedTo": false,
         "clientCode": "80931",
         "prepostoCodigo": "25745",
-        "prepostoNome": "LÉO",
+        "prepostoNome": "LÃO",
         "notes": "",
         "meta": {
           "itemsCount": 1,
@@ -89,7 +89,7 @@
         "archivedTo": false,
         "clientCode": "80931",
         "prepostoCodigo": "25745",
-        "prepostoNome": "LÉO",
+        "prepostoNome": "LÃO",
         "notes": "",
         "meta": {
           "itemsCount": 1,
@@ -100,5 +100,74 @@
     "lastAction": "status_changed",
     "lastActionLabel": "Pedido aprovado",
     "lastActionAt": "2026-04-16T17:03:23.968Z"
+  },
+  {
+    "id": "PED-20260416161717-727",
+    "createdAt": "2026-04-16T19:17:17.737Z",
+    "updatedAt": "2026-04-16T19:17:18.117Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "3616654",
+      "nome": "MARCOS"
+    },
+    "clienteCodigo": "18529",
+    "clienteNome": "TALENTUS",
+    "prazo": "Z30 - 28/56/84 D",
+    "campanha": "CO689 +56DD OLY",
+    "observacoes": "",
+    "totals": {
+      "packs": 2,
+      "units": 24
+    },
+    "items": [
+      {
+        "codigo": "43242437",
+        "produto": "PASSO",
+        "cor": "CZASTE",
+        "gci": "5215319",
+        "ebm": "13137557",
+        "amount": 2,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 24,
+        "grade": [
+          {
+            "size": "37",
+            "qty": 1
+          },
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 2
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 2
+          },
+          {
+            "size": "43",
+            "qty": 1
+          },
+          {
+            "size": "44",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": 46202
+      }
+    ]
   }
 ]
