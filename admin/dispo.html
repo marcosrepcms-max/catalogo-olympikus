@@ -696,8 +696,6 @@ function getItemUnits(item){
 }
 
 function buildImpactMap(){
-  // pendente: reserva saldo mas ainda não confirmado
-  // aprovado: confirmado
   const pendMap = new Map();
   const aprovMap = new Map();
 
@@ -707,14 +705,15 @@ function buildImpactMap(){
     if(status === 'Cancelado') continue;
 
     for(const item of (order.items || [])){
+      const gci = sanitizeDisplayText(String(item.gci || item.ebm || ''));
       const codigo = sanitizeDisplayText(item.codigo);
-      if(!codigo) continue;
+      const key = gci || codigo;
+      if(!key) continue;
       const units = getItemUnits(item);
-
       if(status === 'Pendente'){
-        pendMap.set(codigo, (pendMap.get(codigo) || 0) + units);
+        pendMap.set(key, (pendMap.get(key) || 0) + units);
       } else if(status === 'Aprovado'){
-        aprovMap.set(codigo, (aprovMap.get(codigo) || 0) + units);
+        aprovMap.set(key, (aprovMap.get(key) || 0) + units);
       }
     }
   }
@@ -829,8 +828,9 @@ function computeRows(){
   const q = normalizeText(STATE.searchQuery).toLowerCase();
 
   return STATE.dispoRows.map(row => {
-    const pendente = pendMap.get(row.codigo) || 0;
-    const aprovado = aprovMap.get(row.codigo) || 0;
+    const mapKey = sanitizeDisplayText(String(row.gci||'')) || sanitizeDisplayText(row.codigo||'');
+    const pendente = pendMap.get(mapKey) || 0;
+    const aprovado = aprovMap.get(mapKey) || 0;
     const saldoReal = Number(row.saldo || 0) - pendente - aprovado;
     const situacao = getSituacao(saldoReal, Number(row.saldo || 0));
     return { ...row, pendente, aprovado, saldoReal, situacao };
@@ -926,8 +926,9 @@ function renderKpis(rows){
 function computeAllRows(){
   const { pendMap, aprovMap } = buildImpactMap();
   const allRows = STATE.dispoRows.map(row => {
-    const pendente = pendMap.get(row.codigo) || 0;
-    const aprovado = aprovMap.get(row.codigo) || 0;
+    const mapKey = sanitizeDisplayText(String(row.gci||'')) || sanitizeDisplayText(row.codigo||'');
+    const pendente = pendMap.get(mapKey) || 0;
+    const aprovado = aprovMap.get(mapKey) || 0;
     const saldoReal = Number(row.saldo || 0) - pendente - aprovado;
     const situacao = getSituacao(saldoReal, Number(row.saldo || 0));
     return { ...row, pendente, aprovado, saldoReal, situacao };
@@ -1036,7 +1037,7 @@ function renderDispo(){
               ? `<button class="icon-btn reexibir btn-reexibir" data-idx="${idx}" title="Reexibir"><i class="fa-solid fa-eye" style="font-size:12px"></i></button>`
               : `<button class="icon-btn desm btn-desmembrar" data-idx="${idx}" title="Desmembrar"><i class="fa-solid fa-table-list" style="font-size:12px"></i></button>
                  <button class="icon-btn ocultar btn-ocultar" data-idx="${idx}" title="Ocultar"><i class="fa-solid fa-eye-slash" style="font-size:12px"></i></button>
-                 ${row._antecipavel ? `<button class="btn-antecipa-row ${row._antecipavel.gradeDiferente ? 'btn-antecipa-warn' : 'btn-antecipa-ok'}" data-idx="${idx}"><i class="fa-solid fa-angles-up text-[10px]"></i>${row._antecipavel.gradeDiferente ? '⚠ Grade diferente' : `${row._antecipavel.pedidosVinculados.length} pedido${row._antecipavel.pedidosVinculados.length>1?'s':''} — antecipar`}</button>` : ''}`
+                 ${row._antecipavel ? `<button class="btn-antecipa-row ${row._antecipavel.gradeDiferente ? 'btn-antecipa-warn' : 'btn-antecipa-ok'}" data-gci="${safeHtml(String(row.gci||''))}"><i class="fa-solid fa-angles-up text-[10px]"></i>${row._antecipavel.gradeDiferente ? '⚠ Grade diferente' : `${row._antecipavel.pedidosVinculados.length} pedido${row._antecipavel.pedidosVinculados.length>1?'s':''} — antecipar`}</button>` : ''}`
             }
           </div>
         </td>
@@ -1341,9 +1342,9 @@ function gradePillsHtml(grade, diffGrade){
   }).join('');
 }
 
-function openAntecipacaoModal(rowIdx){
+function openAntecipacaoModal(gci){
   const allRows = computeAllRows();
-  const row = allRows[rowIdx];
+  const row = allRows.find(r => sanitizeDisplayText(String(r.gci||'')) === sanitizeDisplayText(String(gci||'')));
   if(!row?._antecipavel) return;
   const { novaLinha, pedidosVinculados, gradeAtual, gradeNova, gradeDiferente } = row._antecipavel;
   _antecipacaoState = { row, novaLinha, pedidosVinculados, gradeDiferente };
@@ -1584,8 +1585,7 @@ $('dispoTableBody').addEventListener('click', (e)=>{
   }
   const btnAnt = e.target.closest('.btn-antecipa-row');
   if(btnAnt){
-    const idx = parseInt(btnAnt.dataset.idx, 10);
-    openAntecipacaoModal(idx);
+    openAntecipacaoModal(btnAnt.dataset.gci);
   }
 });
 
