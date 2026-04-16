@@ -1,1 +1,185 @@
-[]
+[
+  {
+    "id": "PED-20260416092517-728",
+    "createdAt": "2026-04-16T12:25:17.810Z",
+    "updatedAt": "2026-04-16T12:26:01.287Z",
+    "status": "Aprovado",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "3616654",
+      "nome": "MARCOS"
+    },
+    "clienteCodigo": "3834566",
+    "clienteNome": "Degraus",
+    "prazo": "Z30 - 28/56/84 D",
+    "campanha": "CO689 +56DD OLY",
+    "observacoes": "",
+    "totals": {
+      "packs": 3,
+      "units": 36
+    },
+    "items": [
+      {
+        "codigo": "43341472",
+        "produto": "CHALLENGER 6",
+        "cor": "ARTMRF",
+        "gci": "7268502",
+        "ebm": "13172698",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "40",
+            "qty": 2
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 3
+          },
+          {
+            "size": "43",
+            "qty": 3
+          },
+          {
+            "size": "44",
+            "qty": 2
+          }
+        ],
+        "prevFaturamento": "46132"
+      },
+      {
+        "codigo": "43407464",
+        "produto": "SOMA 2",
+        "cor": "ALGBEG",
+        "gci": "4991589",
+        "ebm": "12754260",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "37",
+            "qty": 1
+          },
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 2
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 2
+          },
+          {
+            "size": "43",
+            "qty": 1
+          },
+          {
+            "size": "44",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "46117"
+      },
+      {
+        "codigo": "43407464",
+        "produto": "SOMA 2",
+        "cor": "ALGBEG",
+        "gci": "4991874",
+        "ebm": "12754722",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "35",
+            "qty": 1
+          },
+          {
+            "size": "36",
+            "qty": 2
+          },
+          {
+            "size": "37",
+            "qty": 3
+          },
+          {
+            "size": "38",
+            "qty": 3
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "46147"
+      }
+    ],
+    "history": [
+      {
+        "eventId": "evt_1776342338048_lad5jx",
+        "at": "2026-04-16T12:25:38.048Z",
+        "action": "status_changed",
+        "label": "Pedido aprovado",
+        "statusFrom": "Pendente",
+        "statusTo": "Aprovado",
+        "archivedFrom": false,
+        "archivedTo": false,
+        "clientCode": "3834566",
+        "prepostoCodigo": "3616654",
+        "prepostoNome": "MARCOS",
+        "notes": "",
+        "meta": {
+          "itemsCount": 3,
+          "units": 36
+        }
+      },
+      {
+        "eventId": "evt_1776342326740_a1myg0",
+        "at": "2026-04-16T12:25:26.740Z",
+        "action": "created",
+        "label": "Pedido criado",
+        "statusFrom": null,
+        "statusTo": "Pendente",
+        "archivedFrom": null,
+        "archivedTo": false,
+        "clientCode": "3834566",
+        "prepostoCodigo": "3616654",
+        "prepostoNome": "MARCOS",
+        "notes": "",
+        "meta": {
+          "itemsCount": 3,
+          "units": 36
+        }
+      }
+    ],
+    "lastAction": "status_changed",
+    "lastActionLabel": "Pedido aprovado",
+    "lastActionAt": "2026-04-16T12:25:38.048Z",
+    "exportedAt": "2026-04-16T12:26:00.997Z"
+  }
+]
