@@ -2345,9 +2345,11 @@ async function loadCatalog(){
         const oData = await oRes.json();
         STATE.ocultos = new Set(Array.isArray(oData) ? oData : []);
         STATE.raw = STATE.raw.filter(item => {
-          const key = `${item.codigo}|${item.cor}|${item.gci}`;
-          const keyNorm = `${sanitizeDisplayText(item.codigo)}|${sanitizeDisplayText(item.cor)}|${sanitizeDisplayText(String(item.gci||''))}`;
-          return !STATE.ocultos.has(key) && !STATE.ocultos.has(keyNorm);
+          const cod = sanitizeDisplayText(String(item.codigo||'')).toUpperCase();
+          const cor = sanitizeDisplayText(String(item.cor||'')).toUpperCase();
+          const gci = String(item.gci||'').trim();
+          const key = `${cod}|${cor}|${gci}`;
+          return !STATE.ocultos.has(key);
         });
       }
     }catch(_){ /* ignora erro de ocultos — exibe tudo */ }

@@ -1460,7 +1460,12 @@ function renderBannerAntecipacao(allRows){
 
 // ── OCULTAR / REEXIBIR ───────────────────────────────────────────────────────
 
-function ocultarKey(row){ return `${row.codigo}|${row.cor}|${row.gci}`; }
+function ocultarKey(row){
+  const cod = sanitizeDisplayText(String(row.codigo||'')).toUpperCase();
+  const cor = sanitizeDisplayText(String(row.cor||'')).toUpperCase();
+  const gci = String(row.gci||'').trim();
+  return `${cod}|${cor}|${gci}`;
+}
 
 function isOculto(row){ return STATE.ocultos.has(ocultarKey(row)); }
 
