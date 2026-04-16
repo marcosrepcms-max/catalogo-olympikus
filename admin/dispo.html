@@ -1023,9 +1023,9 @@ function renderDispo(){
         <td>
           <div class="btn-group">
             ${STATE.activeFilter === 'ocultos'
-              ? `<button class="icon-btn reexibir btn-reexibir" data-idx="${idx}" title="Reexibir"><i class="fa-solid fa-eye" style="font-size:12px"></i></button>`
+              ? `<button class="icon-btn reexibir btn-reexibir" data-gci="${safeHtml(String(row.gci||''))}" title="Reexibir"><i class="fa-solid fa-eye" style="font-size:12px"></i></button>`
               : `<button class="icon-btn desm btn-desmembrar" data-idx="${idx}" title="Desmembrar"><i class="fa-solid fa-table-list" style="font-size:12px"></i></button>
-                 <button class="icon-btn ocultar btn-ocultar" data-idx="${idx}" title="Ocultar"><i class="fa-solid fa-eye-slash" style="font-size:12px"></i></button>
+                 <button class="icon-btn ocultar btn-ocultar" data-gci="${safeHtml(String(row.gci||''))}" title="Ocultar"><i class="fa-solid fa-eye-slash" style="font-size:12px"></i></button>
                  ${row._antecipavel ? `<button class="btn-antecipa-row ${row._antecipavel.gradeDiferente ? 'btn-antecipa-warn' : 'btn-antecipa-ok'}" data-gci="${safeHtml(String(row.gci||''))}"><i class="fa-solid fa-angles-up text-[10px]"></i>${row._antecipavel.gradeDiferente ? '⚠ Grade diferente' : `${row._antecipavel.pedidosVinculados.length} pedido${row._antecipavel.pedidosVinculados.length>1?'s':''} — antecipar`}</button>` : ''}`
             }
           </div>
@@ -1488,9 +1488,9 @@ async function carregarOcultos(){
   }catch(e){ console.error('Erro ao carregar ocultos:', e); }
 }
 
-async function toggleOculto(rowIdx){
-  const sorted = sortRows(computeRows());
-  const row = sorted[rowIdx];
+async function toggleOculto(gci){
+  const allRows = computeAllRows();
+  const row = allRows.find(r => sanitizeDisplayText(String(r.gci||'')) === sanitizeDisplayText(String(gci||'')));
   if(!row) return;
   const key = ocultarKey(row);
   if(STATE.ocultos.has(key)) STATE.ocultos.delete(key);
@@ -1568,8 +1568,7 @@ $('dispoTableBody').addEventListener('click', (e)=>{
   }
   const btnOcult = e.target.closest('.btn-ocultar, .btn-reexibir');
   if(btnOcult){
-    const idx = parseInt(btnOcult.dataset.idx, 10);
-    toggleOculto(idx);
+    toggleOculto(btnOcult.dataset.gci);
     return;
   }
   const btnAnt = e.target.closest('.btn-antecipa-row');

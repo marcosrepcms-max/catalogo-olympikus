@@ -1154,6 +1154,7 @@ function renderList(){
           <span class="chip chip-blue">${safeHtml(order.lastActionLabel || 'Sem histórico')}</span>
           ${order.archived ? `<span class="chip chip-gray">Arquivado</span>` : ''}
           ${order.isDuplicate ? `<span class="chip chip-duplicate"><i class="fa-solid fa-triangle-exclamation"></i> Possível duplicata</span>` : ''}
+          ${(order.history||[]).some(h=>h.label==='Antecipado') ? `<span class="chip" style="background:#EEEDFE;color:#3C3489;border:0.5px solid #AFA9EC"><i class="fa-solid fa-angles-up" style="font-size:9px"></i> Antecipado</span>` : ''}
         </div>
       </button>
     `;
