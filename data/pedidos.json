@@ -1,1 +1,189 @@
-[]
+[
+  {
+    "id": "PED-20260417085800-157",
+    "createdAt": "2026-04-17T11:58:00.190Z",
+    "updatedAt": "2026-04-17T11:58:59.540Z",
+    "status": "Aprovado",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "3616654",
+      "nome": "MARCOS"
+    },
+    "clienteCodigo": "18529",
+    "clienteNome": "TALENTUS",
+    "prazo": "Z31 - 35/63/91 D",
+    "campanha": "CO689 +56DD OLY",
+    "observacoes": "",
+    "totals": {
+      "packs": 6,
+      "units": 72
+    },
+    "items": [
+      {
+        "codigo": "43298343",
+        "produto": "DYNAMIC / 343",
+        "cor": "MRHDRD",
+        "gci": "7426388",
+        "ebm": "13263562",
+        "amount": 3,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 36,
+        "grade": [
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 3
+          },
+          {
+            "size": "41",
+            "qty": 3
+          },
+          {
+            "size": "42",
+            "qty": 2
+          },
+          {
+            "size": "43",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "46147"
+      },
+      {
+        "codigo": "43286101",
+        "produto": "ATMOS",
+        "cor": "PRETO",
+        "gci": "6913394",
+        "ebm": "12757541",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "34",
+            "qty": 1
+          },
+          {
+            "size": "35",
+            "qty": 2
+          },
+          {
+            "size": "36",
+            "qty": 2
+          },
+          {
+            "size": "37",
+            "qty": 3
+          },
+          {
+            "size": "38",
+            "qty": 2
+          },
+          {
+            "size": "39",
+            "qty": 1
+          },
+          {
+            "size": "40",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "46147"
+      },
+      {
+        "codigo": "43286101",
+        "produto": "ATMOS",
+        "cor": "PRETO",
+        "gci": "6913394",
+        "ebm": "12757541",
+        "amount": 2,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 24,
+        "grade": [
+          {
+            "size": "35",
+            "qty": 1
+          },
+          {
+            "size": "36",
+            "qty": 3
+          },
+          {
+            "size": "37",
+            "qty": 3
+          },
+          {
+            "size": "38",
+            "qty": 2
+          },
+          {
+            "size": "39",
+            "qty": 1
+          },
+          {
+            "size": "40",
+            "qty": 1
+          },
+          {
+            "size": "41",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "46147"
+      }
+    ],
+    "history": [
+      {
+        "eventId": "evt_1776427109014_ana7vh",
+        "at": "2026-04-17T11:58:29.014Z",
+        "action": "status_changed",
+        "label": "Pedido aprovado",
+        "statusFrom": "Pendente",
+        "statusTo": "Aprovado",
+        "archivedFrom": false,
+        "archivedTo": false,
+        "clientCode": "18529",
+        "prepostoCodigo": "3616654",
+        "prepostoNome": "MARCOS",
+        "notes": "",
+        "meta": {
+          "itemsCount": 3,
+          "units": 72
+        }
+      },
+      {
+        "eventId": "evt_1776427095000_oeoutg",
+        "at": "2026-04-17T11:58:14.998Z",
+        "action": "created",
+        "label": "Pedido criado",
+        "statusFrom": null,
+        "statusTo": "Pendente",
+        "archivedFrom": null,
+        "archivedTo": false,
+        "clientCode": "18529",
+        "prepostoCodigo": "3616654",
+        "prepostoNome": "MARCOS",
+        "notes": "",
+        "meta": {
+          "itemsCount": 3,
+          "units": 72
+        }
+      }
+    ],
+    "lastAction": "status_changed",
+    "lastActionLabel": "Pedido aprovado",
+    "lastActionAt": "2026-04-17T11:58:29.014Z",
+    "exportedAt": "2026-04-17T11:58:59.535Z"
+  }
+]
