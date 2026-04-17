@@ -1,1 +1,63 @@
-[]
+[
+  {
+    "id": "PED-20260417175224-243",
+    "createdAt": "2026-04-17T20:52:24.598Z",
+    "updatedAt": "2026-04-17T20:52:24.876Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "3616654",
+      "nome": "MARCOS"
+    },
+    "clienteCodigo": "18529",
+    "clienteNome": "TALENTUS",
+    "prazo": "Z31 - 35/63/91 D",
+    "campanha": "CO689 +56DD OLY",
+    "observacoes": "",
+    "totals": {
+      "packs": 3,
+      "units": 36
+    },
+    "items": [
+      {
+        "codigo": "43395156",
+        "produto": "MARTE",
+        "cor": "MILITR",
+        "gci": "5274744",
+        "ebm": "13263497",
+        "amount": 3,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 36,
+        "grade": [
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 3
+          },
+          {
+            "size": "41",
+            "qty": 3
+          },
+          {
+            "size": "42",
+            "qty": 2
+          },
+          {
+            "size": "43",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": 46147
+      }
+    ]
+  }
+]
