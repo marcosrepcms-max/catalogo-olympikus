@@ -2256,7 +2256,7 @@ async function marcarComoExportado(orders){
 }
 
 function buildRelatorioXlsxRows(orders){
-  const rows = [['Nº','Vendedor','Cod. Cliente','Nome','Prazo','Campanha','Qtde','EBM','GCI','Descrição','Cor','Prev Fat','Status','Grade']];
+  const rows = [['Nº DISPO','Vendedor','Cod. Cliente','Nome','Prazo','Campanha','Qtde','EBM','GCI','Descrição','Cor','Prev Fat','Status','Grade']];
   let n = 0;
   for(const o of orders){
     const vendedor = o.preposto?.nome || o.preposto?.codigo || '—';
@@ -2268,7 +2268,7 @@ function buildRelatorioXlsxRows(orders){
       const units = getItemUnits(item);
       const prevFat = formatDate(item.prevFaturamento) || '—';
       const grade = Array.isArray(item.grade)&&item.grade.length ? item.grade.map(g=>`${g.size}(${g.qty})`).join(' ') : '—';
-      rows.push([n,vendedor,o.clienteCodigo||'—',o.clienteNome||'—',prazo,campanha,units,item.ebm||'—',item.gci||'—',item.produto||'—',item.cor||'—',prevFat,status,grade]);
+      rows.push([item.num||'—',vendedor,o.clienteCodigo||'—',o.clienteNome||'—',prazo,campanha,units,item.ebm||'—',item.gci||'—',item.produto||'—',item.cor||'—',prevFat,status,grade]);
     }
   }
   return rows;
@@ -2311,7 +2311,7 @@ async function relatorioExportXlsx(){
   btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Gerando...';
 
   try{
-    const rows = [['Nº','Vendedor','Cod. Cliente','Nome','Prazo','Campanha','Qtde','EBM','GCI','Descrição','Cor','Prev Fat','Status','Grade']];
+    const rows = [['Nº DISPO','Vendedor','Cod. Cliente','Nome','Prazo','Campanha','Qtde','EBM','GCI','Descrição','Cor','Prev Fat','Status','Grade']];
     let lineNum = 0;
     for(const o of orders){
       const vendedor = o.preposto?.nome || o.preposto?.codigo || '—';
@@ -2323,7 +2323,7 @@ async function relatorioExportXlsx(){
       const items = o.items || [];
       if(!items.length){
         lineNum++;
-        rows.push([lineNum, vendedor, codCliente, nomeCliente, prazo, campanha,'—','—','—','—','—','—', status,'—']);
+        rows.push(['—', vendedor, codCliente, nomeCliente, prazo, campanha,'—','—','—','—','—','—', status,'—']);
       } else {
         for(const item of items){
           lineNum++;
@@ -2333,7 +2333,7 @@ async function relatorioExportXlsx(){
             ? item.grade.map(g=>`${g.size}(${g.qty})`).join(' ')
             : '—';
           rows.push([
-            lineNum, vendedor, codCliente, nomeCliente, prazo, campanha,
+            item.num||'—', vendedor, codCliente, nomeCliente, prazo, campanha,
             units, item.ebm || '—', item.gci || '—',
             item.produto || '—', item.cor || '—',
             prevFat, status, grade
@@ -2343,7 +2343,7 @@ async function relatorioExportXlsx(){
     }
 
     const ws = XLSX.utils.aoa_to_sheet(rows);
-    ws['!cols'] = [4,18,12,20,14,16,12,10,24,10,6,12,10,28].map(w=>({wch:w}));
+    ws['!cols'] = [8,18,12,20,14,16,12,10,24,10,6,12,10,28].map(w=>({wch:w}));
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Relatório');
     const now = new Date();
