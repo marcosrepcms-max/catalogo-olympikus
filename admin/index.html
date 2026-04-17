@@ -2255,7 +2255,39 @@ async function marcarComoExportado(orders){
   atualizarBadgeGlobal();
 }
 
-function buildRelatorioXlsxRows(orders){
+// ── DISPO GCI→NÚM MAP ────────────────────────────────────────────────────────
+const DISPO_FILE_URL = '../DISPO.xlsx';
+let _dispoGciMap = null; // cache: Map<gci, num>
+
+async function getDispoGciMap(){
+  if(_dispoGciMap) return _dispoGciMap;
+  try{
+    const res = await fetch(`${DISPO_FILE_URL}?t=${Date.now()}`, { cache:'no-store' });
+    if(!res.ok) return new Map();
+    const buf = await res.arrayBuffer();
+    const wb = XLSX.read(buf, { type:'array' });
+    const ws = wb.Sheets[wb.SheetNames.find(n=>n.toUpperCase()==='DISPO')||wb.SheetNames[0]];
+    const rows = XLSX.utils.sheet_to_json(ws, { defval:null });
+    _dispoGciMap = new Map();
+    for(const r of rows){
+      const gci  = String(r['GCI']  || '').trim();
+      const ebm  = String(r['EBM']  || '').trim();
+      const num  = String(r['Nº']   ?? r['N'] ?? r['Numero'] ?? '').trim();
+      if(gci && num) _dispoGciMap.set(gci, num);
+      if(ebm && num) _dispoGciMap.set(ebm, num);
+    }
+  }catch(e){ console.error('Erro ao carregar DISPO para Nº:', e); return new Map(); }
+  return _dispoGciMap;
+}
+
+function resolveNumDispo(item, gciMap){
+  if(item.num && item.num !== '—') return item.num;
+  const gci = String(item.gci||'').trim();
+  const ebm = String(item.ebm||'').trim();
+  return gciMap.get(gci) || gciMap.get(ebm) || '—';
+}
+
+function buildRelatorioXlsxRows(orders, gciMap=new Map()){
   const rows = [['Nº DISPO','Vendedor','Cod. Cliente','Nome','Prazo','Campanha','Qtde','EBM','GCI','Descrição','Cor','Prev Fat','Status','Grade']];
   let n = 0;
   for(const o of orders){
@@ -2268,7 +2300,7 @@ function buildRelatorioXlsxRows(orders){
       const units = getItemUnits(item);
       const prevFat = formatDate(item.prevFaturamento) || '—';
       const grade = Array.isArray(item.grade)&&item.grade.length ? item.grade.map(g=>`${g.size}(${g.qty})`).join(' ') : '—';
-      rows.push([item.num||'—',vendedor,o.clienteCodigo||'—',o.clienteNome||'—',prazo,campanha,units,item.ebm||'—',item.gci||'—',item.produto||'—',item.cor||'—',prevFat,status,grade]);
+      rows.push([resolveNumDispo(item,gciMap),vendedor,o.clienteCodigo||'—',o.clienteNome||'—',prazo,campanha,units,item.ebm||'—',item.gci||'—',item.produto||'—',item.cor||'—',prevFat,status,grade]);
     }
   }
   return rows;
@@ -2282,9 +2314,10 @@ async function exportarTodosPendentes(){
   btn.disabled = true;
   btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Exportando...';
   try{
-    const rows = buildRelatorioXlsxRows(pendentes);
+    const gciMap = await getDispoGciMap();
+    const rows = buildRelatorioXlsxRows(pendentes, gciMap);
     const ws = XLSX.utils.aoa_to_sheet(rows);
-    ws['!cols'] = [4,18,12,20,20,16,6,12,10,24,10,20,10,28].map(w=>({wch:w}));
+    ws['!cols'] = [8,18,12,20,20,16,6,12,10,24,10,20,10,28].map(w=>({wch:w}));
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Aprovados');
     const now = new Date();
@@ -2311,36 +2344,8 @@ async function relatorioExportXlsx(){
   btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Gerando...';
 
   try{
-    const rows = [['Nº DISPO','Vendedor','Cod. Cliente','Nome','Prazo','Campanha','Qtde','EBM','GCI','Descrição','Cor','Prev Fat','Status','Grade']];
-    let lineNum = 0;
-    for(const o of orders){
-      const vendedor = o.preposto?.nome || o.preposto?.codigo || '—';
-      const codCliente = o.clienteCodigo || '—';
-      const nomeCliente = o.clienteNome || '—';
-      const prazo = o.prazo || '—';
-      const campanha = stripOly(o.campanha || '—');
-      const status = canonicalStatus(o.status);
-      const items = o.items || [];
-      if(!items.length){
-        lineNum++;
-        rows.push(['—', vendedor, codCliente, nomeCliente, prazo, campanha,'—','—','—','—','—','—', status,'—']);
-      } else {
-        for(const item of items){
-          lineNum++;
-          const units = getItemUnits(item);
-          const prevFat = formatDate(item.prevFaturamento) || '—';
-          const grade = Array.isArray(item.grade) && item.grade.length
-            ? item.grade.map(g=>`${g.size}(${g.qty})`).join(' ')
-            : '—';
-          rows.push([
-            item.num||'—', vendedor, codCliente, nomeCliente, prazo, campanha,
-            units, item.ebm || '—', item.gci || '—',
-            item.produto || '—', item.cor || '—',
-            prevFat, status, grade
-          ]);
-        }
-      }
-    }
+    const gciMap = await getDispoGciMap();
+    const rows = buildRelatorioXlsxRows(orders, gciMap);
 
     const ws = XLSX.utils.aoa_to_sheet(rows);
     ws['!cols'] = [8,18,12,20,14,16,12,10,24,10,6,12,10,28].map(w=>({wch:w}));
