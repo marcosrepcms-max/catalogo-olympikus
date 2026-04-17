@@ -1736,23 +1736,53 @@ function mostrarAlertaDivergencia(divs){
 }
 
 async function atualizarGciEbm(num, gciAntigo, novoGciForce, novoEbmForce){
-  // Confirmar antes de atualizar
-  const confirmado = confirm(
-    `Confirmar atualização?\n\nGCI antigo: ${gciAntigo||num||'—'}\nGCI novo: ${novoGciForce||'(da DISPO)'}\n\nEssa ação atualizará todos os pedidos afetados.`
-  );
-  if(!confirmado) return;
+  // Busca linha DISPO por todas as chaves disponíveis
+  const resolveDispoRow = () => {
+    if(num && num !== '—' && num !== '')
+      return STATE.dispoRows.find(r => String(r['Nº']??r['N']??'').trim() === num);
+    if(novoGciForce)
+      return STATE.dispoRows.find(r => String(r['GCI']||'').trim() === novoGciForce);
+    if(novoEbmForce)
+      return STATE.dispoRows.find(r => String(r['EBM']||'').trim() === novoEbmForce);
+    // Fallback: pelo EBM do pedido (que pode não ter mudado)
+    const ordensRef = STATE.orders.filter(o => !o.archived && canonicalStatus(o.status) !== 'Cancelado');
+    for(const o of ordensRef){
+      for(const i of (o.items||[])){
+        if(String(i.gci||'').trim() === gciAntigo){
+          const ebmItem = String(i.ebm||'').trim();
+          if(ebmItem){
+            const found = STATE.dispoRows.find(r => String(r['EBM']||'').trim() === ebmItem);
+            if(found) return found;
+          }
+          // Fallback por codigo+cor
+          const codItem = sanitizeDisplayText(String(i.codigo||'').trim());
+          const corItem = sanitizeDisplayText(String(i.cor||'').trim()).toUpperCase();
+          const found2 = STATE.dispoRows.find(r => {
+            const rCod = sanitizeDisplayText(String(r['Código']||r['CODIGO']||'').trim());
+            const rCor = sanitizeDisplayText(String(r['COR']||r['Cor']||'').trim()).toUpperCase();
+            return rCod === codItem && rCor === corItem;
+          });
+          if(found2) return found2;
+        }
+      }
+    }
+    return null;
+  };
 
-  // Busca linha DISPO pelo Nº ou pelo GCI antigo
-  let dispoRow = null;
-  if(num && num !== '—' && num !== '') dispoRow = STATE.dispoRows.find(r => String(r['Nº']??r['N']??'').trim() === num);
-  if(!dispoRow && novoGciForce) dispoRow = STATE.dispoRows.find(r => String(r['GCI']||'').trim() === novoGciForce);
-  if(!dispoRow){
-    showToast('Linha não encontrada na DISPO.','error');
+  const dispoRow = resolveDispoRow();
+  const novoGci = dispoRow ? String(dispoRow['GCI']||'').trim() : novoGciForce;
+  const novoEbm = dispoRow ? String(dispoRow['EBM']||'').trim() : novoEbmForce;
+
+  if(!novoGci && !novoEbm){
+    showToast('Linha não encontrada na DISPO. Verifique manualmente.','error');
     return;
   }
 
-  const novoGci = novoGciForce || String(dispoRow['GCI']||'').trim();
-  const novoEbm = novoEbmForce || String(dispoRow['EBM']||'').trim();
+  // Confirmar
+  const confirmado = confirm(
+    `Confirmar atualização?\n\nGCI antigo: ${gciAntigo||'—'}\nGCI novo: ${novoGci||'—'}\n\nEssa ação atualizará todos os pedidos afetados.`
+  );
+  if(!confirmado) return;
 
   // Acha pedidos pelo Nº OU pelo GCI antigo
   const ordensAfetadas = STATE.orders.filter(o => {
@@ -1761,7 +1791,7 @@ async function atualizarGciEbm(num, gciAntigo, novoGciForce, novoEbmForce){
     return (o.items||[]).some(i => {
       const iNum = String(i.num||'').trim();
       const iGci = String(i.gci||'').trim();
-      if(num && num !== '—' && iNum === num) return true;
+      if(num && num !== '—' && num !== '' && iNum === num) return true;
       if(gciAntigo && iGci === gciAntigo) return true;
       return false;
     });
@@ -1782,7 +1812,7 @@ async function atualizarGciEbm(num, gciAntigo, novoGciForce, novoEbmForce){
       items: (order.items||[]).map(item => {
         const iNum = String(item.num||'').trim();
         const iGci = String(item.gci||'').trim();
-        const deveAtualizar = (num && iNum === num) || (gciAntigo && iGci === gciAntigo);
+        const deveAtualizar = (num && num !== '—' && iNum === num) || (gciAntigo && iGci === gciAntigo);
         if(!deveAtualizar) return item;
         return { ...item, gci: novoGci || item.gci, ebm: novoEbm || item.ebm };
       }),
@@ -1800,7 +1830,7 @@ async function atualizarGciEbm(num, gciAntigo, novoGciForce, novoEbmForce){
 
   document.getElementById('modalDivergencia')?.remove();
   if(ok > 0){
-    showToast(`✓ ${ok} pedido${ok>1?'s':''} atualizado${ok>1?'s':''}!`, 'success');
+    showToast(`✓ ${ok} pedido${ok>1?'s':''} atualizado${ok>1?'s':''}! Recarregue o admin para ver.`, 'success');
   } else {
     showToast('Erro ao atualizar. Tente novamente.', 'error');
   }
