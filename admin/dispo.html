@@ -1577,23 +1577,34 @@ function toggleCol(col, visible){
 function detectarGciEbmAlterado(){
   if(!STATE.orders?.length || !STATE.dispoRows?.length) return;
 
-  // Mapa: num → { gci, ebm, produto, cor } da DISPO atual
-  // Também mapa: ebm → { gci, num, produto, cor }
-  const dispoNumMap  = new Map();
-  const dispoEbmMap  = new Map();
+  // Mapas de lookup da DISPO atual
+  const dispoNumMap   = new Map(); // num → info
+  const dispoEbmMap   = new Map(); // ebm → info
+  const dispoGciMap   = new Map(); // gci → info
+  const dispoCoCorMap = new Map(); // "codigo|cor" → [info] (pode ter múltiplos por data)
+
   for(const r of STATE.dispoRows){
-    const num = String(r['Nº'] ?? r['N'] ?? '').trim();
-    const gci = String(r['GCI']||'').trim();
-    const ebm = String(r['EBM']||'').trim();
+    const num  = String(r['Nº'] ?? r['N'] ?? '').trim();
+    const gci  = String(r['GCI']||'').trim();
+    const ebm  = String(r['EBM']||'').trim();
+    const cod  = sanitizeDisplayText(String(r['Código']||r['CODIGO']||'').trim());
+    const cor  = sanitizeDisplayText(String(r['COR']||r['Cor']||'').trim()).toUpperCase();
     const info = {
       gci, ebm, num,
       produto: String(r['Produto']||r['PRODUTO']||'').trim(),
       cor: String(r['COR']||r['Cor']||'').trim(),
+      codigo: String(r['Código']||r['CODIGO']||'').trim(),
     };
     if(num) dispoNumMap.set(num, info);
     if(ebm) dispoEbmMap.set(ebm, info);
-    if(gci) dispoEbmMap.set(gci, info); // indexa por GCI tbm para lookup reverso
+    if(gci) dispoGciMap.set(gci, info);
+    const coCor = `${cod}|${cor}`;
+    if(!dispoCoCorMap.has(coCor)) dispoCoCorMap.set(coCor, []);
+    dispoCoCorMap.get(coCor).push(info);
   }
+
+  // GCIs presentes na DISPO atual
+  const gcisNaDispo = new Set(dispoGciMap.keys());
 
   const divergentes = [];
   const seen = new Set();
@@ -1602,32 +1613,44 @@ function detectarGciEbmAlterado(){
     if(order.archived) continue;
     const st = canonicalStatus(order.status);
     if(st === 'Cancelado') continue;
+
     for(const item of (order.items||[])){
-      const num    = String(item.num||'').trim();
+      const num     = String(item.num||'').trim();
       const gciItem = String(item.gci||'').trim();
       const ebmItem = String(item.ebm||'').trim();
+      const codItem = sanitizeDisplayText(String(item.codigo||'').trim());
+      const corItem = sanitizeDisplayText(String(item.cor||'').trim()).toUpperCase();
 
-      // Tenta encontrar a linha DISPO correspondente pelo Nº, EBM ou GCI
+      // 1. GCI do pedido NÃO existe mais na DISPO → sinal claro de mudança
+      const gciSumiu = gciItem && !gcisNaDispo.has(gciItem);
+
+      // 2. Tenta achar a linha atual pelo Nº, EBM, ou codigo+cor
       let dispoAtual = null;
       if(num && num !== '—') dispoAtual = dispoNumMap.get(num);
       if(!dispoAtual && ebmItem) dispoAtual = dispoEbmMap.get(ebmItem);
+      if(!dispoAtual && codItem && corItem){
+        const matches = dispoCoCorMap.get(`${codItem}|${corItem}`) || [];
+        if(matches.length === 1) dispoAtual = matches[0];
+      }
 
-      if(!dispoAtual) continue;
+      const gciDiv = dispoAtual ? (gciItem && dispoAtual.gci && gciItem !== dispoAtual.gci) : gciSumiu;
+      const ebmDiv = dispoAtual ? (ebmItem && dispoAtual.ebm && ebmItem !== dispoAtual.ebm) : false;
 
-      const gciDiv = gciItem && dispoAtual.gci && gciItem !== dispoAtual.gci;
-      const ebmDiv = ebmItem && dispoAtual.ebm && ebmItem !== dispoAtual.ebm;
+      if(!gciDiv && !ebmDiv) continue;
 
-      if(gciDiv || ebmDiv){
-        const uid = `${dispoAtual.num||dispoAtual.ebm}`;
-        if(!seen.has(uid)){
-          seen.add(uid);
-          divergentes.push({ order, item, num: dispoAtual.num||num, dispoAtual, gciDiv, ebmDiv });
-        } else {
-          // Adiciona o order à entrada existente
-          const ex = divergentes.find(d => (d.dispoAtual.num||d.num) === (dispoAtual.num||num));
-          if(ex && !ex.orders) ex.orders = [ex.order];
-          if(ex) ex.orders = [...(ex.orders||[ex.order]), order];
-        }
+      // Usa info da DISPO atual se achou, senão monta info parcial
+      const infoAtual = dispoAtual || {
+        gci: gcisNaDispo.size ? '[GCI não encontrado na DISPO]' : '—',
+        ebm: ebmItem, num, produto: item.produto||'—', cor: item.cor||'—',
+      };
+
+      const uid = num || gciItem || ebmItem;
+      if(!seen.has(uid)){
+        seen.add(uid);
+        divergentes.push({ order, item, num, dispoAtual: infoAtual, gciDiv, ebmDiv, orders:[order] });
+      } else {
+        const ex = divergentes.find(d => (d.num||d.item.gci) === uid);
+        if(ex && !ex.orders.find(o=>o.id===order.id)) ex.orders.push(order);
       }
     }
   }
@@ -1639,11 +1662,14 @@ function detectarGciEbmAlterado(){
 function mostrarAlertaDivergencia(divs){
   const porNum = new Map();
   for(const d of divs){
-    const uid = d.dispoAtual.num || d.num || d.item.gci;
-    if(!porNum.has(uid)) porNum.set(uid, { ...d, orders:[d.order] });
-    else {
+    const uid = d.num || d.item.gci || d.item.ebm || Math.random();
+    if(!porNum.has(uid)){
+      porNum.set(uid, { ...d });
+    } else {
       const ex = porNum.get(uid);
-      if(!ex.orders.find(o=>o.id===d.order.id)) ex.orders.push(d.order);
+      for(const o of (d.orders||[d.order])){
+        if(!ex.orders.find(x=>x.id===o.id)) ex.orders.push(o);
+      }
     }
   }
 
