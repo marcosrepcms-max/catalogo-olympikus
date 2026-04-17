@@ -1521,6 +1521,14 @@ async function toggleOculto(gci){
 function atualizarBadgeOcultos(){
   const badge = $('ocultosBadge');
   if(!badge) return;
+  // Só conta ocultos que existem na DISPO atual — remove os órfãos
+  const keysAtivas = new Set(STATE.dispoRows.map(r => ocultarKey(r)));
+  const ocultosAtivos = [...STATE.ocultos].filter(k => keysAtivas.has(k));
+  // Limpa órfãos do STATE e salva se mudou
+  if(ocultosAtivos.length !== STATE.ocultos.size){
+    STATE.ocultos = new Set(ocultosAtivos);
+    salvarOcultos(); // persiste limpeza silenciosamente
+  }
   const n = STATE.ocultos.size;
   badge.textContent = n;
   badge.classList.toggle('hidden', n === 0);
