@@ -2,7 +2,7 @@
   {
     "id": "PED-20260417143917-108",
     "createdAt": "2026-04-17T17:39:17.761Z",
-    "updatedAt": "2026-04-17T17:39:58.589Z",
+    "updatedAt": "2026-04-17T17:40:24.134Z",
     "status": "Aprovado",
     "archived": false,
     "isDuplicate": false,
@@ -103,6 +103,7 @@
     ],
     "lastAction": "status_changed",
     "lastActionLabel": "Pedido aprovado",
-    "lastActionAt": "2026-04-17T17:39:58.322Z"
+    "lastActionAt": "2026-04-17T17:39:58.322Z",
+    "exportedAt": "2026-04-17T17:40:23.845Z"
   }
 ]
