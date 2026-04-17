@@ -2,8 +2,8 @@
   {
     "id": "PED-20260417143917-108",
     "createdAt": "2026-04-17T17:39:17.761Z",
-    "updatedAt": "2026-04-17T17:39:17.623Z",
-    "status": "Pendente",
+    "updatedAt": "2026-04-17T17:39:58.589Z",
+    "status": "Aprovado",
     "archived": false,
     "isDuplicate": false,
     "preposto": {
@@ -60,8 +60,49 @@
             "qty": 1
           }
         ],
-        "prevFaturamento": 46147
+        "prevFaturamento": "46147"
       }
-    ]
+    ],
+    "history": [
+      {
+        "eventId": "evt_1776447598322_68hr4r",
+        "at": "2026-04-17T17:39:58.322Z",
+        "action": "status_changed",
+        "label": "Pedido aprovado",
+        "statusFrom": "Pendente",
+        "statusTo": "Aprovado",
+        "archivedFrom": false,
+        "archivedTo": false,
+        "clientCode": "18529",
+        "prepostoCodigo": "3616654",
+        "prepostoNome": "MARCOS",
+        "notes": "",
+        "meta": {
+          "itemsCount": 1,
+          "units": 12
+        }
+      },
+      {
+        "eventId": "evt_1776447577141_irhvx6",
+        "at": "2026-04-17T17:39:37.141Z",
+        "action": "created",
+        "label": "Pedido criado",
+        "statusFrom": null,
+        "statusTo": "Pendente",
+        "archivedFrom": null,
+        "archivedTo": false,
+        "clientCode": "18529",
+        "prepostoCodigo": "3616654",
+        "prepostoNome": "MARCOS",
+        "notes": "",
+        "meta": {
+          "itemsCount": 1,
+          "units": 12
+        }
+      }
+    ],
+    "lastAction": "status_changed",
+    "lastActionLabel": "Pedido aprovado",
+    "lastActionAt": "2026-04-17T17:39:58.322Z"
   }
 ]
