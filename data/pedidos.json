@@ -1,8 +1,8 @@
 [
   {
-    "id": "PED-20260417172955-818",
-    "createdAt": "2026-04-17T20:29:55.044Z",
-    "updatedAt": "2026-04-17T20:30:09.177Z",
+    "id": "PED-20260417175518-872",
+    "createdAt": "2026-04-17T20:55:18.695Z",
+    "updatedAt": "2026-04-17T20:55:33.246Z",
     "status": "Aprovado",
     "archived": false,
     "isDuplicate": false,
@@ -12,24 +12,24 @@
     },
     "clienteCodigo": "18529",
     "clienteNome": "TALENTUS",
-    "prazo": "Z30 - 28/56/84 D",
-    "campanha": "CO689 +56DD OLY",
+    "prazo": "Z14 - 98 D",
+    "campanha": "",
     "observacoes": "",
     "totals": {
-      "packs": 2,
-      "units": 24
+      "packs": 3,
+      "units": 36
     },
     "items": [
       {
         "codigo": "43395156",
         "produto": "MARTE",
         "cor": "MILITR",
-        "gci": "5274745",
-        "ebm": "13263498",
-        "amount": 2,
+        "gci": "5274744",
+        "ebm": "13263497",
+        "amount": 3,
         "mode": "boxed",
         "packSize": 12,
-        "totalUnits": 24,
+        "totalUnits": 36,
         "grade": [
           {
             "size": "38",
@@ -61,8 +61,8 @@
     ],
     "history": [
       {
-        "eventId": "evt_1776457808772_s9ynt7",
-        "at": "2026-04-17T20:30:08.772Z",
+        "eventId": "evt_1776459332895_yyhsck",
+        "at": "2026-04-17T20:55:32.895Z",
         "action": "status_changed",
         "label": "Pedido aprovado",
         "statusFrom": "Pendente",
@@ -75,12 +75,12 @@
         "notes": "",
         "meta": {
           "itemsCount": 1,
-          "units": 24
+          "units": 36
         }
       },
       {
-        "eventId": "evt_1776457803473_4br8wu",
-        "at": "2026-04-17T20:30:03.472Z",
+        "eventId": "evt_1776459324540_pyspcm",
+        "at": "2026-04-17T20:55:24.540Z",
         "action": "created",
         "label": "Pedido criado",
         "statusFrom": null,
@@ -93,12 +93,12 @@
         "notes": "",
         "meta": {
           "itemsCount": 1,
-          "units": 24
+          "units": 36
         }
       }
     ],
     "lastAction": "status_changed",
     "lastActionLabel": "Pedido aprovado",
-    "lastActionAt": "2026-04-17T20:30:08.772Z"
+    "lastActionAt": "2026-04-17T20:55:32.895Z"
   }
 ]
