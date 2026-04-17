@@ -1,1 +1,63 @@
-[]
+[
+  {
+    "id": "PED-20260417204250-849",
+    "createdAt": "2026-04-17T23:42:50.034Z",
+    "updatedAt": "2026-04-17T23:42:49.169Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "3616654",
+      "nome": "MARCOS"
+    },
+    "clienteCodigo": "18529",
+    "clienteNome": "TALENTUS",
+    "prazo": "Z16 - 112 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 1,
+      "units": 12
+    },
+    "items": [
+      {
+        "codigo": "43667419",
+        "produto": "RUSH",
+        "cor": "ALGPSC",
+        "gci": "5348675",
+        "ebm": "12265544",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "35",
+            "qty": 1
+          },
+          {
+            "size": "36",
+            "qty": 2
+          },
+          {
+            "size": "37",
+            "qty": 3
+          },
+          {
+            "size": "38",
+            "qty": 3
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": 46147
+      }
+    ]
+  }
+]
