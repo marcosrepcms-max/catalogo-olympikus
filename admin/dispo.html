@@ -1740,22 +1740,65 @@ function detectarGciEbmAlterado(){
 
       // FASE 2: sem Nº — usa GCI para verificar se sumiu da DISPO
       if(gciItem && !dispoGciSet.has(gciItem)){
-        // GCI sumiu — tenta achar a nova linha pelo codigo+cor
-        const matches = dispoCoCorMap.get(`${codItem}|${corItem}`) || [];
-        const dispoAtual = matches.length === 1 ? matches[0] : null;
-        const uid = gciItem; // usa gci antigo como uid
+        // GCI sumiu — tenta achar a nova linha pelo codigo+cor, depois produto+cor
+        let dispoAtual = null;
+
+        // Tentativa 1: codigo+cor
+        const matchesCoCor = dispoCoCorMap.get(`${codItem}|${corItem}`) || [];
+        if(matchesCoCor.length === 1) dispoAtual = matchesCoCor[0];
+
+        // Tentativa 2: produto+cor (mais tolerante)
+        if(!dispoAtual){
+          const prodItem = sanitizeDisplayText(String(item.produto||'').trim());
+          for(const r of STATE.dispoRows){
+            const rProd = sanitizeDisplayText(String(r['Produto']||r['PRODUTO']||'').trim());
+            const rCor  = sanitizeDisplayText(String(r['COR']||r['Cor']||'').trim()).toUpperCase();
+            const rGci  = String(r['GCI']||'').trim();
+            if(rProd === prodItem && rCor === corItem && rGci !== gciItem){
+              dispoAtual = {
+                gci: rGci,
+                ebm: String(r['EBM']||'').trim(),
+                num: String(r['Nº']??r['N']??'').trim(),
+                produto: String(r['Produto']||r['PRODUTO']||'').trim(),
+                cor: String(r['COR']||r['Cor']||'').trim(),
+              };
+              break;
+            }
+          }
+        }
+
+        // Tentativa 3: só pelo produto (se cor também mudou)
+        if(!dispoAtual){
+          const prodItem = sanitizeDisplayText(String(item.produto||'').trim());
+          for(const r of STATE.dispoRows){
+            const rProd = sanitizeDisplayText(String(r['Produto']||r['PRODUTO']||'').trim());
+            const rGci  = String(r['GCI']||'').trim();
+            if(rProd === prodItem && rGci !== gciItem){
+              dispoAtual = {
+                gci: rGci,
+                ebm: String(r['EBM']||'').trim(),
+                num: String(r['Nº']??r['N']??'').trim(),
+                produto: String(r['Produto']||r['PRODUTO']||'').trim(),
+                cor: String(r['COR']||r['Cor']||'').trim(),
+              };
+              break;
+            }
+          }
+        }
+
+        const uid = gciItem;
         if(!seen.has(uid)){
           seen.add(uid);
           divergentes.push({
             order, item,
-            num: dispoAtual?.num || '(sem Nº)',
+            num: dispoAtual?.num || '',
             dispoAtual: dispoAtual || { gci:'—', ebm:'—', produto: item.produto||'—', cor: item.cor||'—' },
             gciDiv: true, ebmDiv: false,
             orders:[order],
-            semNum: true // flag para indicar que precisa enriquecer
+            semNum: !dispoAtual?.num
           });
         } else {
-          const ex = divergentes.find(d => d.num === uid);
+          const ex = divergentes.find(d => d.num === uid || (d.semNum && d.item.gci === gciItem));
           if(ex && !ex.orders.find(o => o.id === order.id)) ex.orders.push(order);
         }
       }
