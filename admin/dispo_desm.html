@@ -11,6 +11,342 @@
   <style>
     :root{
       --brand:#2836d4; --brand-soft:rgba(40,54,212,.10);
+      --line:#e2e8f0; --bg:#f6f7fb; --card:#fff; --text:#0f172a; --muted:#475569;
+      --success:#15803d; --success-soft:#dcfce7;
+      --warning:#b45309; --warning-soft:#fef3c7;
+      --danger:#b91c1c; --danger-soft:#fee2e2;
+    }
+    .dark{
+      --bg:#0f172a; --card:#1e293b; --text:#f1f5f9; --line:#334155;
+      --brand:#818cf8; --brand-soft:rgba(129,140,248,.15);
+      --success:#4ade80; --success-soft:#14532d;
+      --warning:#fbbf24; --warning-soft:#451a03;
+      --danger:#f87171; --danger-soft:#450a0a;
+      --muted:#94a3b8;
+    }
+    *{ box-sizing:border-box; }
+    body{ font-family:Inter,system-ui,sans-serif; background:var(--bg); color:var(--text); margin:0; transition:background .2s,color .2s; }
+
+    .dark .bg-white,.dark .card{ background:var(--card)!important; }
+    .dark .border-slate-200{ border-color:var(--line)!important; }
+    .dark .text-slate-400,.dark .text-slate-500{ color:var(--muted)!important; }
+    .dark .text-slate-800,.dark .text-slate-700{ color:var(--text)!important; }
+    .dark .bg-slate-50,.dark .bg-slate-100{ background:#263248!important; }
+    .dark table thead th{ background:#263248!important; color:#94a3b8!important; }
+    .dark table tbody td{ border-color:#334155!important; }
+    .dark table tbody tr:hover td{ background:#263248!important; }
+
+    .page-header{ background:var(--card); border-bottom:1px solid var(--line); padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; position:sticky; top:0; z-index:30; }
+    .btn-back{ display:inline-flex; align-items:center; gap:6px; border:1px solid var(--line); border-radius:999px; padding:6px 14px; font-size:13px; font-weight:700; color:var(--muted); background:var(--card); cursor:pointer; text-decoration:none; }
+    .btn-back:hover{ background:var(--bg); }
+
+    .card{ background:var(--card); border-radius:24px; border:1px solid var(--line); padding:24px; }
+
+    table{ width:100%; border-collapse:collapse; font-size:13px; }
+    thead th{ background:#f8fafc; color:#475569; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.06em; padding:10px 14px; border-bottom:1px solid var(--line); white-space:nowrap; position:sticky; top:0; z-index:1; }
+    tbody td{ padding:11px 14px; border-bottom:1px solid #edf2f7; vertical-align:middle; color:var(--text); }
+    tbody tr:last-child td{ border-bottom:none; }
+    tbody tr:hover td{ background:#f8fafc; }
+
+    .chip{ display:inline-flex; align-items:center; gap:4px; border-radius:999px; padding:3px 10px; font-size:12px; font-weight:600; }
+    .chip-aprov{ background:var(--success-soft); color:var(--success); }
+    .chip-pend{ background:var(--warning-soft); color:var(--warning); }
+    .chip-canc{ background:var(--danger-soft); color:var(--danger); }
+
+    .status-select{ border:1px solid var(--line); border-radius:999px; padding:5px 12px; font-size:12px; font-weight:700; cursor:pointer; outline:none; appearance:none; -webkit-appearance:none; transition:background .12s; background:var(--card); color:var(--text); }
+    .status-select.st-pendente{ background:var(--warning-soft); color:var(--warning); border-color:#fde68a; }
+    .status-select.st-finalizado{ background:var(--success-soft); color:var(--success); border-color:#bbf7d0; }
+
+    .toast-wrap{ position:fixed; top:20px; right:20px; z-index:999; display:flex; flex-direction:column; gap:8px; }
+    .toast{ border-radius:14px; padding:10px 18px; font-size:13px; font-weight:600; box-shadow:0 8px 24px rgba(0,0,0,.2); }
+    .toast.success{ background:#15803d; color:#fff; }
+    .toast.error{ background:#b91c1c; color:#fff; }
+    .toast.info{ background:#1d4ed8; color:#fff; }
+    .toast.warning{ background:#b45309; color:#fff; }
+
+    /* Tooltips */
+    [data-tip]{ position:relative; }
+    [data-tip]:hover::after{ content:attr(data-tip); position:absolute; bottom:calc(100% + 6px); left:50%; transform:translateX(-50%); background:#0f172a; color:#f8fafc; font-size:11px; font-weight:600; border-radius:8px; padding:4px 9px; white-space:nowrap; z-index:300; pointer-events:none; }
+    .dark [data-tip]:hover::after{ background:#334155; }
+
+    /* Badge alterações pendentes */
+    #badgePendingSave{ display:none; }
+    #badgePendingSave.visible{ display:inline-flex; }
+  </style>
+</head>
+<body>
+<div id="toastWrap" class="toast-wrap"></div>
+
+<div class="page-header">
+  <div class="flex items-center gap-3">
+    <button id="btnBack" data-tip="Voltar ao DISPO" class="btn-back">
+      <i class="fa-solid fa-arrow-left"></i> Voltar
+    </button>
+    <div>
+      <div class="text-xs font-bold text-slate-400 uppercase tracking-wide">Controle de desmembramento</div>
+      <div id="pageTitle" class="text-xl font-extrabold"></div>
+    </div>
+    <!-- Badge alterações não salvas -->
+    <span id="badgePendingSave" class="items-center gap-1 rounded-full bg-amber-100 border border-amber-300 text-amber-700 text-xs font-bold px-3 py-1">
+      <i class="fa-solid fa-circle-exclamation text-[10px]"></i> Alterações não salvas
+    </span>
+  </div>
+
+  <div class="flex items-center gap-2 flex-wrap">
+    <!-- Tela cheia -->
+    <button id="btnFullscreen" onclick="toggleFullscreen()" data-tip="Tela cheia"
+      class="w-9 h-9 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-500 hover:bg-slate-50 transition-colors" style="background:var(--card);border-color:var(--line);color:var(--muted)">
+      <i id="iconFullscreen" class="fa-solid fa-expand text-xs"></i>
+    </button>
+    <!-- Dark mode -->
+    <button onclick="toggleDark()" data-tip="Modo escuro"
+      class="w-9 h-9 rounded-full border border-slate-200 bg-white flex items-center justify-center hover:bg-slate-50 transition-colors" style="background:var(--card);border-color:var(--line)">
+      <i id="darkIcon" class="fa-solid fa-moon text-slate-400 text-xs"></i>
+    </button>
+  </div>
+</div>
+
+<div class="max-w-[1300px] mx-auto px-6 py-6 space-y-4">
+
+  <div id="metaCard" class="card">
+    <div class="flex flex-wrap gap-6 text-sm">
+      <div><span class="text-slate-400 font-semibold">Código</span><div id="metaCodigo" class="font-extrabold mt-0.5"></div></div>
+      <div><span class="text-slate-400 font-semibold">GCI</span><div id="metaGci" class="font-extrabold text-[var(--brand)] mt-0.5"></div></div>
+      <div><span class="text-slate-400 font-semibold">Cor</span><div id="metaCor" class="font-extrabold mt-0.5"></div></div>
+      <div><span class="text-slate-400 font-semibold">Prev. Fat.</span><div id="metaPrevFat" class="font-extrabold mt-0.5"></div></div>
+    </div>
+  </div>
+
+  <div class="card" style="padding:0;overflow:hidden">
+    <div class="overflow-auto" style="max-height:calc(100vh - 320px)">
+      <table>
+        <thead>
+          <tr>
+            <th>EBM</th>
+            <th>GCI</th>
+            <th>Cliente</th>
+            <th>Prazo</th>
+            <th>Campanha</th>
+            <th>Descrição</th>
+            <th>Cor</th>
+            <th class="text-right">Qtde</th>
+            <th>Prev Fat</th>
+            <th>Status Pedido</th>
+            <th>Situação</th>
+          </tr>
+        </thead>
+        <tbody id="desmBody"></tbody>
+      </table>
+    </div>
+    <div id="emptyState" class="hidden py-16 text-center text-slate-400">
+      <i class="fa-solid fa-inbox text-4xl mb-3 block"></i>
+      <div class="font-semibold">Nenhum pedido encontrado para este produto.</div>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-between flex-wrap gap-3">
+    <div id="rodape" class="text-xs text-slate-400 font-semibold"></div>
+    <button id="btnSalvar" onclick="salvar()" data-tip="Salvar alterações no servidor"
+      class="rounded-2xl bg-[var(--brand)] px-6 py-3 text-sm font-extrabold text-white flex items-center gap-2 disabled:opacity-50">
+      <i class="fa-solid fa-floppy-disk"></i> Salvar alterações
+    </button>
+  </div>
+
+</div>
+
+<script>
+// Dark mode imediato
+if(localStorage.getItem('admin_dark') === '1' || localStorage.getItem('dispo_dark') === '1') document.documentElement.classList.add('dark');
+
+const WORKER_URL = 'https://repasse-worker-cms.marcosrep-cms.workers.dev';
+
+function showToast(msg, type='info'){
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.textContent = msg;
+  document.getElementById('toastWrap').appendChild(t);
+  setTimeout(()=>t.remove(), 3500);
+}
+
+function formatDate(value){
+  if(!value) return '—';
+  if(typeof value === 'string' && value.includes('T')) return new Date(value).toLocaleDateString('pt-BR');
+  if(typeof value === 'number' || (typeof value === 'string' && /^\d{4,6}$/.test(value))){
+    const n = Number(value);
+    if(n > 40000 && n < 60000){
+      const d = new Date(Date.UTC(1899,11,30));
+      d.setUTCDate(d.getUTCDate() + n);
+      return d.toLocaleDateString('pt-BR');
+    }
+  }
+  const d = new Date(value);
+  return isNaN(d) ? String(value) : d.toLocaleDateString('pt-BR');
+}
+
+function safeHtml(v){ return String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
+
+function statusChip(status){
+  const s = (status||'').toLowerCase();
+  if(s.includes('aprovado'))  return `<span class="chip chip-aprov"><i class="fa-solid fa-circle-check"></i> Aprovado</span>`;
+  if(s.includes('cancelado')) return `<span class="chip chip-canc"><i class="fa-solid fa-circle-xmark"></i> Cancelado</span>`;
+  return `<span class="chip chip-pend"><i class="fa-solid fa-clock"></i> Pendente</span>`;
+}
+
+function onStatusChange(sel){
+  sel.className = `status-select st-${sel.value.toLowerCase()}`;
+  marcarPendente(true);
+}
+
+// ── CONTROLE DE ALTERAÇÕES ────────────────────────────────────────────────────
+let _temAlteracoes = false;
+
+function marcarPendente(val){
+  _temAlteracoes = val;
+  const badge = document.getElementById('badgePendingSave');
+  if(badge) badge.classList.toggle('visible', val);
+}
+
+// ── VOLTAR COM AVISO ──────────────────────────────────────────────────────────
+document.getElementById('btnBack').addEventListener('click', async () => {
+  if(_temAlteracoes){
+    const ok = confirm('Há alterações não salvas. Deseja salvar antes de sair?');
+    if(ok){
+      await salvar();
+    }
+  }
+  sessionStorage.removeItem('desm_row');
+  sessionStorage.removeItem('desm_linhas');
+  sessionStorage.removeItem('desm_key');
+  sessionStorage.removeItem('desm_desmembramentos');
+  window.location.replace('./dispo.html');
+});
+
+// Avisa se fechar aba/navegar sem salvar
+window.addEventListener('beforeunload', e => {
+  if(_temAlteracoes){
+    e.preventDefault();
+    e.returnValue = '';
+  }
+});
+
+// ── INIT ─────────────────────────────────────────────────────────────────────
+const row       = JSON.parse(sessionStorage.getItem('desm_row') || 'null');
+const linhas    = JSON.parse(sessionStorage.getItem('desm_linhas') || '[]');
+const desmKey   = sessionStorage.getItem('desm_key') || '';
+let desmembramentos = JSON.parse(sessionStorage.getItem('desm_desmembramentos') || '{}');
+
+if(!row){
+  document.querySelector('.max-w-\\[1300px\\]').innerHTML = `
+    <div class="card text-center py-16" style="color:var(--muted)">
+      <i class="fa-solid fa-triangle-exclamation text-4xl mb-3 block"></i>
+      <div class="font-semibold">Nenhum produto selecionado.</div>
+      <a href="./dispo.html" class="mt-4 inline-block text-[var(--brand)] font-bold">← Voltar ao DISPO</a>
+    </div>`;
+} else {
+  document.getElementById('pageTitle').textContent = `${row.produto} · ${row.cor}`;
+  document.getElementById('metaCodigo').textContent = row.codigo || '—';
+  document.getElementById('metaGci').textContent = row.gci || '—';
+  document.getElementById('metaCor').textContent = row.cor || '—';
+  document.getElementById('metaPrevFat').textContent = formatDate(row.dataEntrega);
+
+  const saved = desmembramentos[desmKey] || {};
+
+  if(!linhas.length){
+    document.getElementById('emptyState').classList.remove('hidden');
+    document.getElementById('rodape').textContent = '0 linhas';
+  } else {
+    const total = linhas.reduce((s,l)=>s+Number(l.qtde||0),0);
+    document.getElementById('rodape').textContent = `${linhas.length} linha${linhas.length!==1?'s':''} · ${total} unidades`;
+
+    document.getElementById('desmBody').innerHTML = linhas.map(l => {
+      const st = saved[l.lineKey] || l.desmStatus || 'Pendente';
+      return `<tr>
+        <td class="text-slate-500 font-semibold">${safeHtml(l.ebm||'—')}</td>
+        <td class="font-extrabold text-[var(--brand)]">${safeHtml(l.gci||'—')}</td>
+        <td class="font-extrabold">${safeHtml(l.cliente||'—')}</td>
+        <td class="text-slate-500 font-semibold whitespace-nowrap">${safeHtml(l.prazo||'—')}</td>
+        <td class="text-slate-500 font-semibold">${safeHtml(l.campanha||'—')}</td>
+        <td class="font-extrabold">${safeHtml(l.produto||'—')}</td>
+        <td class="text-slate-500 font-semibold">${safeHtml(l.cor||'—')}</td>
+        <td class="text-right font-extrabold">${l.qtde||0}</td>
+        <td class="text-slate-500 font-semibold whitespace-nowrap">${safeHtml(l.prevFat||'—')}</td>
+        <td>${statusChip(l.orderStatus)}</td>
+        <td>
+          <select class="status-select st-${st.toLowerCase()}"
+            data-line-key="${safeHtml(l.lineKey)}"
+            onchange="onStatusChange(this)">
+            <option value="Pendente"   ${st==='Pendente'  ?'selected':''}>Pendente</option>
+            <option value="Finalizado" ${st==='Finalizado'?'selected':''}>Finalizado</option>
+          </select>
+        </td>
+      </tr>`;
+    }).join('');
+  }
+}
+
+async function salvar(){
+  const btn = document.getElementById('btnSalvar');
+  const prev = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Salvando...';
+
+  try{
+    const selects = document.querySelectorAll('.status-select');
+    const saved = desmembramentos[desmKey] || {};
+    selects.forEach(sel => { saved[sel.dataset.lineKey] = sel.value; });
+    desmembramentos[desmKey] = saved;
+
+    const res = await fetch(WORKER_URL, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'save', data: desmembramentos })
+    });
+    if(!res.ok) throw new Error(`Worker PATCH falhou (${res.status})`);
+    const result = await res.json();
+    if(!result.success) throw new Error(result.error || 'Erro ao salvar');
+
+    sessionStorage.setItem('desm_desmembramentos', JSON.stringify(desmembramentos));
+    marcarPendente(false);
+    showToast('Salvo com sucesso!', 'success');
+  }catch(err){
+    console.error(err);
+    showToast('Erro ao salvar. Tente novamente.', 'error');
+  }finally{
+    btn.disabled = false;
+    btn.innerHTML = prev;
+  }
+}
+
+// ── DARK MODE ─────────────────────────────────────────────────────────────────
+function toggleDark(){
+  const isDark = document.documentElement.classList.toggle('dark');
+  localStorage.setItem('admin_dark', isDark ? '1' : '0');
+  localStorage.setItem('dispo_dark', isDark ? '1' : '0');
+  document.getElementById('darkIcon').className = isDark ? 'fa-solid fa-sun text-amber-400 text-xs' : 'fa-solid fa-moon text-slate-400 text-xs';
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const isDark = localStorage.getItem('admin_dark') === '1' || localStorage.getItem('dispo_dark') === '1';
+  if(isDark) document.getElementById('darkIcon').className = 'fa-solid fa-sun text-amber-400 text-xs';
+});
+
+// ── TELA CHEIA ────────────────────────────────────────────────────────────────
+function toggleFullscreen(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen().catch(()=>{});
+  } else {
+    document.exitFullscreen();
+  }
+}
+document.addEventListener('fullscreenchange', () => {
+  const icon = document.getElementById('iconFullscreen');
+  if(icon) icon.className = document.fullscreenElement ? 'fa-solid fa-compress text-xs' : 'fa-solid fa-expand text-xs';
+});
+</script>
+</body>
+</html>
+  <style>
+    :root{
+      --brand:#2836d4; --brand-soft:rgba(40,54,212,.10);
       --line:#e2e8f0; --bg:#f6f7fb; --card:#fff;
       --success:#15803d; --success-soft:#dcfce7;
       --warning:#b45309; --warning-soft:#fef3c7;

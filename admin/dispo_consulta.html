@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+  <title>Desmembramentos • Repasse Olympikus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{
+      --bg:#f6f7fb; --card:#ffffff; --text:#0f172a; --line:#e2e8f0;
+      --brand:#2836d4; --brand-soft:rgba(40,54,212,.10);
+      --shadow:0 18px 42px rgba(15,23,42,.08);
+      --success:#15803d; --success-soft:#dcfce7;
+      --warning:#b45309; --warning-soft:#fef3c7;
+      --danger:#b91c1c; --danger-soft:#fee2e2;
+      --muted:#475569; --muted-soft:#e2e8f0;
+    }
+    .dark{
+      --bg:#0f172a; --card:#1e293b; --text:#f1f5f9; --line:#334155;
+      --brand:#818cf8; --brand-soft:rgba(129,140,248,.15);
+      --shadow:0 18px 42px rgba(0,0,0,.4);
+      --success:#4ade80; --success-soft:#14532d;
+      --warning:#fbbf24; --warning-soft:#451a03;
+      --danger:#f87171; --danger-soft:#450a0a;
+      --muted:#94a3b8; --muted-soft:#1e293b;
+    }
+    *{ box-sizing:border-box; }
+    body{ font-family:Inter,system-ui,sans-serif; background:var(--bg); color:var(--text); margin:0; }
+
+    /* Dark mode overrides */
+    .dark .bg-white{ background:var(--card)!important; }
+    .dark .bg-slate-50,.dark .bg-slate-100{ background:#1e293b!important; }
+    .dark .border-slate-200{ border-color:var(--line)!important; }
+    .dark .text-slate-800,.dark .text-slate-700{ color:var(--text)!important; }
+    .dark .text-slate-500,.dark .text-slate-400{ color:var(--muted)!important; }
+    .dark .shadow-card{ box-shadow:var(--shadow)!important; }
+    .dark .hover\:bg-slate-50:hover,.dark .hover\:bg-slate-100:hover{ background:#334155!important; }
+    .dark .table-wrap thead th{ background:#263248!important; color:#94a3b8!important; }
+    .dark .table-wrap tbody tr:hover td{ background:#263248!important; }
+    .dark .table-wrap tbody td{ border-color:#334155!important; }
+
+    .shadow-card{ box-shadow:var(--shadow); }
+    .focus-ring:focus-visible{ outline:none; box-shadow:0 0 0 4px rgba(40,54,212,.15); }
+
+    /* TABLE */
+    .table-wrap{ overflow:auto; border-radius:20px; border:1px solid var(--line); background:var(--card); max-height:calc(100vh - 280px); }
+    .table-wrap table{ width:100%; min-width:1000px; border-collapse:separate; border-spacing:0; }
+    .table-wrap thead th{ position:sticky; top:0; z-index:2; background:#f8fafc; color:#475569; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.06em; text-align:left; padding:11px 14px; border-bottom:1px solid var(--line); white-space:nowrap; user-select:none; }
+    .table-wrap tbody td{ padding:11px 14px; font-size:13px; border-bottom:1px solid #edf2f7; vertical-align:middle; }
+    .table-wrap tbody tr:last-child td{ border-bottom:none; }
+    .table-wrap tbody tr:hover td{ background:#f8fafc; cursor:default; }
+
+    .chip{ display:inline-flex; align-items:center; gap:4px; border-radius:999px; padding:3px 10px; font-size:11px; font-weight:700; }
+    .chip-pend{ background:var(--warning-soft); color:var(--warning); border:0.5px solid #fde68a; }
+    .chip-fin{ background:var(--success-soft); color:var(--success); border:0.5px solid #bbf7d0; }
+
+    .periodo-btn{ border-radius:999px; padding:4px 12px; font-size:12px; font-weight:700; border:none; cursor:pointer; background:transparent; color:#64748b; transition:all .12s; }
+    .periodo-btn.active{ background:#fff; color:#0f172a; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+    .dark .periodo-btn.active{ background:#334155; color:#f1f5f9; }
+
+    .toast-wrap{ position:fixed; top:18px; right:18px; display:flex; flex-direction:column; gap:10px; z-index:9999; pointer-events:none; }
+    .toast{ pointer-events:auto; min-width:240px; border-radius:16px; padding:12px 16px; box-shadow:0 8px 24px rgba(15,23,42,.14); font-size:13px; font-weight:700; border:1px solid transparent; }
+    .toast-success{ background:#f0fdf4; color:#166534; border-color:#bbf7d0; }
+    .toast-error{ background:#fef2f2; color:#b91c1c; border-color:#fecaca; }
+    .toast-info{ background:#eff6ff; color:#1d4ed8; border-color:#bfdbfe; }
+
+    /* Tooltips */
+    [data-tip]{ position:relative; }
+    [data-tip]:hover::after{ content:attr(data-tip); position:absolute; bottom:calc(100% + 6px); left:50%; transform:translateX(-50%); background:#0f172a; color:#f8fafc; font-size:11px; font-weight:600; border-radius:8px; padding:4px 9px; white-space:nowrap; z-index:300; pointer-events:none; }
+    .dark [data-tip]:hover::after{ background:#334155; }
+
+    .empty-state{ text-align:center; padding:60px 24px; color:#94a3b8; }
+    .empty-state i{ font-size:36px; margin-bottom:14px; display:block; }
+
+    @keyframes shimmer{ 100%{ transform:translateX(100%); } }
+    .loading-shimmer{ position:relative; overflow:hidden; }
+    .loading-shimmer::after{ content:""; position:absolute; inset:0; transform:translateX(-100%); background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent); animation:shimmer 1.2s infinite; }
+  </style>
+</head>
+<body>
+<div id="toastWrap" class="toast-wrap"></div>
+
+<main class="min-h-screen p-4 sm:p-6">
+  <div class="mx-auto max-w-[1400px]">
+
+    <!-- HEADER -->
+    <header class="rounded-[32px] border border-slate-200 bg-white p-4 sm:p-5 shadow-card mb-4 sticky top-4 z-30">
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <a href="./dispo.html" data-tip="Voltar ao DISPO"
+            class="focus-ring flex items-center justify-center h-10 w-10 rounded-2xl border border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100 transition-colors">
+            <i class="fa-solid fa-arrow-left text-sm"></i>
+          </a>
+          <div>
+            <div class="text-xs font-bold text-slate-500">Controle de estoque</div>
+            <div class="text-2xl sm:text-3xl font-extrabold">Desmembramentos</div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <!-- Busca -->
+          <div class="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 min-w-[280px]">
+            <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
+            <input id="searchInput" class="focus-ring w-full bg-transparent text-sm outline-none" placeholder="Produto, código, Nº, GCI..."/>
+            <button id="btnClearSearch" class="hidden text-slate-400 hover:text-slate-600" data-tip="Limpar busca (ESC)">
+              <i class="fa-solid fa-xmark text-sm"></i>
+            </button>
+          </div>
+
+          <!-- Filtro período -->
+          <div class="inline-flex rounded-full border border-slate-200 bg-slate-50 p-1 gap-0.5">
+            <button class="periodo-btn active" data-periodo="all">Todos</button>
+            <button class="periodo-btn" data-periodo="24h">24h</button>
+            <button class="periodo-btn" data-periodo="7d">7d</button>
+            <button class="periodo-btn" data-periodo="15d">15d</button>
+            <button class="periodo-btn" data-periodo="1m">1m</button>
+            <button class="periodo-btn" data-periodo="6m">6m</button>
+          </div>
+
+          <!-- Tela cheia -->
+          <button id="btnFullscreen" onclick="toggleFullscreen()" data-tip="Tela cheia"
+            class="focus-ring w-9 h-9 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-500 hover:bg-slate-50 transition-colors">
+            <i id="iconFullscreen" class="fa-solid fa-expand text-xs"></i>
+          </button>
+
+          <!-- Dark mode -->
+          <button onclick="toggleDark()" data-tip="Modo escuro"
+            class="focus-ring w-9 h-9 rounded-full border border-slate-200 bg-white flex items-center justify-center hover:bg-slate-50 transition-colors">
+            <i id="darkIcon" class="fa-solid fa-moon text-slate-400 text-xs"></i>
+          </button>
+
+          <!-- Atualizar -->
+          <button id="btnRefresh" onclick="loadData()" data-tip="Atualizar dados"
+            class="focus-ring rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors flex items-center gap-2">
+            <i class="fa-solid fa-rotate-right text-slate-400"></i>
+            Atualizar
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- PILLS RESUMO -->
+    <div id="pillsResumo" class="flex flex-wrap gap-2 mb-4 hidden">
+      <span class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-bold" style="background:#fef3c7;color:#92400e;border:0.5px solid #fde68a">
+        <span id="pillPendente">—</span> pendente(s)
+      </span>
+      <span class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-bold" style="background:#dcfce7;color:#166534;border:0.5px solid #bbf7d0">
+        <span id="pillFinalizado">—</span> finalizado(s)
+      </span>
+      <span class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-bold" style="background:var(--brand-soft);color:var(--brand);border:0.5px solid var(--brand)">
+        <span id="pillTotal">—</span> linha(s) no total
+      </span>
+    </div>
+
+    <!-- TABELA -->
+    <div class="rounded-[28px] border border-slate-200 bg-white shadow-card p-4">
+      <div class="flex items-center justify-between gap-3 mb-4">
+        <div class="text-sm font-extrabold">Registros de desmembramento</div>
+        <div class="text-xs font-bold text-slate-400" id="tableCount">— registros</div>
+      </div>
+
+      <div id="loadingState" class="loading-shimmer rounded-2xl bg-slate-100 h-48 mb-2"></div>
+
+      <div id="emptyState" class="hidden empty-state">
+        <i class="fa-solid fa-inbox"></i>
+        <p class="font-semibold">Nenhum desmembramento encontrado.</p>
+      </div>
+
+      <div id="tableWrap" class="table-wrap hidden">
+        <table>
+          <thead>
+            <tr>
+              <th>Nº</th>
+              <th>GCI</th>
+              <th>Produto</th>
+              <th>Código</th>
+              <th>Cor</th>
+              <th>Prev. Fat.</th>
+              <th>Cliente</th>
+              <th>Prazo</th>
+              <th>Campanha</th>
+              <th class="text-right">Qtde</th>
+              <th>Status Pedido</th>
+              <th>Situação Desm.</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script>
+// Dark mode imediato
+if(localStorage.getItem('admin_dark') === '1' || localStorage.getItem('dispo_dark') === '1') document.documentElement.classList.add('dark');
+
+const WORKER_URL = 'https://repasse-worker-cms.marcosrep-cms.workers.dev';
+const STORAGE_KEYS = { adminAuth:'repasse_admin_auth_v1' };
+
+if(localStorage.getItem(STORAGE_KEYS.adminAuth) !== 'ok') window.location.replace('./index.html');
+
+const $ = id => document.getElementById(id);
+
+let _allLinhas = [];
+let _periodoAtivo = 'all';
+let _searchQuery = '';
+
+const PERIODO_MS = { '24h':86400000, '7d':604800000, '15d':1296000000, '1m':2592000000, '6m':15552000000 };
+
+function showToast(msg, type='info'){
+  const t = document.createElement('div');
+  t.className = `toast toast-${type}`;
+  t.textContent = msg;
+  $('toastWrap').appendChild(t);
+  setTimeout(()=>{ t.style.opacity='0'; t.style.transition='opacity .2s'; }, 3200);
+  setTimeout(()=>t.remove(), 3500);
+}
+
+function formatDate(value){
+  if(!value) return '—';
+  if(typeof value === 'string' && /^\d{5}$/.test(value.trim())){
+    const n = Number(value);
+    if(n > 40000 && n < 60000){
+      const d = new Date(Date.UTC(1899,11,30));
+      d.setUTCDate(d.getUTCDate() + n);
+      return d.toLocaleDateString('pt-BR');
+    }
+  }
+  if(typeof value === 'number' && value > 40000 && value < 60000){
+    const d = new Date(Date.UTC(1899,11,30));
+    d.setUTCDate(d.getUTCDate() + value);
+    return d.toLocaleDateString('pt-BR');
+  }
+  const d = new Date(value);
+  return isNaN(d) ? String(value) : d.toLocaleDateString('pt-BR');
+}
+
+function safeHtml(v){
+  return String(v ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+}
+
+function desmKeyFromParts(codigo, cor, dataEntrega){
+  return `${codigo}|${cor}|${formatDate(dataEntrega)}`;
+}
+
+async function loadData(){
+  $('loadingState').classList.remove('hidden');
+  $('tableWrap').classList.add('hidden');
+  $('emptyState').classList.add('hidden');
+  $('pillsResumo').classList.add('hidden');
+
+  try{
+    // Carrega desmembramentos e pedidos em paralelo
+    const [desmRes, pedidosRes] = await Promise.all([
+      fetch(WORKER_URL, { method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:'get'}) }),
+      fetch(`${WORKER_URL}?t=${Date.now()}`, { cache:'no-store' })
+    ]);
+
+    const desm   = desmRes.ok ? await desmRes.json() : {};
+    const pedidos = pedidosRes.ok ? await pedidosRes.json() : [];
+
+    // Monta mapa de pedidos por id
+    const pedidoMap = new Map();
+    for(const p of (Array.isArray(pedidos) ? pedidos : [])){
+      pedidoMap.set(p.id, p);
+    }
+
+    // Expande desmembramentos em linhas
+    _allLinhas = [];
+    for(const [chave, lojas] of Object.entries(desm || {})){
+      // chave = "codigo|cor|prevFat"
+      const [codigo, cor, prevFat] = chave.split('|');
+      for(const [lineKey, situacao] of Object.entries(lojas || {})){
+        // lineKey = "orderId||gci||cor"
+        const [orderId, gci] = lineKey.split('||');
+        const pedido = pedidoMap.get(orderId);
+
+        // Busca num da DISPO (não disponível aqui — mostra GCI como ref)
+        const cliente = pedido
+          ? (pedido.clienteNome ? `${pedido.clienteCodigo} — ${pedido.clienteNome}` : pedido.clienteCodigo)
+          : '—';
+
+        // Pega qtde do item correspondente no pedido
+        let qtde = 0;
+        let produto = '—';
+        let prazo = pedido?.prazo || '—';
+        let campanha = (pedido?.campanha || '').replace(/\s*\bOLY\b\s*/gi,'').trim() || '—';
+        let orderStatus = pedido ? pedido.status : '—';
+        let updatedAt = pedido?.updatedAt || pedido?.createdAt || null;
+
+        if(pedido && Array.isArray(pedido.items)){
+          const item = pedido.items.find(it =>
+            String(it.gci||'').trim() === String(gci||'').trim() ||
+            String(it.ebm||'').trim() === String(gci||'').trim()
+          );
+          if(item){
+            produto = item.produto || produto;
+            qtde = Number(item.totalUnits || 0) || (item.grade||[]).reduce((s,g)=>s+Number(g.qty||0),0);
+          }
+        }
+
+        _allLinhas.push({
+          chave, lineKey, codigo, cor, prevFat,
+          gci, produto, cliente, prazo, campanha,
+          qtde, situacao, orderStatus, orderId, updatedAt
+        });
+      }
+    }
+
+    renderTable();
+  }catch(err){
+    console.error(err);
+    showToast('Erro ao carregar dados.', 'error');
+    $('loadingState').classList.add('hidden');
+    $('emptyState').classList.remove('hidden');
+  }
+}
+
+function filtrarLinhas(){
+  const q = _searchQuery.toLowerCase().trim();
+  const ms = PERIODO_MS[_periodoAtivo];
+  const desde = ms ? Date.now() - ms : null;
+
+  return _allLinhas.filter(l => {
+    // Filtro período
+    if(desde && l.updatedAt){
+      const t = new Date(l.updatedAt).getTime();
+      if(!isNaN(t) && t < desde) return false;
+    }
+    // Busca
+    if(q){
+      const hay = `${l.produto} ${l.codigo} ${l.gci} ${l.cor} ${l.cliente} ${l.prevFat}`.toLowerCase();
+      if(!hay.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+function renderTable(){
+  $('loadingState').classList.add('hidden');
+
+  const linhas = filtrarLinhas();
+  $('tableCount').textContent = `${linhas.length} registro${linhas.length !== 1 ? 's' : ''}`;
+
+  // Pills
+  const pend = linhas.filter(l => (l.situacao||'').toLowerCase() !== 'finalizado').length;
+  const fin  = linhas.filter(l => (l.situacao||'').toLowerCase() === 'finalizado').length;
+  $('pillPendente').textContent = pend;
+  $('pillFinalizado').textContent = fin;
+  $('pillTotal').textContent = linhas.length;
+  $('pillsResumo').classList.toggle('hidden', linhas.length === 0);
+
+  if(!linhas.length){
+    $('tableWrap').classList.add('hidden');
+    $('emptyState').classList.remove('hidden');
+    return;
+  }
+
+  $('emptyState').classList.add('hidden');
+  $('tableWrap').classList.remove('hidden');
+
+  $('tableBody').innerHTML = linhas.map(l => {
+    const isFin = (l.situacao||'').toLowerCase() === 'finalizado';
+    const chipSit = isFin
+      ? `<span class="chip chip-fin"><i class="fa-solid fa-circle-check text-[9px]"></i> Finalizado</span>`
+      : `<span class="chip chip-pend"><i class="fa-solid fa-clock text-[9px]"></i> Pendente</span>`;
+
+    const statusOrder = (() => {
+      const s = (l.orderStatus||'').toLowerCase();
+      if(s.includes('aprovado') || s.includes('finalizado')) return `<span class="chip chip-fin">Aprovado</span>`;
+      if(s.includes('cancelado')) return `<span style="background:#fee2e2;color:#b91c1c;border:0.5px solid #fca5a5" class="chip">Cancelado</span>`;
+      return `<span class="chip chip-pend">Pendente</span>`;
+    })();
+
+    return `<tr>
+      <td class="text-slate-400 font-semibold text-[11px]">—</td>
+      <td class="font-extrabold text-[var(--brand)] text-xs">${safeHtml(l.gci||'—')}</td>
+      <td class="font-extrabold">${safeHtml(l.produto||'—')}</td>
+      <td class="text-slate-500 font-semibold text-xs">${safeHtml(l.codigo||'—')}</td>
+      <td class="text-slate-500 font-semibold">${safeHtml(l.cor||'—')}</td>
+      <td class="text-slate-500 font-semibold whitespace-nowrap">${safeHtml(l.prevFat||'—')}</td>
+      <td class="font-semibold">${safeHtml(l.cliente||'—')}</td>
+      <td class="text-slate-500 font-semibold whitespace-nowrap text-xs">${safeHtml(l.prazo||'—')}</td>
+      <td class="text-slate-500 font-semibold text-xs">${safeHtml(l.campanha||'—')}</td>
+      <td class="text-right font-extrabold">${l.qtde||0}</td>
+      <td>${statusOrder}</td>
+      <td>${chipSit}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ── BUSCA ─────────────────────────────────────────────────────────────────────
+$('searchInput').addEventListener('input', e => {
+  _searchQuery = e.target.value;
+  $('btnClearSearch').classList.toggle('hidden', !_searchQuery);
+  renderTable();
+});
+
+$('searchInput').addEventListener('keydown', e => {
+  if(e.key === 'Escape'){
+    _searchQuery = '';
+    $('searchInput').value = '';
+    $('btnClearSearch').classList.add('hidden');
+    $('searchInput').blur();
+    renderTable();
+  }
+});
+
+$('btnClearSearch').addEventListener('click', () => {
+  _searchQuery = '';
+  $('searchInput').value = '';
+  $('btnClearSearch').classList.add('hidden');
+  $('searchInput').focus();
+  renderTable();
+});
+
+// ESC global limpa busca se campo ativo
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape' && document.activeElement !== $('searchInput')){
+    _searchQuery = '';
+    $('searchInput').value = '';
+    $('btnClearSearch').classList.add('hidden');
+    renderTable();
+  }
+});
+
+// ── PERÍODO ───────────────────────────────────────────────────────────────────
+document.querySelectorAll('.periodo-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.periodo-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    _periodoAtivo = btn.dataset.periodo;
+    renderTable();
+  });
+});
+
+// ── DARK MODE ─────────────────────────────────────────────────────────────────
+function toggleDark(){
+  const isDark = document.documentElement.classList.toggle('dark');
+  localStorage.setItem('admin_dark', isDark ? '1' : '0');
+  localStorage.setItem('dispo_dark', isDark ? '1' : '0');
+  $('darkIcon').className = isDark ? 'fa-solid fa-sun text-amber-400 text-xs' : 'fa-solid fa-moon text-slate-400 text-xs';
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const isDark = localStorage.getItem('admin_dark') === '1' || localStorage.getItem('dispo_dark') === '1';
+  if(isDark) $('darkIcon').className = 'fa-solid fa-sun text-amber-400 text-xs';
+});
+
+// ── TELA CHEIA ────────────────────────────────────────────────────────────────
+function toggleFullscreen(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen().catch(()=>{});
+  } else {
+    document.exitFullscreen();
+  }
+}
+document.addEventListener('fullscreenchange', () => {
+  const icon = $('iconFullscreen');
+  if(icon) icon.className = document.fullscreenElement ? 'fa-solid fa-compress text-xs' : 'fa-solid fa-expand text-xs';
+});
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+loadData();
+</script>
+</body>
+</html>

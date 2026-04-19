@@ -382,6 +382,11 @@
     .row-nova-dispo td { background:#f0fdf4 !important; }
     .badge-nova { font-size:10px; background:#EAF3DE; color:#27500A; border-radius:999px; padding:1px 7px; margin-left:5px; font-weight:700; }
     .badge-parcial { font-size:10px; background:#ffedd5; color:#c2410c; border-radius:999px; padding:1px 7px; margin-left:5px; font-weight:700; border:0.5px solid #fdba74; }
+    .badge-total { font-size:10px; background:#dcfce7; color:#15803d; border-radius:999px; padding:1px 7px; margin-left:5px; font-weight:700; border:0.5px solid #86efac; }
+    /* Tooltips */
+    [title]{ position:relative; }
+    .tt{ position:absolute; bottom:calc(100% + 6px); left:50%; transform:translateX(-50%); background:#0f172a; color:#f1f5f9; font-size:11px; font-weight:600; border-radius:8px; padding:4px 8px; white-space:nowrap; pointer-events:none; opacity:0; transition:opacity .15s; z-index:200; }
+    .dark .tt{ background:#334155; }
     .col-hide-pendente .col-pendente { display:none!important; }
     .col-hide-aprovado .col-aprovado { display:none!important; }
     .col-hide-pedidoMae .col-pedidoMae { display:none!important; }
@@ -452,6 +457,19 @@
                 <label class="flex items-center gap-2 text-sm font-semibold cursor-pointer"><input type="checkbox" id="colPedidoMae" checked onchange="toggleCol('pedidoMae',this.checked)"> Pedido Mãe</label>
               </div>
             </div>
+
+            <!-- Consultar desmembramentos -->
+            <a href="./dispo_consulta.html" title="Consultar desmembramentos"
+              class="focus-ring rounded-full border border-[var(--brand)] bg-[var(--brand-soft)] px-4 py-2 text-sm font-bold text-[var(--brand)] flex items-center gap-2 hover:bg-[var(--brand)] hover:text-white transition-colors">
+              <i class="fa-solid fa-list-check text-xs"></i>
+              <span class="hidden sm:inline">Desmembramentos</span>
+            </a>
+
+            <!-- Tela cheia -->
+            <button id="btnFullscreen" onclick="toggleFullscreen()" title="Tela cheia"
+              class="focus-ring w-9 h-9 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-500 hover:bg-slate-50 transition-colors">
+              <i id="iconFullscreen" class="fa-solid fa-expand text-xs"></i>
+            </button>
 
             <!-- Dark mode -->
             <button id="btnDarkMode" onclick="toggleDark()" title="Modo escuro"
@@ -661,6 +679,9 @@
 
 
 <script>
+// Dark mode imediato — evita flash
+if(localStorage.getItem('admin_dark') === '1' || localStorage.getItem('dispo_dark') === '1') document.documentElement.classList.add('dark');
+
 const WORKER_URL = 'https://repasse-worker-cms.marcosrep-cms.workers.dev';
 const DISPO_FILE_URL = '../DISPO.xlsx';
 const STORAGE_KEYS = {
@@ -1087,13 +1108,17 @@ function renderDispo(){
     const savedDesm = STATE.desmembramentos && STATE.desmembramentos[key] ? STATE.desmembramentos[key] : {};
     const totalDesm = Object.values(savedDesm).reduce((s, v) => s + Number(v || 0), 0);
     const isParcial = totalDesm > 0 && row.saldoReal > 0;
+    const isTotal   = totalDesm > 0 && row.saldoReal <= 0;
+    const desmBadge = isTotal
+      ? '<span class="badge-total ml-1">Total</span>'
+      : isParcial ? '<span class="badge-parcial ml-1">Parcial</span>' : '';
 
     return `
       <tr class="${rowClass}">
         <td class="tabular-nums font-semibold text-slate-400 text-[11px]">${safeHtml(row.num||'—')}</td>
         <td class="font-extrabold tabular-nums text-[var(--brand)] text-xs">${safeHtml(row.gci||row.codigo||'—')}</td>
         <td>
-          <div class="font-extrabold text-slate-800">${safeHtml(row.produto)}${isParcial ? '<span class="badge-parcial ml-1">Parcial</span>' : ''}</div>
+          <div class="font-extrabold text-slate-800">${safeHtml(row.produto)}${desmBadge}</div>
           <div class="text-xs text-slate-400 mt-0.5">${safeHtml(row.codigo||'')}</div>
         </td>
         <td class="text-slate-500 font-semibold">${safeHtml(row.cor)}</td>
@@ -1572,6 +1597,19 @@ if(_darkOn){
     if(icon) icon.className = 'fa-solid fa-sun text-amber-400 text-xs';
   });
 }
+
+function toggleFullscreen(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen().catch(()=>{});
+  } else {
+    document.exitFullscreen();
+  }
+}
+document.addEventListener('fullscreenchange', ()=>{
+  const icon = document.getElementById('iconFullscreen');
+  if(!icon) return;
+  icon.className = document.fullscreenElement ? 'fa-solid fa-compress text-xs' : 'fa-solid fa-expand text-xs';
+});
 
 // ── TOGGLE KPIs ───────────────────────────────────────────────────────────────
 function toggleKpis(){
