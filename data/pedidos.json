@@ -173,8 +173,8 @@
   {
     "id": "PED-20260418152008-639",
     "createdAt": "2026-04-18T18:20:08.995Z",
-    "updatedAt": "2026-04-18T18:20:09.327Z",
-    "status": "Pendente",
+    "updatedAt": "2026-04-19T19:37:13.962Z",
+    "status": "Aprovado",
     "archived": false,
     "isDuplicate": false,
     "preposto": {
@@ -202,7 +202,7 @@
         "packSize": 1,
         "totalUnits": 1,
         "grade": [],
-        "prevFaturamento": 46147
+        "prevFaturamento": "46147"
       },
       {
         "codigo": "43667419",
@@ -240,7 +240,7 @@
             "qty": 1
           }
         ],
-        "prevFaturamento": 46147
+        "prevFaturamento": "46147"
       },
       {
         "codigo": "43395156",
@@ -282,7 +282,7 @@
             "qty": 1
           }
         ],
-        "prevFaturamento": 46165
+        "prevFaturamento": "46165"
       },
       {
         "codigo": "43263432",
@@ -320,8 +320,49 @@
             "qty": 1
           }
         ],
-        "prevFaturamento": 46178
+        "prevFaturamento": "46178"
       }
-    ]
+    ],
+    "history": [
+      {
+        "eventId": "evt_1776627434042_6ppkih",
+        "at": "2026-04-19T19:37:14.042Z",
+        "action": "status_changed",
+        "label": "Pedido aprovado",
+        "statusFrom": "Pendente",
+        "statusTo": "Aprovado",
+        "archivedFrom": false,
+        "archivedTo": false,
+        "clientCode": "3834566",
+        "prepostoCodigo": "3616654",
+        "prepostoNome": "MARCOS",
+        "notes": "",
+        "meta": {
+          "itemsCount": 4,
+          "units": 37
+        }
+      },
+      {
+        "eventId": "evt_1776627431041_9gee4e",
+        "at": "2026-04-19T19:37:11.041Z",
+        "action": "created",
+        "label": "Pedido criado",
+        "statusFrom": null,
+        "statusTo": "Pendente",
+        "archivedFrom": null,
+        "archivedTo": false,
+        "clientCode": "3834566",
+        "prepostoCodigo": "3616654",
+        "prepostoNome": "MARCOS",
+        "notes": "",
+        "meta": {
+          "itemsCount": 4,
+          "units": 37
+        }
+      }
+    ],
+    "lastAction": "status_changed",
+    "lastActionLabel": "Pedido aprovado",
+    "lastActionAt": "2026-04-19T19:37:14.042Z"
   }
 ]
