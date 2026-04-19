@@ -547,6 +547,7 @@
           <table>
             <thead>
               <tr>
+                <th class="sortable" data-col="num">Nº<i class="fa-solid fa-sort sort-icon"></i></th>
                 <th class="sortable" data-col="gci">GCI<i class="fa-solid fa-sort sort-icon"></i></th>
                 <th class="sortable" data-col="produto">Produto<i class="fa-solid fa-sort sort-icon"></i></th>
                 <th>Cor</th>
@@ -868,7 +869,8 @@ async function loadDispo(){
       const gci = sanitizeDisplayText(String(row['GCI'] || row['Gci'] || ''));
       const ebm = sanitizeDisplayText(String(row['EBM'] || row['Ebm'] || ''));
       const filial = sanitizeDisplayText(String(row['FILIAL'] || row['Filial'] || row['filial'] || ''));
-      return { codigo, produto, cor, dataEntrega, saldo, pedidoMae, gci, ebm, filial };
+      const num = sanitizeDisplayText(String(row['Nº'] ?? row['N'] ?? row['Numero'] ?? row['NUM'] ?? ''));
+      return { num, codigo, produto, cor, dataEntrega, saldo, pedidoMae, gci, ebm, filial };
     }).filter(row => row.codigo || row.produto);
 
     STATE.dispoLoadedAt = new Date();
@@ -924,6 +926,7 @@ function sortRows(rows){
   return [...rows].sort((a, b) => {
     let va, vb;
     switch(col){
+      case 'num':     va = a.num||'';   vb = b.num||'';   break;
       case 'codigo':  va = a.codigo;  vb = b.codigo;  break;
       case 'produto': va = a.produto; vb = b.produto; break;
       case 'dataEntrega': va = parseDate(a.dataEntrega)?.getTime()||0; vb = parseDate(b.dataEntrega)?.getTime()||0; break;
@@ -1071,6 +1074,7 @@ function renderDispo(){
 
     return `
       <tr class="${rowClass}">
+        <td class="tabular-nums font-semibold text-slate-400 text-[11px]">${safeHtml(row.num||'—')}</td>
         <td class="font-extrabold tabular-nums text-[var(--brand)] text-xs">${safeHtml(row.gci||row.codigo||'—')}</td>
         <td>
           <div class="font-extrabold text-slate-800">${safeHtml(row.produto)}${isParcial ? '<span class="badge-parcial ml-1">Parcial</span>' : ''}</div>
@@ -1538,10 +1542,14 @@ function renderBannerAntecipacao(allRows){
 // ── DARK MODE ─────────────────────────────────────────────────────────────────
 function toggleDark(){
   const isDark = document.documentElement.classList.toggle('dark');
+  // Salva nas duas chaves para manter sincronia com o admin/index.html
   localStorage.setItem('dispo_dark', isDark ? '1' : '0');
+  localStorage.setItem('admin_dark', isDark ? '1' : '0');
   $('darkIcon').className = isDark ? 'fa-solid fa-sun text-amber-400 text-xs' : 'fa-solid fa-moon text-slate-400 text-xs';
 }
-if(localStorage.getItem('dispo_dark') === '1'){
+// Lê admin_dark (definido no index) como fonte principal; dispo_dark como fallback
+const _darkOn = localStorage.getItem('admin_dark') === '1' || localStorage.getItem('dispo_dark') === '1';
+if(_darkOn){
   document.documentElement.classList.add('dark');
   document.addEventListener('DOMContentLoaded', ()=>{
     const icon = $('darkIcon');

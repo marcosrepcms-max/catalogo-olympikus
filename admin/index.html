@@ -35,6 +35,25 @@
       --partial:#c2410c;
       --partial-soft:#ffedd5;
     }
+    .dark{
+      --bg:#0f172a;
+      --card:#1e293b;
+      --text:#f1f5f9;
+      --line:#334155;
+      --brand:#818cf8;
+      --brand-soft:rgba(129,140,248,.15);
+      --shadow:0 18px 42px rgba(0,0,0,.4);
+      --success:#4ade80;
+      --success-soft:#14532d;
+      --warning:#fbbf24;
+      --warning-soft:#451a03;
+      --info:#60a5fa;
+      --info-soft:#1e3a5f;
+      --danger:#f87171;
+      --danger-soft:#450a0a;
+      --muted:#94a3b8;
+      --muted-soft:#1e293b;
+    }
 
     *{ box-sizing:border-box; }
 
@@ -60,6 +79,19 @@
     .chip-gray{ background:#eef2f7; color:#334155; }
     .chip-status-pendente{ background:var(--warning-soft); color:var(--warning); border-color:#fde68a; }
     .chip-status-aprovado{ background:var(--success-soft); color:var(--success); border-color:#bbf7d0; }
+    .filter-status-btn{ display:inline-flex; align-items:center; gap:6px; border:0.5px solid var(--line); border-radius:999px; padding:6px 14px; font-size:12px; font-weight:700; cursor:pointer; background:none; color:#64748b; transition:all .12s; }
+    .filter-status-btn:hover{ background:#f8fafc; }
+    .filter-status-btn.fs-active-todos{ background:#0f172a; color:#fff; border-color:#0f172a; }
+    .filter-status-btn.fs-active-pend{ background:#fef3c7; color:#92400e; border-color:#fde68a; }
+    .filter-status-btn.fs-active-aprov{ background:#dcfce7; color:#166534; border-color:#bbf7d0; }
+    .filter-status-btn.fs-active-export{ background:#dbeafe; color:#1e40af; border-color:#93c5fd; }
+    .filter-status-btn.fs-active-canc{ background:#fee2e2; color:#991b1b; border-color:#fca5a5; }
+    .fs-count{ font-size:10px; font-weight:700; border-radius:999px; padding:1px 6px; }
+    .fs-count-todos{ background:#e2e8f0; color:#475569; }
+    .fs-count-pend{ background:#fde68a; color:#92400e; }
+    .fs-count-aprov{ background:#bbf7d0; color:#166534; }
+    .fs-count-export{ background:#93c5fd; color:#1e40af; }
+    .fs-count-canc{ background:#fca5a5; color:#991b1b; }
     .chip-status-cancelado{ background:var(--danger-soft); color:var(--danger); border-color:#fecaca; }
 
     .shadow-card{ box-shadow:var(--shadow); }
@@ -227,6 +259,74 @@
       100% { transform:translateX(100%); }
     }
 
+    .active-periodo{ background:#fff; color:#0f172a; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+    .dark .active-periodo{ background:#334155; color:#f1f5f9; }
+    .dark body, .dark { background:var(--bg); color:var(--text); }
+    .dark .bg-white{ background:var(--card)!important; }
+    .dark .bg-slate-50{ background:#1e293b!important; }
+    .dark .border-slate-200{ border-color:var(--line)!important; }
+    .dark .text-slate-800, .dark .text-slate-700, .dark .text-slate-900{ color:var(--text)!important; }
+    .dark .text-slate-500, .dark .text-slate-400{ color:var(--muted)!important; }
+    .dark .shadow-card{ box-shadow:var(--shadow)!important; }
+    .dark .hover\:bg-slate-50:hover{ background:#1e293b!important; }
+    .dark .filter-status-btn:hover{ background:#1e293b!important; color:var(--muted)!important; }
+    .dark .filter-status-btn.fs-active-todos{ background:#334155!important; color:#f1f5f9!important; border-color:#475569!important; }
+    .dark .btn-expand-compact:hover{ background:#334155!important; }
+    .dark .expand-action-btn:hover{ background:#334155!important; }
+    .dark .ia-aprov:hover{ background:#14532d!important; }
+    .dark .ia-canc:hover{ background:#450a0a!important; }
+    .dark .ea-btn:hover .ea-icon-green{ background:#14532d!important; }
+    .dark .ea-btn:hover .ea-icon-red{ background:#450a0a!important; }
+    .dark .table-scroll tbody tr:hover{ background:#1e293b!important; }
+    .dark .relatorio-table tbody tr:hover{ background:#1e293b!important; }
+    .dark .relatorio-table thead th.relatorio-sortable:hover{ background:#1e293b!important; color:var(--brand)!important; }
+    .dark .relatorio-table thead th.th-grade-toggle:hover{ background:#1e293b!important; color:var(--brand)!important; }
+    .dark .kpi-op:hover{ box-shadow:0 8px 24px rgba(0,0,0,.3)!important; border-color:#475569!important; }
+    /* Card expand */
+    .order-card-compact{ background:var(--card); border:0.5px solid var(--line); border-radius:24px; overflow:hidden; transition:border-color .12s; }
+    .order-card-compact:hover{ border-color:var(--brand); }
+    .order-card-compact.expanded{ border-color:var(--brand); }
+    .card-compact-top{ display:flex; align-items:center; gap:10px; padding:11px 16px; cursor:pointer; }
+    .card-compact-detail{ display:none; border-top:0.5px solid var(--line); padding:12px 16px; background:var(--bg); }
+    .card-compact-detail.open{ display:block; }
+    .btn-expand-compact{ display:inline-flex; align-items:center; gap:4px; border:0.5px solid var(--line); border-radius:999px; padding:4px 11px; font-size:11px; font-weight:700; cursor:pointer; background:none; color:var(--muted); white-space:nowrap; flex-shrink:0; }
+    .btn-expand-compact:hover{ background:var(--muted-soft); }
+    .btn-expand-compact.open{ border-color:var(--brand); color:var(--brand); background:var(--brand-soft); }
+    .item-block-expand{ padding:8px 0; border-bottom:0.5px solid var(--line); }
+    .item-block-expand:last-child{ border-bottom:none; padding-bottom:0; }
+    .item-block-expand:first-child{ padding-top:0; }
+    .grade-pill-compact{ background:var(--card); border:0.5px solid var(--line); border-radius:8px; padding:3px 7px; font-size:11px; font-weight:700; color:var(--text); display:flex; flex-direction:column; align-items:center; line-height:1.2; min-width:30px; }
+    .grade-sz-compact{ font-size:9px; color:var(--muted); font-weight:500; }
+    .expand-action-btn{ border:0.5px solid var(--line); border-radius:999px; padding:5px 13px; font-size:11px; font-weight:700; cursor:pointer; background:none; color:var(--muted); }
+    .expand-action-btn:hover{ background:var(--muted-soft); }
+    .btn-aprov-action{ border-color:#bbf7d0; color:var(--success); background:var(--success-soft); }
+    .btn-export-action{ border-color:#93c5fd; color:var(--info); background:var(--info-soft); }
+    .btn-canc-action{ border-color:#fca5a5; color:var(--danger); }
+    .expand-action-btn{ border:0.5px solid var(--line); border-radius:999px; padding:5px 13px; font-size:11px; font-weight:700; cursor:pointer; background:none; color:var(--muted); }
+    .expand-action-btn:hover{ background:var(--muted-soft); }
+    .btn-aprov-action{ border-color:#bbf7d0; color:var(--success); background:var(--success-soft); }
+    .btn-export-action{ border-color:#93c5fd; color:var(--info); background:var(--info-soft); }
+    .btn-canc-action{ border-color:#fca5a5; color:var(--danger); }
+    /* Ícones inline na linha do card */
+    .icon-actions{ display:flex; align-items:center; gap:3px; }
+    .ia{ width:28px; height:28px; border-radius:50%; border:0.5px solid var(--line); display:flex; align-items:center; justify-content:center; cursor:pointer; background:none; color:var(--muted); flex-shrink:0; }
+    .ia:hover{ background:var(--muted-soft); }
+    .ia-aprov{ border-color:#bbf7d0; color:#15803d; }
+    .ia-aprov:hover{ background:#dcfce7; }
+    .ia-canc{ border-color:#fca5a5; color:#b91c1c; }
+    .ia-canc:hover{ background:#fee2e2; }
+    .ia-arch:hover{ background:var(--muted-soft); }
+    /* Ícones grandes no expand */
+    .ea-btn{ display:flex; flex-direction:column; align-items:center; gap:3px; border:none; background:none; cursor:pointer; }
+    .ea-icon{ width:34px; height:34px; border-radius:10px; display:flex; align-items:center; justify-content:center; }
+    .ea-icon-green{ background:#f0fdf4; color:#15803d; }
+    .ea-btn:hover .ea-icon-green{ background:#dcfce7; }
+    .ea-icon-red{ background:#fff1f2; color:#b91c1c; }
+    .ea-btn:hover .ea-icon-red{ background:#fee2e2; }
+    .ea-icon-gray{ background:var(--muted-soft); color:var(--muted); }
+    .ea-btn:hover .ea-icon-gray{ background:var(--line); }
+    .ea-lbl{ font-size:10px; font-weight:600; color:var(--muted); }
+    .ea-btn:hover .ea-lbl{ color:var(--text); }
     /* ── BLOCO 2 ── */
     .kpi-op{
       border:1px solid var(--line);
@@ -322,7 +422,7 @@
     </section>
 
     <section id="adminApp" class="hidden mx-auto max-w-7xl">
-      <header class="rounded-[32px] border border-slate-200 bg-white p-4 sm:p-5 shadow-card sticky top-4 z-30">
+      <header id="adminHeader" class="rounded-[32px] border border-slate-200 bg-white p-4 sm:p-5 shadow-card sticky top-4 z-30">
         <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
           <div>
             <div class="text-xs font-bold text-slate-500">Gestão</div>
@@ -334,13 +434,6 @@
               <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
               <input id="adminSearch" class="focus-ring w-full bg-transparent text-sm outline-none" placeholder="Buscar pedido, cliente ou preposto" />
             </div>
-
-            <select id="adminStatusFilter" class="focus-ring rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold">
-              <option value="">Todos os status</option>
-              <option value="Pendente">Pendente</option>
-              <option value="Aprovado">Aprovado</option>
-              <option value="Cancelado">Cancelado</option>
-            </select>
 
             <button id="btnRefresh" class="focus-ring rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700">
               Atualizar
@@ -359,11 +452,9 @@
               <span id="badgePendentesExport" class="inline-flex items-center justify-center rounded-full bg-emerald-600 text-white text-[10px] font-extrabold min-w-[18px] h-[18px] px-1">0</span>
             </button>
 
-            <button id="btnToggleResumo"
-              class="focus-ring rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 flex items-center gap-2"
-              title="Exibir/ocultar painel de resumo">
-              <i class="fa-solid fa-chart-bar"></i>
-              <span id="btnToggleResumoLabel">Ocultar resumo</span>
+            <button id="btnIrResumo" title="Resumo operacional"
+              class="focus-ring w-9 h-9 rounded-full border border-[var(--brand)] bg-[var(--brand-soft)] flex items-center justify-center text-[var(--brand)] hover:bg-[var(--brand)] hover:text-white transition-colors">
+              <i class="fa-solid fa-chart-line text-sm"></i>
             </button>
 
             <a href="./dispo.html"
@@ -372,6 +463,10 @@
               Painel DISPO
             </a>
 
+            <button id="btnDarkMode" onclick="toggleDarkAdmin()" class="focus-ring rounded-full border border-slate-200 bg-white px-3 py-2 text-sm" title="Modo escuro">
+              <i id="darkIconAdmin" class="fa-solid fa-moon text-slate-400 text-xs"></i>
+            </button>
+
 <button id="btnLogout" class="focus-ring rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700">
               Sair
             </button>
@@ -379,98 +474,84 @@
         </div>
       </header>
 
-      <!-- ── BLOCO 2: RESUMO OPERACIONAL ──────────────────────────────────── -->
-      <section class="mt-4" id="blocoResumo">
-
-        <!-- KPI CARDS -->
-        <div class="grid grid-cols-2 xl:grid-cols-4 gap-3 mb-4">
-          <div class="kpi-op" id="kpiCardPendente" data-status-filter="Pendente" title="Clique para filtrar pendentes">
-            <div class="text-xs font-bold text-slate-500 uppercase tracking-wide">Pendentes</div>
-            <div id="kpiOpPendenteQtd" class="mt-2 text-3xl font-extrabold text-amber-600">—</div>
-            <div id="kpiOpPendenteUnits" class="mt-1 text-xs font-bold text-slate-400">— unidades</div>
-            <div class="bar-track mt-3"><div id="barPendente" class="bar-fill bar-pendente" style="width:0%"></div></div>
-          </div>
-          <div class="kpi-op" id="kpiCardAprovado" data-status-filter="Aprovado" title="Clique para filtrar aprovados">
-            <div class="text-xs font-bold text-slate-500 uppercase tracking-wide">Aprovados</div>
-            <div id="kpiOpAprovadoQtd" class="mt-2 text-3xl font-extrabold text-emerald-600">—</div>
-            <div id="kpiOpAprovadoUnits" class="mt-1 text-xs font-bold text-slate-400">— unidades</div>
-            <div class="bar-track mt-3"><div id="barAprovado" class="bar-fill bar-aprovado" style="width:0%"></div></div>
-          </div>
-          <div class="kpi-op" id="kpiCardCancelado" data-status-filter="Cancelado" title="Clique para filtrar cancelados">
-            <div class="text-xs font-bold text-slate-500 uppercase tracking-wide">Cancelados</div>
-            <div id="kpiOpCanceladoQtd" class="mt-2 text-3xl font-extrabold text-rose-600">—</div>
-            <div id="kpiOpCanceladoUnits" class="mt-1 text-xs font-bold text-slate-400">— unidades</div>
-            <div class="bar-track mt-3"><div id="barCancelado" class="bar-fill bar-cancelado" style="width:0%"></div></div>
-          </div>
-          <div class="kpi-op" id="kpiCardHoje" data-status-filter="" title="Clique para ver todos">
-            <div class="text-xs font-bold text-slate-500 uppercase tracking-wide">Criados hoje</div>
-            <div id="kpiOpHojeQtd" class="mt-2 text-3xl font-extrabold text-[var(--brand)]">—</div>
-            <div id="kpiOpHojeTotal" class="mt-1 text-xs font-bold text-slate-400">— no total</div>
-            <div class="bar-track mt-3"><div id="barHoje" class="bar-fill" style="width:0%;background:var(--brand)"></div></div>
-          </div>
-        </div>
-
-        <!-- RANKING — largura total, colapsável, acima do relatório -->
-        <div class="rounded-[28px] border border-slate-200 bg-white shadow-card overflow-hidden mb-4">
-          <button id="btnToggleRanking"
-            class="focus-ring w-full flex items-center justify-between gap-3 px-4 py-3 text-left hover:bg-slate-50 transition-colors"
-            onclick="(()=>{ const b=$('rankingBody'); const ic=$('rankingIcon'); const vis=b.style.display==='none'; b.style.display=vis?'block':'none'; ic.style.transform=vis?'rotate(0deg)':'rotate(-90deg)'; localStorage.setItem('repasse_ranking_open',vis?'1':'0'); })()">
-            <div class="text-sm font-extrabold text-slate-800">Ranking de vendedores</div>
-            <i id="rankingIcon" class="fa-solid fa-chevron-down text-slate-400 text-xs transition-transform" style="transform:rotate(-90deg)"></i>
-          </button>
-          <div id="rankingBody" class="px-4 pb-4" style="display:none">
-            <div id="rankingVendedores" class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3">
-              <div class="text-xs text-slate-400 font-semibold">Carregando...</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- RELATÓRIO POR VENDEDOR — largura total -->
-        <div class="rounded-[28px] border border-slate-200 bg-white p-4 shadow-card mb-4">
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+      <!-- ── TELA DE RESUMO OPERACIONAL ──────────────────────────────────────── -->
+      <section id="telaResumo" class="hidden mt-4">
+        <!-- Header da tela de resumo -->
+        <div class="rounded-[32px] border border-slate-200 bg-white p-4 sm:p-5 shadow-card sticky top-4 z-30 mb-4">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <button id="btnVoltarResumo" class="focus-ring rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 flex items-center gap-2 hover:bg-slate-50">
+                <i class="fa-solid fa-arrow-left text-xs"></i> Voltar
+              </button>
               <div>
-                <div class="text-sm font-extrabold text-slate-800">Relatório por vendedor</div>
-                <div class="text-xs text-slate-500 font-semibold mt-0.5">Todos os pedidos do vendedor selecionado</div>
+                <div class="text-xs font-bold text-slate-500">Gestão</div>
+                <div class="text-xl font-extrabold">Resumo operacional</div>
               </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <select id="resumoVendedorSelect" class="focus-ring rounded-full border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-bold text-slate-600 min-w-[160px]">
+                <option value="">Todos os vendedores</option>
+              </select>
+              <button id="btnLimparResumo" class="focus-ring flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-bold text-slate-500 hover:bg-slate-50">
+                <i class="fa-solid fa-rotate-left text-slate-400 text-xs"></i> Limpar
+              </button>
+              <div class="inline-flex rounded-full border border-slate-200 bg-slate-50 p-1 gap-0.5" id="periodBar">
+                <button class="periodo-btn focus-ring rounded-full px-3 py-1 text-xs font-bold text-slate-500 active-periodo" data-periodo="24h">24h</button>
+                <button class="periodo-btn focus-ring rounded-full px-3 py-1 text-xs font-bold text-slate-500" data-periodo="7d">7d</button>
+                <button class="periodo-btn focus-ring rounded-full px-3 py-1 text-xs font-bold text-slate-500" data-periodo="15d">15d</button>
+                <button class="periodo-btn focus-ring rounded-full px-3 py-1 text-xs font-bold text-slate-500" data-periodo="1m">1m</button>
+                <button class="periodo-btn focus-ring rounded-full px-3 py-1 text-xs font-bold text-slate-500" data-periodo="6m">6m</button>
+              </div>
+              <button id="btnResumoFullscreen" class="focus-ring flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-bold text-slate-500 hover:bg-slate-50" title="Tela cheia">
+                <i class="fa-solid fa-expand text-xs"></i> Tela cheia
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Corpo da tela de resumo -->
+        <div class="rounded-[28px] border border-slate-200 bg-white shadow-card p-4 mb-4">
+
+          <!-- PILLS -->
+          <div id="pillsResumo" class="flex flex-wrap gap-2 mb-4">
+            <span class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-bold" style="background:#fef3c7;color:#92400e;border:0.5px solid #fde68a">
+              <span id="kpiOpPendenteQtd">—</span> pendente<span id="kpiOpPendenteUnits" style="font-weight:400;opacity:.8"></span>
+            </span>
+            <span class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-bold" style="background:#dcfce7;color:#166534;border:0.5px solid #bbf7d0">
+              <span id="kpiOpAprovadoQtd">—</span> aprovado<span id="kpiOpAprovadoUnits" style="font-weight:400;opacity:.8"></span>
+            </span>
+            <span class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-bold" style="background:#fee2e2;color:#991b1b;border:0.5px solid #fca5a5">
+              <span id="kpiOpCanceladoQtd">—</span> cancelado<span id="kpiOpCanceladoUnits" style="font-weight:400;opacity:.8"></span>
+            </span>
+            <span class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-bold" style="background:var(--brand-soft);color:var(--brand);border:0.5px solid var(--brand)">
+              <span id="kpiOpHojeQtd">—</span> no período · <span id="kpiOpHojeTotal" style="font-weight:400">— no total</span>
+            </span>
+          </div>
+
+          <!-- RELATÓRIO -->
+          <div id="relatorioIntegrado" class="pt-4 border-t border-slate-200">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
               <div class="flex flex-wrap items-center gap-2">
-                <select id="relatorioVendedorSelect"
-                  class="focus-ring rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm font-bold min-w-[200px]">
-                  <option value="">Selecione um vendedor</option>
-                  <option value="__todos__">— Todos os vendedores —</option>
-                </select>
-                <!-- Filtro exportação -->
+                <div class="text-xs font-bold text-slate-500 uppercase tracking-wide">Relatório detalhado</div>
                 <div class="inline-flex rounded-full border border-slate-200 bg-slate-50 p-1 gap-1">
-                  <button id="filtroNaoExportado" data-filtro="nao"
-                    class="filtro-export-btn focus-ring rounded-full px-3 py-1.5 text-xs font-bold text-slate-600">
-                    Não exportados
-                  </button>
-                  <button id="filtroExportado" data-filtro="exp"
-                    class="filtro-export-btn focus-ring rounded-full px-3 py-1.5 text-xs font-bold text-slate-600">
-                    Exportados
-                  </button>
-                  <button id="filtroTodos" data-filtro="all"
-                    class="filtro-export-btn focus-ring rounded-full px-3 py-1.5 text-xs font-bold text-slate-600">
-                    Todos
-                  </button>
+                  <button id="filtroNaoExportado" data-filtro="nao" class="filtro-export-btn focus-ring rounded-full px-3 py-1.5 text-xs font-bold text-slate-600">Não exportados</button>
+                  <button id="filtroExportado"    data-filtro="exp" class="filtro-export-btn focus-ring rounded-full px-3 py-1.5 text-xs font-bold text-slate-600">Exportados</button>
+                  <button id="filtroTodos"        data-filtro="all" class="filtro-export-btn focus-ring rounded-full px-3 py-1.5 text-xs font-bold text-slate-600">Todos</button>
                 </div>
-                <button id="btnGerarRelatorio"
-                  class="focus-ring rounded-2xl bg-[var(--brand)] px-4 py-2 text-sm font-extrabold text-white">
-                  Gerar
-                </button>
+                <button id="btnGerarRelatorio" class="focus-ring rounded-2xl bg-[var(--brand)] px-4 py-2 text-sm font-extrabold text-white">Gerar</button>
+              </div>
+              <div id="relatorioSearchWrap" class="hidden flex items-center gap-2">
+                <div class="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 flex-1 max-w-xs">
+                  <i class="fa-solid fa-magnifying-glass text-slate-400 text-xs"></i>
+                  <input id="relatorioSearch" class="bg-transparent text-sm outline-none w-full" placeholder="Buscar na tabela..." oninput="filtrarTabelaRelatorio(this.value)"/>
+                </div>
               </div>
             </div>
 
-            <!-- Banner de status de exportação -->
             <div id="relatorioBanner" class="hidden rounded-2xl px-4 py-3 text-sm font-semibold mb-4 flex items-center gap-2"></div>
 
-            <div id="relatorioKpis" class="hidden grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
-              <div class="kpi-card"><div class="text-xs font-bold text-slate-500">Total</div><div id="relKpiTotal" class="mt-1 text-2xl font-extrabold">0</div></div>
-              <div class="kpi-card"><div class="text-xs font-bold text-amber-600">Pendentes</div><div id="relKpiPendente" class="mt-1 text-2xl font-extrabold text-amber-600">0</div></div>
-              <div class="kpi-card"><div class="text-xs font-bold text-emerald-600">Aprovados</div><div id="relKpiAprovado" class="mt-1 text-2xl font-extrabold text-emerald-600">0</div></div>
-              <div class="kpi-card"><div class="text-xs font-bold text-rose-600">Cancelados</div><div id="relKpiCancelado" class="mt-1 text-2xl font-extrabold text-rose-600">0</div></div>
-            </div>
-
-            <div id="relatorioTableWrap" class="hidden overflow-auto rounded-[20px] border border-slate-200">
+            <!-- Tabela com cabeçalho congelado -->
+            <div id="relatorioTableWrap" class="hidden overflow-auto rounded-[20px] border border-slate-200" style="max-height:calc(100vh - 320px)">
               <table class="relatorio-table relatorio-grade-hidden" id="relatorioTable">
                 <thead>
                   <tr id="relatorioThead">
@@ -487,9 +568,7 @@
                     <th class="relatorio-sortable" data-col="cor">Cor <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
                     <th class="relatorio-sortable" data-col="prevFaturamento">Prev Fat <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
                     <th class="relatorio-sortable" data-col="status">Status <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
-                    <th class="th-grade-toggle" id="thGradeToggle" onclick="toggleRelatorioGrade()">
-                      Grade <i class="fa-regular fa-eye text-[11px]"></i>
-                    </th>
+                    <th class="th-grade-toggle" id="thGradeToggle" onclick="toggleRelatorioGrade()">Grade <i class="fa-regular fa-eye text-[11px]"></i></th>
                   </tr>
                 </thead>
                 <tbody id="relatorioTableBody"></tbody>
@@ -498,68 +577,68 @@
             </div>
 
             <div id="relatorioEmpty" class="rounded-2xl border border-slate-200 bg-slate-50 p-8 text-center text-slate-400 text-sm font-semibold">
-              Selecione um vendedor e clique em <strong>Gerar</strong> para ver o relatório.
+              Selecione um vendedor acima e clique em <strong>Gerar</strong> para ver o relatório.
             </div>
 
             <div id="relatorioAcoes" class="hidden mt-4 flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-200">
               <div id="relatorioRodape" class="text-xs font-semibold text-slate-400"></div>
               <div class="flex gap-2">
-                <button id="btnRelatorioWhatsapp"
-                  class="focus-ring rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-extrabold text-emerald-700 flex items-center gap-2">
+                <button id="btnRelatorioWhatsapp" class="focus-ring rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-extrabold text-emerald-700 flex items-center gap-2">
                   <i class="fa-brands fa-whatsapp"></i> WhatsApp
                 </button>
-                <button id="btnRelatorioPdf"
-                  class="focus-ring rounded-2xl bg-[var(--brand)] px-4 py-2 text-sm font-extrabold text-white flex items-center gap-2">
-                  <i class="fa-solid fa-file-pdf"></i> Exportar PDF
+                <button id="btnRelatorioPdf" class="focus-ring rounded-2xl bg-[var(--brand)] px-4 py-2 text-sm font-extrabold text-white flex items-center gap-2">
+                  <i class="fa-solid fa-file-pdf"></i> PDF
                 </button>
-                <button id="btnRelatorioXlsx"
-                  class="focus-ring rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-extrabold text-emerald-700 flex items-center gap-2">
-                  <i class="fa-solid fa-file-excel"></i> Exportar XLSX
+                <button id="btnRelatorioXlsx" class="focus-ring rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-extrabold text-emerald-700 flex items-center gap-2">
+                  <i class="fa-solid fa-file-excel"></i> XLSX
                 </button>
               </div>
             </div>
           </div>
+        </div>
       </section>
       <!-- ────────────────────────────────────────────────────────────────────── -->
 
-      <section class="mt-4">
+      <section class="mt-4" id="secaoFiltros">
         <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
-          <div class="flex flex-wrap items-center gap-2">
-            <div class="inline-flex rounded-full border border-slate-200 bg-white p-1">
-              <button id="btnScopeActive" class="focus-ring rounded-full px-3 py-2 text-sm font-bold text-slate-700">Ativos</button>
-              <button id="btnScopeHistory" class="focus-ring rounded-full px-3 py-2 text-sm font-bold text-slate-700">Histórico</button>
-              <button id="btnScopeAll" class="focus-ring rounded-full px-3 py-2 text-sm font-bold text-slate-700">Todos</button>
-            </div>
-            <div class="text-xs font-bold text-slate-400">Histórico robusto ativo. Exclusão física: somente testes</div>
-          </div>
 
-          <div class="flex flex-wrap gap-2 text-xs font-bold">
-            <span class="chip chip-status-pendente"><span class="status-dot dot-pendente"></span>Pendente</span>
-            <span class="chip chip-status-aprovado"><span class="status-dot dot-aprovado"></span>Aprovado</span>
-            <span class="chip chip-status-cancelado"><span class="status-dot dot-cancelado"></span>Cancelado</span>
+
+          <div class="flex flex-wrap gap-2">
+            <button class="filter-status-btn fs-active-todos" data-fs="todos" onclick="setStatusFilter('todos',this)">
+              Todos <span class="fs-count fs-count-todos" id="fsCountTodos">0</span>
+            </button>
+            <button class="filter-status-btn" data-fs="Pendente" onclick="setStatusFilter('Pendente',this)">
+              <span style="width:7px;height:7px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0"></span>
+              Pendente <span class="fs-count fs-count-pend" id="fsCountPend">0</span>
+            </button>
+            <button class="filter-status-btn" data-fs="Aprovado" onclick="setStatusFilter('Aprovado',this)">
+              <span style="width:7px;height:7px;border-radius:50%;background:#22c55e;display:inline-block;flex-shrink:0"></span>
+              Aprovado <span class="fs-count fs-count-aprov" id="fsCountAprov">0</span>
+            </button>
+            <button class="filter-status-btn" data-fs="Exportado" onclick="setStatusFilter('Exportado',this)">
+              <span style="width:7px;height:7px;border-radius:50%;background:#3b82f6;display:inline-block;flex-shrink:0"></span>
+              Exportado <span class="fs-count fs-count-export" id="fsCountExport">0</span>
+            </button>
+            <button class="filter-status-btn" data-fs="Cancelado" onclick="setStatusFilter('Cancelado',this)">
+              <span style="width:7px;height:7px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0"></span>
+              Cancelado <span class="fs-count fs-count-canc" id="fsCountCanc">0</span>
+            </button>
           </div>
         </div>
       </section>
 
-      <section class="mt-4 grid grid-cols-1 xl:grid-cols-[420px_minmax(0,1fr)] gap-4">
+      <section class="mt-4" id="secaoPedidos">
         <div class="rounded-[28px] border border-slate-200 bg-white p-4 shadow-card">
-          <div class="flex items-center justify-between gap-3">
+          <div class="flex items-center justify-between gap-3 mb-4">
             <div class="text-lg font-extrabold">Lista de pedidos</div>
             <div class="text-xs font-bold text-slate-400" id="ordersCountBadge">0 pedidos</div>
           </div>
 
-          <div id="ordersEmpty" class="hidden mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center text-slate-500">
+          <div id="ordersEmpty" class="hidden rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center text-slate-500">
             Nenhum pedido encontrado.
           </div>
 
-          <div id="adminOrdersList" class="mt-4 space-y-3"></div>
-        </div>
-
-        <div class="rounded-[28px] border border-slate-200 bg-white p-4 shadow-card">
-          <div id="detailEmpty" class="rounded-2xl border border-slate-200 bg-slate-50 p-10 text-center text-slate-500">
-            Selecione um pedido para visualizar os detalhes.
-          </div>
-          <div id="adminOrderDetail" class="hidden"></div>
+          <div id="adminOrdersList" class="space-y-3"></div>
         </div>
       </section>
 
@@ -644,7 +723,8 @@ const STATE = {
   orders: [],
   filtered: [],
   selectedId: null,
-  cancelReasonContext: null
+  cancelReasonContext: null,
+  statusFilter: 'todos'
 };
 
 const $ = (id)=>document.getElementById(id);
@@ -1086,6 +1166,11 @@ async function loadAdmin(){
         })
       : [];
 
+    // Inicializa o Set de IDs conhecidos na primeira carga
+    if(_notifKnownIds === null){
+      _notifKnownIds = new Set(STATE.orders.map(o => o.id));
+    }
+
     applyFilters();
     renderKpisOperacionais();
   }catch(err){
@@ -1096,12 +1181,40 @@ async function loadAdmin(){
   }
 }
 
+function setStatusFilter(f, btn){
+  STATE.statusFilter = f;
+  document.querySelectorAll('.filter-status-btn').forEach(b => {
+    b.className = 'filter-status-btn';
+  });
+  const clsMap = { todos:'fs-active-todos', Pendente:'fs-active-pend', Aprovado:'fs-active-aprov', Exportado:'fs-active-export', Cancelado:'fs-active-canc' };
+  btn.className = `filter-status-btn ${clsMap[f]||''}`;
+  applyFilters();
+}
+
+function updateFilterCounts(){
+  const scope = getAdminScope();
+  const base = STATE.orders.filter(o => orderMatchesScope(o, scope));
+  const c = {
+    todos:    base.length,
+    Pendente: base.filter(o => canonicalStatus(o.status) === 'Pendente').length,
+    Aprovado: base.filter(o => canonicalStatus(o.status) === 'Aprovado' && !o.exportedAt).length,
+    Exportado:base.filter(o => canonicalStatus(o.status) === 'Aprovado' && o.exportedAt).length,
+    Cancelado:base.filter(o => canonicalStatus(o.status) === 'Cancelado').length,
+  };
+  if($('fsCountTodos'))  $('fsCountTodos').textContent  = c.todos;
+  if($('fsCountPend'))   $('fsCountPend').textContent   = c.Pendente;
+  if($('fsCountAprov'))  $('fsCountAprov').textContent  = c.Aprovado;
+  if($('fsCountExport')) $('fsCountExport').textContent = c.Exportado;
+  if($('fsCountCanc'))   $('fsCountCanc').textContent   = c.Cancelado;
+}
+
 function applyFilters(){
   const q = normalizeText($('adminSearch').value).toLowerCase();
-  const status = $('adminStatusFilter').value;
+  const sf = STATE.statusFilter;
   const scope = getAdminScope();
 
   updateScopeButtons();
+  updateFilterCounts();
 
   STATE.filtered = STATE.orders.filter(order=>{
     const hay = [
@@ -1114,9 +1227,15 @@ function applyFilters(){
       ...(order.items || []).flatMap(item => [item.codigo, item.produto, item.cor])
     ].join(' ').toLowerCase();
 
-    return (!q || hay.includes(q))
-      && (!status || order.status === status)
-      && orderMatchesScope(order, scope);
+    const matchQ = !q || hay.includes(q);
+    const matchScope = orderMatchesScope(order, scope);
+    let matchStatus = true;
+    if(sf === 'Pendente')  matchStatus = canonicalStatus(order.status) === 'Pendente';
+    else if(sf === 'Aprovado')  matchStatus = canonicalStatus(order.status) === 'Aprovado' && !order.exportedAt;
+    else if(sf === 'Exportado') matchStatus = canonicalStatus(order.status) === 'Aprovado' && !!order.exportedAt;
+    else if(sf === 'Cancelado') matchStatus = canonicalStatus(order.status) === 'Cancelado';
+
+    return matchQ && matchStatus && matchScope;
   });
 
   $('ordersCountBadge').textContent = `${STATE.filtered.length} pedido${STATE.filtered.length === 1 ? '' : 's'}`;
@@ -1127,55 +1246,167 @@ function applyFilters(){
   if(STATE.selectedId && !STATE.filtered.find(o => o.id === STATE.selectedId)){
     STATE.selectedId = STATE.filtered[0]?.id || null;
   }
-
-  renderDetail();
 }
 
 function renderList(){
   $('ordersEmpty').classList.toggle('hidden', STATE.filtered.length !== 0);
 
+  const svgCheck = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>`;
+  const svgX     = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>`;
+  const svgArch  = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8v13H3V8M1 3h22v5H1zM10 12h4"/></svg>`;
+  const svgXls   = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`;
+  const svgPdf   = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>`;
+  const svgDel   = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>`;
+
   $('adminOrdersList').innerHTML = STATE.filtered.map(order=>{
-    const active = order.id === STATE.selectedId;
-    const cardStatus = getStatusVisual(order.status);
+    const st = canonicalStatus(order.status);
+    const isExportado = st === 'Aprovado' && !!order.exportedAt;
     const clienteDisplay = order.clienteNome
       ? `Cliente ${safeHtml(order.clienteCodigo)} — ${safeHtml(order.clienteNome)}`
       : `Cliente ${safeHtml(order.clienteCodigo)}`;
     const totalUnits = getOrderUnits(order);
+    const nItems = (order.items||[]).length;
+    const lastAcao = (order.history||[]).slice(-1)[0];
+    const cardStatus = getStatusVisual(order.status);
+
+    const chipHtml = isExportado
+      ? `<span class="chip" style="background:var(--info-soft);color:var(--info);font-size:11px;border:0.5px solid var(--info)">Exportado</span>`
+      : `<span class="chip ${cardStatus.chipClass} flex-shrink-0" style="font-size:11px"><span class="status-dot ${cardStatus.dotClass}"></span>${safeHtml(cardStatus.label)}</span>`;
+
+    const inlineIcons = (() => {
+      let icons = '';
+      if(st === 'Pendente')
+        icons += `<button class="ia ia-aprov" data-action="aprovar" data-id="${safeHtml(order.id)}" title="Aprovar">${svgCheck}</button>`;
+      if(st !== 'Cancelado')
+        icons += `<button class="ia ia-canc" data-action="cancelar" data-id="${safeHtml(order.id)}" title="Cancelar">${svgX}</button>`;
+      if(st !== 'Cancelado')
+        icons += `<button class="ia ia-arch" data-action="arquivar" data-id="${safeHtml(order.id)}" title="Arquivar">${svgArch}</button>`;
+      return icons;
+    })();
+
+    const itensHtml = (order.items||[]).map(item => {
+      const grade = (item.grade||[]).filter(g=>Number(g.qty||0)>0);
+      return `
+        <div class="item-block-expand">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+            <div style="min-width:0">
+              <div style="font-size:13px;font-weight:700;color:var(--text)">${safeHtml(item.produto||'—')}</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:1px">
+                ${safeHtml(item.cor||'—')}
+                ${item.gci ? ` &nbsp;·&nbsp; <span style="color:var(--brand);font-weight:700">GCI ${safeHtml(item.gci)}</span>` : ''}
+                ${item.prevFaturamento ? ` &nbsp;·&nbsp; Prev Fat ${safeHtml(formatDate(item.prevFaturamento))}` : ''}
+              </div>
+              ${grade.length ? `<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:6px">
+                ${grade.map(g=>`<div class="grade-pill-compact"><span class="grade-sz-compact">${safeHtml(String(g.size||g.s||''))}</span>${g.qty||g.q||0}</div>`).join('')}
+              </div>` : ''}
+            </div>
+            <div style="font-size:11px;color:var(--muted);flex-shrink:0;white-space:nowrap">${formatInt(getItemUnits(item))} pares</div>
+          </div>
+        </div>`;
+    }).join('');
+
+    const expandIcons = `
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-top:10px;border-top:0.5px solid var(--line);margin-top:10px">
+        <button class="ea-btn ea-xlsx" data-action="xlsx" data-id="${safeHtml(order.id)}" title="Exportar XLSX">
+          <div class="ea-icon ea-icon-green">${svgXls}</div><span class="ea-lbl">XLSX</span>
+        </button>
+        <button class="ea-btn ea-pdf-btn" data-action="pdf" data-id="${safeHtml(order.id)}" title="Exportar PDF">
+          <div class="ea-icon ea-icon-red">${svgPdf}</div><span class="ea-lbl">PDF</span>
+        </button>
+        <button class="ea-btn" data-action="arquivar" data-id="${safeHtml(order.id)}" title="Arquivar">
+          <div class="ea-icon ea-icon-gray">${svgArch}</div><span class="ea-lbl">Arquivar</span>
+        </button>
+        <button class="ea-btn ea-del" data-action="excluir" data-id="${safeHtml(order.id)}" title="Excluir">
+          <div class="ea-icon ea-icon-red">${svgDel}</div><span class="ea-lbl">Excluir</span>
+        </button>
+        ${lastAcao ? `<span style="font-size:11px;color:var(--muted);margin-left:auto">Última ação: <strong style="color:var(--text)">${safeHtml(lastAcao.label||lastAcao.action)}</strong> · ${safeHtml(formatDateTime(lastAcao.at))}</span>` : ''}
+      </div>`;
 
     return `
-      <button data-order-id="${safeHtml(order.id)}"
-        class="w-full text-left rounded-[24px] border ${active ? 'border-[var(--brand)] bg-[rgba(40,54,212,.05)]' : 'border-slate-200 bg-slate-50'} p-4">
-        <div class="flex items-start justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-[16px] font-extrabold">${safeHtml(order.preposto?.nome || order.preposto?.codigo || '—')}</div>
-            <div class="mt-1 text-xs text-slate-500">${safeHtml(formatDateTime(order.createdAt || order.updatedAt || order.data))}</div>
+      <div class="order-card-compact" data-order-id="${safeHtml(order.id)}">
+        <div class="card-compact-top" onclick="toggleCardExpand('${safeHtml(order.id)}')">
+          <div style="flex:1;min-width:0">
+            <div style="font-size:13px;font-weight:700;color:var(--text)">
+              ${safeHtml(order.preposto?.nome || order.preposto?.codigo || '—')}
+              <span style="font-size:11px;font-weight:400;color:var(--muted)">· ${safeHtml(formatDateTime(order.createdAt || order.updatedAt || order.data))}</span>
+            </div>
+            <div style="font-size:11px;color:var(--muted);margin-top:1px">${clienteDisplay}</div>
+            <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px">
+              ${totalUnits > 0 ? `<span style="font-size:11px;font-weight:700;background:#EEEDFE;color:#3C3489;border-radius:999px;padding:2px 9px">${formatInt(totalUnits)} pares</span>` : ''}
+              ${order.campanha ? `<span style="font-size:11px;font-weight:700;background:var(--muted-soft);color:var(--muted);border-radius:999px;padding:2px 9px">${safeHtml(order.campanha)}</span>` : ''}
+              ${nItems > 1 ? `<span style="font-size:11px;font-weight:700;background:var(--muted-soft);color:var(--muted);border-radius:999px;padding:2px 9px">${nItems} produtos</span>` : ''}
+              ${order.isDuplicate ? `<span style="font-size:11px;font-weight:700;background:var(--warning-soft);color:var(--warning);border-radius:999px;padding:2px 9px">⚠ Duplicata</span>` : ''}
+              ${(order.history||[]).some(h=>h.label==='Antecipado') ? `<span style="font-size:11px;font-weight:700;background:#EEEDFE;color:#3C3489;border-radius:999px;padding:2px 9px">↑ Antecipado</span>` : ''}
+            </div>
           </div>
-          <span class="chip ${cardStatus.chipClass} flex-shrink-0">
-            <span class="status-dot ${cardStatus.dotClass}"></span>
-            ${safeHtml(cardStatus.label)}
-          </span>
+          <div style="display:flex;align-items:center;gap:5px;flex-shrink:0" onclick="event.stopPropagation()">
+            ${chipHtml}
+            <div class="icon-actions">${inlineIcons}</div>
+            <button class="btn-expand-compact" id="expand-btn-${safeHtml(order.id)}" onclick="event.stopPropagation();toggleCardExpand('${safeHtml(order.id)}')">
+              <i class="fa-solid fa-chevron-down" style="font-size:9px"></i> Ver detalhes
+            </button>
+          </div>
         </div>
-
-        <div class="mt-3 flex flex-wrap gap-2 text-xs font-bold">
-          <span class="chip chip-blue" style="font-size:14px">${clienteDisplay}</span>
-          ${totalUnits > 0 ? `<span class="chip" style="background:#EEEDFE;color:#3C3489;border-color:#AFA9EC">${formatInt(totalUnits)} pares</span>` : ''}
-          <span class="chip chip-blue">${safeHtml(order.lastActionLabel || 'Sem histórico')}</span>
-          ${order.archived ? `<span class="chip chip-gray">Arquivado</span>` : ''}
-          ${order.isDuplicate ? `<span class="chip chip-duplicate"><i class="fa-solid fa-triangle-exclamation"></i> Possível duplicata</span>` : ''}
-          ${(order.history||[]).some(h=>h.label==='Antecipado') ? `<span class="chip" style="background:#EEEDFE;color:#3C3489;border:0.5px solid #AFA9EC"><i class="fa-solid fa-angles-up" style="font-size:9px"></i> Antecipado</span>` : ''}
+        <div class="card-compact-detail" id="expand-detail-${safeHtml(order.id)}">
+          ${itensHtml}
+          ${expandIcons}
         </div>
-      </button>
-    `;
+      </div>`;
   }).join('');
-
-  $('adminOrdersList').querySelectorAll('[data-order-id]').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      STATE.selectedId = btn.dataset.orderId;
-      renderList();
-      renderDetail();
-    });
-  });
 }
+
+function toggleCardExpand(id){
+  const detail = document.getElementById(`expand-detail-${id}`);
+  const btn    = document.getElementById(`expand-btn-${id}`);
+  const card   = btn?.closest('.order-card-compact');
+  if(!detail) return;
+  const isOpen = detail.classList.contains('open');
+  detail.classList.toggle('open', !isOpen);
+  card?.classList.toggle('expanded', !isOpen);
+  if(btn){
+    btn.classList.toggle('open', !isOpen);
+    btn.innerHTML = !isOpen
+      ? `<i class="fa-solid fa-chevron-up" style="font-size:9px"></i> Fechar`
+      : `<i class="fa-solid fa-chevron-down" style="font-size:9px"></i> Ver detalhes`;
+  }
+  // Seleciona o pedido ao expandir
+  if(!isOpen){
+    STATE.selectedId = id;
+  }
+}
+
+// Delegação de eventos das ações nos cards
+document.addEventListener('click', e => {
+  const btn = e.target.closest('[data-action]');
+  if(!btn) return;
+  e.stopPropagation();
+  const action = btn.dataset.action;
+  const id     = btn.dataset.id;
+  if(!action || !id) return;
+  const order = STATE.orders.find(o => o.id === id);
+  if(!order) return;
+
+  if(action === 'aprovar'){
+    updateStatus(id, 'Aprovado');
+  }
+  if(action === 'cancelar'){
+    openCancelReasonModal(id, canonicalStatus(order.status));
+  }
+  if(action === 'arquivar'){
+    toggleArchive(id);
+  }
+  if(action === 'excluir'){
+    deleteOrder(id);
+  }
+  if(action === 'xlsx'){
+    STATE.selectedId = id;
+    exportarRelatorioXlsx([order]);
+  }
+  if(action === 'pdf'){
+    STATE.selectedId = id;
+    exportarRelatorioPdf([order]);
+  }
+});
 
 function getItemUnits(item){
   if(Number(item?.totalUnits) > 0) return Number(item.totalUnits);
@@ -1191,138 +1422,7 @@ function getItemUnits(item){
   return amount;
 }
 
-function renderDetail(){
-  const order = STATE.filtered.find(o => o.id === STATE.selectedId);
-
-  $('detailEmpty').classList.toggle('hidden', !!order);
-  $('adminOrderDetail').classList.toggle('hidden', !order);
-
-  if(!order){
-    $('adminOrderDetail').innerHTML = '';
-    return;
-  }
-
-  const statusMeta = getStatusVisual(order.status);
-
-  $('adminOrderDetail').innerHTML = `
-    <div class="flex flex-col xl:flex-row gap-4 h-full">
-
-      <!-- CONTEÚDO PRINCIPAL -->
-      <div class="flex-1 min-w-0">
-
-        <!-- Cabeçalho compacto -->
-        <div class="mb-4">
-          <div class="text-lg font-extrabold">${safeHtml(order.id)}</div>
-          <div class="mt-1 text-xs text-slate-500">${safeHtml(formatDate(order.createdAt || order.updatedAt))} às ${safeHtml(parseDate(order.createdAt || order.updatedAt)?.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}) || '—')}</div>
-          <div class="mt-3 flex flex-wrap gap-2">
-            <span class="chip chip-blue">${safeHtml(order.preposto?.codigo || '')}${order.preposto?.codigo ? ' — ' : ''}${safeHtml(order.preposto?.nome || '')}</span>
-            <span class="chip chip-gray">Cliente ${safeHtml(order.clienteCodigo)}${order.clienteNome ? ' — ' + safeHtml(order.clienteNome) : ''}</span>
-            <span class="chip chip-gray">${safeHtml(order.prazo)}</span>
-            ${order.campanha ? `<span class="chip chip-blue">${safeHtml(order.campanha)}</span>` : ''}
-            ${renderStatusChip(order.status)}
-            ${order.archived ? `<span class="chip chip-gray">Arquivado</span>` : ''}
-            ${order.isDuplicate ? `<span class="chip chip-duplicate"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Possível duplicata — enviado pelo vendedor mesmo assim</span>` : ''}
-            ${(order.history||[]).some(h=>h.label==='Antecipado') ? `<span class="chip" style="background:#EEEDFE;color:#3C3489;border:0.5px solid #AFA9EC"><i class="fa-solid fa-angles-up mr-1" style="font-size:9px"></i>Antecipado</span>` : ''}
-          </div>
-          ${order.observacoes ? `<div class="mt-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs font-semibold text-slate-600">${safeHtml(order.observacoes)}</div>` : ''}
-        </div>
-
-        <!-- Abas -->
-        <div class="flex border-b border-slate-200 mb-4 gap-1">
-          <button id="tabBtnItens"
-            class="focus-ring px-4 py-2 text-sm font-bold border-b-2 border-[var(--brand)] text-[var(--brand)] -mb-px bg-transparent"
-            onclick="switchDetailTab('itens')">
-            Itens <span class="ml-1 chip chip-blue text-[11px] px-2 py-0.5">${(order.items||[]).length}</span>
-          </button>
-          <button id="tabBtnHistorico"
-            class="focus-ring px-4 py-2 text-sm font-bold border-b-2 border-transparent text-slate-500 -mb-px bg-transparent"
-            onclick="switchDetailTab('historico')">
-            Histórico <span class="ml-1 chip chip-gray text-[11px] px-2 py-0.5">${order.history?.length || 0}</span>
-          </button>
-        </div>
-
-        <!-- Tab: Itens -->
-        <div id="tabItens">
-          <div class="space-y-3">
-            ${(order.items || []).map(item => `
-              <div class="rounded-[20px] border border-slate-200 bg-slate-50 p-4">
-                <div class="flex items-start justify-between gap-3">
-                  <div class="min-w-0">
-                    <div class="font-extrabold text-slate-800">${safeHtml(item.produto)}</div>
-                    <div class="mt-1 flex flex-wrap gap-x-3 gap-y-0.5 text-xs text-slate-500 font-semibold">
-                      <span>${safeHtml(item.codigo)}</span>
-                      <span>${safeHtml(item.cor)}</span>
-                      ${item.gci ? `<span class="text-[var(--brand)] font-extrabold">GCI ${safeHtml(item.gci)}</span>` : ''}
-                      <span>Prev Fat ${safeHtml(formatDate(item.prevFaturamento) || '—')}</span>
-                    </div>
-                  </div>
-                  <div class="text-right flex-shrink-0">
-                    <div class="text-sm font-extrabold">
-                      ${item.mode === 'boxed'
-                        ? `${item.amount} cx`
-                        : `${item.amount} un`}
-                    </div>
-                    <div class="text-xs text-slate-500">${safeHtml(getItemUnits(item))} itens</div>
-                  </div>
-                </div>
-                ${item.grade?.length ? `<div class="mt-3 flex flex-wrap gap-1.5">${gradeHtml(item.grade)}</div>` : ''}
-              </div>
-            `).join('')}
-          </div>
-        </div>
-
-        <!-- Tab: Histórico -->
-        <div id="tabHistorico" class="hidden">
-          ${renderOrderHistory(order)}
-        </div>
-      </div>
-
-      <!-- COLUNA LATERAL DIREITA: ações -->
-      <div class="flex flex-col gap-3 xl:w-[220px] flex-shrink-0">
-
-        <div class="rounded-[20px] border border-slate-200 bg-slate-50 p-4">
-          <div class="text-xs font-bold text-slate-500 mb-2">Status do pedido</div>
-          <select id="detailStatus" class="focus-ring w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-sm font-bold">
-            ${STATUS_OPTIONS.map(s=>`<option value="${safeHtml(s)}" ${s===order.status?'selected':''}>${safeHtml(s)}</option>`).join('')}
-          </select>
-          <div class="mt-3 rounded-xl ${statusMeta.chipClass} px-3 py-2 text-xs font-extrabold text-center">
-            ${safeHtml(statusMeta.label)}
-          </div>
-        </div>
-
-        <div class="rounded-[20px] border border-slate-200 bg-slate-50 px-4 py-3 text-xs font-bold text-slate-600">
-          <div>Última ação</div>
-          <div class="mt-1 text-slate-900 font-extrabold">${safeHtml(order.lastActionLabel || '—')}</div>
-          <div class="mt-0.5 text-slate-400 font-semibold">${safeHtml(formatDateTime(order.lastActionAt))}</div>
-        </div>
-
-        <button id="btnToggleArchive"
-          class="focus-ring w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-bold text-slate-700">
-          ${order.archived ? 'Reativar pedido' : 'Arquivar pedido'}
-        </button>
-
-        <button id="btnDeleteOrder"
-          class="focus-ring w-full rounded-2xl border px-4 py-2.5 text-sm font-bold btn-danger">
-          Excluir fisicamente
-        </button>
-      </div>
-    </div>
-  `;
-
-  // Listeners
-  $('detailStatus').addEventListener('change', async (e)=>{
-    const nextStatus = canonicalStatus(e.target.value);
-    const currentStatus = canonicalStatus(order.status);
-    if(nextStatus === 'Cancelado' && currentStatus !== 'Cancelado'){
-      openCancelReasonModal(order.id, currentStatus);
-      return;
-    }
-    await updateStatus(order.id, nextStatus);
-  });
-
-  $('btnToggleArchive').addEventListener('click', async ()=>{ await toggleArchive(order.id); });
-  $('btnDeleteOrder').addEventListener('click', async ()=>{ await deleteOrder(order.id); });
-}
+function renderDetail(){ /* painel lateral removido */ }
 
 function switchDetailTab(tab){
   const itens = $('tabItens');
@@ -1563,9 +1663,37 @@ function isToday(dateStr){
     && d.getDate() === now.getDate();
 }
 
+// Período ativo (em ms de janela)
+const PERIODO_MS = { '24h': 86400000, '7d': 604800000, '15d': 1296000000, '1m': 2592000000, '6m': 15552000000 };
+let _periodoAtivo = localStorage.getItem('repasse_admin_periodo') || '24h';
+
+function getOrdersNoPeriodo(orders, periodo){
+  const ms = PERIODO_MS[periodo];
+  if(!ms) return orders;
+  const desde = Date.now() - ms;
+  return orders.filter(o => {
+    const d = parseDate(o.createdAt || o.updatedAt);
+    return d && d.getTime() >= desde;
+  });
+}
+
 function renderKpisOperacionais(){
-  const orders = STATE.orders;
-  const total = orders.length;
+  // Só atualiza os elementos do resumo se a tela estiver visível
+  const telaVisivel = $('telaResumo') && !$('telaResumo').classList.contains('hidden');
+
+  const allOrders = STATE.orders;
+  // Filtro por vendedor (select do resumo)
+  const vendedorKey = $('resumoVendedorSelect')?.value || '';
+  const filtradosPorVend = vendedorKey
+    ? allOrders.filter(o => {
+        const cod  = sanitizeDisplayText(o.preposto?.codigo || '');
+        const nome = sanitizeDisplayText(o.preposto?.nome || cod);
+        return cod === vendedorKey || nome === vendedorKey;
+      })
+    : allOrders;
+
+  const orders = getOrdersNoPeriodo(filtradosPorVend, _periodoAtivo);
+  const total  = filtradosPorVend.length;
 
   const grupos = { Pendente:[], Aprovado:[], Cancelado:[] };
   for(const o of orders){
@@ -1573,47 +1701,42 @@ function renderKpisOperacionais(){
     if(grupos[s]) grupos[s].push(o);
   }
 
-  const hoje = orders.filter(o => isToday(o.createdAt || o.updatedAt));
-
-  const pend = grupos.Pendente.length;
+  const pend  = grupos.Pendente.length;
   const aprov = grupos.Aprovado.length;
-  const canc = grupos.Cancelado.length;
-  const max = Math.max(pend, aprov, canc, 1);
+  const canc  = grupos.Cancelado.length;
+  const max   = Math.max(pend, aprov, canc, 1);
 
-  const pendUnits = grupos.Pendente.reduce((s,o)=>s+getOrderUnits(o),0);
+  const pendUnits  = grupos.Pendente.reduce((s,o)=>s+getOrderUnits(o),0);
   const aprovUnits = grupos.Aprovado.reduce((s,o)=>s+getOrderUnits(o),0);
-  const cancUnits = grupos.Cancelado.reduce((s,o)=>s+getOrderUnits(o),0);
+  const cancUnits  = grupos.Cancelado.reduce((s,o)=>s+getOrderUnits(o),0);
 
-  $('kpiOpPendenteQtd').textContent = formatInt(pend);
-  $('kpiOpPendenteUnits').textContent = `${formatInt(pendUnits)} unidades`;
-  $('barPendente').style.width = `${Math.round(pend/max*100)}%`;
+  if(telaVisivel){
+    $('kpiOpPendenteQtd').textContent   = formatInt(pend);
+    $('kpiOpPendenteUnits').textContent  = pendUnits > 0 ? ` · ${formatInt(pendUnits)} un` : '';
+    $('kpiOpAprovadoQtd').textContent   = formatInt(aprov);
+    $('kpiOpAprovadoUnits').textContent  = aprovUnits > 0 ? ` · ${formatInt(aprovUnits)} un` : '';
+    $('kpiOpCanceladoQtd').textContent  = formatInt(canc);
+    $('kpiOpCanceladoUnits').textContent = cancUnits > 0 ? ` · ${formatInt(cancUnits)} un` : '';
+    $('kpiOpHojeQtd').textContent  = formatInt(orders.length);
+    $('kpiOpHojeTotal').textContent = `${formatInt(total)} no total`;
+  }
 
-  $('kpiOpAprovadoQtd').textContent = formatInt(aprov);
-  $('kpiOpAprovadoUnits').textContent = `${formatInt(aprovUnits)} unidades`;
-  $('barAprovado').style.width = `${Math.round(aprov/max*100)}%`;
-
-  $('kpiOpCanceladoQtd').textContent = formatInt(canc);
-  $('kpiOpCanceladoUnits').textContent = `${formatInt(cancUnits)} unidades`;
-  $('barCancelado').style.width = `${Math.round(canc/max*100)}%`;
-
-  $('kpiOpHojeQtd').textContent = formatInt(hoje.length);
-  $('kpiOpHojeTotal').textContent = `${formatInt(total)} no total`;
-  $('barHoje').style.width = total > 0 ? `${Math.round(hoje.length/total*100)}%` : '0%';
-
-  renderRanking();
+  renderRanking(orders);
   populateRelatorioSelect();
   atualizarBadgeGlobal();
 }
 
-function renderRanking(){
+function renderRanking(orders){
+  const src = orders || STATE.orders;
   const contagem = new Map();
-  for(const o of STATE.orders){
+  for(const o of src){
     const nome = sanitizeDisplayText(o.preposto?.nome || o.preposto?.codigo || 'Desconhecido');
     contagem.set(nome, (contagem.get(nome)||0) + 1);
   }
   const sorted = [...contagem.entries()].sort((a,b)=>b[1]-a[1]);
   const maxVal = sorted[0]?.[1] || 1;
 
+  if(!$('rankingVendedores')) return;
   if(!sorted.length){
     $('rankingVendedores').innerHTML = '<div class="text-xs text-slate-400 font-semibold">Nenhum pedido encontrado.</div>';
     return;
@@ -1621,17 +1744,99 @@ function renderRanking(){
 
   $('rankingVendedores').innerHTML = sorted.map(([nome, qtd], idx) => `
     <div class="rounded-[18px] border border-slate-200 bg-slate-50 px-4 py-3">
-      <div class="flex items-center justify-between gap-2">
-        <div class="flex items-center gap-2 min-w-0">
-          <span class="text-xs font-extrabold text-slate-400 w-4">${idx+1}</span>
-          <span class="text-sm font-extrabold text-slate-800 truncate">${safeHtml(nome)}</span>
-        </div>
-        <span class="text-sm font-extrabold text-[var(--brand)] flex-shrink-0">${qtd}</span>
+      <div class="flex items-center justify-between gap-2 mb-1">
+        <span class="text-xs font-extrabold text-slate-700 truncate">${safeHtml(nome)}</span>
+        <span class="text-xs font-bold text-slate-400">#${idx+1}</span>
       </div>
-      <div class="ranking-bar mt-1"><div class="ranking-fill" style="width:${Math.round(qtd/maxVal*100)}%"></div></div>
+      <div class="text-lg font-extrabold text-[var(--brand)]">${qtd}</div>
+      <div class="text-[11px] text-slate-400 font-semibold">pedido${qtd!==1?'s':''}</div>
+      <div class="bar-track mt-2"><div class="bar-fill" style="width:${Math.round(qtd/maxVal*100)}%;background:var(--brand)"></div></div>
     </div>
   `).join('');
 }
+
+// ── PERÍODO ───────────────────────────────────────────────────────────────────
+(()=>{
+  // Restaura botão ativo
+  document.querySelectorAll('.periodo-btn').forEach(btn => {
+    if(btn.dataset.periodo === _periodoAtivo){
+      btn.classList.add('active-periodo');
+    }
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.periodo-btn').forEach(b => b.classList.remove('active-periodo'));
+      btn.classList.add('active-periodo');
+      _periodoAtivo = btn.dataset.periodo;
+      localStorage.setItem('repasse_admin_periodo', _periodoAtivo);
+      renderKpisOperacionais();
+    });
+  });
+})();
+
+// ── SELECT VENDEDOR RESUMO ────────────────────────────────────────────────────
+document.addEventListener('change', e => {
+  if(e.target.id === 'resumoVendedorSelect') renderKpisOperacionais();
+});
+$('btnLimparResumo').addEventListener('click', ()=>{
+  const sel = $('resumoVendedorSelect');
+  if(sel) sel.value = '';
+  renderKpisOperacionais();
+});
+
+// ── NAVEGAÇÃO: TELA DE RESUMO ─────────────────────────────────────────────────
+const _TELAS_PRINCIPAIS = ['adminHeader','secaoFiltros','secaoPedidos'];
+
+// Garante que ao (re)carregar a página, sempre começa na tela principal
+function resetNavParaPrincipal(){
+  const el = {
+    header:   document.getElementById('adminHeader'),
+    filtros:  document.getElementById('secaoFiltros'),
+    pedidos:  document.getElementById('secaoPedidos'),
+    resumo:   $('telaResumo')
+  };
+  if(el.header)  el.header.style.display  = '';
+  if(el.filtros) el.filtros.style.display = '';
+  if(el.pedidos) el.pedidos.style.display = '';
+  if(el.resumo)  el.resumo.classList.add('hidden');
+}
+
+function irParaResumo(){
+  document.getElementById('adminHeader').style.display = 'none';
+  document.getElementById('secaoFiltros').style.display = 'none';
+  document.getElementById('secaoPedidos').style.display = 'none';
+  $('telaResumo').classList.remove('hidden');
+  renderKpisOperacionais();
+}
+
+function voltarDaResumo(){
+  $('telaResumo').classList.add('hidden');
+  document.getElementById('adminHeader').style.display = '';
+  document.getElementById('secaoFiltros').style.display = '';
+  document.getElementById('secaoPedidos').style.display = '';
+}
+
+// Reset sempre que a página carrega
+resetNavParaPrincipal();
+
+$('btnIrResumo').addEventListener('click', irParaResumo);
+$('btnVoltarResumo').addEventListener('click', voltarDaResumo);
+
+// Tela cheia real (requestFullscreen na section inteira)
+$('btnResumoFullscreen').addEventListener('click', ()=>{
+  const tela = $('telaResumo');
+  if(!document.fullscreenElement){
+    tela.requestFullscreen().catch(()=>{});
+    $('btnResumoFullscreen').innerHTML = '<i class="fa-solid fa-compress text-xs"></i> Sair';
+  } else {
+    document.exitFullscreen();
+    $('btnResumoFullscreen').innerHTML = '<i class="fa-solid fa-expand text-xs"></i> Tela cheia';
+  }
+});
+document.addEventListener('fullscreenchange', ()=>{
+  if(!document.fullscreenElement){
+    const btn = $('btnResumoFullscreen');
+    if(btn) btn.innerHTML = '<i class="fa-solid fa-expand text-xs"></i> Tela cheia';
+  }
+});
 
 function populateRelatorioSelect(){
   const vendedores = new Map();
@@ -1642,16 +1847,33 @@ function populateRelatorioSelect(){
     if(!vendedores.has(key)) vendedores.set(key, nome);
   }
 
+  const sorted = [...vendedores.entries()].sort((a,b)=>a[1].localeCompare(b[1],'pt-BR'));
+
+  // Popula o select do resumo
+  const resumoSel = $('resumoVendedorSelect');
+  if(resumoSel){
+    const prevResumo = resumoSel.value;
+    resumoSel.innerHTML = '<option value="">Todos os vendedores</option>';
+    sorted.forEach(([key,nome])=>{
+      const opt = document.createElement('option');
+      opt.value = key; opt.textContent = nome;
+      resumoSel.appendChild(opt);
+    });
+    if(prevResumo) resumoSel.value = prevResumo;
+  }
+
+  // Popula o select do relatório (se existir — mantido por compatibilidade)
   const sel = $('relatorioVendedorSelect');
-  const prev = sel.value;
-  sel.innerHTML = '<option value="">Selecione um vendedor</option><option value="__todos__">— Todos os vendedores —</option>';
-  [...vendedores.entries()].sort((a,b)=>a[1].localeCompare(b[1],'pt-BR')).forEach(([key,nome])=>{
-    const opt = document.createElement('option');
-    opt.value = key;
-    opt.textContent = nome;
-    sel.appendChild(opt);
-  });
-  if(prev) sel.value = prev;
+  if(sel){
+    const prev = sel.value;
+    sel.innerHTML = '<option value="">Selecione um vendedor</option><option value="__todos__">— Todos os vendedores —</option>';
+    sorted.forEach(([key,nome])=>{
+      const opt = document.createElement('option');
+      opt.value = key; opt.textContent = nome;
+      sel.appendChild(opt);
+    });
+    if(prev) sel.value = prev;
+  }
 }
 
 function getRelatorioOrders(codigoKey){
@@ -1786,12 +2008,13 @@ function updateRelatorioSortHeaders(col, dir){
 }
 
 function renderRelatorio(){
-  const key=$('relatorioVendedorSelect').value;
-  if(!key){ showToast('Selecione um vendedor primeiro.','info'); return; }
+  // Usa o select do resumo — vazio = todos os vendedores
+  const key = $('resumoVendedorSelect')?.value || '__todos__';
   RELATORIO_SORT.col=null; RELATORIO_SORT.dir=1;
   updateRelatorioSortHeaders(null,1);
   const orders=getRelatorioOrders(key);
-  const nomeVendedor=$('relatorioVendedorSelect').options[$('relatorioVendedorSelect').selectedIndex]?.text||key;
+  const sel = $('resumoVendedorSelect');
+  const nomeVendedor = key === '__todos__' ? 'Todos os vendedores' : (sel?.options[sel?.selectedIndex]?.text || key);
   const grupos={Pendente:0,Aprovado:0,Cancelado:0};
   let totalItens=0,totalUnidades=0;
   for(const o of orders){
@@ -1800,21 +2023,18 @@ function renderRelatorio(){
     totalItens+=(o.items||[]).length;
     totalUnidades+=getOrderUnits(o);
   }
-  $('relKpiTotal').textContent=formatInt(orders.length);
-  $('relKpiPendente').textContent=formatInt(grupos.Pendente);
-  $('relKpiAprovado').textContent=formatInt(grupos.Aprovado);
-  $('relKpiCancelado').textContent=formatInt(grupos.Cancelado);
-  $('relatorioKpis').classList.remove('hidden');
-  $('relatorioKpis').classList.add('grid');
   if(!orders.length){
     $('relatorioTableWrap').classList.add('hidden');
     $('relatorioEmpty').classList.remove('hidden');
     $('relatorioAcoes').classList.add('hidden');
+    $('relatorioSearchWrap').classList.add('hidden');
     return;
   }
   $('relatorioEmpty').classList.add('hidden');
   $('relatorioTableWrap').classList.remove('hidden');
   $('relatorioAcoes').classList.remove('hidden');
+  $('relatorioSearchWrap').classList.remove('hidden');
+  if($('relatorioSearch')) $('relatorioSearch').value = '';
   // Aplica filtro de exportação
   const ordersFiltered = FILTRO_EXPORT.value === 'nao'
     ? orders.filter(o => canonicalStatus(o.status) !== 'Aprovado' || !o.exportedAt)
@@ -2078,6 +2298,7 @@ $('btnRefresh').addEventListener('click', async ()=>{ await loadAdmin(); });
 // ── NOTIFICAÇÕES ──────────────────────────────────────────────────────────────
 let _notifLastOrderId = null;
 let _notifCount = 0;
+let _notifKnownIds = null; // null = ainda não inicializado
 const _notifOrigTitle = document.title;
 
 function notifPlaySound(){
@@ -2121,13 +2342,20 @@ async function notifPollAdmin(){
   try{
     const remote = await workerRequest('GET');
     if(!Array.isArray(remote)) return;
-    const novos = remote.filter(o => {
-      if(!o.createdAt) return false;
-      const t = new Date(o.createdAt).getTime();
-      return (Date.now() - t) < 30000; // criado nos últimos 30s
-    });
-    if(novos.length > 0 && _notifLastOrderId !== novos[0]?.id){
-      _notifLastOrderId = novos[0]?.id;
+
+    // Primeira execução: apenas inicializa o Set, não notifica
+    if(_notifKnownIds === null){
+      _notifKnownIds = new Set(remote.map(o => o.id));
+      return;
+    }
+
+    // Pedidos cujo ID não estava no Set = novos
+    const novos = remote.filter(o => o.id && !_notifKnownIds.has(o.id));
+
+    // Atualiza o Set com todos os IDs atuais
+    for(const o of remote) _notifKnownIds.add(o.id);
+
+    if(novos.length > 0){
       _notifCount += novos.length;
       notifUpdateBadge();
       notifPlaySound();
@@ -2145,43 +2373,15 @@ $('btnNotifAdmin').addEventListener('click', ()=>{
 
 setInterval(notifPollAdmin, 30000);
 
-// ── Toggle Bloco 2 ────────────────────────────────────────────────────────────
-(()=>{
-  const RESUMO_KEY = 'repasse_admin_resumo_visible_v1';
-  let visible = localStorage.getItem(RESUMO_KEY) !== 'false';
-
-  function applyResumoVisibility(){
-    const section = $('blocoResumo');
-    const label = $('btnToggleResumoLabel');
-    const btn = $('btnToggleResumo');
-    if(!section) return;
-    section.style.display = visible ? '' : 'none';
-    if(label) label.textContent = visible ? 'Ocultar resumo' : 'Mostrar resumo';
-    if(btn){
-      btn.classList.toggle('bg-[var(--brand-soft)]', !visible);
-      btn.classList.toggle('text-[var(--brand)]', !visible);
-      btn.classList.toggle('border-[var(--brand)]', !visible);
-    }
-  }
-
-  $('btnToggleResumo').addEventListener('click', ()=>{
-    visible = !visible;
-    localStorage.setItem(RESUMO_KEY, String(visible));
-    applyResumoVisibility();
-  });
-
-  applyResumoVisibility();
-})();
-// ─────────────────────────────────────────────────────────────────────────────
-
 // ── BLOCO 2 listeners ─────────────────────────────────────────────────────────
 document.querySelectorAll('.kpi-op[data-status-filter]').forEach(card => {
   card.addEventListener('click', ()=>{
-    const status = card.dataset.statusFilter;
-    $('adminStatusFilter').value = status;
+    const status = card.dataset.statusFilter || 'todos';
     document.querySelectorAll('.kpi-op').forEach(c => c.classList.remove('active-filter'));
     card.classList.add('active-filter');
-    applyFilters();
+    const btn = document.querySelector(`.filter-status-btn[data-fs="${status}"]`);
+    if(btn) setStatusFilter(status, btn);
+    else applyFilters();
   });
 });
 
@@ -2203,6 +2403,19 @@ function setFiltroExport(valor){
 function getOrdersAprovadosNaoExportados(){
   return STATE.orders.filter(o => canonicalStatus(o.status) === 'Aprovado' && !o.exportedAt);
 }
+
+function filtrarTabelaRelatorio(q){
+  if(!STATE._relatorioAtual) return;
+  const term = normalizeText(q).toLowerCase();
+  const tbody = $('relatorioTableBody');
+  if(!tbody) return;
+  [...tbody.querySelectorAll('tr')].forEach(tr => {
+    const txt = normalizeText(tr.textContent).toLowerCase();
+    tr.style.display = (!term || txt.includes(term)) ? '' : 'none';
+  });
+}
+
+// abrirRelatorioFullscreen removido — tela cheia agora via requestFullscreen em telaResumo
 
 function atualizarBadgeGlobal(){
   const pendentes = getOrdersAprovadosNaoExportados();
@@ -2379,16 +2592,6 @@ document.querySelectorAll('.filtro-export-btn').forEach(btn=>{
 });
 // Estado inicial do filtro
 setFiltroExport('all');
-
-// Aviso ao trocar vendedor se houver não exportados visíveis
-$('relatorioVendedorSelect').addEventListener('change', ()=>{
-  if(!STATE._relatorioAtual) return;
-  const naoExp = STATE._relatorioAtual.orders.filter(o => canonicalStatus(o.status)==='Aprovado' && !o.exportedAt);
-  if(naoExp.length > 0 && FILTRO_EXPORT.value !== 'exp'){
-    if(!window.confirm(`Há ${naoExp.length} pedido${naoExp.length>1?'s':''} aprovado${naoExp.length>1?'s':''} não exportado${naoExp.length>1?'s':''}. Deseja exportar antes de continuar?`)) return;
-    relatorioExportXlsx();
-  }
-});
 // ─────────────────────────────────────────────────────────────────────────────
 
 $('btnScopeActive').addEventListener('click', ()=>{ setAdminScope('active'); applyFilters(); });
@@ -2396,7 +2599,7 @@ $('btnScopeHistory').addEventListener('click', ()=>{ setAdminScope('history'); a
 $('btnScopeAll').addEventListener('click', ()=>{ setAdminScope('all'); applyFilters(); });
 
 $('adminSearch').addEventListener('input', applyFilters);
-$('adminStatusFilter').addEventListener('change', applyFilters);
+$('adminSearch').addEventListener('input', applyFilters);
 
 // ── MODAL DE CANCELAMENTO ─────────────────────────────────────────────────────
 // Registrado uma única vez no carregamento. O modal é HTML estático,
@@ -2437,17 +2640,22 @@ document.addEventListener('keydown', (e)=>{
 });
 // ─────────────────────────────────────────────────────────────────────────────
 
-applyAuthUI();
+// ── DARK MODE ─────────────────────────────────────────────────────────────────
+function toggleDarkAdmin(){
+  const isDark = document.documentElement.classList.toggle('dark');
+  localStorage.setItem('admin_dark', isDark ? '1' : '0');
+  const icon = $('darkIconAdmin');
+  if(icon) icon.className = isDark ? 'fa-solid fa-sun text-amber-400 text-xs' : 'fa-solid fa-moon text-slate-400 text-xs';
+}
+if(localStorage.getItem('admin_dark') === '1'){
+  document.documentElement.classList.add('dark');
+  document.addEventListener('DOMContentLoaded', ()=>{
+    const icon = $('darkIconAdmin');
+    if(icon) icon.className = 'fa-solid fa-sun text-amber-400 text-xs';
+  });
+}
 
-// ── Inicializa estado do ranking ──────────────────────────────────────────────
-(()=>{
-  const open = localStorage.getItem('repasse_ranking_open') === '1';
-  const body = $('rankingBody');
-  const icon = $('rankingIcon');
-  if(body) body.style.display = open ? 'block' : 'none';
-  if(icon) icon.style.transform = open ? 'rotate(0deg)' : 'rotate(-90deg)';
-})();
-// ─────────────────────────────────────────────────────────────────────────────
+applyAuthUI();
 
 // ── Auto-copy ao selecionar texto ────────────────────────────────────────────
 document.addEventListener('mouseup', ()=>{
