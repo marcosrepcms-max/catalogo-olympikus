@@ -1162,16 +1162,14 @@ async function workerDeleteOrder(id){
 }
 
 async function applyAuthUI(){
-  // Se voltando do Painel DISPO, já está autenticado — limpa o flag
-  const returning = sessionStorage.getItem('dispo_returning');
-  if(returning) sessionStorage.removeItem('dispo_returning');
-
   const ok = localStorage.getItem(STORAGE_KEYS.adminAuth) === 'ok';
 
   $('loginScreen').classList.toggle('hidden', ok);
   $('adminApp').classList.toggle('hidden', !ok);
 
   if(ok){
+    // Sempre reseta o estado de navegação ao (re)entrar no app
+    resetNavParaPrincipal();
     await loadAdmin();
   }
 }
