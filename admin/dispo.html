@@ -59,6 +59,17 @@
     .dark body,.dark .kpi-card,.dark .table-wrap,.dark .filter-pill,.dark header,.dark .rounded-\[28px\],.dark .bg-white,.dark select,.dark input{ background:var(--card)!important; color:var(--text)!important; border-color:var(--line)!important; }
     .dark .table-wrap thead th{ background:#263248!important; color:#94a3b8!important; }
     .dark .table-wrap tbody tr:hover td{ background:#263248!important; }
+    .dark .table-wrap tbody tr.row-ruptura td{ background:#3b0f0f!important; }
+    .dark .table-wrap tbody tr.row-ruptura:hover td{ background:#450a0a!important; }
+    .dark .table-wrap tbody tr.row-baixo td{ background:#2a1f00!important; }
+    .dark .table-wrap tbody tr.row-baixo:hover td{ background:#451a03!important; }
+    .dark .row-antecipa td{ background:#1e1a3f!important; }
+    .dark .row-nova-dispo td{ background:#0d2b1a!important; }
+    .dark .table-wrap tbody tr.row-selected td{ background:#1e3a5f!important; outline:none; }
+    .dark .table-wrap tbody tr.row-selected:hover td{ background:#1e3a5f!important; }
+
+    .table-wrap tbody tr.row-selected td{ background:#dbeafe!important; }
+    .table-wrap tbody tr.row-selected:hover td{ background:#dbeafe!important; }
     .dark .table-wrap tbody td{ border-color:#334155!important; }
     .dark .bg-slate-50,.dark .bg-slate-100{ background:#1e293b!important; }
     .dark .text-slate-400,.dark .text-slate-500,.dark .text-slate-600{ color:#94a3b8!important; }
@@ -1741,8 +1752,18 @@ document.querySelector('thead').addEventListener('click', (e) => {
   renderDispo();
 });
 
-// Click em qualquer linha da tabela DISPO
-
+// Click em qualquer linha da tabela DISPO — seleciona para facilitar scroll horizontal
+$('dispoTableBody').addEventListener('click', (e)=>{
+  // Não seleciona se clicou em botão de ação
+  if(e.target.closest('.btn-desmembrar,.btn-ocultar,.btn-reexibir,.btn-antecipa-row')) return;
+  const tr = e.target.closest('tr');
+  if(!tr) return;
+  const jaSelecionada = tr.classList.contains('row-selected');
+  // Remove seleção anterior
+  document.querySelectorAll('#dispoTableBody tr.row-selected').forEach(r => r.classList.remove('row-selected'));
+  // Toggle — clique na mesma linha deseleciona
+  if(!jaSelecionada) tr.classList.add('row-selected');
+});
 
 // Botão Desmembrar, Ocultar e Antecipar por linha
 $('dispoTableBody').addEventListener('click', (e)=>{
