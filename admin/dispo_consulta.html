@@ -56,6 +56,7 @@
     .chip{ display:inline-flex; align-items:center; gap:4px; border-radius:999px; padding:3px 10px; font-size:11px; font-weight:700; }
     .chip-pend{ background:var(--warning-soft); color:var(--warning); border:0.5px solid #fde68a; }
     .chip-fin{ background:var(--success-soft); color:var(--success); border:0.5px solid #bbf7d0; }
+    .chip-parc{ background:#ffedd5; color:#c2410c; border:0.5px solid #fdba74; }
 
     .periodo-btn{ border-radius:999px; padding:4px 12px; font-size:12px; font-weight:700; border:none; cursor:pointer; background:transparent; color:#64748b; transition:all .12s; }
     .periodo-btn.active{ background:#fff; color:#0f172a; box-shadow:0 1px 3px rgba(0,0,0,.08); }
@@ -74,6 +75,25 @@
 
     .empty-state{ text-align:center; padding:60px 24px; color:#94a3b8; }
     .empty-state i{ font-size:36px; margin-bottom:14px; display:block; }
+
+    /* Expand de lojas */
+    .tr-main{ cursor:pointer; }
+    .tr-main:hover td{ background:#f8fafc; }
+    .tr-main.open td{ background:#f0f4ff; }
+    .dark .tr-main.open td{ background:#1e2a4a!important; }
+    .tr-expand td{ padding:0; background:#f8fafc; border-bottom:1px solid var(--line); }
+    .dark .tr-expand td{ background:#1e293b!important; }
+    .tr-expand-inner{ padding:10px 16px 14px; }
+    .sub-table{ width:100%; border-collapse:collapse; font-size:12px; min-width:600px; }
+    .sub-table thead th{ background:#e8ecff; color:#3730a3; font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.06em; padding:7px 12px; border-bottom:1px solid #c7d2fe; text-align:left; white-space:nowrap; }
+    .dark .sub-table thead th{ background:#1e2a4a!important; color:#818cf8!important; border-color:#334155!important; }
+    .sub-table tbody td{ padding:8px 12px; border-bottom:1px solid #eef2ff; vertical-align:middle; color:var(--text); }
+    .dark .sub-table tbody td{ border-color:#334155!important; }
+    .sub-table tbody tr:last-child td{ border-bottom:none; }
+    .btn-det{ display:inline-flex; align-items:center; gap:5px; border:0.5px solid var(--line); border-radius:999px; padding:4px 11px; font-size:11px; font-weight:700; cursor:pointer; background:none; color:var(--muted); white-space:nowrap; transition:all .1s; }
+    .btn-det:hover,.btn-det.open{ border-color:var(--brand); color:var(--brand); background:var(--brand-soft); }
+    .badge-lojas{ background:#e0e7ff; color:#3730a3; border-radius:999px; padding:1px 6px; font-size:10px; font-weight:700; }
+    .dark .badge-lojas{ background:#1e2a4a; color:#818cf8; }
 
     @keyframes shimmer{ 100%{ transform:translateX(100%); } }
     .loading-shimmer{ position:relative; overflow:hidden; }
@@ -179,12 +199,11 @@
               <th>Código</th>
               <th>Cor</th>
               <th>Prev. Fat.</th>
-              <th>Cliente</th>
-              <th>Prazo</th>
-              <th>Campanha</th>
-              <th class="text-right">Qtde</th>
-              <th>Status Pedido</th>
-              <th>Situação Desm.</th>
+              <th class="text-right">Saldo DISPO</th>
+              <th class="text-right">Desmembrado</th>
+              <th class="text-right">Saldo restante</th>
+              <th>Situação</th>
+              <th></th>
             </tr>
           </thead>
           <tbody id="tableBody"></tbody>
@@ -206,11 +225,19 @@ if(localStorage.getItem(STORAGE_KEYS.adminAuth) !== 'ok') window.location.replac
 
 const $ = id => document.getElementById(id);
 
-let _allLinhas = [];
-let _periodoAtivo = 'all';
-let _searchQuery = '';
+let _allProdutos = []; // agrupado por chave (produto)
+let _periodoAtivo = localStorage.getItem('consulta_desm_periodo') || 'all';
+let _searchQuery  = '';
+const _expandidos = new Set(JSON.parse(localStorage.getItem('consulta_desm_expandidos') || '[]'));
 
 const PERIODO_MS = { '24h':86400000, '7d':604800000, '15d':1296000000, '1m':2592000000, '6m':15552000000 };
+
+// Restaurar período ativo na UI
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.periodo-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.periodo === _periodoAtivo);
+  });
+});
 
 function showToast(msg, type='info'){
   const t = document.createElement('div');
@@ -223,29 +250,33 @@ function showToast(msg, type='info'){
 
 function formatDate(value){
   if(!value) return '—';
+  if(typeof value === 'number' && value > 40000 && value < 60000){
+    const d = new Date(Date.UTC(1899,11,30));
+    d.setUTCDate(d.getUTCDate() + value);
+    return `${String(d.getUTCDate()).padStart(2,'0')}/${String(d.getUTCMonth()+1).padStart(2,'0')}/${d.getUTCFullYear()}`;
+  }
   if(typeof value === 'string' && /^\d{5}$/.test(value.trim())){
     const n = Number(value);
     if(n > 40000 && n < 60000){
       const d = new Date(Date.UTC(1899,11,30));
       d.setUTCDate(d.getUTCDate() + n);
-      return d.toLocaleDateString('pt-BR');
+      return `${String(d.getUTCDate()).padStart(2,'0')}/${String(d.getUTCMonth()+1).padStart(2,'0')}/${d.getUTCFullYear()}`;
     }
   }
-  if(typeof value === 'number' && value > 40000 && value < 60000){
-    const d = new Date(Date.UTC(1899,11,30));
-    d.setUTCDate(d.getUTCDate() + value);
-    return d.toLocaleDateString('pt-BR');
-  }
   const d = new Date(value);
-  return isNaN(d) ? String(value) : d.toLocaleDateString('pt-BR');
+  if(isNaN(d)) return String(value);
+  return d.toLocaleDateString('pt-BR');
 }
 
 function safeHtml(v){
   return String(v ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 }
 
-function desmKeyFromParts(codigo, cor, dataEntrega){
-  return `${codigo}|${cor}|${formatDate(dataEntrega)}`;
+function canonicalStatus(s){
+  const v = (s||'').toLowerCase();
+  if(['aprovado','finalizado','faturado','atendido parcialmente'].includes(v)) return 'Aprovado';
+  if(['cancelado','rejeitado'].includes(v)) return 'Cancelado';
+  return 'Pendente';
 }
 
 async function loadData(){
@@ -255,42 +286,35 @@ async function loadData(){
   $('pillsResumo').classList.add('hidden');
 
   try{
-    // Carrega desmembramentos e pedidos em paralelo
     const [desmRes, pedidosRes] = await Promise.all([
       fetch(WORKER_URL, { method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:'get'}) }),
       fetch(`${WORKER_URL}?t=${Date.now()}`, { cache:'no-store' })
     ]);
 
-    const desm   = desmRes.ok ? await desmRes.json() : {};
+    const desm    = desmRes.ok ? await desmRes.json() : {};
     const pedidos = pedidosRes.ok ? await pedidosRes.json() : [];
 
-    // Monta mapa de pedidos por id
     const pedidoMap = new Map();
-    for(const p of (Array.isArray(pedidos) ? pedidos : [])){
-      pedidoMap.set(p.id, p);
-    }
+    for(const p of (Array.isArray(pedidos) ? pedidos : [])) pedidoMap.set(p.id, p);
 
-    // Expande desmembramentos em linhas
-    _allLinhas = [];
+    // Agrupa por chave (codigo|cor|prevFat)
+    _allProdutos = [];
     for(const [chave, lojas] of Object.entries(desm || {})){
-      // chave = "codigo|cor|prevFat"
       const [codigo, cor, prevFat] = chave.split('|');
+      const linhasLojas = [];
+      let totalDesmembrado = 0;
+      let ultimoUpdate = null;
+
       for(const [lineKey, situacao] of Object.entries(lojas || {})){
-        // lineKey = "orderId||gci||cor"
         const [orderId, gci] = lineKey.split('||');
         const pedido = pedidoMap.get(orderId);
-
-        // Busca num da DISPO (não disponível aqui — mostra GCI como ref)
         const cliente = pedido
-          ? (pedido.clienteNome ? `${pedido.clienteCodigo} — ${pedido.clienteNome}` : pedido.clienteCodigo)
+          ? (pedido.clienteNome ? `${pedido.clienteCodigo} — ${pedido.clienteNome}` : pedido.clienteCodigo||'—')
           : '—';
 
-        // Pega qtde do item correspondente no pedido
-        let qtde = 0;
-        let produto = '—';
-        let prazo = pedido?.prazo || '—';
-        let campanha = (pedido?.campanha || '').replace(/\s*\bOLY\b\s*/gi,'').trim() || '—';
-        let orderStatus = pedido ? pedido.status : '—';
+        let qtde = 0, produto = '—', prazo = pedido?.prazo||'—';
+        let campanha = (pedido?.campanha||'').replace(/\s*\bOLY\b\s*/gi,'').trim()||'—';
+        let orderStatus = pedido?.status || '—';
         let updatedAt = pedido?.updatedAt || pedido?.createdAt || null;
 
         if(pedido && Array.isArray(pedido.items)){
@@ -300,16 +324,33 @@ async function loadData(){
           );
           if(item){
             produto = item.produto || produto;
-            qtde = Number(item.totalUnits || 0) || (item.grade||[]).reduce((s,g)=>s+Number(g.qty||0),0);
+            qtde = Number(item.totalUnits||0) || (item.grade||[]).reduce((s,g)=>s+Number(g.qty||0),0);
           }
         }
 
-        _allLinhas.push({
-          chave, lineKey, codigo, cor, prevFat,
-          gci, produto, cliente, prazo, campanha,
-          qtde, situacao, orderStatus, orderId, updatedAt
-        });
+        totalDesmembrado += qtde;
+        if(updatedAt && (!ultimoUpdate || new Date(updatedAt) > new Date(ultimoUpdate))) ultimoUpdate = updatedAt;
+
+        linhasLojas.push({ lineKey, gci, codigo, cor, prevFat, produto, cliente, prazo, campanha, qtde, situacao, orderStatus, orderId, updatedAt });
       }
+
+      // Produto name e GCI do primeiro item
+      const primeiro = linhasLojas[0];
+      const produtoNome = primeiro?.produto || '—';
+      const gciRef = primeiro?.gci || '—';
+
+      // Situação geral do produto
+      const todasFin = linhasLojas.every(l => (l.situacao||'').toLowerCase() === 'finalizado');
+      const algumFin = linhasLojas.some(l => (l.situacao||'').toLowerCase() === 'finalizado');
+      const situacaoProd = todasFin ? 'total' : algumFin ? 'parcial' : 'pendente';
+
+      _allProdutos.push({
+        chave, codigo, cor, prevFat,
+        gci: gciRef, produto: produtoNome,
+        totalDesmembrado, ultimoUpdate,
+        situacao: situacaoProd,
+        lojas: linhasLojas
+      });
     }
 
     renderTable();
@@ -321,41 +362,62 @@ async function loadData(){
   }
 }
 
-function filtrarLinhas(){
+function filtrarProdutos(){
   const q = _searchQuery.toLowerCase().trim();
   const ms = PERIODO_MS[_periodoAtivo];
   const desde = ms ? Date.now() - ms : null;
 
-  return _allLinhas.filter(l => {
-    // Filtro período
-    if(desde && l.updatedAt){
-      const t = new Date(l.updatedAt).getTime();
+  return _allProdutos.filter(p => {
+    if(desde && p.ultimoUpdate){
+      const t = new Date(p.ultimoUpdate).getTime();
       if(!isNaN(t) && t < desde) return false;
     }
-    // Busca
     if(q){
-      const hay = `${l.produto} ${l.codigo} ${l.gci} ${l.cor} ${l.cliente} ${l.prevFat}`.toLowerCase();
+      const hay = `${p.produto} ${p.codigo} ${p.gci} ${p.cor} ${p.prevFat} ${p.lojas.map(l=>l.cliente).join(' ')}`.toLowerCase();
       if(!hay.includes(q)) return false;
     }
     return true;
   });
 }
 
+function salvarExpandidos(){
+  localStorage.setItem('consulta_desm_expandidos', JSON.stringify([..._expandidos]));
+}
+
+function chipSituacao(sit){
+  if(sit==='total')   return `<span class="chip chip-fin" style="font-size:11px"><i class="fa-solid fa-circle-check text-[9px]"></i> Total</span>`;
+  if(sit==='parcial') return `<span class="chip chip-parc" style="font-size:11px"><i class="fa-solid fa-circle-half-stroke text-[9px]"></i> Parcial</span>`;
+  return `<span class="chip chip-pend" style="font-size:11px"><i class="fa-solid fa-clock text-[9px]"></i> Pendente</span>`;
+}
+
+function chipOrderStatus(s){
+  const cs = canonicalStatus(s);
+  if(cs==='Aprovado')  return `<span class="chip chip-fin" style="font-size:10px">Aprovado</span>`;
+  if(cs==='Cancelado') return `<span class="chip" style="background:#fee2e2;color:#b91c1c;font-size:10px">Cancelado</span>`;
+  return `<span class="chip chip-pend" style="font-size:10px">Pendente</span>`;
+}
+
+function chipDesmSit(s){
+  if((s||'').toLowerCase()==='finalizado') return `<span class="chip chip-fin" style="font-size:10px">Finalizado</span>`;
+  return `<span class="chip chip-pend" style="font-size:10px">Pendente</span>`;
+}
+
 function renderTable(){
   $('loadingState').classList.add('hidden');
 
-  const linhas = filtrarLinhas();
-  $('tableCount').textContent = `${linhas.length} registro${linhas.length !== 1 ? 's' : ''}`;
+  const produtos = filtrarProdutos();
 
   // Pills
-  const pend = linhas.filter(l => (l.situacao||'').toLowerCase() !== 'finalizado').length;
-  const fin  = linhas.filter(l => (l.situacao||'').toLowerCase() === 'finalizado').length;
-  $('pillPendente').textContent = pend;
-  $('pillFinalizado').textContent = fin;
-  $('pillTotal').textContent = linhas.length;
-  $('pillsResumo').classList.toggle('hidden', linhas.length === 0);
+  const parciais  = produtos.filter(p=>p.situacao==='parcial').length;
+  const totais    = produtos.filter(p=>p.situacao==='total').length;
+  const pendentes = produtos.filter(p=>p.situacao==='pendente').length;
+  $('pillPendente').textContent  = pendentes;
+  $('pillFinalizado').textContent = totais;
+  $('pillTotal').textContent     = produtos.length;
+  $('tableCount').textContent    = `${produtos.length} produto${produtos.length!==1?'s':''}`;
+  $('pillsResumo').classList.toggle('hidden', produtos.length === 0);
 
-  if(!linhas.length){
+  if(!produtos.length){
     $('tableWrap').classList.add('hidden');
     $('emptyState').classList.remove('hidden');
     return;
@@ -364,34 +426,88 @@ function renderTable(){
   $('emptyState').classList.add('hidden');
   $('tableWrap').classList.remove('hidden');
 
-  $('tableBody').innerHTML = linhas.map(l => {
-    const isFin = (l.situacao||'').toLowerCase() === 'finalizado';
-    const chipSit = isFin
-      ? `<span class="chip chip-fin"><i class="fa-solid fa-circle-check text-[9px]"></i> Finalizado</span>`
-      : `<span class="chip chip-pend"><i class="fa-solid fa-clock text-[9px]"></i> Pendente</span>`;
+  const tbody = $('tableBody');
+  tbody.innerHTML = '';
 
-    const statusOrder = (() => {
-      const s = (l.orderStatus||'').toLowerCase();
-      if(s.includes('aprovado') || s.includes('finalizado')) return `<span class="chip chip-fin">Aprovado</span>`;
-      if(s.includes('cancelado')) return `<span style="background:#fee2e2;color:#b91c1c;border:0.5px solid #fca5a5" class="chip">Cancelado</span>`;
-      return `<span class="chip chip-pend">Pendente</span>`;
-    })();
+  produtos.forEach(p => {
+    const isOpen = _expandidos.has(p.chave);
+    const saldoRestante = p.totalDesmembrado; // saldo DISPO não disponível aqui sem XLSX — mostrar desmembrado e "—" para DISPO
 
-    return `<tr>
-      <td class="text-slate-400 font-semibold text-[11px]">—</td>
-      <td class="font-extrabold text-[var(--brand)] text-xs">${safeHtml(l.gci||'—')}</td>
-      <td class="font-extrabold">${safeHtml(l.produto||'—')}</td>
-      <td class="text-slate-500 font-semibold text-xs">${safeHtml(l.codigo||'—')}</td>
-      <td class="text-slate-500 font-semibold">${safeHtml(l.cor||'—')}</td>
-      <td class="text-slate-500 font-semibold whitespace-nowrap">${safeHtml(l.prevFat||'—')}</td>
-      <td class="font-semibold">${safeHtml(l.cliente||'—')}</td>
-      <td class="text-slate-500 font-semibold whitespace-nowrap text-xs">${safeHtml(l.prazo||'—')}</td>
-      <td class="text-slate-500 font-semibold text-xs">${safeHtml(l.campanha||'—')}</td>
-      <td class="text-right font-extrabold">${l.qtde||0}</td>
-      <td>${statusOrder}</td>
-      <td>${chipSit}</td>
-    </tr>`;
-  }).join('');
+    // Linha principal
+    const trMain = document.createElement('tr');
+    trMain.className = `tr-main${isOpen?' open':''}`;
+    trMain.dataset.chave = p.chave;
+    trMain.innerHTML = `
+      <td class="tabular-nums font-semibold text-[11px]" style="color:var(--muted)">—</td>
+      <td class="font-extrabold text-xs" style="color:var(--brand)">${safeHtml(p.gci)}</td>
+      <td style="font-weight:800;color:var(--text)">${safeHtml(p.produto)}</td>
+      <td class="text-xs font-semibold" style="color:var(--muted)">${safeHtml(p.codigo)}</td>
+      <td class="font-semibold" style="color:var(--muted)">${safeHtml(p.cor)}</td>
+      <td class="font-semibold whitespace-nowrap" style="color:var(--muted)">${safeHtml(p.prevFat)}</td>
+      <td class="text-right font-semibold" style="color:var(--muted)">—</td>
+      <td class="text-right font-extrabold" style="color:${p.totalDesmembrado>0?'var(--brand)':'var(--muted)'}">${p.totalDesmembrado||'—'}</td>
+      <td class="text-right font-semibold" style="color:var(--muted)">—</td>
+      <td>${chipSituacao(p.situacao)}</td>
+      <td>
+        <button class="btn-det${isOpen?' open':''}" data-chave="${safeHtml(p.chave)}">
+          ${isOpen?'↑ Fechar':'↓ Detalhes'}
+          <span class="badge-lojas">${p.lojas.length}</span>
+        </button>
+      </td>`;
+
+    // Linha de expand (lojas)
+    const trExp = document.createElement('tr');
+    trExp.className = 'tr-expand';
+    trExp.style.display = isOpen ? '' : 'none';
+    trExp.dataset.chave = p.chave;
+
+    const subRows = p.lojas.map(l => `
+      <tr>
+        <td style="font-weight:700;color:var(--text)">${safeHtml(l.cliente)}</td>
+        <td style="color:var(--muted);white-space:nowrap;font-size:11px">${safeHtml(l.prazo)}</td>
+        <td style="color:var(--muted);font-size:11px">${safeHtml(l.campanha)}</td>
+        <td style="text-align:right;font-weight:800;color:var(--text)">${l.qtde||0}</td>
+        <td>${chipOrderStatus(l.orderStatus)}</td>
+        <td>${chipDesmSit(l.situacao)}</td>
+      </tr>`).join('');
+
+    trExp.innerHTML = `<td colspan="11">
+      <div class="tr-expand-inner">
+        <div style="font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Lojas que receberam</div>
+        <div style="overflow-x:auto">
+          <table class="sub-table">
+            <thead><tr>
+              <th>Cliente</th><th>Prazo</th><th>Campanha</th>
+              <th style="text-align:right">Qtde</th>
+              <th>Status pedido</th><th>Situação desm.</th>
+            </tr></thead>
+            <tbody>${subRows}</tbody>
+          </table>
+        </div>
+      </div>
+    </td>`;
+
+    tbody.appendChild(trMain);
+    tbody.appendChild(trExp);
+
+    // Toggle expand
+    trMain.querySelector('.btn-det').addEventListener('click', e => {
+      e.stopPropagation();
+      const chave = e.currentTarget.dataset.chave;
+      const nowOpen = _expandidos.has(chave);
+      if(nowOpen){ _expandidos.delete(chave); } else { _expandidos.add(chave); }
+      salvarExpandidos();
+      trMain.classList.toggle('open', !nowOpen);
+      trExp.style.display = nowOpen ? 'none' : '';
+      e.currentTarget.classList.toggle('open', !nowOpen);
+      e.currentTarget.innerHTML = `${!nowOpen?'↑ Fechar':'↓ Detalhes'} <span class="badge-lojas">${p.lojas.length}</span>`;
+    });
+
+    trMain.addEventListener('click', e => {
+      if(e.target.closest('.btn-det')) return;
+      trMain.querySelector('.btn-det').click();
+    });
+  });
 }
 
 // ── BUSCA ─────────────────────────────────────────────────────────────────────
@@ -435,6 +551,7 @@ document.querySelectorAll('.periodo-btn').forEach(btn => {
     document.querySelectorAll('.periodo-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     _periodoAtivo = btn.dataset.periodo;
+    localStorage.setItem('consulta_desm_periodo', _periodoAtivo);
     renderTable();
   });
 });
