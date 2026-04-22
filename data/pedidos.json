@@ -1,1 +1,71 @@
-[]
+[
+  {
+    "id": "PED-20260422202959-399",
+    "createdAt": "2026-04-22T23:29:59.123Z",
+    "updatedAt": "2026-04-22T23:29:59.363Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "3616654",
+      "nome": "MARCOS"
+    },
+    "clienteCodigo": "2828",
+    "clienteNome": "UNIÃO CALÇADOS",
+    "prazo": "Z16 - 112 D",
+    "campanha": "CO689 +56DD OLY",
+    "observacoes": "",
+    "totals": {
+      "packs": 1,
+      "units": 12
+    },
+    "items": [
+      {
+        "codigo": "43752263",
+        "produto": "VERSA",
+        "cor": "BGMVML",
+        "gci": "5274741",
+        "ebm": "13263501",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "37",
+            "qty": 1
+          },
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 2
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 2
+          },
+          {
+            "size": "43",
+            "qty": 1
+          },
+          {
+            "size": "44",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": 46147
+      }
+    ]
+  }
+]
