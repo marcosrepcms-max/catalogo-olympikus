@@ -100,5 +100,74 @@
     "lastAction": "status_changed",
     "lastActionLabel": "Pedido aprovado",
     "lastActionAt": "2026-04-19T21:13:58.713Z"
+  },
+  {
+    "id": "PED-20260422201504-504",
+    "createdAt": "2026-04-22T23:15:04.451Z",
+    "updatedAt": "2026-04-22T23:15:04.716Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "3616654",
+      "nome": "MARCOS"
+    },
+    "clienteCodigo": "18529",
+    "clienteNome": "TALENTUS",
+    "prazo": "Z35 - 63/91/119 D",
+    "campanha": "CO681 +28DD OLY",
+    "observacoes": "",
+    "totals": {
+      "packs": 1,
+      "units": 12
+    },
+    "items": [
+      {
+        "codigo": "43752263",
+        "produto": "VERSA",
+        "cor": "BGMVML",
+        "gci": "5274741",
+        "ebm": "13263501",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "37",
+            "qty": 1
+          },
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 2
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 2
+          },
+          {
+            "size": "43",
+            "qty": 1
+          },
+          {
+            "size": "44",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": 46147
+      }
+    ]
   }
 ]
