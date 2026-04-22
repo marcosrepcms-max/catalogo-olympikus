@@ -220,7 +220,7 @@
     </div>
 
     <div id="catalogWrap" class="hidden">
-      <div id="catalogShell" class="filters-collapsed">
+      <div id="catalogShell">
         <aside id="filtersPanel" class="rounded-[28px] border border-slate-200 bg-white p-4 shadow-soft h-fit">
           <div class="flex items-center justify-between gap-3">
             <div>
@@ -543,23 +543,23 @@
             O PDF usará apenas os itens visíveis com saldo disponível.
           </div>
           <div>
-            <div class="text-sm font-extrabold text-slate-700">Exibição de quantidade</div>
+            <div class="text-sm font-extrabold text-slate-700">Produtos por página</div>
             <div class="mt-3 grid grid-cols-2 gap-3">
               <label class="cursor-pointer rounded-2xl border border-slate-200 px-4 py-4">
                 <div class="flex items-center gap-3">
-                  <input type="radio" name="catalogPdfGrade" value="grade" class="h-4 w-4" checked />
+                  <input type="radio" name="catalogPdfPerPage" value="2" class="h-4 w-4" checked />
                   <div>
-                    <div class="text-sm font-extrabold text-slate-800">Grade completa</div>
-                    <div class="text-xs text-slate-500">Tamanhos e qtdes</div>
+                    <div class="text-sm font-extrabold text-slate-800">2 por página</div>
+                    <div class="text-xs text-slate-500">Mais detalhado</div>
                   </div>
                 </div>
               </label>
               <label class="cursor-pointer rounded-2xl border border-slate-200 px-4 py-4">
                 <div class="flex items-center gap-3">
-                  <input type="radio" name="catalogPdfGrade" value="total" class="h-4 w-4" />
+                  <input type="radio" name="catalogPdfPerPage" value="3" class="h-4 w-4" />
                   <div>
-                    <div class="text-sm font-extrabold text-slate-800">Total de pares</div>
-                    <div class="text-xs text-slate-500">Apenas o total</div>
+                    <div class="text-sm font-extrabold text-slate-800">3 por página</div>
+                    <div class="text-xs text-slate-500">Mais visual</div>
                   </div>
                 </div>
               </label>
@@ -806,15 +806,21 @@ function toNumber(v){
 }
 function productKey(item){ return normalizeText([item.codigo, item.cor, item.gci, item.ebm, item._row].join('||')); }
 function productImage(item, ext){
+  // Monta nome do arquivo direto de codigo + cor (ex: 43342471_LUNCHB.jpg)
+  // sem depender da coluna "Imagem" do Produtos.xlsx
   const cod = String(item.codigo || '').trim();
   const cor = String(item.cor || '').trim()
-    .replace(/[\/\\]+/g, '_').replace(/\s+/g, '_')
-    .replace(/[^A-Za-z0-9_\-]+/g, '_').replace(/_+/g, '_').replace(/^_+|_+$/g, '');
+    .replace(/[\/\\]+/g, '_')
+    .replace(/\s+/g, '_')
+    .replace(/[^A-Za-z0-9_\-]+/g, '_')
+    .replace(/_+/g, '_')
+    .replace(/^_+|_+$/g, '');
   if(!cod) return '';
   const base = cor ? `${cod}_${cor}` : cod;
   const e = ext || 'jpg';
   return `${DEFAULTS.imagesBasePath}${encodeURIComponent(base + '.' + e)}`;
 }
+// Retorna lista de URLs candidatas em ordem de tentativa: jpg → png → jpeg → webp
 function productImageCandidates(item){
   return ['jpg','png','jpeg','webp'].map(ext => productImage(item, ext));
 }
@@ -1092,7 +1098,7 @@ async function refreshStockFromSource(options = {}){
   try{
     await refreshOrdersFromRemote();
     STATE.lastStockRefreshAt = Date.now();
-    renderCatalog();
+    render();
     if(!silent){
       const msg = reason === 'manual' ? 'Saldo atualizado' : 'Saldo sincronizado';
       toast(msg);
@@ -2420,229 +2426,169 @@ async function imageUrlToDataUrl(url){
 function gradeCompactText(item){
   return item.grade.map(g => `${g.size}(${g.qty})`).join('   ');
 }
-function getCatalogPdfShowGrade(){
-  return (document.querySelector('input[name="catalogPdfGrade"]:checked')?.value || 'grade') === 'grade';
+function drawCatalogHeader(doc, pageWidth){
+  if(productImage({ imagem:'logo-olympikus.png' })){
+    // noop; keeps helper stable
+  }
+  doc.setTextColor(40,54,212);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(15);
+  doc.text('OLYMPIKUS', pageWidth / 2, 12, { align:'center' });
+  doc.setDrawColor(226,232,240);
+  doc.line(12, 16, pageWidth - 12, 16);
+  doc.setTextColor(100,116,139);
+  doc.setFontSize(8);
+  doc.setFont('helvetica', 'normal');
+  doc.text(`Catálogo de disponibilidades • ${new Date().toLocaleDateString('pt-BR')}`, 12, 12);
 }
-
-/** ── loadImgForPdfCrop com autocrop de espaço branco ── */
-async function loadImgForPdfCrop(dataUrl){
-  return new Promise((resolve)=>{
-    if(!dataUrl){ resolve(null); return; }
-    const img = new Image();
-    img.onload = ()=>{
-      try{
-        const c = document.createElement('canvas');
-        c.width = img.naturalWidth; c.height = img.naturalHeight;
-        const ctx = c.getContext('2d');
-        ctx.drawImage(img, 0, 0);
-        const idata = ctx.getImageData(0, 0, c.width, c.height);
-        const d = idata.data;
-        const W = c.width, H = c.height;
-        const thr = 240;
-        let minX = W, minY = H, maxX = 0, maxY = 0;
-        for(let y = 0; y < H; y++){
-          for(let x = 0; x < W; x++){
-            const i = (y * W + x) * 4;
-            if(d[i+3] < 10) continue;
-            if(d[i] > thr && d[i+1] > thr && d[i+2] > thr) continue;
-            if(x < minX) minX = x; if(x > maxX) maxX = x;
-            if(y < minY) minY = y; if(y > maxY) maxY = y;
-          }
-        }
-        if(maxX <= minX || maxY <= minY){ resolve({ dataUrl: c.toDataURL('image/png'), w: W, h: H }); return; }
-        const px = Math.ceil((maxX - minX) * 0.04);
-        const py = Math.ceil((maxY - minY) * 0.04);
-        const cx = Math.max(0, minX - px), cy = Math.max(0, minY - py);
-        const cw = Math.min(W, maxX + px) - cx, ch = Math.min(H, maxY + py) - cy;
-        const c2 = document.createElement('canvas');
-        c2.width = cw; c2.height = ch;
-        c2.getContext('2d').drawImage(c, cx, cy, cw, ch, 0, 0, cw, ch);
-        resolve({ dataUrl: c2.toDataURL('image/png'), w: cw, h: ch });
-      }catch(e){ resolve(null); }
-    };
-    img.onerror = ()=> resolve(null);
-    img.src = dataUrl;
+function drawCatalogFooter(doc, pageWidth, pageHeight, pageNumber){
+  doc.setDrawColor(226,232,240);
+  doc.line(12, pageHeight - 8, pageWidth - 12, pageHeight - 8);
+  doc.setFontSize(8);
+  doc.setTextColor(100,116,139);
+  doc.text('Oportunidades com estoque disponível', 12, pageHeight - 4);
+  doc.text(`Página ${pageNumber}`, pageWidth - 12, pageHeight - 4, { align:'right' });
+}
+function drawGradeRow(doc, item, x, y, width){
+  const grade = Array.isArray(item.grade) ? item.grade : [];
+  if(!grade.length) return 0;
+  const cols = Math.min(grade.length, 10);
+  const cellW = width / cols;
+  const cellH = 12;
+  const visible = grade.slice(0, cols);
+  visible.forEach((g, idx)=>{
+    const left = x + (idx * cellW);
+    doc.setDrawColor(226,232,240);
+    doc.setFillColor(255,255,255);
+    doc.roundedRect(left, y, cellW - 1.2, cellH, 1.8, 1.8, 'FD');
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(71,85,105);
+    doc.text(String(g.size), left + (cellW - 1.2)/2, y + 4.3, { align:'center' });
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9);
+    doc.setTextColor(40,54,212);
+    doc.text(String(g.qty), left + (cellW - 1.2)/2, y + 9.2, { align:'center' });
   });
+  return cellH;
 }
-
-/** ── PDF Catálogo Repasse — paisagem A4, 2 produtos por página ── */
-async function buildCatalogPdfBlob(showGrade){
+async function buildCatalogPdfBlob(perPage){
   const items = getCatalogPdfSourceItems();
   if(!items.length){
     toast('Nenhum item com saldo disponível para gerar o catálogo');
     return null;
   }
   const { jsPDF } = window.jspdf;
-  const doc = new jsPDF({ orientation:'landscape', unit:'pt', format:'a4', compress:true });
-  const pageW = doc.internal.pageSize.getWidth();
-  const pageH = doc.internal.pageSize.getHeight();
+  const doc = new jsPDF({ orientation:'portrait', unit:'mm', format:'a4', compress:true });
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
+  const slotsPerPage = perPage === 3 ? 3 : 2;
+  const topStart = 20;
+  const contentBottom = pageHeight - 12;
+  const slotGap = slotsPerPage === 3 ? 4 : 5;
+  const slotHeight = (contentBottom - topStart - ((slotsPerPage - 1) * slotGap)) / slotsPerPage;
 
-  const now = new Date();
-  const pad = n => String(n).padStart(2,'0');
-  const dateStr = `${pad(now.getDate())}/${pad(now.getMonth()+1)}/${now.getFullYear()} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
-
-  const margin   = 28;
-  const contentW = pageW - margin * 2;
-  const headerH  = 38;
-  const bodyY    = headerH + 10;
-  const bodyH    = pageH - bodyY - 10;
-  const cardH    = Math.floor((bodyH - 8) / 2);
-
-  const C = {
-    blue:   [40, 54, 212], text:   [15, 23, 42],
-    muted:  [100, 116, 139], border: [226, 232, 240],
-    bg:     [248, 250, 252], white:  [255, 255, 255],
-  };
-  const sc = (rgb, type='text') => {
-    if(type==='fill') doc.setFillColor(...rgb);
-    else if(type==='draw') doc.setDrawColor(...rgb);
-    else doc.setTextColor(...rgb);
-  };
-
-  function drawHeader(){
-    sc(C.blue,'fill');
-    doc.rect(0, 0, pageW, headerH, 'F');
-    doc.setFont('helvetica','bold'); doc.setFontSize(13);
-    doc.setTextColor(255,255,255);
-    doc.text('Catálogo Olympikus — Repasse', margin, 24);
-    doc.setFont('helvetica','normal'); doc.setFontSize(9);
-    doc.setTextColor(187,197,255);
-    doc.text(dateStr, pageW - margin, 24, { align:'right' });
-    sc(C.text);
-  }
-
-  function fitRect(iw, ih, bw, bh){
-    const s = Math.min(bw/iw, bh/ih);
-    return { x:(bw-iw*s)/2, y:(bh-ih*s)/2, w:iw*s, h:ih*s };
-  }
-
-  const imgAreaW  = 560;
-  const infoGap   = 14;
-  const infoAreaX = margin + imgAreaW + infoGap;
-  const infoAreaW = contentW - imgAreaW - infoGap;
-
-  async function drawCard(item, cardY){
-    sc(C.border,'draw'); doc.setLineWidth(0.4);
-    sc(C.bg,'fill');
-    doc.roundedRect(margin, cardY, contentW, cardH, 6, 6, 'FD');
-
-    const ip = 6;
-    const ibX = margin + ip, ibY = cardY + ip;
-    const ibW = imgAreaW - ip*2, ibH = cardH - ip*2;
-    sc(C.white,'fill'); sc(C.border,'draw');
-    doc.roundedRect(ibX, ibY, ibW, ibH, 4, 4, 'FD');
-
-    // Tenta jpg → png → jpeg → webp
-    let rawData = '';
-    for(const url of productImageCandidates(item)){
-      rawData = await imageUrlToDataUrl(url);
-      if(rawData) break;
+  let pageNumber = 1;
+  for(let i=0; i<items.length; i++){
+    const pageIndex = i % slotsPerPage;
+    if(i > 0 && pageIndex === 0){
+      drawCatalogFooter(doc, pageWidth, pageHeight, pageNumber);
+      doc.addPage();
+      pageNumber += 1;
     }
-    const img = await loadImgForPdfCrop(rawData);
-    if(img?.dataUrl){
-      const targetH = ibH * 0.85;
-      const scale   = targetH / img.h;
-      const drawW   = img.w * scale;
-      const drawH   = targetH;
-      const drawX   = ibX + (ibW - drawW) / 2;
-      const drawY   = ibY + (ibH - drawH) / 2;
-      doc.addImage(img.dataUrl, 'PNG', drawX, drawY, drawW, drawH, undefined, 'FAST');
+    if(pageIndex === 0){
+      drawCatalogHeader(doc, pageWidth);
     }
 
-    const tx = infoAreaX;
-    let ty = cardY + 18;
+    const item = items[i];
+    const y = topStart + pageIndex * (slotHeight + slotGap);
+    const sectionX = 12;
+    const sectionW = pageWidth - 24;
 
-    // Nome
-    sc(C.text);
-    doc.setFont('helvetica','bold'); doc.setFontSize(13);
-    const nameLines = doc.splitTextToSize(String(item.produto || ''), infoAreaW - 4);
-    doc.text(nameLines.slice(0,2), tx, ty);
-    ty += nameLines.slice(0,2).length * 15 + 6;
+    const imageBoxH = slotsPerPage === 3 ? slotHeight * 0.74 : slotHeight * 0.80;
+    const infoStartY = y + imageBoxH + 2.2;
+    const gradeLabelY = slotsPerPage === 3 ? infoStartY + 10.1 : infoStartY + 11.4;
+    const gradeTopY = gradeLabelY + 2.0;
+    const gradeAreaH = Math.max(12, (y + slotHeight) - gradeTopY - 0.8);
 
-    // Código
-    doc.setFont('helvetica','normal'); doc.setFontSize(9);
-    sc(C.muted); doc.text('Código:', tx, ty);
-    sc(C.text); doc.text(String(item.codigo || '-'), tx + 40, ty);
-    ty += 13;
+    doc.setDrawColor(226,232,240);
+    doc.setLineWidth(0.35);
+    if(pageIndex > 0){
+      doc.line(sectionX, y - 2.5, sectionX + sectionW, y - 2.5);
+    }
 
-    // Cor
-    sc(C.muted); doc.text('Cor:', tx, ty);
-    sc(C.text); doc.text(String(item.cor || '-'), tx + 24, ty);
-    ty += 14;
+    // Tenta jpg → png → jpeg → webp para o PDF
+    let dataUrl = '';
+    for(const imgUrl of productImageCandidates(item)){
+      dataUrl = await imageUrlToDataUrl(imgUrl);
+      if(dataUrl) break;
+    }
 
-    // Divisor
-    sc(C.border,'draw'); doc.setLineWidth(0.4);
-    doc.line(tx, ty, tx + infoAreaW, ty);
-    ty += 10;
+    doc.setFillColor(255,255,255);
+    doc.roundedRect(sectionX, y, sectionW, imageBoxH, 3, 3, 'F');
 
-    // Prev. Fat + Qtde Caixas
-    const boxGap = 6, boxW = (infoAreaW - boxGap) / 2, boxH = 32;
+    if(dataUrl){
+      try{
+        const imageType = dataUrl.includes('image/jpeg') ? 'JPEG' : 'PNG';
+        const props = doc.getImageProperties(dataUrl);
+        const sourceW = Number(props.width || 0);
+        const sourceH = Number(props.height || 0);
+        const innerPadX = slotsPerPage === 3 ? 0.8 : 0.6;
+        const innerPadY = slotsPerPage === 3 ? 0.8 : 0.6;
+        const maxW = Math.max(1, sectionW - (innerPadX * 2));
+        const maxH = Math.max(1, imageBoxH - (innerPadY * 2));
+        let drawW = maxW;
+        let drawH = maxH;
 
-    sc(C.white,'fill'); sc(C.border,'draw'); doc.setLineWidth(0.4);
-    doc.roundedRect(tx, ty, boxW, boxH, 4, 4, 'FD');
-    doc.setFont('helvetica','bold'); doc.setFontSize(6.5); sc(C.muted);
-    doc.text('PREV. FATURAMENTO', tx + 6, ty + 8);
-    doc.setFont('helvetica','bold'); doc.setFontSize(10); sc(C.text);
-    doc.text(String(formatDate(item.prevFaturamento) || '—'), tx + 6, ty + 22);
-
-    const bx2 = tx + boxW + boxGap;
-    sc(C.white,'fill'); sc(C.border,'draw');
-    doc.roundedRect(bx2, ty, boxW, boxH, 4, 4, 'FD');
-    doc.setFont('helvetica','bold'); doc.setFontSize(6.5); sc(C.muted);
-    doc.text('QTDE CAIXAS', bx2 + 6, ty + 8);
-    doc.setFont('helvetica','bold'); doc.setFontSize(16); sc(C.blue);
-    doc.text(String(remainingPacks(item)), bx2 + 6, ty + 24);
-
-    ty += boxH + 10;
-
-    // Grade ou total
-    if(showGrade){
-      const grade = Array.isArray(item.grade) ? item.grade : [];
-      if(grade.length){
-        doc.setFont('helvetica','bold'); doc.setFontSize(7);
-        sc(C.muted); doc.text('GRADE DISPONÍVEL', tx, ty);
-        ty += 9;
-        const cellW = 34, cellH = 24, cellGap = 4;
-        const perRow = Math.floor(infoAreaW / (cellW + cellGap));
-        let cx = tx, col = 0;
-        for(const g of grade){
-          if(col >= perRow){ col = 0; cx = tx; ty += cellH + cellGap; }
-          sc(C.border,'draw'); sc(C.white,'fill');
-          doc.roundedRect(cx, ty, cellW, cellH, 3, 3, 'FD');
-          doc.setFont('helvetica','bold'); doc.setFontSize(7); sc(C.muted);
-          const sStr = String(g.size);
-          doc.text(sStr, cx + (cellW - doc.getTextWidth(sStr))/2, ty + 9);
-          doc.setFontSize(9.5); sc(C.blue);
-          const qStr = String(g.qty);
-          doc.text(qStr, cx + (cellW - doc.getTextWidth(qStr))/2, ty + 20);
-          cx += cellW + cellGap; col++;
+        if(sourceW > 0 && sourceH > 0){
+          const scale = Math.min(maxW / sourceW, maxH / sourceH);
+          drawW = Math.max(1, sourceW * scale);
+          drawH = Math.max(1, sourceH * scale);
         }
-        ty += cellH + 8;
-        const total = grade.reduce((s,g)=> s + Number(g.qty||0), 0);
-        doc.setFont('helvetica','bold'); doc.setFontSize(9);
-        sc(C.muted); doc.text('Total:', tx, ty);
-        sc(C.text); doc.text(`${total} pares`, tx + 32, ty);
+
+        const drawX = sectionX + ((sectionW - drawW) / 2);
+        const drawY = y + ((imageBoxH - drawH) / 2);
+        doc.addImage(dataUrl, imageType, drawX, drawY, drawW, drawH, undefined, 'FAST');
+      }catch(_){
+        doc.setFillColor(248,250,252);
+        doc.roundedRect(sectionX, y, sectionW, imageBoxH, 3, 3, 'F');
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(10);
+        doc.setTextColor(148,163,184);
+        doc.text('Sem imagem', sectionX + sectionW/2, y + imageBoxH/2, { align:'center' });
       }
-    } else {
-      const total = remainingUnits(item);
-      const baseline = ty + 28;
-      doc.setFont('helvetica','bold'); doc.setFontSize(32); sc(C.blue);
-      const numStr = String(total);
-      const numW = doc.getTextWidth(numStr);
-      doc.text(numStr, tx, baseline);
-      doc.setFont('helvetica','normal'); doc.setFontSize(13); sc(C.muted);
-      doc.text('pares', tx + numW + 5, baseline);
+    }else{
+      doc.setFillColor(248,250,252);
+      doc.roundedRect(sectionX, y, sectionW, imageBoxH, 3, 3, 'F');
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(10);
+      doc.setTextColor(148,163,184);
+      doc.text('Sem imagem', sectionX + sectionW/2, y + imageBoxH/2, { align:'center' });
     }
+
+    doc.setTextColor(15,23,42);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(slotsPerPage === 3 ? 8.2 : 9.2);
+    const titleMaxW = sectionW;
+    const productLines = doc.splitTextToSize(String(item.produto || ''), titleMaxW).slice(0,1);
+    doc.text(productLines, sectionX, infoStartY);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(71,85,105);
+    doc.setFontSize(slotsPerPage === 3 ? 6.5 : 7.2);
+    const metaLine = `${item.codigo} • Cor: ${item.cor} • Prev: ${formatDate(item.prevFaturamento)} • Caixas: ${remainingPacks(item)}`;
+    doc.text(doc.splitTextToSize(metaLine, sectionW).slice(0,2), sectionX, infoStartY + (slotsPerPage === 3 ? 3.7 : 4.0));
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(slotsPerPage === 3 ? 7.0 : 7.6);
+    doc.setTextColor(15,23,42);
+    doc.text('Grade disponível', sectionX, gradeLabelY);
+    drawGradeRow(doc, item, sectionX, gradeTopY, sectionW, gradeAreaH);
   }
 
-  for(let i = 0; i < items.length; i += 2){
-    if(i > 0) doc.addPage();
-    drawHeader();
-    await drawCard(items[i],   bodyY);
-    if(items[i+1]) await drawCard(items[i+1], bodyY + cardH + 8);
-  }
-
-  return doc.output('blob');
+  drawCatalogFooter(doc, pageWidth, pageHeight, pageNumber);
+  const blob = doc.output('blob');
+  return blob;
 }
 
 async function downloadBlob(blob, filename){
@@ -2690,8 +2636,8 @@ async function generateCatalogPdf(){
   btn.classList.add('opacity-70');
   btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>Gerando...';
   try{
-    const showGrade = getCatalogPdfShowGrade();
-    const blob = await buildCatalogPdfBlob(showGrade);
+    const perPage = getCatalogPdfPerPage();
+    const blob = await buildCatalogPdfBlob(perPage);
     if(!blob) return;
     const filename = pdfFileName();
     STATE.latestCatalogPdfBlob = blob;
