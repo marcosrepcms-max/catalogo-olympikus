@@ -11,7 +11,7 @@
       "nome": "WILLAME"
     },
     "clienteCodigo": "1309193",
-    "clienteNome": "UNIÃO CALÇADOS",
+    "clienteNome": "UNIÃO CALÃADOS",
     "prazo": "Z31 - 35/63/91 D",
     "campanha": "CO681 +28DD OLY",
     "observacoes": "",
@@ -30,6 +30,105 @@
         "mode": "boxed",
         "packSize": 12,
         "totalUnits": 24,
+        "grade": [
+          {
+            "size": "39",
+            "qty": 1
+          },
+          {
+            "size": "40",
+            "qty": 2
+          },
+          {
+            "size": "41",
+            "qty": 3
+          },
+          {
+            "size": "42",
+            "qty": 3
+          },
+          {
+            "size": "43",
+            "qty": 2
+          },
+          {
+            "size": "44",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": 46132
+      }
+    ]
+  },
+  {
+    "id": "PED-20260422102746-767",
+    "createdAt": "2026-04-22T13:27:46.112Z",
+    "updatedAt": "2026-04-22T13:27:44.106Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "25471",
+      "nome": "WILLAME"
+    },
+    "clienteCodigo": "23424",
+    "clienteNome": "PÉ QUENTE CALÇADOS",
+    "prazo": "Z35 - 63/91/119 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 2,
+      "units": 24
+    },
+    "items": [
+      {
+        "codigo": "43342471",
+        "produto": "NUVEM",
+        "cor": "LUNCHB",
+        "gci": "5240742",
+        "ebm": "13175375",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "39",
+            "qty": 1
+          },
+          {
+            "size": "40",
+            "qty": 2
+          },
+          {
+            "size": "41",
+            "qty": 3
+          },
+          {
+            "size": "42",
+            "qty": 3
+          },
+          {
+            "size": "43",
+            "qty": 2
+          },
+          {
+            "size": "44",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": 46113
+      },
+      {
+        "codigo": "43342471",
+        "produto": "NUVEM",
+        "cor": "RYLMHO",
+        "gci": "5245130",
+        "ebm": "13185973",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
         "grade": [
           {
             "size": "39",
