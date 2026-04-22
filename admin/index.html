@@ -822,9 +822,9 @@ function tryLatin1Utf8Decode(value){
   return new TextDecoder('utf-8', { fatal:false }).decode(bytes);
 }
 function isReadableText(str){
-  // Texto já legível: contém apenas caracteres imprimíveis válidos (incluindo acentos, ç, ñ etc.)
-  // Rejeita somente se houver bytes de controle ou replacement char
-  return !/[ ---\uFFFD]/.test(str);
+  if(!str) return true;
+  for(var i=0;i<str.length;i++){var c=str.charCodeAt(i);if((c<=8)||(c===11)||(c===12)||(c>=14&&c<=31)||(c>=127&&c<=159)||(c===65533))return false;}
+  return true;
 }
 function decodeMojibake(value){
   let str = stripBrokenControlChars(normalizeText(value));
@@ -832,8 +832,8 @@ function decodeMojibake(value){
 
   // Se o texto já é legível e não tem padrões clássicos de mojibake, retorna direto
   // Isso protege nomes de clientes, cidades e qualquer texto digitado pelo usuário
-  const strictSuspicious = /Ã[^\s]|Â[^\s]|â€™|â€œ|â€|ï¿½|Ãƒ|\uFFFD/;
-  if(!strictSuspicious.test(str)) return str;
+  const hasMojibake = (str.indexOf('\u00c3') !== -1 || str.indexOf('\u00ef\u00bf\u00bd') !== -1);
+  if(!hasMojibake) return str;
 
   // Só aplica correção se houver mojibake real — nunca usa tryLatin1Utf8Decode
   // pois ele corrompe texto UTF-8 válido interpretando-o como Latin-1
