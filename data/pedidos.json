@@ -59,5 +59,66 @@
         "prevFaturamento": 46178
       }
     ]
+  },
+  {
+    "id": "PED-20260424195039-233",
+    "createdAt": "2026-04-24T22:50:39.854Z",
+    "updatedAt": "2026-04-24T22:50:40.948Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "1333497",
+      "nome": "RAFAEL"
+    },
+    "clienteCodigo": "115947",
+    "clienteNome": "SIAHT CALCADOS",
+    "prazo": "Z34 - 56/84/112 D",
+    "campanha": "CO681 +28DD OLY",
+    "observacoes": "",
+    "totals": {
+      "packs": 1,
+      "units": 12
+    },
+    "items": [
+      {
+        "codigo": "43263432",
+        "produto": "VOA 3",
+        "cor": "LUNAR",
+        "gci": "5274759",
+        "ebm": "13263498",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "35",
+            "qty": 1
+          },
+          {
+            "size": "36",
+            "qty": 2
+          },
+          {
+            "size": "37",
+            "qty": 3
+          },
+          {
+            "size": "38",
+            "qty": 3
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": 46178
+      }
+    ]
   }
 ]
