@@ -216,7 +216,7 @@
       <div class="mx-auto h-14 w-14 rounded-2xl bg-[var(--brand-soft)] text-[var(--brand)] flex items-center justify-center text-2xl">
         <i class="fa-solid fa-spinner fa-spin"></i>
       </div>
-      <div class="mt-4 text-xl font-extrabold">Carregando catálogo de produtos</div>
+      <div class="mt-4 text-xl font-extrabold">Carregando Produtos.xlsx e DISPO.xlsx</div>
       <div class="mt-1 text-slate-500">A vitrine exibirá somente os itens que estiverem na planilha DISPO.</div>
     </div>
 
@@ -668,6 +668,8 @@
 <script>
 const BASE_PREFIX = (location.pathname.includes('/admin')) ? '..' : '.';
 const DEFAULTS = {
+  produtosPath: `${BASE_PREFIX}/Produtos.xlsx`,
+  dispoPath: `${BASE_PREFIX}/DISPO.xlsx`,
   imagesBasePath: `${BASE_PREFIX}/Catalogo/`,
   logoPath: `${BASE_PREFIX}/logo-olympikus.png`
 };
@@ -2326,77 +2328,41 @@ async function loadCatalog(){
   try{
     $('brandLogo').src = DEFAULTS.logoPath;
 
-    // Carrega produtos.json e dispo.json via Worker em paralelo
-    const [prodRes, dispoRes, ocultosRes] = await Promise.all([
-      fetch(WORKER_CONFIG.endpoint, {
-        method:'PATCH', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ action:'getProdutos' })
-      }),
-      fetch(WORKER_CONFIG.endpoint, {
-        method:'PATCH', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ action:'getDispo' })
-      }),
-      fetch(WORKER_CONFIG.endpoint, {
-        method:'PATCH', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ action:'getOcultos' })
-      })
+    const [prodRes, dispoRes] = await Promise.all([
+      fetch(`${DEFAULTS.produtosPath}?v=${Date.now()}`, { cache:'no-store' }),
+      fetch(`${DEFAULTS.dispoPath}?v=${Date.now()}`, { cache:'no-store' })
     ]);
+    if(!prodRes.ok) throw new Error(`Produtos.xlsx não encontrado (${prodRes.status})`);
+    if(!dispoRes.ok) throw new Error(`DISPO.xlsx não encontrado (${dispoRes.status})`);
 
-    if(!prodRes.ok) throw new Error(`Produtos não encontrados (${prodRes.status})`);
-    if(!dispoRes.ok) throw new Error(`DISPO não encontrada (${dispoRes.status})`);
+    const [prodBuff, dispoBuff] = await Promise.all([prodRes.arrayBuffer(), dispoRes.arrayBuffer()]);
+    const prodWb = XLSX.read(prodBuff, { type:'array' });
+    const dispoWb = XLSX.read(dispoBuff, { type:'array' });
 
-    const prodJson  = await prodRes.json();
-    const dispoJson = await dispoRes.json();
-
-    // Adaptar produtos.json para o formato esperado por mergeData (mesmo shape do xlsx)
-    const prodRows = (Array.isArray(prodJson) ? prodJson : []).map(p => ({
-      'Imagem':     p.imagem    || '',
-      'Categoria':  p.categoria || '',
-      'Segmento':   p.segmento  || '',
-      'Código':     p.codigo    || '',
-      'Produto':    p.produto   || '',
-      'Cor código': p.corCodigo || '',
-      'Cor':        p.cor       || '',
-      'Gênero':     p.genero    || '',
-      'Preço':      p.preco     || 0,
-      'Custo':      p.custo     || 0
-    }));
-
-    // Adaptar dispo.json para o formato esperado por mergeData (mesmo shape do xlsx)
-    const dispoRows = (Array.isArray(dispoJson) ? dispoJson : []).map(d => {
-      const base = {
-        'Nº':          d.num          || '',
-        'EBM':         d.ebm          || '',
-        'GCI':         d.gci          || '',
-        'FILIAL':      d.filial        || '',
-        'Código':      d.codigo        || '',
-        'Produto':     d.produto       || '',
-        'COR':         d.cor           || '',
-        'DATA ENTREGA': d.dataEntrega  || '',
-        'PEDIDO MÃE':  d.pedidoMae    || '',
-        'SALDO':       d.saldo         || 0
-      };
-      // Grade — expandir objeto grade de volta para colunas
-      for(const [col, val] of Object.entries(d.grade || {})){
-        base[col] = val;
-      }
-      return base;
-    });
+    const prodRows = XLSX.utils.sheet_to_json(prodWb.Sheets[prodWb.SheetNames[0]], { defval:'' });
+    const dispoSheetName = dispoWb.SheetNames.find(n=>normalizeText(n)==='dispo') || dispoWb.SheetNames[0];
+    const dispoRows = XLSX.utils.sheet_to_json(dispoWb.Sheets[dispoSheetName], { defval:'' });
 
     STATE.raw = mergeData(prodRows, dispoRows).map(item=>({ ...item, key: productKey(item) }));
 
-    // Filtrar ocultos
+    // Carrega ocultos e filtra da vitrine
     try{
-      const oData = ocultosRes.ok ? await ocultosRes.json() : [];
-      STATE.ocultos = new Set(Array.isArray(oData) ? oData : []);
-      STATE.raw = STATE.raw.filter(item => {
-        const cod = sanitizeDisplayText(String(item.codigo||'')).toUpperCase();
-        const cor = sanitizeDisplayText(String(item.cor||'')).toUpperCase();
-        const gci = String(item.gci||'').trim();
-        const key = `${cod}|${cor}|${gci}`;
-        return !STATE.ocultos.has(key);
+      const oRes = await fetch(WORKER_CONFIG.endpoint, {
+        method:'PATCH', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ action:'getOcultos' })
       });
-    }catch(_){ /* ignora erro de ocultos */ }
+      if(oRes.ok){
+        const oData = await oRes.json();
+        STATE.ocultos = new Set(Array.isArray(oData) ? oData : []);
+        STATE.raw = STATE.raw.filter(item => {
+          const cod = sanitizeDisplayText(String(item.codigo||'')).toUpperCase();
+          const cor = sanitizeDisplayText(String(item.cor||'')).toUpperCase();
+          const gci = String(item.gci||'').trim();
+          const key = `${cod}|${cor}|${gci}`;
+          return !STATE.ocultos.has(key);
+        });
+      }
+    }catch(_){ /* ignora erro de ocultos — exibe tudo */ }
 
     buildFilters();
     renderCart();
@@ -2409,7 +2375,7 @@ async function loadCatalog(){
     $('loadingBlock').innerHTML = `
       <div class="mx-auto h-14 w-14 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center text-2xl"><i class="fa-solid fa-triangle-exclamation"></i></div>
       <div class="mt-4 text-xl font-extrabold">Não foi possível carregar a vitrine</div>
-      <div class="mt-1 text-slate-500">Confira a configuração do sistema. Detalhe: ${safeHtml(err.message)}</div>
+      <div class="mt-1 text-slate-500">Confira a estrutura do projeto. Detalhe: ${safeHtml(err.message)}</div>
     `;
   }
 }

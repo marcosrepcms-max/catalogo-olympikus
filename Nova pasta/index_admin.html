@@ -796,22 +796,6 @@
           </div>
 
           <div id="adminOrdersList" class="space-y-3"></div>
-
-          <!-- Paginação -->
-          <div id="paginacaoControles" class="hidden flex items-center justify-between gap-3 mt-4 pt-4 border-t border-slate-200">
-            <div class="text-xs font-semibold text-slate-400" id="paginacaoInfo"></div>
-            <div class="flex items-center gap-2">
-              <button id="btnPagAnterior" onclick="mudarPagina(-1)"
-                class="focus-ring w-8 h-8 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-500 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
-              </button>
-              <span id="paginacaoPages" class="flex items-center gap-1"></span>
-              <button id="btnPagProximo" onclick="mudarPagina(1)"
-                class="focus-ring w-8 h-8 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-500 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-              </button>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -1599,7 +1583,6 @@ function updateFilterCounts(){
 }
 
 function applyFilters(){
-  _currentPage = 1; // reset paginação ao filtrar
   const q = normalizeText($('adminSearch').value).toLowerCase();
   const sf = STATE.statusFilter;
   const scope = getAdminScope();
@@ -1639,30 +1622,25 @@ function applyFilters(){
   }
 }
 
-const PAGE_SIZE = 20;
-let _currentPage = 1;
-
 function renderList(){
   $('ordersEmpty').classList.toggle('hidden', STATE.filtered.length !== 0);
 
+  // Mostrar/ocultar controles de seleção
   const controles = $('selecaoControles');
   if(controles) controles.classList.toggle('hidden', STATE.filtered.length === 0);
 
+  // Reset seleção ao re-renderizar
   _pedidosSelecionados.clear();
   atualizarSelecaoUI();
 
-  // Paginação
-  const totalPages = Math.max(1, Math.ceil(STATE.filtered.length / PAGE_SIZE));
-  if(_currentPage > totalPages) _currentPage = 1;
-  const inicio = (_currentPage - 1) * PAGE_SIZE;
-  const paginados = STATE.filtered.slice(inicio, inicio + PAGE_SIZE); = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>`;
+  const svgCheck = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>`;
   const svgX     = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>`;
   const svgArch  = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8v13H3V8M1 3h22v5H1zM10 12h4"/></svg>`;
   const svgXls   = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`;
   const svgPdf   = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>`;
   const svgDel   = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>`;
 
-  $('adminOrdersList').innerHTML = paginados.map(order=>{
+  $('adminOrdersList').innerHTML = STATE.filtered.map(order=>{
     const st = canonicalStatus(order.status);
     const isExportado = st === 'Aprovado' && !!order.exportedAt;
     const clienteDisplay = order.clienteNome
@@ -1763,37 +1741,6 @@ function renderList(){
         </div>
       </div>`;
   }).join('');
-
-  // Renderizar paginação
-  const pagCtrl = $('paginacaoControles');
-  if(pagCtrl){
-    pagCtrl.classList.toggle('hidden', totalPages <= 1);
-    if(totalPages > 1){
-      $('paginacaoInfo').textContent = `${inicio + 1}–${Math.min(inicio + PAGE_SIZE, STATE.filtered.length)} de ${STATE.filtered.length}`;
-      $('btnPagAnterior').disabled = _currentPage <= 1;
-      $('btnPagProximo').disabled  = _currentPage >= totalPages;
-      // Páginas numéricas
-      const pages = $('paginacaoPages');
-      pages.innerHTML = '';
-      for(let p = 1; p <= totalPages; p++){
-        if(totalPages > 7 && p > 3 && p < totalPages - 1 && Math.abs(p - _currentPage) > 1){
-          if(p === 4 || p === totalPages - 2){ pages.innerHTML += `<span style="color:var(--muted);font-size:12px">…</span>`; }
-          continue;
-        }
-        const btn = document.createElement('button');
-        btn.textContent = p;
-        btn.className = `focus-ring w-7 h-7 rounded-full text-xs font-bold border ${p === _currentPage ? 'bg-[var(--brand)] text-white border-[var(--brand)]' : 'border-slate-200 bg-white text-slate-500 hover:bg-slate-50'}`;
-        btn.onclick = () => { _currentPage = p; renderList(); };
-        pages.appendChild(btn);
-      }
-    }
-  }
-}
-
-function mudarPagina(dir){
-  const totalPages = Math.max(1, Math.ceil(STATE.filtered.length / PAGE_SIZE));
-  _currentPage = Math.max(1, Math.min(totalPages, _currentPage + dir));
-  renderList();
 }
 
 function toggleCardExpand(id){
@@ -1999,19 +1946,6 @@ async function updateStatus(id, status, options = {}){
     await workerUpdateOrder(updatedOrder);
     if(nextStatus === 'Cancelado'){
       closeCancelReasonModal({ keepSelection:true });
-      // Ponto 7 — Oferecer notificação WhatsApp ao vendedor
-      const vendedor = updatedOrder.preposto?.nome || updatedOrder.preposto?.codigo || '—';
-      const cliente  = updatedOrder.clienteNome ? `${updatedOrder.clienteCodigo} — ${updatedOrder.clienteNome}` : updatedOrder.clienteCodigo;
-      const motivo   = cancelReason || 'não informado';
-      const msg = encodeURIComponent(
-        `Olá ${vendedor}, seu pedido foi *cancelado*.\n\n` +
-        `📦 Cliente: ${cliente}\n` +
-        `❌ Motivo: ${motivo}\n\n` +
-        `Em caso de dúvidas, entre em contato com o admin.`
-      );
-      if(confirm(`Deseja notificar o vendedor ${vendedor} via WhatsApp sobre o cancelamento?`)){
-        window.open(`https://wa.me/?text=${msg}`, '_blank');
-      }
     }
     showToast(`Status alterado para "${nextStatus}".`, 'success');
     await loadAdmin();
@@ -3573,40 +3507,11 @@ document.addEventListener('change', e => {
 async function exportarSelecionados(){
   if(!_pedidosSelecionados.size){ showToast('Nenhum pedido selecionado.','info'); return; }
   const orders = STATE.orders.filter(o => _pedidosSelecionados.has(o.id));
-
-  // Ponto 2 — Alerta de saldo insuficiente
-  const dispoJson = await fetch(WORKER_URL, {
-    method:'PATCH', headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({action:'getDispo'})
-  }).then(r=>r.ok?r.json():[]).catch(()=>[]);
-
-  const saldoMap = new Map();
-  for(const d of dispoJson) saldoMap.set(String(d.gci||'').trim(), Number(d.saldo||0));
-
-  const semSaldo = [];
-  for(const o of orders){
-    for(const item of (o.items||[])){
-      const gci = String(item.gci||'').trim();
-      const saldo = saldoMap.get(gci);
-      const qtde = Number(item.totalUnits||0)||(item.grade||[]).reduce((s,g)=>s+Number(g.qty||0),0);
-      if(saldo !== undefined && qtde > saldo){
-        semSaldo.push(`${item.produto||gci} (pedido ${o.id.slice(-6)}) — solicitado: ${qtde}, saldo DISPO: ${saldo}`);
-      }
-    }
-  }
-  if(semSaldo.length > 0){
-    const lista = semSaldo.slice(0,5).join('\n');
-    const mais = semSaldo.length > 5 ? `\n...e mais ${semSaldo.length-5} item(ns)` : '';
-    if(!confirm(`⚠️ Saldo insuficiente detectado:\n\n${lista}${mais}\n\nDeseja exportar mesmo assim?`)) return;
-  }
-
-  // Já exportados
   const jaExportados = orders.filter(o => o.exportedAt);
   if(jaExportados.length > 0){
     const nomes = jaExportados.map(o=>o.preposto?.nome||o.id).join(', ');
     if(!confirm(`${jaExportados.length} pedido(s) já exportados (${nomes}).\nDeseja exportar mesmo assim?`)) return;
   }
-
   const btn = $('btnExportarSelecionados');
   const prev = btn.innerHTML;
   btn.disabled = true;
@@ -3620,26 +3525,7 @@ async function exportarSelecionados(){
     XLSX.utils.book_append_sheet(wb, ws, 'Pedidos');
     const now = new Date();
     XLSX.writeFile(wb, `pedidos_selecionados_${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}.xlsx`);
-
-    // Ponto 3 — Aprovar pendentes ao exportar + marcar exportedAt
-    const now2 = new Date().toISOString();
-    for(const order of orders){
-      const idx = STATE.orders.findIndex(o => o.id === order.id);
-      if(idx === -1) continue;
-      const isPendente = canonicalStatus(order.status) === 'Pendente';
-      const updates = { exportedAt: now2 };
-      if(isPendente){
-        updates.status = 'Aprovado';
-        updates.history = [
-          ...(STATE.orders[idx].history || []),
-          { action:'Aprovado e exportado em lote', at: now2 }
-        ];
-      }
-      STATE.orders[idx] = { ...STATE.orders[idx], ...updates, updatedAt: now2 };
-      try{ await workerUpdateOrder(STATE.orders[idx]); }catch(e){ console.error(e); }
-    }
-
-    atualizarBadgeGlobal();
+    await marcarComoExportado(orders);
     showToast(`${orders.length} pedido(s) exportado(s)!`, 'success');
     renderList();
   }catch(err){ console.error(err); showToast('Erro ao exportar.','error');
