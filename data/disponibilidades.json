@@ -2,26 +2,6 @@
   {
     "prevFat": "2ÃÂª QUINZ MAIO",
     "empresa": "VULSP",
-    "artigo": "1326799",
-    "descricao": "SPORTSTYLE LEFT CHEST SS",
-    "cor": "BLK/BK",
-    "linha": "SPORTSTYLE",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO UA",
-    "pdv": 129.99,
-    "totalGeral": 23732,
-    "grade": {
-      "P": 3383,
-      "M": 8179,
-      "G": 7767,
-      "GG": 4360,
-      "2GG": 43
-    },
-    "imagem": "1326799_BLK_BK"
-  },
-  {
-    "prevFat": "2ÃÂª QUINZ MAIO",
-    "empresa": "VULSP",
     "artigo": "1326413",
     "descricao": "CAMISETA UA TECH 2.0 SS",
     "cor": "BKPGRY",
@@ -140,26 +120,6 @@
       "M": 440,
       "G": 452,
       "GG": 225
-    }
-  },
-  {
-    "prevFat": "02 QUINZ MAIO",
-    "empresa": "VULSP",
-    "artigo": "1326799",
-    "descricao": "SPORTSTYLE LEFT CHEST SS",
-    "cor": "BLK/BK",
-    "linha": "SPORTSTYLE",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO UA",
-    "pdv": 129.99,
-    "totalGeral": 23732,
-    "imagem": "",
-    "grade": {
-      "P": 3383,
-      "M": 8179,
-      "G": 7767,
-      "GG": 4360,
-      "2GG": 43
     }
   },
   {
