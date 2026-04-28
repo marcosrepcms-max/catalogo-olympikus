@@ -356,7 +356,8 @@ const STATE = {
   itens: [],       // todos do JSON
   ocultos: new Set(),
   filtro: 'todos',
-  search: ''
+  search: '',
+  imgHist: {}      // mapa "artigo|cor" → nome da imagem (histórico persistente)
 };
 
 let _jsonAtual = [];
@@ -416,13 +417,15 @@ function safeHtml(v){ return String(v??'').replaceAll('&','&amp;').replaceAll('<
 // ── LOAD DATA ─────────────────────────────────────────────────────────────────
 async function loadData(){
   try{
-    const [dispRes, ocultosRes] = await Promise.all([
+    const [dispRes, ocultosRes, histRes] = await Promise.all([
       fetch(WORKER_URL, { method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:'getDisponibilidades'}) }),
-      fetch(WORKER_URL, { method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:'getOcultosDisp'}) })
+      fetch(WORKER_URL, { method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:'getOcultosDisp'}) }),
+      fetch(WORKER_URL, { method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:'getImagensHistorico'}) })
     ]);
-    STATE.itens  = dispRes.ok ? await dispRes.json() : [];
-    const oc     = ocultosRes.ok ? await ocultosRes.json() : [];
+    STATE.itens   = dispRes.ok ? await dispRes.json() : [];
+    const oc      = ocultosRes.ok ? await ocultosRes.json() : [];
     STATE.ocultos = new Set(Array.isArray(oc) ? oc : []);
+    STATE.imgHist = histRes.ok ? await histRes.json() : {};
     applyFilters();
   }catch(err){
     console.error(err);
@@ -632,6 +635,14 @@ async function enviarImagem(){
         body: JSON.stringify({ action:'saveDisponibilidades', data: STATE.itens })
       });
     }
+
+    // Salva no histórico de imagens — persiste mesmo se produto for excluído
+    const histKey = `${_uploadItem.artigo}|${_uploadItem.cor}`;
+    STATE.imgHist[histKey] = nomeBase;
+    await fetch(WORKER_URL, {
+      method:'PATCH', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ action:'saveImagensHistorico', data: { [histKey]: nomeBase } })
+    });
 
     showToast(`Imagem "${nomeArquivo}" enviada!`, 'success');
     fecharUploadImagem();
@@ -883,8 +894,19 @@ async function confirmarImportar(){
   const prev = btn.innerHTML;
   btn.disabled=true; btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Salvando...';
   try{
-    const novosParaSalvar = [..._novos, ..._conflitos.filter(c=>c.incluir).map(c=>c.xlsx)];
-    const listaFinal = [..._jsonAtual, ...novosParaSalvar];
+    // Para conflitos incluídos, preservar imagem do existente
+    const conflitosParaSalvar = _conflitos.filter(c=>c.incluir).map(c=>({
+      ...c.xlsx,
+      imagem: c.atual.imagem || STATE.imgHist[`${c.xlsx.artigo}|${c.xlsx.cor}`] || ''
+    }));
+
+    // Para novos, restaurar imagem do histórico se existir
+    const novosParaSalvar = _novos.map(item => ({
+      ...item,
+      imagem: STATE.imgHist[`${item.artigo}|${item.cor}`] || ''
+    }));
+
+    const listaFinal = [..._jsonAtual, ...novosParaSalvar, ...conflitosParaSalvar];
     const res = await fetch(WORKER_URL, {
       method:'PATCH', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ action:'saveDisponibilidades', data:listaFinal })
@@ -893,7 +915,13 @@ async function confirmarImportar(){
     const result = await res.json();
     if(!result.success) throw new Error(result.error);
     STATE.itens = listaFinal;
-    showToast(`${novosParaSalvar.length} produto(s) importado(s)!`, 'success');
+
+    // Contar quantos tiveram imagem restaurada
+    const restauradas = [...novosParaSalvar, ...conflitosParaSalvar].filter(i=>i.imagem).length;
+    const msg = restauradas > 0
+      ? `${novosParaSalvar.length + conflitosParaSalvar.length} produto(s) importado(s) — ${restauradas} imagem(ns) restaurada(s) automaticamente!`
+      : `${novosParaSalvar.length + conflitosParaSalvar.length} produto(s) importado(s)!`;
+    showToast(msg, 'success');
     fecharImportar();
     applyFilters();
   }catch(err){
