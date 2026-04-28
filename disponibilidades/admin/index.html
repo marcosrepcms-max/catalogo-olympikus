@@ -128,6 +128,11 @@
           <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
           <input id="searchInput" class="bg-transparent text-sm outline-none w-full" style="color:var(--text)" placeholder="Buscar artigo, descrição ou cor..." oninput="applyFilters()">
         </div>
+        <!-- Colunas -->
+        <button onclick="togglePainelColunas()" data-tip="Ocultar/exibir colunas"
+          class="focus-ring rounded-full border px-4 py-2 text-sm font-bold flex items-center gap-2 transition-colors border-slate-200 bg-white text-slate-600 hover:bg-slate-50">
+          <i class="fa-solid fa-table-columns text-xs"></i> Colunas
+        </button>
         <!-- Importar -->
         <button onclick="abrirImportar()" data-tip="Importar planilha"
           class="focus-ring rounded-full border px-4 py-2 text-sm font-bold flex items-center gap-2 transition-colors"
@@ -174,19 +179,19 @@
     <div id="tableWrap" class="table-wrap hidden">
       <table>
         <thead>
-          <tr>
-            <th>Prev. Fat.</th>
-            <th>Empresa</th>
-            <th>Artigo</th>
-            <th>Descrição</th>
-            <th>Cor</th>
-            <th>Linha</th>
-            <th>Gênero</th>
-            <th>Categoria</th>
-            <th class="text-right">PDV</th>
-            <th class="text-right">T. Geral</th>
-            <th>Grade</th>
-            <th></th>
+          <tr id="theadRow">
+            <th data-col="prevFat">Prev. Fat.</th>
+            <th data-col="empresa">Empresa</th>
+            <th data-col="artigo">Artigo</th>
+            <th data-col="descricao">Descrição</th>
+            <th data-col="cor">Cor</th>
+            <th data-col="linha">Linha</th>
+            <th data-col="genero">Gênero</th>
+            <th data-col="categoria">Categoria</th>
+            <th data-col="pdv" class="text-right">PDV</th>
+            <th data-col="totalGeral" class="text-right">T. Geral</th>
+            <th data-col="grade">Grade</th>
+            <th data-col="acoes"></th>
           </tr>
         </thead>
         <tbody id="tableBody"></tbody>
@@ -196,7 +201,66 @@
 
 </main>
 
-<!-- ── MODAL IMPORTAR ──────────────────────────────────────────────────────── -->
+  <!-- PAINEL DE COLUNAS -->
+  <div id="painelColunas" class="hidden fixed inset-0 z-[100]" onclick="fecharPainelColunas(event)">
+    <div class="absolute top-20 right-6 rounded-2xl border border-slate-200 bg-white shadow-card p-4 w-64" style="background:var(--card);border-color:var(--line)" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between mb-3">
+        <div class="text-xs font-bold text-slate-500 uppercase tracking-wide">Colunas visíveis</div>
+        <button onclick="resetarColunas()" class="text-xs font-bold hover:underline" style="color:var(--brand)">Resetar</button>
+      </div>
+      <div id="listaColunas" class="flex flex-col gap-2"></div>
+    </div>
+  </div>
+
+  <!-- MODAL UPLOAD IMAGEM -->
+  <div id="modalUploadImagem" class="hidden fixed inset-0 z-[150] bg-slate-950/45 p-4 flex items-center justify-center">
+    <div class="rounded-[28px] bg-white border border-slate-200 shadow-card w-full max-w-sm p-6" style="background:var(--card);border-color:var(--line)">
+      <div class="flex items-center justify-between mb-5">
+        <div class="text-lg font-extrabold">Upload de imagem</div>
+        <button onclick="fecharUploadImagem()" class="focus-ring w-9 h-9 rounded-full border border-slate-200 bg-slate-50 flex items-center justify-center text-slate-500" style="border-color:var(--line);background:var(--bg)">
+          <i class="fa-solid fa-xmark text-xs"></i>
+        </button>
+      </div>
+
+      <!-- Info do produto -->
+      <div id="uploadProdutoInfo" class="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 mb-4 text-sm" style="border-color:var(--line);background:var(--bg)">
+        <div class="font-bold" id="uploadProdutoNome">—</div>
+        <div class="text-xs text-slate-500 mt-0.5" id="uploadProdutoCor">—</div>
+      </div>
+
+      <!-- Preview -->
+      <div id="uploadPreviewWrap" class="hidden mb-4 flex justify-center">
+        <div class="relative">
+          <img id="uploadPreview" src="" alt="Preview" class="w-28 h-28 object-contain rounded-xl border border-slate-200 bg-slate-50" style="border-color:var(--line)">
+          <button onclick="limparUploadImagem()" class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-red-500 text-white flex items-center justify-center text-xs">✕</button>
+        </div>
+      </div>
+
+      <!-- Upload area -->
+      <div id="uploadArea2" class="border-2 border-dashed border-slate-200 rounded-2xl p-5 text-center mb-4 cursor-pointer hover:border-green-300 transition-colors" onclick="$('inputImagemProd').click()" style="border-color:var(--line)">
+        <i class="fa-solid fa-image text-slate-300 text-2xl mb-2 block"></i>
+        <div class="text-xs font-bold" style="color:var(--muted)">Clique para selecionar a imagem</div>
+        <div class="text-[11px] text-slate-400 mt-0.5">JPG, PNG ou WEBP</div>
+        <input type="file" id="inputImagemProd" accept="image/jpeg,image/png,image/webp" class="hidden" onchange="previewUploadImagem(this)">
+      </div>
+
+      <!-- Nome do arquivo -->
+      <div class="mb-4">
+        <label class="text-xs font-bold block mb-1" style="color:var(--muted)">Nome do arquivo</label>
+        <input id="uploadNomeArquivo" class="focus-ring w-full rounded-xl border border-slate-200 px-3 py-2 text-sm" style="background:var(--card);color:var(--text);border-color:var(--line)" placeholder="1326799_BLKBK">
+        <div class="text-[11px] text-slate-400 mt-1">Gerado automaticamente. Edite se necessário.</div>
+      </div>
+
+      <div class="flex gap-2 justify-end">
+        <button onclick="fecharUploadImagem()" class="focus-ring rounded-full border border-slate-200 px-4 py-2 text-sm font-bold hover:bg-slate-50" style="background:var(--card);color:var(--muted);border-color:var(--line)">Cancelar</button>
+        <button id="btnEnviarImagem" onclick="enviarImagem()" class="focus-ring rounded-2xl px-5 py-2 text-sm font-extrabold text-slate-900 flex items-center gap-2" style="background:var(--accent)">
+          <i class="fa-solid fa-upload text-xs"></i> Enviar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Importar -->
 <div id="modalImportar" class="hidden fixed inset-0 z-[150] bg-slate-950/45 p-4 flex items-start justify-center overflow-y-auto">
   <div class="rounded-[28px] bg-white border border-slate-200 shadow-card w-full max-w-3xl my-8 p-6" style="background:var(--card);border-color:var(--line)">
     <div class="flex items-center justify-between mb-5">
@@ -400,6 +464,144 @@ function applyFilters(){
   renderTable(filtrados);
 }
 
+// ── COLUNAS ───────────────────────────────────────────────────────────────────
+const COLUNAS_DEF = [
+  { id:'prevFat',    label:'Prev. Fat.' },
+  { id:'empresa',    label:'Empresa' },
+  { id:'artigo',     label:'Artigo' },
+  { id:'descricao',  label:'Descrição' },
+  { id:'cor',        label:'Cor' },
+  { id:'linha',      label:'Linha' },
+  { id:'genero',     label:'Gênero' },
+  { id:'categoria',  label:'Categoria' },
+  { id:'pdv',        label:'PDV' },
+  { id:'totalGeral', label:'T. Geral' },
+  { id:'grade',      label:'Grade' },
+  { id:'acoes',      label:'' },
+];
+
+let _colsOcultas = new Set(JSON.parse(localStorage.getItem('disp_cols_ocultas')||'[]'));
+
+function salvarColunas(){ localStorage.setItem('disp_cols_ocultas', JSON.stringify([..._colsOcultas])); }
+
+function aplicarColunas(){
+  const ths = document.querySelectorAll('#theadRow th[data-col]');
+  ths.forEach(th => {
+    const col = th.dataset.col;
+    const oculto = _colsOcultas.has(col);
+    th.style.display = oculto ? 'none' : '';
+  });
+  document.querySelectorAll('#tableBody tr').forEach(tr => {
+    tr.querySelectorAll('td[data-col]').forEach(td => {
+      td.style.display = _colsOcultas.has(td.dataset.col) ? 'none' : '';
+    });
+  });
+}
+
+function togglePainelColunas(){
+  const painel = $('painelColunas');
+  if(painel.classList.contains('hidden')){
+    renderListaColunas();
+    painel.classList.remove('hidden');
+  } else {
+    painel.classList.add('hidden');
+  }
+}
+
+function fecharPainelColunas(e){ $('painelColunas').classList.add('hidden'); }
+
+function renderListaColunas(){
+  $('listaColunas').innerHTML = COLUNAS_DEF.filter(c => c.id !== 'acoes').map(c => `
+    <label class="flex items-center gap-2 cursor-pointer">
+      <input type="checkbox" ${!_colsOcultas.has(c.id)?'checked':''} onchange="toggleColuna('${c.id}',this.checked)"
+        class="rounded" style="accent-color:var(--accent)">
+      <span class="text-sm font-semibold" style="color:var(--text)">${c.label}</span>
+    </label>`).join('');
+}
+
+function toggleColuna(col, visivel){
+  if(visivel){ _colsOcultas.delete(col); } else { _colsOcultas.add(col); }
+  salvarColunas();
+  aplicarColunas();
+}
+
+function resetarColunas(){
+  _colsOcultas.clear();
+  salvarColunas();
+  renderListaColunas();
+  aplicarColunas();
+}
+
+// ── UPLOAD IMAGEM POR LINHA ───────────────────────────────────────────────────
+let _uploadItem = null;
+let _uploadBase64 = null;
+let _uploadExt = 'jpg';
+
+function abrirUploadImagem(artigo, cor, descricao){
+  _uploadItem = { artigo, cor, descricao };
+  _uploadBase64 = null;
+  _uploadExt = 'jpg';
+
+  $('uploadProdutoNome').textContent = descricao || artigo;
+  $('uploadProdutoCor').textContent  = cor;
+  $('uploadNomeArquivo').value       = `${artigo}_${cor.replace(/\//g,'_')}`;
+  $('uploadPreviewWrap').classList.add('hidden');
+  $('uploadArea2').classList.remove('hidden');
+  $('inputImagemProd').value = '';
+  $('modalUploadImagem').classList.remove('hidden');
+}
+
+function fecharUploadImagem(){
+  $('modalUploadImagem').classList.add('hidden');
+  _uploadItem = null; _uploadBase64 = null;
+}
+
+function limparUploadImagem(){
+  _uploadBase64 = null;
+  $('uploadPreview').src = '';
+  $('uploadPreviewWrap').classList.add('hidden');
+  $('uploadArea2').classList.remove('hidden');
+  $('inputImagemProd').value = '';
+}
+
+function previewUploadImagem(input){
+  const file = input.files[0];
+  if(!file) return;
+  _uploadExt = file.name.split('.').pop().toLowerCase() || 'jpg';
+  if(!['jpg','jpeg','png','webp'].includes(_uploadExt)) _uploadExt = 'jpg';
+  const reader = new FileReader();
+  reader.onload = e => {
+    _uploadBase64 = e.target.result.split(',')[1];
+    $('uploadPreview').src = e.target.result;
+    $('uploadPreviewWrap').classList.remove('hidden');
+    $('uploadArea2').classList.add('hidden');
+  };
+  reader.readAsDataURL(file);
+}
+
+async function enviarImagem(){
+  if(!_uploadBase64){ showToast('Selecione uma imagem primeiro.','error'); return; }
+  const nomeBase    = $('uploadNomeArquivo').value.trim() || `${_uploadItem.artigo}_${_uploadItem.cor.replace(/\//g,'_')}`;
+  const nomeArquivo = `${nomeBase}.${_uploadExt}`;
+  const btn = $('btnEnviarImagem');
+  const prev = btn.innerHTML;
+  btn.disabled=true; btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Enviando...';
+  try{
+    const res = await fetch(WORKER_URL, {
+      method:'PATCH', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ action:'uploadImagem', nome:nomeArquivo, nomeArquivo, base64:_uploadBase64 })
+    });
+    if(!res.ok) throw new Error('Falha no upload');
+    const result = await res.json();
+    if(!result.success) throw new Error(result.error);
+    showToast(`Imagem "${nomeArquivo}" enviada!`, 'success');
+    fecharUploadImagem();
+  }catch(err){
+    console.error(err);
+    showToast(`Erro: ${err.message}`, 'error');
+  }finally{ btn.disabled=false; btn.innerHTML=prev; }
+}
+
 // ── RENDER TABLE ──────────────────────────────────────────────────────────────
 function renderTable(itens){
   const tbody = $('tableBody');
@@ -420,40 +622,44 @@ function renderTable(itens){
     const oculto = isOculto(item);
     const key    = ocultarKey(item);
 
-    // Grade — mostrar numerações com saldo > 0
+    // Grade — numerações com saldo > 0
     const grade = item.grade || {};
     const gradeStr = Object.entries(grade)
       .filter(([,v]) => Number(v) > 0)
-      .map(([k,v]) => `<span class="inline-flex items-center gap-1 text-[10px] font-semibold bg-slate-100 rounded px-1.5 py-0.5" style="background:var(--muted-soft)">${safeHtml(k)}<span style="color:var(--brand);font-weight:800">${v}</span></span>`)
-      .join(' ') || '<span class="text-slate-400 text-[11px]">—</span>';
+      .map(([k,v]) => `<span class="inline-flex items-center gap-1 text-[10px] font-semibold rounded px-1.5 py-0.5" style="background:var(--muted-soft)">${safeHtml(k)}<span style="color:var(--brand);font-weight:800">${v}</span></span>`)
+      .join(' ') || '<span class="text-[11px]" style="color:var(--muted)">—</span>';
 
-    // Chip empresa
+    // Empresa — chip + valor real
     const isUA = (item.empresa||'').toUpperCase().includes('VULSP') || (item.empresa||'').toUpperCase().includes('VDIST') || (item.categoria||'').toUpperCase().includes('UA');
     const chipEmpresa = isUA
       ? `<span class="chip-ua">UA</span>`
       : `<span class="chip-oly">OLY</span>`;
+    const empresaVal = item.empresa ? `<div class="text-[10px] mt-0.5" style="color:var(--muted)">${safeHtml(item.empresa)}</div>` : '';
 
     // Botões ação
     const btns = isOcultosView
-      ? `<button class="icon-btn reexibir" data-key="${safeHtml(key)}" onclick="reexibirItem('${safeHtml(key)}')" data-tip="Reexibir"><i class="fa-solid fa-eye text-xs"></i></button>`
-      : `<button class="icon-btn ocultar" data-key="${safeHtml(key)}" onclick="ocultarItem('${safeHtml(key)}')" data-tip="Ocultar"><i class="fa-solid fa-eye-slash text-xs"></i></button>
+      ? `<button class="icon-btn reexibir" onclick="reexibirItem('${safeHtml(key)}')" data-tip="Reexibir"><i class="fa-solid fa-eye text-xs"></i></button>`
+      : `<button class="icon-btn" onclick="abrirUploadImagem('${safeHtml(item.artigo)}','${safeHtml(item.cor)}','${safeHtml(item.descricao)}')" data-tip="Upload de imagem" style="color:var(--brand)"><i class="fa-solid fa-image text-xs"></i></button>
+         <button class="icon-btn ocultar" onclick="ocultarItem('${safeHtml(key)}')" data-tip="Ocultar"><i class="fa-solid fa-eye-slash text-xs"></i></button>
          <button class="icon-btn excluir" onclick="excluirItem('${safeHtml(key)}')" data-tip="Excluir"><i class="fa-solid fa-trash-can text-xs"></i></button>`;
 
     return `<tr class="${oculto?'oculto':''}">
-      <td class="font-semibold text-xs whitespace-nowrap" style="color:var(--muted)">${safeHtml(item.prevFat||'—')}</td>
-      <td>${chipEmpresa}</td>
-      <td class="font-extrabold text-xs" style="color:var(--brand)">${safeHtml(item.artigo||'—')}</td>
-      <td class="font-bold" style="color:var(--text)">${safeHtml(item.descricao||'—')}</td>
-      <td class="text-xs font-semibold" style="color:var(--muted)">${safeHtml(item.cor||'—')}</td>
-      <td class="text-xs" style="color:var(--muted)">${safeHtml(item.linha||'—')}</td>
-      <td class="text-xs" style="color:var(--muted)">${safeHtml(item.genero||'—')}</td>
-      <td class="text-xs" style="color:var(--muted)">${safeHtml(item.categoria||'—')}</td>
-      <td class="text-right font-bold text-xs">R$ ${Number(item.pdv||0).toFixed(2)}</td>
-      <td class="text-right font-extrabold" style="color:var(--brand)">${Number(item.totalGeral||0).toLocaleString('pt-BR')}</td>
-      <td><div class="flex flex-wrap gap-1 max-w-xs">${gradeStr}</div></td>
-      <td><div class="flex items-center gap-1">${btns}</div></td>
+      <td data-col="prevFat" class="font-semibold text-xs whitespace-nowrap" style="color:var(--muted)">${safeHtml(item.prevFat||'—')}</td>
+      <td data-col="empresa">${chipEmpresa}${empresaVal}</td>
+      <td data-col="artigo" class="font-extrabold text-xs" style="color:var(--brand)">${safeHtml(item.artigo||'—')}</td>
+      <td data-col="descricao" class="font-bold" style="color:var(--text)">${safeHtml(item.descricao||'—')}</td>
+      <td data-col="cor" class="text-xs font-semibold" style="color:var(--muted)">${safeHtml(item.cor||'—')}</td>
+      <td data-col="linha" class="text-xs" style="color:var(--muted)">${safeHtml(item.linha||'—')}</td>
+      <td data-col="genero" class="text-xs" style="color:var(--muted)">${safeHtml(item.genero||'—')}</td>
+      <td data-col="categoria" class="text-xs" style="color:var(--muted)">${safeHtml(item.categoria||'—')}</td>
+      <td data-col="pdv" class="text-right font-bold text-xs">R$ ${Number(item.pdv||0).toFixed(2)}</td>
+      <td data-col="totalGeral" class="text-right font-extrabold" style="color:var(--brand)">${Number(item.totalGeral||0).toLocaleString('pt-BR')}</td>
+      <td data-col="grade"><div class="flex flex-wrap gap-1 max-w-xs">${gradeStr}</div></td>
+      <td data-col="acoes"><div class="flex items-center gap-1">${btns}</div></td>
     </tr>`;
   }).join('');
+
+  aplicarColunas();
 }
 
 // ── OCULTAR / REEXIBIR ────────────────────────────────────────────────────────
