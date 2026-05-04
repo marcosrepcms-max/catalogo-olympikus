@@ -383,5 +383,62 @@
     "lastActionLabel": "Pedido criado",
     "lastActionAt": "2026-04-27T14:55:04.593Z",
     "exportedAt": "2026-04-27T15:02:17.486Z"
+  },
+  {
+    "id": "PED-20260504101056-144",
+    "createdAt": "2026-05-04T13:10:56.661Z",
+    "updatedAt": "2026-05-04T13:10:56.965Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "25471",
+      "nome": "WILLAME"
+    },
+    "clienteCodigo": "10097",
+    "clienteNome": "CASA SOARES",
+    "prazo": "Z35 - 63/91/119 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 1,
+      "units": 12
+    },
+    "items": [
+      {
+        "codigo": "43632407",
+        "produto": "BRUMA",
+        "cor": "LAVAND",
+        "gci": "4993255",
+        "ebm": "12757893",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "35",
+            "qty": 1
+          },
+          {
+            "size": "36",
+            "qty": 2
+          },
+          {
+            "size": "37",
+            "qty": 4
+          },
+          {
+            "size": "38",
+            "qty": 3
+          },
+          {
+            "size": "39",
+            "qty": 2
+          }
+        ],
+        "prevFaturamento": "5/30/26"
+      }
+    ]
   }
 ]
