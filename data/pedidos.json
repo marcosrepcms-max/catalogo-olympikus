@@ -440,5 +440,176 @@
         "prevFaturamento": "5/30/26"
       }
     ]
+  },
+  {
+    "id": "PED-20260504221755-632",
+    "createdAt": "2026-05-05T01:17:55.228Z",
+    "updatedAt": "2026-05-05T01:17:54.801Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "25471",
+      "nome": "WILLAME"
+    },
+    "clienteCodigo": "65934",
+    "clienteNome": "SILAS CALÇADOS",
+    "prazo": "Z35 - 63/91/119 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 4,
+      "units": 48
+    },
+    "items": [
+      {
+        "codigo": "43389459",
+        "produto": "FLUTUA 2",
+        "cor": "PTO/PT",
+        "gci": "4993104",
+        "ebm": "12757545",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "34",
+            "qty": 1
+          },
+          {
+            "size": "35",
+            "qty": 2
+          },
+          {
+            "size": "36",
+            "qty": 2
+          },
+          {
+            "size": "37",
+            "qty": 3
+          },
+          {
+            "size": "38",
+            "qty": 2
+          },
+          {
+            "size": "39",
+            "qty": 1
+          },
+          {
+            "size": "40",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "5/5/26"
+      },
+      {
+        "codigo": "54104269",
+        "produto": "SERENO",
+        "cor": "PRETO",
+        "gci": "5038292",
+        "ebm": "12837174",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "37",
+            "qty": 2
+          },
+          {
+            "size": "39",
+            "qty": 5
+          },
+          {
+            "size": "41",
+            "qty": 4
+          },
+          {
+            "size": "43",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "5/16/26"
+      },
+      {
+        "codigo": "43393460",
+        "produto": "LUMI",
+        "cor": "PRETO",
+        "gci": "4993370",
+        "ebm": "12758052",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "35",
+            "qty": 1
+          },
+          {
+            "size": "36",
+            "qty": 2
+          },
+          {
+            "size": "37",
+            "qty": 4
+          },
+          {
+            "size": "38",
+            "qty": 3
+          },
+          {
+            "size": "39",
+            "qty": 2
+          }
+        ],
+        "prevFaturamento": "5/30/26"
+      },
+      {
+        "codigo": "43395156",
+        "produto": "MARTE",
+        "cor": "PT/DRD",
+        "gci": "5199180",
+        "ebm": "13109256",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 1
+          },
+          {
+            "size": "40",
+            "qty": 2
+          },
+          {
+            "size": "41",
+            "qty": 3
+          },
+          {
+            "size": "42",
+            "qty": 3
+          },
+          {
+            "size": "43",
+            "qty": 1
+          },
+          {
+            "size": "44",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "5/23/26"
+      }
+    ]
   }
 ]
