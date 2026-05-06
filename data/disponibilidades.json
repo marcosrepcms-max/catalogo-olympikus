@@ -1749,31 +1749,6 @@
     "empresa": "VULTS",
     "artigo": "43346463",
     "descricao": "QU4DRA 2",
-    "cor": "PTO/PT",
-    "linha": "",
-    "genero": "",
-    "categoria": "",
-    "pdv": 499.99,
-    "totalGeral": 977,
-    "imagem": "",
-    "grade": {
-      "35": 12,
-      "36": 35,
-      "37": 56,
-      "38": 41,
-      "39": 50,
-      "40": 95,
-      "41": 167,
-      "42": 185,
-      "43": 97,
-      "44": 49
-    }
-  },
-  {
-    "prevFat": "02 QUINZ JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43346463",
-    "descricao": "QU4DRA 2",
     "cor": "CHB/LM",
     "linha": "",
     "genero": "",
@@ -1791,31 +1766,6 @@
       "42": 167,
       "43": 97,
       "44": 45
-    }
-  },
-  {
-    "prevFat": "02 QUINZ JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43346463",
-    "descricao": "QU4DRA 2",
-    "cor": "PTO/PT",
-    "linha": "",
-    "genero": "",
-    "categoria": "",
-    "pdv": 499.99,
-    "totalGeral": 849,
-    "imagem": "",
-    "grade": {
-      "35": 12,
-      "36": 35,
-      "37": 56,
-      "38": 41,
-      "39": 50,
-      "40": 95,
-      "41": 167,
-      "42": 185,
-      "43": 97,
-      "44": 49
     }
   }
 ]
