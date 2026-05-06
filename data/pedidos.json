@@ -453,7 +453,7 @@
       "nome": "WILLAME"
     },
     "clienteCodigo": "65934",
-    "clienteNome": "SILAS CALÃÂÃÂADOS",
+    "clienteNome": "SILAS CALÃÂÃÂÃÂÃÂADOS",
     "prazo": "Z35 - 63/91/119 D",
     "campanha": "",
     "observacoes": "",
@@ -712,6 +712,67 @@
           }
         ],
         "prevFaturamento": "5/23/26"
+      }
+    ]
+  },
+  {
+    "id": "PED-20260506154333-417",
+    "createdAt": "2026-05-06T18:43:33.077Z",
+    "updatedAt": "2026-05-06T18:43:33.774Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "109839",
+      "nome": "MARIANA"
+    },
+    "clienteCodigo": "1633552",
+    "clienteNome": "FABRICIA LIMA DE SOUSA LTDA",
+    "prazo": "Z34 - 56/84/112 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 1,
+      "units": 12
+    },
+    "items": [
+      {
+        "codigo": "43351429",
+        "produto": "CORRE 4 STRAVA",
+        "cor": "AREL/RJ",
+        "gci": "3456757",
+        "ebm": "1234564",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 3
+          },
+          {
+            "size": "41",
+            "qty": 3
+          },
+          {
+            "size": "42",
+            "qty": 2
+          },
+          {
+            "size": "43",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "31/05/26"
       }
     ]
   }
