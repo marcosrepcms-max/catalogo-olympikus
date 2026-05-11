@@ -5782,5 +5782,30 @@
       "43": 137,
       "44": 15
     }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "46173",
+    "empresa": "VULTZ",
+    "artigo": "6014744",
+    "descricao": "UA CH.SUNNY",
+    "cor": "SWSWTU",
+    "linha": "",
+    "genero": "",
+    "categoria": "",
+    "pdv": 379.99,
+    "totalGeral": 1200,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "34": 100,
+      "35": 200,
+      "36": 300,
+      "37": 300,
+      "38": 200,
+      "39": 100
+    }
   }
 ]
