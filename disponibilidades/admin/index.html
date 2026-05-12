@@ -1544,13 +1544,22 @@ function rowToItem(row){
     const n = Number(val);
     if(!isNaN(n) && n > 0) grade[col] = n;
   }
+  // Normaliza cor: / e - viram _ (alinha com nome dos arquivos de imagem)
+  // Ex: "CH/BLK" → "CH_BLK"  |  "BLK-WHT" → "BLK_WHT"
+  const corNormalizada = String(row['COR'] || '')
+    .trim()
+    .toUpperCase()
+    .replace(/[\/\-]+/g, '_')
+    .replace(/_+/g, '_')
+    .replace(/^_+|_+$/g, '');
+
   return {
     marca:        String(row['MARCA']      || '').trim().toUpperCase(),
     prevFat:      String(row['PREV. FAT']  || '').trim(),
     empresa:      String(row['EMPRESA']    || '').trim(),
     artigo:       String(row['ARTIGO']     || '').trim().toUpperCase(),
     descricao:    String(row['DESCRIÇÃO']  || '').trim().toUpperCase(),
-    cor:          String(row['COR']        || '').trim().toUpperCase(),
+    cor:          corNormalizada,
     linha:        String(row['LINHA']      || '').trim().toUpperCase(),
     genero:       String(row['GÉNERO']     || row['GENERO'] || '').trim().toUpperCase(),
     categoria:    String(row['CATEGORIA']  || '').trim().toUpperCase(),
