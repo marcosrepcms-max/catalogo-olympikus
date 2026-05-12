@@ -2574,26 +2574,6 @@
     "empresa": "VDIST",
     "artigo": "OISB241825",
     "descricao": "MOCHILA CABO DE ACO",
-    "cor": "NAVAL",
-    "linha": "COMPLEMENTO",
-    "genero": "UNISSEX",
-    "categoria": "TREINO",
-    "pdv": 249.99,
-    "totalGeral": 8992,
-    "codigoTabela": "E4687",
-    "mkp": "MKP 2.3",
-    "custo": 108.69,
-    "imagem": "",
-    "grade": {
-      "U": 8992
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "PRT. ENTREGA",
-    "empresa": "VDIST",
-    "artigo": "OISB241825",
-    "descricao": "MOCHILA CABO DE ACO",
     "cor": "PCGRAY",
     "linha": "COMPLEMENTO",
     "genero": "UNISSEX",
@@ -4232,26 +4212,6 @@
     "marca": "OLY",
     "prevFat": "PRT. ENTREGA",
     "empresa": "VULSP",
-    "artigo": "OIMSA21191",
-    "descricao": "MEIA CANO INV.39/44",
-    "cor": "MESCLA",
-    "linha": "CONFORTO",
-    "genero": "MASCULINO",
-    "categoria": "CASUAL",
-    "pdv": 19.99,
-    "totalGeral": 1254,
-    "codigoTabela": "E4550",
-    "mkp": "MKP 2.3",
-    "custo": 8.69,
-    "imagem": "",
-    "grade": {
-      "39/44": 1254
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "PRT. ENTREGA",
-    "empresa": "VULSP",
     "artigo": "OIMSA26198",
     "descricao": "MEIA INV S/F 39/44",
     "cor": "BRANCO",
@@ -4286,46 +4246,6 @@
     "imagem": "OIMSA26198_MESCLA",
     "grade": {
       "39/44": 1775
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "PRT. ENTREGA",
-    "empresa": "VULSP",
-    "artigo": "OIWSA21192",
-    "descricao": "MEIA CANO INVIS. 33/38",
-    "cor": "BRANCO",
-    "linha": "CONFORTO",
-    "genero": "UNISSEX",
-    "categoria": "CASUAL",
-    "pdv": 19.99,
-    "totalGeral": 94,
-    "codigoTabela": "E4550",
-    "mkp": "MKP 2.3",
-    "custo": 8.69,
-    "imagem": "",
-    "grade": {
-      "33/38": 94
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "PRT. ENTREGA",
-    "empresa": "VULSP",
-    "artigo": "OIWSA21192",
-    "descricao": "MEIA CANO INVIS. 33/38",
-    "cor": "MESCLA",
-    "linha": "CONFORTO",
-    "genero": "UNISSEX",
-    "categoria": "CASUAL",
-    "pdv": 19.99,
-    "totalGeral": 2284,
-    "codigoTabela": "E4550",
-    "mkp": "MKP 2.3",
-    "custo": 8.69,
-    "imagem": "",
-    "grade": {
-      "33/38": 2284
     }
   },
   {
@@ -4414,46 +4334,6 @@
     "empresa": "VULSP",
     "artigo": "OBMW251931",
     "descricao": "MEIA FUNC CC 39/44",
-    "cor": "LMSART",
-    "linha": "FUNCIONALIDADE",
-    "genero": "MASCULINO",
-    "categoria": "CORRIDA",
-    "pdv": 59.99,
-    "totalGeral": 685,
-    "codigoTabela": "E4550",
-    "mkp": "MKP 2.3",
-    "custo": 26.08,
-    "imagem": "",
-    "grade": {
-      "39/44": 685
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "PRT. ENTREGA",
-    "empresa": "VULSP",
-    "artigo": "OBMW251931",
-    "descricao": "MEIA FUNC CC 39/44",
-    "cor": "PTCPTO",
-    "linha": "FUNCIONALIDADE",
-    "genero": "MASCULINO",
-    "categoria": "CORRIDA",
-    "pdv": 59.99,
-    "totalGeral": 902,
-    "codigoTabela": "E4550",
-    "mkp": "MKP 2.3",
-    "custo": 26.08,
-    "imagem": "",
-    "grade": {
-      "39/44": 902
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "PRT. ENTREGA",
-    "empresa": "VULSP",
-    "artigo": "OBMW251931",
-    "descricao": "MEIA FUNC CC 39/44",
     "cor": "PTOVAN",
     "linha": "FUNCIONALIDADE",
     "genero": "MASCULINO",
@@ -4534,26 +4414,6 @@
     "empresa": "VULSP",
     "artigo": "OBWA231911",
     "descricao": "MEIA BPC CANO MEDIO 33/38",
-    "cor": "PTLISU",
-    "linha": "FUNCIONALIDADE",
-    "genero": "FEMININO",
-    "categoria": "CORRIDA",
-    "pdv": 59.99,
-    "totalGeral": 804,
-    "codigoTabela": "E4550",
-    "mkp": "MKP 2.3",
-    "custo": 26.08,
-    "imagem": "",
-    "grade": {
-      "33/38": 804
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "PRT. ENTREGA",
-    "empresa": "VULSP",
-    "artigo": "OBWA231911",
-    "descricao": "MEIA BPC CANO MEDIO 33/38",
     "cor": "PTOVAN",
     "linha": "FUNCIONALIDADE",
     "genero": "FEMININO",
@@ -4606,26 +4466,6 @@
     "imagem": "OBWA231912_ORVARE",
     "grade": {
       "39/44": 1985
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "PRT. ENTREGA",
-    "empresa": "VULSP",
-    "artigo": "OBWA231912",
-    "descricao": "MEIA BPC CANO MEDIO 39/44",
-    "cor": "PTLISU",
-    "linha": "FUNCIONALIDADE",
-    "genero": "MASCULINO",
-    "categoria": "CORRIDA",
-    "pdv": 59.99,
-    "totalGeral": 255,
-    "codigoTabela": "E4550",
-    "mkp": "MKP 2.3",
-    "custo": 26.08,
-    "imagem": "",
-    "grade": {
-      "39/44": 255
     }
   },
   {
@@ -4812,26 +4652,6 @@
     "marca": "OLY",
     "prevFat": "PRT. ENTREGA",
     "empresa": "VULSP",
-    "artigo": "OBWSA22195",
-    "descricao": "MEIA PERF.IND.CURTA 33/38",
-    "cor": "PTOPTC",
-    "linha": "FUNCIONALIDADE",
-    "genero": "FEMININO",
-    "categoria": "CORRIDA",
-    "pdv": 49.99,
-    "totalGeral": 47,
-    "codigoTabela": "E4550",
-    "mkp": "MKP 2.3",
-    "custo": 21.73,
-    "imagem": "",
-    "grade": {
-      "33/38": 47
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "PRT. ENTREGA",
-    "empresa": "VULSP",
     "artigo": "OBMSR241922",
     "descricao": "TRIPACK MEIA NEON C INV M",
     "cor": "AMBCLC",
@@ -4906,26 +4726,6 @@
     "imagem": "OBMSR241922_GSBCLC",
     "grade": {
       "39/44": 3687
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "PRT. ENTREGA",
-    "empresa": "VULSP",
-    "artigo": "OBWA231905",
-    "descricao": "TRPK MEIA TREINO IN.39/44",
-    "cor": "BAPAMP",
-    "linha": "COMPLEMENTO",
-    "genero": "MASCULINO",
-    "categoria": "TREINO",
-    "pdv": 59.99,
-    "totalGeral": 236,
-    "codigoTabela": "E4550",
-    "mkp": "MKP 2.3",
-    "custo": 26.08,
-    "imagem": "",
-    "grade": {
-      "39/44": 236
     }
   },
   {
@@ -5801,29 +5601,6 @@
     "marca": "UA",
     "prevFat": "2 QUINZ MAIO",
     "empresa": "VULSP",
-    "artigo": "1386969",
-    "descricao": "SHORTS UA TECH 7IN",
-    "cor": "BLK/WH",
-    "linha": "TRAIN",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO UA",
-    "pdv": 149.99,
-    "totalGeral": 6511,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 1333,
-      "M": 2308,
-      "G": 1837,
-      "GG": 1033
-    }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULSP",
     "artigo": "1384230",
     "descricao": "CAMISETA MANGA CURTA TECH",
     "cor": "SPINKW",
@@ -5842,29 +5619,6 @@
       "M": 1929,
       "G": 2094,
       "GG": 976
-    }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULSP",
-    "artigo": "1357727",
-    "descricao": "CAMISETA UA ABC CAMO SS",
-    "cor": "CASTBK",
-    "linha": "SPORTSTYLE",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO UA",
-    "pdv": 169.99,
-    "totalGeral": 5593,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 912,
-      "M": 1817,
-      "G": 1822,
-      "GG": 1042
     }
   },
   {
@@ -5912,30 +5666,6 @@
       "M": 1658,
       "G": 1944,
       "GG": 1112
-    }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULSP",
-    "artigo": "1382797",
-    "descricao": "BLUSA 1/2 ZIP UA TECH TEX",
-    "cor": "BLK/WH",
-    "linha": "TREINO",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO UA",
-    "pdv": 249.99,
-    "totalGeral": 4956,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "2GG": 39,
-      "P": 681,
-      "M": 1591,
-      "G": 1715,
-      "GG": 930
     }
   },
   {
@@ -6013,53 +5743,6 @@
     "marca": "UA",
     "prevFat": "2 QUINZ MAIO",
     "empresa": "VULSP",
-    "artigo": "1326413",
-    "descricao": "CAMISETA UA TECH 2.0 SS",
-    "cor": "CBHBLK",
-    "linha": "TREINO",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO UA",
-    "pdv": 149.99,
-    "totalGeral": 4550,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "2GG": 266,
-      "P": 341,
-      "M": 1355,
-      "G": 1502,
-      "GG": 1086
-    }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULSP",
-    "artigo": "1365335",
-    "descricao": "LEGGING UA 7/8 HG HI RISE",
-    "cor": "BLK/WH",
-    "linha": "TRAIN",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO UA",
-    "pdv": 249.99,
-    "totalGeral": 4286,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 783,
-      "M": 1446,
-      "G": 1357,
-      "GG": 700
-    }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULSP",
     "artigo": "1389895",
     "descricao": "SHORTS TECH PLAY UP 2IN1",
     "cor": "BLBKWT",
@@ -6078,30 +5761,6 @@
       "M": 1385,
       "G": 1412,
       "GG": 622
-    }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULSP",
-    "artigo": "1326799",
-    "descricao": "SPORTSTYLE LEFT CHEST SS",
-    "cor": "RD/BCK",
-    "linha": "SPORTSTYLE",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO UA",
-    "pdv": 129.99,
-    "totalGeral": 3985,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "2GG": 82,
-      "P": 524,
-      "M": 1267,
-      "G": 1325,
-      "GG": 787
     }
   },
   {
@@ -6150,53 +5809,6 @@
       "M": 1142,
       "G": 909,
       "GG": 323
-    }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULSP",
-    "artigo": "1361602",
-    "descricao": "SHORT UA HG POCKET LONG",
-    "cor": "BK/WHT",
-    "linha": "ACADEMIA",
-    "genero": "MASCULINO",
-    "categoria": "TREINO",
-    "pdv": 179.99,
-    "totalGeral": 3027,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 481,
-      "M": 1055,
-      "G": 989,
-      "GG": 502
-    }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULSP",
-    "artigo": "1326413",
-    "descricao": "CAMISETA UA TECH 2.0 SS",
-    "cor": "RKGRBK",
-    "linha": "TREINO",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO UA",
-    "pdv": 149.99,
-    "totalGeral": 2935,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "2GG": 134,
-      "P": 238,
-      "M": 981,
-      "G": 1076,
-      "GG": 506
     }
   },
   {
@@ -6274,30 +5886,6 @@
     "marca": "UA",
     "prevFat": "2 QUINZ MAIO",
     "empresa": "VULSP",
-    "artigo": "6011151",
-    "descricao": "TOP HEATGEAR MID",
-    "cor": "ULBKWH",
-    "linha": "TREINO",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO UA",
-    "pdv": 0,
-    "totalGeral": 2835,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "PP": 31,
-      "P": 673,
-      "M": 1038,
-      "G": 829,
-      "GG": 264
-    }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULSP",
     "artigo": "1382796",
     "descricao": "CAM MC UA TECH TEXTURED S",
     "cor": "BLKWHT",
@@ -6316,30 +5904,6 @@
       "M": 998,
       "G": 839,
       "GG": 461
-    }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULSP",
-    "artigo": "1373718",
-    "descricao": "BERMUDA UA VANISH WOVEN 6",
-    "cor": "CASORB",
-    "linha": "TRAIN",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO UA",
-    "pdv": 199.99,
-    "totalGeral": 2710,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "2GG": 50,
-      "P": 352,
-      "M": 892,
-      "G": 958,
-      "GG": 458
     }
   },
   {
@@ -6383,49 +5947,6 @@
     "imagem": "6000399_BKCAST",
     "grade": {
       "U": 2610
-    }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULSP",
-    "artigo": "1361518",
-    "descricao": "CAMISETA UA ARMOUR HG",
-    "cor": "CH/BLK",
-    "linha": "TREINO",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO UA",
-    "pdv": 199.99,
-    "totalGeral": 2584,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 434,
-      "M": 840,
-      "G": 845,
-      "GG": 465
-    }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VDIST",
-    "artigo": "1376701",
-    "descricao": "BONE MEN'S UA BLITZING AD",
-    "cor": "BLKWHT",
-    "linha": "SPORTSTYLE",
-    "genero": "MASCULINO",
-    "categoria": "ACCESSORIES UA",
-    "pdv": 169.99,
-    "totalGeral": 2560,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "U": 2560
     }
   },
   {
@@ -6496,53 +6017,6 @@
       "M": 709,
       "G": 1006,
       "GG": 513
-    }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULSP",
-    "artigo": "1361602",
-    "descricao": "SHORT UA HG POCKET LONG",
-    "cor": "CH/BLK",
-    "linha": "ACADEMIA",
-    "genero": "MASCULINO",
-    "categoria": "TREINO",
-    "pdv": 179.99,
-    "totalGeral": 2424,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 338,
-      "M": 801,
-      "G": 846,
-      "GG": 439
-    }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULSP",
-    "artigo": "1365335",
-    "descricao": "LEGGING UA 7/8 HG HI RISE",
-    "cor": "CLH/BK",
-    "linha": "TRAIN",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO UA",
-    "pdv": 249.99,
-    "totalGeral": 2415,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "2GG": 20,
-      "P": 464,
-      "M": 830,
-      "G": 792,
-      "GG": 309
     }
   },
   {
@@ -6665,26 +6139,6 @@
   {
     "marca": "UA",
     "prevFat": "2 QUINZ MAIO",
-    "empresa": "VDIST",
-    "artigo": "6000399",
-    "descricao": "MOCHILA UA HUSTLE LITE BP",
-    "cor": "NVYSTE",
-    "linha": "TREINO",
-    "genero": "UNISSEX",
-    "categoria": "ACCESSORIES UA",
-    "pdv": 299.99,
-    "totalGeral": 2003,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "U": 2003
-    }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "2 QUINZ MAIO",
     "empresa": "VULSP",
     "artigo": "1386793",
     "descricao": "CAM MC UA M BOX.SPORTS UP",
@@ -6748,72 +6202,6 @@
       "M": 604,
       "G": 667,
       "GG": 331
-    }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULSP",
-    "artigo": "1357727",
-    "descricao": "CAMISETA UA ABC CAMO SS",
-    "cor": "WHT/MG",
-    "linha": "SPORTSTYLE",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO UA",
-    "pdv": 169.99,
-    "totalGeral": 1889,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 307,
-      "M": 600,
-      "G": 616,
-      "GG": 366
-    }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULSP",
-    "artigo": "1384230",
-    "descricao": "CAMISETA MANGA CURTA TECH",
-    "cor": "JABLWH",
-    "linha": "TRAIN",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO UA",
-    "pdv": 149.99,
-    "totalGeral": 1879,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 147,
-      "M": 543,
-      "G": 766,
-      "GG": 423
-    }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VDIST",
-    "artigo": "1376701",
-    "descricao": "BONE MEN'S UA BLITZING AD",
-    "cor": "WBBKBK",
-    "linha": "SPORTSTYLE",
-    "genero": "MASCULINO",
-    "categoria": "ACCESSORIES UA",
-    "pdv": 169.99,
-    "totalGeral": 1878,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "U": 1878
     }
   },
   {
@@ -6888,29 +6276,6 @@
     "marca": "UA",
     "prevFat": "2 QUINZ MAIO",
     "empresa": "VULSP",
-    "artigo": "1382427",
-    "descricao": "SHORTS UA RIVAL TERRY 6IN",
-    "cor": "CLROXW",
-    "linha": "SPORTSTYLE",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO UA",
-    "pdv": 179.99,
-    "totalGeral": 1832,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 292,
-      "M": 631,
-      "G": 608,
-      "GG": 301
-    }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULSP",
     "artigo": "1326799",
     "descricao": "SPORTSTYLE LEFT CHEST SS",
     "cor": "CASTBK",
@@ -6953,54 +6318,6 @@
       "M": 4229,
       "G": 4478,
       "GG": 2828
-    }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULSP",
-    "artigo": "1382795",
-    "descricao": "REGATA UA TECH TANK",
-    "cor": "BLKWHT",
-    "linha": "TREINO",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO UA",
-    "pdv": 0,
-    "totalGeral": 8274,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "2GG": 120,
-      "P": 1211,
-      "M": 2663,
-      "G": 2768,
-      "GG": 1512
-    }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULSP",
-    "artigo": "1382427",
-    "descricao": "SHORTS UA RIVAL TERRY 6IN",
-    "cor": "BLKOWH",
-    "linha": "SPORTSTYLE",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO UA",
-    "pdv": 179.99,
-    "totalGeral": 7940,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "2GG": 13,
-      "P": 1310,
-      "M": 2671,
-      "G": 2629,
-      "GG": 1317
     }
   },
   {
@@ -7051,29 +6368,6 @@
       "M": 2450,
       "G": 2475,
       "GG": 1223
-    }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULSP",
-    "artigo": "1361518",
-    "descricao": "CAMISETA UA ARMOUR HG",
-    "cor": "BK/WHT",
-    "linha": "TREINO",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO UA",
-    "pdv": 199.99,
-    "totalGeral": 7157,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 1162,
-      "M": 2392,
-      "G": 2356,
-      "GG": 1247
     }
   }
 ]
