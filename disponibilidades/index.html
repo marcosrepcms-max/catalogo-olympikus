@@ -221,6 +221,8 @@
     <div class="w-px h-5 bg-slate-200 mx-1"></div>
     <!-- Filtros de tabela especial — gerados dinamicamente -->
     <div id="filtrosTabela" class="flex flex-wrap gap-2"></div>
+    <!-- Filtros de categoria — gerados dinamicamente -->
+    <div id="filtrosCategoria" class="flex flex-wrap gap-2"></div>
     <div class="ml-auto flex items-center gap-2">
       <!-- Selecionar todos -->
       <div class="sel-bar" id="selBar">
@@ -272,6 +274,7 @@ const STATE = {
   itens:      [],
   filtrados:  [],
   filtro:     'todos',
+  categoria:  '',           // '' = todas; senão valor da categoria
   search:     '',
   selecionados: new Set(),
   // Paginação
@@ -326,6 +329,7 @@ async function loadData(){
       .filter(i => !ocultosSet.has(ocultarKey(i)))
       .map(i => ({ ...i, prevFat: fixEncoding(i.prevFat) }));
     renderFiltrosTabela();
+    renderFiltrosCategoria();
     applyFilters();
     $('loadingState').classList.add('hidden');
   }catch(err){
@@ -358,9 +362,65 @@ function renderFiltrosTabela(){
   wrap.innerHTML = html;
 }
 
+// Define os GRUPOS de categoria — fundem categorias relacionadas
+// regex bate em UPPERCASE sem acentos (a normalização cuida)
+const GRUPOS_CATEGORIA = [
+  { id:'tenis',       label:'Tênis',      emoji:'👟', match:/TEN|CALCAD/ },
+  { id:'chinelos',    label:'Chinelos',   emoji:'🩴', match:/CHINEL|SAND/ },
+  { id:'vestuario',   label:'Vestuário',  emoji:'👕', match:/VEST|CAMIS|SHORT|BERMUD|CAL[CÇ]A|REGATA|JAQUET|MOLET|MEIA/ },
+  { id:'acessorios',  label:'Acessórios', emoji:'🛍️', match:/ACES|MOCHIL|BOLSA|BONE/ }
+];
+
+// Remove acentos para casar regex de forma robusta
+function semAcento(s){
+  return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+// Dado o valor cru de item.categoria, retorna o id do grupo (ou '' se não bater)
+function grupoDeCategoria(catRaw){
+  const c = semAcento(String(catRaw||'').trim().toUpperCase());
+  if(!c) return '';
+  for(const g of GRUPOS_CATEGORIA){
+    if(g.match.test(c)) return g.id;
+  }
+  return ''; // sem grupo definido = não aparece nas pills
+}
+
+// Gera dinamicamente as pills de categoria (1 por grupo, só se houver itens)
+function renderFiltrosCategoria(){
+  const wrap = $('filtrosCategoria');
+  if(!wrap) return;
+
+  // Quais grupos têm pelo menos 1 produto?
+  const gruposPresentes = new Set();
+  for(const item of STATE.itens){
+    const gid = grupoDeCategoria(item.categoria);
+    if(gid) gruposPresentes.add(gid);
+  }
+
+  const visiveis = GRUPOS_CATEGORIA.filter(g => gruposPresentes.has(g.id));
+  if(!visiveis.length){ wrap.innerHTML = ''; return; }
+
+  wrap.innerHTML = visiveis.map(g => `
+    <button class="filter-pill" data-categoria="${g.id}" onclick="setCategoria('${g.id}')" style="border-color:#fde68a;color:#92400e;background:#fef9c3">
+      <span style="font-size:13px;line-height:1">${g.emoji}</span> ${g.label}
+    </button>`).join('');
+}
+
+// Filtro de categoria — independente do filtro de marca/tabela (acumula)
+function setCategoria(c){
+  // Toggle: clicar na mesma desativa
+  STATE.categoria = (STATE.categoria === c) ? '' : c;
+  document.querySelectorAll('[data-categoria]').forEach(b => {
+    b.classList.toggle('active', b.dataset.categoria === STATE.categoria);
+  });
+  applyFilters();
+}
+
 function setFilter(f){
   STATE.filtro = f;
-  document.querySelectorAll('.filter-pill').forEach(b => b.classList.toggle('active', b.dataset.filter === f));
+  // Marca só os pills de marca/tabela como ativos (não mexe nos de categoria)
+  document.querySelectorAll('.filter-pill[data-filter]').forEach(b => b.classList.toggle('active', b.dataset.filter === f));
   applyFilters();
 }
 
@@ -383,6 +443,10 @@ function applyFilters(){
     if(f === 'corre') return item.marca === 'CORRE';
     if(f.startsWith('tabela_')) return (item.codigoTabela||'') === f.replace('tabela_','');
     return true;
+  }).filter(item => {
+    // Filtro de categoria (acumula com marca/tabela) — usa o GRUPO, não o valor cru
+    if(!STATE.categoria) return true;
+    return grupoDeCategoria(item.categoria) === STATE.categoria;
   }).filter(item => {
     if(!q) return true;
     return `${item.descricao} ${item.artigo} ${item.cor} ${item.linha} ${item.empresa} ${item.codigoTabela||''}`.toLowerCase().includes(q);
