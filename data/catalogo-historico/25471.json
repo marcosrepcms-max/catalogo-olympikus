@@ -1,0 +1,67 @@
+[
+  {
+    "id": "1778680727959-fax5gh",
+    "createdAt": "2026-05-13T13:58:47.959Z",
+    "comissionista": "25471",
+    "comissionistaNome": "WILLAME",
+    "clientCode": "117362",
+    "payment": "Z31 - 35/63/91 D",
+    "priceTable": "OL025",
+    "campaign": "",
+    "dataDesejada": "",
+    "pedidoCliente": "",
+    "items": [
+      {
+        "codigo": "43395156",
+        "produto": "MARTE",
+        "cor": "PT/DRD",
+        "corCodigo": "",
+        "genero": "Masculino",
+        "tam": "34/44",
+        "categoria": "FTW",
+        "grade": {
+          "38": 1,
+          "39": 1,
+          "40": 2,
+          "41": 3,
+          "42": 3,
+          "43": 1,
+          "44": 1
+        },
+        "qty": 12,
+        "totalQty": 12,
+        "preco": 199.99,
+        "colecao": "",
+        "imagem": "",
+        "imgSrc": "./imagens_olympikus/43395156_PT_DRD.jpg",
+        "dataDesejada": "2026-06-30"
+      },
+      {
+        "codigo": "43395156",
+        "produto": "MARTE",
+        "cor": "MILITR",
+        "corCodigo": "",
+        "genero": "Masculino",
+        "tam": "34/44",
+        "categoria": "FTW",
+        "grade": {
+          "38": 1,
+          "39": 2,
+          "40": 3,
+          "41": 3,
+          "42": 2,
+          "43": 1
+        },
+        "qty": 12,
+        "totalQty": 12,
+        "preco": 199.99,
+        "colecao": "",
+        "imagem": "",
+        "imgSrc": "./imagens_olympikus/43395156_MILITR.jpg",
+        "dataDesejada": "2026-06-30"
+      }
+    ],
+    "totalItens": 24,
+    "valorTotal": 4799.76
+  }
+]

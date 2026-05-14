@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1778607070564-zgk4jz",
+    "createdAt": "2026-05-12T17:31:10.564Z",
+    "comissionista": "25745",
+    "comissionistaNome": "LEANDRO",
+    "clientCode": "70274",
+    "payment": "Z31 - 35/63/91 D",
+    "priceTable": "OL025",
+    "campaign": "CO681 +28DD OLY",
+    "dataDesejada": "",
+    "pedidoCliente": "HELINHO",
+    "items": [
+      {
+        "codigo": "43405477",
+        "produto": "LUMINA",
+        "cor": "ARENIT",
+        "corCodigo": "",
+        "genero": "Feminino",
+        "tam": "34/41",
+        "categoria": "FTW",
+        "grade": {
+          "34": 1,
+          "35": 2,
+          "36": 3,
+          "37": 3,
+          "38": 2,
+          "39": 1
+        },
+        "qty": 12,
+        "totalQty": 12,
+        "preco": 279.99,
+        "colecao": "",
+        "imagem": "",
+        "imgSrc": "./imagens_olympikus/43405477_ARENIT.jpg",
+        "dataDesejada": "2026-09-20"
+      }
+    ],
+    "totalItens": 12,
+    "valorTotal": 3359.88
+  }
+]
