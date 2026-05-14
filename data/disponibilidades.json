@@ -4880,5 +4880,2945 @@
       "38": 7,
       "43": 2
     }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB241828",
+    "descricao": "MOCHILA SPORTSTYLE",
+    "cor": "CASCAL",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 249.99,
+    "totalGeral": 904,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 108.69,
+    "imagem": "OIWB241828_CASCAL",
+    "grade": {
+      "U": 904
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB241828",
+    "descricao": "MOCHILA SPORTSTYLE",
+    "cor": "NAVAL",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 249.99,
+    "totalGeral": 6899,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 108.69,
+    "imagem": "OIWB241828_NAVAL",
+    "grade": {
+      "U": 6899
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB241828",
+    "descricao": "MOCHILA SPORTSTYLE",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 249.99,
+    "totalGeral": 2145,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 108.69,
+    "imagem": "OIWB241828_PRETO",
+    "grade": {
+      "U": 2145
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB221802",
+    "descricao": "MOCHILA BRAZE",
+    "cor": "CASCAL",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 179.99,
+    "totalGeral": 5349,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 64.28,
+    "imagem": "OIWB221802_CASCAL",
+    "grade": {
+      "U": 5349
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB221802",
+    "descricao": "MOCHILA BRAZE",
+    "cor": "MRH_PR",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 179.99,
+    "totalGeral": 43,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 64.28,
+    "imagem": "OIWB221802_MRH_PR",
+    "grade": {
+      "U": 43
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB221802",
+    "descricao": "MOCHILA BRAZE",
+    "cor": "NVLPRT",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 179.99,
+    "totalGeral": 15234,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 64.28,
+    "imagem": "OIWB221802_NVLPRT",
+    "grade": {
+      "U": 15234
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB221802",
+    "descricao": "MOCHILA BRAZE",
+    "cor": "PCGRAY",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 179.99,
+    "totalGeral": 9836,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 64.28,
+    "imagem": "OIWB221802_PCGRAY",
+    "grade": {
+      "U": 9836
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB221802",
+    "descricao": "MOCHILA BRAZE",
+    "cor": "PT_PRT",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 179.99,
+    "totalGeral": 26972,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 64.28,
+    "imagem": "OIWB221802_PT_PRT",
+    "grade": {
+      "U": 26972
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB221802",
+    "descricao": "MOCHILA BRAZE",
+    "cor": "REDWOD",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 179.99,
+    "totalGeral": 1134,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 64.28,
+    "imagem": "OIWB221802_REDWOD",
+    "grade": {
+      "U": 1134
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB211800",
+    "descricao": "MOCHILA PUFF",
+    "cor": "ARNITO",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 169.99,
+    "totalGeral": 1606,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 73.91,
+    "imagem": "OIWB211800_ARNITO",
+    "grade": {
+      "U": 1606
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB211800",
+    "descricao": "MOCHILA PUFF",
+    "cor": "CHACHY",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 169.99,
+    "totalGeral": 172,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 73.91,
+    "imagem": "OIWB211800_CHACHY",
+    "grade": {
+      "U": 172
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB211800",
+    "descricao": "MOCHILA PUFF",
+    "cor": "MRINHO",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 169.99,
+    "totalGeral": 3048,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 73.91,
+    "imagem": "OIWB211800_MRINHO",
+    "grade": {
+      "U": 3048
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB211800",
+    "descricao": "MOCHILA PUFF",
+    "cor": "NAVAL",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 169.99,
+    "totalGeral": 2996,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 73.91,
+    "imagem": "OIWB211800_NAVAL",
+    "grade": {
+      "U": 2996
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB211800",
+    "descricao": "MOCHILA PUFF",
+    "cor": "OLYMPN",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 169.99,
+    "totalGeral": 267,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 73.91,
+    "imagem": "OIWB211800_OLYMPN",
+    "grade": {
+      "U": 267
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB211800",
+    "descricao": "MOCHILA PUFF",
+    "cor": "PCGRAY",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 169.99,
+    "totalGeral": 2775,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 73.91,
+    "imagem": "OIWB211800_PCGRAY",
+    "grade": {
+      "U": 2775
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB211800",
+    "descricao": "MOCHILA PUFF",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 169.99,
+    "totalGeral": 7253,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 73.91,
+    "imagem": "OIWB211800_PRETO",
+    "grade": {
+      "U": 7253
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB211800",
+    "descricao": "MOCHILA PUFF",
+    "cor": "VAPGRE",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 169.99,
+    "totalGeral": 1619,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 73.91,
+    "imagem": "OIWB211800_VAPGRE",
+    "grade": {
+      "U": 1619
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB241812",
+    "descricao": "MOCHILA SHAMMY 2.0 PRINT",
+    "cor": "VPGRMH",
+    "linha": "CASUAL",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 149.99,
+    "totalGeral": 1921,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 53.57,
+    "imagem": "OIWB241812_VPGRMH",
+    "grade": {
+      "U": 1921
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB251808",
+    "descricao": "MOCHILA SHAMMY ESTAMPADA",
+    "cor": "PCGRAY",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 149.99,
+    "totalGeral": 3694,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 65.21,
+    "imagem": "OIWB251808_PCGRAY",
+    "grade": {
+      "U": 3694
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB241805",
+    "descricao": "MOCHILA SHAMMY 2.0",
+    "cor": "CASCAL",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 139.99,
+    "totalGeral": 2387,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 50,
+    "imagem": "OIWB241805_CASCAL",
+    "grade": {
+      "U": 2387
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB241805",
+    "descricao": "MOCHILA SHAMMY 2.0",
+    "cor": "DALIA",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 139.99,
+    "totalGeral": 3040,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 50,
+    "imagem": "OIWB241805_DALIA",
+    "grade": {
+      "U": 3040
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB241805",
+    "descricao": "MOCHILA SHAMMY 2.0",
+    "cor": "LIMSUR",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 139.99,
+    "totalGeral": 4183,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 50,
+    "imagem": "OIWB241805_LIMSUR",
+    "grade": {
+      "U": 4183
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB241805",
+    "descricao": "MOCHILA SHAMMY 2.0",
+    "cor": "LUNAR",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 139.99,
+    "totalGeral": 1260,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 50,
+    "imagem": "OIWB241805_LUNAR",
+    "grade": {
+      "U": 1260
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB241805",
+    "descricao": "MOCHILA SHAMMY 2.0",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 139.99,
+    "totalGeral": 15316,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 50,
+    "imagem": "OIWB241805_PRETO",
+    "grade": {
+      "U": 15316
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB241805",
+    "descricao": "MOCHILA SHAMMY 2.0",
+    "cor": "VESRED",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 139.99,
+    "totalGeral": 3636,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 50,
+    "imagem": "OIWB241805_VESRED",
+    "grade": {
+      "U": 3636
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB241813",
+    "descricao": "MINI BAG",
+    "cor": "PTCPTO",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 119.99,
+    "totalGeral": 318,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 42.85,
+    "imagem": "OIWB241813_PTCPTO",
+    "grade": {
+      "U": 318
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB251806",
+    "descricao": "SHOULDER BAG MINI",
+    "cor": "CASCAL",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 99.99,
+    "totalGeral": 327,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 43.47,
+    "imagem": "OIWB251806_CASCAL",
+    "grade": {
+      "U": 327
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB251806",
+    "descricao": "SHOULDER BAG MINI",
+    "cor": "NAVAL",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 99.99,
+    "totalGeral": 367,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 43.47,
+    "imagem": "OIWB251806_NAVAL",
+    "grade": {
+      "U": 367
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB251806",
+    "descricao": "SHOULDER BAG MINI",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 99.99,
+    "totalGeral": 35,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 43.47,
+    "imagem": "OIWB251806_PRETO",
+    "grade": {
+      "U": 35
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIMC251706",
+    "descricao": "BONE CASUAL STYLE",
+    "cor": "CASCAL",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 89.99,
+    "totalGeral": 908,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 39.13,
+    "imagem": "OIMC251706_CASCAL",
+    "grade": {
+      "U": 908
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB251805",
+    "descricao": "POCHETE SPORTSTYLE",
+    "cor": "LIMSUR",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 79.99,
+    "totalGeral": 638,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 28.57,
+    "imagem": "OIWB251805_LIMSUR",
+    "grade": {
+      "U": 638
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB221811",
+    "descricao": "GYM SACK",
+    "cor": "LUNAR",
+    "linha": "FUNCIONALIDADE",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 99.99,
+    "totalGeral": 2649,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 43.47,
+    "imagem": "OIWB221811_LUNAR",
+    "grade": {
+      "U": 2649
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB221811",
+    "descricao": "GYM SACK",
+    "cor": "MRINHO",
+    "linha": "FUNCIONALIDADE",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 99.99,
+    "totalGeral": 291,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 43.47,
+    "imagem": "OIWB221811_MRINHO",
+    "grade": {
+      "U": 291
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB221811",
+    "descricao": "GYM SACK",
+    "cor": "PCGRAY",
+    "linha": "FUNCIONALIDADE",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 99.99,
+    "totalGeral": 3170,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 43.47,
+    "imagem": "OIWB221811_PCGRAY",
+    "grade": {
+      "U": 3170
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB221811",
+    "descricao": "GYM SACK",
+    "cor": "PRETO",
+    "linha": "FUNCIONALIDADE",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 99.99,
+    "totalGeral": 9265,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 43.47,
+    "imagem": "OIWB221811_PRETO",
+    "grade": {
+      "U": 9265
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB221811",
+    "descricao": "GYM SACK",
+    "cor": "REDWOD",
+    "linha": "FUNCIONALIDADE",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 99.99,
+    "totalGeral": 1681,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 43.47,
+    "imagem": "OIWB221811_REDWOD",
+    "grade": {
+      "U": 1681
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWC231704",
+    "descricao": "VISEIRA RUN",
+    "cor": "BLUSH",
+    "linha": "FUNCIONALIDADE",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 89.99,
+    "totalGeral": 1123,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 39.13,
+    "imagem": "OIWC231704_BLUSH",
+    "grade": {
+      "U": 1123
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWC231704",
+    "descricao": "VISEIRA RUN",
+    "cor": "BRANCO",
+    "linha": "FUNCIONALIDADE",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 89.99,
+    "totalGeral": 1048,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 39.13,
+    "imagem": "OIWC231704_BRANCO",
+    "grade": {
+      "U": 1048
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWC231704",
+    "descricao": "VISEIRA RUN",
+    "cor": "LMSBCO",
+    "linha": "FUNCIONALIDADE",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 89.99,
+    "totalGeral": 30,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 39.13,
+    "imagem": "OIWC231704_LMSBCO",
+    "grade": {
+      "U": 30
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OISB241825",
+    "descricao": "MOCHILA CABO DE ACO",
+    "cor": "MRINHO",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 249.99,
+    "totalGeral": 8173,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 108.69,
+    "imagem": "OISB241825_MRINHO",
+    "grade": {
+      "U": 8173
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OISB241825",
+    "descricao": "MOCHILA CABO DE ACO",
+    "cor": "PCGRAY",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 249.99,
+    "totalGeral": 789,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 108.69,
+    "imagem": "OISB241825_PCGRAY",
+    "grade": {
+      "U": 789
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OISB241825",
+    "descricao": "MOCHILA CABO DE ACO",
+    "cor": "PRETO",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 249.99,
+    "totalGeral": 14271,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 108.69,
+    "imagem": "OISB241825_PRETO",
+    "grade": {
+      "U": 14271
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB231809",
+    "descricao": "GYM BAG BG",
+    "cor": "CASCAL",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 199.99,
+    "totalGeral": 997,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 86.95,
+    "imagem": "OIWB231809_CASCAL",
+    "grade": {
+      "U": 997
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB231809",
+    "descricao": "GYM BAG BG",
+    "cor": "NAVAL",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 199.99,
+    "totalGeral": 4263,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 86.95,
+    "imagem": "OIWB231809_NAVAL",
+    "grade": {
+      "U": 4263
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB241803",
+    "descricao": "MOCHILA PRIME",
+    "cor": "CASCAL",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 199.99,
+    "totalGeral": 4703,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 71.43,
+    "imagem": "OIWB241803_CASCAL",
+    "grade": {
+      "U": 4703
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB241803",
+    "descricao": "MOCHILA PRIME",
+    "cor": "MRH_PR",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 199.99,
+    "totalGeral": 37,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 71.43,
+    "imagem": "OIWB241803_MRH_PR",
+    "grade": {
+      "U": 37
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB241803",
+    "descricao": "MOCHILA PRIME",
+    "cor": "MRINHO",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 199.99,
+    "totalGeral": 1644,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 71.43,
+    "imagem": "OIWB241803_MRINHO",
+    "grade": {
+      "U": 1644
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB241803",
+    "descricao": "MOCHILA PRIME",
+    "cor": "NVLPRT",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 199.99,
+    "totalGeral": 10284,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 71.43,
+    "imagem": "OIWB241803_NVLPRT",
+    "grade": {
+      "U": 10284
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB241803",
+    "descricao": "MOCHILA PRIME",
+    "cor": "PRETO",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 199.99,
+    "totalGeral": 25513,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 71.43,
+    "imagem": "OIWB241803_PRETO",
+    "grade": {
+      "U": 25513
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB241803",
+    "descricao": "MOCHILA PRIME",
+    "cor": "PTCPTO",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 199.99,
+    "totalGeral": 16636,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 71.43,
+    "imagem": "OIWB241803_PTCPTO",
+    "grade": {
+      "U": 16636
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB241822",
+    "descricao": "BOLSA GYM 2.0",
+    "cor": "PRETO",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 189.99,
+    "totalGeral": 66,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 82.6,
+    "imagem": "OIWB241822_PRETO",
+    "grade": {
+      "U": 66
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB231810",
+    "descricao": "GYM BAG SM",
+    "cor": "REDWOD",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 179.99,
+    "totalGeral": 41,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 78.26,
+    "imagem": "OIWB231810_REDWOD",
+    "grade": {
+      "U": 41
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB221806",
+    "descricao": "MOCHILA ESSENTIAL",
+    "cor": "CASCAL",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 149.99,
+    "totalGeral": 8982,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 53.57,
+    "imagem": "OIWB221806_CASCAL",
+    "grade": {
+      "U": 8982
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB221806",
+    "descricao": "MOCHILA ESSENTIAL",
+    "cor": "LIMSUR",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 149.99,
+    "totalGeral": 2130,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 53.57,
+    "imagem": "OIWB221806_LIMSUR",
+    "grade": {
+      "U": 2130
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB221806",
+    "descricao": "MOCHILA ESSENTIAL",
+    "cor": "MRHLIM",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 149.99,
+    "totalGeral": 383,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 53.57,
+    "imagem": "OIWB221806_MRHLIM",
+    "grade": {
+      "U": 383
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB221806",
+    "descricao": "MOCHILA ESSENTIAL",
+    "cor": "MRHLMS",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 149.99,
+    "totalGeral": 631,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 53.57,
+    "imagem": "OIWB221806_MRHLMS",
+    "grade": {
+      "U": 631
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB221806",
+    "descricao": "MOCHILA ESSENTIAL",
+    "cor": "NVLPRT",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 149.99,
+    "totalGeral": 15922,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 53.57,
+    "imagem": "OIWB221806_NVLPRT",
+    "grade": {
+      "U": 15922
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB221806",
+    "descricao": "MOCHILA ESSENTIAL",
+    "cor": "PRETO",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 149.99,
+    "totalGeral": 11429,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 53.57,
+    "imagem": "OIWB221806_PRETO",
+    "grade": {
+      "U": 11429
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB221806",
+    "descricao": "MOCHILA ESSENTIAL",
+    "cor": "PTCPTO",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 149.99,
+    "totalGeral": 3082,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 53.57,
+    "imagem": "OIWB221806_PTCPTO",
+    "grade": {
+      "U": 3082
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB221806",
+    "descricao": "MOCHILA ESSENTIAL",
+    "cor": "REDWOD",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 149.99,
+    "totalGeral": 8999,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 53.57,
+    "imagem": "OIWB221806_REDWOD",
+    "grade": {
+      "U": 8999
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB261826",
+    "descricao": "MOCHILA ESSENTIAL ESTAMPA",
+    "cor": "LUNAR",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 149.99,
+    "totalGeral": 3132,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 65.21,
+    "imagem": "OIWB261826_LUNAR",
+    "grade": {
+      "U": 3132
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB23823",
+    "descricao": "MOCHILA JUVENIL",
+    "cor": "BLUSH",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 129.99,
+    "totalGeral": 4452,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 46.42,
+    "imagem": "OIWB23823_BLUSH",
+    "grade": {
+      "U": 4452
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB23823",
+    "descricao": "MOCHILA JUVENIL",
+    "cor": "LNRORV",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 129.99,
+    "totalGeral": 5851,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 46.42,
+    "imagem": "OIWB23823_LNRORV",
+    "grade": {
+      "U": 5851
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB23823",
+    "descricao": "MOCHILA JUVENIL",
+    "cor": "MRHLMS",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 129.99,
+    "totalGeral": 47,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 46.42,
+    "imagem": "OIWB23823_MRHLMS",
+    "grade": {
+      "U": 47
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB23823",
+    "descricao": "MOCHILA JUVENIL",
+    "cor": "NVLPRT",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 129.99,
+    "totalGeral": 3687,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 46.42,
+    "imagem": "OIWB23823_NVLPRT",
+    "grade": {
+      "U": 3687
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB23823",
+    "descricao": "MOCHILA JUVENIL",
+    "cor": "ORVLHO",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 129.99,
+    "totalGeral": 2972,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 46.42,
+    "imagem": "OIWB23823_ORVLHO",
+    "grade": {
+      "U": 2972
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB23823",
+    "descricao": "MOCHILA JUVENIL",
+    "cor": "PRETO",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 129.99,
+    "totalGeral": 3129,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 46.42,
+    "imagem": "OIWB23823_PRETO",
+    "grade": {
+      "U": 3129
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB231817",
+    "descricao": "BOLSA OLY SHOULDER BAG",
+    "cor": "CASCAL",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 119.99,
+    "totalGeral": 4218,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 52.17,
+    "imagem": "OIWB231817_CASCAL",
+    "grade": {
+      "U": 4218
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB231817",
+    "descricao": "BOLSA OLY SHOULDER BAG",
+    "cor": "PRETO",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 119.99,
+    "totalGeral": 3845,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 52.17,
+    "imagem": "OIWB231817_PRETO",
+    "grade": {
+      "U": 3845
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB251811",
+    "descricao": "MOCHILA BASIC NEW",
+    "cor": "APRCSH",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 119.99,
+    "totalGeral": 342,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 42.85,
+    "imagem": "OIWB251811_APRCSH",
+    "grade": {
+      "U": 342
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB251811",
+    "descricao": "MOCHILA BASIC NEW",
+    "cor": "CASCAL",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 119.99,
+    "totalGeral": 13604,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 42.85,
+    "imagem": "OIWB251811_CASCAL",
+    "grade": {
+      "U": 13604
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB251811",
+    "descricao": "MOCHILA BASIC NEW",
+    "cor": "NAVAL",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 119.99,
+    "totalGeral": 11309,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 42.85,
+    "imagem": "OIWB251811_NAVAL",
+    "grade": {
+      "U": 11309
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB251811",
+    "descricao": "MOCHILA BASIC NEW",
+    "cor": "ORVLHO",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 119.99,
+    "totalGeral": 2392,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 42.85,
+    "imagem": "OIWB251811_ORVLHO",
+    "grade": {
+      "U": 2392
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB251811",
+    "descricao": "MOCHILA BASIC NEW",
+    "cor": "PRETO",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 119.99,
+    "totalGeral": 17722,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 42.85,
+    "imagem": "OIWB251811_PRETO",
+    "grade": {
+      "U": 17722
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB251811",
+    "descricao": "MOCHILA BASIC NEW",
+    "cor": "PTCPTO",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 119.99,
+    "totalGeral": 577,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 42.85,
+    "imagem": "OIWB251811_PTCPTO",
+    "grade": {
+      "U": 577
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB251811",
+    "descricao": "MOCHILA BASIC NEW",
+    "cor": "REDWOD",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 119.99,
+    "totalGeral": 1507,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 42.85,
+    "imagem": "OIWB251811_REDWOD",
+    "grade": {
+      "U": 1507
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWB221808",
+    "descricao": "MOCHILA BASIC",
+    "cor": "VAPGRE",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 109.99,
+    "totalGeral": 2221,
+    "codigoTabela": "E4686",
+    "mkp": "2.8",
+    "custo": 39.28,
+    "imagem": "OIWB221808_VAPGRE",
+    "grade": {
+      "U": 2221
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VDIST",
+    "artigo": "OIWC221703",
+    "descricao": "BONE ESSENTIAL",
+    "cor": "BRANCO",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 89.99,
+    "totalGeral": 1675,
+    "codigoTabela": "E4687",
+    "mkp": "2.3",
+    "custo": 39.13,
+    "imagem": "OIWC221703_BRANCO",
+    "grade": {
+      "U": 1675
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMSA81922",
+    "descricao": "TRIPK.MEIA MEDIA 39/44",
+    "cor": "BCPTMC",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 47.99,
+    "totalGeral": 27739,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 20.87,
+    "imagem": "OIMSA81922_BCPTMC",
+    "grade": {
+      "39/44": 27739
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMSA81922",
+    "descricao": "TRIPK.MEIA MEDIA 39/44",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 47.99,
+    "totalGeral": 24230,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 20.87,
+    "imagem": "OIMSA81922_BRANCO",
+    "grade": {
+      "39/44": 24230
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMSA81922",
+    "descricao": "TRIPK.MEIA MEDIA 39/44",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 47.99,
+    "totalGeral": 33730,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 20.87,
+    "imagem": "OIMSA81922_PRETO",
+    "grade": {
+      "39/44": 33730
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIWSA81921",
+    "descricao": "TRIPK.MEIA MEDIA 33/38",
+    "cor": "BCPTMC",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 47.99,
+    "totalGeral": 14249,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 20.87,
+    "imagem": "OIWSA81921_BCPTMC",
+    "grade": {
+      "33/38": 14249
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIWSA81921",
+    "descricao": "TRIPK.MEIA MEDIA 33/38",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 47.99,
+    "totalGeral": 9535,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 20.87,
+    "imagem": "OIWSA81921_BRANCO",
+    "grade": {
+      "33/38": 9535
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIWSA81921",
+    "descricao": "TRIPK.MEIA MEDIA 33/38",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 47.99,
+    "totalGeral": 9674,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 20.87,
+    "imagem": "OIWSA81921_PRETO",
+    "grade": {
+      "33/38": 9674
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMSA81920",
+    "descricao": "TRIPK.MEIA CURTA 39/44",
+    "cor": "BCPTMC",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 42.99,
+    "totalGeral": 21859,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 18.69,
+    "imagem": "OIMSA81920_BCPTMC",
+    "grade": {
+      "39/44": 21859
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMSA81920",
+    "descricao": "TRIPK.MEIA CURTA 39/44",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 42.99,
+    "totalGeral": 19920,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 18.69,
+    "imagem": "OIMSA81920_BRANCO",
+    "grade": {
+      "39/44": 19920
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMSA81920",
+    "descricao": "TRIPK.MEIA CURTA 39/44",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 42.99,
+    "totalGeral": 26229,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 18.69,
+    "imagem": "OIMSA81920_PRETO",
+    "grade": {
+      "39/44": 26229
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMSA22194",
+    "descricao": "MEIAS TRI.ULT.INV 39/44",
+    "cor": "BCPTMC",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 39.99,
+    "totalGeral": 15860,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIMSA22194_BCPTMC",
+    "grade": {
+      "39/44": 15860
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMSA22194",
+    "descricao": "MEIAS TRI.ULT.INV 39/44",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 39.99,
+    "totalGeral": 5931,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIMSA22194_BRANCO",
+    "grade": {
+      "39/44": 5931
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMSA22194",
+    "descricao": "MEIAS TRI.ULT.INV 39/44",
+    "cor": "MESCLA",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 39.99,
+    "totalGeral": 2735,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIMSA22194_MESCLA",
+    "grade": {
+      "39/44": 2735
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMSA22194",
+    "descricao": "MEIAS TRI.ULT.INV 39/44",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 39.99,
+    "totalGeral": 7714,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIMSA22194_PRETO",
+    "grade": {
+      "39/44": 7714
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMSA26199",
+    "descricao": "TRIPK MEIA INV S/F 39/44",
+    "cor": "BCPTMC",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 39.99,
+    "totalGeral": 46982,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIMSA26199_BCPTMC",
+    "grade": {
+      "39/44": 46982
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMSA26199",
+    "descricao": "TRIPK MEIA INV S/F 39/44",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 39.99,
+    "totalGeral": 30037,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIMSA26199_BRANCO",
+    "grade": {
+      "39/44": 30037
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMSA26199",
+    "descricao": "TRIPK MEIA INV S/F 39/44",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 39.99,
+    "totalGeral": 26638,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIMSA26199_PRETO",
+    "grade": {
+      "39/44": 26638
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMSA81924",
+    "descricao": "TRIPK.MEIA INVISIV. 39/44",
+    "cor": "BCPTMC",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 39.99,
+    "totalGeral": 739,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIMSA81924_BCPTMC",
+    "grade": {
+      "39/44": 739
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMSA81924",
+    "descricao": "TRIPK.MEIA INVISIV. 39/44",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 39.99,
+    "totalGeral": 137,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIMSA81924_BRANCO",
+    "grade": {
+      "39/44": 137
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMSA81924",
+    "descricao": "TRIPK.MEIA INVISIV. 39/44",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 39.99,
+    "totalGeral": 7624,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIMSA81924_PRETO",
+    "grade": {
+      "39/44": 7624
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIWSA22193",
+    "descricao": "MEIAS TRI.ULT.INV 33/38",
+    "cor": "BCPTMC",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 39.99,
+    "totalGeral": 23631,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIWSA22193_BCPTMC",
+    "grade": {
+      "33/38": 23631
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIWSA22193",
+    "descricao": "MEIAS TRI.ULT.INV 33/38",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 39.99,
+    "totalGeral": 8576,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIWSA22193_BRANCO",
+    "grade": {
+      "33/38": 8576
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIWSA22193",
+    "descricao": "MEIAS TRI.ULT.INV 33/38",
+    "cor": "MESCLA",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 39.99,
+    "totalGeral": 2653,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIWSA22193_MESCLA",
+    "grade": {
+      "33/38": 2653
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIWSA22193",
+    "descricao": "MEIAS TRI.ULT.INV 33/38",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 39.99,
+    "totalGeral": 5622,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIWSA22193_PRETO",
+    "grade": {
+      "33/38": 5622
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIWSA81923",
+    "descricao": "TRIPK.MEIA INVISIV. 33/38",
+    "cor": "BCPTMC",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 39.99,
+    "totalGeral": 860,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIWSA81923_BCPTMC",
+    "grade": {
+      "33/38": 860
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIWSA81923",
+    "descricao": "TRIPK.MEIA INVISIV. 33/38",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 39.99,
+    "totalGeral": 2423,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIWSA81923_BRANCO",
+    "grade": {
+      "33/38": 2423
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMA241930",
+    "descricao": "MEIA COMFY CM 39/44",
+    "cor": "BC_PTO",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 24.99,
+    "totalGeral": 3896,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 10.87,
+    "imagem": "OIMA241930_BC_PTO",
+    "grade": {
+      "39/44": 3896
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMA241930",
+    "descricao": "MEIA COMFY CM 39/44",
+    "cor": "CAMPRT",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 24.99,
+    "totalGeral": 240,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 10.87,
+    "imagem": "OIMA241930_CAMPRT",
+    "grade": {
+      "39/44": 240
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMA241930",
+    "descricao": "MEIA COMFY CM 39/44",
+    "cor": "PTO_BC",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 24.99,
+    "totalGeral": 1888,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 10.87,
+    "imagem": "OIMA241930_PTO_BC",
+    "grade": {
+      "39/44": 1888
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMA241930",
+    "descricao": "MEIA COMFY CM 39/44",
+    "cor": "VDMGPT",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 24.99,
+    "totalGeral": 983,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 10.87,
+    "imagem": "OIMA241930_VDMGPT",
+    "grade": {
+      "39/44": 983
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIWA241929",
+    "descricao": "MEIA COMFY CM 33/38",
+    "cor": "BC_PTO",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 24.99,
+    "totalGeral": 1825,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 10.87,
+    "imagem": "OIWA241929_BC_PTO",
+    "grade": {
+      "33/38": 1825
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIWA241929",
+    "descricao": "MEIA COMFY CM 33/38",
+    "cor": "BCO_MR",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 24.99,
+    "totalGeral": 2443,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 10.87,
+    "imagem": "OIWA241929_BCO_MR",
+    "grade": {
+      "33/38": 2443
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIWA241929",
+    "descricao": "MEIA COMFY CM 33/38",
+    "cor": "CAMPRT",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 24.99,
+    "totalGeral": 2212,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 10.87,
+    "imagem": "OIWA241929_CAMPRT",
+    "grade": {
+      "33/38": 2212
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIWA241929",
+    "descricao": "MEIA COMFY CM 33/38",
+    "cor": "PTO_BC",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 24.99,
+    "totalGeral": 2060,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 10.87,
+    "imagem": "OIWA241929_PTO_BC",
+    "grade": {
+      "33/38": 2060
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIWA241929",
+    "descricao": "MEIA COMFY CM 33/38",
+    "cor": "VDMGPT",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 24.99,
+    "totalGeral": 2547,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 10.87,
+    "imagem": "OIWA241929_VDMGPT",
+    "grade": {
+      "33/38": 2547
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMSA21195",
+    "descricao": "MEIA CANO MEDIO 39/44",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 21.99,
+    "totalGeral": 3838,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 9.56,
+    "imagem": "OIMSA21195_BRANCO",
+    "grade": {
+      "39/44": 3838
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMSA21195",
+    "descricao": "MEIA CANO MEDIO 39/44",
+    "cor": "MESCLA",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 21.99,
+    "totalGeral": 2525,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 9.56,
+    "imagem": "OIMSA21195_MESCLA",
+    "grade": {
+      "39/44": 2525
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMSA21195",
+    "descricao": "MEIA CANO MEDIO 39/44",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 21.99,
+    "totalGeral": 3300,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 9.56,
+    "imagem": "OIMSA21195_PRETO",
+    "grade": {
+      "39/44": 3300
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIWSA21194",
+    "descricao": "MEIA CANO CURTO 33/38",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 21.99,
+    "totalGeral": 2568,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 9.56,
+    "imagem": "OIWSA21194_BRANCO",
+    "grade": {
+      "33/38": 2568
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIWSA21194",
+    "descricao": "MEIA CANO CURTO 33/38",
+    "cor": "MESCLA",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 21.99,
+    "totalGeral": 2044,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 9.56,
+    "imagem": "OIWSA21194_MESCLA",
+    "grade": {
+      "33/38": 2044
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIWSA21194",
+    "descricao": "MEIA CANO CURTO 33/38",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 21.99,
+    "totalGeral": 3591,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 9.56,
+    "imagem": "OIWSA21194_PRETO",
+    "grade": {
+      "33/38": 3591
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIWSA21196",
+    "descricao": "MEIA CANO MEDIO 33/38",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 21.99,
+    "totalGeral": 2617,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 9.56,
+    "imagem": "OIWSA21196_BRANCO",
+    "grade": {
+      "33/38": 2617
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIWSA21196",
+    "descricao": "MEIA CANO MEDIO 33/38",
+    "cor": "MESCLA",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 21.99,
+    "totalGeral": 3134,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 9.56,
+    "imagem": "OIWSA21196_MESCLA",
+    "grade": {
+      "33/38": 3134
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIWSA21196",
+    "descricao": "MEIA CANO MEDIO 33/38",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 21.99,
+    "totalGeral": 3192,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 9.56,
+    "imagem": "OIWSA21196_PRETO",
+    "grade": {
+      "33/38": 3192
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMSA26198",
+    "descricao": "MEIA INV S/F 39/44",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 19.99,
+    "totalGeral": 2206,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 8.69,
+    "imagem": "OIMSA26198_BRANCO",
+    "grade": {
+      "39/44": 2206
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIMSA26198",
+    "descricao": "MEIA INV S/F 39/44",
+    "cor": "MESCLA",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 19.99,
+    "totalGeral": 1886,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 8.69,
+    "imagem": "OIMSA26198_MESCLA",
+    "grade": {
+      "39/44": 1886
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIWSA22191",
+    "descricao": "MEIAS IND.ULT.INV.33/38",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 19.99,
+    "totalGeral": 2266,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 8.69,
+    "imagem": "OIWSA22191_BRANCO",
+    "grade": {
+      "33/38": 2266
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIWSA22191",
+    "descricao": "MEIAS IND.ULT.INV.33/38",
+    "cor": "MESCLA",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 19.99,
+    "totalGeral": 2418,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 8.69,
+    "imagem": "OIWSA22191_MESCLA",
+    "grade": {
+      "33/38": 2418
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OIWSA22191",
+    "descricao": "MEIAS IND.ULT.INV.33/38",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 19.99,
+    "totalGeral": 2326,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 8.69,
+    "imagem": "OIWSA22191_PRETO",
+    "grade": {
+      "33/38": 2326
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OBMW251931",
+    "descricao": "MEIA FUNC CC 39/44",
+    "cor": "AREORA",
+    "linha": "FUNCIONALIDADE",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 59.99,
+    "totalGeral": 2943,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBMW251931_AREORA",
+    "grade": {
+      "39/44": 2943
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OBMW251931",
+    "descricao": "MEIA FUNC CC 39/44",
+    "cor": "PTOVAN",
+    "linha": "FUNCIONALIDADE",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 59.99,
+    "totalGeral": 1080,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBMW251931_PTOVAN",
+    "grade": {
+      "39/44": 1080
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OBMW251931",
+    "descricao": "MEIA FUNC CC 39/44",
+    "cor": "VANBCO",
+    "linha": "FUNCIONALIDADE",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 59.99,
+    "totalGeral": 988,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBMW251931_VANBCO",
+    "grade": {
+      "39/44": 988
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OBWA231911",
+    "descricao": "MEIA BPC CANO MEDIO 33/38",
+    "cor": "CASARE",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 59.99,
+    "totalGeral": 3040,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA231911_CASARE",
+    "grade": {
+      "33/38": 3040
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OBWA231911",
+    "descricao": "MEIA BPC CANO MEDIO 33/38",
+    "cor": "ORVARE",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 59.99,
+    "totalGeral": 2690,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA231911_ORVARE",
+    "grade": {
+      "33/38": 2690
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OBWA231911",
+    "descricao": "MEIA BPC CANO MEDIO 33/38",
+    "cor": "PTOVAN",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 59.99,
+    "totalGeral": 1341,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA231911_PTOVAN",
+    "grade": {
+      "33/38": 1341
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OBWA231912",
+    "descricao": "MEIA BPC CANO MEDIO 39/44",
+    "cor": "CASARE",
+    "linha": "FUNCIONALIDADE",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 59.99,
+    "totalGeral": 2874,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA231912_CASARE",
+    "grade": {
+      "39/44": 2874
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OBWA231912",
+    "descricao": "MEIA BPC CANO MEDIO 39/44",
+    "cor": "ORVARE",
+    "linha": "FUNCIONALIDADE",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 59.99,
+    "totalGeral": 1980,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA231912_ORVARE",
+    "grade": {
+      "39/44": 1980
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OBWA231912",
+    "descricao": "MEIA BPC CANO MEDIO 39/44",
+    "cor": "PTOVAN",
+    "linha": "FUNCIONALIDADE",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 59.99,
+    "totalGeral": 3192,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA231912_PTOVAN",
+    "grade": {
+      "39/44": 3192
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OBWA231917",
+    "descricao": "MEIA CORRE CAN MED 33/38",
+    "cor": "HOGRAL",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 59.99,
+    "totalGeral": 475,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA231917_HOGRAL",
+    "grade": {
+      "33/38": 475
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OBWA231918",
+    "descricao": "MEIA CORRE CAN MED 39/44",
+    "cor": "LISUPT",
+    "linha": "CORRIDA",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 59.99,
+    "totalGeral": 51,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA231918_LISUPT",
+    "grade": {
+      "39/44": 51
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OBWA231918",
+    "descricao": "MEIA CORRE CAN MED 39/44",
+    "cor": "PTBCPG",
+    "linha": "CORRIDA",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 59.99,
+    "totalGeral": 28,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA231918_PTBCPG",
+    "grade": {
+      "39/44": 28
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OBWA251921",
+    "descricao": "MEIA CORRE 4",
+    "cor": "BCPTOR",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 59.99,
+    "totalGeral": 1633,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA251921_BCPTOR",
+    "grade": {
+      "33/38": 1633
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OBWA251921",
+    "descricao": "MEIA CORRE 4",
+    "cor": "OCEARE",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 59.99,
+    "totalGeral": 2087,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA251921_OCEARE",
+    "grade": {
+      "33/38": 2087
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OBWA251921",
+    "descricao": "MEIA CORRE 4",
+    "cor": "ORVARE",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 59.99,
+    "totalGeral": 1449,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA251921_ORVARE",
+    "grade": {
+      "33/38": 1449
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OBWA251921",
+    "descricao": "MEIA CORRE 4",
+    "cor": "PTPGOR",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 59.99,
+    "totalGeral": 2463,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA251921_PTPGOR",
+    "grade": {
+      "33/38": 2463
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OBWA251921",
+    "descricao": "MEIA CORRE 4",
+    "cor": "VANBCO",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 59.99,
+    "totalGeral": 1356,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA251921_VANBCO",
+    "grade": {
+      "33/38": 1356
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OBMSR241922",
+    "descricao": "TRIPACK MEIA NEON C INV M",
+    "cor": "AMBCLC",
+    "linha": "COMPLEMENTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 64.99,
+    "totalGeral": 2336,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 28.26,
+    "imagem": "OBMSR241922_AMBCLC",
+    "grade": {
+      "39/44": 2336
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OBMSR241922",
+    "descricao": "TRIPACK MEIA NEON C INV M",
+    "cor": "CBCLOL",
+    "linha": "COMPLEMENTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 64.99,
+    "totalGeral": 1174,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 28.26,
+    "imagem": "OBMSR241922_CBCLOL",
+    "grade": {
+      "39/44": 1174
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OBMSR241922",
+    "descricao": "TRIPACK MEIA NEON C INV M",
+    "cor": "GBCBOB",
+    "linha": "COMPLEMENTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 64.99,
+    "totalGeral": 1090,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 28.26,
+    "imagem": "OBMSR241922_GBCBOB",
+    "grade": {
+      "39/44": 1090
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULSP",
+    "artigo": "OBMSR241922",
+    "descricao": "TRIPACK MEIA NEON C INV M",
+    "cor": "GSBCLC",
+    "linha": "COMPLEMENTO",
+    "genero": "MASCULINO",
+    "categoria": "ACESSÓRIOS",
+    "pdv": 64.99,
+    "totalGeral": 3687,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 28.26,
+    "imagem": "OBMSR241922_GSBCLC",
+    "grade": {
+      "39/44": 3687
+    }
   }
 ]
