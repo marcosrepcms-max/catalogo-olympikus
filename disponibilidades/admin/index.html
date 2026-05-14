@@ -321,7 +321,10 @@
     <button class="filter-pill" data-filter="ocultos" onclick="setFilter('ocultos')">
       <i class="fa-solid fa-eye-slash text-[10px]"></i> Ocultos <span id="badgeOcultos" class="text-[10px] font-extrabold bg-slate-200 text-slate-700 rounded-full px-1.5 py-0.5 hidden">0</span>
     </button>
-    <div class="ml-auto text-xs font-semibold text-slate-400" id="countLabel">— itens</div>
+    <button id="btnExportarSemImg" onclick="exportarSemImagemXlsx()" class="filter-pill hidden ml-auto" style="background:#fef3c7;border-color:#fbbf24;color:#92400e;font-weight:700">
+      <i class="fa-solid fa-file-arrow-down text-[10px]"></i> Exportar XLSX
+    </button>
+    <div class="text-xs font-semibold text-slate-400" id="countLabel">— itens</div>
   </div>
 
   <!-- FILTROS SECUNDÁRIOS (categoria, gênero, linha) -->
@@ -721,6 +724,34 @@ function showToast(msg, type='info'){
   setTimeout(()=>t.remove(), 3500);
 }
 
+// Toast com botão de ação (não some sozinho — usuário fecha ou aciona)
+function showToastAcao(msg, labelBotao, onClick, type='info'){
+  const t = document.createElement('div');
+  t.className = `toast toast-${type}`;
+  t.style.display = 'flex';
+  t.style.alignItems = 'center';
+  t.style.gap = '10px';
+
+  const span = document.createElement('span');
+  span.textContent = msg;
+  t.appendChild(span);
+
+  const btn = document.createElement('button');
+  btn.textContent = labelBotao;
+  btn.style.cssText = 'background:#fff;color:#0f172a;border:none;padding:4px 10px;border-radius:8px;font-weight:700;font-size:11px;cursor:pointer;flex-shrink:0';
+  btn.onclick = () => { try{ onClick(); }catch(e){ console.error(e); } t.remove(); };
+  t.appendChild(btn);
+
+  const close = document.createElement('button');
+  close.innerHTML = '&times;';
+  close.style.cssText = 'background:transparent;color:rgba(255,255,255,.7);border:none;font-size:16px;cursor:pointer;padding:0 4px';
+  close.onclick = () => t.remove();
+  t.appendChild(close);
+
+  $('toastWrap').appendChild(t);
+  // Não auto-fecha — ação é importante
+}
+
 function safeHtml(v){ return String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;'); }
 
 // ── CLASSIFICAÇÃO DE MARCA (fonte única de verdade) ───────────────────────────
@@ -933,6 +964,9 @@ function isOculto(item){ return STATE.ocultos.has(ocultarKey(item)); }
 function setFilter(f){
   STATE.filtro = f;
   document.querySelectorAll('.filter-pill').forEach(b => b.classList.toggle('active', b.dataset.filter === f));
+  // Botão "Exportar XLSX" só aparece quando filtro "Sem imagem" está ativo
+  const btnExp = $('btnExportarSemImg');
+  if(btnExp) btnExp.classList.toggle('hidden', f !== 'semimg');
   applyFilters();
 }
 
@@ -1848,6 +1882,57 @@ async function enviarImagensEmLote(mapImagens, chavesAlvo){
   return { sucesso, falhas };
 }
 
+// ── EXPORT XLSX DE PRODUTOS SEM IMAGEM ────────────────────────────────────────
+// Reconstrói COR com "/" (banco guarda "CH_BLK", exporta como "CH/BLK")
+// Aceita lista opcional (caso contrário, usa o que está atualmente filtrado como sem-img)
+function exportarSemImagemXlsx(listaOpcional){
+  if(typeof XLSX === 'undefined'){
+    showToast('Biblioteca XLSX não carregada.', 'error');
+    return;
+  }
+
+  // Define a lista: se passou, usa; senão, calcula sem-img a partir de STATE.itens
+  let lista = listaOpcional;
+  if(!lista){
+    lista = STATE.itens.filter(item => {
+      if(isOculto(item)) return false;
+      const status = STATE.imgChecks.get(imgCheckKey(item));
+      return !item.imagem && status !== 'has';
+    });
+  }
+
+  if(!lista.length){
+    showToast('Nenhum produto sem imagem para exportar.', 'info');
+    return;
+  }
+
+  // Reconstrói cor: troca _ por / (assumindo sempre /, conforme decidido)
+  const reconstruirCor = (cor) => String(cor || '').replace(/_/g, '/');
+
+  const rows = lista.map(p => ({
+    'MARCA':     p.marca     || '',
+    'PREV. FAT': p.prevFat   || '',
+    'EMPRESA':   p.empresa   || '',
+    'ARTIGO':    p.artigo    || '',
+    'DESCRIÇÃO': p.descricao || '',
+    'COR':       reconstruirCor(p.cor)
+  }));
+
+  const ws = XLSX.utils.json_to_sheet(rows, {
+    header: ['MARCA','PREV. FAT','EMPRESA','ARTIGO','DESCRIÇÃO','COR']
+  });
+  // Larguras razoáveis
+  ws['!cols'] = [{wch:8},{wch:14},{wch:10},{wch:12},{wch:40},{wch:14}];
+
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Sem Imagem');
+
+  const hoje = new Date().toISOString().slice(0,10); // YYYY-MM-DD
+  const nome = `sem-imagem-${hoje}.xlsx`;
+  XLSX.writeFile(wb, nome);
+  showToast(`${lista.length} produto(s) exportado(s) → ${nome}`, 'success');
+}
+
 async function confirmarImportar(){
   const btn = $('btnConfirmar');
   const prev = btn.innerHTML;
@@ -1958,6 +2043,17 @@ async function confirmarImportar(){
     if(imgFalhas.length){
       showToast(`⚠️ ${imgFalhas.length} imagem(ns) falharam ao enviar. Veja console.`, 'error');
       console.warn('Imagens com falha:', imgFalhas);
+    }
+
+    // Produtos do LOTE que ficaram sem imagem → oferece export do XLSX
+    const semImgDoLote = [...novosParaSalvar, ...conflitosParaSalvar].filter(p => !p.imagem);
+    if(semImgDoLote.length){
+      showToastAcao(
+        `⚠️ ${semImgDoLote.length} produto(s) sem imagem.`,
+        '📥 Baixar XLSX',
+        () => exportarSemImagemXlsx(semImgDoLote),
+        'info'
+      );
     }
 
     fecharImportar();
