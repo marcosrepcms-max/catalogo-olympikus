@@ -157,37 +157,6 @@
     "marca": "CORRE",
     "prevFat": "2 QUINZ MAIO",
     "empresa": "VULTS",
-    "artigo": "43245330",
-    "descricao": "CORRE GRAFENO 3",
-    "cor": "PRTMLT",
-    "linha": "RESPONSIVIDADE",
-    "genero": "UNISSEX",
-    "categoria": "TENIS",
-    "pdv": 799.99,
-    "totalGeral": 11966,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "34": 480,
-      "35": 1209,
-      "36": 1771,
-      "37": 2095,
-      "38": 1370,
-      "39": 1243,
-      "40": 642,
-      "41": 1180,
-      "42": 774,
-      "43": 753,
-      "44": 432,
-      "45": 17
-    }
-  },
-  {
-    "marca": "CORRE",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULTS",
     "artigo": "43720366",
     "descricao": "CORRE 4",
     "cor": "PTO_PT",
@@ -612,36 +581,6 @@
       "35/36": 1464,
       "37/38": 1493,
       "39/40": 471
-    }
-  },
-  {
-    "marca": "CORRE",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULTS",
-    "artigo": "43245330",
-    "descricao": "CORRE GRAFENO 3",
-    "cor": "RXOMLT",
-    "linha": "RESPONSIVIDADE",
-    "genero": "UNISSEX",
-    "categoria": "TENIS",
-    "pdv": 799.99,
-    "totalGeral": 3843,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "34": 53,
-      "35": 285,
-      "36": 428,
-      "37": 453,
-      "38": 564,
-      "39": 523,
-      "40": 514,
-      "41": 526,
-      "42": 367,
-      "43": 90,
-      "44": 40
     }
   },
   {
@@ -1075,32 +1014,6 @@
     }
   },
   {
-    "marca": "OLY",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "AZABA",
-    "artigo": "43664381",
-    "descricao": "JOGGING 101 INFANTIL",
-    "cor": "AREMIL",
-    "linha": "CLASSICO",
-    "genero": "INFANTIL",
-    "categoria": "TENIS",
-    "pdv": 199.99,
-    "totalGeral": 1786,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "30": 193,
-      "31": 180,
-      "32": 189,
-      "33": 188,
-      "34": 324,
-      "35": 415,
-      "36": 297
-    }
-  },
-  {
     "marca": "CORRE",
     "prevFat": "2 QUINZ MAIO",
     "empresa": "VULTS",
@@ -1192,32 +1105,6 @@
     "marca": "OLY",
     "prevFat": "2 QUINZ MAIO",
     "empresa": "AZABA",
-    "artigo": "43664381",
-    "descricao": "JOGGING 101 INFANTIL",
-    "cor": "PRETO",
-    "linha": "CLASSICO",
-    "genero": "INFANTIL",
-    "categoria": "TENIS",
-    "pdv": 199.99,
-    "totalGeral": 1674,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "30": 148,
-      "31": 152,
-      "32": 165,
-      "33": 197,
-      "34": 358,
-      "35": 378,
-      "36": 276
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "AZABA",
     "artigo": "43409454",
     "descricao": "EROS 2",
     "cor": "ARENIT",
@@ -1242,30 +1129,6 @@
       "42": 204,
       "43": 132,
       "44": 95
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "AZABA",
-    "artigo": "43321122",
-    "descricao": "DELTA/122",
-    "cor": "PSCLDU",
-    "linha": "VERSATIL",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 199.99,
-    "totalGeral": 1640,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "34": 814,
-      "35": 810,
-      "37": 2,
-      "40": 7,
-      "41": 7
     }
   },
   {
@@ -1945,34 +1808,6 @@
     "marca": "OLY",
     "prevFat": "2 QUINZ MAIO",
     "empresa": "AZABA",
-    "artigo": "43451198",
-    "descricao": "EROS INFANTIL",
-    "cor": "MARFIM",
-    "linha": "CLASSICO",
-    "genero": "INFANTIL",
-    "categoria": "TENIS",
-    "pdv": 199.99,
-    "totalGeral": 1012,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "28": 82,
-      "29": 76,
-      "30": 74,
-      "31": 90,
-      "32": 120,
-      "33": 137,
-      "34": 103,
-      "35": 187,
-      "36": 143
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "AZABA",
     "artigo": "43554334",
     "descricao": "COSMO",
     "cor": "PRETO",
@@ -1994,39 +1829,6 @@
       "42": 113,
       "43": 65,
       "44": 61
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULTS",
-    "artigo": "43346463",
-    "descricao": "QU4DRA 2",
-    "cor": "BLUVER",
-    "linha": "PERFORMANCE",
-    "genero": "UNISSEX",
-    "categoria": "TENIS",
-    "pdv": 499.99,
-    "totalGeral": 946,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "35": 50,
-      "36": 48,
-      "37": 44,
-      "38": 35,
-      "39": 92,
-      "40": 90,
-      "41": 88,
-      "42": 152,
-      "43": 142,
-      "44": 88,
-      "45": 46,
-      "46": 50,
-      "47": 11,
-      "48": 10
     }
   },
   {
@@ -2116,34 +1918,6 @@
   {
     "marca": "OLY",
     "prevFat": "2 QUINZ MAIO",
-    "empresa": "AZABA",
-    "artigo": "43451198",
-    "descricao": "EROS INFANTIL",
-    "cor": "ARENIT",
-    "linha": "CLASSICO",
-    "genero": "INFANTIL",
-    "categoria": "TENIS",
-    "pdv": 199.99,
-    "totalGeral": 860,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "28": 49,
-      "29": 52,
-      "30": 67,
-      "31": 82,
-      "32": 132,
-      "33": 83,
-      "34": 108,
-      "35": 119,
-      "36": 168
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "2 QUINZ MAIO",
     "empresa": "VULTS",
     "artigo": "43346463",
     "descricao": "QU4DRA 2",
@@ -2172,29 +1946,6 @@
       "46": 28,
       "47": 5,
       "48": 5
-    }
-  },
-  {
-    "marca": "CORRE",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULTS",
-    "artigo": "43568211",
-    "descricao": "CORRE GRAFENO 2",
-    "cor": "BCOPTO",
-    "linha": "RESPONSIVIDADE",
-    "genero": "UNISSEX",
-    "categoria": "TENIS",
-    "pdv": 599.99,
-    "totalGeral": 793,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "34": 87,
-      "42": 180,
-      "43": 223,
-      "44": 303
     }
   },
   {
@@ -2658,36 +2409,6 @@
     }
   },
   {
-    "marca": "CORRE",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULTS",
-    "artigo": "43245330",
-    "descricao": "CORRE GRAFENO 3",
-    "cor": "VMHLRJ",
-    "linha": "RESPONSIVIDADE",
-    "genero": "UNISSEX",
-    "categoria": "TENIS",
-    "pdv": 799.99,
-    "totalGeral": 524,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "34": 14,
-      "35": 35,
-      "36": 38,
-      "37": 44,
-      "38": 56,
-      "39": 82,
-      "40": 77,
-      "41": 73,
-      "42": 55,
-      "43": 47,
-      "44": 3
-    }
-  },
-  {
     "marca": "OLY",
     "prevFat": "2 QUINZ MAIO",
     "empresa": "AZABA",
@@ -2800,33 +2521,6 @@
     "marca": "OLY",
     "prevFat": "2 QUINZ MAIO",
     "empresa": "AZABA",
-    "artigo": "43451198",
-    "descricao": "EROS INFANTIL",
-    "cor": "PTO_BC",
-    "linha": "CLASSICO",
-    "genero": "INFANTIL",
-    "categoria": "TENIS",
-    "pdv": 199.99,
-    "totalGeral": 476,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "28": 15,
-      "29": 37,
-      "30": 33,
-      "31": 1,
-      "32": 163,
-      "33": 89,
-      "34": 56,
-      "35": 82
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "AZABA",
     "artigo": "43606391",
     "descricao": "VERTICE",
     "cor": "PRETO",
@@ -2930,32 +2624,6 @@
       "41": 27,
       "42": 18,
       "44": 33
-    }
-  },
-  {
-    "marca": "CORRE",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULTS",
-    "artigo": "43758365",
-    "descricao": "CORRE MAX",
-    "cor": "CHUMBO",
-    "linha": "CORRIDA LEVE",
-    "genero": "UNISSEX",
-    "categoria": "TENIS",
-    "pdv": 549.99,
-    "totalGeral": 450,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "34": 4,
-      "39": 3,
-      "40": 8,
-      "41": 171,
-      "42": 136,
-      "43": 92,
-      "44": 36
     }
   },
   {
@@ -3208,32 +2876,6 @@
     "marca": "OLY",
     "prevFat": "2 QUINZ MAIO",
     "empresa": "AZABA",
-    "artigo": "43664381",
-    "descricao": "JOGGING 101 INFANTIL",
-    "cor": "AR_ALG",
-    "linha": "CLASSICO",
-    "genero": "INFANTIL",
-    "categoria": "TENIS",
-    "pdv": 199.99,
-    "totalGeral": 367,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "30": 33,
-      "31": 25,
-      "32": 37,
-      "33": 54,
-      "34": 52,
-      "35": 94,
-      "36": 72
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "AZABA",
     "artigo": "43752263",
     "descricao": "VERSA",
     "cor": "BCO_RX",
@@ -3308,32 +2950,6 @@
   {
     "marca": "OLY",
     "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULTS",
-    "artigo": "43559375",
-    "descricao": "SWIFT 5",
-    "cor": "ARENIT",
-    "linha": "CORRIDA INTENSA",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 299.99,
-    "totalGeral": 344,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "34": 23,
-      "35": 49,
-      "36": 78,
-      "37": 83,
-      "38": 63,
-      "39": 46,
-      "40": 2
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "2 QUINZ MAIO",
     "empresa": "AZABA",
     "artigo": "54110438",
     "descricao": "LIVRE",
@@ -3352,27 +2968,6 @@
       "39/40": 17,
       "41/42": 165,
       "43/44": 144
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "AZABA",
-    "artigo": "43321122",
-    "descricao": "DELTA/122",
-    "cor": "ECLCOR",
-    "linha": "VERSATIL",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 199.99,
-    "totalGeral": 325,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "40": 293,
-      "41": 32
     }
   },
   {
@@ -3453,36 +3048,6 @@
       "39": 129,
       "40": 24,
       "41": 57
-    }
-  },
-  {
-    "marca": "CORRE",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULTS",
-    "artigo": "43245330",
-    "descricao": "CORRE GRAFENO 3",
-    "cor": "VRMELH",
-    "linha": "RESPONSIVIDADE",
-    "genero": "UNISSEX",
-    "categoria": "TENIS",
-    "pdv": 799.99,
-    "totalGeral": 308,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "34": 9,
-      "35": 32,
-      "36": 55,
-      "37": 65,
-      "38": 83,
-      "39": 21,
-      "40": 17,
-      "41": 15,
-      "42": 8,
-      "43": 2,
-      "44": 1
     }
   },
   {
@@ -3644,33 +3209,6 @@
       "42": 36,
       "43": 78,
       "44": 7
-    }
-  },
-  {
-    "marca": "CORRE",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULTS",
-    "artigo": "43758365",
-    "descricao": "CORRE MAX",
-    "cor": "WHISKY",
-    "linha": "CORRIDA LEVE",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 549.99,
-    "totalGeral": 288,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "34": 8,
-      "35": 8,
-      "36": 30,
-      "37": 71,
-      "38": 60,
-      "39": 48,
-      "40": 37,
-      "41": 26
     }
   },
   {
@@ -4155,32 +3693,6 @@
     "marca": "OLY",
     "prevFat": "2 QUINZ MAIO",
     "empresa": "VULTS",
-    "artigo": "43299316",
-    "descricao": "ACQUA",
-    "cor": "MRHCRS",
-    "linha": "VERSATIL",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 229.99,
-    "totalGeral": 220,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "34": 9,
-      "35": 18,
-      "36": 56,
-      "37": 58,
-      "38": 36,
-      "39": 33,
-      "40": 10
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULTS",
     "artigo": "43418328",
     "descricao": "INTUIT",
     "cor": "MARITM",
@@ -4413,27 +3925,6 @@
     }
   },
   {
-    "marca": "OLY",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "AZABA",
-    "artigo": "43321122",
-    "descricao": "DELTA/122",
-    "cor": "HIRSCH",
-    "linha": "VERSATIL",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 199.99,
-    "totalGeral": 195,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "40": 189,
-      "41": 6
-    }
-  },
-  {
     "marca": "CORRE",
     "prevFat": "2 QUINZ MAIO",
     "empresa": "VULTS",
@@ -4598,29 +4089,6 @@
   {
     "marca": "OLY",
     "prevFat": "2 QUINZ MAIO",
-    "empresa": "AZABA",
-    "artigo": "43411134",
-    "descricao": "DELTA KIDS",
-    "cor": "PEOAZA",
-    "linha": "CONFORTO",
-    "genero": "MENINA",
-    "categoria": "TENIS",
-    "pdv": 179.99,
-    "totalGeral": 173,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "28": 51,
-      "31": 3,
-      "35": 26,
-      "36": 93
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "2 QUINZ MAIO",
     "empresa": "VULTS",
     "artigo": "43588382",
     "descricao": "SAGAZ",
@@ -4670,28 +4138,6 @@
       "37": 42,
       "38": 26,
       "39": 23
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "AZABA",
-    "artigo": "54827630",
-    "descricao": "OLYMPIKUS/921",
-    "cor": "NEVCRJ",
-    "linha": "CHINELO DEDO",
-    "genero": "UNISSEX",
-    "categoria": "TENIS",
-    "pdv": 139.99,
-    "totalGeral": 166,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "35/36": 37,
-      "37/38": 82,
-      "39/40": 47
     }
   },
   {
@@ -4776,35 +4222,6 @@
       "42": 14,
       "43": 13,
       "44": 6
-    }
-  },
-  {
-    "marca": "CORRE",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "VULTS",
-    "artigo": "43472319",
-    "descricao": "CORRE SUPRA",
-    "cor": "VRD_NN",
-    "linha": "RESPONSIVIDADE",
-    "genero": "UNISSEX",
-    "categoria": "TENIS",
-    "pdv": 999.99,
-    "totalGeral": 143,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "35": 7,
-      "36": 20,
-      "37": 17,
-      "38": 15,
-      "39": 13,
-      "40": 23,
-      "41": 14,
-      "42": 20,
-      "43": 11,
-      "44": 3
     }
   },
   {
@@ -5203,32 +4620,6 @@
       "38": 53,
       "39": 26,
       "40": 3
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "2 QUINZ MAIO",
-    "empresa": "AZABA",
-    "artigo": "43649393",
-    "descricao": "MARTE INFANTIL",
-    "cor": "ARENIT",
-    "linha": "CONFORTO",
-    "genero": "INFANTIL",
-    "categoria": "TENIS",
-    "pdv": 189.99,
-    "totalGeral": 103,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "28": 23,
-      "29": 10,
-      "32": 17,
-      "33": 10,
-      "34": 14,
-      "35": 12,
-      "36": 17
     }
   },
   {
