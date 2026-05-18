@@ -1,5 +1,68 @@
 [
   {
+    "id": "1779129564927-4b9wem",
+    "createdAt": "2026-05-18T18:39:24.927Z",
+    "comissionista": "109839",
+    "comissionistaNome": "MARIANA",
+    "clientCode": "12852",
+    "payment": "Z34 - 56/84/112 D",
+    "priceTable": "OL025",
+    "campaign": "",
+    "dataDesejada": "",
+    "pedidoCliente": "",
+    "items": [
+      {
+        "codigo": "43286101",
+        "produto": "ATMOS",
+        "cor": "PRETO",
+        "corCodigo": "",
+        "genero": "Feminino",
+        "tam": "33/41",
+        "categoria": "FTW",
+        "grade": {
+          "34": 1,
+          "35": 2,
+          "36": 3,
+          "37": 3,
+          "38": 2,
+          "39": 1
+        },
+        "qty": 12,
+        "totalQty": 12,
+        "preco": 189.99,
+        "colecao": "",
+        "imagem": "",
+        "imgSrc": "./imagens_olympikus/43286101_PRETO.jpg",
+        "dataDesejada": "2026-08-10"
+      },
+      {
+        "codigo": "43244493",
+        "produto": "AMBAR",
+        "cor": "PEWTER",
+        "corCodigo": "",
+        "genero": "Feminino",
+        "tam": "34/41",
+        "categoria": "FTW",
+        "grade": {
+          "34": 1,
+          "35": 2,
+          "36": 3,
+          "37": 3,
+          "38": 3
+        },
+        "qty": 12,
+        "totalQty": 12,
+        "preco": 249.99,
+        "colecao": "",
+        "imagem": "",
+        "imgSrc": "./imagens_olympikus/43244493_PEWTER.jpg",
+        "dataDesejada": "2026-10-10"
+      }
+    ],
+    "totalItens": 24,
+    "valorTotal": 5279.76
+  },
+  {
     "id": "1779128806896-uapn5u",
     "createdAt": "2026-05-18T18:26:46.896Z",
     "comissionista": "109839",
@@ -840,10 +903,10 @@
         "cor": "PRETO",
         "corCodigo": "",
         "genero": "Unissex",
-        "tam": "ÃÂÃÂnico",
+        "tam": "ÃÂÃÂÃÂÃÂnico",
         "categoria": "ACC",
         "grade": {
-          "ÃÂÃÂnico": 8
+          "ÃÂÃÂÃÂÃÂnico": 8
         },
         "qty": 8,
         "totalQty": 8,
@@ -859,10 +922,10 @@
         "cor": "NVALNA",
         "corCodigo": "",
         "genero": "Unissex",
-        "tam": "ÃÂÃÂnico",
+        "tam": "ÃÂÃÂÃÂÃÂnico",
         "categoria": "ACC",
         "grade": {
-          "ÃÂÃÂnico": 5
+          "ÃÂÃÂÃÂÃÂnico": 5
         },
         "qty": 5,
         "totalQty": 5,
@@ -878,10 +941,10 @@
         "cor": "PTO/BC",
         "corCodigo": "",
         "genero": "Unissex",
-        "tam": "ÃÂÃÂnico",
+        "tam": "ÃÂÃÂÃÂÃÂnico",
         "categoria": "ACC",
         "grade": {
-          "ÃÂÃÂnico": 4
+          "ÃÂÃÂÃÂÃÂnico": 4
         },
         "qty": 4,
         "totalQty": 4,
@@ -897,10 +960,10 @@
         "cor": "LUNAR",
         "corCodigo": "",
         "genero": "Unissex",
-        "tam": "ÃÂÃÂnico",
+        "tam": "ÃÂÃÂÃÂÃÂnico",
         "categoria": "ACC",
         "grade": {
-          "ÃÂÃÂnico": 5
+          "ÃÂÃÂÃÂÃÂnico": 5
         },
         "qty": 5,
         "totalQty": 5,
@@ -916,10 +979,10 @@
         "cor": "PRETO",
         "corCodigo": "",
         "genero": "Unissex",
-        "tam": "ÃÂÃÂnico",
+        "tam": "ÃÂÃÂÃÂÃÂnico",
         "categoria": "ACC",
         "grade": {
-          "ÃÂÃÂnico": 6
+          "ÃÂÃÂÃÂÃÂnico": 6
         },
         "qty": 6,
         "totalQty": 6,
@@ -935,10 +998,10 @@
         "cor": "ORVLHO",
         "corCodigo": "",
         "genero": "Unissex",
-        "tam": "ÃÂÃÂnico",
+        "tam": "ÃÂÃÂÃÂÃÂnico",
         "categoria": "ACC",
         "grade": {
-          "ÃÂÃÂnico": 6
+          "ÃÂÃÂÃÂÃÂnico": 6
         },
         "qty": 6,
         "totalQty": 6,
@@ -954,10 +1017,10 @@
         "cor": "NAVAL",
         "corCodigo": "",
         "genero": "Unissex",
-        "tam": "ÃÂÃÂnico",
+        "tam": "ÃÂÃÂÃÂÃÂnico",
         "categoria": "ACC",
         "grade": {
-          "ÃÂÃÂnico": 6
+          "ÃÂÃÂÃÂÃÂnico": 6
         },
         "qty": 6,
         "totalQty": 6,
@@ -973,10 +1036,10 @@
         "cor": "REDWOD",
         "corCodigo": "",
         "genero": "Unissex",
-        "tam": "ÃÂÃÂnico",
+        "tam": "ÃÂÃÂÃÂÃÂnico",
         "categoria": "ACC",
         "grade": {
-          "ÃÂÃÂnico": 5
+          "ÃÂÃÂÃÂÃÂnico": 5
         },
         "qty": 5,
         "totalQty": 5,
@@ -992,10 +1055,10 @@
         "cor": "BLUSH",
         "corCodigo": "",
         "genero": "Unissex",
-        "tam": "ÃÂÃÂnico",
+        "tam": "ÃÂÃÂÃÂÃÂnico",
         "categoria": "ACC",
         "grade": {
-          "ÃÂÃÂnico": 5
+          "ÃÂÃÂÃÂÃÂnico": 5
         },
         "qty": 5,
         "totalQty": 5,
@@ -1011,10 +1074,10 @@
         "cor": "NVLPRT",
         "corCodigo": "",
         "genero": "Unissex",
-        "tam": "ÃÂÃÂnico",
+        "tam": "ÃÂÃÂÃÂÃÂnico",
         "categoria": "ACC",
         "grade": {
-          "ÃÂÃÂnico": 5
+          "ÃÂÃÂÃÂÃÂnico": 5
         },
         "qty": 5,
         "totalQty": 5,
@@ -1030,10 +1093,10 @@
         "cor": "PRETO",
         "corCodigo": "",
         "genero": "Unissex",
-        "tam": "ÃÂÃÂnico",
+        "tam": "ÃÂÃÂÃÂÃÂnico",
         "categoria": "ACC",
         "grade": {
-          "ÃÂÃÂnico": 6
+          "ÃÂÃÂÃÂÃÂnico": 6
         },
         "qty": 6,
         "totalQty": 6,
@@ -1049,10 +1112,10 @@
         "cor": "PTCPTO",
         "corCodigo": "",
         "genero": "Unissex",
-        "tam": "ÃÂÃÂnico",
+        "tam": "ÃÂÃÂÃÂÃÂnico",
         "categoria": "ACC",
         "grade": {
-          "ÃÂÃÂnico": 6
+          "ÃÂÃÂÃÂÃÂnico": 6
         },
         "qty": 6,
         "totalQty": 6,
@@ -1068,10 +1131,10 @@
         "cor": "PT/PRT",
         "corCodigo": "",
         "genero": "Unissex",
-        "tam": "ÃÂÃÂnico",
+        "tam": "ÃÂÃÂÃÂÃÂnico",
         "categoria": "ACC",
         "grade": {
-          "ÃÂÃÂnico": 6
+          "ÃÂÃÂÃÂÃÂnico": 6
         },
         "qty": 6,
         "totalQty": 6,
@@ -1087,10 +1150,10 @@
         "cor": "PCGRAY",
         "corCodigo": "",
         "genero": "Unissex",
-        "tam": "ÃÂÃÂnico",
+        "tam": "ÃÂÃÂÃÂÃÂnico",
         "categoria": "ACC",
         "grade": {
-          "ÃÂÃÂnico": 5
+          "ÃÂÃÂÃÂÃÂnico": 5
         },
         "qty": 5,
         "totalQty": 5,
@@ -1106,10 +1169,10 @@
         "cor": "PRETO",
         "corCodigo": "",
         "genero": "Unissex",
-        "tam": "ÃÂÃÂnico",
+        "tam": "ÃÂÃÂÃÂÃÂnico",
         "categoria": "ACC",
         "grade": {
-          "ÃÂÃÂnico": 8
+          "ÃÂÃÂÃÂÃÂnico": 8
         },
         "qty": 8,
         "totalQty": 8,
