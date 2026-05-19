@@ -489,15 +489,16 @@
     <div class="modal-body">
       <div class="export-grid">
         <label class="req"><span>Comissionista</span>
-          <input id="oxCommission" type="text" placeholder="Código"></label>
+          <select id="oxCommission"></select></label>
         <label class="req"><span>Código Cliente</span>
           <input id="oxClientCode" type="text" placeholder="Código"></label>
         <label class="req full"><span>Condição de Pagamento</span>
           <select id="oxPayment"></select></label>
         <label class="req"><span>Tabela de Preço</span>
-          <input id="oxPriceTable" type="text" placeholder="Ex: OL025"></label>
+          <input id="oxPriceTable" type="text" list="oxPriceTableList" placeholder="Ex: OL025" autocomplete="off">
+          <datalist id="oxPriceTableList"></datalist></label>
         <label><span>Campanha</span>
-          <input id="oxCampaign" type="text" placeholder="Ex: E4550"></label>
+          <select id="oxCampaign"></select></label>
         <label><span>Forma de Embalar</span>
           <select id="oxPacking"></select></label>
         <label><span>Tipo de Entrega</span>
@@ -601,20 +602,69 @@ const ORDER_EXPORT_COLS = [
   {wch:8},{wch:8},{wch:8}
 ];
 
+// Cond. Pagamento — 35 opções Z01-Z35 (idêntico ao sistema da fábrica)
 const ORDER_PAYMENT_OPTIONS = [
-  "28 DDL - 1 PARCELA",
-  "30 DDL - 1 PARCELA",
-  "30/60 DDL - 2 PARCELAS",
-  "30/60/90 DDL - 3 PARCELAS",
-  "60 DDL - 1 PARCELA",
-  "60/90/120 DDL - 3 PARCELAS",
-  "90 DDL - 1 PARCELA",
-  "120 DDL - 1 PARCELA"
+  "Z01 - A VISTA",
+  "Z02 - 14 D",
+  "Z03 - 21 D",
+  "Z04 - 28 D",
+  "Z05 - 35 D",
+  "Z06 - 42 D",
+  "Z07 - 49 D",
+  "Z08 - 56 D",
+  "Z09 - 63 D",
+  "Z10 - 70 D",
+  "Z11 - 77 D",
+  "Z12 - 84 D",
+  "Z13 - 91 D",
+  "Z14 - 98 D",
+  "Z15 - 105 D",
+  "Z16 - 112 D",
+  "Z17 - 119 D",
+  "Z18 - 21/49 D",
+  "Z19 - 28/56 D",
+  "Z20 - 35/63 D",
+  "Z21 - 42/70 D",
+  "Z22 - 49/77 D",
+  "Z23 - 56/84 D",
+  "Z24 - 63/91 D",
+  "Z25 - 70/98 D",
+  "Z26 - 77/105 D",
+  "Z27 - 84/112 D",
+  "Z28 - 91/119 D",
+  "Z29 - 21/49/77 D",
+  "Z30 - 28/56/84 D",
+  "Z31 - 35/63/91 D",
+  "Z32 - 42/70/98 D",
+  "Z33 - 49/77/105 D",
+  "Z34 - 56/84/112 D",
+  "Z35 - 63/91/119 D"
 ];
 
-const ORDER_PACKING_OPTIONS    = ["M: Musical", "A: Artigo/Cor", "T: Tamanho"];
-const ORDER_DELIVERY_OPTIONS   = ["1: Parcial", "2: Total Artigo", "3: Total Artigo/Cor", "4: Total Pedido"];
-const ORDER_YESNO_OPTIONS      = ["S: Sim", "N: Não"];
+// Comissionistas oficiais (mesma lista usada no sistema da fábrica)
+const ORDER_COMMISSION_OPTIONS = [
+  { codigo: "114611",  nome: "JORGE"   },
+  { codigo: "109839",  nome: "MARIANA" },
+  { codigo: "1333497", nome: "RAFAEL"  },
+  { codigo: "25471",   nome: "WILLAME" },
+  { codigo: "25745",   nome: "LEANDRO" },
+  { codigo: "3616654", nome: "MARCOS"  }
+];
+
+// Campanhas oficiais
+const ORDER_CAMPAIGN_OPTIONS = [
+  "CO681 +28DD OLY",
+  "CO689 +56DD OLY",
+  "CO684 +28DD UA",
+  "CO690 +56DD UA"
+];
+
+// Tabelas de preço sugeridas (datalist — input segue livre)
+const ORDER_PRICE_TABLE_OPTIONS = ["OL025", "OL024"];
+
+const ORDER_PACKING_OPTIONS  = ["M: Musical", "P: Padrão", "S: Sólida"];
+const ORDER_DELIVERY_OPTIONS = ["3: Total Artigo/Cor", "2: Total Artigo", "1: Total Encomenda"];
+const ORDER_YESNO_OPTIONS    = ["S: Sim", "N: Não"];
 
 // Defaults: OLY usa OL025; UA deixa em branco (cliente preenche).
 const ORDER_EXPORT_DEFAULTS = {
@@ -1367,12 +1417,15 @@ function calcQtdCaixas(it, total){
 // Parse de condição de pagamento → prazo médio + número de parcelas
 function parsePaymentInfo(payment){
   if(!payment) return { prazoMedio:'', parcelas:'' };
-  // Ex: "30/60/90 DDL - 3 PARCELAS"
-  const m = payment.match(/(\d+(?:\/\d+)*)\s*DDL\s*-\s*(\d+)\s*PARCEL/i);
+  // Novo formato: "Z01 - A VISTA" | "Z04 - 28 D" | "Z19 - 28/56 D" | "Z29 - 21/49/77 D"
+  if(/A\s*VISTA/i.test(payment)) return { prazoMedio: 0, parcelas: 1 };
+  // Captura a sequência de dias entre o "-" e o "D"
+  const m = payment.match(/-\s*([\d/]+)\s*D\b/i);
   if(!m) return { prazoMedio:'', parcelas:'' };
-  const dias = m[1].split('/').map(Number);
+  const dias = m[1].split('/').map(Number).filter(n => !isNaN(n));
+  if(!dias.length) return { prazoMedio:'', parcelas:'' };
   const media = Math.round(dias.reduce((a,b)=>a+b,0) / dias.length);
-  return { prazoMedio: media, parcelas: Number(m[2]) };
+  return { prazoMedio: media, parcelas: dias.length };
 }
 
 // Extrai 1ª palavra/letra ("S: Sim" → "S")
@@ -1651,15 +1704,31 @@ function saveExportCfg(cfg){
 
 function populateExportForm(){
   const cfg = loadExportCfg();
-  $('oxCommission').value = cfg.commission || '';
+
+  // Comissionista — agora é select
+  const comSel = $('oxCommission');
+  comSel.innerHTML = '<option value="">— Selecione —</option>' +
+    ORDER_COMMISSION_OPTIONS.map(c => {
+      const v = c.codigo;
+      const label = `${c.codigo} – ${c.nome}`;
+      return `<option value="${safeHtml(v)}"${v===cfg.commission?' selected':''}>${safeHtml(label)}</option>`;
+    }).join('');
+
   $('oxClientCode').value = cfg.clientCode || '';
 
+  // Pagamento — 35 opções Z01-Z35
   const paySel = $('oxPayment');
   paySel.innerHTML = '<option value="">— Selecione —</option>' +
     ORDER_PAYMENT_OPTIONS.map(v => `<option value="${safeHtml(v)}"${v===cfg.payment?' selected':''}>${safeHtml(v)}</option>`).join('');
 
-  $('oxPriceTable').value  = cfg.priceTable || '';
-  $('oxCampaign').value    = cfg.campaign || '';
+  // Tabela de Preço (input + datalist)
+  $('oxPriceTable').value = cfg.priceTable || '';
+  $('oxPriceTableList').innerHTML = ORDER_PRICE_TABLE_OPTIONS.map(v => `<option value="${safeHtml(v)}"></option>`).join('');
+
+  // Campanha — select
+  const campSel = $('oxCampaign');
+  campSel.innerHTML = '<option value="">— Sem campanha —</option>' +
+    ORDER_CAMPAIGN_OPTIONS.map(v => `<option value="${safeHtml(v)}"${v===cfg.campaign?' selected':''}>${safeHtml(v)}</option>`).join('');
 
   const fillSel = (id, list, val) => {
     $(id).innerHTML = list.map(v => `<option value="${safeHtml(v)}"${v===val?' selected':''}>${safeHtml(v)}</option>`).join('');
