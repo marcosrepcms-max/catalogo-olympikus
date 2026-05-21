@@ -222,6 +222,54 @@
     }
     @media (min-width:640px){ .modal-grid{ grid-template-columns:1fr 1fr; gap:14px; } }
 
+    .card-marca{
+      position:relative; overflow:hidden;
+      border-radius:18px;
+      padding:16px 16px 18px;
+      display:flex; flex-direction:column;
+      text-decoration:none; cursor:pointer;
+      transition:transform .25s, border-color .25s, box-shadow .25s;
+    }
+    .card-marca::before{
+      content:''; position:absolute; inset:0; pointer-events:none;
+    }
+    .card-marca > *{ position:relative; z-index:1; }
+    .card-marca:hover{ transform:translateY(-4px); }
+    .card-marca:active{ transform:translateY(-2px); }
+
+    .card-marca-oly{
+      background:linear-gradient(150deg,#1e4fe8 0%,#0034d8 48%,#001a8a 100%);
+      border:1px solid rgba(120,170,255,.35);
+    }
+    .card-marca-oly::before{ background:radial-gradient(ellipse at 78% 12%, rgba(150,190,255,.30) 0%, transparent 62%); }
+    .card-marca-oly:hover{ border-color:rgba(120,170,255,.7); box-shadow:0 20px 56px rgba(0,52,216,.4); }
+
+    .card-marca-ua{
+      background:linear-gradient(150deg,#f23a3e 0%,#e52125 48%,#8b0e12 100%);
+      border:1px solid rgba(255,160,160,.38);
+    }
+    .card-marca-ua::before{ background:radial-gradient(ellipse at 78% 12%, rgba(255,180,180,.32) 0%, transparent 62%); }
+    .card-marca-ua:hover{ border-color:rgba(255,160,160,.7); box-shadow:0 20px 56px rgba(229,33,37,.4); }
+
+    .card-marca-logo{
+      height:88px;
+      display:flex; align-items:center; justify-content:center;
+      margin:6px 0 14px;
+    }
+    .card-marca-logo img{ height:60px; width:auto; max-width:88%; object-fit:contain; }
+    @media (min-width:640px){ .card-marca-logo{ height:96px; } .card-marca-logo img{ height:66px; } }
+
+    .card-marca-name{
+      font-size:17px; font-weight:900; color:#fff;
+      letter-spacing:-.02em; margin-bottom:8px;
+    }
+    .card-marca-cta{
+      margin-top:auto;
+      display:inline-flex; align-items:center; gap:7px;
+      font-size:13px; font-weight:700; color:#fff;
+    }
+    .card-marca:hover .card-marca-cta .arrow-icon{ transform:translateX(5px); }
+
     .card-admin{
       background:linear-gradient(135deg,#451a03 0%,#b45309 100%);
       border:1px solid rgba(245,158,11,.3);
@@ -337,7 +385,7 @@
         </div>
       </a>
 
-      <a href="https://marcosrepcms-max.github.io/Catalogo-Olympikus_2.0/" class="portal-card card-catalogo focus-ring">
+      <a id="btnCatalogo" href="https://marcosrepcms-max.github.io/Catalogo-Olympikus_2.0/" class="portal-card card-catalogo focus-ring">
         <div class="portal-card-tag tag-catalogo">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
           Catálogo Digital
@@ -423,6 +471,49 @@
     </div>
   </div>
 
+  <div id="marcaModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="marcaTitle" aria-hidden="true">
+    <div class="modal-sheet" role="document">
+      <div class="modal-handle"></div>
+
+      <div class="modal-banner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Catálogo Digital
+      </div>
+
+      <div class="modal-header">
+        <div>
+          <h2 id="marcaTitle" class="modal-title">Selecione a marca</h2>
+        </div>
+        <button id="marcaClose" class="modal-close" type="button" aria-label="Fechar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <p class="modal-subtitle">Escolha o catálogo que deseja acessar.</p>
+
+      <div class="modal-grid">
+
+        <a href="https://marcosrepcms-max.github.io/Catalogo-Olympikus_2.0/?marca=oly" class="card-marca card-marca-oly">
+          <div class="card-marca-logo"><img src="./logo-oly-branca.png" alt="Olympikus"></div>
+          <div class="card-marca-name">Olympikus</div>
+          <div class="card-marca-cta">
+            Acessar catálogo
+            <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </a>
+
+        <a href="https://marcosrepcms-max.github.io/Catalogo-Olympikus_2.0/?marca=ua" class="card-marca card-marca-ua">
+          <div class="card-marca-logo"><img src="./logo-ua-branca.png" alt="Under Armour"></div>
+          <div class="card-marca-name">Under Armour</div>
+          <div class="card-marca-cta">
+            Acessar catálogo
+            <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
   <script>
     (function(){
       const modal = document.getElementById('adminModal');
@@ -445,6 +536,35 @@
       }
 
       btnOpen.addEventListener('click', openModal);
+      btnClose.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+      document.addEventListener('keydown', (e)=>{
+        if(e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+      });
+    })();
+
+    (function(){
+      const modal = document.getElementById('marcaModal');
+      const btnOpen = document.getElementById('btnCatalogo');
+      const btnClose = document.getElementById('marcaClose');
+      if(!modal || !btnOpen || !btnClose) return;
+      let lastFocus = null;
+
+      function openModal(){
+        lastFocus = document.activeElement;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden','false');
+        document.body.classList.add('modal-open');
+        setTimeout(()=>btnClose.focus(), 50);
+      }
+      function closeModal(){
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden','true');
+        document.body.classList.remove('modal-open');
+        if(lastFocus) lastFocus.focus();
+      }
+
+      btnOpen.addEventListener('click', (e)=>{ e.preventDefault(); openModal(); });
       btnClose.addEventListener('click', closeModal);
       modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
       document.addEventListener('keydown', (e)=>{
