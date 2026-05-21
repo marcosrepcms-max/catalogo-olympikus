@@ -372,7 +372,7 @@
         </div>
       </a>
 
-      <a href="https://marcosrepcms-max.github.io/Catalogo-Olympikus/disponibilidades/" class="portal-card card-disp focus-ring">
+      <a id="btnDisponibilidades" href="https://marcosrepcms-max.github.io/Catalogo-Olympikus/disponibilidades/" class="portal-card card-disp focus-ring">
         <div class="portal-card-tag tag-disp">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
           Disponibilidades
@@ -492,7 +492,7 @@
 
       <div class="modal-grid">
 
-        <a href="https://marcosrepcms-max.github.io/Catalogo-Olympikus_2.0/?marca=oly" class="card-marca card-marca-oly">
+        <a id="marcaCardOly" href="#" class="card-marca card-marca-oly">
           <div class="card-marca-logo"><img src="./logo-oly-branca.png" alt="Olympikus"></div>
           <div class="card-marca-name">Olympikus</div>
           <div class="card-marca-cta">
@@ -501,7 +501,7 @@
           </div>
         </a>
 
-        <a href="https://marcosrepcms-max.github.io/Catalogo-Olympikus_2.0/?marca=ua" class="card-marca card-marca-ua">
+        <a id="marcaCardUa" href="#" class="card-marca card-marca-ua">
           <div class="card-marca-logo"><img src="./logo-ua-branca.png" alt="Under Armour"></div>
           <div class="card-marca-name">Under Armour</div>
           <div class="card-marca-cta">
@@ -545,12 +545,24 @@
 
     (function(){
       const modal = document.getElementById('marcaModal');
-      const btnOpen = document.getElementById('btnCatalogo');
+      const btnCatalogo = document.getElementById('btnCatalogo');
+      const btnDisp = document.getElementById('btnDisponibilidades');
       const btnClose = document.getElementById('marcaClose');
-      if(!modal || !btnOpen || !btnClose) return;
+      const cardOly = document.getElementById('marcaCardOly');
+      const cardUa = document.getElementById('marcaCardUa');
+      if(!modal || !btnClose || !cardOly || !cardUa) return;
       let lastFocus = null;
 
-      function openModal(){
+      // Destino de cada app multimarca
+      const APPS = {
+        catalogo: "https://marcosrepcms-max.github.io/Catalogo-Olympikus_2.0/",
+        disponibilidades: "https://marcosrepcms-max.github.io/Catalogo-Olympikus/disponibilidades/vitrine.html"
+      };
+
+      function openModal(app){
+        var base = APPS[app] || APPS.catalogo;
+        cardOly.href = base + "?marca=oly";
+        cardUa.href  = base + "?marca=ua";
         lastFocus = document.activeElement;
         modal.classList.add('open');
         modal.setAttribute('aria-hidden','false');
@@ -564,16 +576,18 @@
         if(lastFocus) lastFocus.focus();
       }
 
-      btnOpen.addEventListener('click', (e)=>{ e.preventDefault(); openModal(); });
+      if(btnCatalogo) btnCatalogo.addEventListener('click', (e)=>{ e.preventDefault(); openModal('catalogo'); });
+      if(btnDisp) btnDisp.addEventListener('click', (e)=>{ e.preventDefault(); openModal('disponibilidades'); });
       btnClose.addEventListener('click', closeModal);
       modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
       document.addEventListener('keydown', (e)=>{
         if(e.key === 'Escape' && modal.classList.contains('open')) closeModal();
       });
 
-      // Abre o modal automaticamente se vier do catálogo (?abrir=marca)
-      if(new URLSearchParams(window.location.search).get('abrir') === 'marca'){
-        openModal();
+      // Abre o modal automaticamente se vier de um app (?abrir=marca[&app=...])
+      var params = new URLSearchParams(window.location.search);
+      if(params.get('abrir') === 'marca'){
+        openModal(params.get('app') || 'catalogo');
       }
     })();
   </script>

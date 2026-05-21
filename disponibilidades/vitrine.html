@@ -366,7 +366,7 @@
 <header class="main-header px-4 py-3 sm:px-6">
   <div class="max-w-[1400px] mx-auto flex items-center justify-between gap-4 flex-wrap">
     <div class="flex items-center gap-3">
-      <a href="index.html" style="color:var(--muted);display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;text-decoration:none" class="hover:text-slate-900" title="Voltar e trocar marca">
+      <a href="https://marcosrepcms-max.github.io/Catalogo-Olympikus/?abrir=marca&app=disponibilidades" style="color:var(--muted);display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;text-decoration:none" class="hover:text-slate-900" title="Voltar e trocar marca">
         <i class="fa-solid fa-arrow-left text-xs"></i> Trocar marca
       </a>
       <div class="w-px h-5" style="background:var(--line)"></div>
@@ -531,11 +531,11 @@ const WORKER_URL  = 'https://repasse-worker-cms.marcosrep-cms.workers.dev';
 const IMG_BASE    = '../Catalogo/';
 
 // ── MARCA ATIVA (vem da URL ?marca=oly|ua) ───────────────────────────────────
-// Sem o parâmetro, redireciona para o splash de seleção.
+// Sem o parâmetro, volta ao portal com o modal de seleção de marca aberto.
 const _params = new URLSearchParams(location.search);
 const MARCA_ATIVA = String(_params.get('marca') || '').toLowerCase();
 if(MARCA_ATIVA !== 'oly' && MARCA_ATIVA !== 'ua'){
-  location.replace('index.html');
+  location.replace('https://marcosrepcms-max.github.io/Catalogo-Olympikus/?abrir=marca&app=disponibilidades');
 }
 
 // Identidade visual oficial de cada marca + logo embutido
