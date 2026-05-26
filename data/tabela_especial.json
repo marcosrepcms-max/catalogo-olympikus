@@ -1,0 +1,967 @@
+{
+  "OIWSA81921|BCPTMC": {
+    "codigoTabela": "E4550",
+    "custo": 20.87,
+    "mkp": "2.3"
+  },
+  "OIWSA81921|BRANCO": {
+    "codigoTabela": "E4550",
+    "custo": 20.87,
+    "mkp": "2.3"
+  },
+  "OIWSA81921|PRETO": {
+    "codigoTabela": "E4550",
+    "custo": 20.87,
+    "mkp": "2.3"
+  },
+  "OIWSA81923|BCPTMC": {
+    "codigoTabela": "E4550",
+    "custo": 17.39,
+    "mkp": "2.3"
+  },
+  "OIWSA81923|BRANCO": {
+    "codigoTabela": "E4550",
+    "custo": 17.39,
+    "mkp": "2.3"
+  },
+  "OIWA241929|BC_PTO": {
+    "codigoTabela": "E4550",
+    "custo": 10.87,
+    "mkp": "2.3"
+  },
+  "OIWA241929|BCO_MR": {
+    "codigoTabela": "E4550",
+    "custo": 10.87,
+    "mkp": "2.3"
+  },
+  "OIWA241929|CAMPRT": {
+    "codigoTabela": "E4550",
+    "custo": 10.87,
+    "mkp": "2.3"
+  },
+  "OIWA241929|PTO_BC": {
+    "codigoTabela": "E4550",
+    "custo": 10.87,
+    "mkp": "2.3"
+  },
+  "OIWA241929|VDMGPT": {
+    "codigoTabela": "E4550",
+    "custo": 10.87,
+    "mkp": "2.3"
+  },
+  "OIWSA21194|BRANCO": {
+    "codigoTabela": "E4550",
+    "custo": 9.56,
+    "mkp": "2.3"
+  },
+  "OIWSA21194|MESCLA": {
+    "codigoTabela": "E4550",
+    "custo": 9.56,
+    "mkp": "2.3"
+  },
+  "OIWSA21194|PRETO": {
+    "codigoTabela": "E4550",
+    "custo": 9.56,
+    "mkp": "2.3"
+  },
+  "OIWSA21196|BRANCO": {
+    "codigoTabela": "E4550",
+    "custo": 9.56,
+    "mkp": "2.3"
+  },
+  "OIWSA21196|MESCLA": {
+    "codigoTabela": "E4550",
+    "custo": 9.56,
+    "mkp": "2.3"
+  },
+  "OIWSA21196|PRETO": {
+    "codigoTabela": "E4550",
+    "custo": 9.56,
+    "mkp": "2.3"
+  },
+  "OBWA231915|BCOVRD": {
+    "codigoTabela": "E4550",
+    "custo": 34.78,
+    "mkp": "2.3"
+  },
+  "OBMA241918|BC_ORG": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBMA241918|PTPCOR": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWA231911|CASARE": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWA231911|ORVARE": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWA231911|PTLISU": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWA231911|PTOVAN": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWA231917|AZABCO": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWA231917|HOGRAL": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWA231917|OLYBCO": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWA231917|ROYAZL": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWA241917|PTPCOR": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWA251921|BCPTOR": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWA251921|OCEARE": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWA251921|ORVARE": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWA251921|PTPGOR": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWA251921|VANBCO": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWSA22195|PT_VRD": {
+    "codigoTabela": "E4550",
+    "custo": 21.73,
+    "mkp": "2.3"
+  },
+  "OBWSA22195|PTOPTC": {
+    "codigoTabela": "E4550",
+    "custo": 21.73,
+    "mkp": "2.3"
+  },
+  "54110438|AZL_CL": {
+    "codigoTabela": "E4602",
+    "custo": 39.995999999999995,
+    "mkp": "2.5"
+  },
+  "OIMSA81922|BCPTMC": {
+    "codigoTabela": "E4550",
+    "custo": 20.87,
+    "mkp": "2.3"
+  },
+  "OIMSA81922|BRANCO": {
+    "codigoTabela": "E4550",
+    "custo": 20.87,
+    "mkp": "2.3"
+  },
+  "OIMSA81922|PRETO": {
+    "codigoTabela": "E4550",
+    "custo": 20.87,
+    "mkp": "2.3"
+  },
+  "OIMSA81920|BCPTMC": {
+    "codigoTabela": "E4550",
+    "custo": 18.69,
+    "mkp": "2.3"
+  },
+  "OIMSA81920|BRANCO": {
+    "codigoTabela": "E4550",
+    "custo": 18.69,
+    "mkp": "2.3"
+  },
+  "OIMSA81920|PRETO": {
+    "codigoTabela": "E4550",
+    "custo": 18.69,
+    "mkp": "2.3"
+  },
+  "OIMSA26199|BCPTMC": {
+    "codigoTabela": "E4550",
+    "custo": 17.39,
+    "mkp": "2.3"
+  },
+  "OIMSA26199|BRANCO": {
+    "codigoTabela": "E4550",
+    "custo": 17.39,
+    "mkp": "2.3"
+  },
+  "OIMSA26199|PRETO": {
+    "codigoTabela": "E4550",
+    "custo": 17.39,
+    "mkp": "2.3"
+  },
+  "OIMSA81924|BCPTMC": {
+    "codigoTabela": "E4550",
+    "custo": 17.39,
+    "mkp": "2.3"
+  },
+  "OIMSA81924|BRANCO": {
+    "codigoTabela": "E4550",
+    "custo": 17.39,
+    "mkp": "2.3"
+  },
+  "OIMSA81924|PRETO": {
+    "codigoTabela": "E4550",
+    "custo": 17.39,
+    "mkp": "2.3"
+  },
+  "OIMA241930|BC_PTO": {
+    "codigoTabela": "E4550",
+    "custo": 10.87,
+    "mkp": "2.3"
+  },
+  "OIMA241930|CAMPRT": {
+    "codigoTabela": "E4550",
+    "custo": 10.87,
+    "mkp": "2.3"
+  },
+  "OIMA241930|PTO_BC": {
+    "codigoTabela": "E4550",
+    "custo": 10.87,
+    "mkp": "2.3"
+  },
+  "OIMA241930|VDMGPT": {
+    "codigoTabela": "E4550",
+    "custo": 10.87,
+    "mkp": "2.3"
+  },
+  "OIMSA21195|BRANCO": {
+    "codigoTabela": "E4550",
+    "custo": 9.56,
+    "mkp": "2.3"
+  },
+  "OIMSA21195|MESCLA": {
+    "codigoTabela": "E4550",
+    "custo": 9.56,
+    "mkp": "2.3"
+  },
+  "OIMSA21195|PRETO": {
+    "codigoTabela": "E4550",
+    "custo": 9.56,
+    "mkp": "2.3"
+  },
+  "OIMSA21191|MESCLA": {
+    "codigoTabela": "E4550",
+    "custo": 8.69,
+    "mkp": "2.3"
+  },
+  "OIMSA26198|BRANCO": {
+    "codigoTabela": "E4550",
+    "custo": 8.69,
+    "mkp": "2.3"
+  },
+  "OIMSA26198|MESCLA": {
+    "codigoTabela": "E4550",
+    "custo": 8.69,
+    "mkp": "2.3"
+  },
+  "OBMW251931|AREORA": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBMW251931|LMSART": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBMW251931|PTCPTO": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBMW251931|PTOVAN": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBMW251931|VANBCO": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWA231912|AMLVBC": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWA231912|CAPCCR": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWA231912|CASARE": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWA231912|ORVARE": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWA231912|PTLISU": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWA231912|PTOVAN": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWA231918|HOGRAL": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWA231918|LISUPT": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWA231918|PTBCPG": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBWA231918|ROYAZL": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OBMSR241922|AMBCLC": {
+    "codigoTabela": "E4550",
+    "custo": 28.26,
+    "mkp": "2.3"
+  },
+  "OBMSR241922|CBCLOL": {
+    "codigoTabela": "E4550",
+    "custo": 28.26,
+    "mkp": "2.3"
+  },
+  "OBMSR241922|GBCBOB": {
+    "codigoTabela": "E4550",
+    "custo": 28.26,
+    "mkp": "2.3"
+  },
+  "OBMSR241922|GSBCLC": {
+    "codigoTabela": "E4550",
+    "custo": 28.26,
+    "mkp": "2.3"
+  },
+  "OBWA231905|BAPAMP": {
+    "codigoTabela": "E4550",
+    "custo": 26.08,
+    "mkp": "2.3"
+  },
+  "OFMWT26610|BRANCO": {
+    "codigoTabela": "E4600",
+    "custo": 31,
+    "mkp": "2.0"
+  },
+  "OFMWT26610|NAVAL": {
+    "codigoTabela": "E4600",
+    "custo": 31,
+    "mkp": "2.0"
+  },
+  "OFMWT26610|PCGRAY": {
+    "codigoTabela": "E4600",
+    "custo": 31,
+    "mkp": "2.0"
+  },
+  "OFMWT26610|PRETO": {
+    "codigoTabela": "E4600",
+    "custo": 31,
+    "mkp": "2.0"
+  },
+  "OIWB241828|CASCAL": {
+    "codigoTabela": "E4687",
+    "custo": 108.69,
+    "mkp": "2.3"
+  },
+  "OIWB241828|NAVAL": {
+    "codigoTabela": "E4687",
+    "custo": 108.69,
+    "mkp": "2.3"
+  },
+  "OIWB241828|PRETO": {
+    "codigoTabela": "E4687",
+    "custo": 108.69,
+    "mkp": "2.3"
+  },
+  "OIWB221802|CASCAL": {
+    "codigoTabela": "E4686",
+    "custo": 64.28,
+    "mkp": "2.8"
+  },
+  "OIWB221802|MRH_PR": {
+    "codigoTabela": "E4686",
+    "custo": 64.28,
+    "mkp": "2.8"
+  },
+  "OIWB221802|NVLPRT": {
+    "codigoTabela": "E4686",
+    "custo": 64.28,
+    "mkp": "2.8"
+  },
+  "OIWB221802|PCGRAY": {
+    "codigoTabela": "E4686",
+    "custo": 64.28,
+    "mkp": "2.8"
+  },
+  "OIWB221802|PT_PRT": {
+    "codigoTabela": "E4686",
+    "custo": 64.28,
+    "mkp": "2.8"
+  },
+  "OIWB221802|REDWOD": {
+    "codigoTabela": "E4686",
+    "custo": 64.28,
+    "mkp": "2.8"
+  },
+  "OIWB211800|ARNITO": {
+    "codigoTabela": "E4687",
+    "custo": 73.91,
+    "mkp": "2.3"
+  },
+  "OIWB211800|CHACHY": {
+    "codigoTabela": "E4687",
+    "custo": 73.91,
+    "mkp": "2.3"
+  },
+  "OIWB211800|MRINHO": {
+    "codigoTabela": "E4687",
+    "custo": 73.91,
+    "mkp": "2.3"
+  },
+  "OIWB211800|NAVAL": {
+    "codigoTabela": "E4687",
+    "custo": 73.91,
+    "mkp": "2.3"
+  },
+  "OIWB211800|OLYMPN": {
+    "codigoTabela": "E4687",
+    "custo": 73.91,
+    "mkp": "2.3"
+  },
+  "OIWB211800|PCGRAY": {
+    "codigoTabela": "E4687",
+    "custo": 73.91,
+    "mkp": "2.3"
+  },
+  "OIWB211800|PRETO": {
+    "codigoTabela": "E4687",
+    "custo": 73.91,
+    "mkp": "2.3"
+  },
+  "OIWB211800|VAPGRE": {
+    "codigoTabela": "E4687",
+    "custo": 73.91,
+    "mkp": "2.3"
+  },
+  "OIWB241812|VPGRMH": {
+    "codigoTabela": "E4686",
+    "custo": 53.57,
+    "mkp": "2.8"
+  },
+  "OIWB251808|PCGRAY": {
+    "codigoTabela": "E4687",
+    "custo": 65.21,
+    "mkp": "2.3"
+  },
+  "OIWB221805|LIME": {
+    "codigoTabela": "E4687",
+    "custo": 60.87,
+    "mkp": "2.3"
+  },
+  "OIWB221805|MRINHO": {
+    "codigoTabela": "E4687",
+    "custo": 60.87,
+    "mkp": "2.3"
+  },
+  "OIWB241805|CASCAL": {
+    "codigoTabela": "E4686",
+    "custo": 50,
+    "mkp": "2.8"
+  },
+  "OIWB241805|DALIA": {
+    "codigoTabela": "E4686",
+    "custo": 50,
+    "mkp": "2.8"
+  },
+  "OIWB241805|LIMSUR": {
+    "codigoTabela": "E4686",
+    "custo": 50,
+    "mkp": "2.8"
+  },
+  "OIWB241805|LUNAR": {
+    "codigoTabela": "E4686",
+    "custo": 50,
+    "mkp": "2.8"
+  },
+  "OIWB241805|PRETO": {
+    "codigoTabela": "E4686",
+    "custo": 50,
+    "mkp": "2.8"
+  },
+  "OIWB241805|VESRED": {
+    "codigoTabela": "E4686",
+    "custo": 50,
+    "mkp": "2.8"
+  },
+  "OIWB241813|LIMSUR": {
+    "codigoTabela": "E4686",
+    "custo": 42.85,
+    "mkp": "2.8"
+  },
+  "OIWB241813|PTCPTO": {
+    "codigoTabela": "E4686",
+    "custo": 42.85,
+    "mkp": "2.8"
+  },
+  "OIWB251806|CASCAL": {
+    "codigoTabela": "E4687",
+    "custo": 43.47,
+    "mkp": "2.3"
+  },
+  "OIWB251806|NAVAL": {
+    "codigoTabela": "E4687",
+    "custo": 43.47,
+    "mkp": "2.3"
+  },
+  "OIWB251806|PRETO": {
+    "codigoTabela": "E4687",
+    "custo": 43.47,
+    "mkp": "2.3"
+  },
+  "OIMC251706|CASCAL": {
+    "codigoTabela": "E4687",
+    "custo": 39.13,
+    "mkp": "2.3"
+  },
+  "OIWB251805|LIMSUR": {
+    "codigoTabela": "E4686",
+    "custo": 28.57,
+    "mkp": "2.8"
+  },
+  "OIWB211815|PRETO": {
+    "codigoTabela": "E4687",
+    "custo": 100,
+    "mkp": "2.3"
+  },
+  "OIWB221811|LUNAR": {
+    "codigoTabela": "E4687",
+    "custo": 43.47,
+    "mkp": "2.3"
+  },
+  "OIWB221811|MRINHO": {
+    "codigoTabela": "E4687",
+    "custo": 43.47,
+    "mkp": "2.3"
+  },
+  "OIWB221811|PCGRAY": {
+    "codigoTabela": "E4687",
+    "custo": 43.47,
+    "mkp": "2.3"
+  },
+  "OIWB221811|PRETO": {
+    "codigoTabela": "E4687",
+    "custo": 43.47,
+    "mkp": "2.3"
+  },
+  "OIWB221811|REDWOD": {
+    "codigoTabela": "E4687",
+    "custo": 43.47,
+    "mkp": "2.3"
+  },
+  "OIWC231704|BLUSH": {
+    "codigoTabela": "E4687",
+    "custo": 39.13,
+    "mkp": "2.3"
+  },
+  "OIWC231704|BRANCO": {
+    "codigoTabela": "E4687",
+    "custo": 39.13,
+    "mkp": "2.3"
+  },
+  "OIWC231704|LMSBCO": {
+    "codigoTabela": "E4687",
+    "custo": 39.13,
+    "mkp": "2.3"
+  },
+  "OISB241825|MRINHO": {
+    "codigoTabela": "E4687",
+    "custo": 108.69,
+    "mkp": "2.3"
+  },
+  "OISB241825|NAVAL": {
+    "codigoTabela": "E4687",
+    "custo": 108.69,
+    "mkp": "2.3"
+  },
+  "OISB241825|PCGRAY": {
+    "codigoTabela": "E4687",
+    "custo": 108.69,
+    "mkp": "2.3"
+  },
+  "OISB241825|PRETO": {
+    "codigoTabela": "E4687",
+    "custo": 108.69,
+    "mkp": "2.3"
+  },
+  "OIWB221803|MRINHO": {
+    "codigoTabela": "E4687",
+    "custo": 86.95,
+    "mkp": "2.3"
+  },
+  "OIWB231809|CASCAL": {
+    "codigoTabela": "E4687",
+    "custo": 86.95,
+    "mkp": "2.3"
+  },
+  "OIWB231809|NAVAL": {
+    "codigoTabela": "E4687",
+    "custo": 86.95,
+    "mkp": "2.3"
+  },
+  "OIWB241803|CASCAL": {
+    "codigoTabela": "E4686",
+    "custo": 71.43,
+    "mkp": "2.8"
+  },
+  "OIWB241803|MRH_PR": {
+    "codigoTabela": "E4686",
+    "custo": 71.43,
+    "mkp": "2.8"
+  },
+  "OIWB241803|MRINHO": {
+    "codigoTabela": "E4686",
+    "custo": 71.43,
+    "mkp": "2.8"
+  },
+  "OIWB241803|NVLPRT": {
+    "codigoTabela": "E4686",
+    "custo": 71.43,
+    "mkp": "2.8"
+  },
+  "OIWB241803|PRETO": {
+    "codigoTabela": "E4686",
+    "custo": 71.43,
+    "mkp": "2.8"
+  },
+  "OIWB241803|PTCPTO": {
+    "codigoTabela": "E4686",
+    "custo": 71.43,
+    "mkp": "2.8"
+  },
+  "OIWB241822|PRETO": {
+    "codigoTabela": "E4687",
+    "custo": 82.6,
+    "mkp": "2.3"
+  },
+  "OIWB241822|REDWOD": {
+    "codigoTabela": "E4687",
+    "custo": 82.6,
+    "mkp": "2.3"
+  },
+  "OIWB231810|NVALNA": {
+    "codigoTabela": "E4687",
+    "custo": 78.26,
+    "mkp": "2.3"
+  },
+  "OIWB231810|PTO_BC": {
+    "codigoTabela": "E4687",
+    "custo": 78.26,
+    "mkp": "2.3"
+  },
+  "OIWB231810|REDWOD": {
+    "codigoTabela": "E4687",
+    "custo": 78.26,
+    "mkp": "2.3"
+  },
+  "OIWB221806|CASCAL": {
+    "codigoTabela": "E4686",
+    "custo": 53.57,
+    "mkp": "2.8"
+  },
+  "OIWB221806|LIMSUR": {
+    "codigoTabela": "E4686",
+    "custo": 53.57,
+    "mkp": "2.8"
+  },
+  "OIWB221806|MRHLIM": {
+    "codigoTabela": "E4686",
+    "custo": 53.57,
+    "mkp": "2.8"
+  },
+  "OIWB221806|MRHLMS": {
+    "codigoTabela": "E4686",
+    "custo": 53.57,
+    "mkp": "2.8"
+  },
+  "OIWB221806|NVLPRT": {
+    "codigoTabela": "E4686",
+    "custo": 53.57,
+    "mkp": "2.8"
+  },
+  "OIWB221806|PRETO": {
+    "codigoTabela": "E4686",
+    "custo": 53.57,
+    "mkp": "2.8"
+  },
+  "OIWB221806|PTCPTO": {
+    "codigoTabela": "E4686",
+    "custo": 53.57,
+    "mkp": "2.8"
+  },
+  "OIWB221806|REDWOD": {
+    "codigoTabela": "E4686",
+    "custo": 53.57,
+    "mkp": "2.8"
+  },
+  "OIWB261826|LUNAR": {
+    "codigoTabela": "E4687",
+    "custo": 65.21,
+    "mkp": "2.3"
+  },
+  "OIWB23823|BLUSH": {
+    "codigoTabela": "E4686",
+    "custo": 46.42,
+    "mkp": "2.8"
+  },
+  "OIWB23823|ELTPNK": {
+    "codigoTabela": "E4686",
+    "custo": 46.42,
+    "mkp": "2.8"
+  },
+  "OIWB23823|LNRORV": {
+    "codigoTabela": "E4686",
+    "custo": 46.42,
+    "mkp": "2.8"
+  },
+  "OIWB23823|MRHLMS": {
+    "codigoTabela": "E4686",
+    "custo": 46.42,
+    "mkp": "2.8"
+  },
+  "OIWB23823|NVLPRT": {
+    "codigoTabela": "E4686",
+    "custo": 46.42,
+    "mkp": "2.8"
+  },
+  "OIWB23823|ORVLHO": {
+    "codigoTabela": "E4686",
+    "custo": 46.42,
+    "mkp": "2.8"
+  },
+  "OIWB23823|PRETO": {
+    "codigoTabela": "E4686",
+    "custo": 46.42,
+    "mkp": "2.8"
+  },
+  "OIWB231817|CASCAL": {
+    "codigoTabela": "E4687",
+    "custo": 52.17,
+    "mkp": "2.3"
+  },
+  "OIWB231817|PRETO": {
+    "codigoTabela": "E4687",
+    "custo": 52.17,
+    "mkp": "2.3"
+  },
+  "OIWB251811|APRCSH": {
+    "codigoTabela": "E4686",
+    "custo": 42.85,
+    "mkp": "2.8"
+  },
+  "OIWB251811|CASCAL": {
+    "codigoTabela": "E4686",
+    "custo": 42.85,
+    "mkp": "2.8"
+  },
+  "OIWB251811|NAVAL": {
+    "codigoTabela": "E4686",
+    "custo": 42.85,
+    "mkp": "2.8"
+  },
+  "OIWB251811|ORVLHO": {
+    "codigoTabela": "E4686",
+    "custo": 42.85,
+    "mkp": "2.8"
+  },
+  "OIWB251811|PRETO": {
+    "codigoTabela": "E4686",
+    "custo": 42.85,
+    "mkp": "2.8"
+  },
+  "OIWB251811|PTCPTO": {
+    "codigoTabela": "E4686",
+    "custo": 42.85,
+    "mkp": "2.8"
+  },
+  "OIWB251811|REDWOD": {
+    "codigoTabela": "E4686",
+    "custo": 42.85,
+    "mkp": "2.8"
+  },
+  "OIWB221808|CEREJA": {
+    "codigoTabela": "E4686",
+    "custo": 39.28,
+    "mkp": "2.8"
+  },
+  "OIWB221808|CZA_MH": {
+    "codigoTabela": "E4686",
+    "custo": 39.28,
+    "mkp": "2.8"
+  },
+  "OIWB221808|PGBLRD": {
+    "codigoTabela": "E4686",
+    "custo": 39.28,
+    "mkp": "2.8"
+  },
+  "OIWB221808|PTCPTO": {
+    "codigoTabela": "E4686",
+    "custo": 39.28,
+    "mkp": "2.8"
+  },
+  "OIWB221808|VAPGRE": {
+    "codigoTabela": "E4686",
+    "custo": 39.28,
+    "mkp": "2.8"
+  },
+  "OIWC221703|BRANCO": {
+    "codigoTabela": "E4687",
+    "custo": 39.13,
+    "mkp": "2.3"
+  },
+  "OIWT201804|GELO": {
+    "codigoTabela": "E4687",
+    "custo": 39.13,
+    "mkp": "2.3"
+  },
+  "OIMSA22194|BCPTMC": {
+    "codigoTabela": "E4550",
+    "custo": 17.39,
+    "mkp": "2.3"
+  },
+  "OIMSA22194|BRANCO": {
+    "codigoTabela": "E4550",
+    "custo": 17.39,
+    "mkp": "2.3"
+  },
+  "OIMSA22194|MESCLA": {
+    "codigoTabela": "E4550",
+    "custo": 17.39,
+    "mkp": "2.3"
+  },
+  "OIMSA22194|PRETO": {
+    "codigoTabela": "E4550",
+    "custo": 17.39,
+    "mkp": "2.3"
+  },
+  "OIWSA22193|BCPTMC": {
+    "codigoTabela": "E4550",
+    "custo": 17.39,
+    "mkp": "2.3"
+  },
+  "OIWSA22193|BRANCO": {
+    "codigoTabela": "E4550",
+    "custo": 17.39,
+    "mkp": "2.3"
+  },
+  "OIWSA22193|MESCLA": {
+    "codigoTabela": "E4550",
+    "custo": 17.39,
+    "mkp": "2.3"
+  },
+  "OIWSA22193|PRETO": {
+    "codigoTabela": "E4550",
+    "custo": 17.39,
+    "mkp": "2.3"
+  },
+  "OIWSA21192|BRANCO": {
+    "codigoTabela": "E4550",
+    "custo": 8.69,
+    "mkp": "2.3"
+  },
+  "OIWSA21192|MESCLA": {
+    "codigoTabela": "E4550",
+    "custo": 8.69,
+    "mkp": "2.3"
+  },
+  "OIWSA21192|PRETO": {
+    "codigoTabela": "E4550",
+    "custo": 8.69,
+    "mkp": "2.3"
+  },
+  "OIWSA22191|BRANCO": {
+    "codigoTabela": "E4550",
+    "custo": 8.69,
+    "mkp": "2.3"
+  },
+  "OIWSA22191|MESCLA": {
+    "codigoTabela": "E4550",
+    "custo": 8.69,
+    "mkp": "2.3"
+  },
+  "OIWSA22191|PRETO": {
+    "codigoTabela": "E4550",
+    "custo": 8.69,
+    "mkp": "2.3"
+  },
+  "54110438|AREMRO": {
+    "codigoTabela": "E4602",
+    "custo": 39.995999999999995,
+    "mkp": "2.5"
+  },
+  "54110438|PRETO": {
+    "codigoTabela": "E4602",
+    "custo": 39.995999999999995,
+    "mkp": "2.5"
+  },
+  "54110438|PTOMAD": {
+    "codigoTabela": "E4602",
+    "custo": 39.995999999999995,
+    "mkp": "2.5"
+  },
+  "54110438|VDEMLT": {
+    "codigoTabela": "E4602",
+    "custo": 39.995999999999995,
+    "mkp": "2.5"
+  }
+}
