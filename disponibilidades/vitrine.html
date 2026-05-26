@@ -522,13 +522,12 @@
     <!-- Busca -->
     <div class="flex items-center gap-2 rounded-full px-4 py-2 flex-1 max-w-sm" style="background:var(--card);border:1px solid var(--line)">
       <i class="fa-solid fa-magnifying-glass text-sm" style="color:var(--muted)"></i>
-      <input id="searchInput" class="bg-transparent text-sm outline-none w-full" style="color:var(--text)" placeholder="Buscar produto, artigo ou cor..." oninput="applyFilters()" onkeydown="if(event.key==='Escape'){limparBusca();this.blur();}">
+      <input id="searchInput" class="bg-transparent text-sm outline-none w-full" style="color:var(--text)" placeholder="Buscar produto, artigo ou cor..." oninput="applyFilters()">
       <button id="btnClearSearch" class="hidden" onclick="limparBusca()" style="color:var(--muted);background:none;border:none;cursor:pointer;font-size:14px">✕</button>
     </div>
 
-    <!-- Contador + PDF -->
+    <!-- PDF -->
     <div class="flex items-center gap-2">
-      <div class="text-xs font-semibold" style="color:var(--muted)" id="countLabel">Carregando...</div>
       <button onclick="gerarPDF()" id="btnPDF" class="fab-pdf" style="position:static;transform:none;opacity:1;display:none">
         <i class="fa-solid fa-file-pdf text-sm"></i>
         PDF <span id="pdfCount" class="bg-slate-900 text-[var(--accent)] text-[10px] font-extrabold rounded-full px-1.5 py-0.5">0</span>
@@ -1148,28 +1147,26 @@ function limparBusca(){
 }
 
 function applyFilters(){
-  const q = ($('searchInput')?.value || '').toLowerCase().trim();
+  const inp = $('searchInput');
+  const q = (inp?.value || '').toLowerCase().trim();
   STATE.search = q;
-  if($('btnClearSearch')) $('btnClearSearch').classList.toggle('hidden', !q);
+  const btnClear = $('btnClearSearch');
+  if(btnClear) btnClear.classList.toggle('hidden', !q);
 
   let lista = STATE.itens
-    // Campanha (pill única)
     .filter(item => !STATE.filtroCampanha || (item.codigoTabela||'') === STATE.filtroCampanha)
-    // Gênero (multi — OR interno)
     .filter(item => STATE.filtroGenero.size === 0 || STATE.filtroGenero.has(String(item.genero||'').trim().toUpperCase()))
-    // Categoria (multi — OR interno)
     .filter(item => STATE.filtroCategoria.size === 0 || STATE.filtroCategoria.has(categoriaKey(item.categoria)))
-    // Busca livre
     .filter(item => {
       if(!q) return true;
       return `${item.descricao} ${item.artigo} ${item.cor} ${item.linha} ${item.empresa} ${item.codigoTabela||''}`.toLowerCase().includes(q);
     });
 
-  // Ordenação
   lista = ordenarLista(lista, STATE.ordenacao);
 
   STATE.filtrados = lista;
-  $('countLabel').textContent = `${lista.length} produto${lista.length!==1?'s':''}`;
+  const cl = $('countLabel');
+  if(cl) cl.textContent = `${lista.length} produto${lista.length!==1?'s':''}`;
   renderCards();
 }
 
@@ -2267,6 +2264,22 @@ $('confirmOkBtn').addEventListener('click', () => {
   fecharConfirm();
   if(typeof cb === 'function') cb();
 });
+
+// ESC limpa o campo de busca
+(function(){
+  const inp = $('searchInput');
+  if(!inp) return;
+  inp.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape'){
+      inp.value = '';
+      STATE.search = '';
+      const btn = $('btnClearSearch');
+      if(btn) btn.classList.add('hidden');
+      applyFilters();
+      inp.blur();
+    }
+  });
+})();
 
 // ── SWIPE: arrastar o drawer de filtros para a esquerda fecha ───────────────
 (function(){
