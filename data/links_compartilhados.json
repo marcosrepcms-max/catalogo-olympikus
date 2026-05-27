@@ -1,1 +1,59 @@
-{}
+{
+  "JE8VJZ": {
+    "vendedor": "3616654",
+    "vendedorNome": "MARCOS",
+    "cliente": "LOJAS CRUZEIRO",
+    "marca": "oly",
+    "produtos": [
+      {
+        "artigo": "43343458",
+        "cor": "MLT_PT",
+        "descricao": "VOLTA 2",
+        "categoria": "TENIS",
+        "linha": "VERSATIL",
+        "genero": "MASCULINO",
+        "empresa": "AZABA",
+        "pdv": 349.99,
+        "grade": {
+          "39": 5,
+          "41": 10,
+          "42": 11
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "43263432",
+        "cor": "ARENIT",
+        "descricao": "VOA 3",
+        "categoria": "TENIS",
+        "linha": "VERSATIL",
+        "genero": "MASCULINO",
+        "empresa": "AZABA",
+        "pdv": 379.99,
+        "grade": {
+          "34": 10,
+          "35": 2,
+          "36": 31,
+          "37": 39,
+          "38": 45,
+          "39": 34,
+          "40": 41,
+          "41": 36,
+          "42": 20,
+          "43": 22,
+          "44": 5
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      }
+    ],
+    "criadoEm": 1779908787575,
+    "expiraEm": 1780081587575,
+    "status": "aguardando",
+    "resposta": null,
+    "respondidoEm": null
+  }
+}
