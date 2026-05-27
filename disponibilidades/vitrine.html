@@ -1472,7 +1472,16 @@ async function loadImgForPdfCrop(dataUrl){
 
 // ── GERAR PDF ─────────────────────────────────────────────────────────────────
 async function gerarPDF(){
-  const selecionados = STATE.filtrados.filter(i => STATE.selecionados.has(prodKey(i)));
+  // Lê de STATE.itens (todos) — seleções valem em qualquer filtro,
+  // não só no que está ativo na tela.
+  const selecionados = STATE.itens
+    .filter(i => STATE.selecionados.has(prodKey(i)))
+    .sort((a,b) => {
+      // agrupa por categoria, depois por nome
+      const ca = categoriaKey(a.categoria), cb = categoriaKey(b.categoria);
+      if(ca !== cb) return ca.localeCompare(cb);
+      return String(a.descricao||'').localeCompare(String(b.descricao||''));
+    });
   if(!selecionados.length){ showToast('Selecione ao menos um produto.','info'); return; }
 
   const fab = $('fabPDF');
