@@ -17445,5 +17445,35 @@
       "M": 212,
       "G": 9
     }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "AZABA",
+    "artigo": "43409454",
+    "descricao": "EROS 2",
+    "cor": "ALGODA",
+    "linha": "CLASSICO",
+    "genero": "MASCULINO",
+    "categoria": "CASUAL",
+    "pdv": 229.99,
+    "totalGeral": 1324,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43409454_ALGODA",
+    "grade": {
+      "34": 32,
+      "35": 50,
+      "36": 52,
+      "37": 56,
+      "38": 84,
+      "39": 130,
+      "40": 58,
+      "41": 195,
+      "42": 297,
+      "43": 203,
+      "44": 167
+    }
   }
 ]
