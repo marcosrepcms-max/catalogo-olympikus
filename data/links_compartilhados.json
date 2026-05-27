@@ -1,1 +1,89 @@
-{}
+{
+  "X6AT68": {
+    "vendedor": "3616654",
+    "vendedorNome": "MARCOS",
+    "cliente": "MARIANA SPORTS",
+    "marca": "oly",
+    "produtos": [
+      {
+        "artigo": "43358451",
+        "cor": "ARECHB",
+        "descricao": "INVERSE 2",
+        "categoria": "TENIS",
+        "linha": "VERSATIL",
+        "genero": "MASCULINO",
+        "empresa": "AZABA",
+        "pdv": 279.99,
+        "grade": {
+          "37": 21,
+          "38": 84,
+          "39": 204,
+          "40": 286,
+          "41": 240,
+          "42": 277,
+          "43": 108,
+          "44": 72
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "43341472",
+        "cor": "RYLMHO",
+        "descricao": "CHALLENGER 6",
+        "categoria": "TENIS",
+        "linha": "VERSATIL",
+        "genero": "MASCULINO",
+        "empresa": "VULTS",
+        "pdv": 329.99,
+        "grade": {
+          "34": 18,
+          "35": 18,
+          "36": 9,
+          "37": 10,
+          "38": 13,
+          "39": 34,
+          "40": 89,
+          "41": 117,
+          "42": 87,
+          "43": 62,
+          "44": 41,
+          "47": 13,
+          "48": 16
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "43606391",
+        "cor": "MIST",
+        "descricao": "VERTICE",
+        "categoria": "TENIS",
+        "linha": "COTIDIANO",
+        "genero": "FEMININO",
+        "empresa": "AZABA",
+        "pdv": 199.99,
+        "grade": {
+          "34": 20,
+          "35": 31,
+          "36": 67,
+          "37": 148,
+          "38": 85,
+          "39": 68,
+          "40": 40,
+          "41": 6
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      }
+    ],
+    "criadoEm": 1779919745135,
+    "expiraEm": 1780092545135,
+    "status": "aguardando",
+    "resposta": null,
+    "respondidoEm": null
+  }
+}
