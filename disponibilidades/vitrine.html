@@ -937,6 +937,12 @@
     .mp-item.resp{ border-color:#bbf7d0; background:#f0fdf4; }
     .mp-item.resp:hover{ border-color:#86efac; }
     .mp-item.exp{ border-color:#fed7aa; background:#fff7ed; }
+    .mp-item.conc{ border-color:#a78bfa; background:#f5f3ff; }
+    .mp-item.conc:hover{ border-color:#8b5cf6; }
+    .mp-chk{
+      width:18px; height:18px; flex-shrink:0;
+      accent-color:var(--accent); cursor:pointer;
+    }
     .mp-item-info{ flex:1; min-width:0; }
     .mp-item-cli{ font-size:13px; font-weight:900; color:var(--text); }
     .mp-item-meta{ font-size:10px; color:var(--muted); margin-top:2px; }
@@ -946,6 +952,7 @@
     .mp-item.resp .mp-item-status{ color:#15803d; }
     .mp-item.aguardando .mp-item-status{ color:#475569; }
     .mp-item.exp .mp-item-status{ color:#c2410c; }
+    .mp-item.conc .mp-item-status{ color:#6d28d9; }
     .mp-item-actions{ display:flex; flex-direction:column; gap:5px; flex-shrink:0; }
     .mp-btn{
       border:none; border-radius:8px; padding:7px 12px;
@@ -957,6 +964,21 @@
     .mp-btn.reativar{ background:#fff; color:#c2410c; border:1px solid #fed7aa; }
     .mp-btn.reativar:hover{ background:#fff7ed; }
     .mp-btn.ghost{ background:#fff; color:var(--muted); border:1px solid var(--line); }
+    .mp-btn.perigo{ background:#dc2626; color:#fff; }
+    .mp-btn.perigo:hover{ background:#b91c1c; }
+    /* Barra de seleção em lote */
+    .mp-barra-sel{
+      display:flex; align-items:center; gap:9px; padding:10px 12px;
+      background:#0f172a; color:#fff;
+      border-radius:11px; margin-bottom:10px;
+      animation:mpBarraIn .2s ease-out;
+    }
+    .mp-barra-sel.hidden{ display:none; }
+    .mp-barra-sel .mp-sel-info{
+      flex:1; font-size:12px; font-weight:700;
+    }
+    .mp-barra-sel .mp-sel-info b{ font-weight:900; }
+    @keyframes mpBarraIn{ from{ opacity:0; transform:translateY(-6px); } to{ opacity:1; transform:translateY(0); } }
     .mp-foot{
       flex:0 0 auto; padding:10px 18px; border-top:1px solid var(--line);
       display:flex; justify-content:space-between; align-items:center;
@@ -2311,6 +2333,65 @@ function abrirWhatsAppLink(){
 const MP_VEND_LS    = 'vitrine_mp_vendedor_v1';        // código do vendedor logado
 const MP_VISTOS_LS  = (v) => `vitrine_mp_vistos_${v}`; // códigos de links já vistos (pra pulsar)
 const MP_NOVAS = { count: 0 };                          // contagem atual
+let   _mpSelecionados = new Set();                      // códigos marcados pelos checkboxes
+let   _mpLinksAtuais = [];                              // últimos links carregados (pra apagar/etc)
+
+// Toggle de checkbox
+function mpToggleSel(codigo, checado){
+  if(checado) _mpSelecionados.add(codigo);
+  else _mpSelecionados.delete(codigo);
+  mpAtualizarBarraSel();
+}
+
+// Renderiza a barra de ações em lote
+function mpAtualizarBarraSel(){
+  const bar = $('mpBarraSel');
+  if(!bar) return;
+  const n = _mpSelecionados.size;
+  if(n === 0){ bar.classList.add('hidden'); bar.innerHTML = ''; return; }
+  bar.classList.remove('hidden');
+  bar.innerHTML = `
+    <div class="mp-sel-info"><b>${n}</b> selecionado${n>1?'s':''}</div>
+    <button class="mp-btn ghost" onclick="mpDesselecionarTudo()">
+      Cancelar
+    </button>
+    <button class="mp-btn perigo" onclick="mpApagarSelecionados()">
+      <i class="fa-solid fa-trash"></i> Apagar
+    </button>
+  `;
+}
+
+function mpDesselecionarTudo(){
+  _mpSelecionados.clear();
+  document.querySelectorAll('.mp-chk').forEach(c => c.checked = false);
+  mpAtualizarBarraSel();
+}
+
+function mpApagarSelecionados(){
+  const cods = [..._mpSelecionados];
+  if(!cods.length) return;
+  abrirConfirm(
+    `Apagar ${cods.length} link${cods.length>1?'s':''}?`,
+    `Os links e suas respostas serão removidos permanentemente. Esta ação não pode ser desfeita.`,
+    async () => {
+      try{
+        const res = await fetch(WORKER_URL, {
+          method:'PATCH',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ action:'apagarLinks', codigos: cods })
+        });
+        const json = await res.json();
+        if(!json.success) throw new Error('falha');
+        showToast(`${json.apagados || cods.length} link(s) apagado(s)`, 'success');
+        _mpSelecionados.clear();
+        mpCarregarLista(_mpVendedorAtual());
+      }catch(e){
+        console.error(e);
+        showToast('Erro ao apagar.', 'error');
+      }
+    }
+  );
+}
 
 function _mpVendedorAtual(){
   return localStorage.getItem(MP_VEND_LS) || '';
@@ -2394,9 +2475,14 @@ function mpConfirmarVendedor(){
 }
 
 function mpTrocarVendedor(){
-  if(!confirm('Trocar de vendedor? Você precisará selecionar novamente.')) return;
-  localStorage.removeItem(MP_VEND_LS);
-  mpMostrarSeletor();
+  abrirConfirm(
+    'Trocar de vendedor?',
+    'Você precisará selecionar seu nome novamente para ver os pedidos.',
+    () => {
+      localStorage.removeItem(MP_VEND_LS);
+      mpMostrarSeletor();
+    }
+  );
 }
 
 async function mpCarregarLista(vendedor){
@@ -2434,32 +2520,47 @@ function mpRenderLista(links){
   const wrap = $('mpLista');
   if(!links.length){
     wrap.innerHTML = '<div class="empty"><i class="fa-regular fa-folder-open text-2xl"></i><div class="mt-3">Nenhum link gerado ainda.</div></div>';
+    _mpSelecionados.clear();
+    mpAtualizarBarraSel();
     return;
   }
-  // Ordena: respondidos primeiro, depois aguardando, depois expirados
-  const ordem = { 'respondido':0, 'aguardando':1, 'expirado':2 };
+  // Ordena: respondidos primeiro, depois aguardando, depois concluídos, depois expirados
+  const ordem = { 'respondido':0, 'aguardando':1, 'concluido':2, 'expirado':3 };
   const itens = links.slice().sort((a,b) => {
     const sa = a.expirado ? 'expirado' : a.status;
     const sb = b.expirado ? 'expirado' : b.status;
     return (ordem[sa]||9) - (ordem[sb]||9);
   });
 
-  wrap.innerHTML = itens.map(l => mpItemHtml(l)).join('');
+  _mpLinksAtuais = itens;
+  // Tira dos selecionados os que não existem mais
+  const setCods = new Set(itens.map(l => l.codigo));
+  for(const c of [..._mpSelecionados]) if(!setCods.has(c)) _mpSelecionados.delete(c);
+
+  wrap.innerHTML = `
+    <div id="mpBarraSel" class="mp-barra-sel hidden"></div>
+    ${itens.map(l => mpItemHtml(l)).join('')}
+  `;
+  mpAtualizarBarraSel();
 }
 
 function mpItemHtml(l){
-  const expirou = l.expirado;
+  const expirou = l.expirado && l.status !== 'concluido';
   const respondido = l.status === 'respondido' && !expirou;
-  const cls = respondido ? 'resp' : (expirou ? 'exp' : 'aguardando');
+  const concluido  = l.status === 'concluido';
+  const aguardando = !respondido && !concluido && !expirou;
+  const cls = concluido ? 'conc' : (respondido ? 'resp' : (expirou ? 'exp' : 'aguardando'));
+  const checado = _mpSelecionados.has(l.codigo);
 
   // Texto de status
   let statusHtml = '';
-  if(respondido){
+  if(concluido){
+    statusHtml = `<i class="fa-solid fa-circle-check"></i> Pedido gerado · ${l.qtdResposta || 0} item(ns)`;
+  } else if(respondido){
     statusHtml = `<i class="fa-solid fa-circle-check"></i> Respondido · ${l.qtdResposta || 0} item(ns)`;
   } else if(expirou){
     statusHtml = `<i class="fa-regular fa-clock"></i> Link expirado`;
   } else {
-    // calcula tempo restante
     const restMs = (l.expiraEm || 0) - Date.now();
     const restH = Math.max(0, Math.floor(restMs/3600000));
     statusHtml = `<i class="fa-regular fa-clock"></i> Aguardando · ${restH}h restantes`;
@@ -2467,7 +2568,11 @@ function mpItemHtml(l){
 
   // Botões de ação
   let actionsHtml = '';
-  if(respondido){
+  if(concluido){
+    actionsHtml = `<button class="mp-btn ghost" onclick="mpAbrirResposta('${safeHtml(l.codigo)}')">
+      <i class="fa-solid fa-eye"></i> Ver
+    </button>`;
+  } else if(respondido){
     actionsHtml = `<button class="mp-btn primary" onclick="mpAbrirResposta('${safeHtml(l.codigo)}')">
       <i class="fa-solid fa-arrow-right"></i> Abrir
     </button>`;
@@ -2481,10 +2586,10 @@ function mpItemHtml(l){
     </button>`;
   }
 
-  // Marca + qtd produtos
   const marcaIcone = (l.marca === 'oly') ? '🟦' : (l.marca === 'ua' ? '🟥' : '');
   return `
     <div class="mp-item ${cls}" data-codigo="${safeHtml(l.codigo)}">
+      <input type="checkbox" class="mp-chk" ${checado?'checked':''} onchange="mpToggleSel('${safeHtml(l.codigo)}',this.checked)">
       <div class="mp-item-info">
         <div class="mp-item-cli">${marcaIcone} ${safeHtml(l.cliente || '—')}</div>
         <div class="mp-item-meta">cód. ${safeHtml(l.codigo)} · ${l.qtdProdutos} produto(s) · ${mpFormatarData(l.criadoEm)}</div>
@@ -2553,10 +2658,11 @@ async function mpAbrirResposta(codigo){
     // Confirma com o vendedor
     const cli = link.cliente || '(cliente)';
     const qtd = link.resposta.itens.length;
-    if(!confirm(`Carregar a seleção de "${cli}" (${qtd} item(ns)) na sacola?\n\nA sacola atual da marca "${(link.marca||'').toUpperCase()}" será SUBSTITUÍDA.`)){
-      return;
-    }
-    mpCarregarRespostaNaSacola(link);
+    abrirConfirm(
+      `Carregar pedido de ${cli}?`,
+      `${qtd} item(ns) serão carregados na sacola. A sacola atual da marca ${(link.marca||'').toUpperCase()} será substituída.`,
+      () => mpCarregarRespostaNaSacola(link)
+    );
   }catch(e){
     console.error(e);
     showToast('Erro ao carregar a resposta.', 'error');
@@ -2567,16 +2673,21 @@ function mpCarregarRespostaNaSacola(link){
   const marca = link.marca || MARCA_ATIVA;
   // Se a marca não bate, redireciona pra vitrine certa
   if(marca !== MARCA_ATIVA){
-    if(!confirm(`Este pedido é da marca "${marca.toUpperCase()}". Trocar de marca agora?`)) return;
-    // Salva a resposta no localStorage da marca destino e redireciona
-    const tmpKey = `cart_v1_${marca}_load`;
-    sessionStorage.setItem(tmpKey, JSON.stringify({ cliente:link.cliente, itens:link.resposta.itens }));
-    // Redireciona pra vitrine da marca certa, com sinal pra carregar
-    location.href = `vitrine.html?marca=${marca}&loadResp=1`;
+    abrirConfirm(
+      `Pedido de marca diferente`,
+      `Este pedido é da marca ${marca.toUpperCase()}. Deseja trocar de marca agora?`,
+      () => {
+        const tmpKey = `cart_v1_${marca}_load`;
+        sessionStorage.setItem(tmpKey, JSON.stringify({ cliente:link.cliente, itens:link.resposta.itens, codigo:link.codigo || '' }));
+        location.href = `vitrine.html?marca=${marca}&loadResp=1`;
+      }
+    );
     return;
   }
   // Mesma marca: substitui a sacola atual
   STATE.cart.clear();
+  // Guarda o código do link carregado — assim que exportar XLSX, marca como concluído
+  STATE.linkOrigem = link.codigo || null;
   for(const it of link.resposta.itens){
     // Mapeia pro formato esperado pela sacola
     // Precisamos da disponibilidade do produto (da vitrine) — busca em STATE.itens
@@ -3019,11 +3130,15 @@ function loadCartFromStorage(){
   try{
     const raw = localStorage.getItem(CART_LS_KEY);
     if(!raw) return;
-    const arr = JSON.parse(raw);
-    if(Array.isArray(arr)){
-      for(const it of arr){
-        if(it && it.key) STATE.cart.set(it.key, it);
-      }
+    const obj = JSON.parse(raw);
+    // Compat: aceita formato antigo (array) e novo (objeto com itens + linkOrigem)
+    if(Array.isArray(obj)){
+      for(const it of obj){ if(it && it.key) STATE.cart.set(it.key, it); }
+      STATE.linkOrigem = null;
+    } else if(obj && typeof obj === 'object'){
+      const arr = Array.isArray(obj.itens) ? obj.itens : [];
+      for(const it of arr){ if(it && it.key) STATE.cart.set(it.key, it); }
+      STATE.linkOrigem = obj.linkOrigem || null;
     }
   }catch(e){ console.warn('Falha carregar sacola:', e); }
 }
@@ -3032,7 +3147,10 @@ function loadCartFromStorage(){
 function saveCartToStorage(){
   try{
     const arr = [...STATE.cart.values()];
-    localStorage.setItem(CART_LS_KEY, JSON.stringify(arr));
+    localStorage.setItem(CART_LS_KEY, JSON.stringify({
+      itens: arr,
+      linkOrigem: STATE.linkOrigem || null
+    }));
   }catch(e){ console.warn('Falha salvar sacola:', e); }
 }
 
@@ -3503,6 +3621,20 @@ function exportOrderXlsx(){
   if(warnings.length){
     console.warn('Avisos do pedido:', warnings);
     showToast(`⚠️ ${warnings.length} aviso(s) — ver console`, 'info');
+  }
+
+  // Se a sacola veio de um link de cliente, marca o link como CONCLUÍDO
+  if(STATE.linkOrigem){
+    const codigo = STATE.linkOrigem;
+    fetch(WORKER_URL, {
+      method:'PATCH',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ action:'marcarLinkConcluido', codigo })
+    }).then(r => r.json()).then(j => {
+      if(j && j.success) console.log('Link', codigo, 'marcado como concluído.');
+    }).catch(e => console.warn('Falha ao marcar concluído:', e));
+    STATE.linkOrigem = null;
+    saveCartToStorage();
   }
 }
 
@@ -4019,6 +4151,8 @@ if(MODO_CLIENTE){
   aplicarIdentidadeMarca();
   loadCartFromStorage();
   atualizarFabContador();
+  // Verifica respostas novas SEM esperar loadData (rápido na primeira abertura)
+  mpVerificarNovas();
   loadData().then(() => {
     // Após carregar a vitrine, verifica se há resposta pendente para carregar
     // (vinda de outra marca via redirecionamento)
@@ -4029,13 +4163,11 @@ if(MODO_CLIENTE){
         sessionStorage.removeItem(tmpKey);
         try{
           const obj = JSON.parse(raw);
-          const fake = { marca: MARCA_ATIVA, cliente: obj.cliente, resposta: { itens: obj.itens } };
+          const fake = { marca: MARCA_ATIVA, cliente: obj.cliente, codigo: obj.codigo || '', resposta: { itens: obj.itens } };
           mpCarregarRespostaNaSacola(fake);
         }catch(e){}
       }
     }
-    // Verifica respostas novas no Meus Pedidos
-    mpVerificarNovas();
   });
 }
 
