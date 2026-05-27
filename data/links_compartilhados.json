@@ -324,8 +324,57 @@
     ],
     "criadoEm": 1779906211113,
     "expiraEm": 1780079011113,
-    "status": "aguardando",
-    "resposta": null,
-    "respondidoEm": null
+    "status": "respondido",
+    "resposta": {
+      "itens": [
+        {
+          "artigo": "43303329",
+          "cor": "MRHO",
+          "descricao": "CLIC",
+          "pdv": 259.99,
+          "categoria": "TENIS",
+          "grade": {
+            "38": 1,
+            "39": 2,
+            "40": 3,
+            "41": 2,
+            "42": 2,
+            "43": 1,
+            "44": 1
+          }
+        },
+        {
+          "artigo": "43606391",
+          "cor": "MIST",
+          "descricao": "VERTICE",
+          "pdv": 199.99,
+          "categoria": "TENIS",
+          "grade": {
+            "34": 1,
+            "35": 2,
+            "36": 3,
+            "37": 3,
+            "38": 2,
+            "39": 1
+          }
+        },
+        {
+          "artigo": "43344456",
+          "cor": "ELDERB",
+          "descricao": "ADRENA 2",
+          "pdv": 329.99,
+          "categoria": "TENIS",
+          "grade": {
+            "34": 1,
+            "35": 2,
+            "36": 3,
+            "37": 3,
+            "38": 2,
+            "39": 1
+          }
+        }
+      ]
+    },
+    "respondidoEm": 1779906402761
   }
 }
