@@ -85,8 +85,19 @@
     ],
     "criadoEm": 1779902623297,
     "expiraEm": 1780075423297,
-    "status": "aguardando",
-    "resposta": null,
-    "respondidoEm": null
+    "status": "respondido",
+    "resposta": {
+      "itens": [
+        {
+          "artigo": "1384671",
+          "cor": "TADTAD",
+          "descricao": "MOCHILA UA HUSTLE 6.0 PRO",
+          "pdv": 599.99,
+          "categoria": "ACESSORIOS",
+          "grade": {}
+        }
+      ]
+    },
+    "respondidoEm": 1779902715714
   }
 }
