@@ -1,0 +1,47 @@
+{
+  "XZNEA4": {
+    "vendedor": "3616654",
+    "vendedorNome": "MARCOS",
+    "cliente": "Degraus",
+    "marca": "ua",
+    "produtos": [
+      {
+        "artigo": "1369223",
+        "cor": "EGBKOB",
+        "descricao": "MALA UA UNDENIABLE 5.0 DU",
+        "categoria": "ACESSORIOS",
+        "linha": "TRAIN",
+        "genero": "UNISSEX",
+        "empresa": "VDIST",
+        "pdv": 429.99,
+        "grade": {
+          "U": 513
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1384672",
+        "cor": "CASTST",
+        "descricao": "MOCHILA UA HUST 6.0 BACKP",
+        "categoria": "ACESSORIOS",
+        "linha": "TREINO",
+        "genero": "UNISSEX",
+        "empresa": "VDIST",
+        "pdv": 399.99,
+        "grade": {
+          "U": 76
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      }
+    ],
+    "criadoEm": 1779901482241,
+    "expiraEm": 1780074282241,
+    "status": "aguardando",
+    "resposta": null,
+    "respondidoEm": null
+  }
+}
