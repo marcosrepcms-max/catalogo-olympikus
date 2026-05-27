@@ -43,5 +43,50 @@
     "status": "aguardando",
     "resposta": null,
     "respondidoEm": null
+  },
+  "2S5EK8": {
+    "vendedor": "3616654",
+    "vendedorNome": "MARCOS",
+    "cliente": "DEGRAUS",
+    "marca": "ua",
+    "produtos": [
+      {
+        "artigo": "1384671",
+        "cor": "TADTAD",
+        "descricao": "MOCHILA UA HUSTLE 6.0 PRO",
+        "categoria": "ACESSORIOS",
+        "linha": "TREINO",
+        "genero": "UNISSEX",
+        "empresa": "VDIST",
+        "pdv": 599.99,
+        "grade": {
+          "U": 173
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1384672",
+        "cor": "CASTST",
+        "descricao": "MOCHILA UA HUST 6.0 BACKP",
+        "categoria": "ACESSORIOS",
+        "linha": "TREINO",
+        "genero": "UNISSEX",
+        "empresa": "VDIST",
+        "pdv": 399.99,
+        "grade": {
+          "U": 76
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      }
+    ],
+    "criadoEm": 1779902623297,
+    "expiraEm": 1780075423297,
+    "status": "aguardando",
+    "resposta": null,
+    "respondidoEm": null
   }
 }
