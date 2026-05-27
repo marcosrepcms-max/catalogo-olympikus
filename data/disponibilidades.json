@@ -18580,5 +18580,26 @@
       "40": 1,
       "41": 3
     }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "1367900",
+    "descricao": "MEIA UA CORE COTTLOCU 3PK",
+    "cor": "BKBKST",
+    "linha": "ACADEMIA",
+    "genero": "MASCULINO",
+    "categoria": "MEIA",
+    "pdv": 49.99,
+    "totalGeral": 221,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "1367900_BKBKST",
+    "grade": {
+      "M": 212,
+      "G": 9
+    }
   }
 ]
