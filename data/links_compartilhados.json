@@ -155,8 +155,24 @@
     ],
     "criadoEm": 1779904210440,
     "expiraEm": 1780077010440,
-    "status": "aguardando",
-    "resposta": null,
-    "respondidoEm": null
+    "status": "respondido",
+    "resposta": {
+      "itens": [
+        {
+          "artigo": "43409454",
+          "cor": "ARENIT",
+          "descricao": "EROS 2",
+          "pdv": 229.99,
+          "categoria": "TENIS",
+          "grade": {
+            "38": 1,
+            "39": 2,
+            "40": 2,
+            "41": 1
+          }
+        }
+      ]
+    },
+    "respondidoEm": 1779904350468
   }
 }
