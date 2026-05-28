@@ -1,1 +1,89 @@
-{}
+{
+  "ZJXTYA": {
+    "vendedor": "3616654",
+    "vendedorNome": "MARCOS",
+    "cliente": "RAFAEL",
+    "marca": "oly",
+    "produtos": [
+      {
+        "artigo": "OIWSR25161",
+        "cor": "PRETO",
+        "descricao": "TOP KNIT MINIMAL F",
+        "categoria": "VESTUARIO",
+        "linha": "COMPLEMENTO",
+        "genero": "FEMININO",
+        "empresa": "VULSP",
+        "pdv": 139.99,
+        "grade": {
+          "P": 336,
+          "M": 662,
+          "G": 691,
+          "GG": 354
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "43752263",
+        "cor": "CHB_PT",
+        "descricao": "VERSA",
+        "categoria": "TENIS",
+        "linha": "CLASSICO",
+        "genero": "MASCULINO",
+        "empresa": "AZABA",
+        "pdv": 279.99,
+        "grade": {
+          "34": 10,
+          "35": 2,
+          "36": 11,
+          "37": 22,
+          "38": 65,
+          "39": 93,
+          "40": 114,
+          "41": 108,
+          "42": 97,
+          "43": 93,
+          "44": 39,
+          "47": 1
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "43341472",
+        "cor": "RYLMHO",
+        "descricao": "CHALLENGER 6",
+        "categoria": "TENIS",
+        "linha": "VERSATIL",
+        "genero": "MASCULINO",
+        "empresa": "VULTS",
+        "pdv": 329.99,
+        "grade": {
+          "34": 18,
+          "35": 18,
+          "36": 9,
+          "37": 10,
+          "38": 13,
+          "39": 34,
+          "40": 89,
+          "41": 117,
+          "42": 87,
+          "43": 62,
+          "44": 41,
+          "47": 13,
+          "48": 16
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      }
+    ],
+    "criadoEm": 1780002120302,
+    "expiraEm": 1780174920302,
+    "status": "aguardando",
+    "resposta": null,
+    "respondidoEm": null
+  }
+}
