@@ -82,9 +82,20 @@
     ],
     "criadoEm": 1779919745135,
     "expiraEm": 1780092545135,
-    "status": "aguardando",
-    "resposta": null,
-    "respondidoEm": null
+    "status": "respondido",
+    "resposta": {
+      "itens": [
+        {
+          "artigo": "43606391",
+          "cor": "MIST",
+          "descricao": "VERTICE",
+          "pdv": 199.99,
+          "categoria": "TENIS",
+          "grade": {}
+        }
+      ]
+    },
+    "respondidoEm": 1779927170777
   },
   "VYK9FU": {
     "vendedor": "3616654",
