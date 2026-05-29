@@ -3144,16 +3144,10 @@ function getItemTotalQty(it){
   return Object.values(it.gradePedido).reduce((s,v) => s + (Number(v)||0), 0);
 }
 
-// Calcula qtd de caixas (calçados/chinelos: caixas de 6 OU 12 pares)
-// Acessórios e demais: sem caixa (retorna vazio).
+// Calcula qtd de caixas (calçados em múltiplos de 6, demais = total)
 function calcQtdCaixas(it, total){
-  if(!isFootwearCategory(it.categoria)) return '';  // vestuário/acessório: sem caixa
-  if(!total || total <= 0) return 0;
-  // Algoritmo: prefere caixas de 12; o que sobrar arredonda pra caixas de 6
-  const c12 = Math.floor(total / 12);
-  const resto = total - (c12 * 12);
-  const c6 = resto > 0 ? Math.ceil(resto / 6) : 0;
-  return c12 + c6;
+  if(isFootwearCategory(it.categoria)) return Math.ceil(total / 6);
+  return total > 0 ? 1 : 0;
 }
 
 // Parse de condição de pagamento → prazo médio + número de parcelas
