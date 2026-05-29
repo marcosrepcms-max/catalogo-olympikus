@@ -7,13 +7,13 @@
   <title>Portal do Vendedor · CMS Representações</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{min-height:100%}
     body{
-      font-family:Inter,system-ui,sans-serif;
+      font-family:'Plus Jakarta Sans',Inter,system-ui,sans-serif;
       background:#0f172a;
       color:#f1f5f9;
       min-height:100vh;
@@ -37,40 +37,40 @@
       display:flex;
       flex-direction:column;
     }
-    @media (min-width:640px){ .portal-card{ border-radius:28px; padding:32px 28px; min-height:240px; } }
-    @media (min-width:1024px){ .portal-card{ border-radius:32px; padding:36px 32px; min-height:260px; } }
+    @media (min-width:640px){ .portal-card{ border-radius:24px; padding:24px 22px; min-height:200px; } }
+    @media (min-width:1024px){ .portal-card{ border-radius:26px; padding:26px 24px; min-height:210px; } }
     .portal-card:active{ transform:scale(.98); }
     @media (hover:hover){ .portal-card:hover{ transform:translateY(-4px); } }
 
-    .card-repasse{ background:linear-gradient(135deg,#1e2a6e 0%,#2836d4 100%); border:1px solid rgba(99,102,241,.3); }
-    .card-repasse::before{ content:'';position:absolute;inset:0; background:radial-gradient(ellipse at top right, rgba(99,102,241,.25) 0%, transparent 70%); pointer-events:none; }
-    @media (hover:hover){ .card-repasse:hover{ border-color:rgba(99,102,241,.7); box-shadow:0 24px 64px rgba(40,54,212,.4); } }
+    .card-repasse{ background:linear-gradient(150deg,#3b6ef0 0%,#1d4cd8 48%,#0a2280 100%); border:1px solid rgba(120,170,255,.32); }
+    .card-repasse::before{ content:'';position:absolute;inset:0; background:radial-gradient(ellipse at 82% 14%, rgba(150,190,255,.30) 0%, transparent 62%); pointer-events:none; }
+    @media (hover:hover){ .card-repasse:hover{ border-color:rgba(120,170,255,.7); box-shadow:0 24px 64px rgba(40,54,212,.45); } }
     .tag-repasse{ background:rgba(99,102,241,.2); color:#a5b4fc; border:1px solid rgba(99,102,241,.3); }
 
-    .card-disp{ background:linear-gradient(135deg,#1a2a00 0%,#2d5a00 100%); border:1px solid rgba(163,230,53,.2); }
-    .card-disp::before{ content:'';position:absolute;inset:0; background:radial-gradient(ellipse at top right, rgba(204,255,0,.15) 0%, transparent 70%); pointer-events:none; }
-    @media (hover:hover){ .card-disp:hover{ border-color:rgba(204,255,0,.5); box-shadow:0 24px 64px rgba(204,255,0,.2); } }
+    .card-disp{ background:linear-gradient(150deg,#5cb83c 0%,#2f9410 48%,#103d04 100%); border:1px solid rgba(160,220,140,.32); }
+    .card-disp::before{ content:'';position:absolute;inset:0; background:radial-gradient(ellipse at 82% 14%, rgba(190,240,170,.26) 0%, transparent 62%); pointer-events:none; }
+    @media (hover:hover){ .card-disp:hover{ border-color:rgba(160,220,140,.7); box-shadow:0 24px 64px rgba(47,148,16,.45); } }
     .tag-disp{ background:rgba(204,255,0,.1); color:#ccff00; border:1px solid rgba(204,255,0,.2); }
 
-    .card-catalogo{ background:linear-gradient(135deg,#2e1065 0%,#7c3aed 100%); border:1px solid rgba(168,85,247,.3); }
-    .card-catalogo::before{ content:'';position:absolute;inset:0; background:radial-gradient(ellipse at top right, rgba(168,85,247,.25) 0%, transparent 70%); pointer-events:none; }
-    @media (hover:hover){ .card-catalogo:hover{ border-color:rgba(168,85,247,.7); box-shadow:0 24px 64px rgba(124,58,237,.4); } }
+    .card-catalogo{ background:linear-gradient(150deg,#9c66ff 0%,#7c3aed 48%,#3b0c8e 100%); border:1px solid rgba(190,160,255,.35); }
+    .card-catalogo::before{ content:'';position:absolute;inset:0; background:radial-gradient(ellipse at 82% 14%, rgba(210,180,255,.28) 0%, transparent 62%); pointer-events:none; }
+    @media (hover:hover){ .card-catalogo:hover{ border-color:rgba(190,160,255,.7); box-shadow:0 24px 64px rgba(124,58,237,.45); } }
 
-    .card-gerador{ background:linear-gradient(135deg,#7c2d12 0%,#ea580c 100%); border:1px solid rgba(251,146,60,.3); }
-    .card-gerador::before{ content:'';position:absolute;inset:0; background:radial-gradient(ellipse at top right, rgba(251,146,60,.25) 0%, transparent 70%); pointer-events:none; }
-    @media (hover:hover){ .card-gerador:hover{ border-color:rgba(251,146,60,.7); box-shadow:0 24px 64px rgba(234,88,12,.4); } }
+    .card-gerador{ background:linear-gradient(150deg,#ff9a4a 0%,#e2701a 48%,#7a2a02 100%); border:1px solid rgba(255,180,120,.32); }
+    .card-gerador::before{ content:'';position:absolute;inset:0; background:radial-gradient(ellipse at 82% 14%, rgba(255,200,150,.26) 0%, transparent 62%); pointer-events:none; }
+    @media (hover:hover){ .card-gerador:hover{ border-color:rgba(255,180,120,.7); box-shadow:0 24px 64px rgba(226,112,26,.45); } }
     .tag-gerador{ background:rgba(251,146,60,.18); color:#fdba74; border:1px solid rgba(251,146,60,.3); }
     .tag-catalogo{ background:rgba(168,85,247,.2); color:#d8b4fe; border:1px solid rgba(168,85,247,.3); }
 
     .portal-card-tag{ display:inline-flex;align-items:center;gap:6px; border-radius:999px; padding:5px 11px; font-size:11px;font-weight:700; margin-bottom:14px; width:fit-content; }
     @media (min-width:640px){ .portal-card-tag{ font-size:12px; padding:6px 12px; margin-bottom:18px; } }
-    .portal-card-title{ font-size:20px;font-weight:900;color:#fff;line-height:1.15; margin-bottom:8px;letter-spacing:-.02em; }
-    @media (min-width:640px){ .portal-card-title{ font-size:22px; } }
-    @media (min-width:1024px){ .portal-card-title{ font-size:24px; } }
-    .portal-card-desc{ font-size:13px;line-height:1.5; margin-bottom:20px; flex:1; }
-    @media (min-width:640px){ .portal-card-desc{ font-size:14px; margin-bottom:24px; } }
-    .portal-card-cta{ display:inline-flex;align-items:center;gap:8px; font-size:13px;font-weight:700; margin-top:auto; }
-    @media (min-width:640px){ .portal-card-cta{ font-size:14px; } }
+    .portal-card-title{ font-size:18px;font-weight:800;color:#fff;line-height:1.15; margin-bottom:6px;letter-spacing:-.02em; }
+    @media (min-width:640px){ .portal-card-title{ font-size:20px; } }
+    @media (min-width:1024px){ .portal-card-title{ font-size:22px; } }
+    .portal-card-desc{ font-size:12.5px;line-height:1.5; margin-bottom:14px; flex:1; }
+    @media (min-width:640px){ .portal-card-desc{ font-size:13px; margin-bottom:16px; } }
+    .portal-card-cta{ display:inline-flex;align-items:center;gap:7px; font-size:13px;font-weight:700; margin-top:auto; }
+    @media (min-width:640px){ .portal-card-cta{ font-size:13.5px; } }
     .arrow-icon{ transition:transform .2s; }
     a:hover .arrow-icon, a:focus-visible .arrow-icon{ transform:translateX(6px); }
 
@@ -90,9 +90,9 @@
     @media (min-width:640px){ .header-left{ gap:14px;flex-wrap:nowrap; } }
     .logo-group{ display:flex;align-items:center;gap:8px; }
     @media (min-width:640px){ .logo-group{ gap:12px; } }
-    .logo-img{ height:24px;width:auto;object-fit:contain; }
-    @media (min-width:640px){ .logo-img{ height:28px; } }
-    @media (min-width:1024px){ .logo-img{ height:32px; } }
+    .logo-img{ height:38px;width:auto;object-fit:contain; }
+    @media (min-width:640px){ .logo-img{ height:48px; } }
+    @media (min-width:1024px){ .logo-img{ height:56px; } }
     .logo-divider-h{ height:18px;width:1px;background:#334155; }
     @media (min-width:640px){ .logo-divider-h{ height:20px; } }
     .portal-label{ font-size:12px;font-weight:600;color:#94a3b8; white-space:nowrap; }
@@ -357,7 +357,7 @@
       <p class="text-slate-400 text-sm sm:text-base">Escolha a área que deseja acessar</p>
     </div>
 
-    <div class="w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-5 fade-up-3">
+    <div class="w-full max-w-4xl grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 lg:gap-5 fade-up-3">
 
       <a href="https://marcosrepcms-max.github.io/Catalogo-Olympikus/repasses/" class="portal-card card-repasse focus-ring">
         <div class="portal-card-tag tag-repasse">
