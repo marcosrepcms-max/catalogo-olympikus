@@ -18327,37 +18327,6 @@
   {
     "marca": "OLY",
     "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "43752263",
-    "descricao": "VERSA",
-    "cor": "CHB_PT",
-    "linha": "CLASSICO",
-    "genero": "TENIS",
-    "categoria": "CASUAL",
-    "pdv": 279.99,
-    "totalGeral": 948,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43752263_CHB_PT",
-    "grade": {
-      "34": 11,
-      "35": 4,
-      "36": 13,
-      "37": 31,
-      "38": 101,
-      "39": 146,
-      "40": 156,
-      "41": 156,
-      "42": 148,
-      "43": 113,
-      "44": 68,
-      "47": 1
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
     "empresa": "VULTS",
     "artigo": "43298343",
     "descricao": "DYNAMIC / 343",
@@ -18670,33 +18639,6 @@
       "42": 605,
       "43": 343,
       "44": 185
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43303329",
-    "descricao": "CLIC",
-    "cor": "MRHO",
-    "linha": "COTIDIANO",
-    "genero": "TENIS",
-    "categoria": "CASUAL",
-    "pdv": 259.99,
-    "totalGeral": 2450,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43303329_MRHO",
-    "grade": {
-      "37": 48,
-      "38": 137,
-      "39": 275,
-      "40": 456,
-      "41": 516,
-      "42": 528,
-      "43": 308,
-      "44": 182
     }
   },
   {
