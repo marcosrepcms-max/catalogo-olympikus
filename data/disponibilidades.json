@@ -19226,5 +19226,32 @@
       "43": 6,
       "44": 3
     }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "AZABA",
+    "artigo": "43701259",
+    "descricao": "BEATS",
+    "cor": "MRH_PT",
+    "linha": "COTIDIANO",
+    "genero": "MASCULINO",
+    "categoria": "TENIS",
+    "pdv": 299.99,
+    "totalGeral": 425,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43701259_MRH_PT",
+    "grade": {
+      "38": 30,
+      "39": 47,
+      "40": 86,
+      "41": 103,
+      "42": 75,
+      "43": 49,
+      "44": 32,
+      "45": 3
+    }
   }
 ]
