@@ -1,1 +1,105 @@
-{}
+{
+  "5FAQQQ": {
+    "vendedor": "3616654",
+    "vendedorNome": "MARCOS",
+    "cliente": "DEGRAUS",
+    "marca": "oly",
+    "produtos": [
+      {
+        "artigo": "OIWB241828",
+        "cor": "PRETO",
+        "descricao": "MOCHILA SPORTSTYLE",
+        "categoria": "ACESSORIOS",
+        "linha": "CONFORTO",
+        "genero": "UNISSEX",
+        "empresa": "VDIST",
+        "pdv": 249.99,
+        "grade": {
+          "U": 34
+        },
+        "codigoTabela": "E4687",
+        "mkp": "2.3",
+        "custo": 108.69
+      },
+      {
+        "artigo": "OIWB251806",
+        "cor": "PRETO",
+        "descricao": "SHOULDER BAG MINI",
+        "categoria": "ACESSORIOS",
+        "linha": "CONFORTO",
+        "genero": "UNISSEX",
+        "empresa": "VDIST",
+        "pdv": 99.99,
+        "grade": {
+          "U": 48
+        },
+        "codigoTabela": "E4687",
+        "mkp": "2.3",
+        "custo": 43.47
+      },
+      {
+        "artigo": "OIWSA81921",
+        "cor": "BCPTMC",
+        "descricao": "TRIPK.MEIA MEDIA 33/38",
+        "categoria": "MEIA",
+        "linha": "CONFORTO",
+        "genero": "FEMININO",
+        "empresa": "VULSP",
+        "pdv": 47.99,
+        "grade": {
+          "33/38": 12843
+        },
+        "codigoTabela": "E4550",
+        "mkp": "2.3",
+        "custo": 20.87
+      },
+      {
+        "artigo": "OIWSR25161",
+        "cor": "PRETO",
+        "descricao": "TOP KNIT MINIMAL F",
+        "categoria": "VESTUARIO",
+        "linha": "COMPLEMENTO",
+        "genero": "FEMININO",
+        "empresa": "VULSP",
+        "pdv": 139.99,
+        "grade": {
+          "P": 336,
+          "M": 662,
+          "G": 691,
+          "GG": 354
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "43353470",
+        "cor": "RSANAL",
+        "descricao": "ELEVADO",
+        "categoria": "TENIS",
+        "linha": "COTIDIANO",
+        "genero": "FEMININO",
+        "empresa": "AZABA",
+        "pdv": 279.99,
+        "grade": {
+          "34": 77,
+          "35": 172,
+          "36": 273,
+          "37": 273,
+          "38": 210,
+          "39": 122,
+          "40": 39,
+          "41": 15
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      }
+    ],
+    "criadoEm": 1780068128581,
+    "expiraEm": 1780240928581,
+    "status": "aguardando",
+    "resposta": null,
+    "respondidoEm": null
+  }
+}
