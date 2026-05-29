@@ -172,5 +172,60 @@
     "status": "aguardando",
     "resposta": null,
     "respondidoEm": null
+  },
+  "QZNAJG": {
+    "vendedor": "3616654",
+    "vendedorNome": "MARCOS",
+    "cliente": "Didi",
+    "marca": "oly",
+    "produtos": [
+      {
+        "artigo": "54107376",
+        "cor": "BCOPTO",
+        "descricao": "MELBOURNE 2",
+        "categoria": "CHINELOS",
+        "linha": "CHINELO GASPEA",
+        "genero": "UNISSEX",
+        "empresa": "AZABA",
+        "pdv": 149.99,
+        "grade": {
+          "33/34": 36,
+          "35/36": 48,
+          "37/38": 444,
+          "39/40": 720,
+          "41/42": 592,
+          "43/44": 361
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "54107376",
+        "cor": "MLTVDM",
+        "descricao": "MELBOURNE 2",
+        "categoria": "CHINELOS",
+        "linha": "CHINELO GASPEA",
+        "genero": "UNISSEX",
+        "empresa": "AZABA",
+        "pdv": 149.99,
+        "grade": {
+          "33/34": 47,
+          "35/36": 140,
+          "37/38": 269,
+          "39/40": 318,
+          "41/42": 239,
+          "43/44": 28
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      }
+    ],
+    "criadoEm": 1780079448742,
+    "expiraEm": 1780252248742,
+    "status": "aguardando",
+    "resposta": null,
+    "respondidoEm": null
   }
 }
