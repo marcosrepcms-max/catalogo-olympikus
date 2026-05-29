@@ -831,7 +831,9 @@ async function enviar(){
       body: JSON.stringify({
         action:'salvarResposta',
         codigo: CODIGO,
-        itens
+        data: {
+          resposta: { itens }
+        }
       })
     });
     const json = await res.json();
