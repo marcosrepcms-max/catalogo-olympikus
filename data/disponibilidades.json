@@ -17690,33 +17690,6 @@
     "marca": "OLY",
     "prevFat": "JUNHO",
     "empresa": "AZABA",
-    "artigo": "43321122",
-    "descricao": "DELTA/122",
-    "cor": "LUNORG",
-    "linha": "VERSATIL",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 199.99,
-    "totalGeral": 8106,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43321122_LUNORG",
-    "grade": {
-      "34": 440,
-      "35": 2289,
-      "36": 1543,
-      "37": 859,
-      "38": 317,
-      "39": 1448,
-      "40": 838,
-      "41": 372
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
     "artigo": "43389459",
     "descricao": "FLUTUA 2",
     "cor": "CHBHIB",
@@ -18259,37 +18232,6 @@
       "42": 132,
       "43": 26,
       "44": 77
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "43321122",
-    "descricao": "DELTA/122",
-    "cor": "PT_VMH",
-    "linha": "VERSATIL",
-    "genero": "MASCULINO",
-    "categoria": "TENIS",
-    "pdv": 199.99,
-    "totalGeral": 17241,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43321122_PT_VMH",
-    "grade": {
-      "33": 48,
-      "34": 246,
-      "35": 317,
-      "36": 332,
-      "37": 1350,
-      "38": 1895,
-      "39": 2746,
-      "40": 2951,
-      "41": 2892,
-      "42": 2085,
-      "43": 1441,
-      "44": 938
     }
   },
   {
@@ -19008,33 +18950,6 @@
       "39": 4,
       "40": 9,
       "41": 9
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "43321122",
-    "descricao": "DELTA/122",
-    "cor": "PTO_CH",
-    "linha": "VERSATIL",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 199.99,
-    "totalGeral": 7088,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43321122_PTO_CH",
-    "grade": {
-      "33": 47,
-      "34": 226,
-      "35": 102,
-      "36": 1967,
-      "37": 1935,
-      "39": 141,
-      "40": 814,
-      "41": 1856
     }
   },
   {
