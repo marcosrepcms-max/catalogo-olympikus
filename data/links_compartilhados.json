@@ -1,1 +1,1342 @@
-{}
+{
+  "VA8JP8": {
+    "vendedor": "3616654",
+    "vendedorNome": "MARCOS",
+    "cliente": "DEGRAUS",
+    "marca": "ua",
+    "produtos": [
+      {
+        "artigo": "1326413",
+        "cor": "BKPGRY",
+        "descricao": "CAMISETA UA TECH 2.0 SS",
+        "categoria": "VESTUARIO",
+        "linha": "TREINO",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 149.99,
+        "grade": {
+          "2GG": 222,
+          "P": 2918,
+          "M": 7604,
+          "G": 7557,
+          "GG": 4050
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1326799",
+        "cor": "BLK_BK",
+        "descricao": "SPORTSTYLE LEFT CHEST SS",
+        "categoria": "VESTUARIO",
+        "linha": "SPORTSTYLE",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 129.99,
+        "grade": {
+          "P": 3052,
+          "M": 7300,
+          "G": 6745,
+          "GG": 3695
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1326799",
+        "cor": "CASTBK",
+        "descricao": "SPORTSTYLE LEFT CHEST SS",
+        "categoria": "VESTUARIO",
+        "linha": "SPORTSTYLE",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 129.99,
+        "grade": {
+          "P": 2236,
+          "M": 7275,
+          "G": 5315,
+          "GG": 2599
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1386793",
+        "cor": "BKPGRY",
+        "descricao": "CAM MC UA M BOX.SPORTS UP",
+        "categoria": "VESTUARIO",
+        "linha": "SPORTSTYLE",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 129.99,
+        "grade": {
+          "2GG": 263,
+          "P": 1970,
+          "M": 4153,
+          "G": 4388,
+          "GG": 2764
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1361518",
+        "cor": "BK_WHT",
+        "descricao": "CAMISETA UA ARMOUR HG",
+        "categoria": "VESTUARIO",
+        "linha": "TREINO",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 199.99,
+        "grade": {
+          "P": 1159,
+          "M": 2384,
+          "G": 2348,
+          "GG": 1242
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1357727",
+        "cor": "CASTBK",
+        "descricao": "CAMISETA UA ABC CAMO SS",
+        "categoria": "VESTUARIO",
+        "linha": "SPORTSTYLE",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 169.99,
+        "grade": {
+          "P": 876,
+          "M": 1751,
+          "G": 1746,
+          "GG": 990
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1382797",
+        "cor": "BLK_WH",
+        "descricao": "BLUSA 1/2 ZIP UA TECH TEX",
+        "categoria": "VESTUARIO",
+        "linha": "TREINO",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 249.99,
+        "grade": {
+          "2GG": 39,
+          "P": 681,
+          "M": 1593,
+          "G": 1717,
+          "GG": 932
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1326413",
+        "cor": "CBHBLK",
+        "descricao": "CAMISETA UA TECH 2.0 SS",
+        "categoria": "VESTUARIO",
+        "linha": "TREINO",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 149.99,
+        "grade": {
+          "2GG": 264,
+          "P": 350,
+          "M": 1406,
+          "G": 1545,
+          "GG": 1036
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1326799",
+        "cor": "RD_BCK",
+        "descricao": "SPORTSTYLE LEFT CHEST SS",
+        "categoria": "VESTUARIO",
+        "linha": "SPORTSTYLE",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 129.99,
+        "grade": {
+          "2GG": 1,
+          "P": 496,
+          "M": 1207,
+          "G": 1183,
+          "GG": 683
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1326413",
+        "cor": "RKGRBK",
+        "descricao": "CAMISETA UA TECH 2.0 SS",
+        "categoria": "VESTUARIO",
+        "linha": "TREINO",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 149.99,
+        "grade": {
+          "2GG": 133,
+          "P": 238,
+          "M": 977,
+          "G": 1074,
+          "GG": 504
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1361602",
+        "cor": "BK_WHT",
+        "descricao": "SHORT UA HG POCKET LONG",
+        "categoria": "VESTUARIO",
+        "linha": "ACADEMIA",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 179.99,
+        "grade": {
+          "2GG": 1,
+          "P": 455,
+          "M": 1001,
+          "G": 936,
+          "GG": 476
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1326799",
+        "cor": "WHBLAC",
+        "descricao": "SPORTSTYLE LEFT CHEST SS",
+        "categoria": "VESTUARIO",
+        "linha": "SPORTSTYLE",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 129.99,
+        "grade": {
+          "2GG": 3,
+          "P": 396,
+          "M": 918,
+          "G": 943,
+          "GG": 562
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1382796",
+        "cor": "BLKWHT",
+        "descricao": "CAM MC UA TECH TEXTURED S",
+        "categoria": "VESTUARIO",
+        "linha": "TRAIN",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 199.99,
+        "grade": {
+          "2GG": 23,
+          "P": 418,
+          "M": 970,
+          "G": 810,
+          "GG": 448
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1361518",
+        "cor": "CH_BLK",
+        "descricao": "CAMISETA UA ARMOUR HG",
+        "categoria": "VESTUARIO",
+        "linha": "TREINO",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 199.99,
+        "grade": {
+          "P": 431,
+          "M": 833,
+          "G": 839,
+          "GG": 462
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1379507",
+        "cor": "BLKWHT",
+        "descricao": "BERMUDA UA M'S CH. KNIT S",
+        "categoria": "VESTUARIO",
+        "linha": "FUTEBOL",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 229.99,
+        "grade": {
+          "P": 165,
+          "M": 792,
+          "G": 1038,
+          "GG": 384
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1361602",
+        "cor": "CH_BLK",
+        "descricao": "SHORT UA HG POCKET LONG",
+        "categoria": "VESTUARIO",
+        "linha": "ACADEMIA",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 179.99,
+        "grade": {
+          "P": 321,
+          "M": 767,
+          "G": 812,
+          "GG": 422
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1326413",
+        "cor": "ORBLBK",
+        "descricao": "CAMISETA UA TECH 2.0 SS",
+        "categoria": "VESTUARIO",
+        "linha": "TREINO",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 149.99,
+        "grade": {
+          "2GG": 55,
+          "P": 231,
+          "M": 709,
+          "G": 770,
+          "GG": 444
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1373718",
+        "cor": "BKPGRY",
+        "descricao": "BERMUDA UA VANISH WOVEN 6",
+        "categoria": "VESTUARIO",
+        "linha": "TRAIN",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 199.99,
+        "grade": {
+          "P": 579,
+          "M": 741,
+          "G": 576,
+          "GG": 228
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1386969",
+        "cor": "CASTWH",
+        "descricao": "SHORTS UA TECH 7IN",
+        "categoria": "VESTUARIO",
+        "linha": "TRAIN",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 149.99,
+        "grade": {
+          "P": 439,
+          "M": 729,
+          "G": 594,
+          "GG": 336
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1376791",
+        "cor": "BLKBLK",
+        "descricao": "CAMISETA MC UA TECH VENT",
+        "categoria": "VESTUARIO",
+        "linha": "TREINO",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 199.99,
+        "grade": {
+          "P": 310,
+          "M": 680,
+          "G": 719,
+          "GG": 379
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1386793",
+        "cor": "MGLHBL",
+        "descricao": "CAM MC UA M BOX.SPORTS UP",
+        "categoria": "VESTUARIO",
+        "linha": "SPORTSTYLE",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 129.99,
+        "grade": {
+          "2GG": 12,
+          "P": 217,
+          "M": 653,
+          "G": 658,
+          "GG": 389
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1386793",
+        "cor": "ACYRED",
+        "descricao": "CAM MC UA M BOX.SPORTS UP",
+        "categoria": "VESTUARIO",
+        "linha": "SPORTSTYLE",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 129.99,
+        "grade": {
+          "2GG": 4,
+          "P": 188,
+          "M": 612,
+          "G": 647,
+          "GG": 394
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1357727",
+        "cor": "WHT_MG",
+        "descricao": "CAMISETA UA ABC CAMO SS",
+        "categoria": "VESTUARIO",
+        "linha": "SPORTSTYLE",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 169.99,
+        "grade": {
+          "P": 276,
+          "M": 542,
+          "G": 559,
+          "GG": 332
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1373718",
+        "cor": "CASORB",
+        "descricao": "BERMUDA UA VANISH WOVEN 6",
+        "categoria": "VESTUARIO",
+        "linha": "TRAIN",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 199.99,
+        "grade": {
+          "P": 201,
+          "M": 601,
+          "G": 581,
+          "GG": 252
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1326799",
+        "cor": "SERJBL",
+        "descricao": "SPORTSTYLE LEFT CHEST SS",
+        "categoria": "VESTUARIO",
+        "linha": "SPORTSTYLE",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 129.99,
+        "grade": {
+          "P": 273,
+          "M": 569,
+          "G": 557,
+          "GG": 228
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1306443",
+        "cor": "BKPGRY",
+        "descricao": "SHORTS UA TECH GRAPHIC",
+        "categoria": "VESTUARIO",
+        "linha": "TREINO",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 199.99,
+        "grade": {
+          "2GG": 188,
+          "P": 8,
+          "M": 542,
+          "G": 626,
+          "GG": 62
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1382797",
+        "cor": "RKGRBK",
+        "descricao": "BLUSA 1/2 ZIP UA TECH TEX",
+        "categoria": "VESTUARIO",
+        "linha": "TREINO",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 249.99,
+        "grade": {
+          "P": 212,
+          "M": 447,
+          "G": 464,
+          "GG": 286
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1361518",
+        "cor": "WHTBLK",
+        "descricao": "CAMISETA UA ARMOUR HG",
+        "categoria": "VESTUARIO",
+        "linha": "TREINO",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 199.99,
+        "grade": {
+          "P": 229,
+          "M": 486,
+          "G": 463,
+          "GG": 229
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1383355",
+        "cor": "BLKWHT",
+        "descricao": "SHORTS UA ESSENTIAL MESH",
+        "categoria": "VESTUARIO",
+        "linha": "SPORTSTYLE",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 199.99,
+        "grade": {
+          "P": 138,
+          "M": 401,
+          "G": 517,
+          "GG": 313
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1382796",
+        "cor": "TITCGR",
+        "descricao": "CAM MC UA TECH TEXTURED S",
+        "categoria": "VESTUARIO",
+        "linha": "TRAIN",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 199.99,
+        "grade": {
+          "P": 190,
+          "M": 491,
+          "G": 387,
+          "GG": 192
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1386793",
+        "cor": "EXGRFK",
+        "descricao": "CAM MC UA M BOX.SPORTS UP",
+        "categoria": "VESTUARIO",
+        "linha": "SPORTSTYLE",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 129.99,
+        "grade": {
+          "P": 178,
+          "M": 374,
+          "G": 366,
+          "GG": 155
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1382427",
+        "cor": "CIKHOW",
+        "descricao": "SHORTS UA RIVAL TERRY 6IN",
+        "categoria": "VESTUARIO",
+        "linha": "SPORTSTYLE",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 179.99,
+        "grade": {
+          "P": 172,
+          "M": 335,
+          "G": 332,
+          "GG": 152
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1326413",
+        "cor": "JABLWH",
+        "descricao": "CAMISETA UA TECH 2.0 SS",
+        "categoria": "VESTUARIO",
+        "linha": "TREINO",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 149.99,
+        "grade": {
+          "P": 50,
+          "M": 290,
+          "G": 338,
+          "GG": 301
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1382797",
+        "cor": "JABLWH",
+        "descricao": "BLUSA 1/2 ZIP UA TECH TEX",
+        "categoria": "VESTUARIO",
+        "linha": "TREINO",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 249.99,
+        "grade": {
+          "P": 152,
+          "M": 308,
+          "G": 314,
+          "GG": 162
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1373718",
+        "cor": "TITULT",
+        "descricao": "BERMUDA UA VANISH WOVEN 6",
+        "categoria": "VESTUARIO",
+        "linha": "TRAIN",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 199.99,
+        "grade": {
+          "P": 129,
+          "M": 331,
+          "G": 341,
+          "GG": 108
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1382801",
+        "cor": "BLKGRY",
+        "descricao": "CAM MC VANISH SEAMLESS SS",
+        "categoria": "VESTUARIO",
+        "linha": "TRAIN",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 299.99,
+        "grade": {
+          "2GG": 7,
+          "P": 97,
+          "M": 265,
+          "G": 285,
+          "GG": 178
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1386969",
+        "cor": "BLATWH",
+        "descricao": "SHORTS UA TECH 7IN",
+        "categoria": "VESTUARIO",
+        "linha": "TRAIN",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 149.99,
+        "grade": {
+          "P": 60,
+          "M": 308,
+          "G": 336,
+          "GG": 121
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1326413",
+        "cor": "BLATWH",
+        "descricao": "CAMISETA UA TECH 2.0 SS",
+        "categoria": "VESTUARIO",
+        "linha": "TREINO",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 149.99,
+        "grade": {
+          "P": 26,
+          "M": 177,
+          "G": 255,
+          "GG": 206
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1382796",
+        "cor": "RKGRBK",
+        "descricao": "CAM MC UA TECH TEXTURED S",
+        "categoria": "VESTUARIO",
+        "linha": "TRAIN",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 199.99,
+        "grade": {
+          "P": 73,
+          "M": 191,
+          "G": 198,
+          "GG": 137
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1386793",
+        "cor": "WHT_PG",
+        "descricao": "CAM MC UA M BOX.SPORTS UP",
+        "categoria": "VESTUARIO",
+        "linha": "SPORTSTYLE",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 129.99,
+        "grade": {
+          "2GG": 3,
+          "P": 33,
+          "M": 163,
+          "G": 193,
+          "GG": 130
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1382620",
+        "cor": "RRBKRF",
+        "descricao": "SHORTS UA LAUNCH 7'' SHOR",
+        "categoria": "VESTUARIO",
+        "linha": "RUN",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 219.99,
+        "grade": {
+          "P": 65,
+          "M": 156,
+          "G": 185,
+          "GG": 94
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1382831",
+        "cor": "WHTBLK",
+        "descricao": "CAMISETA MC UA HW ARMOUR",
+        "categoria": "VESTUARIO",
+        "linha": "SPORTSTYLE",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 239.99,
+        "grade": {
+          "P": 52,
+          "M": 141,
+          "G": 157,
+          "GG": 97
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1382620",
+        "cor": "BKBKRF",
+        "descricao": "SHORTS UA LAUNCH 7'' SHOR",
+        "categoria": "VESTUARIO",
+        "linha": "RUN",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 219.99,
+        "grade": {
+          "P": 14,
+          "M": 103,
+          "G": 207,
+          "GG": 113
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1361518",
+        "cor": "MNNVWH",
+        "descricao": "CAMISETA UA ARMOUR HG",
+        "categoria": "VESTUARIO",
+        "linha": "TREINO",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 199.99,
+        "grade": {
+          "P": 52,
+          "M": 125,
+          "G": 134,
+          "GG": 98
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1382797",
+        "cor": "BLATWH",
+        "descricao": "BLUSA 1/2 ZIP UA TECH TEX",
+        "categoria": "VESTUARIO",
+        "linha": "TREINO",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 249.99,
+        "grade": {
+          "P": 55,
+          "M": 119,
+          "G": 123,
+          "GG": 63
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1382796",
+        "cor": "VEREBK",
+        "descricao": "CAM MC UA TECH TEXTURED S",
+        "categoria": "VESTUARIO",
+        "linha": "TRAIN",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 199.99,
+        "grade": {
+          "2GG": 12,
+          "P": 33,
+          "M": 110,
+          "G": 115,
+          "GG": 72
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1386969",
+        "cor": "MOGRBK",
+        "descricao": "SHORTS UA TECH 7IN",
+        "categoria": "VESTUARIO",
+        "linha": "TRAIN",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 149.99,
+        "grade": {
+          "P": 6,
+          "M": 139,
+          "G": 107,
+          "GG": 27
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1326799",
+        "cor": "ROYSBL",
+        "descricao": "SPORTSTYLE LEFT CHEST SS",
+        "categoria": "VESTUARIO",
+        "linha": "SPORTSTYLE",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 129.99,
+        "grade": {
+          "M": 104,
+          "G": 103,
+          "GG": 72
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1326413",
+        "cor": "WHABBK",
+        "descricao": "CAMISETA UA TECH 2.0 SS",
+        "categoria": "VESTUARIO",
+        "linha": "TREINO",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 149.99,
+        "grade": {
+          "2GG": 73,
+          "M": 69,
+          "G": 75,
+          "GG": 56
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1382911",
+        "cor": "STLHWT",
+        "descricao": "CAMISETA MC UA SPORTSTYLE",
+        "categoria": "VESTUARIO",
+        "linha": "SPORTSTYLE",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 149.99,
+        "grade": {
+          "2GG": 37,
+          "P": 4,
+          "M": 59,
+          "G": 106,
+          "GG": 64
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1361524",
+        "cor": "CASTWH",
+        "descricao": "CAMISETA UA ARMOUR HG LS",
+        "categoria": "VESTUARIO",
+        "linha": "TRAIN",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 249.99,
+        "grade": {
+          "P": 17,
+          "M": 56,
+          "G": 87,
+          "GG": 67
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1379937",
+        "cor": "BKPGRY",
+        "descricao": "UA TECH VENT SS BRZ",
+        "categoria": "VESTUARIO",
+        "linha": "TRAIN",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 199.99,
+        "grade": {
+          "P": 13,
+          "M": 87,
+          "G": 57,
+          "GG": 52
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1366072",
+        "cor": "BLKWHT",
+        "descricao": "CAMISA ML UA CG ARMOUR CO",
+        "categoria": "VESTUARIO",
+        "linha": "ACADEMIA",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 299.99,
+        "grade": {
+          "2GG": 28,
+          "P": 1,
+          "M": 21,
+          "G": 94,
+          "GG": 28
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1383355",
+        "cor": "CAGRWH",
+        "descricao": "SHORTS UA ESSENTIAL MESH",
+        "categoria": "VESTUARIO",
+        "linha": "SPORTSTYLE",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 199.99,
+        "grade": {
+          "P": 32,
+          "M": 58,
+          "G": 58,
+          "GG": 22
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "6005123",
+        "cor": "ANTHWH",
+        "descricao": "BLUSA UA M 96 TERRACE GOA",
+        "categoria": "VESTUARIO",
+        "linha": "FUTEBOL",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 399.99,
+        "grade": {
+          "P": 24,
+          "M": 56,
+          "G": 56,
+          "GG": 28
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1361588",
+        "cor": "BK_WHT",
+        "descricao": "COMPRESSAO UA HG ARMOUR 3",
+        "categoria": "VESTUARIO",
+        "linha": "ACADEMIA",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 249.99,
+        "grade": {
+          "P": 36,
+          "M": 86,
+          "G": 40
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1361586",
+        "cor": "CH_BLK",
+        "descricao": "LEGGING UA HG ARMOUR",
+        "categoria": "VESTUARIO",
+        "linha": "TREINO",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 279.99,
+        "grade": {
+          "P": 12,
+          "M": 43,
+          "G": 50,
+          "GG": 31
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1290140",
+        "cor": "BLHAPG",
+        "descricao": "CAMISETA UA TECH POLO",
+        "categoria": "VESTUARIO",
+        "linha": "GOLF",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 249.99,
+        "grade": {
+          "2GG": 10,
+          "P": 16,
+          "M": 32,
+          "G": 38,
+          "GG": 17
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1361673",
+        "cor": "EBLUWH",
+        "descricao": "CAMISETA UA CAMO BOXED",
+        "categoria": "VESTUARIO",
+        "linha": "SPORTSTYLE",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 149.99,
+        "grade": {
+          "P": 4,
+          "M": 37,
+          "G": 62,
+          "GG": 8
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1382911",
+        "cor": "JABLSE",
+        "descricao": "CAMISETA MC UA SPORTSTYLE",
+        "categoria": "VESTUARIO",
+        "linha": "SPORTSTYLE",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 149.99,
+        "grade": {
+          "2GG": 8,
+          "P": 8,
+          "M": 26,
+          "G": 36,
+          "GG": 26
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1373997",
+        "cor": "BOBLWH",
+        "descricao": "T-SHIRT UA M LOGO EMB HEA",
+        "categoria": "VESTUARIO",
+        "linha": "SPORTSTYLE",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 229.99,
+        "grade": {
+          "2GG": 11,
+          "P": 4,
+          "M": 30,
+          "G": 40,
+          "GG": 16
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1379288",
+        "cor": "BKBKRF",
+        "descricao": "BLUSA 1/2 ZIP UA LAUNCH P",
+        "categoria": "VESTUARIO",
+        "linha": "RUN",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 399.99,
+        "grade": {
+          "P": 16,
+          "M": 27,
+          "G": 37,
+          "GG": 15
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1382617",
+        "cor": "LLLLRF",
+        "descricao": "SHORTS UA LAUNCH 5'' SHOR",
+        "categoria": "VESTUARIO",
+        "linha": "RUN",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 199.99,
+        "grade": {
+          "P": 12,
+          "M": 21,
+          "G": 38,
+          "GG": 15
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1361586",
+        "cor": "BK_WHT",
+        "descricao": "LEGGING UA HG ARMOUR",
+        "categoria": "VESTUARIO",
+        "linha": "TREINO",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 279.99,
+        "grade": {
+          "P": 24,
+          "M": 57,
+          "G": 89,
+          "GG": 58
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1359378",
+        "cor": "BLKGPT",
+        "descricao": "CAMISETA UA TECH 2.0 SS",
+        "categoria": "VESTUARIO",
+        "linha": "CORRIDA",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 149.99,
+        "grade": {
+          "3G": 7,
+          "M": 152,
+          "G": 67
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1382911",
+        "cor": "BLK_WH",
+        "descricao": "CAMISETA MC UA SPORTSTYLE",
+        "categoria": "VESTUARIO",
+        "linha": "SPORTSTYLE",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 149.99,
+        "grade": {
+          "2GG": 25,
+          "M": 40,
+          "G": 104,
+          "GG": 57
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1361522",
+        "cor": "BK_WHT",
+        "descricao": "REG UA HG COMPRESS O SL",
+        "categoria": "VESTUARIO",
+        "linha": "TRAIN",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 179.99,
+        "grade": {
+          "G": 173,
+          "GG": 25
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1382797",
+        "cor": "WBLUWH",
+        "descricao": "BLUSA 1/2 ZIP UA TECH TEX",
+        "categoria": "VESTUARIO",
+        "linha": "TREINO",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 249.99,
+        "grade": {
+          "2GG": 6,
+          "P": 9,
+          "M": 65,
+          "G": 78,
+          "GG": 9
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "1376791",
+        "cor": "BLATBK",
+        "descricao": "CAMISETA MC UA TECH VENT",
+        "categoria": "VESTUARIO",
+        "linha": "TREINO",
+        "genero": "MASCULINO",
+        "empresa": "VULSP",
+        "pdv": 199.99,
+        "grade": {
+          "M": 23,
+          "G": 12,
+          "GG": 38
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      }
+    ],
+    "criadoEm": 1780079976296,
+    "expiraEm": 1780252776296,
+    "status": "aguardando",
+    "resposta": null,
+    "respondidoEm": null
+  }
+}
