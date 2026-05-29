@@ -17850,33 +17850,6 @@
   {
     "marca": "OLY",
     "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "43502346",
-    "descricao": "VELOZ 3",
-    "cor": "PSGCLR",
-    "linha": "VERSATIL",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 299.99,
-    "totalGeral": 1142,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43502346_PSGCLR",
-    "grade": {
-      "34": 85,
-      "35": 126,
-      "36": 162,
-      "37": 184,
-      "38": 160,
-      "39": 137,
-      "40": 102,
-      "41": 186
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
     "empresa": "VULTS",
     "artigo": "43667419",
     "descricao": "RUSH",
