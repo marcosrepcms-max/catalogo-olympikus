@@ -227,5 +227,39 @@
     "status": "aguardando",
     "resposta": null,
     "respondidoEm": null
+  },
+  "EYY278": {
+    "vendedor": "3616654",
+    "vendedorNome": "MARCOS",
+    "cliente": "Jack",
+    "marca": "oly",
+    "produtos": [
+      {
+        "artigo": "54107376",
+        "cor": "BCOPTO",
+        "descricao": "MELBOURNE 2",
+        "categoria": "CHINELOS",
+        "linha": "CHINELO GASPEA",
+        "genero": "UNISSEX",
+        "empresa": "AZABA",
+        "pdv": 149.99,
+        "grade": {
+          "33/34": 36,
+          "35/36": 48,
+          "37/38": 444,
+          "39/40": 720,
+          "41/42": 592,
+          "43/44": 361
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      }
+    ],
+    "criadoEm": 1780079610129,
+    "expiraEm": 1780252410129,
+    "status": "aguardando",
+    "resposta": null,
+    "respondidoEm": null
   }
 }
