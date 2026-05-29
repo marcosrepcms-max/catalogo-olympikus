@@ -160,8 +160,9 @@
     background:var(--accent); color:#fff; border:none;
   }
   .btn-remover{
-    background:var(--accent); color:#fff; border:none;
+    background:#0f172a; color:#fff; border:none;
   }
+  .btn-remover:hover{ background:#1e293b; }
   .btn-grade{
     background:#fff; color:var(--accent-dark); border:1.5px solid var(--accent);
     margin-top:4px; padding:6px;
@@ -180,18 +181,27 @@
   .fab{
     position:fixed; bottom:14px; left:14px; right:14px;
     bottom: calc(14px + env(safe-area-inset-bottom,0px));
-    background:var(--accent); color:#fff; border:none;
-    border-radius:14px; padding:14px;
-    font-size:14px; font-weight:900;
-    box-shadow:0 6px 16px rgba(0,0,0,.18);
-    display:none; align-items:center; justify-content:center; gap:7px;
+    background:#f97316;
+    background:linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    color:#fff; border:none;
+    border-radius:14px; padding:15px;
+    font-size:15px; font-weight:900;
+    letter-spacing:.3px;
+    box-shadow:0 8px 22px rgba(249,115,22,.5), 0 2px 6px rgba(0,0,0,.15);
+    display:none; align-items:center; justify-content:center; gap:8px;
     z-index:25; cursor:pointer;
+    animation:fabPulse 1.6s ease-in-out infinite;
   }
   .fab.visivel{ display:flex; }
   .fab .badge{
-    background:rgba(255,255,255,.25); color:#fff;
-    border-radius:999px; padding:2px 8px;
-    font-size:11px; font-weight:900;
+    background:rgba(255,255,255,.28); color:#fff;
+    border-radius:999px; padding:2px 9px;
+    font-size:12px; font-weight:900;
+    margin-left:4px;
+  }
+  @keyframes fabPulse{
+    0%, 100%{ box-shadow:0 8px 22px rgba(249,115,22,.5), 0 2px 6px rgba(0,0,0,.15), 0 0 0 0 rgba(249,115,22,.6); transform:scale(1); }
+    50%     { box-shadow:0 8px 22px rgba(249,115,22,.5), 0 2px 6px rgba(0,0,0,.15), 0 0 0 12px rgba(249,115,22,0);  transform:scale(1.02); }
   }
 
   /* ── LUPA TELA CHEIA ── */
@@ -422,7 +432,7 @@
 // CONFIG
 // ═══════════════════════════════════════════════════════════════
 const WORKER_URL = 'https://repasse-worker-cms.marcosrep-cms.workers.dev';
-const IMG_BASE   = 'https://marcosrepcms-max.github.io/Catalogo-Olympikus/Catalogo/';
+const IMG_BASE   = '../Catalogo/';
 
 const params = new URLSearchParams(location.search);
 const CODIGO = params.get('link') || '';
@@ -580,7 +590,9 @@ function cardHtml(p){
   const sel = STATE.selecao.has(k);
   const promo = !!p.tabelaEsp;
 
-  const imgSrc = p.imagem ? `${IMG_BASE}${p.imagem}.jpg` : '';
+  const imgSrc = (p.artigo && p.cor)
+    ? `${IMG_BASE}${String(p.artigo).toUpperCase()}_${String(p.cor).replace(/\//g,'_').toUpperCase()}.jpg`
+    : '';
   const imgTag = imgSrc
     ? `<img src="${safeHtml(imgSrc)}" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">`
     : '';
@@ -663,7 +675,10 @@ function atualizarFab(){
 function abrirZoom(k){
   const p = STATE.produtos.find(pr => key(pr) === k);
   if(!p) return;
-  $('zoomImg').src = p.imagem ? `${IMG_BASE}${p.imagem}.jpg` : '';
+  const src = (p.artigo && p.cor)
+    ? `${IMG_BASE}${String(p.artigo).toUpperCase()}_${String(p.cor).replace(/\//g,'_').toUpperCase()}.jpg`
+    : '';
+  $('zoomImg').src = src;
   $('zoomNome').textContent = p.descricao || '';
   $('zoomBg').classList.add('visivel');
 }
