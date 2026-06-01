@@ -5561,14 +5561,13 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OBWST24607_MRINHO",
     "grade": {
       "P": 91,
       "M": 542,
       "G": 745,
       "GG": 301
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
