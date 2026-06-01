@@ -10066,15 +10066,14 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIMWR25606_PSTCHE",
     "grade": {
       "PP": 1,
       "P": 204,
       "M": 396,
       "G": 393,
       "GG": 202
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
