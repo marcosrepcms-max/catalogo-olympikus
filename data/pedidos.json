@@ -1036,5 +1036,70 @@
         "prevFaturamento": "30/06/2026"
       }
     ]
+  },
+  {
+    "id": "PED-20260601160256-320",
+    "createdAt": "2026-06-01T19:02:56.422Z",
+    "updatedAt": "2026-06-01T19:02:57.074Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "109839",
+      "nome": "MARIANA"
+    },
+    "clienteCodigo": "1633552",
+    "clienteNome": "FABRICIA LIMA",
+    "prazo": "Z34 - 56/84/112 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 1,
+      "units": 12
+    },
+    "items": [
+      {
+        "codigo": "43447473",
+        "produto": "CORRE VENTO 3",
+        "cor": "ARTPTO",
+        "gci": "7488389",
+        "ebm": "13313615",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "37",
+            "qty": 1
+          },
+          {
+            "size": "38",
+            "qty": 2
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 3
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 1
+          },
+          {
+            "size": "43",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "16/06/2026"
+      }
+    ]
   }
 ]
