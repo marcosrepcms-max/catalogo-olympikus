@@ -2655,9 +2655,13 @@ const SALDO_MIN = 5;
 // Retorna: 'calcado_masc' | 'calcado_fem' | 'chinelo' | 'confeccao' | 'acessorio' | 'outro'
 function detectarTipoProduto(item){
   // 1) Detecta primeiro por CATEGORIA do XLSX (mais confiável que grade)
-  const cat = String(item.categoria || '').toUpperCase();
+  //    Remove acentos pra pegar "ACESSORIOS" e "ACESSÓRIOS" igualmente.
+  const cat = String(item.categoria || '')
+    .toUpperCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   if(/CHINEL/.test(cat))   return 'chinelo';
   if(/ACESSORI/.test(cat)) return 'acessorio';
+  if(/MEIA/.test(cat))     return 'acessorio';   // Olympikus às vezes classifica meia direto
 
   const keys = Object.keys(item.grade || {});
   if(!keys.length) return 'outro';
@@ -2679,6 +2683,13 @@ function detectarTipoProduto(item){
   if(upperKeys.some(k => ['PP','P','M','G','GG','XG','XGG','XGGG'].includes(k))){
     return 'confeccao';
   }
+
+  // 5) Fallback: grade com faixas tipo "33/38", "39/44" → acessório (meias)
+  //    (chinelo já foi detectado pela categoria; se categoria veio errada/vazia
+  //    e a grade tem 6 faixas conhecidas de chinelo, então é chinelo)
+  const faixasChinelo = ['33/34','35/36','37/38','39/40','41/42','43/44'];
+  if(keys.some(k => faixasChinelo.includes(k))) return 'chinelo';
+  if(keys.some(k => /^\d+\/\d+$/.test(String(k)))) return 'acessorio';
 
   return 'outro';
 }
