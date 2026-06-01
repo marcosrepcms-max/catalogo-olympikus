@@ -10440,14 +10440,13 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIMWT25320_TAPPTC",
     "grade": {
       "P": 467,
       "M": 915,
       "G": 922,
       "GG": 480
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
