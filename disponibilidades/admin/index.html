@@ -2329,7 +2329,7 @@ function anlRenderLista(){
   }
 
   // Ordem dos grupos
-  const ordemGrupos = ['calcado_masc','calcado_fem','confeccao','acessorio','outro'];
+  const ordemGrupos = ['calcado_masc','calcado_fem','chinelo','confeccao','acessorio','outro'];
   const tiposExistentes = ordemGrupos.filter(t => grupos[t]);
 
   let html = '';
@@ -2652,16 +2652,21 @@ async function anlExecutarSalvar(itens){
 const SALDO_MIN = 5;
 
 // Detecta o "tipo" de produto pelo padrão da grade
-// Retorna: 'calcado_masc' | 'calcado_fem' | 'confeccao' | 'acessorio' | 'outro'
+// Retorna: 'calcado_masc' | 'calcado_fem' | 'chinelo' | 'confeccao' | 'acessorio' | 'outro'
 function detectarTipoProduto(item){
+  // 1) Detecta primeiro por CATEGORIA do XLSX (mais confiável que grade)
+  const cat = String(item.categoria || '').toUpperCase();
+  if(/CHINEL/.test(cat))   return 'chinelo';
+  if(/ACESSORI/.test(cat)) return 'acessorio';
+
   const keys = Object.keys(item.grade || {});
   if(!keys.length) return 'outro';
 
-  // Acessório: única chave = "U" (ou todas viram U/UN/UNICO)
+  // 2) Acessório legacy: única chave = "U" (ou todas viram U/UN/UNICO)
   const apenasU = keys.length === 1 && /^U(N|NICO)?$/i.test(keys[0]);
   if(apenasU) return 'acessorio';
 
-  // Numéricos puros? calçado
+  // 3) Numéricos puros? calçado
   const todosNum = keys.every(k => Number.isFinite(Number(k)));
   if(todosNum){
     const genero = String(item.genero || '').toUpperCase();
@@ -2669,7 +2674,7 @@ function detectarTipoProduto(item){
     return 'calcado_masc'; // default
   }
 
-  // Vestuário: tem PP/P/M/G/GG
+  // 4) Vestuário: tem PP/P/M/G/GG
   const upperKeys = keys.map(k => String(k).toUpperCase());
   if(upperKeys.some(k => ['PP','P','M','G','GG','XG','XGG','XGGG'].includes(k))){
     return 'confeccao';
@@ -2718,12 +2723,23 @@ function classificarGrade(item){
     return { bucket:'critico', motivo:`Sem grade comercial (P/M/G)`, tipo, faixaIdeal: meio, presentes };
   }
 
+  if(tipo === 'chinelo'){
+    // 6 faixas: 33/34, 35/36, 37/38, 39/40, 41/42, 43/44
+    // Centrais (4): 35/36, 37/38, 39/40, 41/42
+    // Opcionais (2): 33/34 e 43/44
+    const meio = ['35/36','37/38','39/40','41/42'];
+    const faltantes = meio.filter(t => !comSaldo.has(t));
+    return classificarPorFaltantes(faltantes, meio, 'chinelo');
+  }
+
   if(tipo === 'acessorio'){
-    // Soma total dos saldos (não usa SALDO_MIN, usa regra de 6)
+    // Soma TODAS as grades disponíveis (independente de quais sejam — 33/38, 39/44, U, etc)
+    // Mínimo: 24 unidades
     let soma = 0;
     for(const v of Object.values(grade)) soma += (Number(v)||0);
-    if(soma >= 6) return { bucket:'completo', motivo:`${soma} unidades`, tipo };
-    return { bucket:'critico', motivo:`Apenas ${soma} un. (mínimo 6)`, tipo };
+    if(soma >= 24) return { bucket:'completo', motivo:`${soma} unidades`, tipo };
+    if(soma > 0)   return { bucket:'parcial',  motivo:`Apenas ${soma} un. (mínimo 24)`, tipo };
+    return { bucket:'critico', motivo:'Sem saldo', tipo };
   }
 
   // Tipo "outro" — sem grade reconhecível. Considera crítico.
@@ -2795,6 +2811,7 @@ function nomeTipo(tipo){
   switch(tipo){
     case 'calcado_masc': return 'Calçado Masculino';
     case 'calcado_fem':  return 'Calçado Feminino';
+    case 'chinelo':      return 'Chinelo';
     case 'confeccao':    return 'Vestuário';
     case 'acessorio':    return 'Acessório';
     default:             return 'Outros';
@@ -2806,6 +2823,7 @@ function iconeTipo(tipo){
   switch(tipo){
     case 'calcado_masc': return 'fa-shoe-prints';
     case 'calcado_fem':  return 'fa-shoe-prints';
+    case 'chinelo':      return 'fa-shoe-prints';
     case 'confeccao':    return 'fa-shirt';
     case 'acessorio':    return 'fa-bag-shopping';
     default:             return 'fa-tag';

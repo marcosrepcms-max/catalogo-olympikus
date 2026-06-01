@@ -227,6 +227,86 @@
     .img-check-progress .icp-stats strong.ok{ color:#15803d; }
     .img-check-progress .icp-stats strong.miss{ color:#b91c1c; }
     .img-check-progress .icp-stats span{ color:var(--muted); }
+    /* ═══ MODAL DE ANÁLISE DA IMPORTAÇÃO ════════════════════════════════ */
+    .anl-tab{
+      padding:9px 14px; font-size:12px; font-weight:700; color:#64748b;
+      cursor:pointer; background:transparent; border:none; border-bottom:3px solid transparent;
+      display:inline-flex; align-items:center; gap:6px; white-space:nowrap;
+      transition:color .15s;
+    }
+    .anl-tab:hover{ color:#0f172a; }
+    .anl-tab.active{ color:#0f172a; font-weight:800; }
+    .anl-tab[data-bucket="completo"].active{ border-bottom-color:#16a34a; color:#15803d; }
+    .anl-tab[data-bucket="parcial"].active{  border-bottom-color:#f59e0b; color:#b45309; }
+    .anl-tab[data-bucket="critico"].active{  border-bottom-color:#dc2626; color:#991b1b; }
+    .anl-tab[data-bucket="sem_preco"].active{ border-bottom-color:#64748b; color:#334155; }
+    .anl-cnt{
+      background:#e2e8f0; color:#475569;
+      font-size:10px; font-weight:800;
+      padding:1px 7px; border-radius:999px; min-width:18px; text-align:center;
+    }
+    .anl-tab[data-bucket="completo"] .anl-cnt{ background:#dcfce7; color:#166534; }
+    .anl-tab[data-bucket="parcial"] .anl-cnt{ background:#fef3c7; color:#92400e; }
+    .anl-tab[data-bucket="critico"] .anl-cnt{ background:#fee2e2; color:#991b1b; }
+    /* Grupo de categoria */
+    .anl-grupo{ margin-bottom:14px; }
+    .anl-grupo-head{
+      display:flex; align-items:center; gap:8px;
+      padding:8px 0; border-bottom:1px solid #e2e8f0;
+      cursor:pointer; user-select:none;
+    }
+    .anl-grupo-head:hover{ background:#f8fafc; }
+    .anl-grupo-head .ico-chev{ width:14px; font-size:11px; color:#94a3b8; transition:transform .15s; }
+    .anl-grupo.aberto .anl-grupo-head .ico-chev{ transform:rotate(90deg); }
+    .anl-grupo-tit{ font-size:12px; font-weight:900; color:#0f172a; }
+    .anl-grupo-cnt{ font-size:10px; color:#94a3b8; }
+    .anl-grupo-body{ display:none; padding-top:4px; }
+    .anl-grupo.aberto .anl-grupo-body{ display:block; }
+    .anl-grupo-actions{
+      margin-left:auto; display:flex; gap:6px;
+    }
+    .anl-grupo-actions button{
+      background:#fff; border:1px solid #e2e8f0; color:#475569;
+      font-size:10px; font-weight:700; padding:3px 9px; border-radius:6px; cursor:pointer;
+    }
+    .anl-grupo-actions button:hover{ background:#f1f5f9; }
+    /* Item */
+    .anl-item{
+      display:flex; align-items:center; gap:10px;
+      padding:9px 4px; border-bottom:1px solid #f1f5f9;
+    }
+    .anl-item input[type="checkbox"]{
+      accent-color:#16a34a; width:15px; height:15px; flex-shrink:0; cursor:pointer;
+    }
+    .anl-item-info{ flex:1; min-width:0; }
+    .anl-item-titulo{ font-size:12px; font-weight:800; color:#0f172a; }
+    .anl-item-meta{ font-size:10px; color:#94a3b8; margin-top:1px; }
+    .anl-item-meta .arq{ background:#f1f5f9; padding:0 6px; border-radius:4px; }
+    .anl-grade{ display:flex; flex-wrap:wrap; gap:3px; margin-top:4px; }
+    .anl-grade-cel{
+      font-size:9px; font-weight:700; padding:2px 6px; border-radius:4px;
+      border:1px solid transparent;
+    }
+    .anl-grade-cel.ok{ background:#dcfce7; border-color:#bbf7d0; color:#166534; }
+    .anl-grade-cel.baixo{ background:#fef3c7; border-color:#fde68a; color:#92400e; }
+    .anl-grade-cel.zero{ background:#fee2e2; border-color:#fecaca; color:#991b1b; text-decoration:line-through; }
+    .anl-grade-cel.extra{ background:#f1f5f9; border-color:#e2e8f0; color:#475569; }
+    .anl-item-right{ text-align:right; flex-shrink:0; }
+    .anl-tag{
+      font-size:8.5px; font-weight:800; padding:2px 6px; border-radius:4px;
+      display:inline-flex; align-items:center; gap:3px;
+    }
+    .anl-tag.com{ background:#dbeafe; color:#1e40af; }
+    .anl-tag.sem{ background:#fef3c7; color:#92400e; }
+    .anl-tag.conflito{ background:#fce7f3; color:#9d174d; }
+    .anl-item-pdv{ font-size:11px; font-weight:900; color:#0f172a; margin-top:2px; }
+    .anl-motivo{
+      font-size:9.5px; color:#64748b; margin-top:2px; font-style:italic;
+    }
+    .anl-empty{
+      padding:40px 20px; text-align:center; color:#94a3b8;
+    }
+    .anl-empty i{ font-size:28px; margin-bottom:10px; display:block; }
   </style>
 </head>
 <body>
@@ -291,6 +371,12 @@
           style="border-color:var(--accent-dark);background:rgba(204,255,0,.1);color:var(--accent-dark)">
           <i class="fa-solid fa-upload text-xs"></i> Importar xlsx
         </button>
+        <!-- Imagens em lote (novo fluxo simples) -->
+        <button onclick="abrirImagensLoteSimples()" data-tip="Subir imagens em lote (.jpg/.png)"
+          class="focus-ring rounded-full border px-4 py-2 text-sm font-bold flex items-center gap-2 transition-colors"
+          style="border-color:#fbbf24;background:#fef3c7;color:#92400e">
+          <i class="fa-solid fa-images text-xs"></i> Imagens em lote
+        </button>
         <!-- Tabela Especial -->
         <button onclick="abrirTabelaEspecial()" data-tip="Importar tabela especial"
           class="focus-ring rounded-full border px-4 py-2 text-sm font-bold flex items-center gap-2 transition-colors"
@@ -323,6 +409,9 @@
     <button class="filter-pill" data-filter="oly" onclick="setFilter('oly')">Olympikus <span id="badgeOLY" class="text-[10px] font-extrabold bg-slate-200 text-slate-700 rounded-full px-1.5 py-0.5">0</span></button>
     <button class="filter-pill" data-filter="semimg" onclick="setFilter('semimg')">
       <i class="fa-solid fa-image text-[10px]" style="color:#dc2626"></i> Sem imagem <span id="badgeSemImg" class="text-[10px] font-extrabold bg-rose-100 text-rose-700 rounded-full px-1.5 py-0.5 hidden">0</span>
+    </button>
+    <button class="filter-pill" data-filter="aguardando" onclick="setFilter('aguardando')" style="background:#fef3c7;border-color:#fbbf24;color:#92400e">
+      <i class="fa-solid fa-hourglass-half text-[10px]"></i> Aguardando imagem <span id="badgeAguardando" class="text-[10px] font-extrabold bg-amber-200 text-amber-900 rounded-full px-1.5 py-0.5 hidden">0</span>
     </button>
     <button class="filter-pill" data-filter="ocultos" onclick="setFilter('ocultos')">
       <i class="fa-solid fa-eye-slash text-[10px]"></i> Ocultos <span id="badgeOcultos" class="text-[10px] font-extrabold bg-slate-200 text-slate-700 rounded-full px-1.5 py-0.5 hidden">0</span>
@@ -528,9 +617,9 @@
     <!-- Upload -->
     <div id="uploadArea" class="border-2 border-dashed border-slate-200 rounded-2xl p-8 text-center mb-4 cursor-pointer hover:border-green-300 hover:bg-green-50 transition-colors" onclick="$('inputXlsx').click()">
       <i class="fa-solid fa-upload text-slate-300 text-3xl mb-3 block"></i>
-      <div class="text-sm font-bold text-slate-600">Passo 1 — Clique para selecionar a planilha</div>
-      <div class="text-xs text-slate-400 mt-1">UA ou Olympikus (.xlsx, .xls)</div>
-      <input type="file" id="inputXlsx" accept=".xlsx,.xls" class="hidden" onchange="processarXlsx(this.files[0])">
+      <div class="text-sm font-bold text-slate-600">Passo 1 — Selecione uma ou mais planilhas</div>
+      <div class="text-xs text-slate-400 mt-1">UA ou Olympikus (.xlsx, .xls) · pode selecionar várias de uma vez</div>
+      <input type="file" id="inputXlsx" accept=".xlsx,.xls" multiple class="hidden" onchange="processarXlsxMulti(this.files)">
     </div>
 
     <!-- Preview -->
@@ -632,6 +721,129 @@
           </button>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Modal Upload de Imagens em Lote (independente) ═══════════════════ -->
+<div id="modalImgLote" class="hidden fixed inset-0 z-[160] bg-slate-950/55 p-4 flex items-center justify-center" onclick="if(event.target===this)fecharImagensLote()">
+  <div class="bg-white rounded-2xl w-full max-w-lg shadow-2xl flex flex-col" style="max-height:90vh">
+    <div class="flex items-center gap-3 px-5 py-3 border-b border-slate-100">
+      <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:#fef3c7;color:#92400e">
+        <i class="fa-solid fa-images"></i>
+      </div>
+      <div class="flex-1">
+        <div class="text-base font-extrabold text-slate-900">Subir imagens em lote</div>
+        <div class="text-[11px] text-slate-500" id="imgLoteSubt">—</div>
+      </div>
+      <button onclick="fecharImagensLote()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500">
+        <i class="fa-solid fa-xmark text-sm"></i>
+      </button>
+    </div>
+    <div class="px-5 py-4 flex-1 overflow-y-auto">
+      <div class="rounded-xl border-2 border-dashed border-amber-300 bg-amber-50 p-6 text-center cursor-pointer hover:bg-amber-100" onclick="$('inputImgLoteSimples').click()">
+        <i class="fa-solid fa-cloud-upload text-3xl text-amber-500 mb-2 block"></i>
+        <div class="text-sm font-bold text-amber-800">Selecione as imagens</div>
+        <div class="text-[11px] text-amber-700 mt-1">Formato: <b>ARTIGO_COR.jpg</b> · pode selecionar várias</div>
+        <input type="file" id="inputImgLoteSimples" accept="image/jpeg,image/png,image/webp" multiple class="hidden" onchange="processarImagensLoteSimples(this.files)">
+      </div>
+
+      <!-- Status -->
+      <div id="imgLoteStatus" class="hidden mt-4 space-y-2"></div>
+
+      <!-- Barra de progresso -->
+      <div id="imgLoteProgresso" class="hidden mt-4">
+        <div class="flex justify-between text-xs font-bold mb-1">
+          <span class="text-slate-600">Enviando...</span>
+          <span class="text-slate-900" id="imgLoteCount">0/0</span>
+        </div>
+        <div class="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
+          <div id="imgLoteBar" class="h-full bg-amber-500 transition-all" style="width:0%"></div>
+        </div>
+        <div class="text-[10px] text-slate-500 mt-1 font-mono" id="imgLoteAtual">—</div>
+      </div>
+    </div>
+    <div class="px-5 py-3 border-t border-slate-100 bg-slate-50 flex gap-2">
+      <button onclick="fecharImagensLote()" class="flex-1 py-2 rounded-lg border border-slate-200 text-sm font-bold text-slate-600 bg-white hover:bg-slate-50">Fechar</button>
+      <button id="btnImgLoteEnviar" onclick="enviarImagensLoteSimples()" disabled class="flex-1 py-2 rounded-lg text-white text-sm font-extrabold disabled:opacity-50" style="background:#d97706">
+        <i class="fa-solid fa-upload"></i> Enviar imagens
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Modal de Confirmação genérico ════════════════════════════════════ -->
+<div id="modalConfirm" class="hidden fixed inset-0 z-[170] bg-slate-950/55 p-4 flex items-center justify-center" onclick="if(event.target===this)fecharConfirm(false)">
+  <div class="bg-white rounded-2xl w-full max-w-sm shadow-2xl p-6 text-center">
+    <div class="w-14 h-14 rounded-full mx-auto mb-3 flex items-center justify-center" style="background:#fef3c7">
+      <i class="fa-solid fa-triangle-exclamation text-xl" style="color:#d97706"></i>
+    </div>
+    <div id="cfTitulo" class="text-base font-extrabold mb-2" style="color:#0f172a">Confirmar?</div>
+    <div id="cfMsg" class="text-sm mb-5 whitespace-pre-line" style="color:#64748b;line-height:1.5">—</div>
+    <div class="flex gap-2">
+      <button id="cfCancel" onclick="fecharConfirm(false)" class="flex-1 py-3 rounded-xl border border-slate-200 text-sm font-bold text-slate-600 bg-white hover:bg-slate-50">Cancelar</button>
+      <button id="cfOk" onclick="(function(){const cb=_confirmCb;fecharConfirm(true);if(typeof cb==='function')cb();})()" class="flex-1 py-3 rounded-xl text-white text-sm font-extrabold" style="background:#16a34a">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Modal de Análise da Importação ═══════════════════════════════════ -->
+<div id="modalAnalise" class="hidden fixed inset-0 z-[160] bg-slate-950/55 p-3 sm:p-4 flex items-center justify-center" onclick="if(event.target===this)fecharAnalise()">
+  <div class="bg-white rounded-2xl w-full max-w-5xl shadow-2xl flex flex-col" style="max-height:92vh">
+    <!-- Header -->
+    <div class="flex items-center gap-3 px-5 py-3 border-b border-slate-100 bg-slate-900 rounded-t-2xl text-white flex-shrink-0">
+      <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:var(--brand)">
+        <i class="fa-solid fa-list-check text-white"></i>
+      </div>
+      <div class="flex-1 min-w-0">
+        <div class="text-base font-extrabold">Revisar importação</div>
+        <div class="text-[11px] opacity-80" id="anlSubtitle">—</div>
+      </div>
+      <button onclick="fecharAnalise()" class="w-8 h-8 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white">
+        <i class="fa-solid fa-xmark text-sm"></i>
+      </button>
+    </div>
+    <!-- Aviso de duplicados -->
+    <div id="anlDuplicados" class="hidden flex-shrink-0 bg-amber-50 border-b border-amber-200 px-5 py-2.5 text-xs text-amber-800 font-bold">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      <span id="anlDuplicadosTxt">—</span>
+      <button onclick="anlToggleDuplicados()" class="ml-2 underline hover:no-underline cursor-pointer text-amber-900">ver detalhes</button>
+      <div id="anlDuplicadosLista" class="hidden mt-2 text-[11px] font-normal text-amber-900 max-h-32 overflow-y-auto"></div>
+    </div>
+    <!-- Abas dos buckets -->
+    <div class="flex items-center gap-0 border-b border-slate-200 bg-slate-50 px-2 flex-shrink-0 overflow-x-auto">
+      <button class="anl-tab" data-bucket="completo" onclick="anlSetBucket('completo')">
+        <i class="fa-solid fa-circle-check"></i> Completos <span class="anl-cnt" id="anlCntCompleto">0</span>
+      </button>
+      <button class="anl-tab" data-bucket="parcial" onclick="anlSetBucket('parcial')">
+        <i class="fa-solid fa-circle-exclamation"></i> Parciais <span class="anl-cnt" id="anlCntParcial">0</span>
+      </button>
+      <button class="anl-tab" data-bucket="critico" onclick="anlSetBucket('critico')">
+        <i class="fa-solid fa-circle-xmark"></i> Críticos <span class="anl-cnt" id="anlCntCritico">0</span>
+      </button>
+      <button class="anl-tab" data-bucket="sem_preco" onclick="anlSetBucket('sem_preco')">
+        <i class="fa-solid fa-tag"></i> Sem preço <span class="anl-cnt" id="anlCntSemPreco">0</span>
+      </button>
+    </div>
+    <!-- Barra de ação do bucket -->
+    <div id="anlBarra" class="hidden flex items-center gap-3 px-5 py-2 flex-shrink-0 border-b border-slate-100">
+      <label class="text-xs font-bold flex items-center gap-2 cursor-pointer" style="color:#0f172a">
+        <input type="checkbox" id="anlMarcarTudo" onchange="anlMarcarTudo(this.checked)" style="accent-color:var(--brand);width:15px;height:15px">
+        <span id="anlMarcarTudoTxt">Marcar todos</span>
+      </label>
+      <span class="ml-auto text-[11px] font-semibold" style="color:var(--muted)" id="anlContador">—</span>
+    </div>
+    <!-- Lista (com grupos por categoria) -->
+    <div id="anlLista" class="flex-1 overflow-y-auto px-5 py-3" style="min-height:200px"></div>
+    <!-- Footer -->
+    <div class="flex-shrink-0 px-5 py-3 border-t border-slate-100 bg-slate-50 rounded-b-2xl flex items-center gap-3">
+      <div class="flex-1 text-xs" style="color:var(--muted)" id="anlResumo">—</div>
+      <button onclick="fecharAnalise()" class="rounded-lg px-4 py-2 text-xs font-bold bg-white border border-slate-200 text-slate-600 hover:bg-slate-50">
+        Cancelar
+      </button>
+      <button id="btnAnlConfirmar" onclick="anlConfirmar()" class="rounded-lg px-5 py-2 text-sm font-extrabold text-white" style="background:var(--brand)">
+        <i class="fa-solid fa-check"></i> Confirmar importação
+      </button>
     </div>
   </div>
 </div>
@@ -755,6 +967,179 @@ let _novos = [];
 let _conflitos = [];
 let _cruzadosTabEsp = 0;
 
+// ═══════════════════════════════════════════════════════════════════════════
+// UPLOAD DE IMAGENS EM LOTE (fluxo SIMPLES — independente do import)
+// Cruza com STATE.itens (banco), envia imagens e REMOVE flag _aguardandoImagem
+// ═══════════════════════════════════════════════════════════════════════════
+let _imgLote = new Map();        // chave (ARTIGO_COR) → File
+let _imgLoteCasadas = [];        // chaves que existem no banco
+let _imgLoteOrfas = [];          // chaves sem produto correspondente
+let _imgLoteAguardando = 0;      // quantos itens estão aguardando imagem
+
+function abrirImagensLoteSimples(){
+  $('modalImgLote').classList.remove('hidden');
+  _imgLote = new Map();
+  _imgLoteCasadas = [];
+  _imgLoteOrfas = [];
+  $('imgLoteStatus').classList.add('hidden');
+  $('imgLoteProgresso').classList.add('hidden');
+  $('btnImgLoteEnviar').disabled = true;
+  $('inputImgLoteSimples').value = '';
+  _imgLoteAguardando = (STATE.itens||[]).filter(i => i._aguardandoImagem).length;
+  $('imgLoteSubt').textContent = _imgLoteAguardando > 0
+    ? `${_imgLoteAguardando} produto(s) aguardando imagem`
+    : `Substitui/adiciona imagens dos produtos no banco`;
+}
+
+function fecharImagensLote(){
+  $('modalImgLote').classList.add('hidden');
+}
+
+function processarImagensLoteSimples(fileList){
+  _imgLote = new Map();
+  _imgLoteCasadas = [];
+  _imgLoteOrfas = [];
+  if(!fileList || !fileList.length){
+    $('imgLoteStatus').classList.add('hidden');
+    $('btnImgLoteEnviar').disabled = true;
+    return;
+  }
+  for(const f of fileList){
+    if(!/^image\/(jpeg|png|webp)$/i.test(f.type)) continue;
+    const chave = normalizarChaveImagem(f.name);
+    if(!chave) continue;
+    _imgLote.set(chave, f);
+  }
+  if(!_imgLote.size){
+    showToast('Nenhuma imagem válida (jpg/png/webp).','error');
+    return;
+  }
+  // Cruza com STATE.itens
+  const chavesBanco = new Set();
+  const aguardandoSet = new Set();
+  for(const it of (STATE.itens||[])){
+    const k = chaveImagemDoProduto(it);
+    if(k){
+      chavesBanco.add(k);
+      if(it._aguardandoImagem) aguardandoSet.add(k);
+    }
+  }
+  let casadasComAguardando = 0;
+  for(const k of _imgLote.keys()){
+    if(chavesBanco.has(k)){
+      _imgLoteCasadas.push(k);
+      if(aguardandoSet.has(k)) casadasComAguardando++;
+    } else {
+      _imgLoteOrfas.push(k);
+    }
+  }
+  const wrap = $('imgLoteStatus');
+  wrap.classList.remove('hidden');
+  wrap.innerHTML = `
+    <div class="rounded-lg bg-green-50 border border-green-200 p-3 text-xs">
+      <i class="fa-solid fa-check text-green-600"></i>
+      <b class="text-green-800">${_imgLoteCasadas.length}</b> imagem(ns) correspondem a produtos do banco
+      ${casadasComAguardando > 0 ? `<div class="text-[10px] text-green-700 mt-1">💡 ${casadasComAguardando} estavam aguardando imagem — serão liberadas para a vitrine</div>` : ''}
+    </div>
+    ${_imgLoteOrfas.length ? `
+    <div class="rounded-lg bg-amber-50 border border-amber-200 p-3 text-xs">
+      <i class="fa-solid fa-triangle-exclamation text-amber-600"></i>
+      <b class="text-amber-800">${_imgLoteOrfas.length}</b> imagem(ns) sem produto correspondente — serão ignoradas
+      <details class="mt-1 text-[10px] text-amber-700">
+        <summary class="cursor-pointer font-bold">ver lista</summary>
+        <div class="mt-1 font-mono max-h-32 overflow-y-auto">${_imgLoteOrfas.map(safeHtml).join('<br>')}</div>
+      </details>
+    </div>` : ''}
+  `;
+  $('btnImgLoteEnviar').disabled = (_imgLoteCasadas.length === 0);
+}
+
+async function enviarImagensLoteSimples(){
+  if(!_imgLoteCasadas.length){ showToast('Nenhuma imagem casada para enviar.','info'); return; }
+  const btn = $('btnImgLoteEnviar');
+  const prev = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enviando...';
+
+  $('imgLoteProgresso').classList.remove('hidden');
+  $('imgLoteCount').textContent = `0/${_imgLoteCasadas.length}`;
+  $('imgLoteBar').style.width = '0%';
+
+  const sucesso = [], falhas = [];
+  let done = 0;
+  const CONC = 3;
+  const fila = _imgLoteCasadas.slice();
+
+  async function worker(){
+    while(fila.length){
+      const chave = fila.shift();
+      if(!chave) break;
+      $('imgLoteAtual').textContent = chave;
+      try{
+        await enviarUmaImagem(chave, _imgLote.get(chave));
+        sucesso.push(chave);
+      }catch(e){
+        try{
+          await new Promise(r => setTimeout(r, 600));
+          await enviarUmaImagem(chave, _imgLote.get(chave));
+          sucesso.push(chave);
+        }catch(e2){
+          falhas.push({ chave, erro: e2.message || String(e2) });
+        }
+      }
+      done++;
+      $('imgLoteCount').textContent = `${done}/${_imgLoteCasadas.length}`;
+      $('imgLoteBar').style.width = `${(done / _imgLoteCasadas.length) * 100}%`;
+    }
+  }
+  await Promise.all(Array.from({length:CONC}, () => worker()));
+
+  // Atualiza STATE.itens: preenche imagem + remove flag aguardando
+  const sucessoSet = new Set(sucesso);
+  const histPayload = {};
+  let removidasFlag = 0;
+  for(const it of STATE.itens){
+    const k = chaveImagemDoProduto(it);
+    if(!k || !sucessoSet.has(k)) continue;
+    it.imagem = k;
+    if(it._aguardandoImagem){
+      delete it._aguardandoImagem;
+      removidasFlag++;
+    }
+    histPayload[`${it.artigo}|${it.cor}`] = k;
+    STATE.imgHist[`${it.artigo}|${it.cor}`] = k;
+  }
+
+  try{
+    await workerFetch({
+      method:'PATCH', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ action:'saveDisponibilidades', data: STATE.itens })
+    });
+    if(Object.keys(histPayload).length){
+      await workerFetch({
+        method:'PATCH', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ action:'saveImagensHistorico', data: histPayload })
+      });
+    }
+  }catch(e){ console.error(e); }
+
+  $('imgLoteAtual').textContent = '✅ concluído';
+  let msg = `${sucesso.length} imagem(ns) enviada(s)`;
+  if(removidasFlag > 0) msg += ` · ${removidasFlag} liberada(s) para a vitrine`;
+  if(falhas.length) msg += ` · ⚠️ ${falhas.length} falharam`;
+  showToast(msg, falhas.length ? 'error' : 'success');
+
+  btn.disabled = false;
+  btn.innerHTML = prev;
+  applyFilters?.();
+
+  if(!falhas.length){
+    setTimeout(() => fecharImagensLote(), 1500);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+
 // ── AUTH ─────────────────────────────────────────────────────────────────────
 function doLogin(){
   const pwd = $('adminPassword').value;
@@ -801,6 +1186,25 @@ function showToast(msg, type='info'){
   $('toastWrap').appendChild(t);
   setTimeout(()=>{ t.style.opacity='0'; t.style.transition='opacity .2s'; }, 3200);
   setTimeout(()=>t.remove(), 3500);
+}
+
+// ── MODAL DE CONFIRMAÇÃO (substitui o confirm() feio) ────────────────────────
+let _confirmCb = null, _confirmCancelCb = null;
+function abrirConfirm(titulo, msg, onOk, onCancel, opts){
+  _confirmCb = onOk;
+  _confirmCancelCb = onCancel || null;
+  const o = opts || {};
+  $('cfTitulo').textContent = titulo;
+  $('cfMsg').textContent = msg;
+  $('cfOk').textContent = o.okText || 'Confirmar';
+  $('cfCancel').textContent = o.cancelText || 'Cancelar';
+  $('cfOk').style.background = o.perigo ? '#dc2626' : '#16a34a';
+  $('modalConfirm').classList.remove('hidden');
+}
+function fecharConfirm(executou){
+  $('modalConfirm').classList.add('hidden');
+  if(!executou && typeof _confirmCancelCb === 'function') _confirmCancelCb();
+  _confirmCb = null; _confirmCancelCb = null;
 }
 
 // Toast com botão de ação (não some sozinho — usuário fecha ou aciona)
@@ -1053,6 +1457,7 @@ function applyFilters(){
   const filtrados = STATE.itens.filter(item => {
     if(f === 'ocultos') return isOculto(item);
     if(isOculto(item)) return false;
+    if(f === 'aguardando') return !!item._aguardandoImagem;
     if(f === 'ua')  return isUA(item);
     if(f === 'oly') return String(item.marca||'').trim().toUpperCase() === 'OLY';
     if(f === 'semimg'){
@@ -1077,12 +1482,14 @@ function applyFilters(){
   const oly   = todos.filter(i => String(i.marca||'').trim().toUpperCase() === 'OLY');
   const oc    = STATE.itens.filter(i => isOculto(i));
   const semImg = todos.filter(i => !i.imagem && STATE.imgChecks.get(imgCheckKey(i)) !== 'has');
+  const aguardando = todos.filter(i => !!i._aguardandoImagem);
 
   if($('badgeTodos')) $('badgeTodos').textContent = todos.length;
   if($('badgeUA'))    $('badgeUA').textContent    = ua.length;
   if($('badgeOLY'))   $('badgeOLY').textContent   = oly.length;
   if($('badgeOcultos')){ $('badgeOcultos').textContent = oc.length; $('badgeOcultos').classList.toggle('hidden', oc.length===0); }
   if($('badgeSemImg')){ $('badgeSemImg').textContent = semImg.length; $('badgeSemImg').classList.toggle('hidden', semImg.length===0); }
+  if($('badgeAguardando')){ $('badgeAguardando').textContent = aguardando.length; $('badgeAguardando').classList.toggle('hidden', aguardando.length===0); }
   if($('countLabel')) $('countLabel').textContent = `${filtrados.length} iten${filtrados.length!==1?'s':''}`;
 
   // Ordenação
@@ -1475,6 +1882,7 @@ async function enviarImagem(){
     );
     if(idx !== -1){
       STATE.itens[idx].imagem = nomeBase;
+      delete STATE.itens[idx]._aguardandoImagem; // imagem chegou → não está mais aguardando
       await workerFetch({
         method:'PATCH', headers:{'Content-Type':'application/json'},
         body: JSON.stringify({ action:'saveDisponibilidades', data: STATE.itens })
@@ -1826,52 +2234,740 @@ function rowToItem(row){
   };
 }
 
-async function processarXlsx(file){
-  if(!file) return;
-  // Carrega JSON atual
+// ═══════════════════════════════════════════════════════════════════════════
+// MODAL DE ANÁLISE — render, interação, confirmação
+// ═══════════════════════════════════════════════════════════════════════════
+let _anlBucketAtivo = 'completo';
+const _anlGruposAbertos = new Set(); // chave = bucket+tipo
+
+function abrirAnalise(){
+  if(!_analise){ return; }
+  // Fecha o modal de importar
+  $('modalImportar').classList.add('hidden');
+  $('modalAnalise').classList.remove('hidden');
+
+  // Subtitulo
+  const a = _analise;
+  $('anlSubtitle').textContent = `${a.arquivos.length} arquivo(s) · ${a.total} produto(s) analisado(s)`;
+
+  // Aviso de duplicados
+  const dup = _analise.duplicadosXlsx || [];
+  if(dup.length){
+    $('anlDuplicados').classList.remove('hidden');
+    $('anlDuplicadosTxt').textContent = `${dup.length} produto(s) duplicado(s) em arquivos diferentes — última versão prevaleceu.`;
+    $('anlDuplicadosLista').innerHTML = dup.map(d =>
+      `<div>• <b>${safeHtml(d.artigo)}</b> · ${safeHtml(d.cor)} · ${safeHtml(d.descricao||'')} — encontrado em: ${d.origens.map(o=>`<i>${safeHtml(o)}</i>`).join(' e ')}</div>`
+    ).join('');
+  } else {
+    $('anlDuplicados').classList.add('hidden');
+  }
+
+  // Contadores nas abas
+  $('anlCntCompleto').textContent = a.buckets.completo.length;
+  $('anlCntParcial').textContent  = a.buckets.parcial.length;
+  $('anlCntCritico').textContent  = a.buckets.critico.length;
+  $('anlCntSemPreco').textContent = a.buckets.sem_preco.length;
+
+  // Bucket inicial = primeiro com itens
+  const ordem = ['completo','parcial','critico','sem_preco'];
+  _anlBucketAtivo = ordem.find(b => a.buckets[b].length > 0) || 'completo';
+  anlSetBucket(_anlBucketAtivo);
+}
+
+function fecharAnalise(){
+  $('modalAnalise').classList.add('hidden');
+  // Limpa input pra permitir reupload do mesmo arquivo
+  $('inputXlsx').value = '';
+}
+
+function anlToggleDuplicados(){
+  $('anlDuplicadosLista').classList.toggle('hidden');
+}
+
+// Troca o bucket exibido
+function anlSetBucket(bucket){
+  _anlBucketAtivo = bucket;
+  document.querySelectorAll('.anl-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.bucket === bucket);
+  });
+
+  const itens = _analise.buckets[bucket] || [];
+  // Sem preço não permite selecionar — fica bloqueado
+  if(bucket === 'sem_preco'){
+    $('anlBarra').classList.add('hidden');
+  } else {
+    $('anlBarra').classList.remove('hidden');
+  }
+
+  anlRenderLista();
+  anlAtualizarBarra();
+  anlAtualizarResumo();
+}
+
+// Renderiza a lista agrupada por tipo
+function anlRenderLista(){
+  const itens = _analise.buckets[_anlBucketAtivo] || [];
+  const wrap = $('anlLista');
+
+  if(!itens.length){
+    const msg = ({
+      completo:  'Nenhum produto completo ainda.',
+      parcial:   'Nenhum produto parcial.',
+      critico:   'Nenhum produto crítico.',
+      sem_preco: 'Nenhum produto sem preço — tudo OK!'
+    })[_anlBucketAtivo] || 'Vazio.';
+    wrap.innerHTML = `<div class="anl-empty"><i class="fa-regular fa-folder-open"></i>${safeHtml(msg)}</div>`;
+    return;
+  }
+
+  // Agrupa por tipo
+  const grupos = {};
+  for(const reg of itens){
+    const t = reg.classif.tipo || 'outro';
+    if(!grupos[t]) grupos[t] = [];
+    grupos[t].push(reg);
+  }
+
+  // Ordem dos grupos
+  const ordemGrupos = ['calcado_masc','calcado_fem','confeccao','acessorio','outro'];
+  const tiposExistentes = ordemGrupos.filter(t => grupos[t]);
+
+  let html = '';
+  tiposExistentes.forEach((tipo, idx) => {
+    const lista = grupos[tipo];
+    const keyGrupo = `${_anlBucketAtivo}__${tipo}`;
+    // Primeiro grupo abre por padrão
+    if(idx === 0 && !_anlGruposAbertos.has(keyGrupo) && !_anlGruposAbertos.has(`__inited_${_anlBucketAtivo}`)){
+      _anlGruposAbertos.add(keyGrupo);
+    }
+    const aberto = _anlGruposAbertos.has(keyGrupo);
+
+    html += `
+      <div class="anl-grupo ${aberto?'aberto':''}" data-grupo="${keyGrupo}">
+        <div class="anl-grupo-head" onclick="anlToggleGrupo('${keyGrupo}')">
+          <i class="fa-solid fa-chevron-right ico-chev"></i>
+          <i class="fa-solid ${iconeTipo(tipo)}" style="color:#475569;font-size:13px"></i>
+          <span class="anl-grupo-tit">${nomeTipo(tipo).toUpperCase()}</span>
+          <span class="anl-grupo-cnt">${lista.length} produto(s)</span>
+          ${_anlBucketAtivo !== 'sem_preco' ? `
+          <div class="anl-grupo-actions" onclick="event.stopPropagation()">
+            <button onclick="anlMarcarGrupo('${tipo}',true)">Marcar todos</button>
+            <button onclick="anlMarcarGrupo('${tipo}',false)">Desmarcar</button>
+          </div>` : ''}
+        </div>
+        <div class="anl-grupo-body">
+          ${lista.map((reg,i) => anlItemHtml(reg, tipo, i)).join('')}
+        </div>
+      </div>`;
+  });
+  _anlGruposAbertos.add(`__inited_${_anlBucketAtivo}`);
+
+  wrap.innerHTML = html;
+}
+
+// HTML de 1 item da lista
+function anlItemHtml(reg, tipo, idx){
+  const it = reg.item;
+  const cl = reg.classif;
+  const podeMarcar = _anlBucketAtivo !== 'sem_preco';
+
+  // Render visual da grade — só os tamanhos com saldo, max 8
+  const entries = Object.entries(it.grade || {})
+    .filter(([,v]) => Number(v) > 0)
+    .sort((a,b) => tamSortKey(a[0]) - tamSortKey(b[0]));
+  const ideal = new Set(cl.faixaIdeal || []);
+  const gradeHtml = entries.slice(0, 9).map(([t, q]) => {
+    let kind = 'extra';
+    if(ideal.has(String(t).toUpperCase())){
+      kind = (Number(q) >= SALDO_MIN) ? 'ok' : 'baixo';
+    } else if(!ideal.size && Number(q) >= SALDO_MIN){
+      kind = 'ok';
+    }
+    return `<span class="anl-grade-cel ${kind}">${safeHtml(t)}·${q}</span>`;
+  }).join('') + (entries.length > 9 ? `<span class="anl-grade-cel extra">+${entries.length-9}</span>` : '');
+
+  // Tags
+  const tagImg = reg.temImg
+    ? `<span class="anl-tag com"><i class="fa-solid fa-image"></i> COM IMG</span>`
+    : `<span class="anl-tag sem"><i class="fa-regular fa-image"></i> SEM IMG</span>`;
+  const tagConf = reg.noBanco
+    ? `<span class="anl-tag conflito" title="Já existe no banco — vai atualizar"><i class="fa-solid fa-rotate"></i> ATUALIZA</span>`
+    : '';
+
+  const corDisp = String(it.cor||'').replace(/_/g,'/');
+  const pdv = `R$ ${Number(it.pdv||0).toFixed(2).replace('.',',')}`;
+  const totalPares = Number(it.totalGeral||0).toLocaleString('pt-BR');
+
+  const chk = podeMarcar
+    ? `<input type="checkbox" ${reg.sel?'checked':''} onchange="anlToggleItem('${safeHtml(_anlBucketAtivo)}','${safeHtml(tipo)}',${idx},this.checked)">`
+    : `<i class="fa-solid fa-lock" style="color:#cbd5e1;font-size:13px;width:15px;text-align:center"></i>`;
+
+  return `
+    <div class="anl-item" data-chave="${safeHtml(it.artigo)}|${safeHtml(it.cor)}">
+      ${chk}
+      <div class="anl-item-info">
+        <div class="anl-item-titulo">${safeHtml(it.descricao || '—')} · ${safeHtml(corDisp)}</div>
+        <div class="anl-item-meta">
+          ${safeHtml(it.artigo)} · ${totalPares} ${tipo==='acessorio'?'un.':'pares'} ·
+          <span class="arq">${safeHtml(reg.origem)}</span>
+        </div>
+        ${gradeHtml ? `<div class="anl-grade">${gradeHtml}</div>` : ''}
+        ${cl.motivo ? `<div class="anl-motivo"><i class="fa-solid fa-circle-info"></i> ${safeHtml(cl.motivo)}</div>` : ''}
+      </div>
+      <div class="anl-item-right">
+        ${tagImg} ${tagConf}
+        <div class="anl-item-pdv">${pdv}</div>
+      </div>
+    </div>`;
+}
+
+// Função auxiliar — chave de ordenação de tamanho (usa lógica oficial)
+function tamSortKey(t){
+  if(t === null || t === undefined) return 99999;
+  const s = String(t).trim().toUpperCase();
+  if(!s) return 99999;
+  if(s === 'U' || s === 'UN' || s === 'UNICO') return 9000;
+  const num = Number(s);
+  if(Number.isFinite(num)) return num;
+  const ord = ['XPP','PP','P','M','G','GG','XG','XGG','XGGG','EG','EGG'];
+  const i = ord.indexOf(s);
+  if(i >= 0) return 1001 + i;
+  return 99999;
+}
+
+function anlToggleGrupo(keyGrupo){
+  if(_anlGruposAbertos.has(keyGrupo)) _anlGruposAbertos.delete(keyGrupo);
+  else _anlGruposAbertos.add(keyGrupo);
+  anlRenderLista();
+}
+
+function anlToggleItem(bucket, tipo, idx, marcado){
+  const itens = _analise.buckets[bucket] || [];
+  const doTipo = itens.filter(r => (r.classif.tipo || 'outro') === tipo);
+  const reg = doTipo[idx];
+  if(reg) reg.sel = !!marcado;
+  anlAtualizarBarra();
+  anlAtualizarResumo();
+}
+
+function anlMarcarTudo(marcado){
+  const itens = _analise.buckets[_anlBucketAtivo] || [];
+  for(const r of itens) r.sel = !!marcado;
+  anlRenderLista();
+  anlAtualizarBarra();
+  anlAtualizarResumo();
+}
+
+function anlMarcarGrupo(tipo, marcado){
+  const itens = _analise.buckets[_anlBucketAtivo] || [];
+  for(const r of itens){
+    if((r.classif.tipo || 'outro') === tipo) r.sel = !!marcado;
+  }
+  anlRenderLista();
+  anlAtualizarBarra();
+  anlAtualizarResumo();
+}
+
+function anlAtualizarBarra(){
+  const itens = _analise.buckets[_anlBucketAtivo] || [];
+  const total = itens.length;
+  const sels  = itens.filter(r => r.sel).length;
+  const chk = $('anlMarcarTudo');
+  if(chk){
+    chk.checked = (sels === total && total > 0);
+    chk.indeterminate = (sels > 0 && sels < total);
+  }
+  $('anlMarcarTudoTxt').textContent = `Marcar todos (${total})`;
+  $('anlContador').textContent = total
+    ? `${sels} de ${total} selecionado(s)`
+    : '';
+}
+
+function anlAtualizarResumo(){
+  let totSel = 0, comImg = 0, semImg = 0;
+  for(const bucket of ['completo','parcial']){
+    for(const r of (_analise.buckets[bucket] || [])){
+      if(!r.sel) continue;
+      totSel++;
+      if(r.temImg) comImg++; else semImg++;
+    }
+  }
+  $('anlResumo').innerHTML = `<b style="color:#0f172a">${totSel}</b> selecionado(s) · <b style="color:#1e40af">${comImg}</b> com imagem · <b style="color:#92400e">${semImg}</b> sem imagem`;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// CONFIRMAR IMPORTAÇÃO
+// ═══════════════════════════════════════════════════════════════════════════
+async function anlConfirmar(){
+  // Coleta selecionados (completo + parcial)
+  const selecionados = [];
+  for(const bucket of ['completo','parcial']){
+    for(const r of (_analise.buckets[bucket] || [])){
+      if(r.sel) selecionados.push(r);
+    }
+  }
+  if(!selecionados.length){
+    showToast('Nenhum produto selecionado.', 'info');
+    return;
+  }
+
+  // Separa COM e SEM imagem (mas TODOS vão pro banco)
+  const comImg = selecionados.filter(r => r.temImg);
+  const semImg = selecionados.filter(r => !r.temImg);
+
+  // Se há sem imagem, pergunta sobre baixar o XLSX paralelo
+  if(semImg.length){
+    abrirConfirm(
+      `${semImg.length} produto(s) sem imagem`,
+      `Esses produtos serão importados marcados como "Aguardando imagem" — ficarão ocultos da vitrine até você subir as imagens.\n\nDeseja baixar um XLSX com a lista deles para facilitar o processo de busca das imagens?`,
+      async () => {
+        await anlPrepararDownloadSemImg(semImg);
+        anlExecutarSalvar(selecionados);
+      },
+      () => anlExecutarSalvar(selecionados),
+      { okText:'Baixar XLSX e continuar', cancelText:'Continuar sem baixar' }
+    );
+  } else {
+    anlExecutarSalvar(selecionados);
+  }
+}
+
+// Gera o XLSX dos sem imagem (mesmo formato da planilha de origem)
+async function anlPrepararDownloadSemImg(semImg){
+  // Reconstrói as linhas no formato original
+  const cabecalho = ['MARCA','PREV. FAT','EMPRESA','ARTIGO','DESCRIÇÃO','COR','LINHA','GÉNERO','CATEGORIA','PDV','T. GER','CODIGO TABELA','MKP','CUSTO'];
+  const tamanhosUsados = new Set();
+  for(const r of semImg){
+    for(const t of Object.keys(r.item.grade || {})) tamanhosUsados.add(t);
+  }
+  const tamanhosOrd = [...tamanhosUsados].sort((a,b) => tamSortKey(a) - tamSortKey(b));
+  const header = [...cabecalho, ...tamanhosOrd];
+
+  const linhas = semImg.map(r => {
+    const it = r.item;
+    const linha = [
+      it.marca, it.prevFat, it.empresa, it.artigo, it.descricao,
+      it.cor, it.linha, it.genero, it.categoria, it.pdv, it.totalGeral,
+      it.codigoTabela, it.mkp, it.custo
+    ];
+    for(const t of tamanhosOrd){
+      linha.push(Number(it.grade?.[t] || 0));
+    }
+    return linha;
+  });
+
+  const aoa = [header, ...linhas];
+  const ws = XLSX.utils.aoa_to_sheet(aoa);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Sem imagem');
+
+  const now = new Date();
+  const pad = n => String(n).padStart(2,'0');
+  const stamp = `${now.getFullYear()}${pad(now.getMonth()+1)}${pad(now.getDate())}_${pad(now.getHours())}${pad(now.getMinutes())}`;
+  const fileName = `sem_imagem_${stamp}.xlsx`;
+  XLSX.writeFile(wb, fileName);
+  showToast(`Lista de sem imagem baixada: ${fileName}`, 'success');
+}
+
+// Salva os COM imagem no JSON do Worker
+async function anlExecutarSalvar(itens){
+  const btn = $('btnAnlConfirmar');
+  const prev = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Salvando...';
+  try{
+    // Reconstrói lista final: JSON atual SUBSTITUI itens com mesma chave + adiciona novos
+    const novosMap = new Map();
+    let aguardando = 0, prontos = 0;
+    for(const r of itens){
+      const it = r.item;
+      const k = `${it.artigo}|${it.cor}`;
+      // Preserva imagem do banco/histórico/cache de verificação
+      let imagem = it.imagem || '';
+      if(!imagem){
+        const noBanco = (_jsonAtual||[]).find(x =>
+          String(x.artigo||'').toUpperCase() === it.artigo &&
+          String(x.cor||'').toUpperCase() === it.cor
+        );
+        if(noBanco && noBanco.imagem) imagem = noBanco.imagem;
+        else if(STATE.imgHist && STATE.imgHist[k]) imagem = STATE.imgHist[k];
+        else if(STATE.imgChecks?.get(k) === 'has'){
+          imagem = getProductImageName(it);
+        }
+      }
+      // Flag de aguardando imagem (vitrine NÃO mostra)
+      const aguardandoImg = !imagem;
+      if(aguardandoImg) aguardando++; else prontos++;
+      novosMap.set(k, {
+        ...it,
+        imagem,
+        _aguardandoImagem: aguardandoImg ? true : undefined  // só inclui se true
+      });
+    }
+
+    // Lista final
+    const filtrado = (_jsonAtual||[]).filter(r => {
+      const k = `${String(r.artigo||'').toUpperCase()}|${String(r.cor||'').toUpperCase()}`;
+      return !novosMap.has(k);
+    });
+    const listaFinal = [...filtrado, ...novosMap.values()];
+
+    const res = await workerFetch({
+      method:'PATCH', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ action:'saveDisponibilidades', data: listaFinal })
+    });
+    if(!res.ok) throw new Error(`Worker falhou (${res.status})`);
+    const result = await res.json();
+    if(!result.success) throw new Error(result.error || 'erro');
+
+    STATE.itens = listaFinal;
+    STATE.lastSync = Date.now();
+    updateLastSyncLabel?.();
+    popularFiltrosSec?.();
+    applyFilters?.();
+
+    let msg = `${prontos} pronto(s) na vitrine`;
+    if(aguardando > 0) msg += ` · ${aguardando} aguardando imagem`;
+    showToast(msg, 'success');
+    fecharAnalise();
+    fecharImportar();
+  }catch(e){
+    console.error(e);
+    showToast('Erro ao salvar: ' + (e.message || ''), 'error');
+  }finally{
+    btn.disabled = false;
+    btn.innerHTML = prev;
+  }
+}
+
+
+// Regras (definidas com o usuário):
+//   - "Com saldo" = qtd ≥ 5 (saldo de 1-4 conta como zero pra análise)
+//   - CALÇADO MASCULINO: 38-43 todos OK → completo · falta 1 → parcial · 2+ → crítico
+//   - CALÇADO FEMININO: 34-39 todos OK → completo · falta 1 → parcial · 2+ → crítico
+//   - CONFECÇÃO: P, M, G todos OK → completo · 2 de 3 → parcial · <2 → crítico
+//   - ACESSÓRIOS (U): soma ≥ 6 → completo · senão → crítico
+//   - PDV = 0 → bucket especial "sem preço"
+
+const SALDO_MIN = 5;
+
+// Detecta o "tipo" de produto pelo padrão da grade
+// Retorna: 'calcado_masc' | 'calcado_fem' | 'confeccao' | 'acessorio' | 'outro'
+function detectarTipoProduto(item){
+  const keys = Object.keys(item.grade || {});
+  if(!keys.length) return 'outro';
+
+  // Acessório: única chave = "U" (ou todas viram U/UN/UNICO)
+  const apenasU = keys.length === 1 && /^U(N|NICO)?$/i.test(keys[0]);
+  if(apenasU) return 'acessorio';
+
+  // Numéricos puros? calçado
+  const todosNum = keys.every(k => Number.isFinite(Number(k)));
+  if(todosNum){
+    const genero = String(item.genero || '').toUpperCase();
+    if(/FEM/.test(genero)) return 'calcado_fem';
+    return 'calcado_masc'; // default
+  }
+
+  // Vestuário: tem PP/P/M/G/GG
+  const upperKeys = keys.map(k => String(k).toUpperCase());
+  if(upperKeys.some(k => ['PP','P','M','G','GG','XG','XGG','XGGG'].includes(k))){
+    return 'confeccao';
+  }
+
+  return 'outro';
+}
+
+// Aplica as regras e classifica
+// Retorna: { bucket, motivo, faixaIdeal, presentes, faltantes }
+function classificarGrade(item){
+  // 1) PDV zerado vai pro bucket especial (independe do resto)
+  if(!Number(item.pdv)){
+    return { bucket:'sem_preco', motivo:'PDV não informado' };
+  }
+
+  const tipo = detectarTipoProduto(item);
+  const grade = item.grade || {};
+
+  // Lista os tamanhos COM SALDO (≥ SALDO_MIN)
+  const comSaldo = new Set();
+  for(const [k, v] of Object.entries(grade)){
+    if(Number(v) >= SALDO_MIN) comSaldo.add(String(k).toUpperCase());
+  }
+
+  if(tipo === 'calcado_masc'){
+    // Centrais 38-43, 44 opcional
+    const meio = ['38','39','40','41','42','43'];
+    const faltantes = meio.filter(t => !comSaldo.has(t));
+    return classificarPorFaltantes(faltantes, meio, 'calcado_masc');
+  }
+
+  if(tipo === 'calcado_fem'){
+    // Centrais 34-39, 40/41 opcionais
+    const meio = ['34','35','36','37','38','39'];
+    const faltantes = meio.filter(t => !comSaldo.has(t));
+    return classificarPorFaltantes(faltantes, meio, 'calcado_fem');
+  }
+
+  if(tipo === 'confeccao'){
+    // P, M, G — 3 todos OK / 2 → parcial / <2 → crítico
+    const meio = ['P','M','G'];
+    const presentes = meio.filter(t => comSaldo.has(t));
+    if(presentes.length === 3) return { bucket:'completo', motivo:'P, M e G com saldo', tipo, faixaIdeal: meio, presentes };
+    if(presentes.length === 2) return { bucket:'parcial',  motivo:`Tem só ${presentes.join(' e ')} (falta ${meio.filter(t=>!presentes.includes(t)).join(', ')})`, tipo, faixaIdeal: meio, presentes };
+    return { bucket:'critico', motivo:`Sem grade comercial (P/M/G)`, tipo, faixaIdeal: meio, presentes };
+  }
+
+  if(tipo === 'acessorio'){
+    // Soma total dos saldos (não usa SALDO_MIN, usa regra de 6)
+    let soma = 0;
+    for(const v of Object.values(grade)) soma += (Number(v)||0);
+    if(soma >= 6) return { bucket:'completo', motivo:`${soma} unidades`, tipo };
+    return { bucket:'critico', motivo:`Apenas ${soma} un. (mínimo 6)`, tipo };
+  }
+
+  // Tipo "outro" — sem grade reconhecível. Considera crítico.
+  return { bucket:'critico', motivo:'Grade não reconhecida', tipo };
+}
+
+function classificarPorFaltantes(faltantes, meio, tipo){
+  if(faltantes.length === 0) return { bucket:'completo', motivo:`${meio[0]}-${meio[meio.length-1]} completo`, tipo, faixaIdeal: meio, faltantes };
+  if(faltantes.length === 1) return { bucket:'parcial',  motivo:`Falta o ${faltantes[0]}`, tipo, faixaIdeal: meio, faltantes };
+  return { bucket:'critico', motivo:`Faltam ${faltantes.length} tamanhos (${faltantes.join(', ')})`, tipo, faixaIdeal: meio, faltantes };
+}
+
+// Verifica se o produto tem imagem (modo rápido: olha o JSON atual)
+// Verifica se o produto tem imagem.
+// Ordem de checagem (sempre da mais rápida pra mais lenta):
+//   1. item.imagem já preenchido
+//   2. STATE.imgChecks (cache de verificações reais via HEAD)
+//   3. STATE.imgHist (histórico de uploads via admin)
+//   4. _jsonAtual (item no banco já tem imagem)
+function temImagemAtual(item){
+  if(item.imagem) return true;
+  const artigo = String(item.artigo||'').toUpperCase();
+  const cor    = String(item.cor||'').toUpperCase();
+  const k = `${artigo}|${cor}`;
+  // 2) cache de verificações reais
+  if(STATE.imgChecks){
+    const s = STATE.imgChecks.get(k);
+    if(s === 'has') return true;
+    if(s === 'miss') return false;
+  }
+  // 3) histórico
+  if(STATE.imgHist && STATE.imgHist[k]) return true;
+  // 4) banco
+  if(_jsonAtual && _jsonAtual.length){
+    const existe = _jsonAtual.find(r =>
+      String(r.artigo||'').toUpperCase() === artigo &&
+      String(r.cor||'').toUpperCase()    === cor &&
+      r.imagem
+    );
+    if(existe) return true;
+  }
+  return false;
+}
+
+// Verifica TODAS as imagens dos itens em paralelo (HEAD no GitHub Pages)
+// Atualiza STATE.imgChecks com 'has' ou 'miss' pra cada chave
+async function verificarImagensImport(itens, onProgress){
+  const BATCH = 12;
+  let done = 0;
+  for(let i = 0; i < itens.length; i += BATCH){
+    const slice = itens.slice(i, i + BATCH);
+    await Promise.all(slice.map(async (item) => {
+      const k = `${String(item.artigo||'').toUpperCase()}|${String(item.cor||'').toUpperCase()}`;
+      // Se já tem cache, pula
+      if(STATE.imgChecks?.get(k)) { done++; if(onProgress) onProgress(done, itens.length); return; }
+      const nome = getProductImageName(item);
+      if(!nome) { STATE.imgChecks?.set(k, 'miss'); done++; if(onProgress) onProgress(done, itens.length); return; }
+      const url = `${IMG_BASE}${nome}.jpg`;
+      const ok = await checkImageExists(url);
+      STATE.imgChecks?.set(k, ok ? 'has' : 'miss');
+      done++;
+      if(onProgress) onProgress(done, itens.length);
+    }));
+  }
+}
+
+// Nome amigável do tipo
+function nomeTipo(tipo){
+  switch(tipo){
+    case 'calcado_masc': return 'Calçado Masculino';
+    case 'calcado_fem':  return 'Calçado Feminino';
+    case 'confeccao':    return 'Vestuário';
+    case 'acessorio':    return 'Acessório';
+    default:             return 'Outros';
+  }
+}
+
+// Ícone do tipo
+function iconeTipo(tipo){
+  switch(tipo){
+    case 'calcado_masc': return 'fa-shoe-prints';
+    case 'calcado_fem':  return 'fa-shoe-prints';
+    case 'confeccao':    return 'fa-shirt';
+    case 'acessorio':    return 'fa-bag-shopping';
+    default:             return 'fa-tag';
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// IMPORT MÚLTIPLO + ANÁLISE
+// ═══════════════════════════════════════════════════════════════════════════
+// _analise = {
+//   buckets: { completo:[], parcial:[], critico:[], sem_preco:[] },
+//   duplicadosXlsx: [...],
+//   duplicadosBanco: [...],
+//   arquivos: [{nome, qtd}]
+// }
+let _analise = null;
+
+async function processarXlsxMulti(fileList){
+  if(!fileList || !fileList.length) return;
+  const arquivos = Array.from(fileList);
+
+  // Carrega JSON atual (1x)
   try{
     const res = await workerFetch({ method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:'getDisponibilidades'}) });
     _jsonAtual = res.ok ? await res.json() : [];
   }catch(e){ _jsonAtual = []; }
 
-  // Carrega a tabela especial salva (para cruzamento automático)
+  // Carrega tabela especial (1x)
   try{
     const resTE = await workerFetch({ method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:'getTabelaEspecial'}) });
     _tabelaEspecial = resTE.ok ? (await resTE.json() || {}) : {};
   }catch(e){ _tabelaEspecial = {}; }
 
-  const buf = await file.arrayBuffer();
-  const wb  = XLSX.read(buf, { type:'array' });
-  const ws  = wb.Sheets[wb.SheetNames[0]];
-  const rows = XLSX.utils.sheet_to_json(ws, { defval:null });
-
+  // Mapa do banco pra detectar conflitos
   const chaveAtual = new Map();
   for(const r of _jsonAtual){
     const k = `${String(r.artigo||'').toUpperCase()}|${String(r.cor||'').toUpperCase()}`;
     chaveAtual.set(k, r);
   }
 
-  _novos=[]; _conflitos=[];
+  // Lê TODOS os arquivos e junta
+  const todos = [];                                  // [{item, origem}]
+  const mapaXlsx = new Map();                        // chave → primeira origem
+  const duplicadosXlsx = [];                         // duplicados ENTRE arquivos
+  const arquivosInfo = [];                           // [{nome, qtd}]
   _cruzadosTabEsp = 0;
 
-  for(const row of rows){
-    const item = rowToItem(row);
-    if(!item.artigo) continue;
-    // Cruzamento automático com a tabela especial (Artigo + Cor)
-    const antesCod = item.codigoTabela;
-    aplicarTabelaEspecial(item);
-    if(item.codigoTabela && item.codigoTabela !== antesCod) _cruzadosTabEsp++;
+  for(const file of arquivos){
+    let qtdArquivo = 0;
+    try{
+      const buf = await file.arrayBuffer();
+      const wb  = XLSX.read(buf, { type:'array' });
+      const ws  = wb.Sheets[wb.SheetNames[0]];
+      const rows = XLSX.utils.sheet_to_json(ws, { defval:null });
+      for(const row of rows){
+        const item = rowToItem(row);
+        if(!item.artigo) continue;
+        // Cruzamento automático com a tabela especial
+        const antesCod = item.codigoTabela;
+        aplicarTabelaEspecial(item);
+        if(item.codigoTabela && item.codigoTabela !== antesCod) _cruzadosTabEsp++;
 
-    const k = `${item.artigo}|${item.cor}`;
-    if(chaveAtual.has(k)){
-      _conflitos.push({ xlsx:item, atual:chaveAtual.get(k), incluir:false });
-    } else {
-      _novos.push(item);
+        const k = `${item.artigo}|${item.cor}`;
+        // Duplicado ENTRE arquivos?
+        if(mapaXlsx.has(k)){
+          duplicadosXlsx.push({
+            chave: k,
+            artigo: item.artigo, cor: item.cor, descricao: item.descricao,
+            origens: [mapaXlsx.get(k), file.name]
+          });
+          // estratégia: "última vence" — mas vamos AVISAR
+          // sobrescreve a entrada anterior
+          const idx = todos.findIndex(x => `${x.item.artigo}|${x.item.cor}` === k);
+          if(idx >= 0) todos[idx] = { item, origem: file.name };
+        } else {
+          mapaXlsx.set(k, file.name);
+          todos.push({ item, origem: file.name });
+        }
+        qtdArquivo++;
+      }
+    }catch(e){
+      console.error('Erro lendo', file.name, e);
+    }
+    arquivosInfo.push({ nome: file.name, qtd: qtdArquivo });
+  }
+
+  // ANTES de classificar, faz verificação REAL no GitHub Pages das imagens dos itens
+  // que ainda não têm certeza (sem item.imagem e sem cache 'has'/'miss')
+  const itensParaVerificar = todos.map(t => t.item).filter(it => {
+    if(it.imagem) return false;
+    const k = `${String(it.artigo||'').toUpperCase()}|${String(it.cor||'').toUpperCase()}`;
+    const s = STATE.imgChecks?.get(k);
+    return s !== 'has' && s !== 'miss';
+  });
+  if(itensParaVerificar.length){
+    showToast(`Verificando ${itensParaVerificar.length} imagem(ns)...`, 'info');
+    await verificarImagensImport(itensParaVerificar);
+  }
+
+  // ALÉM disso, re-verifica os itens AGUARDANDO IMAGEM já no banco
+  // (caso a imagem já tenha sido subida via GitHub ou outro canal)
+  const aguardandoBanco = (_jsonAtual||[]).filter(i => i._aguardandoImagem);
+  if(aguardandoBanco.length){
+    await verificarImagensImport(aguardandoBanco);
+    // Promove aqueles cuja imagem agora foi confirmada
+    let promovidos = 0;
+    for(const it of aguardandoBanco){
+      const k = `${String(it.artigo||'').toUpperCase()}|${String(it.cor||'').toUpperCase()}`;
+      if(STATE.imgChecks?.get(k) === 'has'){
+        it.imagem = getProductImageName(it);
+        delete it._aguardandoImagem;
+        promovidos++;
+      }
+    }
+    if(promovidos){
+      // Persiste em background
+      workerFetch({
+        method:'PATCH', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ action:'saveDisponibilidades', data: _jsonAtual })
+      }).then(() => {
+        STATE.itens = _jsonAtual.slice();
+        showToast(`${promovidos} produto(s) liberado(s) para a vitrine (imagem chegou)`, 'success');
+        applyFilters?.();
+      }).catch(e => console.warn(e));
     }
   }
 
-  renderPreview(file.name, rows.length);
+  // Classifica cada produto
+  const buckets = { completo:[], parcial:[], critico:[], sem_preco:[] };
+  const duplicadosBanco = [];
+  for(const { item, origem } of todos){
+    const k = `${item.artigo}|${item.cor}`;
+    const classif = classificarGrade(item);
+    const temImg  = temImagemAtual(item);
+    const noBanco = chaveAtual.has(k);
+    if(noBanco){
+      // É conflito com o banco — preserva info pra preservar imagem antiga
+      duplicadosBanco.push({ chave:k, atual: chaveAtual.get(k) });
+    }
+    const reg = {
+      item,
+      origem,
+      classif,
+      temImg,
+      noBanco,
+      sel: classif.bucket === 'completo' || classif.bucket === 'parcial'  // padrão
+    };
+    buckets[classif.bucket].push(reg);
+  }
+
+  _analise = {
+    buckets,
+    duplicadosXlsx,
+    duplicadosBanco,
+    arquivos: arquivosInfo,
+    total: todos.length
+  };
+
+  // Abre o modal de análise
+  abrirAnalise();
 }
+
 
 function renderPreview(nome, total){
   $('uploadArea').classList.add('hidden');
