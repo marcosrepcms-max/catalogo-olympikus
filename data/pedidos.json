@@ -68,8 +68,8 @@
   {
     "id": "PED-20260601215652-356",
     "createdAt": "2026-06-02T00:56:52.020Z",
-    "updatedAt": "2026-06-02T00:56:52.861Z",
-    "status": "Pendente",
+    "updatedAt": "2026-06-02T13:21:42.473Z",
+    "status": "Aprovado",
     "archived": false,
     "isDuplicate": false,
     "preposto": {
@@ -172,7 +172,35 @@
         ],
         "prevFaturamento": "30/06/2026"
       }
-    ]
+    ],
+    "history": [
+      {
+        "eventId": "evt_1780406452677_o4uy1m",
+        "at": "2026-06-02T13:20:52.677Z",
+        "action": "created",
+        "label": "Pedido criado",
+        "statusFrom": null,
+        "statusTo": "Pendente",
+        "archivedFrom": null,
+        "archivedTo": false,
+        "clientCode": "4098088",
+        "prepostoCodigo": "109839",
+        "prepostoNome": "MARIANA",
+        "notes": "",
+        "meta": {
+          "itemsCount": 2,
+          "units": 24
+        }
+      },
+      {
+        "action": "Aprovado e exportado em lote",
+        "at": "2026-06-02T13:21:29.179Z"
+      }
+    ],
+    "lastAction": "created",
+    "lastActionLabel": "Pedido criado",
+    "lastActionAt": "2026-06-02T13:20:52.677Z",
+    "exportedAt": "2026-06-02T13:21:29.179Z"
   },
   {
     "id": "PED-20260601215801-684",
