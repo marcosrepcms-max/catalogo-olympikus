@@ -2807,5 +2807,37 @@
     "status": "aguardando",
     "resposta": null,
     "respondidoEm": null
+  },
+  "SYALYJ": {
+    "vendedor": "3616654",
+    "vendedorNome": "MARCOS",
+    "cliente": "marcos",
+    "marca": "oly",
+    "produtos": [
+      {
+        "artigo": "OIWWL24119",
+        "cor": "PRETO",
+        "descricao": "JAQUETA PUFF F",
+        "categoria": "VESTUARIO",
+        "linha": "CASUAL",
+        "genero": "FEMININO",
+        "empresa": "VULSP",
+        "pdv": 399.99,
+        "grade": {
+          "P": 150,
+          "M": 292,
+          "G": 397,
+          "GG": 176
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      }
+    ],
+    "criadoEm": 1780361607352,
+    "expiraEm": 1780534407352,
+    "status": "aguardando",
+    "resposta": null,
+    "respondidoEm": null
   }
 }
