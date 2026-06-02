@@ -1,5 +1,43 @@
 [
   {
+    "id": "1780362409491-s4z37e",
+    "createdAt": "2026-06-02T01:06:49.491Z",
+    "comissionista": "114611",
+    "comissionistaNome": "JORGE",
+    "clientCode": "18529",
+    "payment": "Z11 - 77 D",
+    "priceTable": "OL026",
+    "campaign": "",
+    "dataDesejada": "",
+    "pedidoCliente": "",
+    "items": [
+      {
+        "codigo": "43540500",
+        "produto": "CARDIO",
+        "cor": "PTO/LM",
+        "corCodigo": "",
+        "genero": "Unissex",
+        "tam": "34/44",
+        "categoria": "FTW",
+        "grade": {
+          "35": 1,
+          "36": 2,
+          "37": 2,
+          "38": 1
+        },
+        "qty": 6,
+        "totalQty": 6,
+        "preco": 499.99,
+        "colecao": "",
+        "imagem": "",
+        "imgSrc": "./imagens_olympikus/43540500_PTOLM.jpg",
+        "dataDesejada": "2026-10-07"
+      }
+    ],
+    "totalItens": 6,
+    "valorTotal": 2999.94
+  },
+  {
     "id": "1780319202092-yqw1z1",
     "createdAt": "2026-06-01T13:06:42.092Z",
     "comissionista": "114611",
