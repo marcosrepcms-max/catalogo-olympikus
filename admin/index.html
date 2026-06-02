@@ -419,7 +419,37 @@
     .nome-preposto {
       text-transform: uppercase;
     }
-  </style>
+  
+    /* ===================== MODO ESCURO — TEMA DASHBOARD ===================== */
+    .dark{
+      --bg:#0c1a3a; --card:rgba(22,31,58,.80); --text:#eef3fc; --line:rgba(255,255,255,.10);
+      --brand:#5b8cff; --brand-soft:rgba(91,140,255,.16); --muted:#a9b8d6;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 18px 44px -16px rgba(0,0,0,.7);
+    }
+    .dark body, html.dark{
+      background:
+        radial-gradient(1100px 520px at 14% 6%, #21407f 0%, transparent 55%),
+        radial-gradient(900px 500px at 88% 0%, #2a2c74 0%, transparent 50%),
+        radial-gradient(1200px 700px at 50% 120%, #0e2350 0%, transparent 60%),
+        linear-gradient(160deg, #0e1d40 0%, #0c1a3a 45%, #0a1430 100%) !important;
+      background-attachment:fixed !important; color:#eef3fc !important;
+    }
+    .dark .bg-white, .dark header, .dark .order-card-compact, .dark #secaoPedidos > div,
+    .dark .rounded-\[28px\], .dark .rounded-\[32px\], .dark .rounded-\[24px\]{
+      background:rgba(22,31,58,.80) !important; border-color:rgba(255,255,255,.10) !important;
+      color:#eef3fc !important; -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px);
+    }
+    .dark .secao-pedidos-bg{ background:rgba(0,0,0,.18) !important; border-color:rgba(255,255,255,.06) !important; }
+    .dark input, .dark select, .dark textarea{ background:rgba(255,255,255,.06) !important; border-color:rgba(255,255,255,.10) !important; color:#eef3fc !important; }
+    .dark input::placeholder{ color:#7587ad !important; }
+    .dark .text-slate-700, .dark .text-slate-800, .dark .text-slate-900{ color:#eef3fc !important; }
+    .dark .text-slate-400, .dark .text-slate-500, .dark .text-slate-600{ color:#9fb0d0 !important; }
+    .dark .filter-status-btn{ background:rgba(255,255,255,.04) !important; border-color:rgba(255,255,255,.10) !important; color:#a9b8d6 !important; }
+    .dark .filter-status-btn:hover{ background:rgba(255,255,255,.07) !important; color:#eef3fc !important; }
+    .dark .filter-status-btn.fs-active-todos{ background:linear-gradient(135deg,#5b8cff,#4f7bff) !important; color:#fff !important; border-color:transparent !important; }
+    .dark .order-card-compact{ border-color:rgba(255,255,255,.10) !important; }
+    .dark .order-card-compact:hover{ border-color:#5b8cff !important; box-shadow:0 10px 26px -10px rgba(0,0,0,.6) !important; }
+</style>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
 <body>
@@ -1655,7 +1685,7 @@ function updateFilterCounts(){
   const c = {
     todos:    base.length,
     Pendente: base.filter(o => canonicalStatus(o.status) === 'Pendente').length,
-    Aprovado: base.filter(o => canonicalStatus(o.status) === 'Aprovado' && !o.exportedAt).length,
+    Aprovado: base.filter(o => canonicalStatus(o.status) === 'Aprovado').length,
     Exportado:base.filter(o => canonicalStatus(o.status) === 'Aprovado' && o.exportedAt).length,
     Cancelado:base.filter(o => canonicalStatus(o.status) === 'Cancelado').length,
   };
@@ -1690,7 +1720,7 @@ function applyFilters(){
     const matchScope = orderMatchesScope(order, scope);
     let matchStatus = true;
     if(sf === 'Pendente')  matchStatus = canonicalStatus(order.status) === 'Pendente';
-    else if(sf === 'Aprovado')  matchStatus = canonicalStatus(order.status) === 'Aprovado' && !order.exportedAt;
+    else if(sf === 'Aprovado')  matchStatus = canonicalStatus(order.status) === 'Aprovado';
     else if(sf === 'Exportado') matchStatus = canonicalStatus(order.status) === 'Aprovado' && !!order.exportedAt;
     else if(sf === 'Cancelado') matchStatus = canonicalStatus(order.status) === 'Cancelado';
 

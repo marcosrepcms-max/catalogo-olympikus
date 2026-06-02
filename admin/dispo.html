@@ -399,7 +399,65 @@
     .icon-btn.desm{ border-color:#c7d2fe; color:#4338ca; background:#eef2ff; }
     .icon-btn.desm:hover{ background:#c7d2fe; }
     .btn-group{ display:flex; gap:4px; align-items:center; flex-wrap:wrap; }
-  </style>
+  
+    /* ===================== MODO ESCURO — TEMA DASHBOARD ===================== */
+    .dark{
+      --bg:#0c1a3a;
+      --card:rgba(22,31,58,.78);
+      --text:#eef3fc;
+      --line:rgba(255,255,255,.10);
+      --brand:#5b8cff;
+      --brand-soft:rgba(91,140,255,.16);
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 18px 44px -16px rgba(0,0,0,.7);
+      --success:#34d399; --success-soft:rgba(52,211,153,.14);
+      --warning:#fbbf24; --warning-soft:rgba(245,158,11,.15);
+      --info:#5b8cff;    --info-soft:rgba(91,140,255,.14);
+      --danger:#fb7185;  --danger-soft:rgba(251,113,133,.15);
+      --muted:#a9b8d6;   --muted-soft:rgba(255,255,255,.06);
+      --partial:#fbbf24; --partial-soft:rgba(245,158,11,.14);
+    }
+    .dark body, html.dark{
+      background:
+        radial-gradient(1100px 520px at 14% 6%, #21407f 0%, transparent 55%),
+        radial-gradient(900px 500px at 88% 0%, #2a2c74 0%, transparent 50%),
+        radial-gradient(1200px 700px at 50% 120%, #0e2350 0%, transparent 60%),
+        linear-gradient(160deg, #0e1d40 0%, #0c1a3a 45%, #0a1430 100%) !important;
+      background-attachment:fixed !important; color:#eef3fc !important;
+    }
+    .dark header, .dark .kpi-card, .dark .table-wrap, .dark .bg-white,
+    .dark .rounded-\[28px\], .dark .rounded-\[32px\]{
+      background:rgba(22,31,58,.78) !important; border-color:rgba(255,255,255,.10) !important;
+      color:#eef3fc !important; -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px);
+    }
+    .dark header, .dark .kpi-card, .dark .table-wrap{ box-shadow:0 1px 2px rgba(0,0,0,.4), 0 18px 44px -16px rgba(0,0,0,.7) !important; }
+    .dark input, .dark select{ background:rgba(255,255,255,.06) !important; border-color:rgba(255,255,255,.10) !important; color:#eef3fc !important; }
+    .dark input::placeholder{ color:#7587ad !important; }
+    .dark .text-slate-700, .dark .text-slate-800, .dark .text-slate-900{ color:#eef3fc !important; }
+    .dark .text-slate-400, .dark .text-slate-500, .dark .text-slate-600{ color:#9fb0d0 !important; }
+    .dark .text-amber-600{ color:#fbbf24 !important; }
+    .dark .text-emerald-600{ color:#34d399 !important; }
+    .dark .text-rose-600{ color:#fb7185 !important; }
+    .dark .table-wrap thead th{ background:rgba(255,255,255,.05) !important; color:#7e90b4 !important; border-bottom:1px solid rgba(255,255,255,.16) !important; }
+    .dark .table-wrap thead th.sortable:hover{ background:rgba(255,255,255,.08) !important; color:#a9c4ff !important; }
+    .dark .table-wrap thead th.sorted-asc, .dark .table-wrap thead th.sorted-desc{ background:rgba(91,140,255,.12) !important; color:#a9c4ff !important; }
+    .dark .table-wrap tbody td{ border-color:rgba(255,255,255,.07) !important; color:#eef3fc !important; }
+    .dark .table-wrap tbody tr:nth-child(even) td{ background:rgba(255,255,255,.022) !important; }
+    .dark .table-wrap tbody tr:hover td{ background:rgba(255,255,255,.06) !important; }
+    .dark .table-wrap tbody td:first-child{ position:relative; padding-left:20px; }
+    .dark .table-wrap tbody tr.row-ruptura td:first-child::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:#fb7185; }
+    .dark .table-wrap tbody tr.row-baixo td:first-child::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:#fbbf24; }
+    .dark .chip-success{ background:rgba(52,211,153,.14) !important; color:#5fe7b6 !important; border-color:rgba(52,211,153,.32) !important; }
+    .dark .chip-warning{ background:rgba(245,158,11,.15) !important; color:#fcd34d !important; border-color:rgba(245,158,11,.34) !important; }
+    .dark .chip-danger{ background:rgba(251,113,133,.15) !important; color:#fda4b0 !important; border-color:rgba(251,113,133,.36) !important; }
+    .dark .chip-blue{ background:rgba(91,140,255,.16) !important; color:#a9c4ff !important; }
+    .dark .chip-gray{ background:rgba(255,255,255,.08) !important; color:#a9b8d6 !important; }
+    .dark .saldo-ok{ color:#34d399 !important; }
+    .dark .saldo-warning{ color:#fbbf24 !important; }
+    .dark .saldo-danger{ color:#fb7185 !important; }
+    .dark .filter-pill{ background:rgba(255,255,255,.04) !important; border-color:rgba(255,255,255,.10) !important; color:#a9b8d6 !important; }
+    .dark .filter-pill:hover{ border-color:rgba(255,255,255,.18) !important; color:#eef3fc !important; background:rgba(255,255,255,.06) !important; }
+    .dark .filter-pill.active{ background:linear-gradient(135deg,#5b8cff,#4f7bff) !important; border-color:transparent !important; color:#fff !important; box-shadow:0 8px 18px -10px rgba(91,140,255,.8) !important; }
+</style>
 </head>
 <body>
   <div id="toastWrap" class="toast-wrap"></div>
