@@ -815,10 +815,13 @@ function getItemUnits(item){
 }
 
 function buildImpactMap(){
-  // Chave de impacto = Nº da linha DISPO (identidade única).
-  // Pedidos antigos sem Nº não reservam saldo — reemitir após limpeza da base.
+  // Chave principal = Nº da linha DISPO (identidade única).
+  // Pedidos antigos SEM Nº são reconhecidos por GCI (legado) e aplicados
+  // a UMA linha do GCI (sem multiplicar) — ver computeAllRows.
   const pendMap = new Map();
   const aprovMap = new Map();
+  const pendGci = new Map();
+  const aprovGci = new Map();
 
   for(const order of STATE.orders){
     if(order.archived) continue;
@@ -826,18 +829,27 @@ function buildImpactMap(){
     if(status === 'Cancelado') continue;
 
     for(const item of (order.items || [])){
-      const num = sanitizeDisplayText(String(item.num || ''));
-      if(!num) continue;
       const units = getItemUnits(item);
-      if(status === 'Pendente'){
-        pendMap.set(num, (pendMap.get(num) || 0) + units);
-      } else if(status === 'Aprovado'){
-        aprovMap.set(num, (aprovMap.get(num) || 0) + units);
+      const num = sanitizeDisplayText(String(item.num || ''));
+      if(num){
+        if(status === 'Pendente'){
+          pendMap.set(num, (pendMap.get(num) || 0) + units);
+        } else if(status === 'Aprovado'){
+          aprovMap.set(num, (aprovMap.get(num) || 0) + units);
+        }
+      } else {
+        const gci = sanitizeDisplayText(String(item.gci || item.ebm || item.codigo || ''));
+        if(!gci) continue;
+        if(status === 'Pendente'){
+          pendGci.set(gci, (pendGci.get(gci) || 0) + units);
+        } else if(status === 'Aprovado'){
+          aprovGci.set(gci, (aprovGci.get(gci) || 0) + units);
+        }
       }
     }
   }
 
-  return { pendMap, aprovMap };
+  return { pendMap, aprovMap, pendGci, aprovGci };
 }
 
 function getSituacao(saldoReal, saldo){
@@ -1081,11 +1093,17 @@ function renderKpis(rows){
 }
 
 function computeAllRows(){
-  const { pendMap, aprovMap } = buildImpactMap();
+  const { pendMap, aprovMap, pendGci, aprovGci } = buildImpactMap();
+  const legacyPendDone = new Set();
+  const legacyAprovDone = new Set();
   const allRows = STATE.dispoRows.map(row => {
     const mapKey = sanitizeDisplayText(String(row.num||''));
-    const pendente = pendMap.get(mapKey) || 0;
-    const aprovado = aprovMap.get(mapKey) || 0;
+    const gci = sanitizeDisplayText(String(row.gci||''));
+    let pendente = pendMap.get(mapKey) || 0;
+    let aprovado = aprovMap.get(mapKey) || 0;
+    // Legado (pedidos sem Nº): aplica o total do GCI uma única vez, na 1ª linha do GCI
+    if(gci && pendGci.has(gci) && !legacyPendDone.has(gci)){ pendente += pendGci.get(gci); legacyPendDone.add(gci); }
+    if(gci && aprovGci.has(gci) && !legacyAprovDone.has(gci)){ aprovado += aprovGci.get(gci); legacyAprovDone.add(gci); }
     const saldoReal = Number(row.saldo || 0) - pendente - aprovado;
     const situacao = getSituacao(saldoReal, Number(row.saldo || 0));
     return { ...row, pendente, aprovado, saldoReal, situacao };

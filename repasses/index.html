@@ -1136,22 +1136,45 @@ function getItemUnits(item){
     : amount;
 }
 function getDispoImpactMap(){
-  // Chave = Nº da linha DISPO (identidade única). Pedidos sem Nº não reservam saldo.
-  const impactMap = new Map();
+  // byNum: reserva por Nº (pedidos novos). byGci: pedidos antigos sem Nº (legado).
+  const byNum = new Map();
+  const byGci = new Map();
   for(const order of STATE.orders){
     if(!shouldReserveDispo(order)) continue;
     for(const item of (order.items || [])){
+      const units = getItemUnits(item);
       const num = sanitizeDisplayText(String(item?.num || ''));
-      if(!num) continue;
-      impactMap.set(num, (impactMap.get(num) || 0) + getItemUnits(item));
+      if(num){
+        byNum.set(num, (byNum.get(num) || 0) + units);
+      } else {
+        const gci = sanitizeDisplayText(String(item?.gci || item?.ebm || item?.codigo || ''));
+        if(!gci) continue;
+        byGci.set(gci, (byGci.get(gci) || 0) + units);
+      }
     }
   }
-  return impactMap;
+  return { byNum, byGci };
+}
+// Nº da 1ª linha (menor Nº) de um GCI — carrega as reservas legadas sem Nº
+function legacyCarrierNumForGci(gci){
+  let bestNum = null, bestVal = Infinity;
+  for(const it of (STATE.raw || [])){
+    if(sanitizeDisplayText(String(it?.gci || '')) !== gci) continue;
+    const n = Number(it?.num);
+    const v = isNaN(n) ? Infinity : n;
+    if(v < bestVal){ bestVal = v; bestNum = sanitizeDisplayText(String(it?.num || '')); }
+  }
+  return bestNum;
 }
 function getReservedUnitsFromOrders(item){
-  const impactMap = getDispoImpactMap();
+  const { byNum, byGci } = getDispoImpactMap();
   const num = sanitizeDisplayText(String(item?.num || ''));
-  return impactMap.get(num) || 0;
+  let reserved = byNum.get(num) || 0;
+  const gci = sanitizeDisplayText(String(item?.gci || ''));
+  if(gci && byGci.has(gci) && legacyCarrierNumForGci(gci) === num){
+    reserved += byGci.get(gci);
+  }
+  return reserved;
 }
 function getBaseAvailableUnits(item){
   return Math.max(0, Number(item?.availableUnits || 0) - getReservedUnitsFromOrders(item));
@@ -3035,7 +3058,7 @@ setInterval(async ()=>{
 }, 30000);
 async function checkAppStatus(){
   try{
-    const res = await fetch(WORKER_URL, { method:'PATCH', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ action:'getStatus' }) });
+    const res = await fetch(WORKER_CONFIG.endpoint, { method:'PATCH', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ action:'getStatus' }) });
     if(!res.ok) return false;
     const st = await res.json();
     if(st && st.paused){
