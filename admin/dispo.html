@@ -437,12 +437,14 @@
     .dark .text-amber-600{ color:#fbbf24 !important; }
     .dark .text-emerald-600{ color:#34d399 !important; }
     .dark .text-rose-600{ color:#fb7185 !important; }
-    .dark .table-wrap thead th{ background:rgba(255,255,255,.05) !important; color:#7e90b4 !important; border-bottom:1px solid rgba(255,255,255,.16) !important; }
-    .dark .table-wrap thead th.sortable:hover{ background:rgba(255,255,255,.08) !important; color:#a9c4ff !important; }
-    .dark .table-wrap thead th.sorted-asc, .dark .table-wrap thead th.sorted-desc{ background:rgba(91,140,255,.12) !important; color:#a9c4ff !important; }
+    .dark .table-wrap{ -webkit-backdrop-filter:none !important; backdrop-filter:none !important; }
+    .dark .table-wrap thead, .dark .table-wrap thead tr{ background:#172244 !important; }
+    .dark .table-wrap thead th{ background:#172244 !important; color:#7e90b4 !important; border-bottom:1px solid rgba(255,255,255,.16) !important; position:sticky !important; top:0 !important; z-index:10 !important; -webkit-backdrop-filter:none !important; backdrop-filter:none !important; }
+    .dark .table-wrap thead th.sortable:hover{ background:#21305a !important; color:#a9c4ff !important; }
+    .dark .table-wrap thead th.sorted-asc, .dark .table-wrap thead th.sorted-desc{ background:#1c2c54 !important; color:#a9c4ff !important; }
     .dark .table-wrap tbody td{ border-color:rgba(255,255,255,.07) !important; color:#eef3fc !important; }
     .dark .table-wrap tbody tr:nth-child(even) td{ background:rgba(255,255,255,.022) !important; }
-    .dark .table-wrap tbody tr:hover td{ background:rgba(255,255,255,.06) !important; }
+    .dark .table-wrap tbody tr:hover td{ background:rgba(91,140,255,.10) !important; }
     .dark .table-wrap tbody td:first-child{ position:relative; padding-left:20px; }
     .dark .table-wrap tbody tr.row-ruptura td:first-child::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:#fb7185; }
     .dark .table-wrap tbody tr.row-baixo td:first-child::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:#fbbf24; }
