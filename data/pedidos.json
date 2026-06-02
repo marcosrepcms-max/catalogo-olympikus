@@ -463,5 +463,880 @@
     "lastActionLabel": "Pedido criado",
     "lastActionAt": "2026-05-29T17:17:49.904Z",
     "exportedAt": "2026-05-29T17:18:53.093Z"
+  },
+  {
+    "id": "PED-20260601155346-877",
+    "createdAt": "2026-06-01T18:53:46.058Z",
+    "updatedAt": "2026-06-01T18:53:46.583Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "109839",
+      "nome": "MARIANA"
+    },
+    "clienteCodigo": "9173",
+    "clienteNome": "CARLOS ANTONIO BRITO",
+    "prazo": "Z34 - 56/84/112 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 3,
+      "units": 36
+    },
+    "items": [
+      {
+        "codigo": "43447473",
+        "produto": "CORRE VENTO 3",
+        "cor": "ARTPTO",
+        "gci": "6901048",
+        "ebm": "12715275",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 3
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 2
+          },
+          {
+            "size": "43",
+            "qty": 1
+          },
+          {
+            "size": "44",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "30/06/2026"
+      },
+      {
+        "codigo": "43447473",
+        "produto": "CORRE VENTO 3",
+        "cor": "ALGMLT",
+        "gci": "6901048",
+        "ebm": "12715275",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "36",
+            "qty": 1
+          },
+          {
+            "size": "37",
+            "qty": 2
+          },
+          {
+            "size": "38",
+            "qty": 3
+          },
+          {
+            "size": "39",
+            "qty": 3
+          },
+          {
+            "size": "40",
+            "qty": 2
+          },
+          {
+            "size": "41",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "30/06/2026"
+      },
+      {
+        "codigo": "43447473",
+        "produto": "CORRE VENTO 3",
+        "cor": "PTOCH",
+        "gci": "6901048",
+        "ebm": "12715275",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 3
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 2
+          },
+          {
+            "size": "43",
+            "qty": 1
+          },
+          {
+            "size": "44",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "30/06/2026"
+      }
+    ]
+  },
+  {
+    "id": "PED-20260601155559-220",
+    "createdAt": "2026-06-01T18:55:59.899Z",
+    "updatedAt": "2026-06-01T18:56:00.459Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "109839",
+      "nome": "MARIANA"
+    },
+    "clienteCodigo": "97922",
+    "clienteNome": "MARIA APARECIDA",
+    "prazo": "Z34 - 56/84/112 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 2,
+      "units": 24
+    },
+    "items": [
+      {
+        "codigo": "43447473",
+        "produto": "CORRE VENTO 3",
+        "cor": "ARTPTO",
+        "gci": "7488389",
+        "ebm": "13313615",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 3
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 2
+          },
+          {
+            "size": "43",
+            "qty": 1
+          },
+          {
+            "size": "44",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "16/06/2026"
+      },
+      {
+        "codigo": "43447473",
+        "produto": "CORRE VENTO 3",
+        "cor": "PTOCH",
+        "gci": "6901048",
+        "ebm": "12715275",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 3
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 2
+          },
+          {
+            "size": "43",
+            "qty": 1
+          },
+          {
+            "size": "44",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "30/06/2026"
+      }
+    ]
+  },
+  {
+    "id": "PED-20260601155659-127",
+    "createdAt": "2026-06-01T18:56:59.020Z",
+    "updatedAt": "2026-06-01T18:56:59.529Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "109839",
+      "nome": "MARIANA"
+    },
+    "clienteCodigo": "71357",
+    "clienteNome": "JOSE IRLANDO",
+    "prazo": "Z34 - 56/84/112 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 2,
+      "units": 24
+    },
+    "items": [
+      {
+        "codigo": "43447473",
+        "produto": "CORRE VENTO 3",
+        "cor": "ARTPTO",
+        "gci": "7488389",
+        "ebm": "13313615",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "37",
+            "qty": 1
+          },
+          {
+            "size": "38",
+            "qty": 2
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 3
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 1
+          },
+          {
+            "size": "43",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "16/06/2026"
+      },
+      {
+        "codigo": "43447473",
+        "produto": "CORRE VENTO 3",
+        "cor": "PTOCH",
+        "gci": "6901048",
+        "ebm": "12715275",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 3
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 2
+          },
+          {
+            "size": "43",
+            "qty": 1
+          },
+          {
+            "size": "44",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "30/06/2026"
+      }
+    ]
+  },
+  {
+    "id": "PED-20260601155814-694",
+    "createdAt": "2026-06-01T18:58:14.864Z",
+    "updatedAt": "2026-06-01T18:58:18.352Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "109839",
+      "nome": "MARIANA"
+    },
+    "clienteCodigo": "71995",
+    "clienteNome": "ANTONIO LOURIVAL",
+    "prazo": "Z34 - 56/84/112 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 2,
+      "units": 24
+    },
+    "items": [
+      {
+        "codigo": "43447473",
+        "produto": "CORRE VENTO 3",
+        "cor": "ARTPTO",
+        "gci": "7488389",
+        "ebm": "13313615",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "37",
+            "qty": 1
+          },
+          {
+            "size": "38",
+            "qty": 2
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 3
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 1
+          },
+          {
+            "size": "43",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "16/06/2026"
+      },
+      {
+        "codigo": "43447473",
+        "produto": "CORRE VENTO 3",
+        "cor": "PTOCH",
+        "gci": "6901048",
+        "ebm": "12715275",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 3
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 2
+          },
+          {
+            "size": "43",
+            "qty": 1
+          },
+          {
+            "size": "44",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "30/06/2026"
+      }
+    ]
+  },
+  {
+    "id": "PED-20260601155905-539",
+    "createdAt": "2026-06-01T18:59:05.991Z",
+    "updatedAt": "2026-06-01T18:59:06.527Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "109839",
+      "nome": "MARIANA"
+    },
+    "clienteCodigo": "66817",
+    "clienteNome": "KELLY ARAUJO",
+    "prazo": "Z34 - 56/84/112 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 2,
+      "units": 24
+    },
+    "items": [
+      {
+        "codigo": "43447473",
+        "produto": "CORRE VENTO 3",
+        "cor": "ARTPTO",
+        "gci": "7488389",
+        "ebm": "13313615",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "37",
+            "qty": 1
+          },
+          {
+            "size": "38",
+            "qty": 2
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 3
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 1
+          },
+          {
+            "size": "43",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "16/06/2026"
+      },
+      {
+        "codigo": "43447473",
+        "produto": "CORRE VENTO 3",
+        "cor": "PTOCH",
+        "gci": "6901048",
+        "ebm": "12715275",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 3
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 2
+          },
+          {
+            "size": "43",
+            "qty": 1
+          },
+          {
+            "size": "44",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "30/06/2026"
+      }
+    ]
+  },
+  {
+    "id": "PED-20260601160256-320",
+    "createdAt": "2026-06-01T19:02:56.422Z",
+    "updatedAt": "2026-06-01T19:02:57.074Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "109839",
+      "nome": "MARIANA"
+    },
+    "clienteCodigo": "1633552",
+    "clienteNome": "FABRICIA LIMA",
+    "prazo": "Z34 - 56/84/112 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 1,
+      "units": 12
+    },
+    "items": [
+      {
+        "codigo": "43447473",
+        "produto": "CORRE VENTO 3",
+        "cor": "ARTPTO",
+        "gci": "7488389",
+        "ebm": "13313615",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "37",
+            "qty": 1
+          },
+          {
+            "size": "38",
+            "qty": 2
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 3
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 1
+          },
+          {
+            "size": "43",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "16/06/2026"
+      }
+    ]
+  },
+  {
+    "id": "PED-20260601160355-329",
+    "createdAt": "2026-06-01T19:03:55.209Z",
+    "updatedAt": "2026-06-01T19:03:55.751Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "109839",
+      "nome": "MARIANA"
+    },
+    "clienteCodigo": "1810796",
+    "clienteNome": "A K VILA",
+    "prazo": "Z34 - 56/84/112 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 1,
+      "units": 12
+    },
+    "items": [
+      {
+        "codigo": "43447473",
+        "produto": "CORRE VENTO 3",
+        "cor": "ARTPTO",
+        "gci": "7488389",
+        "ebm": "13313615",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "37",
+            "qty": 1
+          },
+          {
+            "size": "38",
+            "qty": 2
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 3
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 1
+          },
+          {
+            "size": "43",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "16/06/2026"
+      }
+    ]
+  },
+  {
+    "id": "PED-20260601160837-890",
+    "createdAt": "2026-06-01T19:08:37.706Z",
+    "updatedAt": "2026-06-01T19:08:38.291Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "109839",
+      "nome": "MARIANA"
+    },
+    "clienteCodigo": "4098088",
+    "clienteNome": "SALATIEL HENRIQUE VALERIO",
+    "prazo": "Z34 - 56/84/112 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 2,
+      "units": 24
+    },
+    "items": [
+      {
+        "codigo": "43447473",
+        "produto": "CORRE VENTO 3",
+        "cor": "ARTPTO",
+        "gci": "7488389",
+        "ebm": "13313615",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "37",
+            "qty": 1
+          },
+          {
+            "size": "38",
+            "qty": 2
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 3
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 1
+          },
+          {
+            "size": "43",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "16/06/2026"
+      },
+      {
+        "codigo": "43447473",
+        "produto": "CORRE VENTO 3",
+        "cor": "PTOCH",
+        "gci": "6901048",
+        "ebm": "12715275",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 3
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 2
+          },
+          {
+            "size": "43",
+            "qty": 1
+          },
+          {
+            "size": "44",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "30/06/2026"
+      }
+    ]
+  },
+  {
+    "id": "PED-20260601161555-136",
+    "createdAt": "2026-06-01T19:15:55.888Z",
+    "updatedAt": "2026-06-01T19:15:56.421Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "109839",
+      "nome": "MARIANA"
+    },
+    "clienteCodigo": "9173",
+    "clienteNome": "CARLOS ANTONIO BRITO",
+    "prazo": "Z34 - 56/84/112 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 1,
+      "units": 12
+    },
+    "items": [
+      {
+        "codigo": "43447473",
+        "produto": "CORRE VENTO 3",
+        "cor": "ARTPTO",
+        "gci": "7488389",
+        "ebm": "13313615",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "37",
+            "qty": 1
+          },
+          {
+            "size": "38",
+            "qty": 2
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 3
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 1
+          },
+          {
+            "size": "43",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "16/06/2026"
+      }
+    ]
   }
 ]

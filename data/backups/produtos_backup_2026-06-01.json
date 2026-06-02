@@ -10,17 +10,5 @@
     "genero": "Unissex",
     "preco": 599.98,
     "custo": 0
-  },
-  {
-    "imagem": "43447473_PTOCH",
-    "categoria": "FTW",
-    "segmento": "Corrida",
-    "codigo": "43447473",
-    "produto": "CORRE VENTO 3",
-    "corCodigo": "PTOCH",
-    "cor": "PTOCH",
-    "genero": "Masculino",
-    "preco": 499.99,
-    "custo": 0
   }
 ]
