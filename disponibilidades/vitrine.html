@@ -1766,7 +1766,58 @@ function fixEncoding(s){
 }
 
 // ── CARREGAR DADOS ────────────────────────────────────────────────────────────
+function mostrarTelaManutencao(){
+  const bg = document.getElementById('manutencaoBg');
+  if(!bg) return;
+  // Mostra logo da marca ativa (default OLY)
+  const oly = document.getElementById('manutLogoOly');
+  const ua  = document.getElementById('manutLogoUa');
+  const card= document.getElementById('manutCardInfo');
+  const marca = (MARCA_ATIVA||'oly').toLowerCase();
+  if(marca === 'ua'){
+    if(oly) oly.style.display = 'none';
+    if(ua){ ua.style.display = 'flex'; }
+    if(card){
+      const ic = card.querySelector('i');
+      if(ic) ic.style.color = '#fca5a5';
+    }
+  } else {
+    if(oly){ oly.style.display = 'flex'; }
+    if(ua) ua.style.display = 'none';
+  }
+  bg.style.display = 'block';
+  // Esconde tudo mais (mantém só a tela)
+  document.body.style.overflow = 'hidden';
+  // Polling: a cada 30s checa se já desativou
+  setInterval(async () => {
+    try{
+      const r = await fetch(WORKER_URL, {
+        method:'PATCH', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ action:'getStatusVitrine' })
+      });
+      const j = await r.json();
+      if(j && !j.pausada){ location.reload(); }
+    }catch(e){}
+  }, 30000);
+}
+
 async function loadData(){
+  // Apenas vendedor: verifica se vitrine está pausada
+  if(!MODO_CLIENTE){
+    try{
+      const statusRes = await fetch(WORKER_URL, {
+        method:'PATCH', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ action:'getStatusVitrine' })
+      });
+      if(statusRes.ok){
+        const st = await statusRes.json();
+        if(st && st.pausada){
+          mostrarTelaManutencao();
+          return;  // não carrega produtos
+        }
+      }
+    }catch(e){ /* segue normal se falhar */ }
+  }
   try{
     // Carrega disponibilidades + lista de ocultos em paralelo
     const [dispRes, ocultosRes] = await Promise.all([
@@ -4374,5 +4425,117 @@ $('confirmOkBtn').addEventListener('click', () => {
   });
 })();
 </script>
+<!-- ═══ TELA DE MANUTENÇÃO (vitrine pausada) ════════════════════════════════ -->
+<div id="manutencaoBg" style="display:none; position:fixed; inset:0; z-index:9999;
+  background:#0f172a;
+  background-image:radial-gradient(ellipse at top, #1e293b 0%, #0f172a 50%, #020617 100%);
+  color:#fff; overflow:hidden;">
+
+  <!-- Texturas premium -->
+  <div style="position:absolute; inset:0; background-image:radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px); background-size:28px 28px; pointer-events:none;"></div>
+  <div style="position:absolute; inset:0; background:linear-gradient(135deg, transparent 49%, rgba(255,255,255,.025) 50%, transparent 51%) 0 0/52px 52px; pointer-events:none;"></div>
+
+  <!-- Header -->
+  <div style="position:absolute; top:0; left:0; right:0; padding:18px 20px;
+    padding-top:calc(18px + env(safe-area-inset-top,0px));
+    display:flex; align-items:center; gap:10px;
+    background:linear-gradient(180deg, rgba(0,0,0,.18) 0%, transparent 100%); z-index:3;
+    font-family:'Plus Jakarta Sans',-apple-system,system-ui,sans-serif;">
+    <div style="width:34px; height:34px; border-radius:8px; background:rgba(255,255,255,.12);
+      display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:900;
+      backdrop-filter:blur(8px);">CMS</div>
+    <div style="font-size:13px; font-weight:800; letter-spacing:.2px;">REPRESENTAÇÕES</div>
+  </div>
+
+  <!-- Conteúdo central -->
+  <div style="position:relative; z-index:5; min-height:100vh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding:30px 20px; font-family:'Plus Jakarta Sans',-apple-system,system-ui,sans-serif; text-align:center;">
+
+    <!-- Logo animado -->
+    <div style="width:160px; height:160px; margin:0 auto 32px; position:relative;
+      display:flex; align-items:center; justify-content:center;">
+      <div style="position:absolute; inset:-12px; border:1.5px solid rgba(255,255,255,.18);
+        border-radius:50%; animation:manutRing 3s ease-in-out infinite;"></div>
+      <div style="position:absolute; inset:-26px; border:1px solid rgba(255,255,255,.1);
+        border-radius:50%; animation:manutRing 3s ease-in-out infinite .7s; opacity:.5;"></div>
+
+      <!-- Círculo OLY -->
+      <div id="manutLogoOly" style="width:130px; height:130px; border-radius:50%;
+        display:flex; align-items:center; justify-content:center;
+        background:linear-gradient(135deg, #1947e0 0%, #0034d8 50%, #002399 100%);
+        animation:manutSpin 8s linear infinite;
+        box-shadow:0 8px 32px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.15);">
+        <svg viewBox="0 0 200 130" style="width:75%; height:75%;" xmlns="http://www.w3.org/2000/svg">
+          <g fill="none" stroke="#fff" stroke-width="6">
+            <ellipse cx="74" cy="44" rx="22" ry="18"/>
+            <ellipse cx="100" cy="44" rx="22" ry="18"/>
+            <ellipse cx="126" cy="44" rx="22" ry="18"/>
+          </g>
+          <text x="100" y="105" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif"
+            font-size="26" font-weight="900" font-style="italic" letter-spacing="0.5" fill="#fff">OLYMPIKUS</text>
+        </svg>
+      </div>
+
+      <!-- Círculo UA -->
+      <div id="manutLogoUa" style="display:none; width:130px; height:130px; border-radius:50%;
+        align-items:center; justify-content:center;
+        background:linear-gradient(135deg, #ff3138 0%, #e52125 50%, #b81418 100%);
+        animation:manutSpin 8s linear infinite;
+        box-shadow:0 8px 32px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.15);">
+        <svg viewBox="0 0 200 200" style="width:75%; height:75%;" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 50 60 L 80 60 Q 88 60 88 68 L 88 88 Q 88 96 100 100 Q 112 96 112 88 L 112 68 Q 112 60 120 60 L 150 60 L 150 64 Q 150 96 100 110 Q 50 96 50 64 Z" fill="#fff"/>
+          <path d="M 50 140 L 80 140 Q 88 140 88 132 L 88 112 Q 88 104 100 100 Q 112 104 112 112 L 112 132 Q 112 140 120 140 L 150 140 L 150 136 Q 150 104 100 90 Q 50 104 50 136 Z" fill="#fff"/>
+        </svg>
+      </div>
+    </div>
+
+    <h1 style="font-size:30px; font-weight:900; letter-spacing:-.6px; margin:0 0 12px; line-height:1.15;">
+      Atualizando<br>as disponibilidades
+    </h1>
+
+    <p style="font-size:15.5px; line-height:1.55; opacity:.85; margin:0 0 28px; font-weight:500; max-width:480px;">
+      Estamos atualizando o catálogo com<br>os produtos mais recentes em estoque.
+    </p>
+
+    <div id="manutCardInfo" style="background:rgba(255,255,255,.08); backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,.15);
+      border-radius:14px; padding:14px 20px;
+      display:inline-flex; align-items:center; gap:10px;
+      font-size:13.5px; font-weight:700; margin-bottom:18px;">
+      <i class="fa-regular fa-clock" style="font-size:14px; color:#ccff00;"></i>
+      Em breve estará disponível
+    </div>
+
+    <div style="font-size:11.5px; opacity:.55; margin-top:18px; letter-spacing:.5px;
+      text-transform:uppercase; font-weight:700;">
+      ⚡ Aguarde e atualize a página
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <div style="position:absolute; bottom:0; left:0; right:0; padding:18px 20px;
+    padding-bottom:calc(18px + env(safe-area-inset-bottom,0px));
+    text-align:center; font-size:11px; opacity:.45; font-weight:600; letter-spacing:.4px;
+    font-family:'Plus Jakarta Sans',-apple-system,system-ui,sans-serif;">
+    CMS Representações
+  </div>
+</div>
+
+<style>
+  @keyframes manutRing{
+    0%, 100%{ opacity:.4; transform:scale(1); }
+    50%     { opacity:.75; transform:scale(1.05); }
+  }
+  @keyframes manutSpin{
+    from{ transform:rotate(0deg); }
+    to  { transform:rotate(360deg); }
+  }
+  @media(max-width:380px){
+    #manutencaoBg h1{ font-size:24px !important; }
+    #manutencaoBg p{ font-size:14px !important; }
+  }
+</style>
+
 </body>
 </html>
