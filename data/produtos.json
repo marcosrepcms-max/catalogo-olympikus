@@ -22,5 +22,17 @@
     "genero": "Masculino",
     "preco": 499.99,
     "custo": 0
+  },
+  {
+    "imagem": "43341472_PTO_CH",
+    "categoria": "FTW",
+    "segmento": "Corrida",
+    "codigo": "43341472",
+    "produto": "CHALLENGER 6",
+    "corCodigo": "PTO/CH",
+    "cor": "PTO/CH",
+    "genero": "Masculino",
+    "preco": 349.99,
+    "custo": 0
   }
 ]
