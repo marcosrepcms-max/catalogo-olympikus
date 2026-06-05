@@ -12351,5 +12351,2056 @@
       "G": 46,
       "GG": 12
     }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA81922",
+    "descricao": "TRIPK.MEIA MEDIA 39/44",
+    "cor": "BCPTMC",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 47.99,
+    "totalGeral": 21943,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 20.87,
+    "imagem": "OIMSA81922_BCPTMC",
+    "grade": {
+      "39/44": 21943
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA81922",
+    "descricao": "TRIPK.MEIA MEDIA 39/44",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 47.99,
+    "totalGeral": 21963,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 20.87,
+    "imagem": "OIMSA81922_BRANCO",
+    "grade": {
+      "39/44": 21963
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA81922",
+    "descricao": "TRIPK.MEIA MEDIA 39/44",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 47.99,
+    "totalGeral": 29589,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 20.87,
+    "imagem": "OIMSA81922_PRETO",
+    "grade": {
+      "39/44": 29589
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA81921",
+    "descricao": "TRIPK.MEIA MEDIA 33/38",
+    "cor": "BCPTMC",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 47.99,
+    "totalGeral": 14964,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 20.87,
+    "imagem": "OIWSA81921_BCPTMC",
+    "grade": {
+      "33/38": 14964
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA81921",
+    "descricao": "TRIPK.MEIA MEDIA 33/38",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 47.99,
+    "totalGeral": 10393,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 20.87,
+    "imagem": "OIWSA81921_BRANCO",
+    "grade": {
+      "33/38": 10393
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA81921",
+    "descricao": "TRIPK.MEIA MEDIA 33/38",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 47.99,
+    "totalGeral": 7457,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 20.87,
+    "imagem": "OIWSA81921_PRETO",
+    "grade": {
+      "33/38": 7457
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA81920",
+    "descricao": "TRIPK.MEIA CURTA 39/44",
+    "cor": "BCPTMC",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 42.99,
+    "totalGeral": 27544,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 18.69,
+    "imagem": "OIMSA81920_BCPTMC",
+    "grade": {
+      "39/44": 27544
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA81920",
+    "descricao": "TRIPK.MEIA CURTA 39/44",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 42.99,
+    "totalGeral": 22954,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 18.69,
+    "imagem": "OIMSA81920_BRANCO",
+    "grade": {
+      "39/44": 22954
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA81920",
+    "descricao": "TRIPK.MEIA CURTA 39/44",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 42.99,
+    "totalGeral": 20478,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 18.69,
+    "imagem": "OIMSA81920_PRETO",
+    "grade": {
+      "39/44": 20478
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA81919",
+    "descricao": "TRIPK.MEIA CURTA 33/38",
+    "cor": "BCPTMC",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 42.99,
+    "totalGeral": 16327,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OIWSA81919_BCPTMC",
+    "grade": {
+      "33/38": 16327
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA81919",
+    "descricao": "TRIPK.MEIA CURTA 33/38",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 42.99,
+    "totalGeral": 15312,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OIWSA81919_BRANCO",
+    "grade": {
+      "33/38": 15312
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA81919",
+    "descricao": "TRIPK.MEIA CURTA 33/38",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 42.99,
+    "totalGeral": 10371,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OIWSA81919_PRETO",
+    "grade": {
+      "33/38": 10371
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA22194",
+    "descricao": "MEIAS TRI.ULT.INV 39/44",
+    "cor": "BCPTMC",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "MEIAS",
+    "pdv": 39.99,
+    "totalGeral": 13368,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIMSA22194_BCPTMC",
+    "grade": {
+      "39/44": 13368
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA22194",
+    "descricao": "MEIAS TRI.ULT.INV 39/44",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "MEIAS",
+    "pdv": 39.99,
+    "totalGeral": 3177,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIMSA22194_BRANCO",
+    "grade": {
+      "39/44": 3177
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA22194",
+    "descricao": "MEIAS TRI.ULT.INV 39/44",
+    "cor": "MESCLA",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "MEIAS",
+    "pdv": 39.99,
+    "totalGeral": 2299,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIMSA22194_MESCLA",
+    "grade": {
+      "39/44": 2299
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA22194",
+    "descricao": "MEIAS TRI.ULT.INV 39/44",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "MEIAS",
+    "pdv": 39.99,
+    "totalGeral": 4793,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIMSA22194_PRETO",
+    "grade": {
+      "39/44": 4793
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA26199",
+    "descricao": "TRIPK MEIA INV S/F 39/44",
+    "cor": "BCPTMC",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 39.99,
+    "totalGeral": 47513,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIMSA26199_BCPTMC",
+    "grade": {
+      "39/44": 47513
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA26199",
+    "descricao": "TRIPK MEIA INV S/F 39/44",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 39.99,
+    "totalGeral": 33817,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIMSA26199_BRANCO",
+    "grade": {
+      "39/44": 33817
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA26199",
+    "descricao": "TRIPK MEIA INV S/F 39/44",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 39.99,
+    "totalGeral": 28069,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIMSA26199_PRETO",
+    "grade": {
+      "39/44": 28069
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA22193",
+    "descricao": "MEIAS TRI.ULT.INV 33/38",
+    "cor": "BCPTMC",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "MEIAS",
+    "pdv": 39.99,
+    "totalGeral": 20631,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIWSA22193_BCPTMC",
+    "grade": {
+      "33/38": 20631
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA22193",
+    "descricao": "MEIAS TRI.ULT.INV 33/38",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "MEIAS",
+    "pdv": 39.99,
+    "totalGeral": 3890,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIWSA22193_BRANCO",
+    "grade": {
+      "33/38": 3890
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA22193",
+    "descricao": "MEIAS TRI.ULT.INV 33/38",
+    "cor": "MESCLA",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "MEIAS",
+    "pdv": 39.99,
+    "totalGeral": 2438,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIWSA22193_MESCLA",
+    "grade": {
+      "33/38": 2438
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA22193",
+    "descricao": "MEIAS TRI.ULT.INV 33/38",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "MEIAS",
+    "pdv": 39.99,
+    "totalGeral": 3653,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 17.39,
+    "imagem": "OIWSA22193_PRETO",
+    "grade": {
+      "33/38": 3653
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA26197",
+    "descricao": "TRIPK MEIA INV S/F 33/38",
+    "cor": "BCPTMC",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 39.99,
+    "totalGeral": 35138,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OIWSA26197_BCPTMC",
+    "grade": {
+      "33/38": 35138
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA26197",
+    "descricao": "TRIPK MEIA INV S/F 33/38",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 39.99,
+    "totalGeral": 25729,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OIWSA26197_BRANCO",
+    "grade": {
+      "33/38": 25729
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA26197",
+    "descricao": "TRIPK MEIA INV S/F 33/38",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 39.99,
+    "totalGeral": 20759,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OIWSA26197_PRETO",
+    "grade": {
+      "33/38": 20759
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMA241930",
+    "descricao": "MEIA COMFY CM 39/44",
+    "cor": "BC_PTO",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 24.99,
+    "totalGeral": 3096,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 10.87,
+    "imagem": "OIMA241930_BC_PTO",
+    "grade": {
+      "39/44": 3096
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMA241930",
+    "descricao": "MEIA COMFY CM 39/44",
+    "cor": "PTO_BC",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 24.99,
+    "totalGeral": 2758,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 10.87,
+    "imagem": "OIMA241930_PTO_BC",
+    "grade": {
+      "39/44": 2758
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMA241930",
+    "descricao": "MEIA COMFY CM 39/44",
+    "cor": "VDMGPT",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 24.99,
+    "totalGeral": 971,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 10.87,
+    "imagem": "OIMA241930_VDMGPT",
+    "grade": {
+      "39/44": 971
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWA241929",
+    "descricao": "MEIA COMFY CM 33/38",
+    "cor": "BC_PTO",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 24.99,
+    "totalGeral": 1433,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 10.87,
+    "imagem": "OIWA241929_BC_PTO",
+    "grade": {
+      "33/38": 1433
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWA241929",
+    "descricao": "MEIA COMFY CM 33/38",
+    "cor": "BCO_MR",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 24.99,
+    "totalGeral": 2171,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 10.87,
+    "imagem": "OIWA241929_BCO_MR",
+    "grade": {
+      "33/38": 2171
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWA241929",
+    "descricao": "MEIA COMFY CM 33/38",
+    "cor": "CAMPRT",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 24.99,
+    "totalGeral": 1960,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 10.87,
+    "imagem": "OIWA241929_CAMPRT",
+    "grade": {
+      "33/38": 1960
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWA241929",
+    "descricao": "MEIA COMFY CM 33/38",
+    "cor": "PTO_BC",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 24.99,
+    "totalGeral": 3474,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 10.87,
+    "imagem": "OIWA241929_PTO_BC",
+    "grade": {
+      "33/38": 3474
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWA241929",
+    "descricao": "MEIA COMFY CM 33/38",
+    "cor": "VDMGPT",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 24.99,
+    "totalGeral": 2313,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 10.87,
+    "imagem": "OIWA241929_VDMGPT",
+    "grade": {
+      "33/38": 2313
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA21193",
+    "descricao": "MEIA CANO CURTO 39/44",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "MEIAS",
+    "pdv": 21.99,
+    "totalGeral": 2110,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OIMSA21193_BRANCO",
+    "grade": {
+      "39/44": 2110
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA21193",
+    "descricao": "MEIA CANO CURTO 39/44",
+    "cor": "MESCLA",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "MEIAS",
+    "pdv": 21.99,
+    "totalGeral": 1197,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OIMSA21193_MESCLA",
+    "grade": {
+      "39/44": 1197
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA21193",
+    "descricao": "MEIA CANO CURTO 39/44",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "MEIAS",
+    "pdv": 21.99,
+    "totalGeral": 2856,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OIMSA21193_PRETO",
+    "grade": {
+      "39/44": 2856
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA21195",
+    "descricao": "MEIA CANO MEDIO 39/44",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 21.99,
+    "totalGeral": 6322,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 9.56,
+    "imagem": "OIMSA21195_BRANCO",
+    "grade": {
+      "39/44": 6322
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA21195",
+    "descricao": "MEIA CANO MEDIO 39/44",
+    "cor": "MESCLA",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 21.99,
+    "totalGeral": 1538,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 9.56,
+    "imagem": "OIMSA21195_MESCLA",
+    "grade": {
+      "39/44": 1538
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA21195",
+    "descricao": "MEIA CANO MEDIO 39/44",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 21.99,
+    "totalGeral": 4690,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 9.56,
+    "imagem": "OIMSA21195_PRETO",
+    "grade": {
+      "39/44": 4690
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA21194",
+    "descricao": "MEIA CANO CURTO 33/38",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 21.99,
+    "totalGeral": 3525,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 9.56,
+    "imagem": "OIWSA21194_BRANCO",
+    "grade": {
+      "33/38": 3525
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA21194",
+    "descricao": "MEIA CANO CURTO 33/38",
+    "cor": "MESCLA",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 21.99,
+    "totalGeral": 1732,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 9.56,
+    "imagem": "OIWSA21194_MESCLA",
+    "grade": {
+      "33/38": 1732
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA21194",
+    "descricao": "MEIA CANO CURTO 33/38",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 21.99,
+    "totalGeral": 2707,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 9.56,
+    "imagem": "OIWSA21194_PRETO",
+    "grade": {
+      "33/38": 2707
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA21196",
+    "descricao": "MEIA CANO MEDIO 33/38",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 21.99,
+    "totalGeral": 4176,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 9.56,
+    "imagem": "OIWSA21196_BRANCO",
+    "grade": {
+      "33/38": 4176
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA21196",
+    "descricao": "MEIA CANO MEDIO 33/38",
+    "cor": "MESCLA",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 21.99,
+    "totalGeral": 2520,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 9.56,
+    "imagem": "OIWSA21196_MESCLA",
+    "grade": {
+      "33/38": 2520
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA21196",
+    "descricao": "MEIA CANO MEDIO 33/38",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 21.99,
+    "totalGeral": 2786,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 9.56,
+    "imagem": "OIWSA21196_PRETO",
+    "grade": {
+      "33/38": 2786
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA22192",
+    "descricao": "MEIAS IND.ULT.INV.39/44",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "MEIAS",
+    "pdv": 19.99,
+    "totalGeral": 1665,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OIMSA22192_BRANCO",
+    "grade": {
+      "39/44": 1665
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA22192",
+    "descricao": "MEIAS IND.ULT.INV.39/44",
+    "cor": "MESCLA",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "MEIAS",
+    "pdv": 19.99,
+    "totalGeral": 2038,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OIMSA22192_MESCLA",
+    "grade": {
+      "39/44": 2038
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA22192",
+    "descricao": "MEIAS IND.ULT.INV.39/44",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "MEIAS",
+    "pdv": 19.99,
+    "totalGeral": 1079,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OIMSA22192_PRETO",
+    "grade": {
+      "39/44": 1079
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA26198",
+    "descricao": "MEIA INV S/F 39/44",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 19.99,
+    "totalGeral": 3182,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 8.69,
+    "imagem": "OIMSA26198_BRANCO",
+    "grade": {
+      "39/44": 3182
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA26198",
+    "descricao": "MEIA INV S/F 39/44",
+    "cor": "MESCLA",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 19.99,
+    "totalGeral": 3506,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 8.69,
+    "imagem": "OIMSA26198_MESCLA",
+    "grade": {
+      "39/44": 3506
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMSA26198",
+    "descricao": "MEIA INV S/F 39/44",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 19.99,
+    "totalGeral": 3579,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OIMSA26198_PRETO",
+    "grade": {
+      "39/44": 3579
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA22191",
+    "descricao": "MEIAS IND.ULT.INV.33/38",
+    "cor": "BRANCO",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "MEIAS",
+    "pdv": 19.99,
+    "totalGeral": 2116,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 8.69,
+    "imagem": "OIWSA22191_BRANCO",
+    "grade": {
+      "33/38": 2116
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA22191",
+    "descricao": "MEIAS IND.ULT.INV.33/38",
+    "cor": "MESCLA",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "MEIAS",
+    "pdv": 19.99,
+    "totalGeral": 2094,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 8.69,
+    "imagem": "OIWSA22191_MESCLA",
+    "grade": {
+      "33/38": 2094
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA22191",
+    "descricao": "MEIAS IND.ULT.INV.33/38",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "MEIAS",
+    "pdv": 19.99,
+    "totalGeral": 1930,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 8.69,
+    "imagem": "OIWSA22191_PRETO",
+    "grade": {
+      "33/38": 1930
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA26196",
+    "descricao": "MEIA INV S/F 33/38",
+    "cor": "BRANCO",
+    "linha": "CASUAL",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 19.99,
+    "totalGeral": 3137,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OIWSA26196_BRANCO",
+    "grade": {
+      "33/38": 3137
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA26196",
+    "descricao": "MEIA INV S/F 33/38",
+    "cor": "MESCLA",
+    "linha": "CASUAL",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 19.99,
+    "totalGeral": 3657,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OIWSA26196_MESCLA",
+    "grade": {
+      "33/38": 3657
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIWSA26196",
+    "descricao": "MEIA INV S/F 33/38",
+    "cor": "PRETO",
+    "linha": "CASUAL",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 19.99,
+    "totalGeral": 3736,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OIWSA26196_PRETO",
+    "grade": {
+      "33/38": 3736
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBMW251934",
+    "descricao": "MEIA FUNC COMP 3/4 39/44",
+    "cor": "BCNZSF",
+    "linha": "FUNCIONALIDADE",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 69.99,
+    "totalGeral": 1326,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OBMW251934_BCNZSF",
+    "grade": {
+      "39/44": 1326
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBMW251934",
+    "descricao": "MEIA FUNC COMP 3/4 39/44",
+    "cor": "PT_BCO",
+    "linha": "FUNCIONALIDADE",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 69.99,
+    "totalGeral": 1332,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OBMW251934_PT_BCO",
+    "grade": {
+      "39/44": 1332
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBWW251933",
+    "descricao": "MEIA FUNC COMP 3/4 33/38",
+    "cor": "BCNZSF",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 69.99,
+    "totalGeral": 1202,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OBWW251933_BCNZSF",
+    "grade": {
+      "33/38": 1202
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBWW251933",
+    "descricao": "MEIA FUNC COMP 3/4 33/38",
+    "cor": "PT_BCO",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 69.99,
+    "totalGeral": 2328,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OBWW251933_PT_BCO",
+    "grade": {
+      "33/38": 2328
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBMA251922",
+    "descricao": "MEIA CORRE 4",
+    "cor": "BCPTOR",
+    "linha": "CORRE FORCA",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 124,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OBMA251922_BCPTOR",
+    "grade": {
+      "39/44": 124
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBMA251922",
+    "descricao": "MEIA CORRE 4",
+    "cor": "OCEARE",
+    "linha": "CORRE FORCA",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 748,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OBMA251922_OCEARE",
+    "grade": {
+      "39/44": 748
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBMA251922",
+    "descricao": "MEIA CORRE 4",
+    "cor": "ORVARE",
+    "linha": "CORRE FORCA",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 780,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OBMA251922_ORVARE",
+    "grade": {
+      "39/44": 780
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBMA251922",
+    "descricao": "MEIA CORRE 4",
+    "cor": "PTPGOR",
+    "linha": "CORRE FORCA",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 441,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OBMA251922_PTPGOR",
+    "grade": {
+      "39/44": 441
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBMA251922",
+    "descricao": "MEIA CORRE 4",
+    "cor": "VANBCO",
+    "linha": "CORRE FORCA",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 1489,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OBMA251922_VANBCO",
+    "grade": {
+      "39/44": 1489
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBMW251931",
+    "descricao": "MEIA FUNC CC 39/44",
+    "cor": "AREORA",
+    "linha": "FUNCIONALIDADE",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 2944,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBMW251931_AREORA",
+    "grade": {
+      "39/44": 2944
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBMW251931",
+    "descricao": "MEIA FUNC CC 39/44",
+    "cor": "PTOVAN",
+    "linha": "FUNCIONALIDADE",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 2891,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBMW251931_PTOVAN",
+    "grade": {
+      "39/44": 2891
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBMW251931",
+    "descricao": "MEIA FUNC CC 39/44",
+    "cor": "VANBCO",
+    "linha": "FUNCIONALIDADE",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 965,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBMW251931_VANBCO",
+    "grade": {
+      "39/44": 965
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBWA231911",
+    "descricao": "MEIA BPC CANO MEDIO 33/38",
+    "cor": "CASARE",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 3399,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA231911_CASARE",
+    "grade": {
+      "33/38": 3399
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBWA231911",
+    "descricao": "MEIA BPC CANO MEDIO 33/38",
+    "cor": "ORVARE",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 2879,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA231911_ORVARE",
+    "grade": {
+      "33/38": 2879
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBWA231911",
+    "descricao": "MEIA BPC CANO MEDIO 33/38",
+    "cor": "PTOVAN",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 1703,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA231911_PTOVAN",
+    "grade": {
+      "33/38": 1703
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBWA231912",
+    "descricao": "MEIA BPC CANO MEDIO 39/44",
+    "cor": "CASARE",
+    "linha": "FUNCIONALIDADE",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 3155,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA231912_CASARE",
+    "grade": {
+      "39/44": 3155
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBWA231912",
+    "descricao": "MEIA BPC CANO MEDIO 39/44",
+    "cor": "ORVARE",
+    "linha": "FUNCIONALIDADE",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 2173,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA231912_ORVARE",
+    "grade": {
+      "39/44": 2173
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBWA231912",
+    "descricao": "MEIA BPC CANO MEDIO 39/44",
+    "cor": "PTOVAN",
+    "linha": "FUNCIONALIDADE",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 3215,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA231912_PTOVAN",
+    "grade": {
+      "39/44": 3215
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBWA251921",
+    "descricao": "MEIA CORRE 4",
+    "cor": "BCPTOR",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 990,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA251921_BCPTOR",
+    "grade": {
+      "33/38": 990
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBWA251921",
+    "descricao": "MEIA CORRE 4",
+    "cor": "OCEARE",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 1962,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA251921_OCEARE",
+    "grade": {
+      "33/38": 1962
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBWA251921",
+    "descricao": "MEIA CORRE 4",
+    "cor": "ORVARE",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 1529,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA251921_ORVARE",
+    "grade": {
+      "33/38": 1529
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBWA251921",
+    "descricao": "MEIA CORRE 4",
+    "cor": "PTPGOR",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 2097,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA251921_PTPGOR",
+    "grade": {
+      "33/38": 2097
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBWA251921",
+    "descricao": "MEIA CORRE 4",
+    "cor": "VANBCO",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 3361,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "OBWA251921_VANBCO",
+    "grade": {
+      "33/38": 3361
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBWW251932",
+    "descricao": "MEIA FUNC CC 33/38",
+    "cor": "AREORA",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 2252,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OBWW251932_AREORA",
+    "grade": {
+      "33/38": 2252
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBWW251932",
+    "descricao": "MEIA FUNC CC 33/38",
+    "cor": "PTOVAN",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 5874,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OBWW251932_PTOVAN",
+    "grade": {
+      "33/38": 5874
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBWW251932",
+    "descricao": "MEIA FUNC CC 33/38",
+    "cor": "VANBCO",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 788,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OBWW251932_VANBCO",
+    "grade": {
+      "33/38": 788
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBMSR241922",
+    "descricao": "TRIPACK MEIA NEON C INV M",
+    "cor": "AMBCLC",
+    "linha": "COMPLEMENTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 64.99,
+    "totalGeral": 2403,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 28.26,
+    "imagem": "OBMSR241922_AMBCLC",
+    "grade": {
+      "39/44": 2403
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBMSR241922",
+    "descricao": "TRIPACK MEIA NEON C INV M",
+    "cor": "CBCLOL",
+    "linha": "COMPLEMENTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 64.99,
+    "totalGeral": 1412,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 28.26,
+    "imagem": "OBMSR241922_CBCLOL",
+    "grade": {
+      "39/44": 1412
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBMSR241922",
+    "descricao": "TRIPACK MEIA NEON C INV M",
+    "cor": "GBCBOB",
+    "linha": "COMPLEMENTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 64.99,
+    "totalGeral": 1214,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 28.26,
+    "imagem": "OBMSR241922_GBCBOB",
+    "grade": {
+      "39/44": 1214
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBMSR241922",
+    "descricao": "TRIPACK MEIA NEON C INV M",
+    "cor": "GSBCLC",
+    "linha": "COMPLEMENTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 64.99,
+    "totalGeral": 3781,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 28.26,
+    "imagem": "OBMSR241922_GSBCLC",
+    "grade": {
+      "39/44": 3781
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBWSR241921",
+    "descricao": "TRIPACK MEIA NEON C INV F",
+    "cor": "CBCLOL",
+    "linha": "COMPLEMENTO",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 64.99,
+    "totalGeral": 2610,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OBWSR241921_CBCLOL",
+    "grade": {
+      "33/38": 2610
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBWSR241921",
+    "descricao": "TRIPACK MEIA NEON C INV F",
+    "cor": "OBABAL",
+    "linha": "COMPLEMENTO",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 64.99,
+    "totalGeral": 616,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OBWSR241921_OBABAL",
+    "grade": {
+      "33/38": 616
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OIMA241930",
+    "descricao": "MEIA COMFY CM 39/44",
+    "cor": "BCO_MR",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 24.99,
+    "totalGeral": 18,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OIMA241930_BCO_MR",
+    "grade": {
+      "39/44": 18
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBMA241918",
+    "descricao": "MEIA CORRE 39/44",
+    "cor": "BC_ORG",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 2,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "",
+    "grade": {
+      "39/44": 2
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBMA241918",
+    "descricao": "MEIA CORRE 39/44",
+    "cor": "PTPCOR",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 2,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "",
+    "grade": {
+      "39/44": 2
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULTS",
+    "artigo": "OBWA231911",
+    "descricao": "MEIA BPC CANO MEDIO 33/38",
+    "cor": "BCOVDA",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 2,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "33/38": 2
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULTS",
+    "artigo": "OBWA231911",
+    "descricao": "MEIA BPC CANO MEDIO 33/38",
+    "cor": "PTCAAL",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 2,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "33/38": 2
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULTS",
+    "artigo": "OBWA231912",
+    "descricao": "MEIA BPC CANO MEDIO 39/44",
+    "cor": "BCOVDA",
+    "linha": "FUNCIONALIDADE",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 2,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "39/44": 2
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULTS",
+    "artigo": "OBWA231912",
+    "descricao": "MEIA BPC CANO MEDIO 39/44",
+    "cor": "PTCAAL",
+    "linha": "FUNCIONALIDADE",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 2,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "39/44": 2
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULSP",
+    "artigo": "OBWA241917",
+    "descricao": "MEIA CORRE 33/38",
+    "cor": "PTPCOR",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 59.99,
+    "totalGeral": 2,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "",
+    "grade": {
+      "33/38": 2
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULTS",
+    "artigo": "OBMSR241922",
+    "descricao": "TRIPACK MEIA NEON C INV M",
+    "cor": "BFCBPO",
+    "linha": "COMPLEMENTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 64.99,
+    "totalGeral": 2,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "39/44": 2
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULTS",
+    "artigo": "OBMSR241922",
+    "descricao": "TRIPACK MEIA NEON C INV M",
+    "cor": "FBLBOB",
+    "linha": "COMPLEMENTO",
+    "genero": "MASCULINO",
+    "categoria": "MEIAS",
+    "pdv": 64.99,
+    "totalGeral": 2,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "39/44": 2
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULTS",
+    "artigo": "OBWSR241921",
+    "descricao": "TRIPACK MEIA NEON C INV F",
+    "cor": "BBABAB",
+    "linha": "COMPLEMENTO",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 64.99,
+    "totalGeral": 2,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "33/38": 2
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JUNHO",
+    "empresa": "VULTS",
+    "artigo": "OBWSR241921",
+    "descricao": "TRIPACK MEIA NEON C INV F",
+    "cor": "BFCBPO",
+    "linha": "COMPLEMENTO",
+    "genero": "FEMININO",
+    "categoria": "MEIAS",
+    "pdv": 64.99,
+    "totalGeral": 2,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "33/38": 2
+    },
+    "_aguardandoImagem": true
   }
 ]
