@@ -1,5 +1,5 @@
 {
-  "pausada": false,
-  "pausadoEm": null,
+  "pausada": true,
+  "pausadoEm": 1780690227037,
   "motivo": ""
 }
