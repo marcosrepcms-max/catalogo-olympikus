@@ -3139,6 +3139,7 @@ checkAppStatus().then(paused => {
   background:#0f172a;
   background-image:radial-gradient(ellipse at top, #1e293b 0%, #0f172a 50%, #020617 100%);
   color:#fff; overflow:hidden;
+  flex-direction:column; align-items:stretch; justify-content:stretch;
   font-family:'Plus Jakarta Sans',-apple-system,system-ui,sans-serif;">
 
   <!-- Texturas premium -->
@@ -3157,9 +3158,9 @@ checkAppStatus().then(paused => {
   </div>
 
   <!-- Conteúdo central -->
-  <div style="position:relative; z-index:5; min-height:100vh;
+  <div style="position:relative; z-index:5; min-height:100vh; width:100%;
     display:flex; flex-direction:column; align-items:center; justify-content:center;
-    padding:30px 20px; text-align:center;">
+    padding:30px 20px; text-align:center; box-sizing:border-box;">
 
     <!-- Logo OLY com anéis pulsantes -->
     <div style="width:160px; height:160px; margin:0 auto 32px; position:relative;
