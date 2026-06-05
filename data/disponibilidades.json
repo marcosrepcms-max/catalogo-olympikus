@@ -4384,11 +4384,10 @@
     "codigoTabela": "E4687",
     "mkp": "2.3",
     "custo": 108.69,
-    "imagem": "",
+    "imagem": "OISB241825_NAVAL",
     "grade": {
       "U": 8651
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -6827,14 +6826,13 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIWWR25602_OCRE",
     "grade": {
       "P": 156,
       "M": 303,
       "G": 304,
       "GG": 152
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -7038,14 +7036,13 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIWWR25701_OCRE",
     "grade": {
       "P": 145,
       "M": 268,
       "G": 266,
       "GG": 131
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -7219,14 +7216,13 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIWWT25115_TAPTRY",
     "grade": {
       "P": 184,
       "M": 393,
       "G": 398,
       "GG": 209
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -7479,14 +7475,13 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIWSR25152_TAPTRY",
     "grade": {
       "P": 143,
       "M": 278,
       "G": 308,
       "GG": 175
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -7549,14 +7544,13 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIWWT26307_TAPTRY",
     "grade": {
       "P": 187,
       "M": 369,
       "G": 365,
       "GG": 196
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -7896,14 +7890,13 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIWSR25801_TAPTRY",
     "grade": {
       "P": 173,
       "M": 345,
       "G": 341,
       "GG": 187
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -8630,14 +8623,13 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIWST25702_LIRIO",
     "grade": {
       "P": 223,
       "M": 434,
       "G": 434,
       "GG": 225
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -8654,14 +8646,13 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIWST25702_TAPTRY",
     "grade": {
       "P": 222,
       "M": 432,
       "G": 435,
       "GG": 223
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -8747,7 +8738,7 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIWWT26616_NAVAL",
     "grade": {
       "P": 358,
       "M": 713,
@@ -8756,8 +8747,7 @@
       "G1": 10,
       "G2": 16,
       "G3": 5
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -9279,7 +9269,7 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIWWT26615_NAVAL",
     "grade": {
       "P": 534,
       "M": 1054,
@@ -9288,8 +9278,7 @@
       "G1": 32,
       "G2": 53,
       "G3": 27
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -9672,14 +9661,13 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIWWT26715_BRANCO",
     "grade": {
       "P": 159,
       "M": 299,
       "G": 310,
       "GG": 157
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -9745,7 +9733,7 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIWWT26715_NAVAL",
     "grade": {
       "P": 395,
       "M": 772,
@@ -9754,8 +9742,7 @@
       "G1": 15,
       "G2": 13,
       "G3": 13
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -9795,7 +9782,7 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIWWT26715_PRETO",
     "grade": {
       "P": 545,
       "M": 1048,
@@ -9804,8 +9791,7 @@
       "G1": 24,
       "G2": 48,
       "G3": 48
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
