@@ -12534,15 +12534,44 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 0,
+    "totalGeral": 16938,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43344456_ARENIT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 16938,
+      "2Q_OUT": 12437,
+      "2Q_SET": 6313,
+      "2Q_AGO": 1394
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "AZABA",
+    "artigo": "43344456",
+    "descricao": "ADRENA 2",
+    "cor": "CRSTAL",
+    "linha": "VERSATIL",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 329.99,
+    "totalGeral": 15765,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43344456_CRSTAL",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 15765,
+      "2Q_OUT": 11264,
+      "2Q_SET": 5140,
+      "2Q_AGO": 221
+    }
   },
   {
     "marca": "OLY",
@@ -12555,15 +12584,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 0,
+    "totalGeral": 16558,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43344456_ELDERB",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 16558,
+      "2Q_OUT": 12057,
+      "2Q_SET": 5933,
+      "2Q_AGO": 1014
+    }
   },
   {
     "marca": "OLY",
@@ -12576,15 +12609,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 0,
+    "totalGeral": 15565,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43344456_PEWTER",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 15565,
+      "2Q_OUT": 11064,
+      "2Q_SET": 4940,
+      "2Q_AGO": 21
+    }
   },
   {
     "marca": "OLY",
@@ -12597,15 +12634,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 0,
+    "totalGeral": 15654,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43344456_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 15654,
+      "2Q_OUT": 11153,
+      "2Q_SET": 5029,
+      "2Q_AGO": 110
+    }
   },
   {
     "marca": "OLY",
@@ -12618,15 +12659,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 0,
+    "totalGeral": 3213,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43701259_ARECHB",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 3213,
+      "2Q_OUT": 1081,
+      "2Q_SET": 1081,
+      "2Q_AGO": 1081
+    }
   },
   {
     "marca": "OLY",
@@ -12639,15 +12684,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 0,
+    "totalGeral": 2136,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43701259_CZESCH",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 2136,
+      "2Q_OUT": 4,
+      "2Q_SET": 4,
+      "2Q_AGO": 4
+    }
   },
   {
     "marca": "OLY",
@@ -12660,15 +12709,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 0,
+    "totalGeral": 4020,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43701259_MLT_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 4020,
+      "2Q_OUT": 1888,
+      "2Q_SET": 1888,
+      "2Q_AGO": 1888
+    }
   },
   {
     "marca": "OLY",
@@ -12681,15 +12734,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 0,
+    "totalGeral": 4984,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43701259_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 4984,
+      "2Q_OUT": 2852,
+      "2Q_SET": 2852,
+      "2Q_AGO": 2870
+    }
   },
   {
     "marca": "OLY",
@@ -12702,15 +12759,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 12192,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43353470_ALGDNA",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 12192,
+      "2Q_OUT": 7536,
+      "2Q_SET": 5647,
+      "2Q_AGO": 375
+    }
   },
   {
     "marca": "OLY",
@@ -12723,15 +12784,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 11842,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43353470_ARECZA",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 11842,
+      "2Q_OUT": 7186,
+      "2Q_SET": 5297,
+      "2Q_AGO": 25
+    }
   },
   {
     "marca": "OLY",
@@ -12744,15 +12809,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 11824,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43353470_CST_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 11824,
+      "2Q_OUT": 7168,
+      "2Q_SET": 5279,
+      "2Q_AGO": 7
+    }
   },
   {
     "marca": "OLY",
@@ -12765,15 +12834,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 12069,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43353470_LNRMLT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 12069,
+      "2Q_OUT": 7413,
+      "2Q_SET": 5524,
+      "2Q_AGO": 252
+    }
   },
   {
     "marca": "OLY",
@@ -12786,15 +12859,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 11819,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43353470_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 11819,
+      "2Q_OUT": 7163,
+      "2Q_SET": 5274,
+      "2Q_AGO": 2
+    }
   },
   {
     "marca": "OLY",
@@ -12807,15 +12884,119 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 12781,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43353470_RSANAL",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 12781,
+      "2Q_OUT": 8125,
+      "2Q_SET": 6236,
+      "2Q_AGO": 964
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "AZABA",
+    "artigo": "43358451",
+    "descricao": "INVERSE 2",
+    "cor": "ARECHB",
+    "linha": "VERSATIL",
+    "genero": "MASCULINO",
+    "categoria": "2S26",
+    "pdv": 279.99,
+    "totalGeral": 32772,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43358451_ARECHB",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 32772,
+      "2Q_OUT": 22620,
+      "2Q_SET": 11752,
+      "2Q_AGO": 4958
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "AZABA",
+    "artigo": "43358451",
+    "descricao": "INVERSE 2",
+    "cor": "LNRMLT",
+    "linha": "VERSATIL",
+    "genero": "MASCULINO",
+    "categoria": "2S26",
+    "pdv": 279.99,
+    "totalGeral": 33112,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43358451_LNRMLT",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 33112,
+      "2Q_OUT": 22960,
+      "2Q_SET": 12092,
+      "2Q_AGO": 5298
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "AZABA",
+    "artigo": "43358451",
+    "descricao": "INVERSE 2",
+    "cor": "PRETO",
+    "linha": "VERSATIL",
+    "genero": "MASCULINO",
+    "categoria": "2S26",
+    "pdv": 279.99,
+    "totalGeral": 39226,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43358451_PRETO",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 39226,
+      "2Q_OUT": 29074,
+      "2Q_SET": 18206,
+      "2Q_AGO": 11412
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "AZABA",
+    "artigo": "43358451",
+    "descricao": "INVERSE 2",
+    "cor": "PTO_PT",
+    "linha": "VERSATIL",
+    "genero": "MASCULINO",
+    "categoria": "2S26",
+    "pdv": 279.99,
+    "totalGeral": 31746,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43358451_PTO_PT",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 31746,
+      "2Q_OUT": 21594,
+      "2Q_SET": 10726,
+      "2Q_AGO": 3932
+    }
   },
   {
     "marca": "OLY",
@@ -12828,15 +13009,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 259.99,
-    "totalGeral": 0,
+    "totalGeral": 50439,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43369229_MARITM",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 50439,
+      "2Q_OUT": 32907,
+      "2Q_SET": 12917,
+      "2Q_AGO": 1380
+    }
   },
   {
     "marca": "OLY",
@@ -12849,15 +13034,44 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 259.99,
-    "totalGeral": 0,
+    "totalGeral": 49477,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43369229_MILITR",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 49477,
+      "2Q_OUT": 31945,
+      "2Q_SET": 11955,
+      "2Q_AGO": 418
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "AZABA",
+    "artigo": "43369229",
+    "descricao": "RUA",
+    "cor": "MUSGO",
+    "linha": "VERSATIL",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 259.99,
+    "totalGeral": 49769,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43369229_MUSGO",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 49769,
+      "2Q_OUT": 32237,
+      "2Q_SET": 12247,
+      "2Q_AGO": 710
+    }
   },
   {
     "marca": "OLY",
@@ -12870,15 +13084,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 259.99,
-    "totalGeral": 0,
+    "totalGeral": 55772,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43369229_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 55772,
+      "2Q_OUT": 38240,
+      "2Q_SET": 18250,
+      "2Q_AGO": 6713
+    }
   },
   {
     "marca": "OLY",
@@ -12891,15 +13109,44 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 259.99,
-    "totalGeral": 0,
+    "totalGeral": 49168,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43369229_PWT_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 49168,
+      "2Q_OUT": 31636,
+      "2Q_SET": 11646,
+      "2Q_AGO": 109
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "AZABA",
+    "artigo": "43407464",
+    "descricao": "SOMA 2",
+    "cor": "GFTGRE",
+    "linha": "COTIDIANO",
+    "genero": "MASCULINO",
+    "categoria": "2S26",
+    "pdv": 249.99,
+    "totalGeral": 33076,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43407464_GFTGRE",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 33076,
+      "2Q_OUT": 26278,
+      "2Q_SET": 11009,
+      "2Q_AGO": 1467
+    }
   },
   {
     "marca": "OLY",
@@ -12912,15 +13159,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 0,
+    "totalGeral": 35089,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43407464_LUNSTL",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 35089,
+      "2Q_OUT": 28291,
+      "2Q_SET": 13022,
+      "2Q_AGO": 3480
+    }
   },
   {
     "marca": "OLY",
@@ -12933,15 +13184,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 0,
+    "totalGeral": 37793,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43407464_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 37793,
+      "2Q_OUT": 30995,
+      "2Q_SET": 15726,
+      "2Q_AGO": 6184
+    }
   },
   {
     "marca": "OLY",
@@ -12954,15 +13209,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 0,
+    "totalGeral": 33126,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43407464_STLMRH",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 33126,
+      "2Q_OUT": 26328,
+      "2Q_SET": 11059,
+      "2Q_AGO": 1520
+    }
   },
   {
     "marca": "OLY",
@@ -12975,15 +13234,18 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 0,
+    "totalGeral": 11351,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43697386_ARENIT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 11351,
+      "2Q_OUT": 7758,
+      "2Q_SET": 4343
+    }
   },
   {
     "marca": "OLY",
@@ -12996,15 +13258,43 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 0,
+    "totalGeral": 11351,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43697386_LAVAND",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 11351,
+      "2Q_OUT": 7758,
+      "2Q_SET": 4343
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "AZABA",
+    "artigo": "43697386",
+    "descricao": "VIBE",
+    "cor": "MRHO",
+    "linha": "COTIDIANO",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 249.99,
+    "totalGeral": 12548,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43697386_MRHO",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 12548,
+      "2Q_OUT": 8955,
+      "2Q_SET": 5540,
+      "2Q_AGO": 1197
+    }
   },
   {
     "marca": "OLY",
@@ -13017,15 +13307,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 0,
+    "totalGeral": 11418,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43697386_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 11418,
+      "2Q_OUT": 7825,
+      "2Q_SET": 4410,
+      "2Q_AGO": 67
+    }
   },
   {
     "marca": "OLY",
@@ -13038,15 +13332,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 90604,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43616206_BRSMRT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 90604,
+      "2Q_OUT": 60444,
+      "2Q_SET": 23719,
+      "2Q_AGO": 3551
+    }
   },
   {
     "marca": "OLY",
@@ -13059,15 +13357,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 91817,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43616206_CHBHIB",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 91817,
+      "2Q_OUT": 61657,
+      "2Q_SET": 24932,
+      "2Q_AGO": 4764
+    }
   },
   {
     "marca": "OLY",
@@ -13080,15 +13382,44 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 90670,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43616206_MRHPSC",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 90670,
+      "2Q_OUT": 60510,
+      "2Q_SET": 23785,
+      "2Q_AGO": 3617
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "AZABA",
+    "artigo": "43616206",
+    "descricao": "APOLIS",
+    "cor": "MUSVAN",
+    "linha": "VERSATIL",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 229.99,
+    "totalGeral": 90387,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43616206_MUSVAN",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 90387,
+      "2Q_OUT": 60227,
+      "2Q_SET": 23502,
+      "2Q_AGO": 3334
+    }
   },
   {
     "marca": "OLY",
@@ -13101,15 +13432,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 12691,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43632407_ARENIT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 12691,
+      "2Q_OUT": 10655,
+      "2Q_SET": 4502,
+      "2Q_AGO": 1165
+    }
   },
   {
     "marca": "OLY",
@@ -13122,15 +13457,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 13797,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43632407_LAVAND",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 13797,
+      "2Q_OUT": 11761,
+      "2Q_SET": 5608,
+      "2Q_AGO": 2271
+    }
   },
   {
     "marca": "OLY",
@@ -13143,15 +13482,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 12961,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43632407_MARITM",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 12961,
+      "2Q_OUT": 10925,
+      "2Q_SET": 4772,
+      "2Q_AGO": 1435
+    }
   },
   {
     "marca": "OLY",
@@ -13164,15 +13507,69 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 14869,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43632407_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 14869,
+      "2Q_OUT": 12833,
+      "2Q_SET": 6680,
+      "2Q_AGO": 3343
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "AZABA",
+    "artigo": "43376462",
+    "descricao": "INDEX 4",
+    "cor": "ARTMRF",
+    "linha": "COTIDIANO",
+    "genero": "MASCULINO",
+    "categoria": "2S26",
+    "pdv": 199.99,
+    "totalGeral": 45709,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43376462_ARTMRF",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 45709,
+      "2Q_OUT": 31950,
+      "2Q_SET": 14897,
+      "2Q_AGO": 3134
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "AZABA",
+    "artigo": "43376462",
+    "descricao": "INDEX 4",
+    "cor": "MRH_VM",
+    "linha": "COTIDIANO",
+    "genero": "MASCULINO",
+    "categoria": "2S26",
+    "pdv": 199.99,
+    "totalGeral": 42957,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43376462_MRH_VM",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 42957,
+      "2Q_OUT": 29198,
+      "2Q_SET": 12145,
+      "2Q_AGO": 382
+    }
   },
   {
     "marca": "OLY",
@@ -13185,15 +13582,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 42630,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43376462_MRTMHO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 42630,
+      "2Q_OUT": 28871,
+      "2Q_SET": 11818,
+      "2Q_AGO": 55
+    }
   },
   {
     "marca": "OLY",
@@ -13206,15 +13607,18 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 42575,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43376462_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 42575,
+      "2Q_OUT": 28816,
+      "2Q_SET": 11763
+    }
   },
   {
     "marca": "OLY",
@@ -13227,15 +13631,69 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 42757,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43376462_VDEMLT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 42757,
+      "2Q_OUT": 28998,
+      "2Q_SET": 11945,
+      "2Q_AGO": 182
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "AZABA",
+    "artigo": "43389459",
+    "descricao": "FLUTUA 2",
+    "cor": "CHBHIB",
+    "linha": "COTIDIANO",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 199.99,
+    "totalGeral": 50120,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43389459_CHBHIB",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 50120,
+      "2Q_OUT": 33552,
+      "2Q_SET": 16334,
+      "2Q_AGO": 4002
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "AZABA",
+    "artigo": "43389459",
+    "descricao": "FLUTUA 2",
+    "cor": "MUSORG",
+    "linha": "COTIDIANO",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 199.99,
+    "totalGeral": 49213,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43389459_MUSORG",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 49213,
+      "2Q_OUT": 32645,
+      "2Q_SET": 15427,
+      "2Q_AGO": 3095
+    }
   },
   {
     "marca": "OLY",
@@ -13248,15 +13706,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 58474,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43389459_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 58474,
+      "2Q_OUT": 41906,
+      "2Q_SET": 24688,
+      "2Q_AGO": 12356
+    }
   },
   {
     "marca": "OLY",
@@ -13269,15 +13731,119 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 47211,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43389459_PTODST",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 47211,
+      "2Q_OUT": 30643,
+      "2Q_SET": 13425,
+      "2Q_AGO": 1093
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "AZABA",
+    "artigo": "43394132",
+    "descricao": "VIBRACAO",
+    "cor": "ALGODA",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 199.99,
+    "totalGeral": 785,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43394132_ALGODA",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 785,
+      "2Q_OUT": 5,
+      "2Q_SET": 5,
+      "2Q_AGO": 5
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "AZABA",
+    "artigo": "43394132",
+    "descricao": "VIBRACAO",
+    "cor": "CHB_PT",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "2S26",
+    "pdv": 199.99,
+    "totalGeral": 809,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43394132_CHB_PT",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 809,
+      "2Q_OUT": 29,
+      "2Q_SET": 29,
+      "2Q_AGO": 29
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "AZABA",
+    "artigo": "43394132",
+    "descricao": "VIBRACAO",
+    "cor": "MRH_PT",
+    "linha": "CONFORTO",
+    "genero": "MASCULINO",
+    "categoria": "2S26",
+    "pdv": 199.99,
+    "totalGeral": 816,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43394132_MRH_PT",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 816,
+      "2Q_OUT": 36,
+      "2Q_SET": 36,
+      "2Q_AGO": 36
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "AZABA",
+    "artigo": "43394132",
+    "descricao": "VIBRACAO",
+    "cor": "MRHPTR",
+    "linha": "CONFORTO",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 199.99,
+    "totalGeral": 796,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43394132_MRHPTR",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 796,
+      "2Q_OUT": 16,
+      "2Q_SET": 16,
+      "2Q_AGO": 16
+    }
   },
   {
     "marca": "OLY",
@@ -13290,15 +13856,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 6,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43395156_AREMUS",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 6,
+      "2Q_OUT": 6,
+      "2Q_SET": 6,
+      "2Q_AGO": 6
+    }
   },
   {
     "marca": "OLY",
@@ -13311,15 +13881,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 3,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43395156_MILITR",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 3,
+      "2Q_OUT": 3,
+      "2Q_SET": 3,
+      "2Q_AGO": 3
+    }
   },
   {
     "marca": "OLY",
@@ -13332,15 +13906,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 5,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43395156_PTRLEO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 5,
+      "2Q_OUT": 5,
+      "2Q_SET": 5,
+      "2Q_AGO": 5
+    }
   },
   {
     "marca": "OLY",
@@ -13353,15 +13931,17 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 2931,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43547338_LILAS",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 2931,
+      "2Q_OUT": 0
+    }
   },
   {
     "marca": "OLY",
@@ -13374,15 +13954,17 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 2931,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43547338_MARFIM",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 2931,
+      "2Q_OUT": 0
+    }
   },
   {
     "marca": "OLY",
@@ -13395,15 +13977,17 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 2931,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43547338_MRHRSA",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 2931,
+      "2Q_OUT": 0
+    }
   },
   {
     "marca": "OLY",
@@ -13416,15 +14000,17 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 2931,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43547338_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 2931,
+      "2Q_OUT": 0
+    }
   },
   {
     "marca": "OLY",
@@ -13437,15 +14023,44 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 67466,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43606391_ARENIT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 67466,
+      "2Q_OUT": 41160,
+      "2Q_SET": 16426,
+      "2Q_AGO": 6993
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "AZABA",
+    "artigo": "43606391",
+    "descricao": "VERTICE",
+    "cor": "MIST",
+    "linha": "COTIDIANO",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 199.99,
+    "totalGeral": 65816,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43606391_MIST",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 65816,
+      "2Q_OUT": 39510,
+      "2Q_SET": 14776,
+      "2Q_AGO": 5343
+    }
   },
   {
     "marca": "OLY",
@@ -13458,15 +14073,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 74199,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43606391_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 74199,
+      "2Q_OUT": 47893,
+      "2Q_SET": 23159,
+      "2Q_AGO": 13726
+    }
   },
   {
     "marca": "OLY",
@@ -13479,15 +14098,18 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 22162,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43772253_MLT_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 22162,
+      "2Q_OUT": 13319,
+      "2Q_SET": 1495
+    }
   },
   {
     "marca": "OLY",
@@ -13500,15 +14122,18 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 22162,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43772253_MRHRSA",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 22162,
+      "2Q_OUT": 13319,
+      "2Q_SET": 1495
+    }
   },
   {
     "marca": "OLY",
@@ -13521,15 +14146,18 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 22162,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43772253_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 22162,
+      "2Q_OUT": 13319,
+      "2Q_SET": 1495
+    }
   },
   {
     "marca": "OLY",
@@ -13542,15 +14170,18 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 22162,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43772253_PT_VMH",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 22162,
+      "2Q_OUT": 13319,
+      "2Q_SET": 1495
+    }
   },
   {
     "marca": "OLY",
@@ -13563,15 +14194,19 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 22642,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43772253_VDJLIS",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 22642,
+      "2Q_OUT": 13799,
+      "2Q_SET": 1975,
+      "2Q_AGO": 480
+    }
   },
   {
     "marca": "OLY",
@@ -13584,15 +14219,19 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 189.99,
-    "totalGeral": 0,
+    "totalGeral": 11803,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43649393_AREMUS",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 11803,
+      "2Q_OUT": 7642,
+      "2Q_SET": 4612,
+      "2Q_AGO": 18
+    }
   },
   {
     "marca": "OLY",
@@ -13605,15 +14244,18 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 189.99,
-    "totalGeral": 0,
+    "totalGeral": 11785,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43649393_MILITR",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 11785,
+      "2Q_OUT": 7624,
+      "2Q_SET": 4594
+    }
   },
   {
     "marca": "OLY",
@@ -13626,15 +14268,18 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 189.99,
-    "totalGeral": 0,
+    "totalGeral": 11785,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43649393_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 11785,
+      "2Q_OUT": 7624,
+      "2Q_SET": 4594
+    }
   },
   {
     "marca": "OLY",
@@ -13647,15 +14292,18 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 189.99,
-    "totalGeral": 0,
+    "totalGeral": 11785,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43649393_PTRLEO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 11785,
+      "2Q_OUT": 7624,
+      "2Q_SET": 4594
+    }
   },
   {
     "marca": "OLY",
@@ -13668,16 +14316,20 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 3675,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43228494_ARTPTO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 3651,
+      "2Q_OUT": 3675,
+      "2Q_SET": 3141,
+      "2Q_AGO": 166
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -13690,16 +14342,20 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 3969,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43228494_GFT_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 3945,
+      "2Q_OUT": 3969,
+      "2Q_SET": 3435,
+      "2Q_AGO": 460
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -13712,16 +14368,19 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 3509,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43228494_LLS_RX",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 3485,
+      "2Q_OUT": 3509,
+      "2Q_SET": 2975
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -13734,16 +14393,20 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 4287,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43228494_MUSCZE",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 4263,
+      "2Q_OUT": 4287,
+      "2Q_SET": 3753,
+      "2Q_AGO": 778
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -13756,16 +14419,20 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 4877,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43228494_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 4853,
+      "2Q_OUT": 4877,
+      "2Q_SET": 4343,
+      "2Q_AGO": 1368
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -13778,16 +14445,20 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 259.99,
-    "totalGeral": 0,
+    "totalGeral": 7,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43231496_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 7,
+      "2Q_OUT": 7,
+      "2Q_SET": 7,
+      "2Q_AGO": 7
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -13800,16 +14471,20 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 0,
+    "totalGeral": 10556,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43244493_ARENIT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 10556,
+      "2Q_OUT": 6032,
+      "2Q_SET": 972,
+      "2Q_AGO": 2
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -13822,16 +14497,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 0,
+    "totalGeral": 10554,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43244493_CALDLA",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 10554,
+      "2Q_OUT": 6030,
+      "2Q_SET": 970
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -13844,16 +14522,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 0,
+    "totalGeral": 10554,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43244493_PEWTER",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 10554,
+      "2Q_OUT": 6030,
+      "2Q_SET": 970
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -13866,16 +14547,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 0,
+    "totalGeral": 10554,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43244493_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 10554,
+      "2Q_OUT": 6030,
+      "2Q_SET": 970
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -13888,16 +14572,20 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 19522,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43460476_HIBISC",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 19522,
+      "2Q_OUT": 13978,
+      "2Q_SET": 7990,
+      "2Q_AGO": 2614
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -13910,16 +14598,20 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 18491,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43460476_MRHO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 18491,
+      "2Q_OUT": 12947,
+      "2Q_SET": 6959,
+      "2Q_AGO": 1583
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -13932,16 +14624,20 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 17051,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43460476_PEWTER",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 17051,
+      "2Q_OUT": 11507,
+      "2Q_SET": 5519,
+      "2Q_AGO": 143
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -13954,16 +14650,20 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 18785,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43460476_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 18785,
+      "2Q_OUT": 13259,
+      "2Q_SET": 7271,
+      "2Q_AGO": 1895
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -13976,16 +14676,20 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 9,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43467492_ORGANZ",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 9,
+      "2Q_OUT": 9,
+      "2Q_SET": 9,
+      "2Q_AGO": 9
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -13998,16 +14702,18 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 0,
+    "totalGeral": 2412,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43531485_ARTPTO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 2412,
+      "2Q_OUT": 249
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -14020,16 +14726,18 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 0,
+    "totalGeral": 2412,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43531485_GFT_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 2412,
+      "2Q_OUT": 249
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -14042,16 +14750,18 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 0,
+    "totalGeral": 2412,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43531485_LLS_RX",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 2412,
+      "2Q_OUT": 249
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -14064,16 +14774,18 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 0,
+    "totalGeral": 2412,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43531485_MUSCZE",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 2412,
+      "2Q_OUT": 249
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -14086,16 +14798,18 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 0,
+    "totalGeral": 2412,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43531485_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 2412,
+      "2Q_OUT": 249
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -14108,16 +14822,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 0,
+    "totalGeral": 698,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43532498_ARNGRF",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 698,
+      "2Q_OUT": 536,
+      "2Q_SET": 536
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -14130,16 +14847,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 0,
+    "totalGeral": 698,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43532498_MRHO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 698,
+      "2Q_OUT": 536,
+      "2Q_SET": 536
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -14152,16 +14872,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 0,
+    "totalGeral": 698,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43532498_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 698,
+      "2Q_OUT": 536,
+      "2Q_SET": 536
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -14174,16 +14897,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 0,
+    "totalGeral": 698,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43532498_STEEL",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 698,
+      "2Q_OUT": 536,
+      "2Q_SET": 536
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -14196,16 +14922,17 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 0,
+    "totalGeral": 14,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43552497_AZUL",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 14
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -14218,16 +14945,17 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 0,
+    "totalGeral": 14,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43552497_CHBMLT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 14
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -14240,16 +14968,17 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 0,
+    "totalGeral": 14,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43552497_CRSMRH",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 14
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -14262,16 +14991,17 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 0,
+    "totalGeral": 14,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43552497_MRH_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 14
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -14284,16 +15014,17 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 0,
+    "totalGeral": 14,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43552497_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 14
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -14306,16 +15037,17 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 0,
+    "totalGeral": 14,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43552497_VRD_CL",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 14
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -14328,15 +15060,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 55838,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43752263_AREMIS",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 55838,
+      "2Q_OUT": 36970,
+      "2Q_SET": 14672,
+      "2Q_AGO": 430
+    }
   },
   {
     "marca": "OLY",
@@ -14349,15 +15085,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 55842,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43752263_BCODUN",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 55842,
+      "2Q_OUT": 36974,
+      "2Q_SET": 14676,
+      "2Q_AGO": 434
+    }
   },
   {
     "marca": "OLY",
@@ -14370,15 +15110,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 55668,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43752263_BGMVML",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 55668,
+      "2Q_OUT": 36800,
+      "2Q_SET": 14502,
+      "2Q_AGO": 260
+    }
   },
   {
     "marca": "OLY",
@@ -14391,15 +15135,18 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 55408,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43752263_BRANCO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 55408,
+      "2Q_OUT": 36540,
+      "2Q_SET": 14242
+    }
   },
   {
     "marca": "OLY",
@@ -14412,15 +15159,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 56074,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43752263_CHB_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 56074,
+      "2Q_OUT": 37206,
+      "2Q_SET": 14908,
+      "2Q_AGO": 666
+    }
   },
   {
     "marca": "OLY",
@@ -14433,15 +15184,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 55464,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43752263_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 55464,
+      "2Q_OUT": 36596,
+      "2Q_SET": 14298,
+      "2Q_AGO": 56
+    }
   },
   {
     "marca": "OLY",
@@ -14454,15 +15209,18 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 0,
+    "totalGeral": 43923,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBTN068_BRANCO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 43923,
+      "2Q_OUT": 29318,
+      "2Q_SET": 8402
+    }
   },
   {
     "marca": "OLY",
@@ -14475,15 +15233,18 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 0,
+    "totalGeral": 43923,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBTN068_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 43923,
+      "2Q_OUT": 29318,
+      "2Q_SET": 8402
+    }
   },
   {
     "marca": "OLY",
@@ -14496,15 +15257,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 6194,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43393460_LILAS",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 6194,
+      "2Q_OUT": 4195,
+      "2Q_SET": 4207,
+      "2Q_AGO": 1054
+    }
   },
   {
     "marca": "OLY",
@@ -14517,15 +15282,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 5653,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43393460_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 5653,
+      "2Q_OUT": 3654,
+      "2Q_SET": 3678,
+      "2Q_AGO": 525
+    }
   },
   {
     "marca": "OLY",
@@ -14538,15 +15307,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 5320,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43393460_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 5320,
+      "2Q_OUT": 3321,
+      "2Q_SET": 3333,
+      "2Q_AGO": 180
+    }
   },
   {
     "marca": "OLY",
@@ -14559,15 +15332,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 7281,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43393460_VERMUS",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 7281,
+      "2Q_OUT": 5282,
+      "2Q_SET": 5294,
+      "2Q_AGO": 2141
+    }
   },
   {
     "marca": "OLY",
@@ -14580,15 +15357,44 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 53316,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43409454_ALGODA",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 53316,
+      "2Q_OUT": 42290,
+      "2Q_SET": 19632,
+      "2Q_AGO": 2012
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "AZABA",
+    "artigo": "43409454",
+    "descricao": "EROS 2",
+    "cor": "ARENIT",
+    "linha": "CLASSICO",
+    "genero": "MASCULINO",
+    "categoria": "2S26",
+    "pdv": 229.99,
+    "totalGeral": 58048,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43409454_ARENIT",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 58048,
+      "2Q_OUT": 47022,
+      "2Q_SET": 24364,
+      "2Q_AGO": 6744
+    }
   },
   {
     "marca": "OLY",
@@ -14601,15 +15407,69 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 60198,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43409454_BRANCO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 60198,
+      "2Q_OUT": 49172,
+      "2Q_SET": 26514,
+      "2Q_AGO": 8894
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "AZABA",
+    "artigo": "43409454",
+    "descricao": "EROS 2",
+    "cor": "LUNAR",
+    "linha": "CLASSICO",
+    "genero": "MASCULINO",
+    "categoria": "2S26",
+    "pdv": 229.99,
+    "totalGeral": 57877,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43409454_LUNAR",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 57877,
+      "2Q_OUT": 46851,
+      "2Q_SET": 24193,
+      "2Q_AGO": 6573
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "AZABA",
+    "artigo": "43409454",
+    "descricao": "EROS 2",
+    "cor": "PRETO",
+    "linha": "CLASSICO",
+    "genero": "MASCULINO",
+    "categoria": "2S26",
+    "pdv": 229.99,
+    "totalGeral": 60741,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43409454_PRETO",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 60741,
+      "2Q_OUT": 49715,
+      "2Q_SET": 27057,
+      "2Q_AGO": 9437
+    }
   },
   {
     "marca": "OLY",
@@ -14622,15 +15482,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 58105,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43409454_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 58105,
+      "2Q_OUT": 47079,
+      "2Q_SET": 24421,
+      "2Q_AGO": 6801
+    }
   },
   {
     "marca": "OLY",
@@ -14643,15 +15507,19 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 9068,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43406455_ALGODA",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 9068,
+      "2Q_OUT": 5954,
+      "2Q_SET": 2089,
+      "2Q_AGO": 658
+    }
   },
   {
     "marca": "OLY",
@@ -14664,15 +15532,19 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 8473,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43406455_ARENIT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 8473,
+      "2Q_OUT": 5359,
+      "2Q_SET": 1494,
+      "2Q_AGO": 63
+    }
   },
   {
     "marca": "OLY",
@@ -14685,15 +15557,19 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 9952,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43406455_BRANCO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 9952,
+      "2Q_OUT": 6838,
+      "2Q_SET": 2973,
+      "2Q_AGO": 1560
+    }
   },
   {
     "marca": "OLY",
@@ -14706,15 +15582,19 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 8846,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43406455_LUNAR",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 8846,
+      "2Q_OUT": 5732,
+      "2Q_SET": 1867,
+      "2Q_AGO": 436
+    }
   },
   {
     "marca": "OLY",
@@ -14727,15 +15607,18 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 8410,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43406455_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 8410,
+      "2Q_OUT": 5296,
+      "2Q_SET": 1431
+    }
   },
   {
     "marca": "OLY",
@@ -14748,15 +15631,19 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 9010,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43406455_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 9010,
+      "2Q_OUT": 5896,
+      "2Q_SET": 2031,
+      "2Q_AGO": 612
+    }
   },
   {
     "marca": "OLY",
@@ -14769,15 +15656,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 21644,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43608374_MRHO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 21644,
+      "2Q_OUT": 9686,
+      "2Q_SET": 761,
+      "2Q_AGO": 761
+    }
   },
   {
     "marca": "OLY",
@@ -14790,15 +15681,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 20901,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43608374_MUSGO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 20901,
+      "2Q_OUT": 8943,
+      "2Q_SET": 18,
+      "2Q_AGO": 18
+    }
   },
   {
     "marca": "OLY",
@@ -14811,15 +15706,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 0,
+    "totalGeral": 20886,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43608374_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 20886,
+      "2Q_OUT": 8928,
+      "2Q_SET": 3,
+      "2Q_AGO": 3
+    }
   },
   {
     "marca": "OLY",
@@ -14832,15 +15731,19 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 399.99,
-    "totalGeral": 0,
+    "totalGeral": 43313,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43342471_ALGMLT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 43313,
+      "2Q_OUT": 30287,
+      "2Q_SET": 14465,
+      "2Q_AGO": 1146
+    }
   },
   {
     "marca": "OLY",
@@ -14853,15 +15756,19 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 399.99,
-    "totalGeral": 0,
+    "totalGeral": 42525,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43342471_ARTPTO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 42525,
+      "2Q_OUT": 29499,
+      "2Q_SET": 13677,
+      "2Q_AGO": 358
+    }
   },
   {
     "marca": "OLY",
@@ -14874,15 +15781,44 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 399.99,
-    "totalGeral": 0,
+    "totalGeral": 42879,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43342471_AZCLBR",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 42879,
+      "2Q_OUT": 29853,
+      "2Q_SET": 14031,
+      "2Q_AGO": 712
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "AZABA",
+    "artigo": "43342471",
+    "descricao": "NUVEM",
+    "cor": "LUNCHB",
+    "linha": "VERSATIL",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 399.99,
+    "totalGeral": 52781,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43342471_LUNCHB",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 52781,
+      "2Q_OUT": 39755,
+      "2Q_SET": 23933,
+      "2Q_AGO": 10614
+    }
   },
   {
     "marca": "OLY",
@@ -14895,15 +15831,43 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 399.99,
-    "totalGeral": 0,
+    "totalGeral": 42167,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43342471_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 42167,
+      "2Q_OUT": 29141,
+      "2Q_SET": 13319
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "AZABA",
+    "artigo": "43342471",
+    "descricao": "NUVEM",
+    "cor": "PTO_PT",
+    "linha": "VERSATIL",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 399.99,
+    "totalGeral": 50489,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43342471_PTO_PT",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 50489,
+      "2Q_OUT": 37463,
+      "2Q_SET": 21641,
+      "2Q_AGO": 8322
+    }
   },
   {
     "marca": "OLY",
@@ -14916,15 +15880,19 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 399.99,
-    "totalGeral": 0,
+    "totalGeral": 45283,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43342471_RYLMHO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 45283,
+      "2Q_OUT": 32257,
+      "2Q_SET": 16435,
+      "2Q_AGO": 3116
+    }
   },
   {
     "marca": "OLY",
@@ -14937,15 +15905,44 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 0,
+    "totalGeral": 130817,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43298343_MRHDRD",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 130817,
+      "2Q_OUT": 94958,
+      "2Q_SET": 44911,
+      "2Q_AGO": 15757
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43298343",
+    "descricao": "DYNAMIC / 343",
+    "cor": "PRETO",
+    "linha": "COTIDIANO",
+    "genero": "MASCULINO",
+    "categoria": "2S26",
+    "pdv": 299.99,
+    "totalGeral": 123202,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43298343_PRETO",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 123202,
+      "2Q_OUT": 87343,
+      "2Q_SET": 37296,
+      "2Q_AGO": 8142
+    }
   },
   {
     "marca": "OLY",
@@ -14958,15 +15955,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 0,
+    "totalGeral": 128450,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43298343_PT_LJA",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 128450,
+      "2Q_OUT": 92591,
+      "2Q_SET": 42544,
+      "2Q_AGO": 13390
+    }
   },
   {
     "marca": "OLY",
@@ -14979,15 +15980,44 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 16497,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43293443_ALGODA",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 16497,
+      "2Q_OUT": 10983,
+      "2Q_SET": 4029,
+      "2Q_AGO": 711
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43293443",
+    "descricao": "ERA",
+    "cor": "MARITM",
+    "linha": "VERSATIL",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 279.99,
+    "totalGeral": 17798,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43293443_MARITM",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 17798,
+      "2Q_OUT": 12284,
+      "2Q_SET": 5330,
+      "2Q_AGO": 2012
+    }
   },
   {
     "marca": "OLY",
@@ -15000,15 +16030,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 16320,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43293443_MILITR",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 16320,
+      "2Q_OUT": 10806,
+      "2Q_SET": 3852,
+      "2Q_AGO": 534
+    }
   },
   {
     "marca": "OLY",
@@ -15021,15 +16055,119 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 15813,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43293443_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 15813,
+      "2Q_OUT": 10299,
+      "2Q_SET": 3345,
+      "2Q_AGO": 27
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43596370",
+    "descricao": "LANCE",
+    "cor": "ARENIT",
+    "linha": "VERSATIL",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 259.99,
+    "totalGeral": 59061,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43596370_ARENIT",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 59061,
+      "2Q_OUT": 38967,
+      "2Q_SET": 15471,
+      "2Q_AGO": 1859
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43596370",
+    "descricao": "LANCE",
+    "cor": "LAVAND",
+    "linha": "VERSATIL",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 259.99,
+    "totalGeral": 59319,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43596370_LAVAND",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 59319,
+      "2Q_OUT": 39225,
+      "2Q_SET": 15729,
+      "2Q_AGO": 2117
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43596370",
+    "descricao": "LANCE",
+    "cor": "PRETO",
+    "linha": "VERSATIL",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 259.99,
+    "totalGeral": 61296,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43596370_PRETO",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 61296,
+      "2Q_OUT": 41202,
+      "2Q_SET": 17706,
+      "2Q_AGO": 4094
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43596370",
+    "descricao": "LANCE",
+    "cor": "VD_JAD",
+    "linha": "VERSATIL",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 259.99,
+    "totalGeral": 60043,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43596370_VD_JAD",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 60043,
+      "2Q_OUT": 39949,
+      "2Q_SET": 16453,
+      "2Q_AGO": 2841
+    }
   },
   {
     "marca": "OLY",
@@ -15042,15 +16180,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 124506,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43299316_ARENIT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 124506,
+      "2Q_OUT": 88688,
+      "2Q_SET": 46290,
+      "2Q_AGO": 19363
+    }
   },
   {
     "marca": "OLY",
@@ -15063,15 +16205,44 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 109467,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43299316_CHBORG",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 109467,
+      "2Q_OUT": 73649,
+      "2Q_SET": 31251,
+      "2Q_AGO": 4324
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43299316",
+    "descricao": "ACQUA",
+    "cor": "MRHCRS",
+    "linha": "VERSATIL",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 229.99,
+    "totalGeral": 113771,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43299316_MRHCRS",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 113771,
+      "2Q_OUT": 77953,
+      "2Q_SET": 35555,
+      "2Q_AGO": 8628
+    }
   },
   {
     "marca": "OLY",
@@ -15084,15 +16255,69 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 124794,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43299316_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 124794,
+      "2Q_OUT": 88976,
+      "2Q_SET": 46578,
+      "2Q_AGO": 19651
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43320114",
+    "descricao": "PROOF 3/114",
+    "cor": "MRHPTR",
+    "linha": "COTIDIANO",
+    "genero": "MASCULINO",
+    "categoria": "2S26",
+    "pdv": 229.99,
+    "totalGeral": 93954,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43320114_MRHPTR",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 93954,
+      "2Q_OUT": 62766,
+      "2Q_SET": 23936,
+      "2Q_AGO": 2361
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43320114",
+    "descricao": "PROOF 3/114",
+    "cor": "PT_MLT",
+    "linha": "COTIDIANO",
+    "genero": "MASCULINO",
+    "categoria": "2S26",
+    "pdv": 229.99,
+    "totalGeral": 93362,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43320114_PT_MLT",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 93362,
+      "2Q_OUT": 62174,
+      "2Q_SET": 23344,
+      "2Q_AGO": 1769
+    }
   },
   {
     "marca": "OLY",
@@ -15105,15 +16330,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 92723,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43320114_PTO_CH",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 92723,
+      "2Q_OUT": 61535,
+      "2Q_SET": 22705,
+      "2Q_AGO": 1130
+    }
   },
   {
     "marca": "OLY",
@@ -15126,15 +16355,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 92498,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43320114_PTRMRH",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 92498,
+      "2Q_OUT": 61310,
+      "2Q_SET": 22480,
+      "2Q_AGO": 905
+    }
   },
   {
     "marca": "OLY",
@@ -15147,15 +16380,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 187776,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43336749_MARITM",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 187776,
+      "2Q_OUT": 120588,
+      "2Q_SET": 40110,
+      "2Q_AGO": 65
+    }
   },
   {
     "marca": "OLY",
@@ -15168,15 +16405,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 188155,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43336749_MUSGO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 188155,
+      "2Q_OUT": 120967,
+      "2Q_SET": 40489,
+      "2Q_AGO": 444
+    }
   },
   {
     "marca": "OLY",
@@ -15189,15 +16430,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 187736,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43336749_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 187736,
+      "2Q_OUT": 120548,
+      "2Q_SET": 40070,
+      "2Q_AGO": 25
+    }
   },
   {
     "marca": "OLY",
@@ -15210,15 +16455,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 187727,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43336749_PTRSCO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 187727,
+      "2Q_OUT": 120539,
+      "2Q_SET": 40061,
+      "2Q_AGO": 16
+    }
   },
   {
     "marca": "OLY",
@@ -15231,15 +16480,69 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 75329,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43588382_CZESPT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 75329,
+      "2Q_OUT": 53848,
+      "2Q_SET": 24165,
+      "2Q_AGO": 9641
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43588382",
+    "descricao": "SAGAZ",
+    "cor": "MLTVDM",
+    "linha": "COTIDIANO",
+    "genero": "MASCULINO",
+    "categoria": "2S26",
+    "pdv": 229.99,
+    "totalGeral": 68731,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43588382_MLTVDM",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 68731,
+      "2Q_OUT": 47250,
+      "2Q_SET": 17567,
+      "2Q_AGO": 3043
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43588382",
+    "descricao": "SAGAZ",
+    "cor": "MRHSTO",
+    "linha": "COTIDIANO",
+    "genero": "MASCULINO",
+    "categoria": "2S26",
+    "pdv": 229.99,
+    "totalGeral": 68630,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43588382_MRHSTO",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 68630,
+      "2Q_OUT": 47149,
+      "2Q_SET": 17466,
+      "2Q_AGO": 2942
+    }
   },
   {
     "marca": "OLY",
@@ -15252,15 +16555,44 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 0,
+    "totalGeral": 68799,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43588382_PWT_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 68799,
+      "2Q_OUT": 47318,
+      "2Q_SET": 17635,
+      "2Q_AGO": 3111
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43286101",
+    "descricao": "ATMOS /101",
+    "cor": "MARITM",
+    "linha": "COTIDIANO",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 189.99,
+    "totalGeral": 86214,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43286101_MARITM",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 86214,
+      "2Q_OUT": 59307,
+      "2Q_SET": 21074,
+      "2Q_AGO": 1379
+    }
   },
   {
     "marca": "OLY",
@@ -15273,15 +16605,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 189.99,
-    "totalGeral": 0,
+    "totalGeral": 85043,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43286101_PEWTER",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 85043,
+      "2Q_OUT": 58136,
+      "2Q_SET": 19903,
+      "2Q_AGO": 208
+    }
   },
   {
     "marca": "OLY",
@@ -15294,15 +16630,18 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 189.99,
-    "totalGeral": 0,
+    "totalGeral": 84835,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43286101_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 84835,
+      "2Q_OUT": 57928,
+      "2Q_SET": 19695
+    }
   },
   {
     "marca": "OLY",
@@ -15315,15 +16654,18 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 189.99,
-    "totalGeral": 0,
+    "totalGeral": 141333,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43759258_CHBVNL",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 141333,
+      "2Q_OUT": 89607,
+      "2Q_SET": 25613
+    }
   },
   {
     "marca": "OLY",
@@ -15336,15 +16678,18 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 189.99,
-    "totalGeral": 0,
+    "totalGeral": 141333,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43759258_LUNAR",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 141333,
+      "2Q_OUT": 89607,
+      "2Q_SET": 25613
+    }
   },
   {
     "marca": "OLY",
@@ -15357,15 +16702,18 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 189.99,
-    "totalGeral": 0,
+    "totalGeral": 141333,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43759258_PT_BRZ",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 141333,
+      "2Q_OUT": 89607,
+      "2Q_SET": 25613
+    }
   },
   {
     "marca": "OLY",
@@ -15378,16 +16726,20 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 0,
+    "totalGeral": 30684,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43226499_BCO_PI",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 30684,
+      "2Q_OUT": 21132,
+      "2Q_SET": 8544,
+      "2Q_AGO": 1498
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -15400,16 +16752,20 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 0,
+    "totalGeral": 29222,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43226499_MARORG",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 29222,
+      "2Q_OUT": 19670,
+      "2Q_SET": 7082,
+      "2Q_AGO": 36
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -15422,16 +16778,20 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 0,
+    "totalGeral": 29418,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43226499_MLT_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 29418,
+      "2Q_OUT": 19866,
+      "2Q_SET": 7278,
+      "2Q_AGO": 232
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -15444,16 +16804,20 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 0,
+    "totalGeral": 29276,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43226499_PTO_CH",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 29276,
+      "2Q_OUT": 19724,
+      "2Q_SET": 7136,
+      "2Q_AGO": 90
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -15466,16 +16830,20 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 0,
+    "totalGeral": 30044,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43226499_STLART",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 30044,
+      "2Q_OUT": 20492,
+      "2Q_SET": 7904,
+      "2Q_AGO": 858
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -15488,16 +16856,20 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 1,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43300495_ARENIT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 1,
+      "2Q_OUT": 1,
+      "2Q_SET": 1,
+      "2Q_AGO": 1
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -15510,16 +16882,20 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 0,
+    "totalGeral": 4,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43300495_MRHO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 4,
+      "2Q_OUT": 4,
+      "2Q_SET": 4,
+      "2Q_AGO": 4
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -15532,16 +16908,20 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 259.99,
-    "totalGeral": 0,
+    "totalGeral": 15599,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43386475_ALGLIL",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 15599,
+      "2Q_OUT": 9998,
+      "2Q_SET": 1016,
+      "2Q_AGO": 19
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -15554,16 +16934,20 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 259.99,
-    "totalGeral": 0,
+    "totalGeral": 15627,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43386475_GRAORG",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 15627,
+      "2Q_OUT": 10026,
+      "2Q_SET": 1044,
+      "2Q_AGO": 47
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -15576,16 +16960,149 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 259.99,
-    "totalGeral": 0,
+    "totalGeral": 15580,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43386475_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 15580,
+      "2Q_OUT": 9979,
+      "2Q_SET": 997
+    },
+    "_pdvResgatado": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43405477",
+    "descricao": "LUMINA",
+    "cor": "ARENIT",
+    "linha": "COTIDIANO",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 279.99,
+    "totalGeral": 47417,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43405477_ARENIT",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 47417,
+      "2Q_OUT": 35975,
+      "2Q_SET": 21773,
+      "2Q_AGO": 13155
+    },
+    "_pdvResgatado": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43405477",
+    "descricao": "LUMINA",
+    "cor": "CHUMBO",
+    "linha": "COTIDIANO",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 279.99,
+    "totalGeral": 49496,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43405477_CHUMBO",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 49496,
+      "2Q_OUT": 38054,
+      "2Q_SET": 23852,
+      "2Q_AGO": 15234
+    },
+    "_pdvResgatado": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43405477",
+    "descricao": "LUMINA",
+    "cor": "LILAS",
+    "linha": "COTIDIANO",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 279.99,
+    "totalGeral": 47363,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43405477_LILAS",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 47363,
+      "2Q_OUT": 35921,
+      "2Q_SET": 21719,
+      "2Q_AGO": 13101
+    },
+    "_pdvResgatado": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43546486",
+    "descricao": "ATALHO",
+    "cor": "ARTDST",
+    "linha": "VERSATIL",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 299.99,
+    "totalGeral": 1746,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43546486_ARTDST",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 1746,
+      "2Q_OUT": 1746,
+      "2Q_SET": 1746,
+      "2Q_AGO": 1746
+    },
+    "_pdvResgatado": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43546486",
+    "descricao": "ATALHO",
+    "cor": "CHB_PT",
+    "linha": "VERSATIL",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 299.99,
+    "totalGeral": 976,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43546486_CHB_PT",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 976,
+      "2Q_OUT": 976,
+      "2Q_SET": 976,
+      "2Q_AGO": 976
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -15598,16 +17115,46 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 0,
+    "totalGeral": 1138,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43546486_CZ_CHB",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 1138,
+      "2Q_OUT": 1138,
+      "2Q_SET": 1138,
+      "2Q_AGO": 1138
+    },
+    "_pdvResgatado": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43546486",
+    "descricao": "ATALHO",
+    "cor": "LILAS",
+    "linha": "VERSATIL",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 299.99,
+    "totalGeral": 3493,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43546486_LILAS",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 3475,
+      "2Q_OUT": 3493,
+      "2Q_SET": 3493,
+      "2Q_AGO": 3493
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -15620,16 +17167,20 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 0,
+    "totalGeral": 1714,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43546486_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 1714,
+      "2Q_OUT": 1714,
+      "2Q_SET": 1714,
+      "2Q_AGO": 1714
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -15642,16 +17193,20 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 0,
+    "totalGeral": 721,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43546486_VDEMLT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 721,
+      "2Q_OUT": 721,
+      "2Q_SET": 721,
+      "2Q_AGO": 721
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -15664,15 +17219,43 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 259.99,
-    "totalGeral": 0,
+    "totalGeral": 49656,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43303329_CHUMBO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 49656,
+      "2Q_OUT": 34506,
+      "2Q_SET": 13014
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43303329",
+    "descricao": "CLIC",
+    "cor": "MRHO",
+    "linha": "COTIDIANO",
+    "genero": "MASCULINO",
+    "categoria": "2S26",
+    "pdv": 259.99,
+    "totalGeral": 52642,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43303329_MRHO",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 52642,
+      "2Q_OUT": 37492,
+      "2Q_SET": 16000,
+      "2Q_AGO": 2986
+    }
   },
   {
     "marca": "OLY",
@@ -15685,15 +17268,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 259.99,
-    "totalGeral": 0,
+    "totalGeral": 49828,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43303329_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 49828,
+      "2Q_OUT": 34678,
+      "2Q_SET": 13186,
+      "2Q_AGO": 172
+    }
   },
   {
     "marca": "OLY",
@@ -15706,16 +17293,95 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 259.99,
-    "totalGeral": 0,
+    "totalGeral": 15,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43489502_CHB_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 15,
+      "2Q_OUT": 15,
+      "2Q_SET": 15,
+      "2Q_AGO": 15
+    },
+    "_pdvResgatado": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43790399",
+    "descricao": "CORRE TURBO",
+    "cor": "AREOLY",
+    "linha": "PERFORMANCE",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 699.99,
+    "totalGeral": 6433,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43790399_AREOLY",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 6433,
+      "2Q_OUT": 6433,
+      "2Q_SET": 6433,
+      "2Q_AGO": 6433
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43790399",
+    "descricao": "CORRE TURBO",
+    "cor": "ARTPTO",
+    "linha": "PERFORMANCE",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 699.99,
+    "totalGeral": 3094,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43790399_ARTPTO",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 3094,
+      "2Q_OUT": 3094,
+      "2Q_SET": 3094,
+      "2Q_AGO": 3094
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43790399",
+    "descricao": "CORRE TURBO",
+    "cor": "LNRMLT",
+    "linha": "PERFORMANCE",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 699.99,
+    "totalGeral": 13028,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43790399_LNRMLT",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 13028,
+      "2Q_OUT": 13028,
+      "2Q_SET": 13028,
+      "2Q_AGO": 13028
+    }
   },
   {
     "marca": "OLY",
@@ -15728,15 +17394,19 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 699.99,
-    "totalGeral": 0,
+    "totalGeral": 2597,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43790399_PTO_LM",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 2597,
+      "2Q_OUT": 2597,
+      "2Q_SET": 2597,
+      "2Q_AGO": 2597
+    }
   },
   {
     "marca": "OLY",
@@ -15749,15 +17419,44 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 0,
+    "totalGeral": 72209,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43341472_ALGLMA",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 72209,
+      "2Q_OUT": 46352,
+      "2Q_SET": 17244,
+      "2Q_AGO": 1810
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43341472",
+    "descricao": "CHALLENGER 6",
+    "cor": "PECDUN",
+    "linha": "VERSATIL",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 329.99,
+    "totalGeral": 72923,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43341472_PECDUN",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 72923,
+      "2Q_OUT": 47078,
+      "2Q_SET": 17970,
+      "2Q_AGO": 2536
+    }
   },
   {
     "marca": "OLY",
@@ -15770,15 +17469,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 0,
+    "totalGeral": 71007,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43341472_PTO_CH",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 71007,
+      "2Q_OUT": 45150,
+      "2Q_SET": 16042,
+      "2Q_AGO": 608
+    }
   },
   {
     "marca": "OLY",
@@ -15791,15 +17494,44 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 0,
+    "totalGeral": 70809,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43341472_PTPT10",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 70809,
+      "2Q_OUT": 44952,
+      "2Q_SET": 15844,
+      "2Q_AGO": 410
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43341472",
+    "descricao": "CHALLENGER 6",
+    "cor": "RYLMHO",
+    "linha": "VERSATIL",
+    "genero": "MASCULINO",
+    "categoria": "2S26",
+    "pdv": 329.99,
+    "totalGeral": 72587,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43341472_RYLMHO",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 72587,
+      "2Q_OUT": 46730,
+      "2Q_SET": 17622,
+      "2Q_AGO": 2188
+    }
   },
   {
     "marca": "OLY",
@@ -15812,15 +17544,19 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 0,
+    "totalGeral": 73756,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43341472_VMH_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 73756,
+      "2Q_OUT": 47899,
+      "2Q_SET": 18791,
+      "2Q_AGO": 3357
+    }
   },
   {
     "marca": "OLY",
@@ -15833,16 +17569,20 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 379.99,
-    "totalGeral": 0,
+    "totalGeral": 38,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43500491_ARENML",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 38,
+      "2Q_OUT": 38,
+      "2Q_SET": 38,
+      "2Q_AGO": 38
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -15855,16 +17595,20 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 379.99,
-    "totalGeral": 0,
+    "totalGeral": 4010,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43500491_CHBMLT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 4010,
+      "2Q_OUT": 4010,
+      "2Q_SET": 4010,
+      "2Q_AGO": 4010
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -15877,16 +17621,20 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 379.99,
-    "totalGeral": 0,
+    "totalGeral": 2142,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43500491_LNRMLT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 2142,
+      "2Q_OUT": 2142,
+      "2Q_SET": 2142,
+      "2Q_AGO": 2142
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -15899,16 +17647,46 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 379.99,
-    "totalGeral": 0,
+    "totalGeral": 4881,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43500491_PTO_CH",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 4881,
+      "2Q_OUT": 4881,
+      "2Q_SET": 4881,
+      "2Q_AGO": 4881
+    },
+    "_pdvResgatado": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "VULTS",
+    "artigo": "43500491",
+    "descricao": "VELOZ 4",
+    "cor": "STOMUL",
+    "linha": "VERSATIL",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 379.99,
+    "totalGeral": 5086,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43500491_STOMUL",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 5086,
+      "2Q_OUT": 5086,
+      "2Q_SET": 5086,
+      "2Q_AGO": 5086
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -15921,16 +17699,20 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 449.99,
-    "totalGeral": 0,
+    "totalGeral": 11127,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43510490_CHBMLT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 11127,
+      "2Q_OUT": 8973,
+      "2Q_SET": 4130,
+      "2Q_AGO": 6
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -15943,16 +17725,20 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 449.99,
-    "totalGeral": 0,
+    "totalGeral": 11124,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43510490_LIMATL",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 11124,
+      "2Q_OUT": 8970,
+      "2Q_SET": 4127,
+      "2Q_AGO": 3
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -15965,16 +17751,19 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 449.99,
-    "totalGeral": 0,
+    "totalGeral": 11121,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43510490_LUNBEG",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 11121,
+      "2Q_OUT": 8967,
+      "2Q_SET": 4124
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -15987,16 +17776,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 449.99,
-    "totalGeral": 0,
+    "totalGeral": 11121,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43510490_MARORG",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 11121,
+      "2Q_OUT": 8967,
+      "2Q_SET": 4124
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -16009,16 +17801,19 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 449.99,
-    "totalGeral": 0,
+    "totalGeral": 11121,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43510490_PTO_CH",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_pdvResgatado": true,
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 11121,
+      "2Q_OUT": 8967,
+      "2Q_SET": 4124
+    },
+    "_pdvResgatado": true
   },
   {
     "marca": "OLY",
@@ -16031,15 +17826,19 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 499.99,
-    "totalGeral": 0,
+    "totalGeral": 695,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43346463_ARESTO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 695,
+      "2Q_OUT": 695,
+      "2Q_SET": 695,
+      "2Q_AGO": 695
+    }
   },
   {
     "marca": "OLY",
@@ -16052,15 +17851,19 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 499.99,
-    "totalGeral": 0,
+    "totalGeral": 1391,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43346463_BCOVDM",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 1391,
+      "2Q_OUT": 1391,
+      "2Q_SET": 1391,
+      "2Q_AGO": 1391
+    }
   },
   {
     "marca": "OLY",
@@ -16073,15 +17876,19 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 499.99,
-    "totalGeral": 0,
+    "totalGeral": 1218,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43346463_MARORG",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
+    "quinzenas": {
+      "2Q_NOV": 1218,
+      "2Q_OUT": 1218,
+      "2Q_SET": 1218,
+      "2Q_AGO": 1218
+    }
   },
   {
     "marca": "OLY",
@@ -16094,1244 +17901,18 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 399.99,
-    "totalGeral": 0,
+    "totalGeral": 2,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43210417_PT_LJA",
     "grade": {},
     "_meta": true,
-    "quinzenas": {},
-    "_semEstoque": true
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "43358451",
-    "descricao": "INVERSE 2",
-    "cor": "LNRMLT",
-    "linha": "VERSATIL",
-    "genero": "MASCULINO",
-    "categoria": "TENIS",
-    "pdv": 279.99,
-    "totalGeral": 665,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43358451_LNRMLT",
-    "grade": {
-      "37": 11,
-      "38": 54,
-      "39": 144,
-      "40": 144,
-      "41": 156,
-      "42": 84,
-      "43": 48,
-      "44": 24
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "43358451",
-    "descricao": "INVERSE 2",
-    "cor": "PRETO",
-    "linha": "VERSATIL",
-    "genero": "MASCULINO",
-    "categoria": "TENIS",
-    "pdv": 279.99,
-    "totalGeral": 2161,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43358451_PRETO",
-    "grade": {
-      "38": 10,
-      "39": 196,
-      "40": 465,
-      "41": 532,
-      "42": 538,
-      "43": 312,
-      "44": 108
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "43358451",
-    "descricao": "INVERSE 2",
-    "cor": "PTO_PT",
-    "linha": "VERSATIL",
-    "genero": "MASCULINO",
-    "categoria": "TENIS",
-    "pdv": 279.99,
-    "totalGeral": 551,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43358451_PTO_PT",
-    "grade": {
-      "37": 31,
-      "38": 48,
-      "39": 96,
-      "40": 84,
-      "41": 114,
-      "42": 110,
-      "43": 34,
-      "44": 34
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "43369229",
-    "descricao": "RUA",
-    "cor": "MUSGO",
-    "linha": "VERSATIL",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 259.99,
-    "totalGeral": 547,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43369229_MUSGO",
-    "grade": {
-      "34": 32,
-      "35": 58,
-      "36": 104,
-      "37": 131,
-      "38": 96,
-      "39": 90,
-      "41": 36
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "43616206",
-    "descricao": "APOLIS",
-    "cor": "MUSVAN",
-    "linha": "VERSATIL",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 229.99,
-    "totalGeral": 1522,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43616206_MUSVAN",
-    "grade": {
-      "34": 23,
-      "35": 168,
-      "36": 291,
-      "37": 372,
-      "38": 350,
-      "39": 228,
-      "40": 60,
-      "41": 30
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "43376462",
-    "descricao": "INDEX 4",
-    "cor": "ARTMRF",
-    "linha": "COTIDIANO",
-    "genero": "MASCULINO",
-    "categoria": "TENIS",
-    "pdv": 199.99,
-    "totalGeral": 518,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43376462_ARTMRF",
-    "grade": {
-      "34": 9,
-      "35": 1,
-      "36": 6,
-      "37": 11,
-      "38": 13,
-      "39": 33,
-      "40": 78,
-      "41": 92,
-      "42": 139,
-      "43": 78,
-      "44": 58
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "43389459",
-    "descricao": "FLUTUA 2",
-    "cor": "CHBHIB",
-    "linha": "COTIDIANO",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 199.99,
-    "totalGeral": 2481,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43389459_CHBHIB",
-    "grade": {
-      "34": 171,
-      "35": 310,
-      "36": 480,
-      "37": 658,
-      "38": 471,
-      "39": 288,
-      "40": 49,
-      "41": 54
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "43389459",
-    "descricao": "FLUTUA 2",
-    "cor": "MUSORG",
-    "linha": "COTIDIANO",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 199.99,
-    "totalGeral": 306,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43389459_MUSORG",
-    "grade": {
-      "34": 24,
-      "35": 48,
-      "36": 72,
-      "37": 48,
-      "38": 24,
-      "39": 90
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "43409454",
-    "descricao": "EROS 2",
-    "cor": "ARENIT",
-    "linha": "CLASSICO",
-    "genero": "MASCULINO",
-    "categoria": "TENIS",
-    "pdv": 229.99,
-    "totalGeral": 727,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43409454_ARENIT",
-    "grade": {
-      "34": 34,
-      "35": 35,
-      "36": 22,
-      "37": 12,
-      "38": 48,
-      "39": 84,
-      "40": 132,
-      "41": 168,
-      "42": 96,
-      "43": 96
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "43409454",
-    "descricao": "EROS 2",
-    "cor": "LUNAR",
-    "linha": "CLASSICO",
-    "genero": "MASCULINO",
-    "categoria": "TENIS",
-    "pdv": 229.99,
-    "totalGeral": 544,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43409454_LUNAR",
-    "grade": {
-      "37": 32,
-      "38": 68,
-      "39": 120,
-      "40": 108,
-      "41": 84,
-      "42": 72,
-      "43": 36,
-      "44": 24
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "43409454",
-    "descricao": "EROS 2",
-    "cor": "PRETO",
-    "linha": "CLASSICO",
-    "genero": "MASCULINO",
-    "categoria": "TENIS",
-    "pdv": 229.99,
-    "totalGeral": 957,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43409454_PRETO",
-    "grade": {
-      "34": 14,
-      "35": 16,
-      "36": 15,
-      "37": 48,
-      "38": 60,
-      "39": 84,
-      "40": 180,
-      "41": 96,
-      "42": 132,
-      "43": 192,
-      "44": 120
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "43342471",
-    "descricao": "NUVEM",
-    "cor": "LUNCHB",
-    "linha": "VERSATIL",
-    "genero": "UNISSEX",
-    "categoria": "TENIS",
-    "pdv": 399.99,
-    "totalGeral": 2626,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43342471_LUNCHB",
-    "grade": {
-      "35": 36,
-      "38": 48,
-      "39": 298,
-      "40": 600,
-      "41": 684,
-      "42": 480,
-      "43": 360,
-      "44": 120
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "43342471",
-    "descricao": "NUVEM",
-    "cor": "PTO_PT",
-    "linha": "VERSATIL",
-    "genero": "UNISSEX",
-    "categoria": "TENIS",
-    "pdv": 399.99,
-    "totalGeral": 893,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43342471_PTO_PT",
-    "grade": {
-      "35": 12,
-      "37": 12,
-      "38": 105,
-      "39": 145,
-      "40": 175,
-      "41": 175,
-      "42": 145,
-      "43": 94,
-      "44": 30
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43298343",
-    "descricao": "DYNAMIC / 343",
-    "cor": "PRETO",
-    "linha": "COTIDIANO",
-    "genero": "MASCULINO",
-    "categoria": "TENIS",
-    "pdv": 299.99,
-    "totalGeral": 1625,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43298343_PRETO",
-    "grade": {
-      "33": 16,
-      "34": 20,
-      "35": 32,
-      "36": 43,
-      "37": 49,
-      "38": 74,
-      "39": 163,
-      "40": 312,
-      "41": 350,
-      "42": 294,
-      "43": 167,
-      "44": 105
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43293443",
-    "descricao": "ERA",
-    "cor": "MARITM",
-    "linha": "VERSATIL",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 279.99,
-    "totalGeral": 246,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43293443_MARITM",
-    "grade": {
-      "34": 6,
-      "35": 5,
-      "36": 12,
-      "37": 40,
-      "38": 145,
-      "39": 26,
-      "40": 8,
-      "41": 4
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43596370",
-    "descricao": "LANCE",
-    "cor": "ARENIT",
-    "linha": "VERSATIL",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 259.99,
-    "totalGeral": 767,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43596370_ARENIT",
-    "grade": {
-      "34": 49,
-      "35": 133,
-      "36": 189,
-      "37": 152,
-      "38": 154,
-      "39": 88,
-      "41": 2
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43596370",
-    "descricao": "LANCE",
-    "cor": "LAVAND",
-    "linha": "VERSATIL",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 259.99,
-    "totalGeral": 972,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43596370_LAVAND",
-    "grade": {
-      "34": 79,
-      "35": 135,
-      "36": 211,
-      "37": 216,
-      "38": 186,
-      "39": 93,
-      "40": 40,
-      "41": 12
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43596370",
-    "descricao": "LANCE",
-    "cor": "PRETO",
-    "linha": "VERSATIL",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 259.99,
-    "totalGeral": 464,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43596370_PRETO",
-    "grade": {
-      "34": 36,
-      "35": 64,
-      "36": 66,
-      "37": 59,
-      "38": 103,
-      "39": 83,
-      "40": 41,
-      "41": 12
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43596370",
-    "descricao": "LANCE",
-    "cor": "VD_JAD",
-    "linha": "VERSATIL",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 259.99,
-    "totalGeral": 1364,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43596370_VD_JAD",
-    "grade": {
-      "34": 84,
-      "35": 180,
-      "36": 294,
-      "37": 312,
-      "38": 259,
-      "39": 144,
-      "40": 60,
-      "41": 31
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43320114",
-    "descricao": "PROOF 3/114",
-    "cor": "MRHPTR",
-    "linha": "COTIDIANO",
-    "genero": "MASCULINO",
-    "categoria": "TENIS",
-    "pdv": 229.99,
-    "totalGeral": 747,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43320114_MRHPTR",
-    "grade": {
-      "33": 8,
-      "34": 12,
-      "35": 12,
-      "36": 12,
-      "37": 9,
-      "38": 36,
-      "39": 97,
-      "40": 86,
-      "41": 76,
-      "42": 108,
-      "43": 205,
-      "44": 61,
-      "45": 25
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43320114",
-    "descricao": "PROOF 3/114",
-    "cor": "PT_MLT",
-    "linha": "COTIDIANO",
-    "genero": "MASCULINO",
-    "categoria": "TENIS",
-    "pdv": 229.99,
-    "totalGeral": 243,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43320114_PT_MLT",
-    "grade": {
-      "33": 20,
-      "34": 19,
-      "35": 17,
-      "36": 20,
-      "37": 11,
-      "38": 10,
-      "39": 7,
-      "40": 44,
-      "41": 39,
-      "42": 20,
-      "43": 5,
-      "44": 25,
-      "48": 6
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43588382",
-    "descricao": "SAGAZ",
-    "cor": "MLTVDM",
-    "linha": "COTIDIANO",
-    "genero": "MASCULINO",
-    "categoria": "TENIS",
-    "pdv": 229.99,
-    "totalGeral": 427,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43588382_MLTVDM",
-    "grade": {
-      "34": 12,
-      "35": 14,
-      "36": 12,
-      "37": 21,
-      "38": 34,
-      "39": 59,
-      "40": 77,
-      "41": 64,
-      "42": 64,
-      "43": 48,
-      "44": 22
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43588382",
-    "descricao": "SAGAZ",
-    "cor": "MRHSTO",
-    "linha": "COTIDIANO",
-    "genero": "MASCULINO",
-    "categoria": "TENIS",
-    "pdv": 229.99,
-    "totalGeral": 453,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43588382_MRHSTO",
-    "grade": {
-      "34": 19,
-      "35": 23,
-      "36": 20,
-      "38": 20,
-      "39": 28,
-      "40": 128,
-      "41": 111,
-      "42": 15,
-      "43": 54,
-      "44": 35
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43286101",
-    "descricao": "ATMOS /101",
-    "cor": "MARITM",
-    "linha": "COTIDIANO",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 189.99,
-    "totalGeral": 887,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43286101_MARITM",
-    "grade": {
-      "33": 16,
-      "34": 13,
-      "35": 140,
-      "36": 304,
-      "37": 120,
-      "38": 197,
-      "39": 11,
-      "40": 60,
-      "41": 26
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43405477",
-    "descricao": "LUMINA",
-    "cor": "ARENIT",
-    "linha": "COTIDIANO",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 279.99,
-    "totalGeral": 2788,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43405477_ARENIT",
-    "grade": {
-      "34": 101,
-      "35": 293,
-      "36": 580,
-      "37": 637,
-      "38": 578,
-      "39": 363,
-      "40": 144,
-      "41": 92
-    },
-    "_pdvResgatado": true
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43405477",
-    "descricao": "LUMINA",
-    "cor": "CHUMBO",
-    "linha": "COTIDIANO",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 279.99,
-    "totalGeral": 3800,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43405477_CHUMBO",
-    "grade": {
-      "34": 130,
-      "35": 355,
-      "36": 807,
-      "37": 797,
-      "38": 844,
-      "39": 545,
-      "40": 238,
-      "41": 84
-    },
-    "_pdvResgatado": true
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43405477",
-    "descricao": "LUMINA",
-    "cor": "LILAS",
-    "linha": "COTIDIANO",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 279.99,
-    "totalGeral": 1837,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43405477_LILAS",
-    "grade": {
-      "34": 13,
-      "35": 276,
-      "36": 290,
-      "37": 395,
-      "38": 426,
-      "39": 162,
-      "40": 191,
-      "41": 84
-    },
-    "_pdvResgatado": true
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43546486",
-    "descricao": "ATALHO",
-    "cor": "ARTDST",
-    "linha": "VERSATIL",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 299.99,
-    "totalGeral": 237,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43546486_ARTDST",
-    "grade": {
-      "34": 13,
-      "35": 9,
-      "36": 83,
-      "37": 64,
-      "38": 25,
-      "39": 11,
-      "40": 8,
-      "41": 24
-    },
-    "_pdvResgatado": true
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43546486",
-    "descricao": "ATALHO",
-    "cor": "CHB_PT",
-    "linha": "VERSATIL",
-    "genero": "UNISSEX",
-    "categoria": "TENIS",
-    "pdv": 299.99,
-    "totalGeral": 741,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43546486_CHB_PT",
-    "grade": {
-      "34": 22,
-      "35": 28,
-      "36": 33,
-      "37": 50,
-      "38": 68,
-      "39": 86,
-      "40": 90,
-      "41": 122,
-      "42": 97,
-      "43": 80,
-      "44": 65
-    },
-    "_pdvResgatado": true
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43546486",
-    "descricao": "ATALHO",
-    "cor": "LILAS",
-    "linha": "VERSATIL",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 299.99,
-    "totalGeral": 1473,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43546486_LILAS",
-    "grade": {
-      "34": 84,
-      "35": 229,
-      "36": 328,
-      "37": 332,
-      "38": 280,
-      "39": 156,
-      "40": 48,
-      "41": 16
-    },
-    "_pdvResgatado": true
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43303329",
-    "descricao": "CLIC",
-    "cor": "MRHO",
-    "linha": "COTIDIANO",
-    "genero": "MASCULINO",
-    "categoria": "TENIS",
-    "pdv": 259.99,
-    "totalGeral": 1369,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43303329_MRHO",
-    "grade": {
-      "37": 2,
-      "38": 22,
-      "39": 60,
-      "40": 14,
-      "41": 368,
-      "42": 485,
-      "43": 262,
-      "44": 156
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43790399",
-    "descricao": "CORRE TURBO",
-    "cor": "AREOLY",
-    "linha": "PERFORMANCE",
-    "genero": "UNISSEX",
-    "categoria": "TENIS",
-    "pdv": 699.99,
-    "totalGeral": 6433,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43790399_AREOLY",
-    "grade": {
-      "34": 18,
-      "35": 298,
-      "36": 420,
-      "37": 704,
-      "38": 947,
-      "39": 964,
-      "40": 867,
-      "41": 979,
-      "42": 745,
-      "43": 454,
-      "44": 9,
-      "45": 28
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43790399",
-    "descricao": "CORRE TURBO",
-    "cor": "LNRMLT",
-    "linha": "PERFORMANCE",
-    "genero": "UNISSEX",
-    "categoria": "TENIS",
-    "pdv": 699.99,
-    "totalGeral": 13028,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43790399_LNRMLT",
-    "grade": {
-      "34": 92,
-      "35": 601,
-      "36": 990,
-      "37": 1392,
-      "38": 1670,
-      "39": 2012,
-      "40": 1934,
-      "41": 2026,
-      "42": 1352,
-      "43": 612,
-      "44": 194,
-      "45": 153
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43341472",
-    "descricao": "CHALLENGER 6",
-    "cor": "PECDUN",
-    "linha": "VERSATIL",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 329.99,
-    "totalGeral": 1385,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43341472_PECDUN",
-    "grade": {
-      "34": 77,
-      "35": 135,
-      "36": 280,
-      "37": 366,
-      "38": 276,
-      "39": 167,
-      "40": 80,
-      "41": 4
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43341472",
-    "descricao": "CHALLENGER 6",
-    "cor": "RYLMHO",
-    "linha": "VERSATIL",
-    "genero": "MASCULINO",
-    "categoria": "TENIS",
-    "pdv": 329.99,
-    "totalGeral": 576,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43341472_RYLMHO",
-    "grade": {
-      "34": 14,
-      "35": 17,
-      "36": 9,
-      "38": 19,
-      "39": 43,
-      "40": 107,
-      "41": 160,
-      "42": 105,
-      "43": 69,
-      "44": 29,
-      "46": 3,
-      "48": 1
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43500491",
-    "descricao": "VELOZ 4",
-    "cor": "STOMUL",
-    "linha": "VERSATIL",
-    "genero": "UNISSEX",
-    "categoria": "TENIS",
-    "pdv": 379.99,
-    "totalGeral": 4055,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43500491_STOMUL",
-    "grade": {
-      "34": 72,
-      "35": 120,
-      "36": 192,
-      "37": 179,
-      "38": 384,
-      "39": 556,
-      "40": 617,
-      "41": 602,
-      "42": 568,
-      "43": 363,
-      "44": 402
-    },
-    "_pdvResgatado": true
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "43344456",
-    "descricao": "ADRENA 2",
-    "cor": "CRSTAL",
-    "linha": "VERSATIL",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 329.99,
-    "totalGeral": 96,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43344456_CRSTAL",
-    "grade": {
-      "34": 14,
-      "35": 17,
-      "37": 17,
-      "38": 25,
-      "39": 19,
-      "41": 4
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "43358451",
-    "descricao": "INVERSE 2",
-    "cor": "ARECHB",
-    "linha": "VERSATIL",
-    "genero": "MASCULINO",
-    "categoria": "TENIS",
-    "pdv": 279.99,
-    "totalGeral": 175,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43358451_ARECHB",
-    "grade": {
-      "38": 12,
-      "40": 24,
-      "41": 36,
-      "42": 24,
-      "43": 64,
-      "44": 15
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "43407464",
-    "descricao": "SOMA 2",
-    "cor": "GFTGRE",
-    "linha": "COTIDIANO",
-    "genero": "MASCULINO",
-    "categoria": "TENIS",
-    "pdv": 249.99,
-    "totalGeral": 447,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43407464_GFTGRE",
-    "grade": {
-      "37": 12,
-      "39": 8,
-      "40": 35,
-      "41": 105,
-      "42": 157,
-      "43": 94,
-      "44": 36
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "43697386",
-    "descricao": "VIBE",
-    "cor": "MRHO",
-    "linha": "COTIDIANO",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 249.99,
-    "totalGeral": 220,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43697386_MRHO",
-    "grade": {
-      "34": 38,
-      "35": 32,
-      "36": 39,
-      "37": 73,
-      "38": 34,
-      "39": 4
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "43376462",
-    "descricao": "INDEX 4",
-    "cor": "MRH_VM",
-    "linha": "COTIDIANO",
-    "genero": "MASCULINO",
-    "categoria": "TENIS",
-    "pdv": 199.99,
-    "totalGeral": 221,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43376462_MRH_VM",
-    "grade": {
-      "34": 11,
-      "35": 6,
-      "36": 3,
-      "38": 10,
-      "39": 39,
-      "41": 59,
-      "42": 34,
-      "43": 59
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "43606391",
-    "descricao": "VERTICE",
-    "cor": "MIST",
-    "linha": "COTIDIANO",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 199.99,
-    "totalGeral": 501,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43606391_MIST",
-    "grade": {
-      "34": 9,
-      "35": 4,
-      "36": 133,
-      "37": 167,
-      "38": 108,
-      "39": 49,
-      "40": 31
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43299316",
-    "descricao": "ACQUA",
-    "cor": "MRHCRS",
-    "linha": "VERSATIL",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 229.99,
-    "totalGeral": 167,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43299316_MRHCRS",
-    "grade": {
-      "34": 39,
-      "35": 23,
-      "36": 43,
-      "38": 15,
-      "39": 35,
-      "40": 1,
-      "41": 11
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43790399",
-    "descricao": "CORRE TURBO",
-    "cor": "ARTPTO",
-    "linha": "PERFORMANCE",
-    "genero": "UNISSEX",
-    "categoria": "TENIS",
-    "pdv": 699.99,
-    "totalGeral": 3094,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43790399_ARTPTO",
-    "grade": {
-      "35": 292,
-      "36": 539,
-      "37": 688,
-      "38": 606,
-      "39": 311,
-      "41": 54,
-      "42": 102,
-      "43": 361,
-      "44": 52,
-      "45": 89
+    "quinzenas": {
+      "2Q_NOV": 2,
+      "2Q_OUT": 2,
+      "2Q_SET": 2,
+      "2Q_AGO": 2
     }
   }
 ]
