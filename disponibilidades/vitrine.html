@@ -1001,7 +1001,7 @@
     }
     .mp-card{
       background:#fff; border-radius:18px 18px 0 0;
-      width:100%; max-width:560px; max-height:92vh;
+      width:100%; max-width:720px; max-height:95vh;
       display:flex; flex-direction:column;
       box-shadow:0 -10px 40px rgba(0,0,0,.2);
       animation:mpIn .25s ease-out;
@@ -1112,102 +1112,103 @@
       display:flex; border-bottom:1px solid var(--line); flex-shrink:0;
     }
     .mp-tab{
-      flex:1; padding:11px 12px;
+      flex:1; padding:14px 14px;
       background:transparent; border:none; cursor:pointer;
-      font-size:12px; font-weight:800; color:#94a3b8;
+      font-size:14px; font-weight:800; color:#94a3b8;
       border-bottom:2.5px solid transparent;
-      display:flex; align-items:center; justify-content:center; gap:6px;
+      display:flex; align-items:center; justify-content:center; gap:7px;
       transition:all .15s; font-family:inherit;
     }
     .mp-tab.active{ color:var(--brand); border-bottom-color:var(--brand); }
     .mp-tab-cnt{
-      background:#e2e8f0; color:#64748b; font-size:9px;
-      padding:2px 6px; border-radius:8px; font-weight:900; min-width:18px;
+      background:#e2e8f0; color:#64748b; font-size:10px;
+      padding:3px 8px; border-radius:10px; font-weight:900; min-width:20px;
       display:inline-flex; align-items:center; justify-content:center;
     }
     .mp-tab.active .mp-tab-cnt{ background:var(--brand); color:#fff; }
     /* === Aba Desejados === */
     .mp-desejos-wrap{ display:flex; flex-direction:column; flex:1; overflow:hidden; }
     .mp-busca-wrap{
-      padding:10px 12px; border-bottom:1px solid var(--line);
+      padding:14px 16px; border-bottom:1px solid var(--line);
       flex-shrink:0; background:#f8fafc;
     }
     .mp-busca-input{
       position:relative; background:#fff; border:1.5px solid var(--line);
-      border-radius:8px; display:flex; align-items:center; gap:8px; padding:8px 10px;
+      border-radius:10px; display:flex; align-items:center; gap:10px; padding:11px 14px;
     }
-    .mp-busca-input i{ color:#94a3b8; font-size:12px; }
+    .mp-busca-input i{ color:#94a3b8; font-size:14px; }
     .mp-busca-input input{
-      flex:1; border:none; outline:none; font-size:13px;
+      flex:1; border:none; outline:none; font-size:15px;
       color:var(--text); background:transparent; font-family:inherit;
     }
     .mp-busca-input input::placeholder{ color:#cbd5e1; }
-    .mp-filtro-pills{ margin-top:8px; display:flex; gap:6px; }
+    .mp-filtro-pills{ margin-top:10px; display:flex; gap:8px; }
     .mp-pill{
-      flex:1; padding:6px 8px; border-radius:6px; background:#fff;
-      border:1px solid var(--line); color:#64748b; font-size:11px;
+      flex:1; padding:8px 12px; border-radius:8px; background:#fff;
+      border:1px solid var(--line); color:#64748b; font-size:13px;
       font-weight:700; cursor:pointer; display:flex; align-items:center;
-      justify-content:center; gap:4px; font-family:inherit;
+      justify-content:center; gap:5px; font-family:inherit;
     }
     .mp-pill.active{ background:var(--brand); color:#fff; border-color:var(--brand); }
     .mp-des-resumo{
-      padding:10px 14px; font-size:11px; font-weight:700;
-      display:flex; align-items:center; gap:6px; flex-shrink:0;
+      padding:12px 16px; font-size:13px; font-weight:700;
+      display:flex; align-items:center; gap:8px; flex-shrink:0;
       border-top:1px solid var(--line);
     }
     .mp-des-resumo.ok{ background:#dcfce7; color:#15803d; border-color:#bbf7d0; }
     .mp-des-resumo.wait{ background:#fef3c7; color:#92400e; border-color:#fde68a; }
-    .mp-des-lista{ flex:1; overflow-y:auto; padding:8px; }
+    .mp-des-lista{ flex:1; overflow-y:auto; padding:12px; }
     /* Card produto na busca */
     .des-card{
-      background:#fff; border:1px solid var(--line); border-radius:10px;
-      padding:10px; margin-bottom:8px; display:flex; gap:10px;
+      background:#fff; border:1px solid var(--line); border-radius:12px;
+      padding:14px; margin-bottom:10px; display:flex; gap:14px;
     }
     .des-card-img{
-      width:64px; height:64px; background:#f3f4f6; border-radius:7px;
+      width:84px; height:84px; background:#f3f4f6; border-radius:9px;
       flex-shrink:0; display:flex; align-items:center; justify-content:center;
       color:#cbd5e1; overflow:hidden;
     }
     .des-card-img img{ width:100%; height:100%; object-fit:cover; }
     .des-card-info{ flex:1; min-width:0; }
-    .des-nome{ font-size:13px; font-weight:900; color:var(--text); line-height:1.2; margin-bottom:2px; }
-    .des-artigo{ font-size:10px; font-weight:600; color:var(--muted); margin-bottom:6px; }
+    .des-nome{ font-size:16px; font-weight:900; color:var(--text); line-height:1.2; margin-bottom:3px; }
+    .des-artigo{ font-size:12px; font-weight:600; color:var(--muted); margin-bottom:8px; }
     .des-tag-tipo{
-      display:inline-block; font-size:9px; font-weight:800; padding:2px 6px;
-      border-radius:4px; text-transform:uppercase; letter-spacing:.3px; margin-bottom:5px;
+      display:inline-block; font-size:10px; font-weight:800; padding:3px 8px;
+      border-radius:5px; text-transform:uppercase; letter-spacing:.3px; margin-bottom:7px;
     }
     .des-tag-tipo.estoque{ background:#dcfce7; color:#15803d; }
     .des-tag-tipo.meta{ background:#ede9fe; color:#5b21b6; }
-    .des-cores-lista{ display:flex; flex-direction:column; gap:3px; margin-top:3px; }
+    .des-tag-tipo.catalogo{ background:#f1f5f9; color:#475569; }
+    .des-cores-lista{ display:flex; flex-direction:column; gap:4px; margin-top:4px; }
     .des-cor-linha{
       display:flex; align-items:center; justify-content:space-between;
-      gap:6px; padding:4px 0; border-top:1px dashed #e2e8f0;
+      gap:8px; padding:7px 0; border-top:1px dashed #e2e8f0;
     }
-    .des-cor-linha:first-child{ border-top:none; }
-    .des-cor-info{ display:flex; align-items:center; gap:6px; flex:1; min-width:0; }
-    .des-cor-nome{ font-size:11px; font-weight:700; color:var(--text); }
+    .des-cor-linha:first-child{ border-top:none; padding-top:4px; }
+    .des-cor-info{ display:flex; align-items:center; gap:8px; flex:1; min-width:0; }
+    .des-cor-nome{ font-size:13px; font-weight:700; color:var(--text); }
     .des-cor-qtde{
-      font-size:9.5px; font-weight:700; color:#15803d; background:#dcfce7;
-      padding:1px 5px; border-radius:3px;
+      font-size:11px; font-weight:700; color:#15803d; background:#dcfce7;
+      padding:2px 7px; border-radius:4px;
     }
     .des-cor-qtde.zero{ color:#94a3b8; background:#f1f5f9; }
     .btn-coracao{
-      width:28px; height:28px; border-radius:50%; border:none;
+      width:36px; height:36px; border-radius:50%; border:none;
       background:#f1f5f9; cursor:pointer; display:flex; align-items:center;
-      justify-content:center; font-size:13px; color:#cbd5e1; flex-shrink:0;
+      justify-content:center; font-size:16px; color:#cbd5e1; flex-shrink:0;
       transition:all .15s; font-family:inherit;
     }
     .btn-coracao:hover{ background:#fee2e2; color:#ef4444; }
     .btn-coracao.ativo{ background:#fee2e2; color:#ef4444; animation:heartBeat .5s; }
     @keyframes heartBeat{
       0%,100%{ transform:scale(1); }
-      30%{ transform:scale(1.25); }
+      30%{ transform:scale(1.28); }
       60%{ transform:scale(.95); }
     }
     .des-vazio{
-      text-align:center; padding:32px 16px; color:#94a3b8; font-size:12px;
+      text-align:center; padding:48px 20px; color:#94a3b8; font-size:14px;
     }
-    .des-vazio i{ font-size:32px; margin-bottom:10px; color:#cbd5e1; display:block; }
+    .des-vazio i{ font-size:42px; margin-bottom:14px; color:#cbd5e1; display:block; }
     /* Badge "alertas" no botão Meus Pedidos */
     .badge-alerta-desejos{
       background:#ef4444; color:#fff; font-size:9px; font-weight:900;
@@ -1924,6 +1925,62 @@ const ORDER_COMMISSION_OPTIONS = [
 ];
 
 // ─── VENDEDOR + DESEJOS (WATCHLIST) ───────────────────────────────────────────
+
+// Catálogo geral (dados_produtos.json) — carregado 1x quando abre Desejados
+let _catalogo = null;  // { "ARTIGO|COR": {pdv, nome, cat, gen} | número }
+
+async function carregarCatalogo(){
+  if(_catalogo !== null) return _catalogo;
+  try{
+    const base = `${location.origin}${location.pathname.replace(/disponibilidades\/[^/]*$/, '')}`;
+    const url = `${base}data/dados_produtos.json?v=${Date.now()}`;
+    const res = await fetch(url, { cache:'no-store' });
+    if(!res.ok) throw new Error('not found');
+    _catalogo = await res.json();
+    console.log(`[catalogo] ${Object.keys(_catalogo).length} entradas carregadas`);
+  }catch(e){
+    console.warn('[catalogo] não encontrado:', e.message);
+    _catalogo = {};
+  }
+  return _catalogo;
+}
+
+// Combina STATE.itensTodos (banco) + catálogo (dados_produtos)
+// Retorna array de produtos prontos pra renderizar nos Desejos
+function montarListaParaDesejos(){
+  const fonte = STATE.itensTodos.length ? STATE.itensTodos : STATE.itens;
+  // Mapa por chave: prioriza dados do banco (têm grade/qtde)
+  const mapa = new Map();
+  for(const it of fonte){
+    const k = `${String(it.artigo||'').toUpperCase()}|${String(it.cor||'').toUpperCase()}`;
+    mapa.set(k, it);
+  }
+  // Adiciona do catálogo o que NÃO está no banco (como "fantasma")
+  if(_catalogo){
+    for(const [k, info] of Object.entries(_catalogo)){
+      if(mapa.has(k)) continue;
+      const [artigo, cor] = k.split('|');
+      const ehObj = (typeof info === 'object');
+      // Filtra por marca (todos do catálogo são OLY pra simplificar)
+      // Se MARCA_ATIVA = 'ua', não inclui produtos do catálogo na busca de UA
+      if(MARCA_ATIVA !== 'oly') continue;
+      mapa.set(k, {
+        artigo, cor,
+        descricao: ehObj ? (info.nome || artigo) : artigo,
+        categoria: ehObj ? (info.cat || '') : '',
+        genero: ehObj ? (info.gen || '') : '',
+        pdv: ehObj ? Number(info.pdv || 0) : Number(info),
+        marca: 'OLY',
+        grade: {},
+        totalGeral: 0,
+        _semEstoque: true,
+        _foraDeBanco: true   // veio só do catálogo, não tem no banco
+      });
+    }
+  }
+  return Array.from(mapa.values());
+}
+
 // Carrega vendedor identificado no localStorage (mesma chave do "Meus Pedidos")
 // e seus desejos do Worker
 async function carregarVendedorEDesejos(){
@@ -3025,6 +3082,10 @@ function mpTrocarTab(tab){
   $('mpLoading').classList.add('hidden');
   if(tab === 'desejos'){
     $('mpSubtitulo').textContent = 'Produtos que você quer monitorar';
+    // Carrega catálogo se ainda não tem (async, não bloqueia)
+    if(_catalogo === null){
+      carregarCatalogo().then(() => renderModalDesejados());
+    }
     renderModalDesejados();
   } else {
     $('mpSubtitulo').textContent = 'Links que você compartilhou com clientes';
@@ -3042,7 +3103,8 @@ function mpDesSetFiltro(f){
 // Renderiza a lista de produtos na aba Desejados (busca + favoritos)
 function renderModalDesejados(){
   const buscaTxt = ($('mpDesBusca')?.value || '').toLowerCase().trim();
-  const fonte = STATE.itensTodos.length ? STATE.itensTodos : STATE.itens;
+  // Combina banco + catálogo
+  const fonte = montarListaParaDesejos();
 
   // Agrupa por (artigo + descricao)
   const grupos = new Map();
@@ -3119,8 +3181,21 @@ function renderModalDesejados(){
     const primeira = g.cores[0];
     const corSafe = String(primeira.cor || '').replace(/\//g, '_').toUpperCase();
     const imgSrc = (primeira.artigo && corSafe) ? `${IMG_BASE}${primeira.artigo}_${corSafe}.jpg` : '';
-    const tipoLabel = g.ehMeta ? '🏭 2S26' : '📦 Estoque';
-    const tipoCls = g.ehMeta ? 'meta' : 'estoque';
+
+    // Detecta se TODAS as cores são "fora do banco" (vieram só do catálogo)
+    const todasForaDoBanco = g.cores.every(c => c._foraDeBanco);
+
+    let tipoLabel, tipoCls;
+    if(g.ehMeta){
+      tipoLabel = '🏭 2S26';
+      tipoCls = 'meta';
+    } else if(todasForaDoBanco){
+      tipoLabel = '📋 Catálogo';
+      tipoCls = 'catalogo';
+    } else {
+      tipoLabel = '📦 Estoque';
+      tipoCls = 'estoque';
+    }
 
     return `<div class="des-card">
       <div class="des-card-img">
@@ -3138,7 +3213,7 @@ function renderModalDesejados(){
               : Number(c.totalGeral||0);
             const semEst = c._semEstoque || qtde === 0;
             const labelQtde = semEst
-              ? 'Sem estoque'
+              ? (c._foraDeBanco ? 'Aguardando estoque' : 'Sem estoque')
               : `${qtde.toLocaleString('pt-BR')} ${g.ehMeta?'pares':'un'}`;
             return `<div class="des-cor-linha">
               <div class="des-cor-info">
