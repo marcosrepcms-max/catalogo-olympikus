@@ -17914,28 +17914,5 @@
       "2Q_SET": 2,
       "2Q_AGO": 2
     }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "2. QUINZ NOVEMBRO",
-    "empresa": "AZABA",
-    "artigo": "43467492",
-    "descricao": "DAY 2",
-    "cor": "PEWCAS",
-    "linha": "COTIDIANO",
-    "genero": "FEMININO",
-    "categoria": "2S26",
-    "pdv": 279.99,
-    "totalGeral": 250,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43467492_PEWCAS",
-    "grade": {},
-    "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 250
-    },
-    "_pdvResgatado": true
   }
 ]
