@@ -696,6 +696,49 @@
     .grade-pill .gp-num{ font-size:10px; font-weight:600; color:#64748b; line-height:1.2; }
     .grade-pill .gp-qty{ font-size:11px; font-weight:800; color:#0f172a; line-height:1.2; }
 
+    /* ═══ META PRODUTIVA (Coleção 2S26) ════════════════════════════════════ */
+    .prod-card.meta .grade-grid{ display:none; }
+    .meta-bloco{
+      margin-top:8px;
+      background:linear-gradient(180deg, #faf7ff 0%, #f3e8ff 100%);
+      border:1px solid #e9d5ff;
+      border-radius:8px;
+      padding:7px 9px;
+    }
+    .meta-titulo{
+      font-size:8.5px; font-weight:900;
+      color:#7c3aed; text-transform:uppercase;
+      letter-spacing:.4px; margin-bottom:5px;
+      display:flex; align-items:center; gap:5px;
+    }
+    .meta-titulo i{ font-size:10px; }
+    .meta-linha{
+      display:flex; justify-content:space-between;
+      align-items:center; gap:6px;
+      padding:3px 0;
+      border-top:1px solid #e9d5ff;
+      font-size:11px;
+    }
+    .meta-linha:first-of-type{ border-top:none; }
+    .meta-mes{
+      color:#581c87; font-weight:700; font-size:10.5px;
+      text-transform:uppercase; letter-spacing:.2px;
+    }
+    .meta-qtd{
+      color:#7c3aed; font-weight:900;
+      font-size:12px;
+      font-variant-numeric:tabular-nums;
+    }
+    .meta-total{
+      display:flex; justify-content:space-between;
+      align-items:center; gap:6px;
+      padding:5px 0 2px;
+      margin-top:3px;
+      border-top:1.5px solid #c4b5fd;
+    }
+    .meta-total .meta-mes{ color:#581c87; font-weight:900; font-size:9.5px; }
+    .meta-total .meta-qtd{ font-size:13px; color:#5b21b6; }
+
     /* Spinner */
     @keyframes spin{ to{ transform:rotate(360deg); } }
     .spin{ animation:spin 1s linear infinite; }
@@ -1304,6 +1347,24 @@
         </div>
       </div>
     </div>
+    <!-- Linha 1.5: toggle de visão (Disponíveis x Meta 2S26) — só aparece se houver 2S26 -->
+    <div id="visaoBar" class="hidden pt-2" style="border-top:1px dashed var(--line)">
+      <div class="flex items-center gap-2">
+        <span class="text-[11px] font-extrabold uppercase tracking-wide hidden sm:inline" style="color:var(--muted)">
+          <i class="fa-solid fa-eye text-[10px]"></i> Mostrar
+        </span>
+        <div class="inline-flex rounded-full p-0.5" style="background:var(--bg-subtle, #f1f5f9); border:1px solid var(--line)">
+          <button id="btnVisaoDispo" onclick="setVisao('disponivel')" class="px-3 py-1 text-xs font-bold rounded-full transition-all" style="background:#fff; color:var(--text); box-shadow:0 1px 3px rgba(0,0,0,.08)">
+            <i class="fa-solid fa-box text-[10px]"></i> Disponíveis
+            <span id="badgeDispo" class="ml-1 text-[10px] font-extrabold" style="opacity:.7">0</span>
+          </button>
+          <button id="btnVisaoMeta" onclick="setVisao('meta')" class="px-3 py-1 text-xs font-bold rounded-full transition-all" style="background:transparent; color:var(--muted)">
+            <i class="fa-solid fa-industry text-[10px]"></i> 2S26
+            <span id="badgeMeta" class="ml-1 text-[10px] font-extrabold" style="opacity:.7">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
     <!-- Linha 2: campanhas (pills) — oculta se não houver -->
     <div id="campanhasBar" class="hidden items-center gap-1.5 flex-wrap pt-2" style="border-top:1px dashed var(--line)">
       <span class="text-[11px] font-extrabold uppercase tracking-wide" style="color:var(--muted)">
@@ -1621,6 +1682,8 @@ const STATE = {
   filtroCampanha:  '',
   filtroGenero:    new Set(),
   filtroCategoria: new Set(),
+  // Visão: 'disponivel' (padrão — produtos com grade) ou 'meta' (coleção 2S26)
+  filtroVisao:     'disponivel',
   ordenacao:       'padrao',
   search:     '',
   selecionados: new Set(),
@@ -1844,6 +1907,7 @@ async function loadData(){
       .filter(i => String(i.marca||'').trim().toLowerCase() === MARCA_ATIVA)
       .map(i => ({ ...i, prevFat: fixEncoding(i.prevFat) }));
     carregarFiltros();      // restaura filtros da sessão
+    renderVisaoBar();       // toggle Disponíveis x 2S26
     renderCampanhas();      // pills de campanha no topo
     renderChipsAtivos();    // chips dos filtros ativos
     atualizarBadgeFiltros();// badge no botão Filtros
@@ -1909,6 +1973,42 @@ function carregarFiltros(){
 }
 
 // ── CAMPANHAS (pills no topo) ────────────────────────────────────────────────
+// ── VISÃO (Disponíveis / Meta 2S26) ──────────────────────────────────────────
+function renderVisaoBar(){
+  const bar = $('visaoBar');
+  if(!bar) return;
+  const totalDispo = STATE.itens.filter(i => !i._meta).length;
+  const totalMeta  = STATE.itens.filter(i =>  i._meta).length;
+  // Se não tem coleção 2S26, esconde toda a barra
+  if(totalMeta === 0){
+    bar.classList.add('hidden');
+    return;
+  }
+  bar.classList.remove('hidden');
+  bar.classList.add('flex');
+  $('badgeDispo').textContent = totalDispo;
+  $('badgeMeta').textContent  = totalMeta;
+
+  const dispo = STATE.filtroVisao === 'disponivel';
+  // Botão ativo: fundo branco + sombra
+  $('btnVisaoDispo').style.background = dispo ? '#fff' : 'transparent';
+  $('btnVisaoDispo').style.color      = dispo ? 'var(--text)' : 'var(--muted)';
+  $('btnVisaoDispo').style.boxShadow  = dispo ? '0 1px 3px rgba(0,0,0,.08)' : 'none';
+  $('btnVisaoMeta').style.background  = !dispo ? '#7c3aed' : 'transparent';
+  $('btnVisaoMeta').style.color       = !dispo ? '#fff' : 'var(--muted)';
+  $('btnVisaoMeta').style.boxShadow   = !dispo ? '0 1px 3px rgba(124,58,237,.4)' : 'none';
+}
+
+function setVisao(v){
+  if(STATE.filtroVisao === v) return;
+  STATE.filtroVisao = v;
+  STATE.rendered = 0;
+  renderVisaoBar();
+  applyFilters();
+  // Scroll pro topo da lista
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 function renderCampanhas(){
   const bar  = $('campanhasBar');
   const wrap = $('campanhasPills');
@@ -2049,6 +2149,11 @@ function applyFilters(){
   if(btnClear) btnClear.classList.toggle('hidden', !q);
 
   let lista = STATE.itens
+    .filter(item => {
+      // Visão: 'disponivel' = produtos normais (sem _meta) · 'meta' = só 2S26
+      if(STATE.filtroVisao === 'meta') return !!item._meta;
+      return !item._meta;
+    })
     .filter(item => !STATE.filtroCampanha || (item.codigoTabela||'') === STATE.filtroCampanha)
     .filter(item => STATE.filtroGenero.size === 0 || STATE.filtroGenero.has(String(item.genero||'').trim().toUpperCase()))
     .filter(item => STATE.filtroCategoria.size === 0 || STATE.filtroCategoria.has(categoriaKey(item.categoria)))
@@ -2093,13 +2198,32 @@ function buildCardHtml(item){
   const corSafe = String(item.cor || '').replace(/\//g, '_').toUpperCase();
   const imgSrc = (item.artigo && corSafe) ? `${IMG_BASE}${item.artigo}_${corSafe}.jpg` : '';
 
-  const grade = item.grade || {};
-  const gradeEntries = Object.entries(grade).filter(([,v]) => Number(v) > 0);
-  const gradeHtml = gradeEntries.length
-    ? `<div class="grade-grid">${gradeEntries.map(([k,v]) =>
-        `<div class="grade-pill"><span class="gp-num">${safeHtml(k)}</span><span class="gp-qty">${v}</span></div>`
-      ).join('')}</div>`
-    : '<span style="font-size:11px;color:var(--muted)">—</span>';
+  const ehMeta = !!item._meta;
+
+  // GRADE (estoque) ou QUINZENAS (meta produtiva)
+  let gradeHtml = '';
+  if(ehMeta){
+    const quinzenas = item.quinzenas || {};
+    const linhas = ordenarQuinzenas(Object.entries(quinzenas));
+    const totalMeta = linhas.reduce((s, [,v]) => s + (Number(v)||0), 0);
+    gradeHtml = linhas.length
+      ? `<div class="meta-bloco">
+           <div class="meta-titulo"><i class="fa-solid fa-industry"></i> Meta produtiva</div>
+           ${linhas.map(([q, qtd]) =>
+             `<div class="meta-linha"><span class="meta-mes">${safeHtml(labelQuinzena(q))}</span><span class="meta-qtd">${Number(qtd).toLocaleString('pt-BR')} pares</span></div>`
+           ).join('')}
+           ${linhas.length > 1 ? `<div class="meta-total"><span class="meta-mes">TOTAL</span><span class="meta-qtd">${totalMeta.toLocaleString('pt-BR')}</span></div>` : ''}
+         </div>`
+      : '<span style="font-size:11px;color:var(--muted)">Sem meta cadastrada</span>';
+  } else {
+    const grade = item.grade || {};
+    const gradeEntries = Object.entries(grade).filter(([,v]) => Number(v) > 0);
+    gradeHtml = gradeEntries.length
+      ? `<div class="grade-grid">${gradeEntries.map(([k,v]) =>
+          `<div class="grade-pill"><span class="gp-num">${safeHtml(k)}</span><span class="gp-qty">${v}</span></div>`
+        ).join('')}</div>`
+      : '<span style="font-size:11px;color:var(--muted)">—</span>';
+  }
 
   const prevFatLimpo = (item.prevFat||'')
     .replace(/Ã\u00aa/g,'ª').replace(/Ã\u00ba/g,'º')
@@ -2114,20 +2238,30 @@ function buildCardHtml(item){
     ? `<span class="chip chip-ua">UA</span>`
     : `<span class="chip chip-oly">OLY</span>`;
 
-  const chipTabela = isTabEsp
+  // Tag 2S26 (substitui chip de campanha)
+  const chip2s26 = ehMeta
+    ? `<span class="chip" style="background:linear-gradient(135deg,#7c3aed,#5b21b6);color:#fff;border:none;font-size:10px;font-weight:900;letter-spacing:.3px;box-shadow:0 1px 3px rgba(124,58,237,.4)"><i class="fa-solid fa-industry" style="font-size:9px"></i> 2S26</span>`
+    : '';
+
+  const chipTabela = isTabEsp && !ehMeta
     ? `<span class="chip" style="background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe;font-size:10px"><i class="fa-solid fa-tag" style="font-size:9px"></i> ${safeHtml(item.codigoTabela)}</span>`
     : '';
 
-  // Empresa e quinzena — só para não tabela especial
-  const chipEmpresa = !isTabEsp && item.empresa
+  // Empresa e quinzena — só para não tabela especial e não meta
+  const chipEmpresa = !isTabEsp && !ehMeta && item.empresa
     ? `<span class="chip" style="background:#f1f5f9;color:#475569;border:1px solid #e2e8f0;font-size:10px">${safeHtml(item.empresa)}</span>`
     : '';
-  const chipQuinzena = !isTabEsp && prevFatLimpo
+  const chipQuinzena = !isTabEsp && !ehMeta && prevFatLimpo
     ? `<span class="chip" style="background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;font-size:10px"><i class="fa-regular fa-calendar" style="font-size:9px"></i> ${safeHtml(prevFatLimpo)}</span>`
     : '';
 
+  // Total: pra meta, soma quinzenas; pra estoque, totalGeral
+  const totalExibir = ehMeta
+    ? Object.values(item.quinzenas||{}).reduce((s,v) => s + (Number(v)||0), 0)
+    : Number(item.totalGeral||0);
+
   const card = document.createElement('article');
-  card.className = `prod-card${isSel?' selecionado':''}`;
+  card.className = `prod-card${isSel?' selecionado':''}${ehMeta?' meta':''}`;
   card.dataset.key = key;
   card.innerHTML = `
     <button class="btn-fav${isSel?' ativo':''}" onclick="toggleFav('${safeHtml(key)}',this)" title="${isSel?'Remover do PDF':'Adicionar ao PDF'}">
@@ -2150,13 +2284,13 @@ function buildCardHtml(item){
       <div class="text-base font-extrabold leading-tight mb-1" style="color:var(--text)">${safeHtml(item.descricao||'—')}</div>
       <div class="text-xs font-semibold mb-3" style="color:var(--muted)">${safeHtml(item.artigo)} · ${safeHtml(item.cor)}</div>
       <div class="flex flex-wrap gap-1.5 mb-3">
-        ${chipMarca}${chipTabela}${chipEmpresa}${chipQuinzena}
+        ${chip2s26}${chipMarca}${chipTabela}${chipEmpresa}${chipQuinzena}
       </div>
       <div class="flex items-center justify-between mb-2">
         <div class="text-lg font-black" style="color:var(--accent)">R$ ${Number(item.pdv||0).toFixed(2)}</div>
-        <div class="text-xs font-semibold" style="color:var(--muted)">T. ${Number(item.totalGeral||0).toLocaleString('pt-BR')} un</div>
+        <div class="text-xs font-semibold" style="color:var(--muted)">${ehMeta?'Total':'T.'} ${totalExibir.toLocaleString('pt-BR')} ${ehMeta?'pares':'un'}</div>
       </div>
-      ${isTabEsp && (item.mkp || item.custo) ? `
+      ${isTabEsp && !ehMeta && (item.mkp || item.custo) ? `
       <div class="flex items-center gap-3 mb-2 px-3 py-2 rounded-xl" style="background:#f8fafc;border:0.5px solid #e2e8f0">
         ${item.mkp ? `<div class="text-xs"><span style="color:var(--muted);font-weight:600">MKP</span> <span class="font-extrabold" style="color:#6d28d9">${safeHtml(item.mkp)}</span></div>` : ''}
         ${item.custo ? `<div class="text-xs ml-auto"><span style="color:var(--muted);font-weight:600">Custo</span> <span class="font-bold" style="color:var(--text)">R$ ${Number(item.custo).toFixed(2)}</span></div>` : ''}
@@ -2164,6 +2298,26 @@ function buildCardHtml(item){
       ${gradeHtml}
     </div>`;
   return card;
+}
+
+// Ordena chaves de quinzena cronologicamente
+function ordenarQuinzenas(entries){
+  const ord = ['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'];
+  return entries.slice().sort((a,b) => {
+    const [qa, ma] = a[0].split('_');
+    const [qb, mb] = b[0].split('_');
+    const im = ord.indexOf(ma) - ord.indexOf(mb);
+    if(im !== 0) return im;
+    return qa.localeCompare(qb);
+  });
+}
+
+// "2Q_AGO" → "2ª Quinz Ago"
+function labelQuinzena(key){
+  const [q, m] = String(key||'').split('_');
+  const pref = q === '1Q' ? '1ª Quinz' : '2ª Quinz';
+  const mes = String(m||'').charAt(0).toUpperCase() + String(m||'').slice(1).toLowerCase();
+  return `${pref} ${mes}`;
 }
 
 // Atualiza o indicador "Mostrando X de Y produtos" + botão Carregar mais

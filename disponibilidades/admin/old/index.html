@@ -383,6 +383,13 @@
           style="border-color:#c084fc;background:rgba(192,132,252,.1);color:#7c3aed">
           <i class="fa-solid fa-tags text-xs"></i> Tabela especial
         </button>
+        <!-- Pausar / Ativar vitrine -->
+        <button id="btnPausarVitrine" onclick="togglePausarVitrine()" data-tip="Pausar vitrine durante atualização"
+          class="focus-ring rounded-full border px-4 py-2 text-sm font-bold flex items-center gap-2 transition-colors"
+          style="border-color:#94a3b8;background:#f1f5f9;color:#475569">
+          <i id="btnPausarIcon" class="fa-solid fa-circle-pause text-xs"></i>
+          <span id="btnPausarTxt">Pausar vitrine</span>
+        </button>
         <!-- Tela cheia -->
         <button onclick="toggleFullscreen()" data-tip="Tela cheia"
           class="focus-ring w-9 h-9 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-500 hover:bg-slate-50 transition-colors">
@@ -2183,6 +2190,86 @@ function aplicarTabelaEspecial(item){
 }
 
 function abrirImportar(){ $('modalImportar').classList.remove('hidden'); }
+
+// ═══════════════════════════════════════════════════════════════════════════
+// PAUSAR / ATIVAR VITRINE
+// ═══════════════════════════════════════════════════════════════════════════
+let _vitrinePausada = false;
+
+async function carregarStatusVitrine(){
+  try{
+    const res = await workerFetch({
+      method:'PATCH',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ action:'getStatusVitrine' })
+    });
+    const json = await res.json();
+    _vitrinePausada = !!(json && json.pausada);
+    atualizarBotaoPausar();
+  }catch(e){ /* silent */ }
+}
+
+function atualizarBotaoPausar(){
+  const btn = $('btnPausarVitrine');
+  const ic  = $('btnPausarIcon');
+  const tx  = $('btnPausarTxt');
+  if(!btn) return;
+  if(_vitrinePausada){
+    btn.style.borderColor = '#dc2626';
+    btn.style.background  = 'rgba(220,38,38,.1)';
+    btn.style.color       = '#dc2626';
+    ic.className = 'fa-solid fa-circle-play text-xs';
+    tx.textContent = 'Ativar vitrine';
+    btn.setAttribute('data-tip', 'Vitrine PAUSADA — clique para reativar');
+  } else {
+    btn.style.borderColor = '#94a3b8';
+    btn.style.background  = '#f1f5f9';
+    btn.style.color       = '#475569';
+    ic.className = 'fa-solid fa-circle-pause text-xs';
+    tx.textContent = 'Pausar vitrine';
+    btn.setAttribute('data-tip', 'Pausar vitrine durante atualização');
+  }
+}
+
+async function togglePausarVitrine(){
+  const titulo = _vitrinePausada ? 'Reativar a vitrine?' : 'Pausar a vitrine?';
+  const corpo = _vitrinePausada
+    ? 'Os vendedores voltarão a ver os produtos normalmente.'
+    : 'Enquanto pausada, os vendedores verão uma tela de manutenção em vez dos produtos. Os links já enviados aos clientes continuam funcionando normalmente.';
+  const txtOk = _vitrinePausada ? '▶ Ativar agora' : '⏸ Pausar agora';
+
+  abrirConfirm(titulo, corpo, async () => {
+    const btn = $('btnPausarVitrine');
+    const ic  = $('btnPausarIcon');
+    const tx  = $('btnPausarTxt');
+    btn.disabled = true;
+    if(ic) ic.className = 'fa-solid fa-spinner fa-spin text-xs';
+    if(tx) tx.textContent = 'Aguarde...';
+    try{
+      const res = await workerFetch({
+        method:'PATCH',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({
+          action:'setStatusVitrine',
+          pausada: !_vitrinePausada
+        })
+      });
+      const json = await res.json();
+      if(!res.ok || !json.success) throw new Error(json.erro || res.status);
+      _vitrinePausada = !!json.pausada;
+      showToast(_vitrinePausada ? '⏸️ Vitrine pausada' : '▶️ Vitrine ativada', 'success');
+    }catch(e){
+      console.error(e);
+      showToast('Erro ao alterar status: ' + (e.message||''), 'error');
+    }finally{
+      btn.disabled = false;
+      atualizarBotaoPausar();
+    }
+  }, null, { okText: txtOk, cancelText: 'Cancelar', perigo: !_vitrinePausada });
+}
+// Carrega status ao abrir o admin
+window.addEventListener('DOMContentLoaded', () => setTimeout(carregarStatusVitrine, 800));
+
 function fecharImportar(){
   $('modalImportar').classList.add('hidden');
   $('previewArea').classList.add('hidden');
