@@ -2215,6 +2215,22 @@ async function loadData(){
       .filter(i => !ocultosSet.has(ocultarKey(i)))
       .filter(i => String(i.marca||'').trim().toLowerCase() === MARCA_ATIVA)
       .map(i => ({ ...i, prevFat: fixEncoding(i.prevFat) }));
+
+    // ── DEBUG: log de diagnóstico do banco ──────────────────────────────────
+    const totalBanco = itens.length;
+    const totalMarca = STATE.itensTodos.length;
+    const dispoNaVitrine = STATE.itens.filter(i => !i._meta).length;
+    const metaNaVitrine = STATE.itens.filter(i => i._meta).length;
+    const aguardandoImg = itens.filter(i => i._aguardandoImagem).length;
+    const semMarca = itens.filter(i => !i.marca).length;
+    console.log(`[vitrine] Banco: ${totalBanco} · Marca ${MARCA_ATIVA}: ${totalMarca} · Vitrine: ${STATE.itens.length} (estoque: ${dispoNaVitrine}, 2S26: ${metaNaVitrine}) · Aguardando img: ${aguardandoImg} · Sem marca: ${semMarca}`);
+    // Categorias visíveis
+    const cats = new Map();
+    for(const i of STATE.itens){
+      const c = String(i.categoria||'(vazia)').toUpperCase();
+      cats.set(c, (cats.get(c)||0) + 1);
+    }
+    console.log(`[vitrine] Categorias em STATE.itens:`, Object.fromEntries(cats));
     // (a flag _semEstoque era usada em uma versão antiga; agora a vitrine
     // exibe todos os produtos do banco normalmente. Quem está sem estoque
     // simplesmente tem grade vazia / totalGeral=0 e será visto pela qtde.)
@@ -2317,7 +2333,14 @@ function setVisao(v){
   if(STATE.filtroVisao === v) return;
   STATE.filtroVisao = v;
   STATE.rendered = 0;
+  // Ao trocar de visão, limpa filtro de categoria (evita filtros inválidos)
+  // ex: estava filtrado por TENIS na visão Disponíveis e vai pra 2S26
+  STATE.filtroCategoria.clear();
+  STATE.filtroGenero.clear();
+  salvarFiltros();
   renderVisaoBar();
+  renderChipsAtivos();
+  atualizarBadgeFiltros();
   applyFilters();
   // Scroll pro topo da lista
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -2356,9 +2379,15 @@ function fecharDrawerFiltros(){ $('drawerFiltrosBg').classList.add('hidden'); }
 
 // Monta as opções de Gênero e Categoria dentro do drawer (com contagem)
 function renderDrawerOpcoes(){
+  // Quais itens contam pro filtro: respeita a VISÃO atual (disponivel vs meta)
+  // Isso evita mostrar "2S26" como opção quando estamos vendo "Disponíveis" e vice-versa
+  const itensDaVisao = STATE.itens.filter(i =>
+    STATE.filtroVisao === 'meta' ? !!i._meta : !i._meta
+  );
+
   // Gênero — valores distintos dos produtos
   const generos = {};
-  for(const it of STATE.itens){
+  for(const it of itensDaVisao){
     const g = String(it.genero||'').trim().toUpperCase();
     if(!g) continue;
     generos[g] = (generos[g]||0) + 1;
@@ -2374,7 +2403,7 @@ function renderDrawerOpcoes(){
 
   // Categoria — valores REAIS da coluna (sem agrupar)
   const catCount = {};
-  for(const it of STATE.itens){
+  for(const it of itensDaVisao){
     const ck = categoriaKey(it.categoria);
     if(ck) catCount[ck] = (catCount[ck]||0) + 1;
   }
