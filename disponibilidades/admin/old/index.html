@@ -2092,9 +2092,12 @@ async function carregarDadosProdutos(){
 function resgatarPdv(item){
   if(!_dadosProdutos || Number(item.pdv) > 0) return false;
   const k = `${String(item.artigo||'').toUpperCase()}|${String(item.cor||'').toUpperCase()}`;
-  const preco = _dadosProdutos[k];
-  if(preco && preco > 0){
-    item.pdv = Number(preco);
+  const entrada = _dadosProdutos[k];
+  if(!entrada) return false;
+  // Aceita formato antigo (número direto) e novo (objeto {pdv, nome, cat, gen})
+  const preco = (typeof entrada === 'object') ? Number(entrada.pdv || 0) : Number(entrada);
+  if(preco > 0){
+    item.pdv = preco;
     item._pdvResgatado = true;
     return true;
   }

@@ -1611,7 +1611,7 @@
 </div>
 
 <!-- Modal: Meus Pedidos -->
-<div id="modalMeusPedidos" class="mp-bg hidden" onclick="if(event.target===this)fecharMeusPedidos()">
+<div id="modalMeusPedidos" class="mp-bg hidden">
   <div class="mp-card">
     <div class="mp-head">
       <div class="ic"><i class="fa-solid fa-clipboard-list"></i></div>
@@ -2002,7 +2002,7 @@ async function carregarVendedorEDesejos(){
 async function carregarDesejos(){
   if(!STATE.vendedorCod) return;
   try{
-    const res = await fetch(WORKER_CONFIG.endpoint, {
+    const res = await fetch(WORKER_URL, {
       method:'PATCH', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ action:'getDesejos', vendedor: STATE.vendedorCod })
     });
@@ -2017,9 +2017,12 @@ async function carregarDesejos(){
 }
 
 async function salvarDesejos(){
-  if(!STATE.vendedorCod) return;
+  if(!STATE.vendedorCod){
+    console.warn('[desejos] sem vendedor identificado, não salva');
+    return;
+  }
   try{
-    await fetch(WORKER_CONFIG.endpoint, {
+    const res = await fetch(WORKER_URL, {
       method:'PATCH', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({
         action:'saveDesejos',
@@ -2027,10 +2030,19 @@ async function salvarDesejos(){
         data: Array.from(STATE.desejos)
       })
     });
+    const out = await res.json();
+    if(!out.success){
+      console.error('[desejos] worker falhou:', out);
+    }
   }catch(e){ console.error('[desejos] falha ao salvar:', e); }
 }
 
 function toggleDesejo(artigo, cor){
+  // Se não tem vendedor identificado, pede pra identificar antes
+  if(!STATE.vendedorCod){
+    showToast('Identifique-se em "Meus Pedidos" para salvar seus desejos', 'info');
+    return;
+  }
   const k = `${artigo}|${cor}`;
   if(STATE.desejos.has(k)){
     STATE.desejos.delete(k);
@@ -3067,7 +3079,15 @@ function abrirMeusPedidos(){
 }
 function fecharMeusPedidos(){ $('modalMeusPedidos').classList.add('hidden'); }
 
-function fecharMeusPedidos(){ $('modalMeusPedidos').classList.add('hidden'); }
+// Fecha o modal Meus Pedidos com a tecla ESC
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape'){
+    const mp = $('modalMeusPedidos');
+    if(mp && !mp.classList.contains('hidden')){
+      fecharMeusPedidos();
+    }
+  }
+});
 
 // ── ABAS do modal Meus Pedidos ─────────────────────────────────────────────
 let _mpDesFiltro = 'todos';

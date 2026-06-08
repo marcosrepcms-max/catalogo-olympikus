@@ -2859,45 +2859,15 @@ async function anlExecutarSalvar(itens){
       });
     }
 
-    // Lista final — ACUMULA HISTÓRICO
-    // Em vez de manter só os produtos atuais, agora preserva produtos antigos
-    // marcando-os como _semEstoque (não aparecem na vitrine mas ficam no banco
-    // pra serem encontrados na busca de "Desejados")
-    const chavesNovas = new Set(novosMap.keys());
-    const banco = _jsonAtual || [];
-
-    // Produtos do banco que NÃO foram reimportados nesta operação:
-    //   - Se eram do mesmo TIPO (estoque vs meta) que foi importado agora → ficam SEM ESTOQUE
-    //   - Se eram de TIPO diferente → mantém intactos (ex: importei só 2S26, estoque imediato fica intacto)
-    // Detecta o tipo predominante da importação atual
-    const todosImportadosSaoMeta = itens.length > 0 && itens.every(r => r.item._meta);
-    const todosImportadosSaoEstoque = itens.length > 0 && itens.every(r => !r.item._meta);
-
-    const filtrado = banco.map(r => {
+    // Lista final — ATUALIZA produtos reimportados, MANTÉM o resto intacto
+    // (Importante: não devemos zerar produtos que não foram reimportados, pois
+    // a importação pode ser de um XLSX específico que cobre só parte do estoque.
+    // Quem decide remover um produto do banco é o admin via ação manual.)
+    const filtrado = (_jsonAtual||[]).filter(r => {
       const k = `${String(r.artigo||'').toUpperCase()}|${String(r.cor||'').toUpperCase()}`;
-      // Se foi reimportado, será substituído pelos novos (não inclui aqui)
-      if(chavesNovas.has(k)) return null;
-      // Se NÃO foi reimportado, decide se zera ou mantém
-      const rEhMeta = !!r._meta;
-      const deveZerar = (todosImportadosSaoMeta && rEhMeta) || (todosImportadosSaoEstoque && !rEhMeta);
-      if(deveZerar){
-        // Marca como sem estoque — mantém PDV/imagem/marca pra busca futura
-        return {
-          ...r,
-          _semEstoque: true,
-          grade: {},
-          totalGeral: 0,
-          quinzenas: rEhMeta ? {} : undefined,
-          _aguardandoImagem: undefined  // limpa flag de aguardando imagem
-        };
-      }
-      return r;
-    }).filter(Boolean);
-
+      return !novosMap.has(k);
+    });
     const listaFinal = [...filtrado, ...novosMap.values()];
-
-    // Contadores pra exibir no toast final
-    const zerados = filtrado.filter(r => r._semEstoque).length;
 
     const res = await workerFetch({
       method:'PATCH', headers:{'Content-Type':'application/json'},
@@ -2915,7 +2885,6 @@ async function anlExecutarSalvar(itens){
 
     let msg = `${prontos} pronto(s) na vitrine`;
     if(aguardando > 0) msg += ` · ${aguardando} aguardando imagem`;
-    if(zerados > 0) msg += ` · ${zerados} fora de estoque`;
     showToast(msg, 'success');
     fecharAnalise();
     fecharImportar();
