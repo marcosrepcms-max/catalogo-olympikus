@@ -1107,6 +1107,117 @@
     }
     .mp-foot a{ color:var(--accent); cursor:pointer; font-weight:700; }
     .mp-foot a:hover{ text-decoration:underline; }
+    /* === Tabs do modal Meus Pedidos === */
+    .mp-tabs{
+      display:flex; border-bottom:1px solid var(--line); flex-shrink:0;
+    }
+    .mp-tab{
+      flex:1; padding:11px 12px;
+      background:transparent; border:none; cursor:pointer;
+      font-size:12px; font-weight:800; color:#94a3b8;
+      border-bottom:2.5px solid transparent;
+      display:flex; align-items:center; justify-content:center; gap:6px;
+      transition:all .15s; font-family:inherit;
+    }
+    .mp-tab.active{ color:var(--brand); border-bottom-color:var(--brand); }
+    .mp-tab-cnt{
+      background:#e2e8f0; color:#64748b; font-size:9px;
+      padding:2px 6px; border-radius:8px; font-weight:900; min-width:18px;
+      display:inline-flex; align-items:center; justify-content:center;
+    }
+    .mp-tab.active .mp-tab-cnt{ background:var(--brand); color:#fff; }
+    /* === Aba Desejados === */
+    .mp-desejos-wrap{ display:flex; flex-direction:column; flex:1; overflow:hidden; }
+    .mp-busca-wrap{
+      padding:10px 12px; border-bottom:1px solid var(--line);
+      flex-shrink:0; background:#f8fafc;
+    }
+    .mp-busca-input{
+      position:relative; background:#fff; border:1.5px solid var(--line);
+      border-radius:8px; display:flex; align-items:center; gap:8px; padding:8px 10px;
+    }
+    .mp-busca-input i{ color:#94a3b8; font-size:12px; }
+    .mp-busca-input input{
+      flex:1; border:none; outline:none; font-size:13px;
+      color:var(--text); background:transparent; font-family:inherit;
+    }
+    .mp-busca-input input::placeholder{ color:#cbd5e1; }
+    .mp-filtro-pills{ margin-top:8px; display:flex; gap:6px; }
+    .mp-pill{
+      flex:1; padding:6px 8px; border-radius:6px; background:#fff;
+      border:1px solid var(--line); color:#64748b; font-size:11px;
+      font-weight:700; cursor:pointer; display:flex; align-items:center;
+      justify-content:center; gap:4px; font-family:inherit;
+    }
+    .mp-pill.active{ background:var(--brand); color:#fff; border-color:var(--brand); }
+    .mp-des-resumo{
+      padding:10px 14px; font-size:11px; font-weight:700;
+      display:flex; align-items:center; gap:6px; flex-shrink:0;
+      border-top:1px solid var(--line);
+    }
+    .mp-des-resumo.ok{ background:#dcfce7; color:#15803d; border-color:#bbf7d0; }
+    .mp-des-resumo.wait{ background:#fef3c7; color:#92400e; border-color:#fde68a; }
+    .mp-des-lista{ flex:1; overflow-y:auto; padding:8px; }
+    /* Card produto na busca */
+    .des-card{
+      background:#fff; border:1px solid var(--line); border-radius:10px;
+      padding:10px; margin-bottom:8px; display:flex; gap:10px;
+    }
+    .des-card-img{
+      width:64px; height:64px; background:#f3f4f6; border-radius:7px;
+      flex-shrink:0; display:flex; align-items:center; justify-content:center;
+      color:#cbd5e1; overflow:hidden;
+    }
+    .des-card-img img{ width:100%; height:100%; object-fit:cover; }
+    .des-card-info{ flex:1; min-width:0; }
+    .des-nome{ font-size:13px; font-weight:900; color:var(--text); line-height:1.2; margin-bottom:2px; }
+    .des-artigo{ font-size:10px; font-weight:600; color:var(--muted); margin-bottom:6px; }
+    .des-tag-tipo{
+      display:inline-block; font-size:9px; font-weight:800; padding:2px 6px;
+      border-radius:4px; text-transform:uppercase; letter-spacing:.3px; margin-bottom:5px;
+    }
+    .des-tag-tipo.estoque{ background:#dcfce7; color:#15803d; }
+    .des-tag-tipo.meta{ background:#ede9fe; color:#5b21b6; }
+    .des-cores-lista{ display:flex; flex-direction:column; gap:3px; margin-top:3px; }
+    .des-cor-linha{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:6px; padding:4px 0; border-top:1px dashed #e2e8f0;
+    }
+    .des-cor-linha:first-child{ border-top:none; }
+    .des-cor-info{ display:flex; align-items:center; gap:6px; flex:1; min-width:0; }
+    .des-cor-nome{ font-size:11px; font-weight:700; color:var(--text); }
+    .des-cor-qtde{
+      font-size:9.5px; font-weight:700; color:#15803d; background:#dcfce7;
+      padding:1px 5px; border-radius:3px;
+    }
+    .des-cor-qtde.zero{ color:#94a3b8; background:#f1f5f9; }
+    .btn-coracao{
+      width:28px; height:28px; border-radius:50%; border:none;
+      background:#f1f5f9; cursor:pointer; display:flex; align-items:center;
+      justify-content:center; font-size:13px; color:#cbd5e1; flex-shrink:0;
+      transition:all .15s; font-family:inherit;
+    }
+    .btn-coracao:hover{ background:#fee2e2; color:#ef4444; }
+    .btn-coracao.ativo{ background:#fee2e2; color:#ef4444; animation:heartBeat .5s; }
+    @keyframes heartBeat{
+      0%,100%{ transform:scale(1); }
+      30%{ transform:scale(1.25); }
+      60%{ transform:scale(.95); }
+    }
+    .des-vazio{
+      text-align:center; padding:32px 16px; color:#94a3b8; font-size:12px;
+    }
+    .des-vazio i{ font-size:32px; margin-bottom:10px; color:#cbd5e1; display:block; }
+    /* Badge "alertas" no botão Meus Pedidos */
+    .badge-alerta-desejos{
+      background:#ef4444; color:#fff; font-size:9px; font-weight:900;
+      padding:2px 6px; border-radius:8px;
+      animation:pulseAlerta 1.4s ease-in-out infinite;
+    }
+    @keyframes pulseAlerta{
+      0%,100%{ box-shadow:0 0 0 0 rgba(239,68,68,.5); transform:scale(1); }
+      50%{ box-shadow:0 0 0 8px transparent; transform:scale(1.08); }
+    }
     .filtros-badge{
       background:var(--accent); color:#fff;
       font-size:10px; font-weight:800;
@@ -1519,8 +1630,44 @@
           <i class="fa-solid fa-arrow-right"></i> Ver meus pedidos
         </button>
       </div>
-      <!-- Tela 2: lista de pedidos -->
+
+      <!-- TABS -->
+      <div id="mpTabs" class="mp-tabs hidden">
+        <button class="mp-tab active" data-tab="links" onclick="mpTrocarTab('links')">
+          <i class="fa-solid fa-link"></i> Links
+          <span class="mp-tab-cnt" id="mpCntLinks"></span>
+        </button>
+        <button class="mp-tab" data-tab="desejos" onclick="mpTrocarTab('desejos')">
+          <i class="fa-solid fa-heart"></i> Desejados
+          <span class="mp-tab-cnt" id="mpCntDesejos"></span>
+        </button>
+      </div>
+
+      <!-- Tela 2: lista de pedidos (LINKS) -->
       <div id="mpLista" class="hidden"></div>
+
+      <!-- Tela 3: DESEJADOS -->
+      <div id="mpDesejos" class="hidden mp-desejos-wrap">
+        <!-- Busca + filtros -->
+        <div class="mp-busca-wrap">
+          <div class="mp-busca-input">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="mpDesBusca" placeholder="Buscar produto, artigo ou cor..." oninput="renderModalDesejados()">
+          </div>
+          <div class="mp-filtro-pills">
+            <button class="mp-pill active" data-f="todos" onclick="mpDesSetFiltro('todos')">Todos</button>
+            <button class="mp-pill" data-f="meus" onclick="mpDesSetFiltro('meus')">
+              <i class="fa-solid fa-heart text-red-500" style="font-size:9px"></i>
+              <span>Meus desejos</span> <span id="mpCntMeus">0</span>
+            </button>
+          </div>
+        </div>
+        <!-- Resumo (verde quando tem disponível, amarelo quando aguardando) -->
+        <div id="mpDesResumo" class="mp-des-resumo hidden"></div>
+        <!-- Lista de produtos -->
+        <div id="mpDesLista" class="mp-des-lista"></div>
+      </div>
+
       <!-- Loading -->
       <div id="mpLoading" class="empty hidden">
         <i class="fa-solid fa-circle-notch fa-spin text-2xl" style="color:var(--accent)"></i>
@@ -1677,6 +1824,7 @@ const $ = id => document.getElementById(id);
 
 const STATE = {
   itens:      [],
+  itensTodos: [],     // inclui produtos sem estoque (pra busca de Desejados)
   filtrados:  [],
   // Filtros: campanha (1, via pill), gênero (Set), categoria (Set)
   filtroCampanha:  '',
@@ -1692,7 +1840,11 @@ const STATE = {
   // Paginação
   pageSize:    24,
   rendered:    0,
-  io:          null
+  io:          null,
+  // Desejados / Watchlist
+  vendedorCod: null,           // código do vendedor (definido no 1º acesso)
+  vendedorNome: null,          // nome do vendedor
+  desejos: new Set()           // chaves "ARTIGO|COR" favoritadas
 };
 
 // Filtros persistem só na sessão (zera ao fechar o navegador)
@@ -1770,6 +1922,88 @@ const ORDER_COMMISSION_OPTIONS = [
   { codigo: "25745",   nome: "LEANDRO" },
   { codigo: "3616654", nome: "MARCOS"  }
 ];
+
+// ─── VENDEDOR + DESEJOS (WATCHLIST) ───────────────────────────────────────────
+// Carrega vendedor identificado no localStorage (mesma chave do "Meus Pedidos")
+// e seus desejos do Worker
+async function carregarVendedorEDesejos(){
+  try{
+    const codSalvo = localStorage.getItem('vitrine_mp_vendedor_v1');
+    if(codSalvo){
+      const v = ORDER_COMMISSION_OPTIONS.find(c => c.codigo === codSalvo);
+      if(v){
+        STATE.vendedorCod = v.codigo;
+        STATE.vendedorNome = v.nome;
+        await carregarDesejos();
+      }
+    }
+    // Não tem vendedor salvo: silencioso. Modal de identificação só abre
+    // quando o usuário clicar em Meus Pedidos.
+  }catch(e){ console.error(e); }
+}
+
+async function carregarDesejos(){
+  if(!STATE.vendedorCod) return;
+  try{
+    const res = await fetch(WORKER_CONFIG.endpoint, {
+      method:'PATCH', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ action:'getDesejos', vendedor: STATE.vendedorCod })
+    });
+    const out = await res.json();
+    const lista = (out && out.desejos) ? out.desejos : [];
+    STATE.desejos = new Set(lista);
+    atualizarBadgePedidos();
+  }catch(e){
+    console.warn('[desejos] falha ao carregar:', e);
+    STATE.desejos = new Set();
+  }
+}
+
+async function salvarDesejos(){
+  if(!STATE.vendedorCod) return;
+  try{
+    await fetch(WORKER_CONFIG.endpoint, {
+      method:'PATCH', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        action:'saveDesejos',
+        vendedor: STATE.vendedorCod,
+        data: Array.from(STATE.desejos)
+      })
+    });
+  }catch(e){ console.error('[desejos] falha ao salvar:', e); }
+}
+
+function toggleDesejo(artigo, cor){
+  const k = `${artigo}|${cor}`;
+  if(STATE.desejos.has(k)){
+    STATE.desejos.delete(k);
+  } else {
+    STATE.desejos.add(k);
+  }
+  salvarDesejos();          // background, sem await
+  renderModalDesejados();   // re-renderiza modal aberto
+  atualizarBadgePedidos();
+}
+
+// Quantos dos desejos estão disponíveis agora?
+function contarDesejosDisponiveis(){
+  if(!STATE.desejos.size) return 0;
+  let disp = 0;
+  for(const k of STATE.desejos){
+    const [art, cor] = k.split('|');
+    const it = STATE.itens.find(x =>
+      String(x.artigo||'').toUpperCase() === art &&
+      String(x.cor||'').toUpperCase() === cor
+    );
+    if(it && !it._semEstoque){
+      const qtde = it._meta
+        ? Object.values(it.quinzenas||{}).reduce((s,v) => s + (Number(v)||0), 0)
+        : Number(it.totalGeral||0);
+      if(qtde > 0) disp++;
+    }
+  }
+  return disp;
+}
 
 // Campanhas oficiais
 const ORDER_CAMPAIGN_OPTIONS = [
@@ -1906,6 +2140,14 @@ async function loadData(){
       // Filtra pela marca ativa (vem da URL) — produtos de outras marcas não entram
       .filter(i => String(i.marca||'').trim().toLowerCase() === MARCA_ATIVA)
       .map(i => ({ ...i, prevFat: fixEncoding(i.prevFat) }));
+    // STATE.itensTodos: inclui produtos sem estoque (usado na busca de Desejados)
+    STATE.itensTodos = itens
+      .filter(i => !i._oculto)
+      .filter(i => !ocultosSet.has(ocultarKey(i)))
+      .filter(i => String(i.marca||'').trim().toLowerCase() === MARCA_ATIVA)
+      .map(i => ({ ...i, prevFat: fixEncoding(i.prevFat) }));
+    // STATE.itens (vitrine principal): só com estoque
+    STATE.itens = STATE.itens.filter(i => !i._semEstoque);
     carregarFiltros();      // restaura filtros da sessão
     renderVisaoBar();       // toggle Disponíveis x 2S26
     renderCampanhas();      // pills de campanha no topo
@@ -1913,6 +2155,8 @@ async function loadData(){
     atualizarBadgeFiltros();// badge no botão Filtros
     applyFilters();
     $('loadingState').classList.add('hidden');
+    // Carrega vendedor + desejos em background (não bloqueia vitrine)
+    carregarVendedorEDesejos();
   }catch(err){
     console.error(err);
     $('loadingState').innerHTML = `<i class="fa-solid fa-triangle-exclamation text-3xl" style="color:#f87171"></i><div class="mt-4 text-sm font-semibold" style="color:#f87171">Erro ao carregar. Tente novamente.</div>`;
@@ -2735,6 +2979,26 @@ function mpAtualizarBadgeBotao(){
   }
 }
 
+// Atualiza o badge combinando: novas respostas de links + desejos disponíveis
+function atualizarBadgePedidos(){
+  // Sempre roda o badge clássico (respostas/links)
+  mpAtualizarBadgeBotao();
+  // Adiciona/remove indicador de desejos disponíveis
+  const btn = $('btnMeusPedidos');
+  if(!btn) return;
+  // Remove o badge antigo de desejos (re-cria sempre)
+  const old = btn.querySelector('.badge-alerta-desejos');
+  if(old) old.remove();
+  const dispo = contarDesejosDisponiveis();
+  if(dispo > 0){
+    const span = document.createElement('span');
+    span.className = 'badge-alerta-desejos';
+    span.textContent = `${dispo} ${dispo===1?'novo':'novos'}`;
+    span.style.marginLeft = '6px';
+    btn.appendChild(span);
+  }
+}
+
 function abrirMeusPedidos(){
   $('modalMeusPedidos').classList.remove('hidden');
   const v = _mpVendedorAtual();
@@ -2746,10 +3010,158 @@ function abrirMeusPedidos(){
 }
 function fecharMeusPedidos(){ $('modalMeusPedidos').classList.add('hidden'); }
 
+function fecharMeusPedidos(){ $('modalMeusPedidos').classList.add('hidden'); }
+
+// ── ABAS do modal Meus Pedidos ─────────────────────────────────────────────
+let _mpDesFiltro = 'todos';
+
+function mpTrocarTab(tab){
+  // Atualiza visual dos botões
+  document.querySelectorAll('.mp-tab').forEach(b => {
+    b.classList.toggle('active', b.dataset.tab === tab);
+  });
+  $('mpLista').classList.toggle('hidden', tab !== 'links');
+  $('mpDesejos').classList.toggle('hidden', tab !== 'desejos');
+  $('mpLoading').classList.add('hidden');
+  if(tab === 'desejos'){
+    $('mpSubtitulo').textContent = 'Produtos que você quer monitorar';
+    renderModalDesejados();
+  } else {
+    $('mpSubtitulo').textContent = 'Links que você compartilhou com clientes';
+  }
+}
+
+function mpDesSetFiltro(f){
+  _mpDesFiltro = f;
+  document.querySelectorAll('.mp-pill').forEach(b => {
+    b.classList.toggle('active', b.dataset.f === f);
+  });
+  renderModalDesejados();
+}
+
+// Renderiza a lista de produtos na aba Desejados (busca + favoritos)
+function renderModalDesejados(){
+  const buscaTxt = ($('mpDesBusca')?.value || '').toLowerCase().trim();
+  const fonte = STATE.itensTodos.length ? STATE.itensTodos : STATE.itens;
+
+  // Agrupa por (artigo + descricao)
+  const grupos = new Map();
+  for(const it of fonte){
+    const k = `${it.artigo}|${it.descricao}`;
+    if(!grupos.has(k)){
+      grupos.set(k, {
+        artigo: it.artigo,
+        descricao: it.descricao || '—',
+        ehMeta: !!it._meta,
+        cores: []
+      });
+    }
+    grupos.get(k).cores.push(it);
+  }
+
+  // Filtra por busca e por "meus desejos"
+  let arr = Array.from(grupos.values()).filter(g => {
+    if(buscaTxt){
+      const txt = `${g.descricao} ${g.artigo} ${g.cores.map(c => c.cor).join(' ')}`.toLowerCase();
+      if(!txt.includes(buscaTxt)) return false;
+    }
+    if(_mpDesFiltro === 'meus'){
+      return g.cores.some(c => STATE.desejos.has(`${c.artigo}|${c.cor}`));
+    }
+    return true;
+  });
+
+  // No modo "meus", filtra cores também
+  if(_mpDesFiltro === 'meus'){
+    arr = arr.map(g => ({ ...g, cores: g.cores.filter(c => STATE.desejos.has(`${c.artigo}|${c.cor}`)) }));
+  }
+
+  // Atualiza contadores
+  $('mpCntDesejos').textContent = STATE.desejos.size;
+  $('mpCntMeus').textContent = STATE.desejos.size;
+
+  // Resumo (alerta verde/amarelo)
+  const disp = contarDesejosDisponiveis();
+  const totalDes = STATE.desejos.size;
+  const resumo = $('mpDesResumo');
+  if(!totalDes){
+    resumo.classList.add('hidden');
+  } else if(disp > 0){
+    resumo.classList.remove('hidden');
+    resumo.className = 'mp-des-resumo ok';
+    resumo.innerHTML = `<i class="fa-solid fa-bell"></i><span>${disp} ${disp===1?'desejo está disponível':'desejos estão disponíveis'} agora!</span>`;
+  } else {
+    resumo.classList.remove('hidden');
+    resumo.className = 'mp-des-resumo wait';
+    resumo.innerHTML = `<i class="fa-solid fa-clock"></i><span>${totalDes} desejo${totalDes>1?'s':''} aguardando estoque</span>`;
+  }
+
+  // Renderiza lista
+  const lista = $('mpDesLista');
+  if(arr.length === 0){
+    if(!buscaTxt && _mpDesFiltro === 'todos'){
+      lista.innerHTML = `<div class="des-vazio"><i class="fa-solid fa-magnifying-glass"></i><div>Comece pesquisando um produto</div></div>`;
+    } else if(_mpDesFiltro === 'meus' && totalDes === 0){
+      lista.innerHTML = `<div class="des-vazio"><i class="fa-regular fa-heart"></i><div>Você ainda não favoritou nenhum produto.<br>Use a busca acima!</div></div>`;
+    } else {
+      lista.innerHTML = `<div class="des-vazio"><i class="fa-solid fa-search"></i><div>Nenhum produto encontrado</div></div>`;
+    }
+    return;
+  }
+
+  // Limita a 50 cards (performance)
+  const limite = 50;
+  const total = arr.length;
+  arr = arr.slice(0, limite);
+
+  lista.innerHTML = arr.map(g => {
+    // Pega imagem da 1ª cor disponível
+    const primeira = g.cores[0];
+    const corSafe = String(primeira.cor || '').replace(/\//g, '_').toUpperCase();
+    const imgSrc = (primeira.artigo && corSafe) ? `${IMG_BASE}${primeira.artigo}_${corSafe}.jpg` : '';
+    const tipoLabel = g.ehMeta ? '🏭 2S26' : '📦 Estoque';
+    const tipoCls = g.ehMeta ? 'meta' : 'estoque';
+
+    return `<div class="des-card">
+      <div class="des-card-img">
+        ${imgSrc ? `<img src="${safeHtml(imgSrc)}" alt="" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\\'fa-solid fa-shoe-prints\\' style=\\'font-size:22px\\'></i>'">` : '<i class="fa-solid fa-shoe-prints" style="font-size:22px"></i>'}
+      </div>
+      <div class="des-card-info">
+        <div class="des-nome">${safeHtml(g.descricao)}</div>
+        <div class="des-artigo">${safeHtml(g.artigo)}</div>
+        <span class="des-tag-tipo ${tipoCls}">${tipoLabel}</span>
+        <div class="des-cores-lista">
+          ${g.cores.map(c => {
+            const fav = STATE.desejos.has(`${c.artigo}|${c.cor}`);
+            const qtde = g.ehMeta
+              ? Object.values(c.quinzenas||{}).reduce((s,v) => s + (Number(v)||0), 0)
+              : Number(c.totalGeral||0);
+            const semEst = c._semEstoque || qtde === 0;
+            const labelQtde = semEst
+              ? 'Sem estoque'
+              : `${qtde.toLocaleString('pt-BR')} ${g.ehMeta?'pares':'un'}`;
+            return `<div class="des-cor-linha">
+              <div class="des-cor-info">
+                <span class="des-cor-nome">${safeHtml(c.cor)}</span>
+                <span class="des-cor-qtde ${semEst?'zero':''}">${labelQtde}</span>
+              </div>
+              <button class="btn-coracao ${fav?'ativo':''}" onclick="toggleDesejo('${safeHtml(c.artigo)}','${safeHtml(c.cor)}')" title="${fav?'Remover dos desejos':'Adicionar aos desejos'}">
+                <i class="fa-${fav?'solid':'regular'} fa-heart"></i>
+              </button>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>
+    </div>`;
+  }).join('') + (total > limite ? `<div class="des-vazio" style="padding:14px"><i class="fa-solid fa-circle-info"></i>Mostrando primeiros ${limite} de ${total}. Refine a busca pra ver mais.</div>` : '');
+}
+
 function mpMostrarSeletor(){
   $('mpSeletorVendedor').classList.remove('hidden');
   $('mpLista').classList.add('hidden');
   $('mpLoading').classList.add('hidden');
+  $('mpTabs').classList.add('hidden');
+  $('mpDesejos').classList.add('hidden');
   $('mpSubtitulo').textContent = 'Escolha seu nome para começar';
   $('mpVendedorAtual').textContent = '';
   const sel = $('mpVendedorSelect');
@@ -2763,6 +3175,13 @@ function mpConfirmarVendedor(){
   const v = $('mpVendedorSelect').value;
   if(!v){ showToast('Selecione um vendedor', 'info'); return; }
   localStorage.setItem(MP_VEND_LS, v);
+  // Atualiza STATE e carrega desejos
+  const vend = ORDER_COMMISSION_OPTIONS.find(c => c.codigo === v);
+  if(vend){
+    STATE.vendedorCod = vend.codigo;
+    STATE.vendedorNome = vend.nome;
+    carregarDesejos();
+  }
   mpCarregarLista(v);
 }
 
@@ -2779,10 +3198,12 @@ function mpTrocarVendedor(){
 
 async function mpCarregarLista(vendedor){
   $('mpSeletorVendedor').classList.add('hidden');
-  $('mpLista').classList.add('hidden');
+  $('mpTabs').classList.remove('hidden');
   $('mpLoading').classList.remove('hidden');
+  $('mpLista').classList.add('hidden');
+  $('mpDesejos').classList.add('hidden');
   $('mpVendedorAtual').innerHTML = `<b>${safeHtml(_mpVendedorNome(vendedor))}</b> · cód. ${safeHtml(vendedor)}`;
-  $('mpSubtitulo').textContent = 'Links que você compartilhou com clientes';
+  $('mpSubtitulo').textContent = 'Links e desejados';
 
   try{
     const res = await fetch(WORKER_URL, {

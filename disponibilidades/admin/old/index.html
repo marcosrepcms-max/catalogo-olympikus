@@ -240,6 +240,7 @@
     .anl-tab[data-bucket="parcial"].active{  border-bottom-color:#f59e0b; color:#b45309; }
     .anl-tab[data-bucket="critico"].active{  border-bottom-color:#dc2626; color:#991b1b; }
     .anl-tab[data-bucket="sem_preco"].active{ border-bottom-color:#64748b; color:#334155; }
+    .anl-tab[data-bucket="exclusivo"].active{ border-bottom-color:#7c3aed; color:#5b21b6; }
     .anl-cnt{
       background:#e2e8f0; color:#475569;
       font-size:10px; font-weight:800;
@@ -248,6 +249,7 @@
     .anl-tab[data-bucket="completo"] .anl-cnt{ background:#dcfce7; color:#166534; }
     .anl-tab[data-bucket="parcial"] .anl-cnt{ background:#fef3c7; color:#92400e; }
     .anl-tab[data-bucket="critico"] .anl-cnt{ background:#fee2e2; color:#991b1b; }
+    .anl-tab[data-bucket="exclusivo"] .anl-cnt{ background:#ede9fe; color:#5b21b6; }
     /* Grupo de categoria */
     .anl-grupo{ margin-bottom:14px; }
     .anl-grupo-head{
@@ -830,6 +832,9 @@
       </button>
       <button class="anl-tab" data-bucket="sem_preco" onclick="anlSetBucket('sem_preco')">
         <i class="fa-solid fa-tag"></i> Sem preço <span class="anl-cnt" id="anlCntSemPreco">0</span>
+      </button>
+      <button class="anl-tab" data-bucket="exclusivo" onclick="anlSetBucket('exclusivo')">
+        <i class="fa-solid fa-ban"></i> Exclusivos <span class="anl-cnt" id="anlCntExclusivo">0</span>
       </button>
     </div>
     <!-- Barra de ação do bucket -->
@@ -2096,6 +2101,40 @@ function resgatarPdv(item){
   return false;
 }
 
+// ═══════════════════════════════════════════════════════════════════════════
+// EXCLUSIVOS — JSON com produtos que NÃO devem ir pra vitrine
+// (Exclusivos DTC, ML, DTC+ML não vendemos pra clientes normais)
+// ═══════════════════════════════════════════════════════════════════════════
+let _exclusivos = null;  // { "ARTIGO|COR": "DTC" | "ML" | "DTC+ML" }
+
+async function carregarExclusivos(){
+  if(_exclusivos !== null) return _exclusivos;
+  try{
+    const url = `${location.origin}${location.pathname.replace(/disponibilidades\/admin\/?.*$/, '')}data/exclusivos.json?v=${Date.now()}`;
+    const res = await fetch(url, { cache:'no-store' });
+    if(!res.ok) throw new Error('not found');
+    _exclusivos = await res.json();
+    console.log(`[exclusivos] ${Object.keys(_exclusivos).length} produtos exclusivos carregados`);
+  }catch(e){
+    console.warn('[exclusivos] não encontrado:', e.message);
+    _exclusivos = {};
+  }
+  return _exclusivos;
+}
+
+// Marca o item como exclusivo se estiver na lista
+// Retorna true se marcou
+function marcarExclusivo(item){
+  if(!_exclusivos) return false;
+  const k = `${String(item.artigo||'').toUpperCase()}|${String(item.cor||'').toUpperCase()}`;
+  const canal = _exclusivos[k];
+  if(canal){
+    item._exclusivo = canal;  // 'DTC' | 'ML' | 'DTC+ML'
+    return true;
+  }
+  return false;
+}
+
 // Normaliza cor igual ao rowToItem (CH/BLK → CH_BLK)
 function normalizarCor(c){
   return String(c || '')
@@ -2438,6 +2477,12 @@ function abrirAnalise(){
   if(a.pdvsResgatados > 0){
     showToast(`💡 ${a.pdvsResgatados} PDV(s) resgatado(s) do cadastro`, 'info');
   }
+  // Toast informando produtos exclusivos bloqueados
+  if(a.produtosExclusivos > 0){
+    setTimeout(() => {
+      showToast(`🚫 ${a.produtosExclusivos} produto(s) exclusivo(s) — não vão pra vitrine`, 'info');
+    }, 600);
+  }
 
   // Aviso de duplicados
   const dup = _analise.duplicadosXlsx || [];
@@ -2456,9 +2501,10 @@ function abrirAnalise(){
   $('anlCntParcial').textContent  = a.buckets.parcial.length;
   $('anlCntCritico').textContent  = a.buckets.critico.length;
   $('anlCntSemPreco').textContent = a.buckets.sem_preco.length;
+  $('anlCntExclusivo').textContent = (a.buckets.exclusivo || []).length;
 
-  // Bucket inicial = primeiro com itens
-  const ordem = ['completo','parcial','critico','sem_preco'];
+  // Bucket inicial = primeiro com itens (exclusivo NÃO entra como inicial)
+  const ordem = ['completo','parcial','critico','sem_preco','exclusivo'];
   _anlBucketAtivo = ordem.find(b => a.buckets[b].length > 0) || 'completo';
   anlSetBucket(_anlBucketAtivo);
 }
@@ -2503,7 +2549,8 @@ function anlRenderLista(){
       completo:  'Nenhum produto completo ainda.',
       parcial:   'Nenhum produto parcial.',
       critico:   'Nenhum produto crítico.',
-      sem_preco: 'Nenhum produto sem preço — tudo OK!'
+      sem_preco: 'Nenhum produto sem preço — tudo OK!',
+      exclusivo: 'Nenhum produto exclusivo nesta importação.'
     })[_anlBucketAtivo] || 'Vazio.';
     wrap.innerHTML = `<div class="anl-empty"><i class="fa-regular fa-folder-open"></i>${safeHtml(msg)}</div>`;
     return;
@@ -2904,6 +2951,11 @@ function detectarTipoProduto(item){
 // Aplica as regras e classifica
 // Retorna: { bucket, motivo, faixaIdeal, presentes, faltantes }
 function classificarGrade(item){
+  // 0) EXCLUSIVO (DTC, ML, DTC+ML) — bucket próprio, não vai pra vitrine
+  if(item._exclusivo){
+    return { bucket:'exclusivo', motivo:`Canal exclusivo: ${item._exclusivo}`, tipo:'exclusivo', canal: item._exclusivo };
+  }
+
   // 1) PDV zerado vai pro bucket especial (independe do resto)
   if(!Number(item.pdv)){
     return { bucket:'sem_preco', motivo:'PDV não informado' };
@@ -3090,7 +3142,10 @@ async function processarXlsxMulti(fileList){
 
   // Carrega dados_produtos.json (referência de PDV) — 1x
   await carregarDadosProdutos();
+  // Carrega exclusivos.json (produtos que NÃO vão pra vitrine) — 1x
+  await carregarExclusivos();
   let _pdvsResgatados = 0;
+  let _produtosExclusivos = 0;
 
   // Mapa do banco pra detectar conflitos
   const chaveAtual = new Map();
@@ -3123,6 +3178,9 @@ async function processarXlsxMulti(fileList){
 
         // Resgata PDV do dados_produtos.json (especialmente útil pra 2S26 sem preço)
         if(resgatarPdv(item)) _pdvsResgatados++;
+
+        // Marca como exclusivo (DTC, ML, DTC+ML) — esses NÃO vão pra vitrine
+        if(marcarExclusivo(item)) _produtosExclusivos++;
 
         const k = `${item.artigo}|${item.cor}`;
         // Duplicado ENTRE arquivos?
@@ -3199,7 +3257,7 @@ async function processarXlsxMulti(fileList){
   }
 
   // Classifica cada produto
-  const buckets = { completo:[], parcial:[], critico:[], sem_preco:[] };
+  const buckets = { completo:[], parcial:[], critico:[], sem_preco:[], exclusivo:[] };
   const duplicadosBanco = [];
   for(const { item, origem } of todos){
     const k = `${item.artigo}|${item.cor}`;
@@ -3227,7 +3285,8 @@ async function processarXlsxMulti(fileList){
     duplicadosBanco,
     arquivos: arquivosInfo,
     total: todos.length,
-    pdvsResgatados: _pdvsResgatados
+    pdvsResgatados: _pdvsResgatados,
+    produtosExclusivos: _produtosExclusivos
   };
 
   // Abre o modal de análise
