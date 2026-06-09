@@ -1,5 +1,93 @@
 [
   {
+    "id": "1781006949965-kahei0",
+    "createdAt": "2026-06-09T12:09:09.965Z",
+    "comissionista": "114611",
+    "comissionistaNome": "JORGE",
+    "clientCode": "3101334",
+    "payment": "Z35 - 63/91/119 D",
+    "priceTable": "OL026",
+    "campaign": "",
+    "dataDesejada": "",
+    "pedidoCliente": "",
+    "items": [
+      {
+        "codigo": "43441487",
+        "produto": "SWIFT 6",
+        "cor": "PECDUN",
+        "corCodigo": "",
+        "genero": "Feminino",
+        "tam": "34/41",
+        "categoria": "FTW",
+        "grade": {
+          "34": 1,
+          "35": 2,
+          "36": 3,
+          "37": 3,
+          "38": 2,
+          "39": 1
+        },
+        "qty": 12,
+        "totalQty": 12,
+        "preco": 299.99,
+        "colecao": "",
+        "imagem": "",
+        "imgSrc": "./imagens_olympikus/43441487_PECDUN.jpg",
+        "dataDesejada": "2026-10-08"
+      },
+      {
+        "codigo": "43441487",
+        "produto": "SWIFT 6",
+        "cor": "MARORG",
+        "corCodigo": "",
+        "genero": "Feminino",
+        "tam": "34/41",
+        "categoria": "FTW",
+        "grade": {
+          "34": 1,
+          "35": 2,
+          "36": 3,
+          "37": 3,
+          "38": 2,
+          "39": 1
+        },
+        "qty": 12,
+        "totalQty": 12,
+        "preco": 299.99,
+        "colecao": "",
+        "imagem": "",
+        "imgSrc": "./imagens_olympikus/43441487_MARORG.jpg",
+        "dataDesejada": "2026-10-08"
+      },
+      {
+        "codigo": "43441487",
+        "produto": "SWIFT 6",
+        "cor": "PTODST",
+        "corCodigo": "",
+        "genero": "Feminino",
+        "tam": "34/41",
+        "categoria": "FTW",
+        "grade": {
+          "34": 1,
+          "35": 2,
+          "36": 3,
+          "37": 3,
+          "38": 2,
+          "39": 1
+        },
+        "qty": 12,
+        "totalQty": 12,
+        "preco": 299.99,
+        "colecao": "",
+        "imagem": "",
+        "imgSrc": "./imagens_olympikus/43441487_PTODST.jpg",
+        "dataDesejada": "2026-10-08"
+      }
+    ],
+    "totalItens": 36,
+    "valorTotal": 10799.64
+  },
+  {
     "id": "1780664543233-14jbcc",
     "createdAt": "2026-06-05T13:02:23.233Z",
     "comissionista": "114611",
