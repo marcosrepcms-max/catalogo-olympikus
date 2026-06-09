@@ -2845,22 +2845,30 @@ async function anlExecutarSalvar(itens){
   btn.disabled = true;
   btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Salvando...';
   try{
+    // Helper: chave que diferencia ESTOQUE (E) de COLEÇÃO META 2S26 (M).
+    // Antes era apenas "ARTIGO|COR", o que fazia produtos do mesmo
+    // ARTIGO|COR em estoque e em 2S26 SE SOBRESCREVEREM. Agora convivem.
+    const chaveTipo = (it) => `${String(it.artigo||'').toUpperCase()}|${String(it.cor||'').toUpperCase()}|${it._meta ? 'M' : 'E'}`;
+
     // Reconstrói lista final: JSON atual SUBSTITUI itens com mesma chave + adiciona novos
     const novosMap = new Map();
     let aguardando = 0, prontos = 0;
     for(const r of itens){
       const it = r.item;
-      const k = `${it.artigo}|${it.cor}`;
+      const k = chaveTipo(it);
+      // Chave SEM tipo, pra buscar imagem (a imagem é a mesma p/ estoque e 2S26 do mesmo produto)
+      const kImg = `${it.artigo}|${it.cor}`;
       // Preserva imagem do banco/histórico/cache de verificação
       let imagem = it.imagem || '';
       if(!imagem){
         const noBanco = (_jsonAtual||[]).find(x =>
           String(x.artigo||'').toUpperCase() === it.artigo &&
-          String(x.cor||'').toUpperCase() === it.cor
+          String(x.cor||'').toUpperCase() === it.cor &&
+          (x.imagem || '')
         );
         if(noBanco && noBanco.imagem) imagem = noBanco.imagem;
-        else if(STATE.imgHist && STATE.imgHist[k]) imagem = STATE.imgHist[k];
-        else if(STATE.imgChecks?.get(k) === 'has'){
+        else if(STATE.imgHist && STATE.imgHist[kImg]) imagem = STATE.imgHist[kImg];
+        else if(STATE.imgChecks?.get(kImg) === 'has'){
           imagem = getProductImageName(it);
         }
       }
@@ -2891,11 +2899,9 @@ async function anlExecutarSalvar(itens){
     }
 
     // Lista final — ATUALIZA produtos reimportados, MANTÉM o resto intacto
-    // (Importante: não devemos zerar produtos que não foram reimportados, pois
-    // a importação pode ser de um XLSX específico que cobre só parte do estoque.
-    // Quem decide remover um produto do banco é o admin via ação manual.)
+    // Usa chave COM tipo: estoque e 2S26 do mesmo ARTIGO|COR CONVIVEM
     const filtrado = (_jsonAtual||[]).filter(r => {
-      const k = `${String(r.artigo||'').toUpperCase()}|${String(r.cor||'').toUpperCase()}`;
+      const k = chaveTipo(r);
       return !novosMap.has(k);
     });
     const listaFinal = [...filtrado, ...novosMap.values()];
@@ -3184,10 +3190,12 @@ async function processarXlsxMulti(fileList){
   let _pdvsResgatados = 0;
   let _produtosExclusivos = 0;
 
-  // Mapa do banco pra detectar conflitos
+  // Mapa do banco pra detectar conflitos — usa chave COM TIPO (E vs M)
+  // pra estoque e 2S26 do mesmo ARTIGO|COR não serem considerados conflitantes
   const chaveAtual = new Map();
   for(const r of _jsonAtual){
-    const k = `${String(r.artigo||'').toUpperCase()}|${String(r.cor||'').toUpperCase()}`;
+    const tipo = r._meta ? 'M' : 'E';
+    const k = `${String(r.artigo||'').toUpperCase()}|${String(r.cor||'').toUpperCase()}|${tipo}`;
     chaveAtual.set(k, r);
   }
 
@@ -3219,12 +3227,17 @@ async function processarXlsxMulti(fileList){
         // Marca como exclusivo (DTC, ML, DTC+ML) — esses NÃO vão pra vitrine
         if(marcarExclusivo(item)) _produtosExclusivos++;
 
-        const k = `${item.artigo}|${item.cor}`;
+        // Chave COM TIPO: estoque vs 2S26 do mesmo ARTIGO|COR são entidades distintas
+        const tipoItem = item._meta ? 'M' : 'E';
+        const k = `${item.artigo}|${item.cor}|${tipoItem}`;
         // Duplicado ENTRE arquivos?
         if(mapaXlsx.has(k)){
           // META PRODUTIVA: duplicado é NORMAL (mesma referência, quinzena diferente)
           // → MESCLA quinzenas em vez de avisar
-          const idx = todos.findIndex(x => `${x.item.artigo}|${x.item.cor}` === k);
+          const idx = todos.findIndex(x => {
+            const t = x.item._meta ? 'M' : 'E';
+            return `${x.item.artigo}|${x.item.cor}|${t}` === k;
+          });
           const ant = idx >= 0 ? todos[idx].item : null;
           if(item._meta && ant && ant._meta){
             // Acumula quinzenas no anterior
@@ -3297,7 +3310,9 @@ async function processarXlsxMulti(fileList){
   const buckets = { completo:[], parcial:[], critico:[], sem_preco:[], exclusivo:[] };
   const duplicadosBanco = [];
   for(const { item, origem } of todos){
-    const k = `${item.artigo}|${item.cor}`;
+    // Chave COM TIPO: estoque e 2S26 do mesmo ARTIGO|COR convivem
+    const tipo = item._meta ? 'M' : 'E';
+    const k = `${item.artigo}|${item.cor}|${tipo}`;
     const classif = classificarGrade(item);
     const temImg  = temImagemAtual(item);
     const noBanco = chaveAtual.has(k);

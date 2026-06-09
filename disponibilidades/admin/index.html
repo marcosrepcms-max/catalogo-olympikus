@@ -3167,9 +3167,224 @@ function iconeTipo(tipo){
 // }
 let _analise = null;
 
+// ═══════════════════════════════════════════════════════════════════════════
+// AUTO-DETECÇÃO de MARCA / CATEGORIA / TIPO pelo nome do arquivo
+// Aplicado ANTES do XLSX ser processado — vc importa "DISPO_TENIS.xls"
+// e o admin já sabe que é OLY + TENIS, sem você precisar editar a planilha.
+// ═══════════════════════════════════════════════════════════════════════════
+function detectarDoNome(fileName){
+  // Normaliza: remove acentos, deixa maiúsculo, troca _-/ por espaço
+  const nome = String(fileName||'')
+    .replace(/\.[^.]+$/, '')           // remove extensão
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .toUpperCase()
+    .replace(/[_\-/\\]+/g, ' ')
+    .replace(/\s+/g, ' ').trim();
+
+  // Detecta MARCA: começa com "UA" (Under Armour), senão é OLY
+  const marca = /^UA\b|\bUA\b/.test(nome) ? 'UA' : 'OLY';
+
+  // Detecta TIPO 2S26 (coleção meta produtiva)
+  // Padrões: "2 QUINZ AGOSTO", "2QUINZ", "QUINZ", "2S26"
+  const ehMeta = /\b(QUINZ|2S\d+|\d+S\d+)\b/.test(nome);
+
+  // Detecta CATEGORIA: a ordem importa (verifica do mais específico ao genérico)
+  let categoria = '';
+  if(ehMeta){
+    categoria = '2S26';  // categoria padrão pra coleção meta
+  } else if(/\b(TENIS|TÊNIS|CALCAD|SHOES)\b/.test(nome)){
+    categoria = 'TENIS';
+  } else if(/\b(CHINEL|SAND)\b/.test(nome)){
+    categoria = 'CHINELO';
+  } else if(/\bMEIA(S)?\b/.test(nome)){
+    categoria = 'MEIA';
+  } else if(/\b(ACC|ACESSORI|MOCHIL|BOLSA|BONE)\b/.test(nome)){
+    categoria = 'ACESSORIO';
+  } else if(/\b(VEST|CAMIS|ROUPA|MOLET|REGAT|BERMUD|SHORT|CALCA|JAQUET|AGASAL)\b/.test(nome)){
+    categoria = 'VESTUARIO';
+  }
+
+  return { marca, categoria, ehMeta };
+}
+
+// Detecta se a primeira linha do XLSX é título mesclado e pula
+// Retorna as linhas SEM o título mesclado (pronto pra processar)
+function lerLinhasXlsx(ws){
+  // Lê como matriz pra inspecionar a 1ª linha
+  const matriz = XLSX.utils.sheet_to_json(ws, { header:1, defval:null });
+  if(!matriz.length) return [];
+
+  // Primeira linha: conta quantas células têm conteúdo
+  const primeira = matriz[0] || [];
+  const celulasPreenchidas = primeira.filter(v => v != null && String(v).trim() !== '').length;
+
+  let inicio = 0;
+  // Se 1ª linha tem só 1 célula com conteúdo, é título mesclado → pula
+  if(celulasPreenchidas <= 1 && matriz.length > 1) inicio = 1;
+
+  // Pega cabeçalhos
+  const headers = (matriz[inicio] || []).map(h => h == null ? '' : String(h).trim());
+  const dataRows = matriz.slice(inicio + 1);
+
+  // Converte cada linha em objeto { col: valor }
+  return dataRows.map(row => {
+    const obj = {};
+    headers.forEach((h, i) => {
+      if(h) obj[h] = row[i];
+    });
+    return obj;
+  });
+}
+
+// Modal de configuração da importação (aparece 1x antes de processar)
+// Retorna { prevFat, configsPorArquivo } ou null se cancelado
+function pedirConfigImportacao(arquivos){
+  return new Promise(resolve => {
+    // Analisa todos os arquivos primeiro
+    const analises = arquivos.map(f => ({
+      nome: f.name,
+      detec: detectarDoNome(f.name)
+    }));
+
+    // Detecta se TUDO foi reconhecido
+    const algumNaoDetectado = analises.some(a => !a.detec.categoria);
+
+    // Sugestão de mês — mês atual em PT-BR
+    const meses = ['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'];
+    const mesesLongos = ['JANEIRO','FEVEREIRO','MARÇO','ABRIL','MAIO','JUNHO','JULHO','AGOSTO','SETEMBRO','OUTUBRO','NOVEMBRO','DEZEMBRO'];
+    const hoje = new Date();
+    const mesAtual = mesesLongos[hoje.getMonth()];
+    const anoAtual = hoje.getFullYear();
+    // Salvo da última vez
+    const ultimoPrevFat = localStorage.getItem('admin_ult_prev_fat') || `${mesAtual} ${anoAtual}`;
+
+    const linhasTabela = analises.map((a, i) => {
+      const ok = !!a.detec.categoria;
+      const corLinha = ok ? '#dcfce7' : '#fef3c7';
+      const corTexto = ok ? '#15803d' : '#92400e';
+      const iconeCheck = ok ? '✓' : '⚠️';
+      // Para arquivos não detectados, oferece um select de categoria
+      const selCat = ok ? '' : `
+        <select id="catSel_${i}" style="padding:4px 8px; border:1px solid #ccc; border-radius:4px; font-size:11px;">
+          <option value="">Selecione...</option>
+          <option value="TENIS">TENIS</option>
+          <option value="CHINELO">CHINELO</option>
+          <option value="MEIA">MEIA</option>
+          <option value="ACESSORIO">ACESSORIO</option>
+          <option value="VESTUARIO">VESTUARIO</option>
+          <option value="2S26">2S26 (meta produtiva)</option>
+        </select>`;
+      return `
+        <tr style="background:${corLinha}">
+          <td style="padding:6px 8px; font-size:11px; color:${corTexto}">${iconeCheck}</td>
+          <td style="padding:6px 8px; font-size:11px;">${safeHtml(a.nome)}</td>
+          <td style="padding:6px 8px; font-size:11px; font-weight:700">${safeHtml(a.detec.marca)}</td>
+          <td style="padding:6px 8px; font-size:11px; font-weight:700">${ok ? safeHtml(a.detec.categoria) : selCat}</td>
+        </tr>`;
+    }).join('');
+
+    const html = `
+      <div id="modalImpCfg" style="position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:9999; display:flex; align-items:center; justify-content:center; padding:16px;">
+        <div style="background:#fff; border-radius:12px; max-width:640px; width:100%; max-height:92vh; display:flex; flex-direction:column; overflow:hidden;">
+          <div style="padding:16px 20px; border-bottom:1px solid #e5e7eb;">
+            <h2 style="margin:0; font-size:18px; font-weight:800; color:#0f172a">
+              ✨ Configurar importação
+            </h2>
+            <p style="margin:4px 0 0; font-size:12px; color:#64748b">
+              ${arquivos.length} arquivo(s) selecionado(s) · Detecção automática pelo nome
+            </p>
+          </div>
+          <div style="padding:16px 20px; overflow-y:auto; flex:1;">
+            <table style="width:100%; border-collapse:collapse; margin-bottom:16px;">
+              <thead>
+                <tr style="background:#f1f5f9;">
+                  <th style="padding:8px; text-align:left; font-size:10px; color:#475569; text-transform:uppercase;"></th>
+                  <th style="padding:8px; text-align:left; font-size:10px; color:#475569; text-transform:uppercase;">Arquivo</th>
+                  <th style="padding:8px; text-align:left; font-size:10px; color:#475569; text-transform:uppercase;">Marca</th>
+                  <th style="padding:8px; text-align:left; font-size:10px; color:#475569; text-transform:uppercase;">Categoria</th>
+                </tr>
+              </thead>
+              <tbody>${linhasTabela}</tbody>
+            </table>
+            ${algumNaoDetectado ? `
+              <div style="background:#fef3c7; padding:10px 14px; border-radius:8px; font-size:11px; color:#92400e; margin-bottom:16px;">
+                ⚠️ Alguns arquivos não tiveram categoria detectada pelo nome. Selecione manualmente.
+              </div>` : ''}
+            <div style="display:flex; flex-direction:column; gap:6px;">
+              <label style="font-size:12px; font-weight:700; color:#0f172a">
+                📅 PREV. FAT (mês de faturamento)
+              </label>
+              <input type="text" id="impPrevFat" value="${safeHtml(ultimoPrevFat)}"
+                     style="padding:10px 12px; border:1.5px solid #cbd5e1; border-radius:6px; font-size:13px; font-family:inherit;"
+                     placeholder="Ex: JUNHO 2026">
+              <span style="font-size:10px; color:#64748b">
+                Será aplicado em todos os arquivos. Para 2S26, este valor é ignorado (cada quinzena tem o seu).
+              </span>
+            </div>
+          </div>
+          <div style="padding:14px 20px; border-top:1px solid #e5e7eb; display:flex; gap:8px; justify-content:flex-end;">
+            <button id="impCancelar" style="padding:8px 16px; border:1px solid #cbd5e1; background:#fff; border-radius:6px; cursor:pointer; font-size:13px; font-weight:700; color:#475569; font-family:inherit;">
+              Cancelar
+            </button>
+            <button id="impConfirmar" style="padding:8px 16px; border:none; background:#0034d8; color:#fff; border-radius:6px; cursor:pointer; font-size:13px; font-weight:700; font-family:inherit;">
+              Importar →
+            </button>
+          </div>
+        </div>
+      </div>`;
+
+    const wrap = document.createElement('div');
+    wrap.innerHTML = html;
+    document.body.appendChild(wrap);
+
+    const cleanup = () => wrap.remove();
+
+    wrap.querySelector('#impCancelar').onclick = () => { cleanup(); resolve(null); };
+    wrap.querySelector('#impConfirmar').onclick = () => {
+      const prevFat = wrap.querySelector('#impPrevFat').value.trim().toUpperCase();
+      // Captura categorias dos selects (para arquivos não detectados)
+      const configsPorArquivo = analises.map((a, i) => {
+        let categoria = a.detec.categoria;
+        let ehMeta = a.detec.ehMeta;
+        if(!categoria){
+          const sel = wrap.querySelector(`#catSel_${i}`);
+          if(sel) categoria = sel.value.trim().toUpperCase();
+          if(categoria === '2S26') ehMeta = true;
+        }
+        return {
+          arquivo: a.nome,
+          marca:   a.detec.marca,
+          categoria,
+          ehMeta
+        };
+      });
+
+      // Valida: todos os arquivos têm categoria?
+      const semCat = configsPorArquivo.filter(c => !c.categoria);
+      if(semCat.length){
+        alert(`Selecione a categoria para: ${semCat.map(c => c.arquivo).join(', ')}`);
+        return;
+      }
+
+      // Salva o prevFat pra próxima vez
+      localStorage.setItem('admin_ult_prev_fat', prevFat);
+
+      cleanup();
+      resolve({ prevFat, configsPorArquivo });
+    };
+  });
+}
+
 async function processarXlsxMulti(fileList){
   if(!fileList || !fileList.length) return;
   const arquivos = Array.from(fileList);
+
+  // ── NOVO: pede config (marca + categoria + prev.fat) UMA VEZ ─────────────
+  const cfg = await pedirConfigImportacao(arquivos);
+  if(!cfg) return;  // usuário cancelou
+  const { prevFat, configsPorArquivo } = cfg;
+  // Indexa por nome de arquivo pra lookup rápido durante o processamento
+  const cfgPorNome = new Map(configsPorArquivo.map(c => [c.arquivo, c]));
 
   // Carrega JSON atual (1x)
   try{
@@ -3208,12 +3423,26 @@ async function processarXlsxMulti(fileList){
 
   for(const file of arquivos){
     let qtdArquivo = 0;
+    // Pega a config detectada deste arquivo
+    const cfgArq = cfgPorNome.get(file.name) || { marca:'OLY', categoria:'', ehMeta:false };
     try{
       const buf = await file.arrayBuffer();
       const wb  = XLSX.read(buf, { type:'array' });
       const ws  = wb.Sheets[wb.SheetNames[0]];
-      const rows = XLSX.utils.sheet_to_json(ws, { defval:null });
+      // NOVO: usa o parser que pula linha mesclada automaticamente
+      const rows = lerLinhasXlsx(ws);
       for(const row of rows){
+        // SOBREESCREVE colunas faltantes/erradas com valores da config
+        if(cfgArq.marca && !String(row['MARCA']||'').trim()){
+          row['MARCA'] = cfgArq.marca;
+        }
+        if(cfgArq.categoria){
+          // SEMPRE sobrescreve categoria (o XLSX bruto vem com sub-categoria errada)
+          row['CATEGORIA'] = cfgArq.categoria;
+        }
+        if(prevFat && !String(row['PREV. FAT']||'').trim()){
+          row['PREV. FAT'] = prevFat;
+        }
         const item = rowToItem(row);
         if(!item.artigo) continue;
         // Cruzamento automático com a tabela especial
