@@ -175,9 +175,10 @@
       padding:10px 16px;
     }
     @media(min-width:640px){ .filters-bar{ top:72px; margin:0 -24px; padding:10px 24px; } }
-    /* Desktop (≥1024px): visão + campanhas na MESMA linha. Mobile fica empilhado. */
+    /* Desktop (≥1024px): visão + campanhas na MESMA linha. Mobile fica empilhado.
+       Seletor mais específico (.filters-bar .controles-secundarios) pra vencer o flex-col do Tailwind. */
     @media(min-width:1024px){
-      .controles-secundarios{ flex-direction:row; align-items:flex-start; gap:20px; flex-wrap:wrap; }
+      .filters-bar .controles-secundarios{ flex-direction:row; align-items:flex-start; gap:20px; flex-wrap:wrap; }
     }
 
     /* Modal zoom */
