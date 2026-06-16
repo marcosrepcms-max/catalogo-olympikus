@@ -11260,37 +11260,6 @@
     "_pdvResgatado": true
   },
   {
-    "marca": "OLY",
-    "prevFat": "JUNHO 2026",
-    "empresa": "VULTS",
-    "artigo": "43790399",
-    "descricao": "CORRE TURBO",
-    "cor": "LNRMLT",
-    "linha": "PERFORMANCE",
-    "genero": "UNISSEX",
-    "categoria": "TENIS",
-    "pdv": 699.99,
-    "totalGeral": 11162,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43790399_LNRMLT",
-    "grade": {
-      "34": 87,
-      "35": 597,
-      "36": 983,
-      "37": 1083,
-      "38": 1360,
-      "39": 1703,
-      "40": 1623,
-      "41": 1722,
-      "42": 1046,
-      "43": 611,
-      "44": 194,
-      "45": 153
-    }
-  },
-  {
     "marca": "UA",
     "prevFat": "JUNHO 2026",
     "empresa": "VDIST",
