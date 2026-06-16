@@ -1302,5 +1302,67 @@
         "prevFaturamento": "20/09/2026"
       }
     ]
+  },
+  {
+    "id": "PED-20260616095039-658",
+    "createdAt": "2026-06-16T12:50:39.202Z",
+    "updatedAt": "2026-06-16T12:50:39.686Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "114611",
+      "nome": "JORGE"
+    },
+    "clienteCodigo": "1692135",
+    "clienteNome": "RG CALCADOS LTDA",
+    "prazo": "Z31 - 35/63/91 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 1,
+      "units": 12
+    },
+    "items": [
+      {
+        "codigo": "43409454",
+        "produto": "EROS 2",
+        "cor": "BRANCO",
+        "num": "39",
+        "gci": "5321398",
+        "ebm": "13429330",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 3
+          },
+          {
+            "size": "41",
+            "qty": 3
+          },
+          {
+            "size": "42",
+            "qty": 2
+          },
+          {
+            "size": "43",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "20/09/2026"
+      }
+    ]
   }
 ]
