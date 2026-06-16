@@ -1,1 +1,73 @@
-[]
+[
+  {
+    "id": "rasc-1781606671355-mot16c",
+    "tipo": "rascunho",
+    "createdAt": "2026-06-16T10:44:31.353Z",
+    "updatedAt": "2026-06-16T10:44:31.353Z",
+    "comissionista": "114611",
+    "comissionistaNome": "JORGE",
+    "clientCode": "1692135",
+    "payment": "Z31 - 35/63/91 D",
+    "priceTable": "OL026",
+    "campaign": "",
+    "pedidoCliente": "",
+    "items": [
+      {
+        "codigo": "43409454",
+        "produto": "EROS 2",
+        "cor": "PRETO",
+        "corCodigo": "",
+        "genero": "Masculino",
+        "tam": "34/44",
+        "categoria": "FTW",
+        "grade": {
+          "37": 1,
+          "38": 2,
+          "39": 3,
+          "40": 3,
+          "41": 2,
+          "42": 1
+        },
+        "gradeBase": {
+          "37": 1,
+          "38": 2,
+          "39": 3,
+          "40": 3,
+          "41": 2,
+          "42": 1
+        },
+        "boxes": 1,
+        "qty": 12,
+        "totalQty": 12,
+        "precoNum": 249.99,
+        "precoFmt": "R$ 249,99",
+        "precosPrazo": {
+          "AV": 120.98,
+          "14D": 121.88,
+          "21D": 122.33,
+          "28D": 122.76,
+          "35D": 123.21,
+          "42D": 123.66,
+          "49D": 124.11,
+          "56D": 124.55,
+          "63D": 125,
+          "70D": 125.78,
+          "77D": 126.56,
+          "84D": 127.35,
+          "91D": 128.41,
+          "98D": 129.48,
+          "105D": 130.55,
+          "112D": 131.63,
+          "119D": 132.71
+        },
+        "colecao": "",
+        "imagem": "",
+        "imgSrc": "./imagens_olympikus/43409454_PRETO.jpg",
+        "dataDesejada": "2026-09-20",
+        "pedidoCliente": ""
+      }
+    ],
+    "totalItens": 1,
+    "semGrade": 0
+  }
+]
