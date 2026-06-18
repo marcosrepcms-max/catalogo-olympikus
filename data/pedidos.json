@@ -2031,5 +2031,98 @@
         "prevFaturamento": "20/08/2026"
       }
     ]
+  },
+  {
+    "id": "PED-20260618180941-961",
+    "createdAt": "2026-06-18T21:09:41.665Z",
+    "updatedAt": "2026-06-18T21:09:39.759Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "114611",
+      "nome": "JORGE"
+    },
+    "clienteCodigo": "957141",
+    "clienteNome": "",
+    "prazo": "Z35 - 63/91/119 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 2,
+      "units": 12
+    },
+    "items": [
+      {
+        "codigo": "43758365",
+        "produto": "CORRE MAX",
+        "cor": "CRSTAL",
+        "num": "16",
+        "gci": "7442541",
+        "ebm": "13279939",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 6,
+        "totalUnits": 6,
+        "grade": [
+          {
+            "size": "35",
+            "qty": 1
+          },
+          {
+            "size": "36",
+            "qty": 1
+          },
+          {
+            "size": "37",
+            "qty": 2
+          },
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "24/06/2026"
+      },
+      {
+        "codigo": "43758365",
+        "produto": "CORRE MAX",
+        "cor": "PSGCLR",
+        "num": "17",
+        "gci": "7492161",
+        "ebm": "13317184",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 6,
+        "totalUnits": 6,
+        "grade": [
+          {
+            "size": "35",
+            "qty": 1
+          },
+          {
+            "size": "36",
+            "qty": 1
+          },
+          {
+            "size": "37",
+            "qty": 2
+          },
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "30/06/2026"
+      }
+    ]
   }
 ]
