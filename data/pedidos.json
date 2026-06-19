@@ -1430,8 +1430,8 @@
   {
     "id": "PED-20260616100343-832",
     "createdAt": "2026-06-16T13:03:43.730Z",
-    "updatedAt": "2026-06-16T13:03:44.193Z",
-    "status": "Pendente",
+    "updatedAt": "2026-06-19T18:48:10.171Z",
+    "status": "Aprovado",
     "archived": false,
     "isDuplicate": false,
     "preposto": {
@@ -1487,7 +1487,35 @@
         ],
         "prevFaturamento": "23/07/2026"
       }
-    ]
+    ],
+    "history": [
+      {
+        "eventId": "evt_1781878613999_bee4go",
+        "at": "2026-06-19T14:16:53.999Z",
+        "action": "created",
+        "label": "Pedido criado",
+        "statusFrom": null,
+        "statusTo": "Pendente",
+        "archivedFrom": null,
+        "archivedTo": false,
+        "clientCode": "122656",
+        "prepostoCodigo": "114611",
+        "prepostoNome": "JORGE",
+        "notes": "",
+        "meta": {
+          "itemsCount": 1,
+          "units": 12
+        }
+      },
+      {
+        "action": "Aprovado e exportado em lote",
+        "at": "2026-06-19T18:47:49.841Z"
+      }
+    ],
+    "lastAction": "created",
+    "lastActionLabel": "Pedido criado",
+    "lastActionAt": "2026-06-19T14:16:53.999Z",
+    "exportedAt": "2026-06-19T18:47:49.841Z"
   },
   {
     "id": "PED-20260617105135-675",
