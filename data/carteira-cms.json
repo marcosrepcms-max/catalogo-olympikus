@@ -83074,16 +83074,10 @@
       "preco_unit": 227.27,
       "total_preco": 2727.24,
       "prev_fat": "46204",
-      "acao": "MANTER",
+      "acao": "REPASSAR",
       "repasse": {
-        "pendente": false,
-        "destinos": [
-          {
-            "codigo": "7949",
-            "nome": "SOUSA E CUNHA LTDA",
-            "porta": ""
-          }
-        ]
+        "pendente": true,
+        "destinos": []
       }
     },
     {
@@ -122032,6 +122026,6 @@
       "acao": "MANTER"
     }
   ],
-  "atualizadoEm": "2026-06-19T20:14:54.189Z",
+  "atualizadoEm": "2026-06-19T20:51:27.989Z",
   "importadoPor": "JORGE"
 }
