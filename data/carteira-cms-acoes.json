@@ -106,11 +106,17 @@
     "105709|7498460|43447473|LUNMHO|1221|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "137388",
+            "nome": "LAGO DA PEDRA MAGAZINE",
+            "porta": "LAGO DA PED"
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-21T23:51:13.449Z",
+  "atualizadoEm": "2026-06-21T23:52:05.114Z",
   "por": "JORGE"
 }
