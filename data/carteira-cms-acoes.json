@@ -54,8 +54,15 @@
         "pendente": true,
         "destinos": []
       }
+    },
+    "21511|7534854|43447473|CH/VMH|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": true,
+        "destinos": []
+      }
     }
   },
-  "atualizadoEm": "2026-06-21T23:40:23.077Z",
+  "atualizadoEm": "2026-06-21T23:43:03.660Z",
   "por": "JORGE"
 }
