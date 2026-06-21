@@ -89,15 +89,8 @@
         "pendente": true,
         "destinos": []
       }
-    },
-    "21511|7534857|43447473|LUNMHO|123321|12": {
-      "acao": "REPASSAR",
-      "repasse": {
-        "pendente": true,
-        "destinos": []
-      }
     }
   },
-  "atualizadoEm": "2026-06-21T23:44:45.830Z",
+  "atualizadoEm": "2026-06-21T23:45:06.398Z",
   "por": "JORGE"
 }
