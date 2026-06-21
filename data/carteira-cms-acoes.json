@@ -12,8 +12,15 @@
           }
         ]
       }
+    },
+    "21511|7498787|43304478|PRETO|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": true,
+        "destinos": []
+      }
     }
   },
-  "atualizadoEm": "2026-06-21T23:37:28.865Z",
+  "atualizadoEm": "2026-06-21T23:38:23.067Z",
   "por": "JORGE"
 }
