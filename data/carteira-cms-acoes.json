@@ -99,8 +99,14 @@
     "105709|7534823|43447473|LUNMHO|1221|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "3132954",
+            "nome": "C S COSTA MODAS",
+            "porta": "MARUZI GRAJAU"
+          }
+        ]
       }
     },
     "105709|7498460|43447473|LUNMHO|1221|6": {
@@ -117,6 +123,6 @@
       }
     }
   },
-  "atualizadoEm": "2026-06-21T23:52:05.114Z",
+  "atualizadoEm": "2026-06-21T23:52:18.927Z",
   "por": "JORGE"
 }
