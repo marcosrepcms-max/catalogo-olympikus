@@ -24,11 +24,8 @@
       "repasse": null
     },
     "105709|7534822|43304478|PRETO|1221|6": {
-      "acao": "REPASSAR",
-      "repasse": {
-        "pendente": true,
-        "destinos": []
-      }
+      "acao": "MANTER",
+      "repasse": null
     },
     "105709|7551102|43304478|PRETO|11211|6": {
       "acao": "CANCELAR",
@@ -81,6 +78,6 @@
       "repasse": null
     }
   },
-  "atualizadoEm": "2026-06-22T17:15:30.232Z",
+  "atualizadoEm": "2026-06-22T17:15:32.304Z",
   "por": "JORGE"
 }
