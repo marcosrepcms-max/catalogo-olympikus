@@ -215,11 +215,17 @@
     "21511|7551971|43304478|CINZA|11211|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "25931",
+            "nome": "PEDREIRA MAGAZINE LTDA",
+            "porta": "PADREIRAS"
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-22T17:43:25.857Z",
+  "atualizadoEm": "2026-06-22T17:43:30.151Z",
   "por": "JORGE"
 }
