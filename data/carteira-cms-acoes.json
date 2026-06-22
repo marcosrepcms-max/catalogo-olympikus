@@ -254,11 +254,17 @@
     "105709|7561099|43304478|MUSGO|123321|12": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "2373565",
+            "nome": "M C DE SOUSA SILVA",
+            "porta": "DUTRA MARUZI"
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-22T17:45:07.592Z",
+  "atualizadoEm": "2026-06-22T17:45:33.293Z",
   "por": "JORGE"
 }
