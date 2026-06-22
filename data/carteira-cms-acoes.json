@@ -482,8 +482,14 @@
     "18529|7646328|43546486|LILAS|123321|12": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "58568",
+            "nome": "M SANTOS GUERRA ME",
+            "porta": ""
+          }
+        ]
       }
     },
     "18529|5337716|43389459|PTO/PT|123321|72": {
@@ -494,6 +500,6 @@
       }
     }
   },
-  "atualizadoEm": "2026-06-22T18:28:12.372Z",
+  "atualizadoEm": "2026-06-22T18:28:25.792Z",
   "por": "JORGE"
 }
