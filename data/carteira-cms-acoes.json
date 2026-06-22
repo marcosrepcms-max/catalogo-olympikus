@@ -124,8 +124,15 @@
           }
         ]
       }
+    },
+    "21511|7526246|43447473|ATLVRD|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": true,
+        "destinos": []
+      }
     }
   },
-  "atualizadoEm": "2026-06-22T17:34:15.700Z",
+  "atualizadoEm": "2026-06-22T17:35:13.828Z",
   "por": "JORGE"
 }
