@@ -436,11 +436,17 @@
     "105709|7508409|43304478|ARENIT|1221|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "121069",
+            "nome": "CODO MAGAZINE MODAS LTDA",
+            "porta": "CODO"
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-22T17:52:20.617Z",
+  "atualizadoEm": "2026-06-22T17:52:31.426Z",
   "por": "JORGE"
 }
