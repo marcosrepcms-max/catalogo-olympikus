@@ -37,11 +37,8 @@
       }
     },
     "105709|7551102|43304478|PRETO|11211|6": {
-      "acao": "REPASSAR",
-      "repasse": {
-        "pendente": true,
-        "destinos": []
-      }
+      "acao": "CANCELAR",
+      "repasse": null
     },
     "21511|7534854|43447473|CH/VMH|1221|6": {
       "acao": "REPASSAR",
@@ -128,6 +125,6 @@
       "repasse": null
     }
   },
-  "atualizadoEm": "2026-06-22T17:15:04.814Z",
+  "atualizadoEm": "2026-06-22T17:15:07.043Z",
   "por": "JORGE"
 }
