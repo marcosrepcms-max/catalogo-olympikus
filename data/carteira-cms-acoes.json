@@ -189,11 +189,17 @@
     "21511|7508751|43304478|PRETO|1232211|12": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "17421",
+            "nome": "CODO CALCADOS LTDA ME",
+            "porta": ""
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-22T17:39:19.582Z",
+  "atualizadoEm": "2026-06-22T17:42:21.795Z",
   "por": "JORGE"
 }
