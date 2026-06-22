@@ -20,11 +20,8 @@
       "repasse": null
     },
     "105709|7508411|43304478|PRETO|1221|6": {
-      "acao": "REPASSAR",
-      "repasse": {
-        "pendente": true,
-        "destinos": []
-      }
+      "acao": "MANTER",
+      "repasse": null
     },
     "105709|7534822|43304478|PRETO|1221|6": {
       "acao": "REPASSAR",
@@ -99,23 +96,14 @@
       }
     },
     "21511|7520937|43447473|LUNMHO||12": {
-      "acao": "REPASSAR",
-      "repasse": {
-        "pendente": false,
-        "destinos": [
-          {
-            "codigo": "63095",
-            "nome": "DUTRA MAGAZINE LTDA",
-            "porta": "PRES DUTRA"
-          }
-        ]
-      }
+      "acao": "MANTER",
+      "repasse": null
     },
     "2245855|7543842|43340469|MLTLAR|111111|6": {
       "acao": "MANTER",
       "repasse": null
     }
   },
-  "atualizadoEm": "2026-06-22T17:15:14.965Z",
+  "atualizadoEm": "2026-06-22T17:15:18.844Z",
   "por": "JORGE"
 }
