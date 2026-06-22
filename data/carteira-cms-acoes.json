@@ -131,8 +131,12 @@
           }
         ]
       }
+    },
+    "2245855|7543842|43340469|MLTLAR|111111|6": {
+      "acao": "MANTER",
+      "repasse": null
     }
   },
-  "atualizadoEm": "2026-06-22T13:40:18.046Z",
+  "atualizadoEm": "2026-06-22T15:03:20.556Z",
   "por": "JORGE"
 }
