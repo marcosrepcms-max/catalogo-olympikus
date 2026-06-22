@@ -237,8 +237,15 @@
           }
         ]
       }
+    },
+    "105709|7526207|43304478|CINZA|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": true,
+        "destinos": []
+      }
     }
   },
-  "atualizadoEm": "2026-06-22T17:44:02.761Z",
+  "atualizadoEm": "2026-06-22T17:44:08.711Z",
   "por": "JORGE"
 }
