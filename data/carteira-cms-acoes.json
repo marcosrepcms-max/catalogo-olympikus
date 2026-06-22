@@ -276,8 +276,15 @@
           }
         ]
       }
+    },
+    "21511|7534853|43304478|MUSGO|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": true,
+        "destinos": []
+      }
     }
   },
-  "atualizadoEm": "2026-06-22T17:45:53.319Z",
+  "atualizadoEm": "2026-06-22T17:46:13.935Z",
   "por": "JORGE"
 }
