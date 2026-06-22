@@ -481,6 +481,11 @@
             "codigo": "3237",
             "nome": "SAPATARIA VANUSIA LTDA",
             "porta": ""
+          },
+          {
+            "codigo": "10641",
+            "nome": "SABINA BABY CONFECCOES",
+            "porta": "MIRANDA"
           }
         ]
       }
@@ -506,6 +511,6 @@
       }
     }
   },
-  "atualizadoEm": "2026-06-22T18:36:48.154Z",
+  "atualizadoEm": "2026-06-22T18:58:36.083Z",
   "por": "JORGE"
 }
