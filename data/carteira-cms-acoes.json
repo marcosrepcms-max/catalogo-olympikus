@@ -102,11 +102,17 @@
     "105709|7508407|43447473|MARBRI|1221|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "3777",
+            "nome": "L DE ALMEIDA FIRMINO ME",
+            "porta": ""
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-22T17:33:19.647Z",
+  "atualizadoEm": "2026-06-22T17:33:30.194Z",
   "por": "JORGE"
 }
