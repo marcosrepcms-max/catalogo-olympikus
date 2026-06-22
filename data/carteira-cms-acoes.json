@@ -553,11 +553,20 @@
     "2245855|7499016|43304478|ARENIT|1221|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "11948",
+            "nome": "BACABAL MAGAZINE LTDA",
+            "porta": "BACABAL",
+            "caixas": 1
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-22T19:37:18.558Z",
+  "atualizadoEm": "2026-06-22T19:39:57.216Z",
   "por": "JORGE"
 }
