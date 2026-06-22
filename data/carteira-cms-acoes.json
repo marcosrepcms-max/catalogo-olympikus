@@ -469,8 +469,14 @@
     "18529|7611612|43546486|CZ/CHB|123321|24": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "3237",
+            "nome": "SAPATARIA VANUSIA LTDA",
+            "porta": ""
+          }
+        ]
       }
     },
     "18529|7646328|43546486|LILAS|123321|12": {
@@ -488,6 +494,6 @@
       }
     }
   },
-  "atualizadoEm": "2026-06-22T18:16:04.926Z",
+  "atualizadoEm": "2026-06-22T18:28:12.372Z",
   "por": "JORGE"
 }
