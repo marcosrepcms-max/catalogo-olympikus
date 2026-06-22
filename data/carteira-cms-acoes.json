@@ -98,8 +98,15 @@
           }
         ]
       }
+    },
+    "105709|7508407|43447473|MARBRI|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": true,
+        "destinos": []
+      }
     }
   },
-  "atualizadoEm": "2026-06-22T17:32:50.732Z",
+  "atualizadoEm": "2026-06-22T17:33:19.647Z",
   "por": "JORGE"
 }
