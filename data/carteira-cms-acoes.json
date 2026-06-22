@@ -445,8 +445,15 @@
           }
         ]
       }
+    },
+    "105709|7551098|43304478|ARENIT|11211|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": true,
+        "destinos": []
+      }
     }
   },
-  "atualizadoEm": "2026-06-22T17:52:31.426Z",
+  "atualizadoEm": "2026-06-22T17:52:36.650Z",
   "por": "JORGE"
 }
