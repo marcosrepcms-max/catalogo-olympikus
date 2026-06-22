@@ -39,8 +39,14 @@
     "21511|7508752|43447473|MARBRI|1221|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "2929",
+            "nome": "FIRMINO SILVA RIBEIRO",
+            "porta": ""
+          }
+        ]
       }
     },
     "21511|7551972|43447473|MARBRI|111111|6": {
@@ -94,6 +100,6 @@
       }
     }
   },
-  "atualizadoEm": "2026-06-22T17:32:14.658Z",
+  "atualizadoEm": "2026-06-22T17:32:50.732Z",
   "por": "JORGE"
 }
