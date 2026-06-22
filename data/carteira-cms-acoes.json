@@ -302,8 +302,15 @@
           }
         ]
       }
+    },
+    "21511|7498791|43304478|VRD/CL|123321|12": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": true,
+        "destinos": []
+      }
     }
   },
-  "atualizadoEm": "2026-06-22T17:46:49.896Z",
+  "atualizadoEm": "2026-06-22T17:47:36.296Z",
   "por": "JORGE"
 }
