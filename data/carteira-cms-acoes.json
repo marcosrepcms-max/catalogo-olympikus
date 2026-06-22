@@ -358,11 +358,17 @@
     "21511|7508750|43304478|LILAS|1221|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "2373565",
+            "nome": "M C DE SOUSA SILVA",
+            "porta": "DUTRA MARUZI"
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-22T17:50:07.298Z",
+  "atualizadoEm": "2026-06-22T17:50:17.654Z",
   "por": "JORGE"
 }
