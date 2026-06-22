@@ -280,11 +280,17 @@
     "21511|7534853|43304478|MUSGO|1221|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "25931",
+            "nome": "PEDREIRA MAGAZINE LTDA",
+            "porta": "PADREIRAS"
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-22T17:46:13.935Z",
+  "atualizadoEm": "2026-06-22T17:46:32.459Z",
   "por": "JORGE"
 }
