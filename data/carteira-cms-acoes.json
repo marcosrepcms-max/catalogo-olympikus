@@ -537,11 +537,20 @@
     "2245855|7499020|43304478|MUSGO|1221|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "3132954",
+            "nome": "C S COSTA MODAS",
+            "porta": "MARUZI GRAJAU",
+            "caixas": 1
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-22T19:33:53.034Z",
+  "atualizadoEm": "2026-06-22T19:36:32.420Z",
   "por": "JORGE"
 }
