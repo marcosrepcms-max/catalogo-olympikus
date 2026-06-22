@@ -123,10 +123,13 @@
       }
     },
     "21511|7520937|43447473|LUNMHO||12": {
-      "acao": "MANTER",
-      "repasse": null
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": true,
+        "destinos": []
+      }
     }
   },
-  "atualizadoEm": "2026-06-22T12:27:10.526Z",
+  "atualizadoEm": "2026-06-22T12:27:40.225Z",
   "por": "JORGE"
 }
