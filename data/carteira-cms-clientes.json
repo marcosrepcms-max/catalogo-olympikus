@@ -1,0 +1,24 @@
+{
+  "clientes": {
+    "10641": {
+      "codigo": "10641",
+      "razao": "A.S.R.SILVA",
+      "nomeFantasia": "SABINA BABY CONFECCOES",
+      "porta": "MIRANDA"
+    },
+    "54595": {
+      "codigo": "54595",
+      "razao": "J E PINHEIRO",
+      "nomeFantasia": "SAPEQUARA SPORT SURF",
+      "porta": "AV. GUAJAJARAS"
+    },
+    "119423": {
+      "codigo": "119423",
+      "razao": "JAILE OLIVEIRA SEREJO",
+      "nomeFantasia": "SIMPATIA MODAS",
+      "porta": "CIDADE OPERARIA"
+    }
+  },
+  "atualizadoEm": "2026-06-23T14:09:48.375Z",
+  "por": "JORGE"
+}

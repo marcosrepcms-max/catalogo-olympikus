@@ -1,0 +1,842 @@
+{
+  "acoes": {
+    "21511|7611655|43546486|ARTDST|123321|12": {
+      "acao": "MANTER",
+      "repasse": null
+    },
+    "21511|7498787|43304478|PRETO|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "3103782",
+            "nome": "L M DE S MORAES",
+            "porta": ""
+          }
+        ]
+      }
+    },
+    "21511|7534856|43304478|PRETO|1221|6": {
+      "acao": "MANTER",
+      "repasse": null
+    },
+    "21511|7551968|43304478|PRETO|11211|6": {
+      "acao": "MANTER",
+      "repasse": null
+    },
+    "105709|7508411|43304478|PRETO|1221|6": {
+      "acao": "MANTER",
+      "repasse": null
+    },
+    "105709|7534822|43304478|PRETO|1221|6": {
+      "acao": "MANTER",
+      "repasse": null
+    },
+    "105709|7551102|43304478|PRETO|11211|6": {
+      "acao": "CANCELAR",
+      "repasse": null
+    },
+    "21511|7534854|43447473|CH/VMH|1221|6": {
+      "acao": "MANTER",
+      "repasse": null
+    },
+    "105709|7534826|43447473|CH/VMH|1221|6": {
+      "acao": "MANTER",
+      "repasse": null
+    },
+    "21511|7508752|43447473|MARBRI|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "2929",
+            "nome": "FIRMINO SILVA RIBEIRO",
+            "porta": ""
+          }
+        ]
+      }
+    },
+    "21511|7551972|43447473|MARBRI|111111|6": {
+      "acao": "MANTER",
+      "repasse": null
+    },
+    "21511|7498789|43447473|LUNMHO|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "95206",
+            "nome": "BALSAS MAGAZINE LTDA - ME",
+            "porta": "BALSAS"
+          }
+        ]
+      }
+    },
+    "105709|7534823|43447473|LUNMHO|1221|6": {
+      "acao": "MANTER",
+      "repasse": null
+    },
+    "105709|7498460|43447473|LUNMHO|1221|6": {
+      "acao": "MANTER",
+      "repasse": null
+    },
+    "21511|7520937|43447473|LUNMHO||12": {
+      "acao": "MANTER",
+      "repasse": null
+    },
+    "2245855|7543842|43340469|MLTLAR|111111|6": {
+      "acao": "MANTER",
+      "repasse": null
+    },
+    "7307|7521564|43447473|LUNMHO||12": {
+      "acao": "MANTER",
+      "repasse": null
+    },
+    "105709|7524840|43447473|LUNMHO||12": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "20215",
+            "nome": "M.D.LOPES FERREIRA",
+            "porta": ""
+          }
+        ]
+      }
+    },
+    "105709|7508407|43447473|MARBRI|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "3777",
+            "nome": "L DE ALMEIDA FIRMINO ME",
+            "porta": ""
+          }
+        ]
+      }
+    },
+    "105709|7551101|43447473|MARBRI|111111|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "58568",
+            "nome": "M SANTOS GUERRA ME",
+            "porta": ""
+          }
+        ]
+      }
+    },
+    "21511|7526246|43447473|ATLVRD|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "11948",
+            "nome": "BACABAL MAGAZINE LTDA",
+            "porta": "BACABAL"
+          }
+        ]
+      }
+    },
+    "105709|7526209|43447473|ATLVRD|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "121069",
+            "nome": "CODO MAGAZINE MODAS LTDA",
+            "porta": "CODO"
+          }
+        ]
+      }
+    },
+    "21511|7498792|43447473|CH/VMH|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "3309898",
+            "nome": "SIMONE G FERREIRA",
+            "porta": "BURITICUPU"
+          }
+        ]
+      }
+    },
+    "105709|7498458|43447473|CH/VMH|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "68621",
+            "nome": "SANTA INES MAGAZINE LTDA ME",
+            "porta": "SANT INES"
+          }
+        ]
+      }
+    },
+    "21511|7508751|43304478|PRETO|1232211|12": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "17421",
+            "nome": "CODO CALCADOS LTDA ME",
+            "porta": ""
+          }
+        ]
+      }
+    },
+    "21511|7526243|43304478|CINZA|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "11948",
+            "nome": "BACABAL MAGAZINE LTDA",
+            "porta": "BACABAL"
+          }
+        ]
+      }
+    },
+    "21511|7551971|43304478|CINZA|11211|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "25931",
+            "nome": "PEDREIRA MAGAZINE LTDA",
+            "porta": "PADREIRAS"
+          }
+        ]
+      }
+    },
+    "105709|7498462|43304478|CINZA|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "121069",
+            "nome": "CODO MAGAZINE MODAS LTDA",
+            "porta": "CODO"
+          }
+        ]
+      }
+    },
+    "105709|7526207|43304478|CINZA|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "1026378",
+            "nome": "SANTA LUZIA MAGAZINE LTDA",
+            "porta": "SANT LUZIA"
+          }
+        ]
+      }
+    },
+    "105709|7561099|43304478|MUSGO|123321|12": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "2373565",
+            "nome": "M C DE SOUSA SILVA",
+            "porta": "DUTRA MARUZI"
+          }
+        ]
+      }
+    },
+    "105709|7508408|43304478|MUSGO|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "75383",
+            "nome": "IMPERATRIZ MAGAZINE LTDA",
+            "porta": "IMP MAGAZ"
+          }
+        ]
+      }
+    },
+    "21511|7534853|43304478|MUSGO|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "25931",
+            "nome": "PEDREIRA MAGAZINE LTDA",
+            "porta": "PADREIRAS"
+          }
+        ]
+      }
+    },
+    "21511|7561131|43304478|MUSGO|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "11948",
+            "nome": "BACABAL MAGAZINE LTDA",
+            "porta": "BACABAL"
+          }
+        ]
+      }
+    },
+    "21511|7498791|43304478|VRD/CL|123321|12": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "19701",
+            "nome": "M.E.DE OLIVEIRA",
+            "porta": ""
+          }
+        ]
+      }
+    },
+    "21511|7561133|43304478|VRD/CL|12111|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "3103782",
+            "nome": "L M DE S MORAES",
+            "porta": ""
+          }
+        ]
+      }
+    },
+    "105709|7498459|43304478|VRD/CL|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "1664105",
+            "nome": "HIPERMAIS DISTRIBUIDORA",
+            "porta": ""
+          }
+        ]
+      }
+    },
+    "105709|7561097|43304478|VRD/CL|12111|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "2373565",
+            "nome": "M C DE SOUSA SILVA",
+            "porta": "DUTRA MARUZI"
+          }
+        ]
+      }
+    },
+    "21511|7508750|43304478|LILAS|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "2373565",
+            "nome": "M C DE SOUSA SILVA",
+            "porta": "DUTRA MARUZI"
+          }
+        ]
+      }
+    },
+    "21511|7561129|43304478|LILAS|12111|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "2929",
+            "nome": "FIRMINO SILVA RIBEIRO",
+            "porta": ""
+          }
+        ]
+      }
+    },
+    "105709|7526260|43304478|LILAS|11211|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "58568",
+            "nome": "M SANTOS GUERRA ME",
+            "porta": ""
+          }
+        ]
+      }
+    },
+    "105709|7561101|43304478|LILAS|12111|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "19701",
+            "nome": "M.E.DE OLIVEIRA",
+            "porta": ""
+          }
+        ]
+      }
+    },
+    "21511|7508749|43304478|ARENIT|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "19701",
+            "nome": "M.E.DE OLIVEIRA",
+            "porta": ""
+          }
+        ]
+      }
+    },
+    "21511|7551970|43304478|ARENIT|11211|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "20215",
+            "nome": "M.D.LOPES FERREIRA",
+            "porta": ""
+          }
+        ]
+      }
+    },
+    "105709|7508409|43304478|ARENIT|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "2373565",
+            "nome": "M C DE SOUSA SILVA",
+            "porta": "DUTRA MARUZI"
+          }
+        ]
+      }
+    },
+    "105709|7551098|43304478|ARENIT|11211|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "121069",
+            "nome": "CODO MAGAZINE MODAS LTDA",
+            "porta": "CODO"
+          }
+        ]
+      }
+    },
+    "18529|5368077|43344456|ELDERB|123321|12": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "129834",
+            "nome": "L H CARVALHO BRITO",
+            "porta": ""
+          }
+        ]
+      }
+    },
+    "18529|7611612|43546486|CZ/CHB|123321|24": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "boxSize": 12,
+        "totalCaixas": 2,
+        "destinos": [
+          {
+            "codigo": "3237",
+            "nome": "SAPATARIA VANUSIA LTDA",
+            "porta": "",
+            "caixas": 1
+          },
+          {
+            "codigo": "10641",
+            "nome": "SABINA BABY CONFECCOES",
+            "porta": "MIRANDA",
+            "caixas": 1
+          }
+        ]
+      }
+    },
+    "18529|7646328|43546486|LILAS|123321|12": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "58568",
+            "nome": "M SANTOS GUERRA ME",
+            "porta": ""
+          }
+        ]
+      }
+    },
+    "18529|5337716|43389459|PTO/PT|123321|72": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "boxSize": 12,
+        "totalCaixas": 6,
+        "destinos": [
+          {
+            "codigo": "7949",
+            "nome": "SOUSA E CUNHA LTDA",
+            "porta": "",
+            "caixas": 1
+          },
+          {
+            "codigo": "10641",
+            "nome": "SABINA BABY CONFECCOES",
+            "porta": "MIRANDA",
+            "caixas": 1
+          },
+          {
+            "codigo": "14897",
+            "nome": "MIRIAN SILVA MAGALHAES",
+            "porta": "",
+            "caixas": 1
+          },
+          {
+            "codigo": "54595",
+            "nome": "SAPEQUARA SPORT SURF",
+            "porta": "AV. GUAJAJARAS",
+            "caixas": 1
+          },
+          {
+            "codigo": "119423",
+            "nome": "SIMPATIA MODAS",
+            "porta": "CIDADE OPERARIA",
+            "caixas": 1
+          },
+          {
+            "codigo": "129834",
+            "nome": "L H CARVALHO BRITO",
+            "porta": "",
+            "caixas": 1
+          }
+        ]
+      }
+    },
+    "18529|5337815|43389459|PTODST|123321|60": {
+      "acao": "MANTER",
+      "repasse": null
+    },
+    "2245855|7499018|43206446|PTO/CH|123321|12": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "boxSize": 12,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "105709",
+            "nome": "IGOR HENRIQUE DA S",
+            "porta": "SHOP CAXIAS",
+            "caixas": 1
+          }
+        ]
+      }
+    },
+    "2245855|7499020|43304478|MUSGO|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "3132954",
+            "nome": "C S COSTA MODAS",
+            "porta": "MARUZI GRAJAU",
+            "caixas": 1
+          }
+        ]
+      }
+    },
+    "2245855|7499016|43304478|ARENIT|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "11948",
+            "nome": "BACABAL MAGAZINE LTDA",
+            "porta": "BACABAL",
+            "caixas": 1
+          }
+        ]
+      }
+    },
+    "2245855|7499007|43304478|PRETO|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": true,
+        "destinos": []
+      }
+    },
+    "3834566|7745937|43340469|AMLMLT|111111|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "19701",
+            "nome": "M.E.DE OLIVEIRA",
+            "porta": "",
+            "caixas": 1
+          }
+        ]
+      }
+    },
+    "3834566|7745938|43340469|AMLMLT|111111|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "19701",
+            "nome": "M.E.DE OLIVEIRA",
+            "porta": "",
+            "caixas": 1
+          }
+        ]
+      }
+    },
+    "3834566|7745942|43340469|AMLMLT|111111|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "7307",
+            "nome": "CELMA C A BARBOSA BAIANO",
+            "porta": "IMPERATRIZ RUA",
+            "caixas": 1
+          }
+        ]
+      }
+    },
+    "3834566|7745940|43340469|MLTLAR|111111|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "7307",
+            "nome": "CELMA C A BARBOSA BAIANO",
+            "porta": "IMPERATRIZ RUA",
+            "caixas": 1
+          }
+        ]
+      }
+    },
+    "3834566|7745932|43447473|CH/VMH|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "11948",
+            "nome": "BACABAL MAGAZINE LTDA",
+            "porta": "BACABAL",
+            "caixas": 1
+          }
+        ]
+      }
+    },
+    "3834566|7745854|43447473|CH/VMH|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "121069",
+            "nome": "CODO MAGAZINE MODAS LTDA",
+            "porta": "CODO",
+            "caixas": 1
+          }
+        ]
+      }
+    },
+    "3834566|7745880|43447473|CH/VMH|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "19701",
+            "nome": "M.E.DE OLIVEIRA",
+            "porta": "",
+            "caixas": 1
+          }
+        ]
+      }
+    },
+    "3834566|7745904|43447473|CH/VMH|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "2373565",
+            "nome": "M C DE SOUSA SILVA",
+            "porta": "DUTRA MARUZI",
+            "caixas": 1
+          }
+        ]
+      }
+    },
+    "3834566|7745890|43447473|LUNMHO|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "63095",
+            "nome": "DUTRA MAGAZINE LTDA",
+            "porta": "PRES DUTRA",
+            "caixas": 1
+          }
+        ]
+      }
+    },
+    "3834566|7745933|43447473|LUNMHO|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "3132954",
+            "nome": "C S COSTA MODAS",
+            "porta": "MARUZI GRAJAU",
+            "caixas": 1
+          }
+        ]
+      }
+    },
+    "3834566|7745913|43447473|LUNMHO|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "137388",
+            "nome": "LAGO DA PEDRA MAGAZINE",
+            "porta": "LAGO DA PED",
+            "caixas": 1
+          }
+        ]
+      }
+    },
+    "3834566|7745892|43447473|MARBRI|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "11948",
+            "nome": "BACABAL MAGAZINE LTDA",
+            "porta": "BACABAL",
+            "caixas": 1
+          }
+        ]
+      }
+    },
+    "3834566|7745920|43447473|MARBRI|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "121069",
+            "nome": "CODO MAGAZINE MODAS LTDA",
+            "porta": "CODO",
+            "caixas": 1
+          }
+        ]
+      }
+    },
+    "3834566|7745900|43447473|MARBRI|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "25931",
+            "nome": "PEDREIRA MAGAZINE LTDA",
+            "porta": "PADREIRAS",
+            "caixas": 1
+          }
+        ]
+      }
+    }
+  },
+  "atualizadoEm": "2026-06-23T14:57:49.069Z",
+  "por": "JORGE"
+}
