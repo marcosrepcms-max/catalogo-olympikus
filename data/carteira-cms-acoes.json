@@ -659,8 +659,15 @@
           }
         ]
       }
+    },
+    "3834566|7745940|43340469|MLTLAR|111111|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": true,
+        "destinos": []
+      }
     }
   },
-  "atualizadoEm": "2026-06-23T14:31:05.691Z",
+  "atualizadoEm": "2026-06-23T14:37:22.821Z",
   "por": "JORGE"
 }
