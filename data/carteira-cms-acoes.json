@@ -615,11 +615,20 @@
     "3834566|7745937|43340469|AMLMLT|111111|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "19701",
+            "nome": "M.E.DE OLIVEIRA",
+            "porta": "",
+            "caixas": 1
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-23T14:24:32.655Z",
+  "atualizadoEm": "2026-06-23T14:24:46.731Z",
   "por": "JORGE"
 }
