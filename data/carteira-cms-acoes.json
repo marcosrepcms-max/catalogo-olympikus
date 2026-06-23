@@ -663,11 +663,20 @@
     "3834566|7745940|43340469|MLTLAR|111111|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "7307",
+            "nome": "CELMA C A BARBOSA BAIANO",
+            "porta": "IMPERATRIZ RUA",
+            "caixas": 1
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-23T14:37:22.821Z",
+  "atualizadoEm": "2026-06-23T14:37:37.170Z",
   "por": "JORGE"
 }
