@@ -679,11 +679,20 @@
     "3834566|7745932|43447473|CH/VMH|1221|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "11948",
+            "nome": "BACABAL MAGAZINE LTDA",
+            "porta": "BACABAL",
+            "caixas": 1
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-23T14:48:24.110Z",
+  "atualizadoEm": "2026-06-23T14:48:50.575Z",
   "por": "JORGE"
 }
