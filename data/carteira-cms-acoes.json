@@ -860,11 +860,20 @@
     "2245855|7543841|43340469|AMLMLT|111111|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "2373565",
+            "nome": "M C DE SOUSA SILVA",
+            "porta": "DUTRA MARUZI",
+            "caixas": 1
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-24T14:46:53.908Z",
+  "atualizadoEm": "2026-06-24T14:47:09.472Z",
   "por": "JORGE"
 }
