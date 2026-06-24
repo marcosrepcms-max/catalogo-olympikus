@@ -876,11 +876,20 @@
     "2245855|7499005|43447473|MARBRI|1221|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "1664105",
+            "nome": "HIPERMAIS DISTRIBUIDORA",
+            "porta": "",
+            "caixas": 1
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-24T14:47:36.234Z",
+  "atualizadoEm": "2026-06-24T14:47:44.370Z",
   "por": "JORGE"
 }
