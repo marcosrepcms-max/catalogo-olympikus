@@ -608,8 +608,17 @@
     "2245855|7499007|43304478|PRETO|1221|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "2929",
+            "nome": "FIRMINO SILVA RIBEIRO",
+            "porta": "",
+            "caixas": 1
+          }
+        ]
       }
     },
     "3834566|7745937|43340469|AMLMLT|111111|6": {
@@ -837,6 +846,6 @@
       }
     }
   },
-  "atualizadoEm": "2026-06-23T14:57:49.069Z",
+  "atualizadoEm": "2026-06-24T14:10:36.694Z",
   "por": "JORGE"
 }
