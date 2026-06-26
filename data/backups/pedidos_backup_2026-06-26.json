@@ -1899,6 +1899,68 @@
     "exportedAt": "2026-06-19T18:47:49.841Z"
   },
   {
+    "id": "PED-20260617105419-378",
+    "createdAt": "2026-06-17T13:54:19.323Z",
+    "updatedAt": "2026-06-17T13:54:18.031Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "114611",
+      "nome": "JORGE"
+    },
+    "clienteCodigo": "10641",
+    "clienteNome": "",
+    "prazo": "Z35 - 63/91/119 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 1,
+      "units": 12
+    },
+    "items": [
+      {
+        "codigo": "43409454",
+        "produto": "EROS 2",
+        "cor": "BRANCO",
+        "num": "39",
+        "gci": "5321398",
+        "ebm": "13429330",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 3
+          },
+          {
+            "size": "41",
+            "qty": 3
+          },
+          {
+            "size": "42",
+            "qty": 2
+          },
+          {
+            "size": "43",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "20/09/2026"
+      }
+    ]
+  },
+  {
     "id": "PED-20260617105840-911",
     "createdAt": "2026-06-17T13:58:40.890Z",
     "updatedAt": "2026-06-19T18:48:03.605Z",
@@ -2370,6 +2432,91 @@
     "lastActionLabel": "Pedido criado",
     "lastActionAt": "2026-06-19T14:16:54.000Z",
     "exportedAt": "2026-06-19T18:47:49.841Z"
+  },
+  {
+    "id": "PED-20260618194948-354",
+    "createdAt": "2026-06-18T22:49:48.689Z",
+    "updatedAt": "2026-06-18T22:49:46.626Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "114611",
+      "nome": "JORGE"
+    },
+    "clienteCodigo": "85738",
+    "clienteNome": "",
+    "prazo": "Z35 - 63/91/119 D",
+    "campanha": "CO681 +28DD OLY",
+    "observacoes": "",
+    "totals": {
+      "packs": 2,
+      "units": 12
+    },
+    "items": [
+      {
+        "codigo": "43758365",
+        "produto": "CORRE MAX",
+        "cor": "PSGCLR",
+        "num": "19",
+        "gci": "7442538",
+        "ebm": "13279940",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 6,
+        "totalUnits": 6,
+        "grade": [
+          {
+            "size": "36",
+            "qty": 1
+          },
+          {
+            "size": "37",
+            "qty": 2
+          },
+          {
+            "size": "38",
+            "qty": 2
+          },
+          {
+            "size": "39",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "24/06/2026"
+      },
+      {
+        "codigo": "43758365",
+        "produto": "CORRE MAX",
+        "cor": "PTO/GF",
+        "num": "28",
+        "gci": "7442531",
+        "ebm": "13279958",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 6,
+        "totalUnits": 6,
+        "grade": [
+          {
+            "size": "39",
+            "qty": 1
+          },
+          {
+            "size": "40",
+            "qty": 2
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "24/06/2026"
+      }
+    ]
   },
   {
     "id": "PED-20260619094646-473",
