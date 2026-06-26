@@ -3700,6 +3700,24 @@ function notifUpdateBadge(){
   }
 }
 
+function notifEnsurePermission(){
+  try{
+    if(!('Notification' in window)) return;
+    if(Notification.permission === 'default'){ Notification.requestPermission().catch(()=>{}); }
+  }catch(_){}
+}
+function notifShowSystem(count){
+  try{
+    if(!('Notification' in window) || Notification.permission !== 'granted') return;
+    const titulo = `${count} novo${count>1?'s':''} pedido${count>1?'s':''} de repasse`;
+    const n = new Notification(titulo, {
+      body: 'Clique para ver os pedidos pendentes no Admin.',
+      tag: 'novo-pedido-admin',
+      renotify: true
+    });
+    n.onclick = () => { try{ window.focus(); }catch(_){}; try{ $('btnNotifAdmin')?.click(); }catch(_){}; n.close(); };
+  }catch(_){}
+}
 async function notifPollAdmin(){
   try{
     const remote = await workerRequest('GET');
@@ -3722,6 +3740,7 @@ async function notifPollAdmin(){
       notifUpdateBadge();
       notifPlaySound();
       notifShowToast(`${novos.length} novo${novos.length>1?'s':''} pedido${novos.length>1?'s':''} recebido${novos.length>1?'s':''}!`);
+      notifShowSystem(novos.length);
     }
   }catch(_){}
 }
@@ -3734,6 +3753,11 @@ $('btnNotifAdmin').addEventListener('click', ()=>{
 });
 
 setInterval(notifPollAdmin, 30000);
+
+// Notificação do sistema: pede permissão ao carregar e, como fallback (navegadores
+// que exigem gesto do usuário), também no primeiro clique na página.
+notifEnsurePermission();
+window.addEventListener('click', notifEnsurePermission, { once:true });
 
 // ── BLOCO 2 listeners ─────────────────────────────────────────────────────────
 document.querySelectorAll('.kpi-op[data-status-filter]').forEach(card => {
