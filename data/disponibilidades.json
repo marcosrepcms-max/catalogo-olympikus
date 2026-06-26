@@ -3629,7 +3629,7 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 2727,
+    "totalGeral": 5302,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -3637,8 +3637,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 2727,
-      "2Q_OUT": 310,
+      "2Q_NOV": 5302,
+      "2Q_OUT": 2799,
       "2Q_SET": 310,
       "2Q_AGO": 310,
       "2Q_JUL": 310
@@ -3655,7 +3655,7 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 2417,
+    "totalGeral": 4992,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -3663,7 +3663,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 2417
+      "2Q_NOV": 4992,
+      "2Q_OUT": 2489
     }
   },
   {
@@ -3677,7 +3678,7 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 2417,
+    "totalGeral": 5001,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -3685,7 +3686,11 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 2417
+      "2Q_NOV": 5001,
+      "2Q_OUT": 2498,
+      "2Q_SET": 9,
+      "2Q_AGO": 9,
+      "2Q_JUL": 7
     }
   },
   {
@@ -3699,7 +3704,7 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 2531,
+    "totalGeral": 5106,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -3707,8 +3712,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 2531,
-      "2Q_OUT": 114,
+      "2Q_NOV": 5106,
+      "2Q_OUT": 2603,
       "2Q_SET": 114,
       "2Q_AGO": 114,
       "2Q_JUL": 114
@@ -3725,7 +3730,7 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 2417,
+    "totalGeral": 4992,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -3733,7 +3738,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 2417
+      "2Q_NOV": 4992,
+      "2Q_OUT": 2489
     }
   },
   {
@@ -3747,7 +3753,7 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 2949,
+    "totalGeral": 5524,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -3755,8 +3761,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 2949,
-      "2Q_OUT": 532,
+      "2Q_NOV": 5524,
+      "2Q_OUT": 3021,
       "2Q_SET": 532,
       "2Q_AGO": 532,
       "2Q_JUL": 17
@@ -3773,7 +3779,7 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 6108,
+    "totalGeral": 8694,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -3781,8 +3787,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 6108,
-      "2Q_OUT": 6108,
+      "2Q_NOV": 8694,
+      "2Q_OUT": 8694,
       "2Q_SET": 3418,
       "2Q_AGO": 3418,
       "2Q_JUL": 2842
@@ -3799,7 +3805,7 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 5644,
+    "totalGeral": 8230,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -3807,8 +3813,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 5644,
-      "2Q_OUT": 5644,
+      "2Q_NOV": 8230,
+      "2Q_OUT": 8230,
       "2Q_SET": 2922,
       "2Q_AGO": 2922,
       "2Q_JUL": 2334
@@ -3825,7 +3831,7 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 7074,
+    "totalGeral": 9672,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -3833,11 +3839,11 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 7074,
-      "2Q_OUT": 7074,
-      "2Q_SET": 5660,
-      "2Q_AGO": 5660,
-      "2Q_JUL": 3357
+      "2Q_NOV": 9672,
+      "2Q_OUT": 9672,
+      "2Q_SET": 5672,
+      "2Q_AGO": 5672,
+      "2Q_JUL": 3213
     }
   },
   {
@@ -3851,7 +3857,7 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 3816,
+    "totalGeral": 6402,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -3859,8 +3865,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 3816,
-      "2Q_OUT": 3816,
+      "2Q_NOV": 6402,
+      "2Q_OUT": 6402,
       "2Q_SET": 2402,
       "2Q_AGO": 2402
     }
@@ -4124,7 +4130,7 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 3412,
+    "totalGeral": 3562,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -4132,11 +4138,11 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 3412,
-      "2Q_OUT": 3412,
-      "2Q_SET": 3412,
-      "2Q_AGO": 3412,
-      "2Q_JUL": 1684
+      "2Q_NOV": 3562,
+      "2Q_OUT": 3562,
+      "2Q_SET": 3562,
+      "2Q_AGO": 3562,
+      "2Q_JUL": 1834
     }
   },
   {
@@ -4150,7 +4156,7 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 1086,
+    "totalGeral": 1236,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -4158,11 +4164,11 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 1086,
-      "2Q_OUT": 1086,
-      "2Q_SET": 1086,
-      "2Q_AGO": 1086,
-      "2Q_JUL": 7
+      "2Q_NOV": 1236,
+      "2Q_OUT": 1236,
+      "2Q_SET": 1236,
+      "2Q_AGO": 1236,
+      "2Q_JUL": 8
     }
   },
   {
@@ -4176,7 +4182,7 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 9702,
+    "totalGeral": 9588,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -4184,11 +4190,11 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 9702,
-      "2Q_OUT": 9702,
-      "2Q_SET": 9702,
-      "2Q_AGO": 9702,
-      "2Q_JUL": 5358
+      "2Q_NOV": 9588,
+      "2Q_OUT": 9588,
+      "2Q_SET": 9588,
+      "2Q_AGO": 9588,
+      "2Q_JUL": 5939
     }
   },
   {
@@ -4500,7 +4506,7 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 9514,
+    "totalGeral": 10702,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -4508,8 +4514,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 9514,
-      "2Q_OUT": 9514,
+      "2Q_NOV": 10702,
+      "2Q_OUT": 10702,
       "2Q_SET": 1524,
       "2Q_AGO": 663,
       "2Q_JUL": 663
@@ -4526,7 +4532,7 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 9506,
+    "totalGeral": 10790,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -4534,11 +4540,11 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 9506,
-      "2Q_OUT": 9506,
-      "2Q_SET": 2667,
-      "2Q_AGO": 1764,
-      "2Q_JUL": 1764
+      "2Q_NOV": 10790,
+      "2Q_OUT": 10790,
+      "2Q_SET": 2763,
+      "2Q_AGO": 1859,
+      "2Q_JUL": 1859
     }
   },
   {
@@ -4552,7 +4558,7 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 13719,
+    "totalGeral": 13626,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -4560,10 +4566,10 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 13719,
-      "2Q_OUT": 13719,
-      "2Q_SET": 6880,
-      "2Q_AGO": 2404
+      "2Q_NOV": 13626,
+      "2Q_OUT": 13626,
+      "2Q_SET": 5599,
+      "2Q_AGO": 1000
     }
   },
   {
@@ -4577,7 +4583,7 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 11668,
+    "totalGeral": 12856,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -4585,8 +4591,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 11668,
-      "2Q_OUT": 11668,
+      "2Q_NOV": 12856,
+      "2Q_OUT": 12856,
       "2Q_SET": 4829,
       "2Q_AGO": 4829,
       "2Q_JUL": 4829
@@ -4603,7 +4609,7 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 12526,
+    "totalGeral": 13996,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -4611,11 +4617,11 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 12526,
-      "2Q_OUT": 12526,
-      "2Q_SET": 5687,
-      "2Q_AGO": 5687,
-      "2Q_JUL": 75
+      "2Q_NOV": 13996,
+      "2Q_OUT": 13996,
+      "2Q_SET": 5969,
+      "2Q_AGO": 5969,
+      "2Q_JUL": 111
     }
   },
   {
@@ -4629,7 +4635,7 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 10334,
+    "totalGeral": 11558,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -4637,11 +4643,11 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 10334,
-      "2Q_OUT": 10334,
-      "2Q_SET": 3495,
-      "2Q_AGO": 3495,
-      "2Q_JUL": 18
+      "2Q_NOV": 11558,
+      "2Q_OUT": 11558,
+      "2Q_SET": 3531,
+      "2Q_AGO": 3531,
+      "2Q_JUL": 30
     }
   },
   {
@@ -4695,6 +4701,32 @@
       "2Q_AGO": 3,
       "2Q_JUL": 3
     }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "AZABA",
+    "artigo": "43608374",
+    "descricao": "SAFIRA",
+    "cor": "CHUMBO",
+    "linha": "COTIDIANO",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 199.99,
+    "totalGeral": 132,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 132,
+      "2Q_OUT": 132,
+      "2Q_SET": 132,
+      "2Q_AGO": 0
+    },
+    "_aguardandoImagem": true
   },
   {
     "marca": "OLY",
@@ -4759,7 +4791,7 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 139.99,
-    "totalGeral": 68,
+    "totalGeral": 80,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -4767,11 +4799,11 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 68,
-      "2Q_OUT": 68,
-      "2Q_SET": 68,
-      "2Q_AGO": 68,
-      "2Q_JUL": 68
+      "2Q_NOV": 80,
+      "2Q_OUT": 80,
+      "2Q_SET": 80,
+      "2Q_AGO": 80,
+      "2Q_JUL": 80
     }
   },
   {
@@ -4799,6 +4831,124 @@
       "2Q_AGO": 20,
       "2Q_JUL": 20
     }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "AZABA",
+    "artigo": "54111405",
+    "descricao": "POS CORRE",
+    "cor": "ALGBEG",
+    "linha": "CHINELO GASPEA",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 179.99,
+    "totalGeral": 8700,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 8700
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "AZABA",
+    "artigo": "54111405",
+    "descricao": "POS CORRE",
+    "cor": "ALGLMA",
+    "linha": "CHINELO GASPEA",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 179.99,
+    "totalGeral": 8700,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 8700
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "AZABA",
+    "artigo": "54111405",
+    "descricao": "POS CORRE",
+    "cor": "LUNAR",
+    "linha": "CHINELO GASPEA",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 179.99,
+    "totalGeral": 10980,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 10980,
+      "2Q_OUT": 2280,
+      "2Q_SET": 2280,
+      "2Q_AGO": 1584
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "AZABA",
+    "artigo": "54111405",
+    "descricao": "POS CORRE",
+    "cor": "PTO_LM",
+    "linha": "CHINELO GASPEA",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 179.99,
+    "totalGeral": 8700,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 8700
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "AZABA",
+    "artigo": "54111405",
+    "descricao": "POS CORRE",
+    "cor": "VDEMLT",
+    "linha": "CHINELO GASPEA",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 179.99,
+    "totalGeral": 8700,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 8700
+    },
+    "_aguardandoImagem": true
   },
   {
     "marca": "OLY",
@@ -4836,7 +4986,7 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 179.99,
-    "totalGeral": 67,
+    "totalGeral": 43,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -4844,9 +4994,9 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 67,
-      "2Q_OUT": 67,
-      "2Q_SET": 67,
+      "2Q_NOV": 43,
+      "2Q_OUT": 43,
+      "2Q_SET": 43,
       "2Q_AGO": 1
     }
   },
@@ -4886,7 +5036,7 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 179.99,
-    "totalGeral": 2961,
+    "totalGeral": 2865,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -4894,10 +5044,10 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 2961,
-      "2Q_OUT": 2961,
-      "2Q_SET": 2415,
-      "2Q_AGO": 875
+      "2Q_NOV": 2865,
+      "2Q_OUT": 2865,
+      "2Q_SET": 2331,
+      "2Q_AGO": 803
     }
   },
   {
@@ -4930,6 +5080,108 @@
     "marca": "OLY",
     "prevFat": "JULHO 2026",
     "empresa": "AZABA",
+    "artigo": "54107376",
+    "descricao": "MELBOURNE 2",
+    "cor": "PTO_BC",
+    "linha": "CHINELO GASPEA",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 149.99,
+    "totalGeral": 3,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "54107376_PTO_BC",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 3,
+      "2Q_OUT": 3,
+      "2Q_SET": 3,
+      "2Q_AGO": 3,
+      "2Q_JUL": 3
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "AZABA",
+    "artigo": "54104269",
+    "descricao": "SERENO",
+    "cor": "ALFZMA",
+    "linha": "CHINELO GASPEA",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 129.99,
+    "totalGeral": 534,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 534,
+      "2Q_OUT": 534,
+      "2Q_SET": 534
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "AZABA",
+    "artigo": "54104269",
+    "descricao": "SERENO",
+    "cor": "ARENIT",
+    "linha": "CHINELO GASPEA",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 129.99,
+    "totalGeral": 534,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 534,
+      "2Q_OUT": 534,
+      "2Q_SET": 534
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "AZABA",
+    "artigo": "54104269",
+    "descricao": "SERENO",
+    "cor": "PEWTER",
+    "linha": "CHINELO GASPEA",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 129.99,
+    "totalGeral": 594,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 594,
+      "2Q_OUT": 594,
+      "2Q_SET": 594,
+      "2Q_AGO": 0
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "AZABA",
     "artigo": "54104269",
     "descricao": "SERENO",
     "cor": "PRETO",
@@ -4947,7 +5199,8 @@
     "quinzenas": {
       "2Q_NOV": 1258,
       "2Q_OUT": 1258,
-      "2Q_SET": 4
+      "2Q_SET": 16,
+      "2Q_AGO": 10
     }
   },
   {
@@ -4961,7 +5214,7 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 99.99,
-    "totalGeral": 1618,
+    "totalGeral": 1798,
     "codigoTabela": "E4602",
     "mkp": "2.5",
     "custo": 39.995999999999995,
@@ -4969,11 +5222,11 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 1618,
-      "2Q_OUT": 1618,
-      "2Q_SET": 1618,
-      "2Q_AGO": 1618,
-      "2Q_JUL": 405
+      "2Q_NOV": 1798,
+      "2Q_OUT": 1798,
+      "2Q_SET": 1798,
+      "2Q_AGO": 1798,
+      "2Q_JUL": 527
     }
   },
   {
@@ -5013,7 +5266,7 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 99.99,
-    "totalGeral": 431,
+    "totalGeral": 551,
     "codigoTabela": "E4602",
     "mkp": "2.5",
     "custo": 39.995999999999995,
@@ -5021,10 +5274,10 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 431,
-      "2Q_OUT": 431,
-      "2Q_SET": 431,
-      "2Q_AGO": 431,
+      "2Q_NOV": 551,
+      "2Q_OUT": 551,
+      "2Q_SET": 551,
+      "2Q_AGO": 551,
       "2Q_JUL": 0
     }
   },
@@ -5039,7 +5292,7 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 99.99,
-    "totalGeral": 648,
+    "totalGeral": 689,
     "codigoTabela": "E4602",
     "mkp": "2.5",
     "custo": 39.995999999999995,
@@ -5047,11 +5300,11 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 648,
-      "2Q_OUT": 648,
-      "2Q_SET": 648,
-      "2Q_AGO": 648,
-      "2Q_JUL": 90
+      "2Q_NOV": 689,
+      "2Q_OUT": 689,
+      "2Q_SET": 689,
+      "2Q_AGO": 455,
+      "2Q_JUL": 88
     }
   },
   {
@@ -5065,7 +5318,7 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 99.99,
-    "totalGeral": 795,
+    "totalGeral": 783,
     "codigoTabela": "E4602",
     "mkp": "2.5",
     "custo": 39.995999999999995,
@@ -5073,9 +5326,9 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 795,
-      "2Q_OUT": 795,
-      "2Q_SET": 795,
+      "2Q_NOV": 783,
+      "2Q_OUT": 783,
+      "2Q_SET": 783,
       "2Q_AGO": 9,
       "2Q_JUL": 0
     }
@@ -5118,7 +5371,7 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 399.99,
-    "totalGeral": 2861,
+    "totalGeral": 6966,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -5126,8 +5379,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 2861,
-      "2Q_OUT": 61,
+      "2Q_NOV": 6966,
+      "2Q_OUT": 4142,
       "2Q_SET": 61,
       "2Q_AGO": 61,
       "2Q_JUL": 61
@@ -5144,7 +5397,7 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 399.99,
-    "totalGeral": 2800,
+    "totalGeral": 6905,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -5152,8 +5405,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 2800,
-      "2Q_OUT": 0
+      "2Q_NOV": 6905,
+      "2Q_OUT": 4081
     }
   },
   {
@@ -5167,7 +5420,7 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 399.99,
-    "totalGeral": 2800,
+    "totalGeral": 6905,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -5175,8 +5428,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 2800,
-      "2Q_OUT": 0
+      "2Q_NOV": 6905,
+      "2Q_OUT": 4081
     }
   },
   {
@@ -5190,7 +5443,7 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 399.99,
-    "totalGeral": 11296,
+    "totalGeral": 15653,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -5198,11 +5451,11 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 11296,
-      "2Q_OUT": 8496,
-      "2Q_SET": 8496,
-      "2Q_AGO": 8496,
-      "2Q_JUL": 8496
+      "2Q_NOV": 15653,
+      "2Q_OUT": 12829,
+      "2Q_SET": 8748,
+      "2Q_AGO": 8748,
+      "2Q_JUL": 8748
     }
   },
   {
@@ -5216,7 +5469,7 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 399.99,
-    "totalGeral": 2800,
+    "totalGeral": 6905,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -5224,8 +5477,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 2800,
-      "2Q_OUT": 0
+      "2Q_NOV": 6905,
+      "2Q_OUT": 4081
     }
   },
   {
@@ -5239,7 +5492,7 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 399.99,
-    "totalGeral": 2817,
+    "totalGeral": 7068,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -5247,11 +5500,11 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 2817,
-      "2Q_OUT": 17,
-      "2Q_SET": 17,
-      "2Q_AGO": 17,
-      "2Q_JUL": 17
+      "2Q_NOV": 7068,
+      "2Q_OUT": 4244,
+      "2Q_SET": 163,
+      "2Q_AGO": 163,
+      "2Q_JUL": 160
     }
   },
   {
@@ -5265,7 +5518,7 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 399.99,
-    "totalGeral": 2820,
+    "totalGeral": 6925,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -5273,12 +5526,39 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 2820,
-      "2Q_OUT": 20,
+      "2Q_NOV": 6925,
+      "2Q_OUT": 4101,
       "2Q_SET": 20,
       "2Q_AGO": 20,
       "2Q_JUL": 20
     }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "43429345",
+    "descricao": "CORRE 3 CB.24",
+    "cor": "PTO_ON",
+    "linha": "",
+    "genero": "",
+    "categoria": "2S26",
+    "pdv": 499.99,
+    "totalGeral": 1,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 1,
+      "2Q_OUT": 1,
+      "2Q_SET": 1,
+      "2Q_AGO": 1,
+      "2Q_JUL": 1
+    },
+    "_aguardandoImagem": true
   },
   {
     "marca": "OLY",
@@ -5336,32 +5616,6 @@
     "marca": "OLY",
     "prevFat": "JULHO 2026",
     "empresa": "VULTS",
-    "artigo": "43298343",
-    "descricao": "DYNAMIC / 343",
-    "cor": "PT_LJA",
-    "linha": "COTIDIANO",
-    "genero": "MASCULINO",
-    "categoria": "2S26",
-    "pdv": 299.99,
-    "totalGeral": 8,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43298343_PT_LJA",
-    "grade": {},
-    "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 8,
-      "2Q_OUT": 8,
-      "2Q_SET": 8,
-      "2Q_AGO": 8,
-      "2Q_JUL": 8
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JULHO 2026",
-    "empresa": "VULTS",
     "artigo": "43596370",
     "descricao": "LANCE",
     "cor": "ARENIT",
@@ -5395,7 +5649,7 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 259.99,
-    "totalGeral": 3150,
+    "totalGeral": 3151,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -5403,11 +5657,11 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 3150,
-      "2Q_OUT": 30,
-      "2Q_SET": 18,
-      "2Q_AGO": 18,
-      "2Q_JUL": 18
+      "2Q_NOV": 3151,
+      "2Q_OUT": 31,
+      "2Q_SET": 19,
+      "2Q_AGO": 19,
+      "2Q_JUL": 19
     }
   },
   {
@@ -5444,7 +5698,7 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 259.99,
-    "totalGeral": 4603,
+    "totalGeral": 4639,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -5452,12 +5706,39 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 4603,
-      "2Q_OUT": 1483,
-      "2Q_SET": 1471,
-      "2Q_AGO": 1471,
-      "2Q_JUL": 1471
+      "2Q_NOV": 4639,
+      "2Q_OUT": 1519,
+      "2Q_SET": 1507,
+      "2Q_AGO": 1507,
+      "2Q_JUL": 1507
     }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "43598385",
+    "descricao": "PLAZA",
+    "cor": "ARENIT",
+    "linha": "CONFORTO FEMININO",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 249.99,
+    "totalGeral": 43,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 43,
+      "2Q_OUT": 43,
+      "2Q_SET": 43,
+      "2Q_AGO": 43,
+      "2Q_JUL": 43
+    },
+    "_aguardandoImagem": true
   },
   {
     "marca": "OLY",
@@ -5470,7 +5751,7 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 3303,
+    "totalGeral": 6092,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -5478,8 +5759,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 3303,
-      "2Q_OUT": 1
+      "2Q_NOV": 6092,
+      "2Q_OUT": 2790
     }
   },
   {
@@ -5493,7 +5774,7 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 3895,
+    "totalGeral": 6721,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -5501,11 +5782,11 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 3895,
-      "2Q_OUT": 593,
-      "2Q_SET": 592,
-      "2Q_AGO": 592,
-      "2Q_JUL": 592
+      "2Q_NOV": 6721,
+      "2Q_OUT": 3419,
+      "2Q_SET": 629,
+      "2Q_AGO": 629,
+      "2Q_JUL": 629
     }
   },
   {
@@ -5519,7 +5800,7 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 8010,
+    "totalGeral": 10814,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -5527,11 +5808,11 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 8010,
-      "2Q_OUT": 4708,
-      "2Q_SET": 4707,
-      "2Q_AGO": 4707,
-      "2Q_JUL": 4691
+      "2Q_NOV": 10814,
+      "2Q_OUT": 7512,
+      "2Q_SET": 4718,
+      "2Q_AGO": 4718,
+      "2Q_JUL": 4701
     }
   },
   {
@@ -5545,7 +5826,7 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 3303,
+    "totalGeral": 6092,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -5553,8 +5834,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 3303,
-      "2Q_OUT": 1
+      "2Q_NOV": 6092,
+      "2Q_OUT": 2790
     }
   },
   {
@@ -5698,7 +5979,7 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 3292,
+    "totalGeral": 3282,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -5706,11 +5987,11 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 3292,
-      "2Q_OUT": 3292,
-      "2Q_SET": 3292,
-      "2Q_AGO": 3292,
-      "2Q_JUL": 3292
+      "2Q_NOV": 3282,
+      "2Q_OUT": 3282,
+      "2Q_SET": 3282,
+      "2Q_AGO": 3282,
+      "2Q_JUL": 3282
     },
     "_pdvResgatado": true
   },
@@ -5779,7 +6060,7 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 7268,
+    "totalGeral": 7256,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -5787,11 +6068,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 7268,
-      "2Q_OUT": 0,
-      "2Q_SET": 3516,
-      "2Q_AGO": 3516,
-      "2Q_JUL": 0
+      "2Q_NOV": 7256,
+      "2Q_OUT": 0
     },
     "_pdvResgatado": true
   },
@@ -5806,7 +6084,7 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 7268,
+    "totalGeral": 7256,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -5814,7 +6092,7 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 7268,
+      "2Q_NOV": 7256,
       "2Q_OUT": 0
     },
     "_pdvResgatado": true
@@ -5830,7 +6108,7 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 7268,
+    "totalGeral": 7256,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -5838,11 +6116,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 7268,
-      "2Q_OUT": 0,
-      "2Q_SET": 2808,
-      "2Q_AGO": 2808,
-      "2Q_JUL": 0
+      "2Q_NOV": 7256,
+      "2Q_OUT": 0
     },
     "_pdvResgatado": true
   },
@@ -5857,7 +6132,7 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 7268,
+    "totalGeral": 7256,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -5865,10 +6140,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 7268,
-      "2Q_OUT": 0,
-      "2Q_SET": 4176,
-      "2Q_AGO": 4176
+      "2Q_NOV": 7256,
+      "2Q_OUT": 0
     },
     "_pdvResgatado": true
   },
@@ -5910,7 +6183,7 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 351,
+    "totalGeral": 350,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -5918,11 +6191,11 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 351,
-      "2Q_OUT": 351,
-      "2Q_SET": 351,
-      "2Q_AGO": 351,
-      "2Q_JUL": 351
+      "2Q_NOV": 350,
+      "2Q_OUT": 350,
+      "2Q_SET": 350,
+      "2Q_AGO": 350,
+      "2Q_JUL": 350
     },
     "_pdvResgatado": true
   },
@@ -6006,6 +6279,373 @@
       "2Q_JUL": 6
     },
     "_pdvResgatado": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "43777397",
+    "descricao": "CORRE SUPRA 2",
+    "cor": "LIMATL",
+    "linha": "RESPONSIVIDADE",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 1299.99,
+    "totalGeral": 2868,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 2868,
+      "2Q_OUT": 2868,
+      "2Q_SET": 2868
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "43777397",
+    "descricao": "CORRE SUPRA 2",
+    "cor": "VMH_PT",
+    "linha": "RESPONSIVIDADE",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 1299.99,
+    "totalGeral": 3999,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 3999,
+      "2Q_OUT": 3999,
+      "2Q_SET": 3999
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "43790399",
+    "descricao": "CORRE TURBO",
+    "cor": "AREOLY",
+    "linha": "PERFORMANCE",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 699.99,
+    "totalGeral": 3526,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43790399_AREOLY",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 3526,
+      "2Q_OUT": 3526,
+      "2Q_SET": 3526,
+      "2Q_AGO": 3152,
+      "2Q_JUL": 3152
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "43790399",
+    "descricao": "CORRE TURBO",
+    "cor": "ARTPTO",
+    "linha": "PERFORMANCE",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 699.99,
+    "totalGeral": 945,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43790399_ARTPTO",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 945,
+      "2Q_OUT": 945,
+      "2Q_SET": 945,
+      "2Q_AGO": 634,
+      "2Q_JUL": 634
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "43790399",
+    "descricao": "CORRE TURBO",
+    "cor": "BCOPTO",
+    "linha": "PERFORMANCE",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 699.99,
+    "totalGeral": 469,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 469,
+      "2Q_OUT": 469,
+      "2Q_SET": 469,
+      "2Q_AGO": 469,
+      "2Q_JUL": 0
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "43790399",
+    "descricao": "CORRE TURBO",
+    "cor": "LIMATL",
+    "linha": "PERFORMANCE",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 699.99,
+    "totalGeral": 18,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 18,
+      "2Q_OUT": 18,
+      "2Q_SET": 18,
+      "2Q_AGO": 0
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "43790399",
+    "descricao": "CORRE TURBO",
+    "cor": "LNRMLT",
+    "linha": "PERFORMANCE",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 699.99,
+    "totalGeral": 11167,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43790399_LNRMLT",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 11167,
+      "2Q_OUT": 11167,
+      "2Q_SET": 11167,
+      "2Q_AGO": 11167,
+      "2Q_JUL": 11167
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "43790399",
+    "descricao": "CORRE TURBO",
+    "cor": "PTO_LM",
+    "linha": "PERFORMANCE",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 699.99,
+    "totalGeral": 1091,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43790399_PTO_LM",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 1091,
+      "2Q_OUT": 1091,
+      "2Q_SET": 1091,
+      "2Q_AGO": 955,
+      "2Q_JUL": 955
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "43206446",
+    "descricao": "CORRE 5",
+    "cor": "LIMATL",
+    "linha": "VERSATIL",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 599.99,
+    "totalGeral": 17,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 17,
+      "2Q_OUT": 17,
+      "2Q_SET": 17,
+      "2Q_AGO": 17,
+      "2Q_JUL": 0
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "43308439",
+    "descricao": "CORRE S",
+    "cor": "MARFIM",
+    "linha": "VERSATIL",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 599.99,
+    "totalGeral": 216,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 216,
+      "2Q_OUT": 216,
+      "2Q_SET": 216,
+      "2Q_AGO": 0
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "43442447",
+    "descricao": "CORRE 5 VANDERLEI",
+    "cor": "BRZMLT",
+    "linha": "CORRE FORCA",
+    "genero": "UNISSEX",
+    "categoria": "2S26",
+    "pdv": 599.99,
+    "totalGeral": 30,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 30,
+      "2Q_OUT": 30,
+      "2Q_SET": 25,
+      "2Q_AGO": 25,
+      "2Q_JUL": 25
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "43447473",
+    "descricao": "CORRE VENTO 3",
+    "cor": "ATLVRD",
+    "linha": "VERSATIL",
+    "genero": "MASCULINO",
+    "categoria": "2S26",
+    "pdv": 499.99,
+    "totalGeral": 982,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 982,
+      "2Q_OUT": 982,
+      "2Q_SET": 982,
+      "2Q_AGO": 0
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "43447473",
+    "descricao": "CORRE VENTO 3",
+    "cor": "LUNMHO",
+    "linha": "VERSATIL",
+    "genero": "MASCULINO",
+    "categoria": "2S26",
+    "pdv": 499.99,
+    "totalGeral": 312,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 312,
+      "2Q_OUT": 312,
+      "2Q_SET": 312,
+      "2Q_AGO": 312,
+      "2Q_JUL": 312
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "43447473",
+    "descricao": "CORRE VENTO 3",
+    "cor": "MARBRI",
+    "linha": "VERSATIL",
+    "genero": "MASCULINO",
+    "categoria": "2S26",
+    "pdv": 499.99,
+    "totalGeral": 123,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 123,
+      "2Q_OUT": 123,
+      "2Q_SET": 122,
+      "2Q_AGO": 122,
+      "2Q_JUL": 122
+    },
+    "_aguardandoImagem": true
   },
   {
     "marca": "OLY",
@@ -6148,7 +6788,7 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 8012,
+    "totalGeral": 7970,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -6156,7 +6796,7 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 8012,
+      "2Q_NOV": 7970,
       "2Q_OUT": 12
     },
     "_pdvResgatado": true
@@ -6172,7 +6812,7 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 8012,
+    "totalGeral": 7970,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -6180,7 +6820,7 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 8012,
+      "2Q_NOV": 7970,
       "2Q_OUT": 12
     },
     "_pdvResgatado": true
@@ -6196,7 +6836,7 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 8012,
+    "totalGeral": 7970,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -6204,7 +6844,7 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 8012,
+      "2Q_NOV": 7970,
       "2Q_OUT": 12
     },
     "_pdvResgatado": true
@@ -6220,7 +6860,7 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 379.99,
-    "totalGeral": 2946,
+    "totalGeral": 4299,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -6228,7 +6868,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 2946
+      "2Q_NOV": 4299,
+      "2Q_OUT": 1275
     },
     "_pdvResgatado": true
   },
@@ -6243,7 +6884,7 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 379.99,
-    "totalGeral": 2946,
+    "totalGeral": 4299,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -6251,7 +6892,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 2946
+      "2Q_NOV": 4299,
+      "2Q_OUT": 1275
     },
     "_pdvResgatado": true
   },
@@ -6266,7 +6908,7 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 379.99,
-    "totalGeral": 5593,
+    "totalGeral": 6946,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -6274,8 +6916,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 5593,
-      "2Q_OUT": 2647,
+      "2Q_NOV": 6946,
+      "2Q_OUT": 3922,
       "2Q_SET": 2647,
       "2Q_AGO": 2647,
       "2Q_JUL": 2647
@@ -6293,7 +6935,7 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 379.99,
-    "totalGeral": 3017,
+    "totalGeral": 4370,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -6301,8 +6943,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 3017,
-      "2Q_OUT": 71,
+      "2Q_NOV": 4370,
+      "2Q_OUT": 1346,
       "2Q_SET": 71,
       "2Q_AGO": 71,
       "2Q_JUL": 71
@@ -6320,7 +6962,7 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 379.99,
-    "totalGeral": 2946,
+    "totalGeral": 4299,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -6328,7 +6970,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 2946
+      "2Q_NOV": 4299,
+      "2Q_OUT": 1275
     },
     "_pdvResgatado": true
   },
@@ -6343,7 +6986,7 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 379.99,
-    "totalGeral": 3817,
+    "totalGeral": 5169,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -6351,11 +6994,11 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 3817,
-      "2Q_OUT": 871,
-      "2Q_SET": 871,
-      "2Q_AGO": 871,
-      "2Q_JUL": 871
+      "2Q_NOV": 5169,
+      "2Q_OUT": 2145,
+      "2Q_SET": 870,
+      "2Q_AGO": 870,
+      "2Q_JUL": 870
     },
     "_pdvResgatado": true
   },
@@ -6370,7 +7013,7 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 499.99,
-    "totalGeral": 1924,
+    "totalGeral": 1946,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -6378,11 +7021,11 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 1924,
+      "2Q_NOV": 1946,
       "2Q_OUT": 1924,
-      "2Q_SET": 1918,
-      "2Q_AGO": 90,
-      "2Q_JUL": 90
+      "2Q_SET": 1882,
+      "2Q_AGO": 85,
+      "2Q_JUL": 85
     }
   },
   {
@@ -6396,7 +7039,7 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 499.99,
-    "totalGeral": 2372,
+    "totalGeral": 2430,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -6404,8 +7047,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 2372,
-      "2Q_OUT": 2372,
+      "2Q_NOV": 2430,
+      "2Q_OUT": 2408,
       "2Q_SET": 2366,
       "2Q_AGO": 747,
       "2Q_JUL": 747
@@ -6422,7 +7065,7 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 499.99,
-    "totalGeral": 1370,
+    "totalGeral": 1428,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -6430,8 +7073,8 @@
     "grade": {},
     "_meta": true,
     "quinzenas": {
-      "2Q_NOV": 1370,
-      "2Q_OUT": 1370,
+      "2Q_NOV": 1428,
+      "2Q_OUT": 1406,
       "2Q_SET": 1364,
       "2Q_AGO": 441,
       "2Q_JUL": 441
@@ -6448,13 +7091,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 249.99,
-    "totalGeral": 3789,
+    "totalGeral": 3674,
     "codigoTabela": "E4687",
     "mkp": "2.3",
     "custo": 108.69,
     "imagem": "OIWB241828_NAVAL",
     "grade": {
-      "U": 3789
+      "U": 3674
     }
   },
   {
@@ -6468,13 +7111,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 179.99,
-    "totalGeral": 3829,
+    "totalGeral": 3741,
     "codigoTabela": "E4686",
     "mkp": "2.8",
     "custo": 64.28,
     "imagem": "OIWB221802_CASCAL",
     "grade": {
-      "U": 3829
+      "U": 3741
     }
   },
   {
@@ -6488,13 +7131,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 179.99,
-    "totalGeral": 12889,
+    "totalGeral": 12811,
     "codigoTabela": "E4686",
     "mkp": "2.8",
     "custo": 64.28,
     "imagem": "OIWB221802_NVLPRT",
     "grade": {
-      "U": 12889
+      "U": 12811
     }
   },
   {
@@ -6508,13 +7151,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 179.99,
-    "totalGeral": 7797,
+    "totalGeral": 7673,
     "codigoTabela": "E4686",
     "mkp": "2.8",
     "custo": 64.28,
     "imagem": "OIWB221802_PCGRAY",
     "grade": {
-      "U": 7797
+      "U": 7673
     }
   },
   {
@@ -6528,13 +7171,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 179.99,
-    "totalGeral": 21342,
+    "totalGeral": 21063,
     "codigoTabela": "E4686",
     "mkp": "2.8",
     "custo": 64.28,
     "imagem": "OIWB221802_PT_PRT",
     "grade": {
-      "U": 21342
+      "U": 21063
     }
   },
   {
@@ -6548,13 +7191,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 179.99,
-    "totalGeral": 626,
+    "totalGeral": 620,
     "codigoTabela": "E4686",
     "mkp": "2.8",
     "custo": 64.28,
     "imagem": "OIWB221802_REDWOD",
     "grade": {
-      "U": 626
+      "U": 620
     }
   },
   {
@@ -6568,13 +7211,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 169.99,
-    "totalGeral": 1101,
+    "totalGeral": 1099,
     "codigoTabela": "E4687",
     "mkp": "2.3",
     "custo": 73.91,
     "imagem": "OIWB211800_ARNITO",
     "grade": {
-      "U": 1101
+      "U": 1099
     }
   },
   {
@@ -6668,13 +7311,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 169.99,
-    "totalGeral": 2453,
+    "totalGeral": 2452,
     "codigoTabela": "E4687",
     "mkp": "2.3",
     "custo": 73.91,
     "imagem": "OIWB211800_PCGRAY",
     "grade": {
-      "U": 2453
+      "U": 2452
     }
   },
   {
@@ -6688,13 +7331,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 169.99,
-    "totalGeral": 6652,
+    "totalGeral": 6642,
     "codigoTabela": "E4687",
     "mkp": "2.3",
     "custo": 73.91,
     "imagem": "OIWB211800_PRETO",
     "grade": {
-      "U": 6652
+      "U": 6642
     }
   },
   {
@@ -6728,13 +7371,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 149.99,
-    "totalGeral": 3408,
+    "totalGeral": 3402,
     "codigoTabela": "E4687",
     "mkp": "2.3",
     "custo": 65.21,
     "imagem": "OIWB251808_PCGRAY",
     "grade": {
-      "U": 3408
+      "U": 3402
     }
   },
   {
@@ -6748,13 +7391,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 139.99,
-    "totalGeral": 1818,
+    "totalGeral": 1807,
     "codigoTabela": "E4686",
     "mkp": "2.8",
     "custo": 50,
     "imagem": "OIWB241805_CASCAL",
     "grade": {
-      "U": 1818
+      "U": 1807
     }
   },
   {
@@ -6808,13 +7451,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 139.99,
-    "totalGeral": 754,
+    "totalGeral": 743,
     "codigoTabela": "E4686",
     "mkp": "2.8",
     "custo": 50,
     "imagem": "OIWB241805_LUNAR",
     "grade": {
-      "U": 754
+      "U": 743
     }
   },
   {
@@ -6828,13 +7471,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 139.99,
-    "totalGeral": 13900,
+    "totalGeral": 13816,
     "codigoTabela": "E4686",
     "mkp": "2.8",
     "custo": 50,
     "imagem": "OIWB241805_PRETO",
     "grade": {
-      "U": 13900
+      "U": 13816
     }
   },
   {
@@ -6868,13 +7511,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 89.99,
-    "totalGeral": 214,
+    "totalGeral": 205,
     "codigoTabela": "E4687",
     "mkp": "2.3",
     "custo": 39.13,
     "imagem": "OIMC251706_CASCAL",
     "grade": {
-      "U": 214
+      "U": 205
     }
   },
   {
@@ -6888,13 +7531,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 89.99,
-    "totalGeral": 721,
+    "totalGeral": 708,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWB251712_ARNT25",
     "grade": {
-      "U": 721
+      "U": 708
     }
   },
   {
@@ -6908,13 +7551,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 89.99,
-    "totalGeral": 562,
+    "totalGeral": 541,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWB251712_LUNAR",
     "grade": {
-      "U": 562
+      "U": 541
     }
   },
   {
@@ -6928,13 +7571,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 99.99,
-    "totalGeral": 2053,
+    "totalGeral": 2050,
     "codigoTabela": "E4687",
     "mkp": "2.3",
     "custo": 43.47,
     "imagem": "OIWB221811_LUNAR",
     "grade": {
-      "U": 2053
+      "U": 2050
     }
   },
   {
@@ -6968,13 +7611,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 99.99,
-    "totalGeral": 7484,
+    "totalGeral": 7474,
     "codigoTabela": "E4687",
     "mkp": "2.3",
     "custo": 43.47,
     "imagem": "OIWB221811_PRETO",
     "grade": {
-      "U": 7484
+      "U": 7474
     }
   },
   {
@@ -7028,13 +7671,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 89.99,
-    "totalGeral": 565,
+    "totalGeral": 573,
     "codigoTabela": "E4687",
     "mkp": "2.3",
     "custo": 39.13,
     "imagem": "OIWC231704_BRANCO",
     "grade": {
-      "U": 565
+      "U": 573
     }
   },
   {
@@ -7069,13 +7712,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 249.99,
-    "totalGeral": 7151,
+    "totalGeral": 7077,
     "codigoTabela": "E4687",
     "mkp": "2.3",
     "custo": 108.69,
     "imagem": "OISB241825_MRINHO",
     "grade": {
-      "U": 7151
+      "U": 7077
     }
   },
   {
@@ -7089,13 +7732,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 249.99,
-    "totalGeral": 8487,
+    "totalGeral": 8473,
     "codigoTabela": "E4687",
     "mkp": "2.3",
     "custo": 108.69,
     "imagem": "OISB241825_NAVAL",
     "grade": {
-      "U": 8487
+      "U": 8473
     }
   },
   {
@@ -7109,13 +7752,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 249.99,
-    "totalGeral": 11398,
+    "totalGeral": 11211,
     "codigoTabela": "E4687",
     "mkp": "2.3",
     "custo": 108.69,
     "imagem": "OISB241825_PRETO",
     "grade": {
-      "U": 11398
+      "U": 11211
     }
   },
   {
@@ -7129,13 +7772,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 199.99,
-    "totalGeral": 1820,
+    "totalGeral": 1774,
     "codigoTabela": "E4687",
     "mkp": "2.3",
     "custo": 86.95,
     "imagem": "OIWB231809_NAVAL",
     "grade": {
-      "U": 1820
+      "U": 1774
     }
   },
   {
@@ -7149,13 +7792,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 199.99,
-    "totalGeral": 3327,
+    "totalGeral": 3279,
     "codigoTabela": "E4686",
     "mkp": "2.8",
     "custo": 71.43,
     "imagem": "OIWB241803_CASCAL",
     "grade": {
-      "U": 3327
+      "U": 3279
     }
   },
   {
@@ -7169,13 +7812,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 199.99,
-    "totalGeral": 395,
+    "totalGeral": 368,
     "codigoTabela": "E4686",
     "mkp": "2.8",
     "custo": 71.43,
     "imagem": "OIWB241803_MRINHO",
     "grade": {
-      "U": 395
+      "U": 368
     }
   },
   {
@@ -7189,13 +7832,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 199.99,
-    "totalGeral": 8973,
+    "totalGeral": 8938,
     "codigoTabela": "E4686",
     "mkp": "2.8",
     "custo": 71.43,
     "imagem": "OIWB241803_NVLPRT",
     "grade": {
-      "U": 8973
+      "U": 8938
     }
   },
   {
@@ -7209,13 +7852,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 199.99,
-    "totalGeral": 20679,
+    "totalGeral": 19916,
     "codigoTabela": "E4686",
     "mkp": "2.8",
     "custo": 71.43,
     "imagem": "OIWB241803_PRETO",
     "grade": {
-      "U": 20679
+      "U": 19916
     }
   },
   {
@@ -7229,13 +7872,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 199.99,
-    "totalGeral": 15378,
+    "totalGeral": 15293,
     "codigoTabela": "E4686",
     "mkp": "2.8",
     "custo": 71.43,
     "imagem": "OIWB241803_PTCPTO",
     "grade": {
-      "U": 15378
+      "U": 15293
     }
   },
   {
@@ -7249,13 +7892,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 149.99,
-    "totalGeral": 7735,
+    "totalGeral": 7669,
     "codigoTabela": "E4686",
     "mkp": "2.8",
     "custo": 53.57,
     "imagem": "OIWB221806_CASCAL",
     "grade": {
-      "U": 7735
+      "U": 7669
     }
   },
   {
@@ -7269,13 +7912,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 149.99,
-    "totalGeral": 2045,
+    "totalGeral": 2044,
     "codigoTabela": "E4686",
     "mkp": "2.8",
     "custo": 53.57,
     "imagem": "OIWB221806_LIMSUR",
     "grade": {
-      "U": 2045
+      "U": 2044
     }
   },
   {
@@ -7289,13 +7932,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 149.99,
-    "totalGeral": 14077,
+    "totalGeral": 13905,
     "codigoTabela": "E4686",
     "mkp": "2.8",
     "custo": 53.57,
     "imagem": "OIWB221806_NVLPRT",
     "grade": {
-      "U": 14077
+      "U": 13905
     }
   },
   {
@@ -7309,13 +7952,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 149.99,
-    "totalGeral": 8386,
+    "totalGeral": 8369,
     "codigoTabela": "E4686",
     "mkp": "2.8",
     "custo": 53.57,
     "imagem": "OIWB221806_REDWOD",
     "grade": {
-      "U": 8386
+      "U": 8369
     }
   },
   {
@@ -7329,13 +7972,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 149.99,
-    "totalGeral": 2723,
+    "totalGeral": 2720,
     "codigoTabela": "E4687",
     "mkp": "2.3",
     "custo": 65.21,
     "imagem": "OIWB261826_LUNAR",
     "grade": {
-      "U": 2723
+      "U": 2720
     }
   },
   {
@@ -7349,13 +7992,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 129.99,
-    "totalGeral": 3192,
+    "totalGeral": 3152,
     "codigoTabela": "E4686",
     "mkp": "2.8",
     "custo": 46.42,
     "imagem": "OIWB23823_BLUSH",
     "grade": {
-      "U": 3192
+      "U": 3152
     }
   },
   {
@@ -7369,13 +8012,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 129.99,
-    "totalGeral": 5076,
+    "totalGeral": 5061,
     "codigoTabela": "E4686",
     "mkp": "2.8",
     "custo": 46.42,
     "imagem": "OIWB23823_LNRORV",
     "grade": {
-      "U": 5076
+      "U": 5061
     }
   },
   {
@@ -7389,13 +8032,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 129.99,
-    "totalGeral": 2974,
+    "totalGeral": 2957,
     "codigoTabela": "E4686",
     "mkp": "2.8",
     "custo": 46.42,
     "imagem": "OIWB23823_NVLPRT",
     "grade": {
-      "U": 2974
+      "U": 2957
     }
   },
   {
@@ -7409,13 +8052,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 129.99,
-    "totalGeral": 2581,
+    "totalGeral": 2579,
     "codigoTabela": "E4686",
     "mkp": "2.8",
     "custo": 46.42,
     "imagem": "OIWB23823_ORVLHO",
     "grade": {
-      "U": 2581
+      "U": 2579
     }
   },
   {
@@ -7429,13 +8072,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 129.99,
-    "totalGeral": 559,
+    "totalGeral": 507,
     "codigoTabela": "E4686",
     "mkp": "2.8",
     "custo": 46.42,
     "imagem": "OIWB23823_PRETO",
     "grade": {
-      "U": 559
+      "U": 507
     }
   },
   {
@@ -7449,13 +8092,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 119.99,
-    "totalGeral": 3478,
+    "totalGeral": 3465,
     "codigoTabela": "E4687",
     "mkp": "2.3",
     "custo": 52.17,
     "imagem": "OIWB231817_CASCAL",
     "grade": {
-      "U": 3478
+      "U": 3465
     }
   },
   {
@@ -7469,13 +8112,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 119.99,
-    "totalGeral": 2309,
+    "totalGeral": 2234,
     "codigoTabela": "E4687",
     "mkp": "2.3",
     "custo": 52.17,
     "imagem": "OIWB231817_PRETO",
     "grade": {
-      "U": 2309
+      "U": 2234
     }
   },
   {
@@ -7509,13 +8152,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 119.99,
-    "totalGeral": 1605,
+    "totalGeral": 1593,
     "codigoTabela": "E4686",
     "mkp": "2.8",
     "custo": 42.85,
     "imagem": "OIWB251811_ORVLHO",
     "grade": {
-      "U": 1605
+      "U": 1593
     }
   },
   {
@@ -7529,13 +8172,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 119.99,
-    "totalGeral": 920,
+    "totalGeral": 911,
     "codigoTabela": "E4686",
     "mkp": "2.8",
     "custo": 42.85,
     "imagem": "OIWB251811_REDWOD",
     "grade": {
-      "U": 920
+      "U": 911
     }
   },
   {
@@ -7549,13 +8192,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 89.99,
-    "totalGeral": 882,
+    "totalGeral": 871,
     "codigoTabela": "E4687",
     "mkp": "2.3",
     "custo": 39.13,
     "imagem": "OIWC221703_BRANCO",
     "grade": {
-      "U": 882
+      "U": 871
     }
   },
   {
@@ -7586,6 +8229,31 @@
   {
     "marca": "OLY",
     "prevFat": "JULHO 2026",
+    "empresa": "AZABA",
+    "artigo": "54827630",
+    "descricao": "OLYMPIKUS/921",
+    "cor": "PTO_CH",
+    "linha": "CHINELO DEDO",
+    "genero": "UNISSEX",
+    "categoria": "CHINELO",
+    "pdv": 139.99,
+    "totalGeral": 80,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "54827630_PTO_CH",
+    "grade": {
+      "33/34": 10,
+      "35/36": 12,
+      "37/38": 30,
+      "39/40": 8,
+      "41/42": 16,
+      "43/44": 4
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
     "empresa": "VULSP",
     "artigo": "54111405",
     "descricao": "POS CORRE",
@@ -7607,6 +8275,33 @@
       "41/42": 23,
       "43/44": 17
     }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "54111405",
+    "descricao": "POS CORRE",
+    "cor": "TURQSA",
+    "linha": "CHINELO GASPEA",
+    "genero": "UNISSEX",
+    "categoria": "CHINELO",
+    "pdv": 179.99,
+    "totalGeral": 89,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "33/34": 3,
+      "35/36": 12,
+      "37/38": 21,
+      "39/40": 23,
+      "41/42": 20,
+      "43/44": 9,
+      "45/46": 1
+    },
+    "_aguardandoImagem": true
   },
   {
     "marca": "OLY",
@@ -7711,7 +8406,7 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 229.99,
-    "totalGeral": 624,
+    "totalGeral": 623,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -7719,7 +8414,7 @@
     "grade": {
       "P": 88,
       "M": 217,
-      "G": 215,
+      "G": 214,
       "GG": 104
     }
   },
@@ -7734,7 +8429,7 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 229.99,
-    "totalGeral": 368,
+    "totalGeral": 367,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -7742,7 +8437,7 @@
     "grade": {
       "P": 34,
       "M": 111,
-      "G": 171,
+      "G": 170,
       "GG": 44,
       "G2": 8
     }
@@ -7758,13 +8453,13 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 229.99,
-    "totalGeral": 560,
+    "totalGeral": 559,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWL25502_CASCAL",
     "grade": {
-      "P": 79,
+      "P": 78,
       "M": 193,
       "G": 186,
       "GG": 102
@@ -7852,7 +8547,7 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 179.99,
-    "totalGeral": 865,
+    "totalGeral": 864,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -7860,7 +8555,7 @@
     "grade": {
       "P": 138,
       "M": 274,
-      "G": 320,
+      "G": 319,
       "GG": 133
     }
   },
@@ -7875,15 +8570,15 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 179.99,
-    "totalGeral": 1365,
+    "totalGeral": 1363,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWL25301_PRETO",
     "grade": {
-      "P": 212,
+      "P": 211,
       "M": 450,
-      "G": 479,
+      "G": 478,
       "GG": 224
     }
   },
@@ -7898,16 +8593,16 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 179.99,
-    "totalGeral": 864,
+    "totalGeral": 870,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWL25251_CHACHY",
     "grade": {
-      "P": 144,
-      "M": 283,
-      "G": 289,
-      "GG": 148
+      "P": 145,
+      "M": 285,
+      "G": 291,
+      "GG": 149
     }
   },
   {
@@ -7921,16 +8616,16 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 179.99,
-    "totalGeral": 843,
+    "totalGeral": 849,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWL25251_PRETO",
     "grade": {
-      "P": 143,
-      "M": 275,
-      "G": 283,
-      "GG": 142
+      "P": 144,
+      "M": 277,
+      "G": 285,
+      "GG": 143
     }
   },
   {
@@ -8205,16 +8900,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 129.99,
-    "totalGeral": 525,
+    "totalGeral": 523,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWL26633_CASCAL",
     "grade": {
-      "P": 86,
+      "P": 85,
       "M": 200,
       "G": 172,
-      "GG": 67
+      "GG": 66
     }
   },
   {
@@ -8251,16 +8946,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 129.99,
-    "totalGeral": 770,
+    "totalGeral": 768,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWL26634_CASCAL",
     "grade": {
-      "P": 126,
+      "P": 125,
       "M": 268,
       "G": 255,
-      "GG": 121
+      "GG": 120
     }
   },
   {
@@ -8297,16 +8992,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 119.99,
-    "totalGeral": 559,
+    "totalGeral": 557,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWL26632_CASCAL",
     "grade": {
-      "P": 89,
+      "P": 88,
       "M": 194,
       "G": 185,
-      "GG": 91
+      "GG": 90
     }
   },
   {
@@ -8320,7 +9015,7 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 119.99,
-    "totalGeral": 548,
+    "totalGeral": 547,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -8329,7 +9024,7 @@
       "P": 95,
       "M": 191,
       "G": 179,
-      "GG": 83
+      "GG": 82
     }
   },
   {
@@ -8367,16 +9062,16 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 119.99,
-    "totalGeral": 473,
+    "totalGeral": 467,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWSL25636_PRETO",
     "grade": {
-      "P": 44,
-      "M": 172,
-      "G": 159,
-      "GG": 98
+      "P": 43,
+      "M": 170,
+      "G": 157,
+      "GG": 97
     }
   },
   {
@@ -8483,16 +9178,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 249.99,
-    "totalGeral": 293,
+    "totalGeral": 299,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWR24506_PRETO",
     "grade": {
-      "P": 28,
-      "M": 82,
-      "G": 98,
-      "GG": 85
+      "P": 29,
+      "M": 84,
+      "G": 100,
+      "GG": 86
     }
   },
   {
@@ -8506,14 +9201,14 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 249.99,
-    "totalGeral": 118,
+    "totalGeral": 116,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWSR25153_MARGRE",
     "grade": {
-      "P": 8,
-      "M": 25,
+      "P": 7,
+      "M": 24,
       "G": 50,
       "GG": 35
     }
@@ -8529,13 +9224,13 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 219.99,
-    "totalGeral": 199,
+    "totalGeral": 198,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMCR24301_OCEANO",
     "grade": {
-      "PP": 10,
+      "PP": 9,
       "P": 53,
       "M": 64,
       "G": 50,
@@ -8871,30 +9566,6 @@
     "marca": "OLY",
     "prevFat": "JULHO 2026",
     "empresa": "VULSP",
-    "artigo": "OIMCR24605",
-    "descricao": "T-SHIRT CORRE M",
-    "cor": "PTO_PR",
-    "linha": "CORRE FOCO",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 169.99,
-    "totalGeral": 175,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "OIMCR24605_PTO_PR",
-    "grade": {
-      "PP": 12,
-      "P": 40,
-      "M": 49,
-      "G": 50,
-      "GG": 24
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JULHO 2026",
-    "empresa": "VULSP",
     "artigo": "OIWCR24601",
     "descricao": "T-SHIRT CORRE F",
     "cor": "PT_PRT",
@@ -8926,14 +9597,14 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 169.99,
-    "totalGeral": 192,
+    "totalGeral": 191,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWCR25103_SKY",
     "grade": {
       "PP": 13,
-      "P": 49,
+      "P": 48,
       "M": 61,
       "G": 51,
       "GG": 18
@@ -8973,16 +9644,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 149.99,
-    "totalGeral": 343,
+    "totalGeral": 361,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMSR23605_FLOTAL",
     "grade": {
-      "P": 65,
-      "M": 106,
-      "G": 117,
-      "GG": 55
+      "P": 68,
+      "M": 112,
+      "G": 123,
+      "GG": 58
     }
   },
   {
@@ -8996,16 +9667,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 149.99,
-    "totalGeral": 226,
+    "totalGeral": 232,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMSR23605_ORVLHO",
     "grade": {
-      "P": 24,
-      "M": 110,
-      "G": 71,
-      "GG": 21
+      "P": 25,
+      "M": 112,
+      "G": 73,
+      "GG": 22
     }
   },
   {
@@ -9019,16 +9690,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 149.99,
-    "totalGeral": 3800,
+    "totalGeral": 3824,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMSR23605_PRETO",
     "grade": {
-      "P": 688,
-      "M": 1260,
-      "G": 1278,
-      "GG": 574
+      "P": 692,
+      "M": 1268,
+      "G": 1286,
+      "GG": 578
     }
   },
   {
@@ -9042,7 +9713,7 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 149.99,
-    "totalGeral": 1087,
+    "totalGeral": 1088,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -9050,7 +9721,7 @@
     "grade": {
       "P": 149,
       "M": 332,
-      "G": 389,
+      "G": 390,
       "GG": 217
     }
   },
@@ -9065,16 +9736,16 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 149.99,
-    "totalGeral": 568,
+    "totalGeral": 562,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWSR23601_REDWOD",
     "grade": {
-      "P": 75,
-      "M": 192,
+      "P": 74,
+      "M": 190,
       "G": 193,
-      "GG": 108
+      "GG": 105
     }
   },
   {
@@ -9156,16 +9827,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 129.99,
-    "totalGeral": 511,
+    "totalGeral": 505,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWR25614_PRETO",
     "grade": {
-      "P": 75,
-      "M": 160,
-      "G": 203,
-      "GG": 73
+      "P": 74,
+      "M": 158,
+      "G": 201,
+      "GG": 72
     }
   },
   {
@@ -9225,16 +9896,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 119.99,
-    "totalGeral": 49,
+    "totalGeral": 55,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWR25606_LUNAR",
     "grade": {
-      "P": 5,
-      "M": 21,
-      "G": 17,
-      "GG": 6
+      "P": 6,
+      "M": 23,
+      "G": 19,
+      "GG": 7
     }
   },
   {
@@ -9248,17 +9919,17 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 119.99,
-    "totalGeral": 315,
+    "totalGeral": 321,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWR25606_PRETO",
     "grade": {
       "PP": 17,
-      "P": 61,
-      "M": 108,
-      "G": 86,
-      "GG": 43
+      "P": 62,
+      "M": 110,
+      "G": 88,
+      "GG": 44
     }
   },
   {
@@ -9343,17 +10014,17 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 119.99,
-    "totalGeral": 1461,
+    "totalGeral": 1470,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWR25602_PRETO",
     "grade": {
       "PP": 10,
-      "P": 220,
-      "M": 476,
-      "G": 496,
-      "GG": 259
+      "P": 221,
+      "M": 478,
+      "G": 498,
+      "GG": 263
     }
   },
   {
@@ -9484,16 +10155,16 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 109.99,
-    "totalGeral": 360,
+    "totalGeral": 366,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWR25701_LUNAR",
     "grade": {
-      "P": 14,
-      "M": 112,
-      "G": 152,
-      "GG": 82
+      "P": 15,
+      "M": 114,
+      "G": 154,
+      "GG": 83
     }
   },
   {
@@ -9531,17 +10202,17 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 109.99,
-    "totalGeral": 1220,
+    "totalGeral": 1226,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWR25701_PRETO",
     "grade": {
       "PP": 15,
-      "P": 153,
-      "M": 408,
-      "G": 419,
-      "GG": 225
+      "P": 154,
+      "M": 410,
+      "G": 421,
+      "GG": 226
     }
   },
   {
@@ -9555,16 +10226,16 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 109.99,
-    "totalGeral": 640,
+    "totalGeral": 646,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWR25701_REDWOD",
     "grade": {
-      "P": 9,
-      "M": 241,
-      "G": 266,
-      "GG": 124
+      "P": 10,
+      "M": 243,
+      "G": 268,
+      "GG": 125
     }
   },
   {
@@ -9605,29 +10276,6 @@
     "imagem": "OIWA241919_BRANCO",
     "grade": {
       "U": 343
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JULHO 2026",
-    "empresa": "VULSP",
-    "artigo": "OIMWT25406",
-    "descricao": "AGASALHO ESSENTIAL M",
-    "cor": "NAVAL",
-    "linha": "ESSENTIAL",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 289.99,
-    "totalGeral": 91,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "OIMWT25406_NAVAL",
-    "grade": {
-      "P": 38,
-      "M": 40,
-      "G": 7,
-      "GG": 6
     }
   },
   {
@@ -9688,16 +10336,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 199.99,
-    "totalGeral": 3987,
+    "totalGeral": 3967,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMSR25306_PRETO",
     "grade": {
-      "P": 649,
-      "M": 1330,
-      "G": 1333,
-      "GG": 675
+      "P": 647,
+      "M": 1324,
+      "G": 1327,
+      "GG": 669
     }
   },
   {
@@ -9711,16 +10359,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 199.99,
-    "totalGeral": 221,
+    "totalGeral": 207,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWT25114_SILGRE",
     "grade": {
-      "P": 36,
-      "M": 95,
-      "G": 65,
-      "GG": 25
+      "P": 34,
+      "M": 92,
+      "G": 60,
+      "GG": 21
     }
   },
   {
@@ -9757,14 +10405,14 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 199.99,
-    "totalGeral": 1008,
+    "totalGeral": 1005,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWT25115_TAPTRY",
     "grade": {
-      "P": 146,
-      "M": 337,
+      "P": 145,
+      "M": 335,
       "G": 343,
       "GG": 182
     }
@@ -9780,16 +10428,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 179.99,
-    "totalGeral": 90,
+    "totalGeral": 106,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWR26305_PRETO",
     "grade": {
-      "P": 13,
+      "P": 17,
       "M": 19,
-      "G": 31,
-      "GG": 27
+      "G": 39,
+      "GG": 31
     }
   },
   {
@@ -9864,6 +10512,30 @@
     "marca": "OLY",
     "prevFat": "JULHO 2026",
     "empresa": "VULSP",
+    "artigo": "OIMWT22503",
+    "descricao": "CALCA ESSENTIAL M",
+    "cor": "PRETO",
+    "linha": "ESSENTIAL",
+    "genero": "MASCULINO",
+    "categoria": "VESTUARIO",
+    "pdv": 179.99,
+    "totalGeral": 133,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OIMWT22503_PRETO",
+    "grade": {
+      "P": 8,
+      "M": 47,
+      "G": 40,
+      "G2": 24,
+      "G3": 14
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
     "artigo": "OBWST23153",
     "descricao": "LEGGING ESSENTIAL F",
     "cor": "MRINHO",
@@ -9871,16 +10543,16 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 159.99,
-    "totalGeral": 924,
+    "totalGeral": 921,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBWST23153_MRINHO",
     "grade": {
       "P": 140,
-      "M": 279,
-      "G": 320,
-      "GG": 185
+      "M": 278,
+      "G": 319,
+      "GG": 184
     }
   },
   {
@@ -9905,6 +10577,30 @@
       "G": 61,
       "GG": 37
     }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBWST23153",
+    "descricao": "LEGGING ESSENTIAL F",
+    "cor": "PRETO",
+    "linha": "ESSENTIAL",
+    "genero": "FEMININO",
+    "categoria": "VESTUARIO",
+    "pdv": 159.99,
+    "totalGeral": 732,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 121,
+      "M": 242,
+      "G": 247,
+      "GG": 122
+    },
+    "_aguardandoImagem": true
   },
   {
     "marca": "OLY",
@@ -9940,16 +10636,16 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 149.99,
-    "totalGeral": 429,
+    "totalGeral": 420,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWSR25152_PRETO",
     "grade": {
-      "P": 9,
-      "M": 94,
-      "G": 208,
-      "GG": 118
+      "P": 7,
+      "M": 91,
+      "G": 205,
+      "GG": 117
     }
   },
   {
@@ -9963,16 +10659,16 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 149.99,
-    "totalGeral": 666,
+    "totalGeral": 661,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWSR25152_TAPTRY",
     "grade": {
-      "P": 98,
-      "M": 199,
-      "G": 233,
-      "GG": 136
+      "P": 97,
+      "M": 197,
+      "G": 232,
+      "GG": 135
     }
   },
   {
@@ -9986,7 +10682,7 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 149.99,
-    "totalGeral": 1983,
+    "totalGeral": 1981,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -9994,7 +10690,7 @@
     "grade": {
       "P": 286,
       "M": 634,
-      "G": 710,
+      "G": 708,
       "GG": 353
     }
   },
@@ -10009,16 +10705,16 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 149.99,
-    "totalGeral": 843,
+    "totalGeral": 840,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWT26307_TAPTRY",
     "grade": {
       "P": 133,
-      "M": 273,
-      "G": 283,
-      "GG": 154
+      "M": 272,
+      "G": 282,
+      "GG": 153
     }
   },
   {
@@ -10078,16 +10774,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 139.99,
-    "totalGeral": 2834,
+    "totalGeral": 2802,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWT25320_PRETO",
     "grade": {
-      "P": 501,
-      "M": 907,
-      "G": 962,
-      "GG": 464
+      "P": 496,
+      "M": 896,
+      "G": 951,
+      "GG": 459
     }
   },
   {
@@ -10101,15 +10797,15 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 139.99,
-    "totalGeral": 540,
+    "totalGeral": 537,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWT25320_PTCPTO",
     "grade": {
-      "P": 103,
-      "M": 218,
-      "G": 219
+      "P": 102,
+      "M": 217,
+      "G": 218
     }
   },
   {
@@ -10123,16 +10819,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 139.99,
-    "totalGeral": 3568,
+    "totalGeral": 3564,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWT25320_PTOPTC",
     "grade": {
-      "P": 537,
-      "M": 1219,
-      "G": 1217,
-      "GG": 595
+      "P": 536,
+      "M": 1218,
+      "G": 1216,
+      "GG": 594
     }
   },
   {
@@ -10169,15 +10865,15 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 139.99,
-    "totalGeral": 1419,
+    "totalGeral": 1416,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWSR25161_PRETO",
     "grade": {
-      "P": 210,
-      "M": 465,
-      "G": 491,
+      "P": 209,
+      "M": 464,
+      "G": 490,
       "GG": 253
     }
   },
@@ -10192,13 +10888,13 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 139.99,
-    "totalGeral": 572,
+    "totalGeral": 571,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWSR25161_TAPTRY",
     "grade": {
-      "P": 88,
+      "P": 87,
       "M": 187,
       "G": 191,
       "GG": 106
@@ -10307,15 +11003,15 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 129.99,
-    "totalGeral": 1420,
+    "totalGeral": 1414,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWSR25801_PRETO",
     "grade": {
-      "P": 184,
-      "M": 437,
-      "G": 530,
+      "P": 182,
+      "M": 435,
+      "G": 528,
       "GG": 269
     }
   },
@@ -10330,16 +11026,16 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 129.99,
-    "totalGeral": 940,
+    "totalGeral": 939,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWSR25801_TAPTRY",
     "grade": {
-      "P": 153,
-      "M": 309,
+      "P": 152,
+      "M": 308,
       "G": 307,
-      "GG": 171
+      "GG": 172
     }
   },
   {
@@ -10353,15 +11049,15 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 119.99,
-    "totalGeral": 696,
+    "totalGeral": 692,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWT22304_MRINHO",
     "grade": {
-      "P": 386,
-      "M": 249,
-      "G": 61
+      "P": 385,
+      "M": 248,
+      "G": 59
     }
   },
   {
@@ -10375,19 +11071,19 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 119.99,
-    "totalGeral": 5990,
+    "totalGeral": 5966,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWT22304_NAVAL",
     "grade": {
-      "P": 980,
-      "M": 1865,
-      "G": 2024,
-      "GG": 958,
-      "G1": 22,
-      "G2": 106,
-      "G3": 35
+      "P": 977,
+      "M": 1862,
+      "G": 2017,
+      "GG": 952,
+      "G1": 20,
+      "G2": 104,
+      "G3": 34
     }
   },
   {
@@ -10401,16 +11097,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 119.99,
-    "totalGeral": 1651,
+    "totalGeral": 1644,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWT22304_PCGRAY",
     "grade": {
-      "P": 568,
-      "M": 642,
-      "G": 413,
-      "GG": 28
+      "P": 566,
+      "M": 641,
+      "G": 410,
+      "GG": 27
     }
   },
   {
@@ -10424,19 +11120,17 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 119.99,
-    "totalGeral": 10980,
+    "totalGeral": 10940,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWT22304_PRETO",
     "grade": {
-      "P": 2242,
-      "M": 3737,
-      "G": 3390,
-      "GG": 1547,
-      "G1": 1,
-      "G2": 61,
-      "G3": 2
+      "P": 2238,
+      "M": 3729,
+      "G": 3379,
+      "GG": 1538,
+      "G2": 56
     }
   },
   {
@@ -10450,16 +11144,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 119.99,
-    "totalGeral": 1856,
+    "totalGeral": 1846,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWT22304_SILGRE",
     "grade": {
-      "P": 270,
-      "M": 615,
-      "G": 622,
-      "GG": 279,
+      "P": 268,
+      "M": 612,
+      "G": 619,
+      "GG": 277,
       "G1": 7,
       "G2": 48,
       "G3": 15
@@ -10476,16 +11170,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 109.99,
-    "totalGeral": 1164,
+    "totalGeral": 1155,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMST22309_PRETO",
     "grade": {
-      "P": 238,
-      "M": 402,
-      "G": 391,
-      "GG": 133
+      "P": 232,
+      "M": 400,
+      "G": 389,
+      "GG": 134
     }
   },
   {
@@ -10499,15 +11193,15 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 109.99,
-    "totalGeral": 814,
+    "totalGeral": 802,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMST22309_SILGRE",
     "grade": {
-      "P": 186,
-      "M": 256,
-      "G": 246,
+      "P": 180,
+      "M": 253,
+      "G": 243,
       "GG": 126
     }
   },
@@ -10522,16 +11216,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 109.99,
-    "totalGeral": 2482,
+    "totalGeral": 2475,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMST25312_NAVAL",
     "grade": {
-      "P": 435,
-      "M": 893,
-      "G": 838,
-      "GG": 316
+      "P": 433,
+      "M": 892,
+      "G": 835,
+      "GG": 315
     }
   },
   {
@@ -10545,16 +11239,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 109.99,
-    "totalGeral": 10714,
+    "totalGeral": 10677,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMST25312_PTOPTC",
     "grade": {
-      "P": 1796,
-      "M": 3674,
-      "G": 3678,
-      "GG": 1566
+      "P": 1790,
+      "M": 3662,
+      "G": 3663,
+      "GG": 1562
     }
   },
   {
@@ -10705,16 +11399,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 99.99,
-    "totalGeral": 2570,
+    "totalGeral": 2576,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBMST24643_PTO_PT",
     "grade": {
-      "P": 431,
-      "M": 942,
-      "G": 918,
-      "GG": 279
+      "P": 432,
+      "M": 944,
+      "G": 920,
+      "GG": 280
     }
   },
   {
@@ -10728,16 +11422,16 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 99.99,
-    "totalGeral": 738,
+    "totalGeral": 736,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBWST24163_BRANCO",
     "grade": {
-      "P": 67,
+      "P": 66,
       "M": 187,
       "G": 301,
-      "GG": 183
+      "GG": 182
     }
   },
   {
@@ -10751,16 +11445,16 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 99.99,
-    "totalGeral": 1264,
+    "totalGeral": 1259,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBWST24163_PRETO",
     "grade": {
-      "P": 140,
+      "P": 139,
       "M": 384,
-      "G": 462,
-      "GG": 228,
+      "G": 460,
+      "GG": 226,
       "G1": 2,
       "G2": 43,
       "G3": 5
@@ -10777,13 +11471,13 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 99.99,
-    "totalGeral": 622,
+    "totalGeral": 621,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBWST24608_BRANCO",
     "grade": {
-      "P": 72,
+      "P": 71,
       "M": 202,
       "G": 229,
       "GG": 119
@@ -10823,13 +11517,13 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 99.99,
-    "totalGeral": 615,
+    "totalGeral": 614,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBWST24608_PRETO",
     "grade": {
-      "P": 51,
+      "P": 50,
       "M": 186,
       "G": 222,
       "GG": 101,
@@ -10913,21 +11607,45 @@
     "empresa": "VULSP",
     "artigo": "OIMWT26618",
     "descricao": "T-SHIRT ESSENTIAL ML M",
+    "cor": "NAVAL",
+    "linha": "ESSENTIAL",
+    "genero": "MASCULINO",
+    "categoria": "VESTUARIO",
+    "pdv": 99.99,
+    "totalGeral": 1997,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 340,
+      "M": 647,
+      "G": 660,
+      "GG": 350
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OIMWT26618",
+    "descricao": "T-SHIRT ESSENTIAL ML M",
     "cor": "PRETO",
     "linha": "ESSENTIAL",
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 99.99,
-    "totalGeral": 2814,
+    "totalGeral": 2787,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWT26618_PRETO",
     "grade": {
-      "P": 444,
-      "M": 926,
-      "G": 896,
-      "GG": 443,
+      "P": 439,
+      "M": 918,
+      "G": 889,
+      "GG": 436,
       "G1": 14,
       "G2": 74,
       "G3": 17
@@ -10967,15 +11685,15 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 99.99,
-    "totalGeral": 2005,
+    "totalGeral": 2002,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWT26618_SILGRE",
     "grade": {
-      "P": 325,
-      "M": 633,
-      "G": 639,
+      "P": 324,
+      "M": 632,
+      "G": 638,
       "GG": 326,
       "G1": 19,
       "G2": 48,
@@ -11062,16 +11780,16 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 99.99,
-    "totalGeral": 1143,
+    "totalGeral": 1131,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWT25807_PRETO",
     "grade": {
-      "P": 177,
-      "M": 364,
-      "G": 401,
-      "GG": 201
+      "P": 175,
+      "M": 360,
+      "G": 397,
+      "GG": 199
     }
   },
   {
@@ -11108,14 +11826,14 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 99.99,
-    "totalGeral": 2150,
+    "totalGeral": 2151,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWT26616_NAVAL",
     "grade": {
       "P": 353,
-      "M": 693,
+      "M": 694,
       "G": 700,
       "GG": 363,
       "G1": 11,
@@ -11183,7 +11901,7 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 99.99,
-    "totalGeral": 1076,
+    "totalGeral": 1079,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -11192,11 +11910,35 @@
       "P": 177,
       "M": 336,
       "G": 336,
-      "GG": 179,
+      "GG": 181,
       "G1": 12,
-      "G2": 24,
+      "G2": 25,
       "G3": 12
     }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBWST24607",
+    "descricao": "T-SHIRT ESSENTIAL MC F",
+    "cor": "BRANCO",
+    "linha": "ESSENTIAL",
+    "genero": "FEMININO",
+    "categoria": "VESTUARIO",
+    "pdv": 89.99,
+    "totalGeral": 437,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 5,
+      "M": 105,
+      "G": 219,
+      "GG": 108
+    },
+    "_aguardandoImagem": true
   },
   {
     "marca": "OLY",
@@ -11209,16 +11951,16 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 89.99,
-    "totalGeral": 920,
+    "totalGeral": 926,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBWST24607_MARGRE",
     "grade": {
-      "P": 97,
-      "M": 297,
-      "G": 365,
-      "GG": 161
+      "P": 98,
+      "M": 299,
+      "G": 367,
+      "GG": 162
     }
   },
   {
@@ -11232,16 +11974,16 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 89.99,
-    "totalGeral": 1525,
+    "totalGeral": 1531,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBWST24607_MRINHO",
     "grade": {
-      "P": 65,
-      "M": 489,
-      "G": 696,
-      "GG": 275
+      "P": 66,
+      "M": 491,
+      "G": 698,
+      "GG": 276
     }
   },
   {
@@ -11301,16 +12043,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 89.99,
-    "totalGeral": 9040,
+    "totalGeral": 9003,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWT24311_NAVAL",
     "grade": {
-      "P": 1691,
-      "M": 3141,
-      "G": 2997,
-      "GG": 1211
+      "P": 1684,
+      "M": 3131,
+      "G": 2984,
+      "GG": 1204
     }
   },
   {
@@ -11324,16 +12066,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 89.99,
-    "totalGeral": 2784,
+    "totalGeral": 2759,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWT24311_PCGRAY",
     "grade": {
-      "P": 592,
-      "M": 1086,
-      "G": 908,
-      "GG": 198
+      "P": 587,
+      "M": 1078,
+      "G": 899,
+      "GG": 195
     }
   },
   {
@@ -11347,16 +12089,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 89.99,
-    "totalGeral": 15445,
+    "totalGeral": 14631,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWT24311_PRETO",
     "grade": {
-      "P": 2969,
-      "M": 5371,
-      "G": 5031,
-      "GG": 2074
+      "P": 2935,
+      "M": 5123,
+      "G": 4711,
+      "GG": 1862
     }
   },
   {
@@ -11370,16 +12112,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 89.99,
-    "totalGeral": 1773,
+    "totalGeral": 1776,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWT26619_BRANCO",
     "grade": {
       "P": 302,
-      "M": 550,
-      "G": 540,
-      "GG": 267,
+      "M": 551,
+      "G": 541,
+      "GG": 268,
       "G1": 10,
       "G2": 64,
       "G3": 40
@@ -11396,16 +12138,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 89.99,
-    "totalGeral": 4827,
+    "totalGeral": 4822,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWT26619_NAVAL",
     "grade": {
-      "P": 801,
-      "M": 1567,
-      "G": 1615,
-      "GG": 720,
+      "P": 800,
+      "M": 1566,
+      "G": 1614,
+      "GG": 718,
       "G2": 97,
       "G3": 27
     }
@@ -11421,16 +12163,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 89.99,
-    "totalGeral": 6791,
+    "totalGeral": 6754,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWT26619_PRETO",
     "grade": {
-      "P": 1102,
-      "M": 2269,
-      "G": 2152,
-      "GG": 1193,
+      "P": 1094,
+      "M": 2257,
+      "G": 2141,
+      "GG": 1187,
       "G2": 75
     }
   },
@@ -11445,16 +12187,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 89.99,
-    "totalGeral": 688,
+    "totalGeral": 670,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWT26619_REDWOD",
     "grade": {
-      "P": 86,
-      "M": 194,
-      "G": 266,
-      "GG": 142
+      "P": 83,
+      "M": 188,
+      "G": 260,
+      "GG": 139
     }
   },
   {
@@ -11468,16 +12210,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 89.99,
-    "totalGeral": 516,
+    "totalGeral": 482,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWT26619_SILGRE",
     "grade": {
-      "P": 91,
-      "M": 161,
-      "G": 154,
-      "GG": 30,
+      "P": 85,
+      "M": 150,
+      "G": 143,
+      "GG": 24,
       "G2": 52,
       "G3": 28
     }
@@ -11545,9 +12287,9 @@
     "custo": 0,
     "imagem": "OIWWT26615_BRANCO",
     "grade": {
-      "P": 143,
+      "P": 142,
       "M": 321,
-      "G": 364,
+      "G": 365,
       "GG": 206
     }
   },
@@ -11562,18 +12304,18 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 89.99,
-    "totalGeral": 453,
+    "totalGeral": 449,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWT26615_LIRIO",
     "grade": {
-      "P": 38,
-      "M": 103,
-      "G": 138,
-      "GG": 74,
+      "P": 37,
+      "M": 101,
+      "G": 137,
+      "GG": 73,
       "G1": 34,
-      "G2": 37,
+      "G2": 38,
       "G3": 29
     }
   },
@@ -11588,16 +12330,16 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 89.99,
-    "totalGeral": 3413,
+    "totalGeral": 3405,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWT26615_NAVAL",
     "grade": {
-      "P": 549,
-      "M": 1088,
-      "G": 1094,
-      "GG": 562,
+      "P": 548,
+      "M": 1085,
+      "G": 1093,
+      "GG": 559,
       "G1": 34,
       "G2": 58,
       "G3": 28
@@ -11614,15 +12356,15 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 89.99,
-    "totalGeral": 1639,
+    "totalGeral": 1641,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWT26615_ORVLHO",
     "grade": {
       "P": 215,
-      "M": 542,
-      "G": 590,
+      "M": 543,
+      "G": 591,
       "GG": 292
     }
   },
@@ -11637,17 +12379,17 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 89.99,
-    "totalGeral": 2499,
+    "totalGeral": 2494,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWT26615_PRETO",
     "grade": {
-      "P": 288,
-      "M": 623,
-      "G": 787,
-      "GG": 694,
-      "G1": 27,
+      "P": 287,
+      "M": 622,
+      "G": 785,
+      "GG": 692,
+      "G1": 28,
       "G2": 53,
       "G3": 27
     }
@@ -11663,16 +12405,16 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 89.99,
-    "totalGeral": 1060,
+    "totalGeral": 1055,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWT26615_TAPTRY",
     "grade": {
-      "P": 141,
+      "P": 139,
       "M": 286,
-      "G": 292,
-      "GG": 162,
+      "G": 290,
+      "GG": 161,
       "G1": 56,
       "G2": 74,
       "G3": 49
@@ -11833,16 +12575,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 79.99,
-    "totalGeral": 4039,
+    "totalGeral": 4023,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWT26719_NAVAL",
     "grade": {
-      "P": 691,
-      "M": 1321,
-      "G": 1301,
-      "GG": 640,
+      "P": 689,
+      "M": 1317,
+      "G": 1295,
+      "GG": 636,
       "G1": 25,
       "G2": 42,
       "G3": 19
@@ -11859,16 +12601,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 79.99,
-    "totalGeral": 5890,
+    "totalGeral": 5849,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWT26719_PRETO",
     "grade": {
-      "P": 1027,
-      "M": 1925,
-      "G": 1919,
-      "GG": 918,
+      "P": 1021,
+      "M": 1913,
+      "G": 1905,
+      "GG": 909,
       "G2": 78,
       "G3": 23
     }
@@ -11907,16 +12649,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 79.99,
-    "totalGeral": 1327,
+    "totalGeral": 1311,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWT26719_SILGRE",
     "grade": {
-      "P": 226,
-      "M": 397,
-      "G": 403,
-      "GG": 195,
+      "P": 224,
+      "M": 393,
+      "G": 397,
+      "GG": 191,
       "G1": 31,
       "G2": 51,
       "G3": 24
@@ -11933,16 +12675,16 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 79.99,
-    "totalGeral": 883,
+    "totalGeral": 869,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWT26715_BRANCO",
     "grade": {
-      "P": 147,
-      "M": 285,
-      "G": 297,
-      "GG": 154
+      "P": 144,
+      "M": 281,
+      "G": 293,
+      "GG": 151
     }
   },
   {
@@ -11956,7 +12698,7 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 79.99,
-    "totalGeral": 757,
+    "totalGeral": 758,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -11967,7 +12709,7 @@
       "G": 230,
       "GG": 128,
       "G1": 28,
-      "G2": 22,
+      "G2": 23,
       "G3": 24
     }
   },
@@ -11982,7 +12724,7 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 79.99,
-    "totalGeral": 2362,
+    "totalGeral": 2363,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -11992,7 +12734,7 @@
       "M": 765,
       "G": 761,
       "GG": 401,
-      "G1": 15,
+      "G1": 16,
       "G2": 16,
       "G3": 16
     }
@@ -12008,19 +12750,19 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 79.99,
-    "totalGeral": 3328,
+    "totalGeral": 3332,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWT26715_PRETO",
     "grade": {
-      "P": 545,
+      "P": 547,
       "M": 1048,
       "G": 1061,
       "GG": 547,
-      "G1": 27,
+      "G1": 28,
       "G2": 51,
-      "G3": 49
+      "G3": 50
     }
   },
   {
@@ -12034,7 +12776,7 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 79.99,
-    "totalGeral": 593,
+    "totalGeral": 594,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -12042,7 +12784,7 @@
     "grade": {
       "P": 76,
       "M": 153,
-      "G": 174,
+      "G": 175,
       "GG": 96,
       "G1": 37,
       "G2": 30,
@@ -12060,16 +12802,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 109.99,
-    "totalGeral": 2613,
+    "totalGeral": 2599,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMST26645_PRETO",
     "grade": {
-      "P": 466,
-      "M": 869,
-      "G": 859,
-      "GG": 419
+      "P": 463,
+      "M": 865,
+      "G": 855,
+      "GG": 416
     },
     "_pdvResgatado": true
   },
@@ -12084,16 +12826,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 109.99,
-    "totalGeral": 1203,
+    "totalGeral": 1195,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMST26645_SILGRE",
     "grade": {
-      "P": 220,
-      "M": 419,
-      "G": 389,
-      "GG": 175
+      "P": 219,
+      "M": 417,
+      "G": 386,
+      "GG": 173
     },
     "_pdvResgatado": true
   },
@@ -12108,16 +12850,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 109.99,
-    "totalGeral": 733,
+    "totalGeral": 724,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMST26645_TAPTRY",
     "grade": {
-      "P": 132,
-      "M": 248,
-      "G": 240,
-      "GG": 113
+      "P": 130,
+      "M": 245,
+      "G": 238,
+      "GG": 111
     },
     "_pdvResgatado": true
   },
@@ -12159,16 +12901,16 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 189.99,
-    "totalGeral": 1299,
+    "totalGeral": 1286,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWST26153_PRETO",
     "grade": {
-      "P": 197,
-      "M": 396,
-      "G": 411,
-      "GG": 197,
+      "P": 195,
+      "M": 392,
+      "G": 407,
+      "GG": 194,
       "G1": 13,
       "G2": 52,
       "G3": 33
@@ -12186,19 +12928,19 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 159.99,
-    "totalGeral": 1154,
+    "totalGeral": 1118,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWST26168_LIRIO",
     "grade": {
-      "P": 167,
-      "M": 337,
-      "G": 345,
-      "GG": 171,
-      "G1": 46,
-      "G2": 45,
-      "G3": 43
+      "P": 164,
+      "M": 331,
+      "G": 339,
+      "GG": 168,
+      "G1": 40,
+      "G2": 39,
+      "G3": 37
     },
     "_pdvResgatado": true
   },
@@ -12213,21 +12955,557 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 159.99,
-    "totalGeral": 1254,
+    "totalGeral": 1218,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWST26168_PRETO",
     "grade": {
-      "P": 177,
-      "M": 374,
-      "G": 381,
-      "GG": 183,
-      "G1": 28,
-      "G2": 72,
-      "G3": 39
+      "P": 174,
+      "M": 368,
+      "G": 375,
+      "GG": 180,
+      "G1": 22,
+      "G2": 66,
+      "G3": 33
     },
     "_pdvResgatado": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBMVL25202",
+    "descricao": "JAQUETA MOLETOM M",
+    "cor": "PRETO",
+    "linha": "CASUAL",
+    "genero": "MASCULINO",
+    "categoria": "VESTUARIO",
+    "pdv": 329.99,
+    "totalGeral": 106,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 6,
+      "M": 55,
+      "G": 39,
+      "GG": 5,
+      "G3": 1
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBWVL25203",
+    "descricao": "JAQUETA MOLETOM F",
+    "cor": "PRETO",
+    "linha": "CASUAL",
+    "genero": "FEMININO",
+    "categoria": "VESTUARIO",
+    "pdv": 329.99,
+    "totalGeral": 105,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 26,
+      "M": 45,
+      "G": 19,
+      "GG": 6,
+      "G1": 9
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBMVL25205",
+    "descricao": "MOLETOM VULCABRAS M",
+    "cor": "BRANCO",
+    "linha": "CASUAL",
+    "genero": "MASCULINO",
+    "categoria": "VESTUARIO",
+    "pdv": 299.99,
+    "totalGeral": 108,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 6,
+      "M": 56,
+      "G": 40,
+      "GG": 6
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBMVL25205",
+    "descricao": "MOLETOM VULCABRAS M",
+    "cor": "MRINHO",
+    "linha": "CASUAL",
+    "genero": "MASCULINO",
+    "categoria": "VESTUARIO",
+    "pdv": 299.99,
+    "totalGeral": 343,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 34,
+      "M": 160,
+      "G": 104,
+      "GG": 34,
+      "G1": 9,
+      "G2": 1,
+      "G3": 1
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBMVL25205",
+    "descricao": "MOLETOM VULCABRAS M",
+    "cor": "PRETO",
+    "linha": "CASUAL",
+    "genero": "MASCULINO",
+    "categoria": "VESTUARIO",
+    "pdv": 299.99,
+    "totalGeral": 124,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 8,
+      "M": 61,
+      "G": 46,
+      "GG": 9
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBWVL25206",
+    "descricao": "MOLETOM VULCABRAS F",
+    "cor": "BRANCO",
+    "linha": "CASUAL",
+    "genero": "FEMININO",
+    "categoria": "VESTUARIO",
+    "pdv": 299.99,
+    "totalGeral": 105,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 25,
+      "M": 47,
+      "G": 18,
+      "GG": 6,
+      "G1": 9
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBWVL25206",
+    "descricao": "MOLETOM VULCABRAS F",
+    "cor": "MRINHO",
+    "linha": "CASUAL",
+    "genero": "FEMININO",
+    "categoria": "VESTUARIO",
+    "pdv": 299.99,
+    "totalGeral": 232,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 53,
+      "M": 100,
+      "G": 46,
+      "GG": 14,
+      "G1": 19
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBWVL25206",
+    "descricao": "MOLETOM VULCABRAS F",
+    "cor": "PRETO",
+    "linha": "CASUAL",
+    "genero": "FEMININO",
+    "categoria": "VESTUARIO",
+    "pdv": 299.99,
+    "totalGeral": 105,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 26,
+      "M": 48,
+      "G": 17,
+      "GG": 6,
+      "G1": 8
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBMVL25902",
+    "descricao": "POLO BORDADA M",
+    "cor": "MRINHO",
+    "linha": "CASUAL",
+    "genero": "MASCULINO",
+    "categoria": "VESTUARIO",
+    "pdv": 199.99,
+    "totalGeral": 102,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 8,
+      "M": 50,
+      "G": 26,
+      "GG": 10,
+      "G1": 6,
+      "G2": 1,
+      "G3": 1
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBMVL25902",
+    "descricao": "POLO BORDADA M",
+    "cor": "PRETO",
+    "linha": "CASUAL",
+    "genero": "MASCULINO",
+    "categoria": "VESTUARIO",
+    "pdv": 199.99,
+    "totalGeral": 104,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 8,
+      "M": 54,
+      "G": 25,
+      "GG": 9,
+      "G1": 6,
+      "G2": 1,
+      "G3": 1
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBMVL25904",
+    "descricao": "POLO VULCABRAS M",
+    "cor": "MRINHO",
+    "linha": "CASUAL",
+    "genero": "MASCULINO",
+    "categoria": "VESTUARIO",
+    "pdv": 199.99,
+    "totalGeral": 95,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 7,
+      "M": 51,
+      "G": 25,
+      "GG": 7,
+      "G1": 2,
+      "G3": 3
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBMVL25904",
+    "descricao": "POLO VULCABRAS M",
+    "cor": "PRETO",
+    "linha": "CASUAL",
+    "genero": "MASCULINO",
+    "categoria": "VESTUARIO",
+    "pdv": 199.99,
+    "totalGeral": 89,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 6,
+      "M": 50,
+      "G": 24,
+      "GG": 1,
+      "G1": 2,
+      "G2": 3,
+      "G3": 3
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBUVL25901",
+    "descricao": "POLO BORDADA F",
+    "cor": "MRINHO",
+    "linha": "CASUAL",
+    "genero": "FEMININO",
+    "categoria": "VESTUARIO",
+    "pdv": 199.99,
+    "totalGeral": 103,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 27,
+      "M": 45,
+      "G": 16,
+      "GG": 6,
+      "G1": 9
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBUVL25901",
+    "descricao": "POLO BORDADA F",
+    "cor": "PRETO",
+    "linha": "CASUAL",
+    "genero": "FEMININO",
+    "categoria": "VESTUARIO",
+    "pdv": 199.99,
+    "totalGeral": 94,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 23,
+      "M": 42,
+      "G": 16,
+      "GG": 4,
+      "G1": 9
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBUVL25903",
+    "descricao": "POLO VULCABRAS F",
+    "cor": "MRINHO",
+    "linha": "CASUAL",
+    "genero": "FEMININO",
+    "categoria": "VESTUARIO",
+    "pdv": 199.99,
+    "totalGeral": 104,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 25,
+      "M": 47,
+      "G": 18,
+      "GG": 6,
+      "G1": 8
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBUVL25903",
+    "descricao": "POLO VULCABRAS F",
+    "cor": "PRETO",
+    "linha": "CASUAL",
+    "genero": "FEMININO",
+    "categoria": "VESTUARIO",
+    "pdv": 199.99,
+    "totalGeral": 102,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 25,
+      "M": 47,
+      "G": 16,
+      "GG": 5,
+      "G1": 9
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBMVL25602",
+    "descricao": "CAMISETA VULCABRAS M",
+    "cor": "BRANCO",
+    "linha": "CASUAL",
+    "genero": "MASCULINO",
+    "categoria": "VESTUARIO",
+    "pdv": 139.99,
+    "totalGeral": 101,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 6,
+      "M": 54,
+      "G": 26,
+      "GG": 7,
+      "G1": 6,
+      "G2": 1,
+      "G3": 1
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBMVL25602",
+    "descricao": "CAMISETA VULCABRAS M",
+    "cor": "PRETO",
+    "linha": "CASUAL",
+    "genero": "MASCULINO",
+    "categoria": "VESTUARIO",
+    "pdv": 139.99,
+    "totalGeral": 141,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 6,
+      "M": 70,
+      "G": 42,
+      "GG": 15,
+      "G1": 6,
+      "G2": 1,
+      "G3": 1
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBWVL25601",
+    "descricao": "CAMISETA VULCABRAS F",
+    "cor": "BRANCO",
+    "linha": "CASUAL",
+    "genero": "FEMININO",
+    "categoria": "VESTUARIO",
+    "pdv": 139.99,
+    "totalGeral": 116,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 23,
+      "M": 61,
+      "G": 18,
+      "GG": 5,
+      "G1": 9
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBWVL25601",
+    "descricao": "CAMISETA VULCABRAS F",
+    "cor": "MRINHO",
+    "linha": "CASUAL",
+    "genero": "FEMININO",
+    "categoria": "VESTUARIO",
+    "pdv": 139.99,
+    "totalGeral": 88,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 14,
+      "M": 43,
+      "G": 18,
+      "GG": 4,
+      "G1": 9
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBWVL25601",
+    "descricao": "CAMISETA VULCABRAS F",
+    "cor": "PRETO",
+    "linha": "CASUAL",
+    "genero": "FEMININO",
+    "categoria": "VESTUARIO",
+    "pdv": 139.99,
+    "totalGeral": 105,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 26,
+      "M": 49,
+      "G": 18,
+      "GG": 3,
+      "G1": 9
+    },
+    "_aguardandoImagem": true
   },
   {
     "marca": "OLY",
@@ -12240,16 +13518,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 89.99,
-    "totalGeral": 9900,
+    "totalGeral": 9581,
     "codigoTabela": "E4600",
     "mkp": "2.0",
     "custo": 31,
     "imagem": "OFMWT26610_BRANCO",
     "grade": {
-      "P": 1797,
-      "M": 3321,
-      "G": 2962,
-      "GG": 1591,
+      "P": 1736,
+      "M": 3217,
+      "G": 2858,
+      "GG": 1541,
       "G2": 94,
       "G3": 135
     }
@@ -12265,16 +13543,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 89.99,
-    "totalGeral": 5194,
+    "totalGeral": 4791,
     "codigoTabela": "E4600",
     "mkp": "2.0",
     "custo": 31,
     "imagem": "OFMWT26610_NAVAL",
     "grade": {
-      "P": 1403,
-      "M": 1704,
-      "G": 1400,
-      "GG": 616,
+      "P": 1330,
+      "M": 1575,
+      "G": 1266,
+      "GG": 549,
       "G3": 71
     }
   },
@@ -12289,16 +13567,15 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 89.99,
-    "totalGeral": 6113,
+    "totalGeral": 5569,
     "codigoTabela": "E4600",
     "mkp": "2.0",
     "custo": 31,
     "imagem": "OFMWT26610_PRETO",
     "grade": {
-      "P": 1901,
-      "M": 2399,
-      "G": 1786,
-      "GG": 27
+      "P": 1791,
+      "M": 2200,
+      "G": 1578
     }
   },
   {
@@ -12312,13 +13589,13 @@
     "genero": "MASCULINO",
     "categoria": "MEIA",
     "pdv": 47.99,
-    "totalGeral": 18235,
+    "totalGeral": 17904,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 20.87,
     "imagem": "OIMSA81922_BCPTMC",
     "grade": {
-      "39/44": 18235
+      "39/44": 17904
     }
   },
   {
@@ -12332,13 +13609,13 @@
     "genero": "MASCULINO",
     "categoria": "MEIA",
     "pdv": 47.99,
-    "totalGeral": 16670,
+    "totalGeral": 16543,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 20.87,
     "imagem": "OIMSA81922_BRANCO",
     "grade": {
-      "39/44": 16670
+      "39/44": 16543
     }
   },
   {
@@ -12352,13 +13629,13 @@
     "genero": "MASCULINO",
     "categoria": "MEIA",
     "pdv": 47.99,
-    "totalGeral": 21399,
+    "totalGeral": 20852,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 20.87,
     "imagem": "OIMSA81922_PRETO",
     "grade": {
-      "39/44": 21399
+      "39/44": 20852
     }
   },
   {
@@ -12372,13 +13649,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 47.99,
-    "totalGeral": 9560,
+    "totalGeral": 9445,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 20.87,
     "imagem": "OIWSA81921_BCPTMC",
     "grade": {
-      "33/38": 9560
+      "33/38": 9445
     }
   },
   {
@@ -12392,13 +13669,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 47.99,
-    "totalGeral": 5442,
+    "totalGeral": 5815,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 20.87,
     "imagem": "OIWSA81921_BRANCO",
     "grade": {
-      "33/38": 5442
+      "33/38": 5815
     }
   },
   {
@@ -12412,13 +13689,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 47.99,
-    "totalGeral": 5472,
+    "totalGeral": 5181,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 20.87,
     "imagem": "OIWSA81921_PRETO",
     "grade": {
-      "33/38": 5472
+      "33/38": 5181
     }
   },
   {
@@ -12432,13 +13709,13 @@
     "genero": "MASCULINO",
     "categoria": "MEIA",
     "pdv": 42.99,
-    "totalGeral": 13037,
+    "totalGeral": 12903,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 18.69,
     "imagem": "OIMSA81920_BCPTMC",
     "grade": {
-      "39/44": 13037
+      "39/44": 12903
     }
   },
   {
@@ -12452,13 +13729,13 @@
     "genero": "MASCULINO",
     "categoria": "MEIA",
     "pdv": 42.99,
-    "totalGeral": 12883,
+    "totalGeral": 12773,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 18.69,
     "imagem": "OIMSA81920_BRANCO",
     "grade": {
-      "39/44": 12883
+      "39/44": 12773
     }
   },
   {
@@ -12472,13 +13749,13 @@
     "genero": "MASCULINO",
     "categoria": "MEIA",
     "pdv": 42.99,
-    "totalGeral": 5261,
+    "totalGeral": 5236,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 18.69,
     "imagem": "OIMSA81920_PRETO",
     "grade": {
-      "39/44": 5261
+      "39/44": 5236
     }
   },
   {
@@ -12492,13 +13769,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 42.99,
-    "totalGeral": 11105,
+    "totalGeral": 10985,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWSA81919_BCPTMC",
     "grade": {
-      "33/38": 11105
+      "33/38": 10985
     }
   },
   {
@@ -12512,13 +13789,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 42.99,
-    "totalGeral": 11957,
+    "totalGeral": 11841,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWSA81919_BRANCO",
     "grade": {
-      "33/38": 11957
+      "33/38": 11841
     }
   },
   {
@@ -12532,13 +13809,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 42.99,
-    "totalGeral": 7970,
+    "totalGeral": 7906,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWSA81919_PRETO",
     "grade": {
-      "33/38": 7970
+      "33/38": 7906
     }
   },
   {
@@ -12552,13 +13829,13 @@
     "genero": "UNISSEX",
     "categoria": "MEIA",
     "pdv": 39.99,
-    "totalGeral": 10073,
+    "totalGeral": 10018,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 17.39,
     "imagem": "OIMSA22194_BCPTMC",
     "grade": {
-      "39/44": 10073
+      "39/44": 10018
     }
   },
   {
@@ -12572,13 +13849,13 @@
     "genero": "UNISSEX",
     "categoria": "MEIA",
     "pdv": 39.99,
-    "totalGeral": 1780,
+    "totalGeral": 1730,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 17.39,
     "imagem": "OIMSA22194_BRANCO",
     "grade": {
-      "39/44": 1780
+      "39/44": 1730
     }
   },
   {
@@ -12592,13 +13869,13 @@
     "genero": "UNISSEX",
     "categoria": "MEIA",
     "pdv": 39.99,
-    "totalGeral": 2237,
+    "totalGeral": 2229,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 17.39,
     "imagem": "OIMSA22194_MESCLA",
     "grade": {
-      "39/44": 2237
+      "39/44": 2229
     }
   },
   {
@@ -12612,13 +13889,13 @@
     "genero": "UNISSEX",
     "categoria": "MEIA",
     "pdv": 39.99,
-    "totalGeral": 3672,
+    "totalGeral": 3658,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 17.39,
     "imagem": "OIMSA22194_PRETO",
     "grade": {
-      "39/44": 3672
+      "39/44": 3658
     }
   },
   {
@@ -12632,13 +13909,13 @@
     "genero": "MASCULINO",
     "categoria": "MEIA",
     "pdv": 39.99,
-    "totalGeral": 28320,
+    "totalGeral": 28122,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 17.39,
     "imagem": "OIMSA26199_BCPTMC",
     "grade": {
-      "39/44": 28320
+      "39/44": 28122
     }
   },
   {
@@ -12652,13 +13929,13 @@
     "genero": "MASCULINO",
     "categoria": "MEIA",
     "pdv": 39.99,
-    "totalGeral": 28800,
+    "totalGeral": 28626,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 17.39,
     "imagem": "OIMSA26199_BRANCO",
     "grade": {
-      "39/44": 28800
+      "39/44": 28626
     }
   },
   {
@@ -12672,13 +13949,13 @@
     "genero": "MASCULINO",
     "categoria": "MEIA",
     "pdv": 39.99,
-    "totalGeral": 26055,
+    "totalGeral": 25905,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 17.39,
     "imagem": "OIMSA26199_PRETO",
     "grade": {
-      "39/44": 26055
+      "39/44": 25905
     }
   },
   {
@@ -12692,13 +13969,13 @@
     "genero": "UNISSEX",
     "categoria": "MEIA",
     "pdv": 39.99,
-    "totalGeral": 16999,
+    "totalGeral": 16922,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 17.39,
     "imagem": "OIWSA22193_BCPTMC",
     "grade": {
-      "33/38": 16999
+      "33/38": 16922
     }
   },
   {
@@ -12712,13 +13989,13 @@
     "genero": "UNISSEX",
     "categoria": "MEIA",
     "pdv": 39.99,
-    "totalGeral": 2173,
+    "totalGeral": 2087,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 17.39,
     "imagem": "OIWSA22193_BRANCO",
     "grade": {
-      "33/38": 2173
+      "33/38": 2087
     }
   },
   {
@@ -12732,13 +14009,13 @@
     "genero": "UNISSEX",
     "categoria": "MEIA",
     "pdv": 39.99,
-    "totalGeral": 2307,
+    "totalGeral": 2299,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 17.39,
     "imagem": "OIWSA22193_MESCLA",
     "grade": {
-      "33/38": 2307
+      "33/38": 2299
     }
   },
   {
@@ -12752,13 +14029,13 @@
     "genero": "UNISSEX",
     "categoria": "MEIA",
     "pdv": 39.99,
-    "totalGeral": 3024,
+    "totalGeral": 2998,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 17.39,
     "imagem": "OIWSA22193_PRETO",
     "grade": {
-      "33/38": 3024
+      "33/38": 2998
     }
   },
   {
@@ -12772,13 +14049,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 39.99,
-    "totalGeral": 20396,
+    "totalGeral": 19543,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWSA26197_BCPTMC",
     "grade": {
-      "33/38": 20396
+      "33/38": 19543
     }
   },
   {
@@ -12792,13 +14069,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 39.99,
-    "totalGeral": 23895,
+    "totalGeral": 23536,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWSA26197_BRANCO",
     "grade": {
-      "33/38": 23895
+      "33/38": 23536
     }
   },
   {
@@ -12812,13 +14089,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 39.99,
-    "totalGeral": 10892,
+    "totalGeral": 10390,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWSA26197_PRETO",
     "grade": {
-      "33/38": 10892
+      "33/38": 10390
     }
   },
   {
@@ -12912,13 +14189,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 24.99,
-    "totalGeral": 1908,
+    "totalGeral": 1881,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 10.87,
     "imagem": "OIWA241929_BCO_MR",
     "grade": {
-      "33/38": 1908
+      "33/38": 1881
     }
   },
   {
@@ -12992,13 +14269,13 @@
     "genero": "UNISSEX",
     "categoria": "MEIA",
     "pdv": 21.99,
-    "totalGeral": 1387,
+    "totalGeral": 1375,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMSA21193_BRANCO",
     "grade": {
-      "39/44": 1387
+      "39/44": 1375
     }
   },
   {
@@ -13012,13 +14289,13 @@
     "genero": "UNISSEX",
     "categoria": "MEIA",
     "pdv": 21.99,
-    "totalGeral": 682,
+    "totalGeral": 665,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMSA21193_MESCLA",
     "grade": {
-      "39/44": 682
+      "39/44": 665
     }
   },
   {
@@ -13032,13 +14309,13 @@
     "genero": "UNISSEX",
     "categoria": "MEIA",
     "pdv": 21.99,
-    "totalGeral": 1036,
+    "totalGeral": 1012,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMSA21193_PRETO",
     "grade": {
-      "39/44": 1036
+      "39/44": 1012
     }
   },
   {
@@ -13052,13 +14329,13 @@
     "genero": "MASCULINO",
     "categoria": "MEIA",
     "pdv": 21.99,
-    "totalGeral": 2674,
+    "totalGeral": 2668,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 9.56,
     "imagem": "OIMSA21195_BRANCO",
     "grade": {
-      "39/44": 2674
+      "39/44": 2668
     }
   },
   {
@@ -13072,13 +14349,13 @@
     "genero": "MASCULINO",
     "categoria": "MEIA",
     "pdv": 21.99,
-    "totalGeral": 939,
+    "totalGeral": 930,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 9.56,
     "imagem": "OIMSA21195_MESCLA",
     "grade": {
-      "39/44": 939
+      "39/44": 930
     }
   },
   {
@@ -13092,13 +14369,13 @@
     "genero": "MASCULINO",
     "categoria": "MEIA",
     "pdv": 21.99,
-    "totalGeral": 2151,
+    "totalGeral": 2121,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 9.56,
     "imagem": "OIMSA21195_PRETO",
     "grade": {
-      "39/44": 2151
+      "39/44": 2121
     }
   },
   {
@@ -13132,13 +14409,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 21.99,
-    "totalGeral": 1234,
+    "totalGeral": 1214,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 9.56,
     "imagem": "OIWSA21194_MESCLA",
     "grade": {
-      "33/38": 1234
+      "33/38": 1214
     }
   },
   {
@@ -13152,13 +14429,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 21.99,
-    "totalGeral": 1664,
+    "totalGeral": 1617,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 9.56,
     "imagem": "OIWSA21194_PRETO",
     "grade": {
-      "33/38": 1664
+      "33/38": 1617
     }
   },
   {
@@ -13192,13 +14469,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 21.99,
-    "totalGeral": 2059,
+    "totalGeral": 2053,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 9.56,
     "imagem": "OIWSA21196_MESCLA",
     "grade": {
-      "33/38": 2059
+      "33/38": 2053
     }
   },
   {
@@ -13212,13 +14489,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 21.99,
-    "totalGeral": 1903,
+    "totalGeral": 1885,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 9.56,
     "imagem": "OIWSA21196_PRETO",
     "grade": {
-      "33/38": 1903
+      "33/38": 1885
     }
   },
   {
@@ -13232,13 +14509,13 @@
     "genero": "UNISSEX",
     "categoria": "MEIA",
     "pdv": 19.99,
-    "totalGeral": 1382,
+    "totalGeral": 1370,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMSA22192_BRANCO",
     "grade": {
-      "39/44": 1382
+      "39/44": 1370
     }
   },
   {
@@ -13252,13 +14529,13 @@
     "genero": "UNISSEX",
     "categoria": "MEIA",
     "pdv": 19.99,
-    "totalGeral": 1944,
+    "totalGeral": 1932,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMSA22192_MESCLA",
     "grade": {
-      "39/44": 1944
+      "39/44": 1932
     }
   },
   {
@@ -13272,13 +14549,13 @@
     "genero": "UNISSEX",
     "categoria": "MEIA",
     "pdv": 19.99,
-    "totalGeral": 835,
+    "totalGeral": 809,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMSA22192_PRETO",
     "grade": {
-      "39/44": 835
+      "39/44": 809
     }
   },
   {
@@ -13292,13 +14569,13 @@
     "genero": "MASCULINO",
     "categoria": "MEIA",
     "pdv": 19.99,
-    "totalGeral": 1058,
+    "totalGeral": 1052,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 8.69,
     "imagem": "OIMSA26198_BRANCO",
     "grade": {
-      "39/44": 1058
+      "39/44": 1052
     }
   },
   {
@@ -13312,13 +14589,13 @@
     "genero": "MASCULINO",
     "categoria": "MEIA",
     "pdv": 19.99,
-    "totalGeral": 1413,
+    "totalGeral": 1407,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 8.69,
     "imagem": "OIMSA26198_MESCLA",
     "grade": {
-      "39/44": 1413
+      "39/44": 1407
     }
   },
   {
@@ -13332,13 +14609,13 @@
     "genero": "MASCULINO",
     "categoria": "MEIA",
     "pdv": 19.99,
-    "totalGeral": 1098,
+    "totalGeral": 1068,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMSA26198_PRETO",
     "grade": {
-      "39/44": 1098
+      "39/44": 1068
     }
   },
   {
@@ -13352,13 +14629,13 @@
     "genero": "UNISSEX",
     "categoria": "MEIA",
     "pdv": 19.99,
-    "totalGeral": 2005,
+    "totalGeral": 2003,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 8.69,
     "imagem": "OIWSA22191_BRANCO",
     "grade": {
-      "33/38": 2005
+      "33/38": 2003
     }
   },
   {
@@ -13372,13 +14649,13 @@
     "genero": "UNISSEX",
     "categoria": "MEIA",
     "pdv": 19.99,
-    "totalGeral": 2022,
+    "totalGeral": 2010,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 8.69,
     "imagem": "OIWSA22191_MESCLA",
     "grade": {
-      "33/38": 2022
+      "33/38": 2010
     }
   },
   {
@@ -13392,13 +14669,13 @@
     "genero": "UNISSEX",
     "categoria": "MEIA",
     "pdv": 19.99,
-    "totalGeral": 1723,
+    "totalGeral": 1699,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 8.69,
     "imagem": "OIWSA22191_PRETO",
     "grade": {
-      "33/38": 1723
+      "33/38": 1699
     }
   },
   {
@@ -13412,13 +14689,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 19.99,
-    "totalGeral": 658,
+    "totalGeral": 652,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWSA26196_BRANCO",
     "grade": {
-      "33/38": 658
+      "33/38": 652
     }
   },
   {
@@ -13432,13 +14709,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 19.99,
-    "totalGeral": 1445,
+    "totalGeral": 1439,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWSA26196_MESCLA",
     "grade": {
-      "33/38": 1445
+      "33/38": 1439
     }
   },
   {
@@ -13452,13 +14729,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 19.99,
-    "totalGeral": 1250,
+    "totalGeral": 1232,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWSA26196_PRETO",
     "grade": {
-      "33/38": 1250
+      "33/38": 1232
     }
   },
   {
@@ -13552,13 +14829,13 @@
     "genero": "MASCULINO",
     "categoria": "MEIA",
     "pdv": 59.99,
-    "totalGeral": 199,
+    "totalGeral": 175,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBMA251922_BCPTOR",
     "grade": {
-      "39/44": 199
+      "39/44": 175
     }
   },
   {
@@ -13592,13 +14869,13 @@
     "genero": "MASCULINO",
     "categoria": "MEIA",
     "pdv": 59.99,
-    "totalGeral": 926,
+    "totalGeral": 908,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBMA251922_ORVARE",
     "grade": {
-      "39/44": 926
+      "39/44": 908
     }
   },
   {
@@ -13612,13 +14889,13 @@
     "genero": "MASCULINO",
     "categoria": "MEIA",
     "pdv": 59.99,
-    "totalGeral": 538,
+    "totalGeral": 514,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBMA251922_PTPGOR",
     "grade": {
-      "39/44": 538
+      "39/44": 514
     }
   },
   {
@@ -13712,13 +14989,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 59.99,
-    "totalGeral": 3043,
+    "totalGeral": 3031,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBWA231911_BCOVDA",
     "grade": {
-      "33/38": 3043
+      "33/38": 3031
     }
   },
   {
@@ -13772,13 +15049,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 59.99,
-    "totalGeral": 2986,
+    "totalGeral": 2974,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBWA231911_PTCAAL",
     "grade": {
-      "33/38": 2986
+      "33/38": 2974
     }
   },
   {
@@ -13812,13 +15089,13 @@
     "genero": "MASCULINO",
     "categoria": "MEIA",
     "pdv": 59.99,
-    "totalGeral": 3238,
+    "totalGeral": 3226,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBWA231912_BCOVDA",
     "grade": {
-      "39/44": 3238
+      "39/44": 3226
     }
   },
   {
@@ -13872,13 +15149,13 @@
     "genero": "MASCULINO",
     "categoria": "MEIA",
     "pdv": 59.99,
-    "totalGeral": 2737,
+    "totalGeral": 2725,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBWA231912_PTCAAL",
     "grade": {
-      "39/44": 2737
+      "39/44": 2725
     }
   },
   {
@@ -13912,13 +15189,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 59.99,
-    "totalGeral": 1079,
+    "totalGeral": 1064,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 26.08,
     "imagem": "OBWA251921_BCPTOR",
     "grade": {
-      "33/38": 1079
+      "33/38": 1064
     }
   },
   {
@@ -13952,13 +15229,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 59.99,
-    "totalGeral": 1678,
+    "totalGeral": 1663,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 26.08,
     "imagem": "OBWA251921_ORVARE",
     "grade": {
-      "33/38": 1678
+      "33/38": 1663
     }
   },
   {
@@ -13972,13 +15249,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 59.99,
-    "totalGeral": 2241,
+    "totalGeral": 2226,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 26.08,
     "imagem": "OBWA251921_PTPGOR",
     "grade": {
-      "33/38": 2241
+      "33/38": 2226
     }
   },
   {
@@ -14219,13 +15496,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 59.99,
-    "totalGeral": 342,
+    "totalGeral": 337,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBWA261922_VCOWMH",
     "grade": {
-      "33/38": 342
+      "33/38": 337
     },
     "_pdvResgatado": true
   },
@@ -14302,13 +15579,13 @@
     "genero": "MASCULINO",
     "categoria": "MEIA",
     "pdv": 64.99,
-    "totalGeral": 1430,
+    "totalGeral": 1406,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBMSR241922_BFCBPO",
     "grade": {
-      "39/44": 1430
+      "39/44": 1406
     }
   },
   {
@@ -14322,13 +15599,13 @@
     "genero": "MASCULINO",
     "categoria": "MEIA",
     "pdv": 64.99,
-    "totalGeral": 1365,
+    "totalGeral": 1353,
     "codigoTabela": "E4550",
     "mkp": "2.3",
     "custo": 28.26,
     "imagem": "OBMSR241922_CBCLOL",
     "grade": {
-      "39/44": 1365
+      "39/44": 1353
     }
   },
   {
@@ -14342,13 +15619,13 @@
     "genero": "MASCULINO",
     "categoria": "MEIA",
     "pdv": 64.99,
-    "totalGeral": 1628,
+    "totalGeral": 1610,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBMSR241922_FBLBOB",
     "grade": {
-      "39/44": 1628
+      "39/44": 1610
     }
   },
   {
@@ -14402,13 +15679,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 64.99,
-    "totalGeral": 1424,
+    "totalGeral": 1400,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBWSR241921_BBABAB",
     "grade": {
-      "33/38": 1424
+      "33/38": 1400
     }
   },
   {
@@ -14422,13 +15699,13 @@
     "genero": "FEMININO",
     "categoria": "MEIA",
     "pdv": 64.99,
-    "totalGeral": 1320,
+    "totalGeral": 1296,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBWSR241921_BFCBPO",
     "grade": {
-      "33/38": 1320
+      "33/38": 1296
     }
   },
   {
@@ -14482,20 +15759,20 @@
     "genero": "MASCULINO",
     "categoria": "TENIS",
     "pdv": 279.99,
-    "totalGeral": 1613,
+    "totalGeral": 1457,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43358451_PRETO",
     "grade": {
       "37": 17,
-      "38": 120,
-      "39": 204,
-      "40": 408,
-      "41": 432,
-      "42": 288,
-      "43": 108,
-      "44": 36
+      "38": 108,
+      "39": 192,
+      "40": 384,
+      "41": 384,
+      "42": 264,
+      "43": 84,
+      "44": 24
     }
   },
   {
@@ -14509,20 +15786,47 @@
     "genero": "FEMININO",
     "categoria": "TENIS",
     "pdv": 199.99,
-    "totalGeral": 3844,
+    "totalGeral": 3933,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43606391_PRETO",
     "grade": {
-      "34": 144,
-      "35": 469,
-      "36": 903,
-      "37": 968,
-      "38": 743,
-      "39": 401,
-      "40": 199,
-      "41": 17
+      "34": 156,
+      "35": 486,
+      "36": 937,
+      "37": 972,
+      "38": 776,
+      "39": 411,
+      "40": 180,
+      "41": 15
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "AZABA",
+    "artigo": "43409454",
+    "descricao": "EROS 2",
+    "cor": "ARENIT",
+    "linha": "CLASSICO",
+    "genero": "MASCULINO",
+    "categoria": "TENIS",
+    "pdv": 229.99,
+    "totalGeral": 392,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43409454_ARENIT",
+    "grade": {
+      "34": 18,
+      "35": 15,
+      "38": 11,
+      "39": 48,
+      "40": 120,
+      "41": 84,
+      "42": 60,
+      "43": 36
     }
   },
   {
@@ -14536,7 +15840,7 @@
     "genero": "MASCULINO",
     "categoria": "TENIS",
     "pdv": 229.99,
-    "totalGeral": 4625,
+    "totalGeral": 4603,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -14546,7 +15850,7 @@
       "35": 2,
       "37": 161,
       "38": 439,
-      "39": 778,
+      "39": 756,
       "40": 988,
       "41": 952,
       "42": 704,
@@ -14565,23 +15869,177 @@
     "genero": "UNISSEX",
     "categoria": "TENIS",
     "pdv": 399.99,
-    "totalGeral": 3319,
+    "totalGeral": 3422,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43342471_LUNCHB",
     "grade": {
-      "35": 48,
+      "35": 24,
       "36": 60,
       "37": 72,
-      "38": 252,
-      "39": 421,
-      "40": 752,
-      "41": 714,
-      "42": 564,
-      "43": 340,
-      "44": 96
+      "38": 204,
+      "39": 463,
+      "40": 794,
+      "41": 756,
+      "42": 605,
+      "43": 361,
+      "44": 83
     }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "43367427",
+    "descricao": "CORRE 4 VANDERLEI",
+    "cor": "RYLVRD",
+    "linha": "CORRIDA INTENSA",
+    "genero": "UNISSEX",
+    "categoria": "TENIS",
+    "pdv": 599.99,
+    "totalGeral": 219,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "34": 7,
+      "35": 9,
+      "36": 13,
+      "37": 23,
+      "38": 26,
+      "39": 26,
+      "40": 41,
+      "41": 48,
+      "42": 18,
+      "43": 7,
+      "45": 1
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "43720366",
+    "descricao": "CORRE 4",
+    "cor": "ALGSOL",
+    "linha": "CORRIDA INTENSA",
+    "genero": "UNISSEX",
+    "categoria": "TENIS",
+    "pdv": 599.99,
+    "totalGeral": 374,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "34": 11,
+      "35": 37,
+      "36": 62,
+      "37": 79,
+      "38": 42,
+      "39": 38,
+      "40": 29,
+      "41": 31,
+      "42": 19,
+      "43": 16,
+      "44": 4,
+      "45": 3,
+      "46": 3
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "43758365",
+    "descricao": "CORRE MAX",
+    "cor": "ALGMLT",
+    "linha": "CORRIDA LEVE",
+    "genero": "FEMININO",
+    "categoria": "TENIS",
+    "pdv": 549.99,
+    "totalGeral": 134,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "34": 6,
+      "35": 13,
+      "36": 28,
+      "37": 29,
+      "38": 21,
+      "39": 11,
+      "40": 12,
+      "41": 14
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "43758365",
+    "descricao": "CORRE MAX",
+    "cor": "PT_LJA",
+    "linha": "CORRIDA LEVE",
+    "genero": "UNISSEX",
+    "categoria": "TENIS",
+    "pdv": 549.99,
+    "totalGeral": 119,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "34": 6,
+      "35": 12,
+      "36": 13,
+      "37": 12,
+      "38": 11,
+      "39": 12,
+      "40": 14,
+      "41": 16,
+      "42": 9,
+      "43": 6,
+      "44": 8
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "43758365",
+    "descricao": "CORRE MAX",
+    "cor": "VMH_PT",
+    "linha": "CORRIDA LEVE",
+    "genero": "UNISSEX",
+    "categoria": "TENIS",
+    "pdv": 549.99,
+    "totalGeral": 82,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "34": 5,
+      "35": 7,
+      "36": 5,
+      "37": 5,
+      "38": 8,
+      "39": 10,
+      "40": 5,
+      "41": 14,
+      "42": 9,
+      "43": 6,
+      "44": 8
+    },
+    "_aguardandoImagem": true
   },
   {
     "marca": "OLY",
@@ -14594,7 +16052,7 @@
     "genero": "FEMININO",
     "categoria": "TENIS",
     "pdv": 259.99,
-    "totalGeral": 904,
+    "totalGeral": 915,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
@@ -14604,10 +16062,10 @@
       "35": 113,
       "36": 182,
       "37": 192,
-      "38": 152,
-      "39": 128,
+      "38": 161,
+      "39": 129,
       "40": 66,
-      "41": 35
+      "41": 36
     }
   },
   {
@@ -14621,20 +16079,80 @@
     "genero": "FEMININO",
     "categoria": "TENIS",
     "pdv": 229.99,
-    "totalGeral": 4691,
+    "totalGeral": 4701,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43299316_MRHCRS",
     "grade": {
-      "34": 345,
-      "35": 735,
-      "36": 1133,
-      "37": 1067,
-      "38": 738,
-      "39": 436,
-      "40": 181,
+      "34": 346,
+      "35": 737,
+      "36": 1136,
+      "37": 1069,
+      "38": 740,
+      "39": 437,
+      "40": 180,
       "41": 56
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "43790399",
+    "descricao": "CORRE TURBO",
+    "cor": "AREOLY",
+    "linha": "PERFORMANCE",
+    "genero": "UNISSEX",
+    "categoria": "TENIS",
+    "pdv": 699.99,
+    "totalGeral": 3152,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43790399_AREOLY",
+    "grade": {
+      "35": 137,
+      "36": 222,
+      "37": 400,
+      "38": 607,
+      "39": 468,
+      "40": 272,
+      "41": 391,
+      "42": 311,
+      "43": 317,
+      "45": 27
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "43790399",
+    "descricao": "CORRE TURBO",
+    "cor": "LNRMLT",
+    "linha": "PERFORMANCE",
+    "genero": "UNISSEX",
+    "categoria": "TENIS",
+    "pdv": 699.99,
+    "totalGeral": 11167,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43790399_LNRMLT",
+    "grade": {
+      "34": 85,
+      "35": 597,
+      "36": 983,
+      "37": 1085,
+      "38": 1362,
+      "39": 1706,
+      "40": 1627,
+      "41": 1720,
+      "42": 1045,
+      "43": 610,
+      "44": 194,
+      "45": 153
     }
   },
   {
@@ -14668,13 +16186,13 @@
     "genero": "UNISSEX",
     "categoria": "ACESSORIO",
     "pdv": 99.99,
-    "totalGeral": 21,
+    "totalGeral": 15,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWB251713_ORVLHO",
     "grade": {
-      "U": 21
+      "U": 15
     }
   },
   {
@@ -14740,27 +16258,44 @@
   {
     "marca": "OLY",
     "prevFat": "JULHO 2026",
-    "empresa": "AZABA",
-    "artigo": "54827630",
-    "descricao": "OLYMPIKUS/921",
-    "cor": "PTO_CH",
-    "linha": "CHINELO DEDO",
+    "empresa": "VULTS",
+    "artigo": "OIWB251811",
+    "descricao": "MOCHILA BASIC NEW",
+    "cor": "MAUVE",
+    "linha": "COMPLEMENTO",
     "genero": "UNISSEX",
-    "categoria": "CHINELO",
-    "pdv": 139.99,
-    "totalGeral": 68,
+    "categoria": "ACESSORIO",
+    "pdv": 119.99,
+    "totalGeral": 3,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "54827630_PTO_CH",
+    "imagem": "",
     "grade": {
-      "33/34": 10,
-      "35/36": 12,
-      "37/38": 28,
-      "39/40": 4,
-      "41/42": 12,
-      "43/44": 2
-    }
+      "U": 3
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "OIWB251811",
+    "descricao": "MOCHILA BASIC NEW",
+    "cor": "SALMAO",
+    "linha": "COMPLEMENTO",
+    "genero": "UNISSEX",
+    "categoria": "ACESSORIO",
+    "pdv": 119.99,
+    "totalGeral": 3,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "U": 3
+    },
+    "_aguardandoImagem": true
   },
   {
     "marca": "OLY",
@@ -14828,6 +16363,31 @@
       "M": 29,
       "G": 37
     }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBMSP26601",
+    "descricao": "CAMISETA FINISHER MSP U",
+    "cor": "PRETO",
+    "linha": "CONFORTO",
+    "genero": "UNISSEX",
+    "categoria": "VESTUARIO",
+    "pdv": 129.99,
+    "totalGeral": 24,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "PP": 5,
+      "P": 5,
+      "M": 6,
+      "G": 4,
+      "GG": 4
+    },
+    "_aguardandoImagem": true
   },
   {
     "marca": "OLY",
@@ -14932,14 +16492,14 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 249.99,
-    "totalGeral": 197,
+    "totalGeral": 195,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWSR25153_PRETO",
     "grade": {
-      "M": 6,
-      "G": 101,
+      "M": 5,
+      "G": 100,
       "GG": 90
     }
   },
@@ -14954,13 +16514,12 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 229.99,
-    "totalGeral": 36,
+    "totalGeral": 35,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWCR24802_SKY",
     "grade": {
-      "P": 1,
       "M": 15,
       "G": 15,
       "GG": 5
@@ -15056,6 +16615,30 @@
       "P": 6,
       "M": 8,
       "G": 4
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OIMCR24605",
+    "descricao": "T-SHIRT CORRE M",
+    "cor": "PTO_PR",
+    "linha": "CORRE FOCO",
+    "genero": "MASCULINO",
+    "categoria": "VESTUARIO",
+    "pdv": 169.99,
+    "totalGeral": 124,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OIMCR24605_PTO_PR",
+    "grade": {
+      "PP": 12,
+      "P": 37,
+      "M": 1,
+      "G": 50,
+      "GG": 24
     }
   },
   {
@@ -15159,15 +16742,16 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 119.99,
-    "totalGeral": 44,
+    "totalGeral": 50,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWR25606_ORVLHO",
     "grade": {
-      "M": 19,
-      "G": 15,
-      "GG": 10
+      "P": 1,
+      "M": 21,
+      "G": 17,
+      "GG": 11
     }
   },
   {
@@ -15181,16 +16765,16 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 119.99,
-    "totalGeral": 119,
+    "totalGeral": 124,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWR25602_LUNAR",
     "grade": {
       "P": 4,
-      "M": 34,
-      "G": 53,
-      "GG": 28
+      "M": 36,
+      "G": 55,
+      "GG": 29
     }
   },
   {
@@ -15227,15 +16811,16 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 109.99,
-    "totalGeral": 204,
+    "totalGeral": 210,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWR25701_DUNA",
     "grade": {
-      "M": 44,
-      "G": 93,
-      "GG": 67
+      "P": 1,
+      "M": 46,
+      "G": 95,
+      "GG": 68
     }
   },
   {
@@ -15249,15 +16834,36 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 109.99,
-    "totalGeral": 199,
+    "totalGeral": 204,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWR25701_MARGRE",
     "grade": {
-      "M": 40,
-      "G": 98,
-      "GG": 61
+      "M": 42,
+      "G": 100,
+      "GG": 62
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OIMWT25406",
+    "descricao": "AGASALHO ESSENTIAL M",
+    "cor": "NAVAL",
+    "linha": "ESSENTIAL",
+    "genero": "MASCULINO",
+    "categoria": "VESTUARIO",
+    "pdv": 289.99,
+    "totalGeral": 68,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "OIMWT25406_NAVAL",
+    "grade": {
+      "P": 35,
+      "M": 33
     }
   },
   {
@@ -15271,40 +16877,15 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 199.99,
-    "totalGeral": 453,
+    "totalGeral": 458,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWT25115_PRETO",
     "grade": {
-      "M": 36,
-      "G": 322,
-      "GG": 95
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JULHO 2026",
-    "empresa": "VULSP",
-    "artigo": "OIMWT22503",
-    "descricao": "CALCA ESSENTIAL M",
-    "cor": "PRETO",
-    "linha": "ESSENTIAL",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 179.99,
-    "totalGeral": 140,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "OIMWT22503_PRETO",
-    "grade": {
-      "P": 3,
-      "M": 51,
-      "G": 44,
-      "G1": 2,
-      "G2": 26,
-      "G3": 14
+      "M": 38,
+      "G": 324,
+      "GG": 96
     }
   },
   {
@@ -15340,15 +16921,15 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 149.99,
-    "totalGeral": 225,
+    "totalGeral": 212,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWT26307_REDWOD",
     "grade": {
-      "M": 44,
-      "G": 109,
-      "GG": 72
+      "M": 33,
+      "G": 108,
+      "GG": 71
     }
   },
   {
@@ -15362,15 +16943,15 @@
     "genero": "MASCULINO",
     "categoria": "VESTUARIO",
     "pdv": 139.99,
-    "totalGeral": 168,
+    "totalGeral": 165,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIMWT25320_SGRPTO",
     "grade": {
-      "M": 74,
-      "G": 76,
-      "GG": 18
+      "M": 73,
+      "G": 75,
+      "GG": 17
     }
   },
   {
@@ -15582,27 +17163,6 @@
     "marca": "OLY",
     "prevFat": "JULHO 2026",
     "empresa": "VULSP",
-    "artigo": "OBMST24610",
-    "descricao": "T-SHIRT ESSENTIAL MC M",
-    "cor": "BLUCUR",
-    "linha": "ESSENTIAL",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 89.99,
-    "totalGeral": 65,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "OBMST24610_BLUCUR",
-    "grade": {
-      "P": 41,
-      "G": 24
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JULHO 2026",
-    "empresa": "VULSP",
     "artigo": "OBWST24607",
     "descricao": "T-SHIRT ESSENTIAL MC F",
     "cor": "PRETO",
@@ -15610,15 +17170,16 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 89.99,
-    "totalGeral": 1392,
+    "totalGeral": 1398,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBWST24607_PRETO",
     "grade": {
-      "M": 317,
-      "G": 631,
-      "GG": 444
+      "P": 1,
+      "M": 319,
+      "G": 633,
+      "GG": 445
     }
   },
   {
@@ -15744,15 +17305,15 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 79.99,
-    "totalGeral": 354,
+    "totalGeral": 348,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBWST24703_PRETO",
     "grade": {
-      "M": 76,
-      "G": 207,
-      "GG": 71
+      "M": 74,
+      "G": 205,
+      "GG": 69
     }
   },
   {
@@ -15766,13 +17327,13 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 79.99,
-    "totalGeral": 238,
+    "totalGeral": 237,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWT26715_LUNAR",
     "grade": {
-      "P": 3,
+      "P": 2,
       "M": 76,
       "G": 106,
       "GG": 53
@@ -15789,16 +17350,128 @@
     "genero": "FEMININO",
     "categoria": "VESTUARIO",
     "pdv": 79.99,
-    "totalGeral": 206,
+    "totalGeral": 200,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OIWWT26715_ORVLHO",
     "grade": {
-      "M": 72,
-      "G": 87,
-      "GG": 47
+      "M": 70,
+      "G": 85,
+      "GG": 45
     }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBMVL25202",
+    "descricao": "JAQUETA MOLETOM M",
+    "cor": "BRANCO",
+    "linha": "CASUAL",
+    "genero": "MASCULINO",
+    "categoria": "VESTUARIO",
+    "pdv": 329.99,
+    "totalGeral": 102,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 4,
+      "M": 55,
+      "G": 39,
+      "GG": 4
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBWVL25203",
+    "descricao": "JAQUETA MOLETOM F",
+    "cor": "BRANCO",
+    "linha": "CASUAL",
+    "genero": "FEMININO",
+    "categoria": "VESTUARIO",
+    "pdv": 329.99,
+    "totalGeral": 62,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "P": 17,
+      "M": 31,
+      "G": 3,
+      "GG": 6,
+      "G1": 5
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBMA241918",
+    "descricao": "MEIA CORRE 39/44",
+    "cor": "BC_ORG",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "MEIA",
+    "pdv": 59.99,
+    "totalGeral": 2,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "",
+    "grade": {
+      "39/44": 2
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBMA241918",
+    "descricao": "MEIA CORRE 39/44",
+    "cor": "PTPCOR",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "MEIA",
+    "pdv": 59.99,
+    "totalGeral": 2,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "",
+    "grade": {
+      "39/44": 2
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "OBWA241917",
+    "descricao": "MEIA CORRE 33/38",
+    "cor": "PTPCOR",
+    "linha": "FUNCIONALIDADE",
+    "genero": "FEMININO",
+    "categoria": "MEIA",
+    "pdv": 59.99,
+    "totalGeral": 2,
+    "codigoTabela": "E4550",
+    "mkp": "2.3",
+    "custo": 26.08,
+    "imagem": "",
+    "grade": {
+      "33/38": 2
+    },
+    "_aguardandoImagem": true
   },
   {
     "marca": "OLY",
@@ -15811,45 +17484,105 @@
     "genero": "MASCULINO",
     "categoria": "TENIS",
     "pdv": 279.99,
-    "totalGeral": 444,
+    "totalGeral": 216,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43358451_LNRMLT",
     "grade": {
       "39": 48,
-      "40": 60,
-      "41": 108,
-      "42": 156,
-      "43": 72
+      "40": 36,
+      "41": 60,
+      "42": 48,
+      "43": 24
     }
   },
   {
     "marca": "OLY",
     "prevFat": "JULHO 2026",
-    "empresa": "AZABA",
-    "artigo": "43409454",
-    "descricao": "EROS 2",
-    "cor": "ARENIT",
-    "linha": "CLASSICO",
-    "genero": "MASCULINO",
+    "empresa": "VULSP",
+    "artigo": "43720366",
+    "descricao": "CORRE 4",
+    "cor": "CNQVRD",
+    "linha": "CORRIDA INTENSA",
+    "genero": "UNISSEX",
     "categoria": "TENIS",
-    "pdv": 229.99,
-    "totalGeral": 1285,
+    "pdv": 599.99,
+    "totalGeral": 110,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "43409454_ARENIT",
+    "imagem": "43720366_CNQVRD",
     "grade": {
-      "34": 18,
-      "35": 15,
-      "37": 25,
-      "39": 100,
-      "40": 227,
-      "41": 348,
-      "42": 228,
-      "43": 216,
-      "44": 108
+      "34": 3,
+      "35": 9,
+      "36": 21,
+      "37": 19,
+      "38": 17,
+      "39": 11,
+      "40": 11,
+      "41": 8,
+      "42": 6,
+      "43": 3,
+      "44": 1,
+      "45": 1
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "43720366",
+    "descricao": "CORRE 4",
+    "cor": "PLHARE",
+    "linha": "CORRIDA INTENSA",
+    "genero": "UNISSEX",
+    "categoria": "TENIS",
+    "pdv": 599.99,
+    "totalGeral": 197,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "34": 11,
+      "35": 14,
+      "36": 38,
+      "37": 35,
+      "38": 30,
+      "39": 25,
+      "40": 19,
+      "41": 13,
+      "42": 7,
+      "43": 4,
+      "44": 1
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "43299316",
+    "descricao": "ACQUA",
+    "cor": "CHBORG",
+    "linha": "VERSATIL",
+    "genero": "FEMININO",
+    "categoria": "TENIS",
+    "pdv": 229.99,
+    "totalGeral": 629,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43299316_CHBORG",
+    "grade": {
+      "34": 6,
+      "36": 34,
+      "37": 141,
+      "38": 78,
+      "39": 83,
+      "40": 176,
+      "41": 111
     }
   },
   {
@@ -15863,20 +17596,946 @@
     "genero": "FEMININO",
     "categoria": "TENIS",
     "pdv": 279.99,
-    "totalGeral": 1092,
+    "totalGeral": 892,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43405477_ARENIT",
     "grade": {
-      "34": 56,
-      "36": 199,
-      "37": 180,
-      "38": 207,
-      "39": 214,
-      "40": 129,
+      "34": 52,
+      "36": 161,
+      "37": 150,
+      "38": 198,
+      "39": 140,
+      "40": 84,
       "41": 107
     },
     "_pdvResgatado": true
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "43790399",
+    "descricao": "CORRE TURBO",
+    "cor": "ARTPTO",
+    "linha": "PERFORMANCE",
+    "genero": "UNISSEX",
+    "categoria": "TENIS",
+    "pdv": 699.99,
+    "totalGeral": 634,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43790399_ARTPTO",
+    "grade": {
+      "36": 1,
+      "37": 129,
+      "38": 47,
+      "39": 24,
+      "40": 17,
+      "42": 13,
+      "43": 304,
+      "44": 13,
+      "45": 86
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "3028668",
+    "descricao": "TENIS UA U COURT ANATOMIX",
+    "cor": "NGWHBK",
+    "linha": "ESPORTE",
+    "genero": "UNISSEX",
+    "categoria": "TENIS",
+    "pdv": 799.99,
+    "totalGeral": 234,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "3028668_NGWHBK",
+    "grade": {
+      "38": 24,
+      "39": 9,
+      "40": 37,
+      "41": 73,
+      "42": 42,
+      "43": 38,
+      "44": 7,
+      "46": 4
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "3028668",
+    "descricao": "TENIS UA U COURT ANATOMIX",
+    "cor": "WHWQHG",
+    "linha": "ESPORTE",
+    "genero": "UNISSEX",
+    "categoria": "TENIS",
+    "pdv": 799.99,
+    "totalGeral": 344,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "3028668_WHWQHG",
+    "grade": {
+      "38": 33,
+      "39": 12,
+      "40": 57,
+      "41": 111,
+      "42": 62,
+      "43": 59,
+      "44": 10
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "3028831",
+    "descricao": "TENIS UA FLOW FUTR X 4 MM",
+    "cor": "APBKCG",
+    "linha": "ESPORTE",
+    "genero": "UNISSEX",
+    "categoria": "TENIS",
+    "pdv": 1099.99,
+    "totalGeral": 69,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "38": 8,
+      "39": 10,
+      "40": 10,
+      "41": 10,
+      "42": 12,
+      "43": 10,
+      "44": 5,
+      "45": 1,
+      "47": 1,
+      "48": 2
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "3027593",
+    "descricao": "TENIS UA PHANTOM 4",
+    "cor": "BKATHC",
+    "linha": "SPORTSTYLE",
+    "genero": "MASCULINO",
+    "categoria": "TENIS",
+    "pdv": 999.99,
+    "totalGeral": 122,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "3027593_BKATHC",
+    "grade": {
+      "38": 8,
+      "39": 45,
+      "40": 25,
+      "41": 22,
+      "42": 6,
+      "43": 14,
+      "45": 2
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "3027593",
+    "descricao": "TENIS UA PHANTOM 4",
+    "cor": "FKDGEG",
+    "linha": "SPORTSTYLE",
+    "genero": "MASCULINO",
+    "categoria": "TENIS",
+    "pdv": 999.99,
+    "totalGeral": 64,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "38": 8,
+      "39": 7,
+      "40": 11,
+      "41": 12,
+      "42": 9,
+      "43": 8,
+      "44": 4,
+      "45": 5
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "3027594",
+    "descricao": "TENIS UA W PHANTOM 4",
+    "cor": "BKANWH",
+    "linha": "SPORTSTYLE",
+    "genero": "FEMININO",
+    "categoria": "TENIS",
+    "pdv": 999.99,
+    "totalGeral": 836,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "3027594_BKANWH",
+    "grade": {
+      "34": 5,
+      "35": 71,
+      "36": 147,
+      "37": 154,
+      "38": 177,
+      "39": 142,
+      "40": 70,
+      "41": 70
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "3027874",
+    "descricao": "TENIS UA U PHANTOM 4 LUXE",
+    "cor": "WTWTQZ",
+    "linha": "SPORTSTYLE",
+    "genero": "UNISSEX",
+    "categoria": "TENIS",
+    "pdv": 899.99,
+    "totalGeral": 60,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "3027874_WTWTQZ",
+    "grade": {
+      "38": 5,
+      "39": 7,
+      "40": 11,
+      "41": 11,
+      "42": 14,
+      "43": 12
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "6006061",
+    "descricao": "TENIS UA ECHO",
+    "cor": "BKBKWT",
+    "linha": "SPORTSTYLE",
+    "genero": "UNISSEX",
+    "categoria": "TENIS",
+    "pdv": 899.99,
+    "totalGeral": 173,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "6006061_BKBKWT",
+    "grade": {
+      "34": 6,
+      "35": 6,
+      "36": 12,
+      "37": 12,
+      "38": 7,
+      "39": 9,
+      "40": 24,
+      "41": 42,
+      "42": 30,
+      "43": 23,
+      "44": 2
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "6006061",
+    "descricao": "TENIS UA ECHO",
+    "cor": "BKRPBK",
+    "linha": "SPORTSTYLE",
+    "genero": "UNISSEX",
+    "categoria": "TENIS",
+    "pdv": 899.99,
+    "totalGeral": 304,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "38": 17,
+      "39": 16,
+      "40": 48,
+      "41": 90,
+      "42": 57,
+      "43": 53,
+      "44": 12,
+      "45": 11
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "6006061",
+    "descricao": "TENIS UA ECHO",
+    "cor": "GDBKGD",
+    "linha": "SPORTSTYLE",
+    "genero": "UNISSEX",
+    "categoria": "TENIS",
+    "pdv": 899.99,
+    "totalGeral": 295,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "6006061_GDBKGD",
+    "grade": {
+      "38": 14,
+      "39": 16,
+      "40": 49,
+      "41": 88,
+      "42": 57,
+      "43": 49,
+      "44": 10,
+      "45": 12
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "6014730",
+    "descricao": "UA CH.NONSTOP",
+    "cor": "BHBHTX",
+    "linha": "RUNNING",
+    "genero": "MASCULINO",
+    "categoria": "TENIS",
+    "pdv": 599.99,
+    "totalGeral": 5685,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "6014730_BHBHTX",
+    "grade": {
+      "34": 88,
+      "35": 147,
+      "36": 502,
+      "37": 563,
+      "38": 667,
+      "39": 764,
+      "40": 938,
+      "41": 959,
+      "42": 582,
+      "43": 308,
+      "44": 167
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "6014730",
+    "descricao": "UA CH.NONSTOP",
+    "cor": "BKBKTX",
+    "linha": "RUNNING",
+    "genero": "MASCULINO",
+    "categoria": "TENIS",
+    "pdv": 599.99,
+    "totalGeral": 2445,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "6014730_BKBKTX",
+    "grade": {
+      "34": 44,
+      "38": 34,
+      "39": 394,
+      "40": 421,
+      "41": 480,
+      "42": 431,
+      "43": 368,
+      "44": 273
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "6014730",
+    "descricao": "UA CH.NONSTOP",
+    "cor": "FOFORR",
+    "linha": "RUNNING",
+    "genero": "MASCULINO",
+    "categoria": "TENIS",
+    "pdv": 599.99,
+    "totalGeral": 4361,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "6014730_FOFORR",
+    "grade": {
+      "34": 113,
+      "35": 275,
+      "36": 353,
+      "37": 446,
+      "38": 512,
+      "39": 563,
+      "40": 491,
+      "41": 563,
+      "42": 524,
+      "43": 385,
+      "44": 136
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "6006985",
+    "descricao": "UA CH.QUICKER 2",
+    "cor": "TGCRCO",
+    "linha": "RUNNING INSPIRED",
+    "genero": "MASCULINO",
+    "categoria": "TENIS",
+    "pdv": 499.99,
+    "totalGeral": 984,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "34": 97,
+      "35": 61,
+      "36": 199,
+      "37": 132,
+      "38": 45,
+      "39": 44,
+      "40": 67,
+      "41": 144,
+      "42": 107,
+      "43": 49,
+      "44": 39
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "6006985",
+    "descricao": "UA CH.QUICKER 2",
+    "cor": "WHMTSL",
+    "linha": "RUNNING INSPIRED",
+    "genero": "MASCULINO",
+    "categoria": "TENIS",
+    "pdv": 499.99,
+    "totalGeral": 2688,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "6006985_WHMTSL",
+    "grade": {
+      "34": 78,
+      "35": 63,
+      "36": 64,
+      "37": 61,
+      "38": 103,
+      "39": 232,
+      "40": 480,
+      "41": 602,
+      "42": 549,
+      "43": 338,
+      "44": 118
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "6014732",
+    "descricao": "UA CH.ENDLESS",
+    "cor": "BFDGFL",
+    "linha": "RUNNING",
+    "genero": "MASCULINO",
+    "categoria": "TENIS",
+    "pdv": 499.99,
+    "totalGeral": 238,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "37": 21,
+      "38": 22,
+      "39": 52,
+      "40": 54,
+      "41": 44,
+      "42": 25,
+      "43": 16,
+      "44": 4
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "6014732",
+    "descricao": "UA CH.ENDLESS",
+    "cor": "BHACTX",
+    "linha": "RUNNING",
+    "genero": "MASCULINO",
+    "categoria": "TENIS",
+    "pdv": 499.99,
+    "totalGeral": 2326,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "6014732_BHACTX",
+    "grade": {
+      "34": 40,
+      "35": 84,
+      "36": 116,
+      "37": 157,
+      "38": 306,
+      "39": 325,
+      "40": 341,
+      "41": 352,
+      "42": 321,
+      "43": 237,
+      "44": 47
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "6014732",
+    "descricao": "UA CH.ENDLESS",
+    "cor": "FOGVRR",
+    "linha": "RUNNING",
+    "genero": "MASCULINO",
+    "categoria": "TENIS",
+    "pdv": 499.99,
+    "totalGeral": 4145,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "",
+    "grade": {
+      "34": 117,
+      "35": 226,
+      "36": 480,
+      "37": 532,
+      "38": 469,
+      "39": 486,
+      "40": 525,
+      "41": 515,
+      "42": 383,
+      "43": 250,
+      "44": 162
+    },
+    "_aguardandoImagem": true
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "6014732",
+    "descricao": "UA CH.ENDLESS",
+    "cor": "LLVRBK",
+    "linha": "RUNNING",
+    "genero": "MASCULINO",
+    "categoria": "TENIS",
+    "pdv": 499.99,
+    "totalGeral": 1425,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "6014732_LLVRBK",
+    "grade": {
+      "34": 12,
+      "35": 11,
+      "36": 7,
+      "37": 10,
+      "38": 40,
+      "39": 241,
+      "40": 278,
+      "41": 248,
+      "42": 212,
+      "43": 193,
+      "44": 173
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULTS",
+    "artigo": "6014732",
+    "descricao": "UA CH.ENDLESS",
+    "cor": "WTHGWT",
+    "linha": "RUNNING",
+    "genero": "MASCULINO",
+    "categoria": "TENIS",
+    "pdv": 499.99,
+    "totalGeral": 1655,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "6014732_WTHGWT",
+    "grade": {
+      "34": 9,
+      "36": 36,
+      "37": 217,
+      "38": 223,
+      "39": 260,
+      "40": 289,
+      "41": 296,
+      "42": 235,
+      "43": 56,
+      "44": 34
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "3028827",
+    "descricao": "TENIS UA FLOW FUTR X ELIT",
+    "cor": "BKCABO",
+    "linha": "ESPORTE",
+    "genero": "UNISSEX",
+    "categoria": "TENIS",
+    "pdv": 1399.99,
+    "totalGeral": 66,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "3028827_BKCABO",
+    "grade": {
+      "38": 8,
+      "39": 4,
+      "40": 6,
+      "41": 10,
+      "42": 20,
+      "43": 16,
+      "44": 2
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "3028178",
+    "descricao": "TENIS UA W INFINITE ELITE",
+    "cor": "SYDGWH",
+    "linha": "ESPORTE",
+    "genero": "FEMININO",
+    "categoria": "TENIS",
+    "pdv": 1099.99,
+    "totalGeral": 133,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "3028178_SYDGWH",
+    "grade": {
+      "34": 16,
+      "35": 16,
+      "36": 29,
+      "37": 30,
+      "38": 42
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "3027707",
+    "descricao": "CHUTEIRA UA U MAG SELECT",
+    "cor": "BKANWH",
+    "linha": "FUTEBOL",
+    "genero": "UNISSEX",
+    "categoria": "TENIS",
+    "pdv": 799.99,
+    "totalGeral": 295,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "3027707_BKANWH",
+    "grade": {
+      "34": 2,
+      "35": 2,
+      "36": 18,
+      "37": 18,
+      "38": 12,
+      "39": 3,
+      "40": 84,
+      "41": 78,
+      "42": 48,
+      "43": 30
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "3027593",
+    "descricao": "TENIS UA PHANTOM 4",
+    "cor": "BKANWH",
+    "linha": "SPORTSTYLE",
+    "genero": "MASCULINO",
+    "categoria": "TENIS",
+    "pdv": 999.99,
+    "totalGeral": 190,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "3027593_BKANWH",
+    "grade": {
+      "39": 20,
+      "40": 39,
+      "41": 33,
+      "42": 61,
+      "43": 37
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "3027593",
+    "descricao": "TENIS UA PHANTOM 4",
+    "cor": "KHBWTQ",
+    "linha": "SPORTSTYLE",
+    "genero": "MASCULINO",
+    "categoria": "TENIS",
+    "pdv": 999.99,
+    "totalGeral": 109,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "3027593_KHBWTQ",
+    "grade": {
+      "39": 21,
+      "40": 27,
+      "41": 24,
+      "42": 22,
+      "43": 15
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "3027593",
+    "descricao": "TENIS UA PHANTOM 4",
+    "cor": "TRGYBK",
+    "linha": "SPORTSTYLE",
+    "genero": "MASCULINO",
+    "categoria": "TENIS",
+    "pdv": 999.99,
+    "totalGeral": 155,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "3027593_TRGYBK",
+    "grade": {
+      "39": 11,
+      "40": 31,
+      "41": 34,
+      "42": 47,
+      "43": 32
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "3027593",
+    "descricao": "TENIS UA PHANTOM 4",
+    "cor": "WTBKDG",
+    "linha": "SPORTSTYLE",
+    "genero": "MASCULINO",
+    "categoria": "TENIS",
+    "pdv": 999.99,
+    "totalGeral": 61,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "3027593_WTBKDG",
+    "grade": {
+      "39": 12,
+      "40": 14,
+      "41": 13,
+      "42": 13,
+      "43": 9
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "3027594",
+    "descricao": "TENIS UA W PHANTOM 4",
+    "cor": "HYGDSG",
+    "linha": "SPORTSTYLE",
+    "genero": "FEMININO",
+    "categoria": "TENIS",
+    "pdv": 999.99,
+    "totalGeral": 149,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "3027594_HYGDSG",
+    "grade": {
+      "34": 14,
+      "35": 8,
+      "36": 33,
+      "37": 37,
+      "38": 57
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "3027594",
+    "descricao": "TENIS UA W PHANTOM 4",
+    "cor": "IVYWTQ",
+    "linha": "SPORTSTYLE",
+    "genero": "FEMININO",
+    "categoria": "TENIS",
+    "pdv": 999.99,
+    "totalGeral": 148,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "3027594_IVYWTQ",
+    "grade": {
+      "34": 14,
+      "35": 8,
+      "36": 33,
+      "37": 37,
+      "38": 56
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "3027874",
+    "descricao": "TENIS UA U PHANTOM 4 LUXE",
+    "cor": "SITWTC",
+    "linha": "SPORTSTYLE",
+    "genero": "UNISSEX",
+    "categoria": "TENIS",
+    "pdv": 899.99,
+    "totalGeral": 74,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "3027874_SITWTC",
+    "grade": {
+      "34": 5,
+      "35": 3,
+      "36": 8,
+      "37": 10,
+      "38": 7,
+      "39": 5,
+      "40": 10,
+      "41": 8,
+      "42": 11,
+      "43": 4,
+      "44": 3
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "3028633",
+    "descricao": "TENIS UA COURT 96",
+    "cor": "WHWHBL",
+    "linha": "SPORTSTYLE",
+    "genero": "MASCULINO",
+    "categoria": "TENIS",
+    "pdv": 799.99,
+    "totalGeral": 86,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "3028633_WHWHBL",
+    "grade": {
+      "39": 9,
+      "40": 18,
+      "41": 16,
+      "42": 16,
+      "43": 16,
+      "44": 11
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "3028637",
+    "descricao": "TENIS UA W COURT 96",
+    "cor": "WHIWHI",
+    "linha": "SPORTSTYLE",
+    "genero": "FEMININO",
+    "categoria": "TENIS",
+    "pdv": 799.99,
+    "totalGeral": 283,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "3028637_WHIWHI",
+    "grade": {
+      "34": 32,
+      "35": 39,
+      "36": 58,
+      "37": 68,
+      "38": 86
+    }
+  },
+  {
+    "marca": "UA",
+    "prevFat": "JULHO 2026",
+    "empresa": "VULSP",
+    "artigo": "3028765",
+    "descricao": "TENIS UA COURT 96 SUEDE",
+    "cor": "WHTMDG",
+    "linha": "SPORTSTYLE",
+    "genero": "MASCULINO",
+    "categoria": "TENIS",
+    "pdv": 799.99,
+    "totalGeral": 211,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "3028765_WHTMDG",
+    "grade": {
+      "39": 9,
+      "40": 33,
+      "41": 78,
+      "42": 37,
+      "43": 36,
+      "44": 9,
+      "45": 9
+    }
   }
 ]
